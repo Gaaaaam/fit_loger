@@ -1,4 +1,5 @@
-import { ExerciseDef, exercisesOf } from '../model/exerciseCatalog';
+import { WorkoutRepository } from '../db/WorkoutRepository';
+import { ExerciseDef } from '../model/exerciseCatalog';
 import { PartKey } from '../model/types';
 
 @Component
@@ -7,9 +8,19 @@ export struct ExerciseSheet {
   @State items: ExerciseDef[] = [];
   onPick: (exerciseId: string) => void = (_exerciseId: string) => {
   };
+  onCreate: () => void = () => {
+  };
 
   aboutToAppear(): void {
-    this.items = exercisesOf(this.partKey);
+    this.reload();
+  }
+
+  private async reload(): Promise<void> {
+    try {
+      this.items = await WorkoutRepository.listExercises(this.partKey);
+    } catch (err) {
+      this.items = [];
+    }
   }
 
   build() {
@@ -43,6 +54,17 @@ export struct ExerciseSheet {
       })
       .width('100%')
       .layoutWeight(1)
+
+      Button('新建动作')
+        .fontSize(15)
+        .fontColor($r('app.color.accent'))
+        .backgroundColor($r('app.color.accent_soft'))
+        .width('100%')
+        .height(44)
+        .margin({ top: 8 })
+        .onClick(() => {
+          this.onCreate();
+        })
     }
     .width('100%')
     .height('100%')

@@ -4,12 +4,25 @@ import { SetRow } from './SetRow';
 @Component
 export struct ExerciseCard {
   @ObjectLink exercise: ExerciseItem;
+  @Prop listStamp: number = 0;
   onAddSet: (exerciseRowId: number) => void = (_id: number) => {
   };
   onDeleteExercise: (exerciseRowId: number) => void = (_id: number) => {
   };
   onDeleteSet: (setId: number) => void = (_id: number) => {
   };
+  onSetBecameDone: (exerciseId: string, item: SetItem) => void = (_exerciseId: string, _item: SetItem) => {
+  };
+  onStatusChanged: () => void = () => {
+  };
+
+  private setKey(setItem: SetItem): string {
+    const stamp: number = this.listStamp;
+    if (stamp < 0) {
+      return `x${setItem.id}`;
+    }
+    return `${setItem.id}`;
+  }
 
   private confirmDelete(): void {
     AlertDialog.show({
@@ -49,6 +62,14 @@ export struct ExerciseCard {
       }
       .width('100%')
 
+      if (this.exercise.lastHint.length > 0) {
+        Text(this.exercise.lastHint)
+          .fontSize(13)
+          .fontColor($r('app.color.text_secondary'))
+          .width('100%')
+          .margin({ top: 4 })
+      }
+
       if (this.exercise.sets.length === 0) {
         Text('还没有组，点下方添加')
           .fontSize(13)
@@ -59,11 +80,18 @@ export struct ExerciseCard {
         ForEach(this.exercise.sets, (setItem: SetItem) => {
           SetRow({
             setItem: setItem,
+            weightPlaceholder: this.exercise.isBodyweight === 1 ? '额外负重 kg' : '重量 kg',
             onDeleted: (setId: number) => {
               this.onDeleteSet(setId);
+            },
+            onBecameDone: (item: SetItem) => {
+              this.onSetBecameDone(this.exercise.exerciseId, item);
+            },
+            onStatusChanged: () => {
+              this.onStatusChanged();
             }
           })
-        }, (setItem: SetItem) => `${setItem.id}`)
+        }, (setItem: SetItem) => this.setKey(setItem))
       }
 
       Button('添加组')

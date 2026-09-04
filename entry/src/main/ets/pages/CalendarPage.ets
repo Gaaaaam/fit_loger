@@ -1,8 +1,10 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { router } from '@kit.ArkUI';
+import { promptAction, router } from '@kit.ArkUI';
+import { fileIo, picker } from '@kit.CoreFileKit';
+import { util } from '@kit.ArkTS';
 import { MonthCalendar } from '../components/MonthCalendar';
 import { WorkoutRepository } from '../db/WorkoutRepository';
-import { buildMonthCells, shiftMonth } from '../common/DateUtil';
+import { buildMonthCells, shiftMonth, todayString } from '../common/DateUtil';
 import { CalendarCell } from '../model/DayModels';
 
 @Entry
@@ -55,19 +57,76 @@ struct CalendarPage {
     });
   }
 
+  private async handleExport(): Promise<void> {
+    try {
+      const path: string = await WorkoutRepository.writeExportFiles();
+      promptAction.showToast({ message: `已导出到 ${path}`, duration: 3500 });
+    } catch (err) {
+      promptAction.showToast({ message: '导出失败', duration: 2000 });
+    }
+  }
+
+  private async handleImport(): Promise<void> {
+    try {
+      const options = new picker.DocumentSelectOptions();
+      options.maxSelectNumber = 1;
+      const documentPicker = new picker.DocumentViewPicker();
+      const uris: string[] = await documentPicker.select(options);
+      if (uris.length === 0) {
+        return;
+      }
+      let text: string = '';
+      try {
+        text = fileIo.readTextSync(uris[0]);
+      } catch (readErr) {
+        const file = fileIo.openSync(uris[0], fileIo.OpenMode.READ_ONLY);
+        const buf: ArrayBuffer = new ArrayBuffer(4 * 1024 * 1024);
+        const len: number = fileIo.readSync(file.fd, buf);
+        fileIo.closeSync(file);
+        const decoder: util.TextDecoder = util.TextDecoder.create('utf-8');
+        text = decoder.decodeToString(new Uint8Array(buf, 0, len));
+      }
+      await WorkoutRepository.importJsonText(text);
+      await this.reloadMarks();
+      promptAction.showToast({ message: '导入完成', duration: 2000 });
+    } catch (err) {
+      promptAction.showToast({ message: '导入失败，请选择 JSON 导出文件', duration: 2500 });
+    }
+  }
+
   build() {
     Column() {
-      Text('训练日志')
-        .fontSize(26)
-        .fontWeight(FontWeight.Bold)
-        .fontColor($r('app.color.text_primary'))
-        .width('100%')
-        .margin({ bottom: 4 })
+      Row() {
+        Text('训练日志')
+          .fontSize(26)
+          .fontWeight(FontWeight.Bold)
+          .fontColor($r('app.color.text_primary'))
+          .layoutWeight(1)
+        Text('体重')
+          .fontSize(15)
+          .fontColor($r('app.color.accent'))
+          .onClick(() => {
+            router.pushUrl({ url: 'pages/BodyMetricsPage' }).catch(() => {
+            });
+          })
+      }
+      .width('100%')
+
       Text('点选日期记录训练')
         .fontSize(14)
         .fontColor($r('app.color.text_secondary'))
         .width('100%')
-        .margin({ bottom: 18 })
+        .margin({ bottom: 12, top: 4 })
+
+      Button('记录今天')
+        .backgroundColor($r('app.color.accent'))
+        .fontColor($r('app.color.text_on_accent'))
+        .width('100%')
+        .height(44)
+        .margin({ bottom: 12 })
+        .onClick(() => {
+          this.openDay(todayString());
+        })
 
       Column() {
         MonthCalendar({
@@ -89,6 +148,24 @@ struct CalendarPage {
       .padding(12)
       .backgroundColor($r('app.color.card_bg'))
       .borderRadius(16)
+
+      Row() {
+        Text('导出 JSON/CSV')
+          .fontSize(14)
+          .fontColor($r('app.color.accent'))
+          .onClick(() => {
+            this.handleExport();
+          })
+        Blank()
+        Text('从 JSON 导入')
+          .fontSize(14)
+          .fontColor($r('app.color.accent'))
+          .onClick(() => {
+            this.handleImport();
+          })
+      }
+      .width('100%')
+      .margin({ top: 16 })
     }
     .width('100%')
     .height('100%')

@@ -1,6 +1,7 @@
 {
   "src": [
     "pages/CalendarPage",
-    "pages/DayDetailPage"
+    "pages/DayDetailPage",
+    "pages/BodyMetricsPage"
   ]
 }

@@ -1,12 +1,14 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { router } from '@kit.ArkUI';
+import { promptAction, router } from '@kit.ArkUI';
 import { BodyPartSheet } from '../components/BodyPartSheet';
+import { CreateExerciseSheet } from '../components/CreateExerciseSheet';
 import { ExerciseSheet } from '../components/ExerciseSheet';
 import { PartSection } from '../components/PartSection';
 import { displayChineseDate, todayString } from '../common/DateUtil';
+import { parseReps, parseWeight } from '../common/WorkoutLogic';
 import { WorkoutRepository } from '../db/WorkoutRepository';
-import { DayModel, PartItem } from '../model/DayModels';
-import { PartKey } from '../model/types';
+import { DayModel, ExerciseItem, PartItem, PrResult, RecentDayInfo, SetItem } from '../model/DayModels';
+import { PartKey, partName, toPartKey } from '../model/types';
 
 interface RouterDateParams {
   date: string;
@@ -18,12 +20,17 @@ struct DayDetailPage {
   @State dateStr: string = '';
   @State titleText: string = '';
   @State day: DayModel = new DayModel();
-  @State viewEpoch: number = 0;
   @State showSheet: boolean = false;
   @State sheetMode: string = 'part';
-  @State pickerPartId: number = 0;
   @State pickerPartKey: PartKey = 'chest';
-  @State usedKeys: string[] = [];
+  @State recentDays: RecentDayInfo[] = [];
+  @State undoVisible: boolean = false;
+  @State undoLabel: string = '';
+  @State plannedTick: number = 0;
+  private undoItem: SetItem = new SetItem();
+  private undoExerciseRowId: number = 0;
+  private undoTimer: number = -1;
+  private listScroller: Scroller = new Scroller();
 
   aboutToAppear(): void {
     const raw: Object | undefined = router.getParams();
@@ -40,19 +47,68 @@ struct DayDetailPage {
     this.reload(true);
   }
 
-  private usedPartKeys(): string[] {
-    const keys: string[] = [];
-    for (let i = 0; i < this.day.parts.length; i++) {
-      keys.push(this.day.parts[i].partKey);
+  private hasPlanned(): boolean {
+    const tick: number = this.plannedTick;
+    if (tick < 0) {
+      return false;
     }
-    return keys;
+    for (let i = 0; i < this.day.parts.length; i++) {
+      for (let j = 0; j < this.day.parts[i].exercises.length; j++) {
+        const sets: SetItem[] = this.day.parts[i].exercises[j].sets;
+        for (let k = 0; k < sets.length; k++) {
+          if (sets[k].status === 'planned') {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  private findExercise(exerciseRowId: number): ExerciseItem | null {
+    for (let i = 0; i < this.day.parts.length; i++) {
+      for (let j = 0; j < this.day.parts[i].exercises.length; j++) {
+        if (this.day.parts[i].exercises[j].id === exerciseRowId) {
+          return this.day.parts[i].exercises[j];
+        }
+      }
+    }
+    return null;
+  }
+
+  private ensurePart(partKey: PartKey): PartItem {
+    for (let i = 0; i < this.day.parts.length; i++) {
+      if (this.day.parts[i].partKey === partKey) {
+        return this.day.parts[i];
+      }
+    }
+    const part: PartItem = new PartItem();
+    part.partKey = partKey;
+    part.name = partName(partKey);
+    part.id = this.day.parts.length + 1;
+    this.day.parts.push(part);
+    this.notifyParts();
+    return part;
+  }
+
+  // @Observed V1 只监听属性赋值，不监听嵌套数组的 push/splice。
+  // 改完数组后必须换成新引用，ForEach / 空态才能立刻刷新，且 ForEach key 不变故不会拆掉正在输入的组。
+  private notifyParts(): void {
+    this.day.parts = this.day.parts.slice();
+  }
+
+  private notifyExercises(part: PartItem): void {
+    part.exercises = part.exercises.slice();
+  }
+
+  private notifySets(ex: ExerciseItem): void {
+    ex.sets = ex.sets.slice();
   }
 
   private async reload(autoOpenPart: boolean): Promise<void> {
     try {
       this.day = await WorkoutRepository.loadDay(this.dateStr);
-      this.usedKeys = this.usedPartKeys();
-      this.viewEpoch++;
+      this.plannedTick++;
       if (autoOpenPart && this.day.parts.length === 0) {
         this.sheetMode = 'part';
         this.showSheet = true;
@@ -61,56 +117,195 @@ struct DayDetailPage {
       hilog.error(0xF170, 'DayDetailPage', 'reload failed');
       this.day = new DayModel();
       this.day.date = this.dateStr;
-      this.usedKeys = [];
-      this.viewEpoch++;
+      this.plannedTick++;
     }
   }
 
   private async handlePickPart(key: PartKey): Promise<void> {
-    this.showSheet = false;
-    await WorkoutRepository.addPart(this.dateStr, key);
-    await this.reload(false);
+    this.pickerPartKey = key;
+    this.sheetMode = 'exercise';
   }
 
   private async handlePickExercise(exerciseId: string): Promise<void> {
     this.showSheet = false;
-    if (this.pickerPartId <= 0) {
+    const rowId: number = await WorkoutRepository.addExercise(this.dateStr, exerciseId);
+    const loaded: ExerciseItem | null = await WorkoutRepository.loadExerciseRow(rowId, this.dateStr);
+    if (loaded === null) {
       return;
     }
-    await WorkoutRepository.addExercise(this.pickerPartId, exerciseId);
-    await this.reload(false);
+    if (this.day.dayId <= 0) {
+      const fresh: DayModel = await WorkoutRepository.loadDay(this.dateStr);
+      this.day.dayId = fresh.dayId;
+    }
+    const part: PartItem = this.ensurePart(loaded.partKey);
+    part.exercises.push(loaded);
+    this.notifyExercises(part);
+    this.notifyParts();
+    this.plannedTick++;
+    this.scheduleScrollToPart(loaded.partKey);
   }
 
-  private openExercisePicker(partId: number): void {
-    for (let i = 0; i < this.day.parts.length; i++) {
-      if (this.day.parts[i].id === partId) {
-        this.pickerPartKey = this.day.parts[i].partKey;
-        break;
-      }
-    }
-    this.pickerPartId = partId;
+  private openExercisePicker(partKey: string): void {
+    this.pickerPartKey = toPartKey(partKey);
     this.sheetMode = 'exercise';
     this.showSheet = true;
   }
 
   private async handleAddSet(exerciseRowId: number): Promise<void> {
-    await WorkoutRepository.addSet(exerciseRowId);
-    await this.reload(false);
+    const setItem: SetItem = await WorkoutRepository.addSet(exerciseRowId);
+    const ex: ExerciseItem | null = this.findExercise(exerciseRowId);
+    if (ex !== null) {
+      ex.sets.push(setItem);
+      this.notifySets(ex);
+      this.plannedTick++;
+    }
   }
 
-  private async handleDeleteSet(setId: number): Promise<void> {
-    await WorkoutRepository.deleteSet(setId);
-    await this.reload(false);
+  private handleDeleteSet(setId: number): void {
+    for (let i = 0; i < this.day.parts.length; i++) {
+      for (let j = 0; j < this.day.parts[i].exercises.length; j++) {
+        const ex: ExerciseItem = this.day.parts[i].exercises[j];
+        for (let k = 0; k < ex.sets.length; k++) {
+          if (ex.sets[k].id === setId) {
+            this.undoItem = ex.sets[k];
+            this.undoExerciseRowId = ex.id;
+            ex.sets.splice(k, 1);
+            this.notifySets(ex);
+            WorkoutRepository.deleteSet(setId).catch(() => {
+              hilog.error(0xF170, 'DayDetailPage', 'deleteSet failed');
+            });
+            this.showUndoBar('已删除一组');
+            this.plannedTick++;
+            return;
+          }
+        }
+      }
+    }
+  }
+
+  private showUndoBar(label: string): void {
+    this.undoLabel = label;
+    this.undoVisible = true;
+    if (this.undoTimer !== -1) {
+      clearTimeout(this.undoTimer);
+    }
+    this.undoTimer = setTimeout(() => {
+      this.undoVisible = false;
+      this.undoTimer = -1;
+    }, 5000);
+  }
+
+  private async undoDeleteSet(): Promise<void> {
+    if (this.undoExerciseRowId <= 0 || this.undoItem.id <= 0) {
+      return;
+    }
+    const newId: number = await WorkoutRepository.insertSetCopy(this.undoExerciseRowId, this.undoItem);
+    this.undoItem.id = newId;
+    const ex: ExerciseItem | null = this.findExercise(this.undoExerciseRowId);
+    if (ex !== null) {
+      ex.sets.push(this.undoItem);
+      this.notifySets(ex);
+      this.plannedTick++;
+    }
+    this.undoVisible = false;
+    this.undoExerciseRowId = 0;
   }
 
   private async handleDeleteExercise(exerciseRowId: number): Promise<void> {
     await WorkoutRepository.deleteExercise(exerciseRowId);
+    for (let i = 0; i < this.day.parts.length; i++) {
+      const part: PartItem = this.day.parts[i];
+      for (let j = 0; j < part.exercises.length; j++) {
+        if (part.exercises[j].id === exerciseRowId) {
+          part.exercises.splice(j, 1);
+          this.notifyExercises(part);
+          if (part.exercises.length === 0) {
+            this.day.parts.splice(i, 1);
+          }
+          this.notifyParts();
+          this.plannedTick++;
+          return;
+        }
+      }
+    }
+  }
+
+  private async handleDeletePart(partKey: string): Promise<void> {
+    await WorkoutRepository.deleteExercisesOfPart(this.dateStr, toPartKey(partKey));
+    for (let i = 0; i < this.day.parts.length; i++) {
+      if (this.day.parts[i].partKey === partKey) {
+        this.day.parts.splice(i, 1);
+        this.notifyParts();
+        this.plannedTick++;
+        return;
+      }
+    }
+  }
+
+  private async handleClearPlanned(): Promise<void> {
+    await WorkoutRepository.clearPlannedSets(this.dateStr);
+    for (let i = 0; i < this.day.parts.length; i++) {
+      const part: PartItem = this.day.parts[i];
+      for (let j = 0; j < part.exercises.length; j++) {
+        const ex: ExerciseItem = part.exercises[j];
+        const kept: SetItem[] = [];
+        for (let k = 0; k < ex.sets.length; k++) {
+          if (ex.sets[k].status !== 'planned') {
+            kept.push(ex.sets[k]);
+          }
+        }
+        if (kept.length !== ex.sets.length) {
+          ex.sets = kept;
+        }
+      }
+    }
+    this.notifyParts();
+    this.plannedTick++;
+  }
+
+  private scheduleScrollToPart(partKey: PartKey): void {
+    setTimeout(() => {
+      let index: number = 0;
+      if (this.hasPlanned()) {
+        index = 1;
+      }
+      for (let i = 0; i < this.day.parts.length; i++) {
+        if (this.day.parts[i].partKey === partKey) {
+          this.listScroller.scrollToIndex(index + i, true, ScrollAlign.END);
+          return;
+        }
+      }
+    }, 80);
+  }
+
+  private async openCopySheet(): Promise<void> {
+    this.recentDays = await WorkoutRepository.listRecentDays(8);
+    this.sheetMode = 'copy';
+    this.showSheet = true;
+  }
+
+  private async handleCopy(fromDate: string): Promise<void> {
+    this.showSheet = false;
+    await WorkoutRepository.copyDay(fromDate, this.dateStr);
     await this.reload(false);
   }
 
-  private async handleDeletePart(partId: number): Promise<void> {
-    await WorkoutRepository.deletePart(partId);
-    await this.reload(false);
+  private async handleCreated(exerciseId: string): Promise<void> {
+    await this.handlePickExercise(exerciseId);
+  }
+
+  private async handleBecameDone(exerciseId: string, item: SetItem): Promise<void> {
+    const w = parseWeight(item.weightText);
+    const r = parseReps(item.repsText);
+    if (!w.ok) {
+      return;
+    }
+    const pr: PrResult = await WorkoutRepository.checkPr(exerciseId, w.value, r.value, item.id);
+    if (pr.weightPr) {
+      promptAction.showToast({ message: '新的最重重量', duration: 2000 });
+    } else if (pr.repsPr) {
+      promptAction.showToast({ message: '该重量下新的次数纪录', duration: 2000 });
+    }
   }
 
   private confirmDeleteDay(): void {
@@ -147,11 +342,48 @@ struct DayDetailPage {
           partKey: this.pickerPartKey,
           onPick: (exerciseId: string) => {
             this.handlePickExercise(exerciseId);
+          },
+          onCreate: () => {
+            this.sheetMode = 'create';
           }
         })
+      } else if (this.sheetMode === 'create') {
+        CreateExerciseSheet({
+          defaultPart: this.pickerPartKey,
+          onCreated: (exerciseId: string) => {
+            this.handleCreated(exerciseId);
+          }
+        })
+      } else if (this.sheetMode === 'copy') {
+        Column() {
+          Text('复制哪一次训练')
+            .fontSize(18)
+            .fontWeight(FontWeight.Medium)
+            .fontColor($r('app.color.text_primary'))
+            .width('100%')
+            .margin({ bottom: 12 })
+          if (this.recentDays.length === 0) {
+            Text('还没有可以复制的训练')
+              .fontSize(14)
+              .fontColor($r('app.color.text_secondary'))
+              .width('100%')
+          } else {
+            ForEach(this.recentDays, (item: RecentDayInfo) => {
+              Text(`${item.date}  ${item.summary}`)
+                .fontSize(16)
+                .fontColor($r('app.color.text_primary'))
+                .width('100%')
+                .padding({ top: 14, bottom: 14 })
+                .onClick(() => {
+                  this.handleCopy(item.date);
+                })
+            }, (item: RecentDayInfo) => item.date)
+          }
+        }
+        .width('100%')
+        .padding({ left: 20, right: 20, top: 8 })
       } else {
         BodyPartSheet({
-          usedKeys: this.usedKeys,
           onPick: (key: PartKey) => {
             this.handlePickPart(key);
           }
@@ -197,28 +429,56 @@ struct DayDetailPage {
             .fontSize(15)
             .fontColor($r('app.color.text_secondary'))
             .margin({ bottom: 16 })
-          Button('选择训练部位')
+          Button('添加动作')
             .backgroundColor($r('app.color.accent'))
             .fontColor($r('app.color.text_on_accent'))
+            .margin({ bottom: 12 })
             .onClick(() => {
               this.sheetMode = 'part';
               this.showSheet = true;
+            })
+          Button('复制上次训练')
+            .fontSize(15)
+            .fontColor($r('app.color.accent'))
+            .backgroundColor($r('app.color.accent_soft'))
+            .onClick(() => {
+              this.openCopySheet();
             })
         }
         .width('100%')
         .layoutWeight(1)
         .justifyContent(FlexAlign.Center)
       } else {
-        Scroll() {
-          Column() {
-            ForEach(this.day.parts, (part: PartItem) => {
+        List({ scroller: this.listScroller }) {
+          if (this.hasPlanned()) {
+            ListItem() {
+              Row() {
+                Text('还有未完成的组')
+                  .fontSize(13)
+                  .fontColor($r('app.color.text_secondary'))
+                  .layoutWeight(1)
+                Text('清理未完成组')
+                  .fontSize(13)
+                  .fontColor($r('app.color.accent'))
+                  .onClick(() => {
+                    this.handleClearPlanned();
+                  })
+              }
+              .width('100%')
+              .padding({ bottom: 10 })
+            }
+          }
+
+          ForEach(this.day.parts, (part: PartItem) => {
+            ListItem() {
               PartSection({
                 part: part,
-                onAddExercise: (partId: number) => {
-                  this.openExercisePicker(partId);
+                listStamp: this.plannedTick,
+                onAddExercise: (partKey: string) => {
+                  this.openExercisePicker(partKey);
                 },
-                onDeletePart: (partId: number) => {
-                  this.handleDeletePart(partId);
+                onDeletePart: (partKey: string) => {
+                  this.handleDeletePart(partKey);
                 },
                 onAddSet: (exerciseRowId: number) => {
                   this.handleAddSet(exerciseRowId);
@@ -228,29 +488,55 @@ struct DayDetailPage {
                 },
                 onDeleteSet: (setId: number) => {
                   this.handleDeleteSet(setId);
+                },
+                onSetBecameDone: (exerciseId: string, item: SetItem) => {
+                  this.handleBecameDone(exerciseId, item);
+                },
+                onStatusChanged: () => {
+                  this.plannedTick++;
                 }
               })
-            }, (part: PartItem) => `${part.id}#${this.viewEpoch}`)
-
-            if (this.usedKeys.length < 6) {
-              Button('添加部位')
-                .fontSize(15)
-                .fontColor($r('app.color.accent'))
-                .backgroundColor($r('app.color.accent_soft'))
-                .width('100%')
-                .height(44)
-                .margin({ bottom: 24 })
-                .onClick(() => {
-                  this.sheetMode = 'part';
-                  this.showSheet = true;
-                })
             }
+          }, (part: PartItem) => part.partKey)
+
+          ListItem() {
+            Button('添加部位')
+              .fontSize(15)
+              .fontColor($r('app.color.accent'))
+              .backgroundColor($r('app.color.accent_soft'))
+              .width('100%')
+              .height(44)
+              .margin({ bottom: 24 })
+              .onClick(() => {
+                this.sheetMode = 'part';
+                this.showSheet = true;
+              })
           }
-          .width('100%')
         }
+        .width('100%')
         .layoutWeight(1)
         .scrollBar(BarState.Off)
-        .align(Alignment.Top)
+        .edgeEffect(EdgeEffect.Spring)
+      }
+
+      if (this.undoVisible) {
+        Row() {
+          Text(this.undoLabel)
+            .fontSize(14)
+            .fontColor($r('app.color.text_on_accent'))
+            .layoutWeight(1)
+          Text('撤销')
+            .fontSize(14)
+            .fontColor($r('app.color.text_on_accent'))
+            .onClick(() => {
+              this.undoDeleteSet();
+            })
+        }
+        .width('100%')
+        .padding(12)
+        .backgroundColor($r('app.color.accent'))
+        .borderRadius(8)
+        .margin({ bottom: 8 })
       }
     }
     .width('100%')

@@ -1,12 +1,13 @@
-import { ExerciseItem, PartItem } from '../model/DayModels';
+import { ExerciseItem, PartItem, SetItem } from '../model/DayModels';
 import { ExerciseCard } from './ExerciseCard';
 
 @Component
 export struct PartSection {
   @ObjectLink part: PartItem;
-  onAddExercise: (partId: number) => void = (_partId: number) => {
+  @Prop listStamp: number = 0;
+  onAddExercise: (partKey: string) => void = (_partKey: string) => {
   };
-  onDeletePart: (partId: number) => void = (_partId: number) => {
+  onDeletePart: (partKey: string) => void = (_partKey: string) => {
   };
   onAddSet: (exerciseRowId: number) => void = (_id: number) => {
   };
@@ -14,6 +15,18 @@ export struct PartSection {
   };
   onDeleteSet: (setId: number) => void = (_id: number) => {
   };
+  onSetBecameDone: (exerciseId: string, item: SetItem) => void = (_exerciseId: string, _item: SetItem) => {
+  };
+  onStatusChanged: () => void = () => {
+  };
+
+  private exerciseKey(exercise: ExerciseItem): string {
+    const stamp: number = this.listStamp;
+    if (stamp < 0) {
+      return `x${exercise.id}`;
+    }
+    return `${exercise.id}`;
+  }
 
   private confirmDeletePart(): void {
     AlertDialog.show({
@@ -25,7 +38,7 @@ export struct PartSection {
         value: '删除',
         fontColor: Color.Red,
         action: () => {
-          this.onDeletePart(this.part.id);
+          this.onDeletePart(this.part.partKey);
         }
       },
       secondaryButton: {
@@ -57,6 +70,7 @@ export struct PartSection {
       ForEach(this.part.exercises, (exercise: ExerciseItem) => {
         ExerciseCard({
           exercise: exercise,
+          listStamp: this.listStamp,
           onAddSet: (exerciseRowId: number) => {
             this.onAddSet(exerciseRowId);
           },
@@ -65,9 +79,15 @@ export struct PartSection {
           },
           onDeleteSet: (setId: number) => {
             this.onDeleteSet(setId);
+          },
+          onSetBecameDone: (exerciseId: string, item: SetItem) => {
+            this.onSetBecameDone(exerciseId, item);
+          },
+          onStatusChanged: () => {
+            this.onStatusChanged();
           }
         })
-      }, (exercise: ExerciseItem) => `${exercise.id}`)
+      }, (exercise: ExerciseItem) => this.exerciseKey(exercise))
 
       Button('添加动作')
         .fontSize(15)
@@ -76,7 +96,7 @@ export struct PartSection {
         .height(40)
         .width('100%')
         .onClick(() => {
-          this.onAddExercise(this.part.id);
+          this.onAddExercise(this.part.partKey);
         })
     }
     .width('100%')
