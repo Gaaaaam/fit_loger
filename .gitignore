@@ -1,0 +1,59 @@
+# HarmonyOS / DevEco Studio 构建产物与缓存
+/node_modules/
+**/node_modules/
+/oh_modules/
+**/oh_modules/
+**/build/
+**/.preview/
+**/.test/
+.hvigor/
+.cxx/
+**/.cxx/
+.clangd
+.clang-format
+.clang-tidy
+.appanalyzer/
+.hws/
+catch_log/
+local.properties
+user.properties
+*.iml
+*.class
+.tsbuildinfo
+/hvigor/hvigorcache/
+/hvigor/outputs/
+/hvigor/wrapper/intermediates/
+
+# 编译打包产物
+*.hap
+*.hsp
+*.har
+*.app
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 日志与临时文件
+*.log
+*.tmp
+
+# 签名材料与密钥（本机调试签名不要入库）
+*.p12
+*.p7b
+*.cer
+*.csr
+*.pem
+*.key
+material/
+.env
+.env.*
+*.local.bak
+build-profile.json5.local.bak
