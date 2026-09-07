@@ -301,6 +301,23 @@ export function groupExercisesByPart(exercises: GroupEx[]): PartGroup[] {
   return groups;
 }
 
+export function calendarCellKey(date: string, dotKind: string): string {
+  return `${date}#${dotKind}`;
+}
+
+export function dayDotKind(date: string, today: string, hasDone: boolean, hasRecord: boolean): string {
+  if (hasDone) {
+    return 'trained';
+  }
+  if (hasRecord) {
+    return 'planned';
+  }
+  if (date < today) {
+    return 'rest';
+  }
+  return 'empty';
+}
+
 export function datesWithDoneSets(rows: DateStatusRow[]): string[] {
   const seen: Map<string, boolean> = new Map();
   const dates: string[] = [];

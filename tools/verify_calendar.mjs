@@ -2,6 +2,8 @@
  * Mirrors entry/src/main/ets/common/DateUtil.ets so calendar math can be
  * verified without DevEco. Keep this in sync with DateUtil.ets.
  */
+import { dayDotKind } from './workout_logic.mjs';
+
 function pad2(value) {
   return value < 10 ? `0${value}` : `${value}`;
 }
@@ -18,23 +20,30 @@ function mondayFirstIndex(jsWeekday) {
   return jsWeekday === 0 ? 6 : jsWeekday - 1;
 }
 
-function buildMonthCells(year, monthIndex, markedDates) {
+function buildMonthCells(year, monthIndex, marks, today) {
   const first = new Date(year, monthIndex, 1);
   const leading = mondayFirstIndex(first.getDay());
   const count = daysInMonth(year, monthIndex);
   const total = Math.ceil((leading + count) / 7) * 7;
+  const markMap = {};
+  for (let m = 0; m < marks.length; m++) {
+    markMap[marks[m].date] = marks[m];
+  }
   const cells = [];
   for (let i = 0; i < total; i++) {
     const dayNum = i - leading + 1;
     if (dayNum < 1 || dayNum > count) {
-      cells.push({ inMonth: false, date: '', marked: false, day: 0 });
+      cells.push({ inMonth: false, date: '', dotKind: 'empty', day: 0 });
       continue;
     }
     const date = formatYmd(year, monthIndex, dayNum);
+    const mark = markMap[date];
+    const hasDone = mark ? mark.hasDone : false;
+    const hasRecord = mark ? mark.hasRecord : false;
     cells.push({
       inMonth: true,
       date,
-      marked: markedDates.indexOf(date) >= 0,
+      dotKind: dayDotKind(date, today, hasDone, hasRecord),
       day: dayNum
     });
   }
@@ -60,25 +69,34 @@ function assert(cond, message) {
   }
 }
 
-const sept2026 = buildMonthCells(2026, 8, ['2026-09-03', '2026-09-15']);
+const sept2026 = buildMonthCells(2026, 8, [
+  { date: '2026-09-03', hasDone: true, hasRecord: true },
+  { date: '2026-09-15', hasDone: false, hasRecord: true }
+], '2026-09-04');
 assert(sept2026.length % 7 === 0, 'grid must be full weeks');
 const firstInMonth = sept2026.find((c) => c.inMonth);
 assert(firstInMonth.date === '2026-09-01', `expected 2026-09-01, got ${firstInMonth.date}`);
 assert(firstInMonth.day === 1, 'first in-month cell should be day 1');
+assert(firstInMonth.dotKind === 'rest', 'past empty day should be rest');
 // 2026-09-01 is Tuesday; Monday-first means one leading blank.
 assert(!sept2026[0].inMonth, 'first cell should be leading blank (Mon)');
 assert(sept2026[1].date === '2026-09-01', 'Tuesday Sep 1 should be second cell');
-const marked = sept2026.filter((c) => c.marked).map((c) => c.date);
-assert(marked.join(',') === '2026-09-03,2026-09-15', `marks: ${marked.join(',')}`);
+const trained = sept2026.filter((c) => c.dotKind === 'trained').map((c) => c.date);
+assert(trained.join(',') === '2026-09-03', `trained: ${trained.join(',')}`);
+const planned = sept2026.filter((c) => c.dotKind === 'planned').map((c) => c.date);
+assert(planned.join(',') === '2026-09-15', `planned: ${planned.join(',')}`);
+const todayCell = sept2026.find((c) => c.date === '2026-09-04');
+assert(todayCell.dotKind === 'empty', 'today with no record should be empty');
 const lastInMonth = [...sept2026].reverse().find((c) => c.inMonth);
 assert(lastInMonth.date === '2026-09-30', `expected last day 2026-09-30, got ${lastInMonth.date}`);
+assert(lastInMonth.dotKind === 'empty', 'future empty day should be empty');
 
 const janShift = shiftMonth(2026, 0, -1);
 assert(janShift[0] === 2025 && janShift[1] === 11, `prev of Jan 2026: ${janShift}`);
 const decShift = shiftMonth(2026, 11, 1);
 assert(decShift[0] === 2027 && decShift[1] === 0, `next of Dec 2026: ${decShift}`);
 
-const feb2024 = buildMonthCells(2024, 1, []);
+const feb2024 = buildMonthCells(2024, 1, [], '2024-02-15');
 const febDays = feb2024.filter((c) => c.inMonth);
 assert(febDays.length === 29, `2024 leap Feb should have 29 days, got ${febDays.length}`);
 

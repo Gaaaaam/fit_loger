@@ -19,7 +19,7 @@ import {
   WeightReps
 } from '../common/WorkoutLogic';
 import { ExerciseDef } from '../model/exerciseCatalog';
-import { BodyMetric, DayModel, ExerciseItem, PartItem, PrResult, RecentDayInfo, SetItem } from '../model/DayModels';
+import { BodyMetric, DayMark, DayModel, ExerciseItem, PartItem, PrResult, RecentDayInfo, SetItem } from '../model/DayModels';
 import {
   Equipment,
   PartKey,
@@ -32,23 +32,30 @@ import { WorkoutDatabase } from './WorkoutDatabase';
 import { ExportService } from './ExportService';
 
 export class WorkoutRepository {
-  static async listDatesInMonth(year: number, monthIndex: number): Promise<string[]> {
+  static async listMonthDayMarks(year: number, monthIndex: number): Promise<DayMark[]> {
     const range: string[] = monthRange(year, monthIndex);
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     const sql: string =
-      'SELECT DISTINCT d.date AS date FROM workout_days d ' +
-      'INNER JOIN day_exercises e ON e.day_id = d.id ' +
-      'INNER JOIN workout_sets s ON s.day_exercise_id = e.id ' +
-      'WHERE d.date >= ? AND d.date <= ? AND s.status = \'done\' ORDER BY d.date';
+      'SELECT d.date AS date, ' +
+      'MAX(CASE WHEN s.status = \'done\' THEN 1 ELSE 0 END) AS has_done, ' +
+      'MAX(CASE WHEN e.id IS NOT NULL THEN 1 ELSE 0 END) AS has_record ' +
+      'FROM workout_days d ' +
+      'LEFT JOIN day_exercises e ON e.day_id = d.id ' +
+      'LEFT JOIN workout_sets s ON s.day_exercise_id = e.id ' +
+      'WHERE d.date >= ? AND d.date <= ? GROUP BY d.date ORDER BY d.date';
     const rs: relationalStore.ResultSet = await store.querySql(sql, [range[0], range[1]]);
-    const dates: string[] = [];
+    const marks: DayMark[] = [];
     let hasRow: boolean = rs.goToFirstRow();
     while (hasRow) {
-      dates.push(rs.getString(rs.getColumnIndex('date')));
+      const mark: DayMark = new DayMark();
+      mark.date = rs.getString(rs.getColumnIndex('date'));
+      mark.hasDone = rs.getLong(rs.getColumnIndex('has_done')) > 0;
+      mark.hasRecord = rs.getLong(rs.getColumnIndex('has_record')) > 0;
+      marks.push(mark);
       hasRow = rs.goToNextRow();
     }
     rs.close();
-    return dates;
+    return marks;
   }
 
   static async loadDay(date: string): Promise<DayModel> {
@@ -759,6 +766,25 @@ export class WorkoutRepository {
         metric.weightKg = rs.getDouble(rs.getColumnIndex('weight_kg'));
         metric.hasWeight = true;
       }
+      if (!rs.isColumnNull(rs.getColumnIndex('note'))) {
+        metric.note = rs.getString(rs.getColumnIndex('note'));
+      }
+    }
+    rs.close();
+    return metric;
+  }
+
+  static async loadLatestBodyMetric(): Promise<BodyMetric> {
+    const metric: BodyMetric = new BodyMetric();
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const rs: relationalStore.ResultSet = await store.querySql(
+      'SELECT date, weight_kg, note FROM body_metrics WHERE weight_kg IS NOT NULL ORDER BY date DESC LIMIT 1',
+      []
+    );
+    if (rs.goToFirstRow()) {
+      metric.date = rs.getString(rs.getColumnIndex('date'));
+      metric.weightKg = rs.getDouble(rs.getColumnIndex('weight_kg'));
+      metric.hasWeight = true;
       if (!rs.isColumnNull(rs.getColumnIndex('note'))) {
         metric.note = rs.getString(rs.getColumnIndex('note'));
       }

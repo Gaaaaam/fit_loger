@@ -2,31 +2,31 @@
   "color": [
     {
       "name": "start_window_background",
-      "value": "#F4F6F8"
+      "value": "#121212"
     },
     {
       "name": "page_bg",
-      "value": "#F4F6F8"
+      "value": "#121212"
     },
     {
       "name": "card_bg",
-      "value": "#FFFFFF"
+      "value": "#1E1E1E"
     },
     {
       "name": "accent",
-      "value": "#1F8A70"
+      "value": "#2BA384"
     },
     {
       "name": "accent_soft",
-      "value": "#D7F0E8"
+      "value": "#1A3D35"
     },
     {
       "name": "text_primary",
-      "value": "#1A1A1A"
+      "value": "#F3F4F6"
     },
     {
       "name": "text_secondary",
-      "value": "#6B7280"
+      "value": "#9CA3AF"
     },
     {
       "name": "text_on_accent",
@@ -34,35 +34,35 @@
     },
     {
       "name": "danger",
-      "value": "#D64545"
+      "value": "#EF6666"
     },
     {
       "name": "chip_bg",
-      "value": "#EEF2F0"
+      "value": "#2A2A2A"
     },
     {
       "name": "divider",
-      "value": "#E5E7EB"
+      "value": "#333333"
     },
     {
       "name": "today_bg",
-      "value": "#1F8A70"
+      "value": "#2BA384"
     },
     {
       "name": "weekday_text",
-      "value": "#9CA3AF"
+      "value": "#6B7280"
     },
     {
       "name": "dot_rest",
-      "value": "#22C55E"
+      "value": "#4ADE80"
     },
     {
       "name": "dot_planned",
-      "value": "#3B82F6"
+      "value": "#60A5FA"
     },
     {
       "name": "dot_empty",
-      "value": "#D1D5DB"
+      "value": "#4B5563"
     }
   ]
 }

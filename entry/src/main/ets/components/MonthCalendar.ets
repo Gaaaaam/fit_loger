@@ -1,11 +1,14 @@
 import { CalendarCell } from '../model/DayModels';
+import { DayDotKind } from '../model/types';
 import { displayMonthTitle, weekdayLabels } from '../common/DateUtil';
+import { calendarCellKey } from '../common/WorkoutLogic';
 
 @Component
 export struct MonthCalendar {
   @Prop year: number = 2026;
   @Prop month: number = 0;
   @Prop cells: CalendarCell[] = [];
+  @Prop epoch: number = 0;
   private weekLabels: string[] = weekdayLabels();
   onPrev: () => void = () => {
   };
@@ -13,6 +16,46 @@ export struct MonthCalendar {
   };
   onSelectDate: (date: string) => void = (_date: string) => {
   };
+
+  private itemKey(cell: CalendarCell): string {
+    if (!cell.inMonth) {
+      return cell.key;
+    }
+    return `${calendarCellKey(cell.date, cell.dotKind)}#${this.epoch}`;
+  }
+
+  @Builder
+  statusDot(kind: DayDotKind) {
+    if (kind === 'trained') {
+      Column()
+        .width(8)
+        .height(8)
+        .borderRadius(4)
+        .margin({ top: 4 })
+        .backgroundColor($r('app.color.danger'))
+    } else if (kind === 'planned') {
+      Column()
+        .width(8)
+        .height(8)
+        .borderRadius(4)
+        .margin({ top: 4 })
+        .backgroundColor($r('app.color.dot_planned'))
+    } else if (kind === 'rest') {
+      Column()
+        .width(8)
+        .height(8)
+        .borderRadius(4)
+        .margin({ top: 4 })
+        .backgroundColor($r('app.color.dot_rest'))
+    } else {
+      Column()
+        .width(8)
+        .height(8)
+        .borderRadius(4)
+        .margin({ top: 4 })
+        .backgroundColor($r('app.color.dot_empty'))
+    }
+  }
 
   build() {
     Column() {
@@ -59,24 +102,19 @@ export struct MonthCalendar {
             Column() {
               if (cell.inMonth) {
                 Text(`${cell.day}`)
-                  .fontSize(16)
+                  .fontSize(17)
                   .fontWeight(cell.isToday ? FontWeight.Medium : FontWeight.Regular)
                   .fontColor(cell.isToday ? $r('app.color.text_on_accent') : $r('app.color.text_primary'))
-                  .width(36)
-                  .height(36)
+                  .width(40)
+                  .height(40)
                   .textAlign(TextAlign.Center)
-                  .borderRadius(18)
+                  .borderRadius(20)
                   .backgroundColor(cell.isToday ? $r('app.color.today_bg') : Color.Transparent)
-                Column()
-                  .width(5)
-                  .height(5)
-                  .borderRadius(3)
-                  .margin({ top: 2 })
-                  .backgroundColor(cell.marked ? $r('app.color.accent') : Color.Transparent)
+                this.statusDot(cell.dotKind)
               }
             }
             .width('100%')
-            .height(56)
+            .height(72)
             .justifyContent(FlexAlign.Center)
             .alignItems(HorizontalAlign.Center)
             .onClick(() => {
@@ -85,13 +123,15 @@ export struct MonthCalendar {
               }
             })
           }
-        }, (cell: CalendarCell) => cell.key)
+        }, (cell: CalendarCell) => this.itemKey(cell))
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
       .columnsGap(0)
       .rowsGap(4)
       .width('100%')
+      .layoutWeight(1)
     }
     .width('100%')
+    .layoutWeight(1)
   }
 }

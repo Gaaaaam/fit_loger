@@ -1,4 +1,6 @@
-import { CalendarCell } from '../model/DayModels';
+import { CalendarCell, DayMark } from '../model/DayModels';
+import { dayDotKind } from './WorkoutLogic';
+import { toDayDotKind } from '../model/types';
 
 const WEEKDAY_LABELS: string[] = ['一', '二', '三', '四', '五', '六', '日'];
 
@@ -53,12 +55,15 @@ export function displayMonthTitle(year: number, monthIndex: number): string {
   return `${year}年${monthIndex + 1}月`;
 }
 
-export function buildMonthCells(year: number, monthIndex: number, markedDates: string[]): CalendarCell[] {
+export function buildMonthCells(year: number, monthIndex: number, marks: DayMark[], today: string): CalendarCell[] {
   const first: Date = new Date(year, monthIndex, 1);
   const leading: number = mondayFirstIndex(first.getDay());
   const count: number = daysInMonth(year, monthIndex);
   const total: number = Math.ceil((leading + count) / 7) * 7;
-  const today: string = todayString();
+  const markMap: Map<string, DayMark> = new Map();
+  for (let m = 0; m < marks.length; m++) {
+    markMap.set(marks[m].date, marks[m]);
+  }
   const cells: CalendarCell[] = [];
   for (let i = 0; i < total; i++) {
     const cell: CalendarCell = new CalendarCell();
@@ -73,7 +78,14 @@ export function buildMonthCells(year: number, monthIndex: number, markedDates: s
     cell.date = cell.key;
     cell.inMonth = true;
     cell.isToday = cell.date === today;
-    cell.marked = markedDates.indexOf(cell.date) >= 0;
+    const mark: DayMark | undefined = markMap.get(cell.date);
+    let hasDone: boolean = false;
+    let hasRecord: boolean = false;
+    if (mark !== undefined) {
+      hasDone = mark.hasDone;
+      hasRecord = mark.hasRecord;
+    }
+    cell.dotKind = toDayDotKind(dayDotKind(cell.date, today, hasDone, hasRecord));
     cells.push(cell);
   }
   return cells;

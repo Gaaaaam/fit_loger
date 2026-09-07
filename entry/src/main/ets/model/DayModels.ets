@@ -1,4 +1,4 @@
-import { PartKey, SetStatus } from './types';
+import { DayDotKind, PartKey, SetStatus } from './types';
 
 @Observed
 export class SetItem {
@@ -50,7 +50,13 @@ export class CalendarCell {
   date: string = '';
   inMonth: boolean = false;
   isToday: boolean = false;
-  marked: boolean = false;
+  dotKind: DayDotKind = 'empty';
+}
+
+export class DayMark {
+  date: string = '';
+  hasDone: boolean = false;
+  hasRecord: boolean = false;
 }
 
 export class RecentDayInfo {

@@ -16,7 +16,9 @@ import {
   setToCsvRow,
   formatLastHint,
   formatBackupName,
-  customExerciseId
+  customExerciseId,
+  dayDotKind,
+  calendarCellKey
 } from './workout_logic.mjs';
 
 // --- legacy tag split ---
@@ -157,5 +159,21 @@ assert.equal(
 assert.equal(formatLastHint('', []), '');
 
 assert.equal(customExerciseId(1700000000000), 'usr_1700000000000');
+
+const today = '2026-09-04';
+assert.equal(dayDotKind('2026-09-01', today, false, false), 'rest');
+assert.equal(dayDotKind('2026-09-01', today, false, true), 'planned');
+assert.equal(dayDotKind('2026-09-01', today, true, true), 'trained');
+assert.equal(dayDotKind('2026-09-04', today, false, false), 'empty');
+assert.equal(dayDotKind('2026-09-04', today, false, true), 'planned');
+assert.equal(dayDotKind('2026-09-04', today, true, false), 'trained');
+assert.equal(dayDotKind('2026-09-10', today, false, false), 'empty');
+assert.equal(dayDotKind('2026-09-10', today, false, true), 'planned');
+assert.equal(calendarCellKey('2026-09-01', 'rest'), '2026-09-01#rest');
+assert.notEqual(
+  calendarCellKey('2026-09-01', 'rest'),
+  calendarCellKey('2026-09-01', 'trained'),
+  'ForEach key must change when a rest day becomes trained'
+);
 
 console.log('v1 logic: all checks passed');

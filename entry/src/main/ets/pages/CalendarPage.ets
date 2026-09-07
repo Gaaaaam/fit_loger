@@ -1,18 +1,16 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { promptAction, router } from '@kit.ArkUI';
-import { fileIo, picker } from '@kit.CoreFileKit';
-import { util } from '@kit.ArkTS';
+import { router } from '@kit.ArkUI';
 import { MonthCalendar } from '../components/MonthCalendar';
 import { WorkoutRepository } from '../db/WorkoutRepository';
 import { buildMonthCells, shiftMonth, todayString } from '../common/DateUtil';
-import { CalendarCell } from '../model/DayModels';
+import { CalendarCell, DayMark } from '../model/DayModels';
 
-@Entry
 @Component
-struct CalendarPage {
+export struct CalendarPage {
+  @Consume('calRefresh') @Watch('onRefreshStamp') refreshStamp: number = 0;
   @State year: number = new Date().getFullYear();
   @State month: number = new Date().getMonth();
-  @State markedDates: string[] = [];
+  @State marks: DayMark[] = [];
   @State cells: CalendarCell[] = [];
 
   aboutToAppear(): void {
@@ -20,20 +18,21 @@ struct CalendarPage {
     this.reloadMarks();
   }
 
-  onPageShow(): void {
+  onRefreshStamp(): void {
     this.reloadMarks();
   }
 
   private refreshCells(): void {
-    this.cells = buildMonthCells(this.year, this.month, this.markedDates);
+    this.cells = buildMonthCells(this.year, this.month, this.marks, todayString());
   }
 
   private async reloadMarks(): Promise<void> {
     try {
-      this.markedDates = await WorkoutRepository.listDatesInMonth(this.year, this.month);
+      this.marks = await WorkoutRepository.listMonthDayMarks(this.year, this.month);
+      hilog.info(0xF170, 'CalendarPage', 'reloadMarks %{public}d days', this.marks.length);
     } catch (err) {
       hilog.error(0xF170, 'CalendarPage', 'reloadMarks failed');
-      this.markedDates = [];
+      this.marks = [];
     }
     this.refreshCells();
   }
@@ -57,73 +56,58 @@ struct CalendarPage {
     });
   }
 
-  private async handleExport(): Promise<void> {
-    try {
-      const path: string = await WorkoutRepository.writeExportFiles();
-      promptAction.showToast({ message: `已导出到 ${path}`, duration: 3500 });
-    } catch (err) {
-      promptAction.showToast({ message: '导出失败', duration: 2000 });
-    }
-  }
-
-  private async handleImport(): Promise<void> {
-    try {
-      const options = new picker.DocumentSelectOptions();
-      options.maxSelectNumber = 1;
-      const documentPicker = new picker.DocumentViewPicker();
-      const uris: string[] = await documentPicker.select(options);
-      if (uris.length === 0) {
-        return;
+  @Builder
+  legendItem(kind: string, label: string) {
+    Row() {
+      if (kind === 'rest') {
+        Column()
+          .width(8)
+          .height(8)
+          .borderRadius(4)
+          .backgroundColor($r('app.color.dot_rest'))
+          .margin({ right: 6 })
+      } else if (kind === 'trained') {
+        Column()
+          .width(8)
+          .height(8)
+          .borderRadius(4)
+          .backgroundColor($r('app.color.danger'))
+          .margin({ right: 6 })
+      } else if (kind === 'planned') {
+        Column()
+          .width(8)
+          .height(8)
+          .borderRadius(4)
+          .backgroundColor($r('app.color.dot_planned'))
+          .margin({ right: 6 })
+      } else {
+        Column()
+          .width(8)
+          .height(8)
+          .borderRadius(4)
+          .backgroundColor($r('app.color.dot_empty'))
+          .margin({ right: 6 })
       }
-      let text: string = '';
-      try {
-        text = fileIo.readTextSync(uris[0]);
-      } catch (readErr) {
-        const file = fileIo.openSync(uris[0], fileIo.OpenMode.READ_ONLY);
-        const buf: ArrayBuffer = new ArrayBuffer(4 * 1024 * 1024);
-        const len: number = fileIo.readSync(file.fd, buf);
-        fileIo.closeSync(file);
-        const decoder: util.TextDecoder = util.TextDecoder.create('utf-8');
-        text = decoder.decodeToString(new Uint8Array(buf, 0, len));
-      }
-      await WorkoutRepository.importJsonText(text);
-      await this.reloadMarks();
-      promptAction.showToast({ message: '导入完成', duration: 2000 });
-    } catch (err) {
-      promptAction.showToast({ message: '导入失败，请选择 JSON 导出文件', duration: 2500 });
+      Text(label)
+        .fontSize(12)
+        .fontColor($r('app.color.text_secondary'))
     }
   }
 
   build() {
     Column() {
-      Row() {
-        Text('训练日志')
-          .fontSize(26)
-          .fontWeight(FontWeight.Bold)
-          .fontColor($r('app.color.text_primary'))
-          .layoutWeight(1)
-        Text('体重')
-          .fontSize(15)
-          .fontColor($r('app.color.accent'))
-          .onClick(() => {
-            router.pushUrl({ url: 'pages/BodyMetricsPage' }).catch(() => {
-            });
-          })
-      }
-      .width('100%')
-
-      Text('点选日期记录训练')
-        .fontSize(14)
-        .fontColor($r('app.color.text_secondary'))
+      Text('训练日志')
+        .fontSize(26)
+        .fontWeight(FontWeight.Bold)
+        .fontColor($r('app.color.text_primary'))
         .width('100%')
-        .margin({ bottom: 12, top: 4 })
 
       Button('记录今天')
         .backgroundColor($r('app.color.accent'))
         .fontColor($r('app.color.text_on_accent'))
         .width('100%')
         .height(44)
-        .margin({ bottom: 12 })
+        .margin({ top: 12, bottom: 12 })
         .onClick(() => {
           this.openDay(todayString());
         })
@@ -133,6 +117,7 @@ struct CalendarPage {
           year: this.year,
           month: this.month,
           cells: this.cells,
+          epoch: this.refreshStamp,
           onPrev: () => {
             this.changeMonth(-1);
           },
@@ -143,33 +128,26 @@ struct CalendarPage {
             this.openDay(date);
           }
         })
+
+        Row() {
+          this.legendItem('rest', '休息')
+          this.legendItem('trained', '已训练')
+          this.legendItem('planned', '已计划')
+          this.legendItem('empty', '未安排')
+        }
+        .width('100%')
+        .justifyContent(FlexAlign.SpaceAround)
+        .margin({ top: 8 })
       }
       .width('100%')
+      .layoutWeight(1)
       .padding(12)
       .backgroundColor($r('app.color.card_bg'))
       .borderRadius(16)
-
-      Row() {
-        Text('导出 JSON/CSV')
-          .fontSize(14)
-          .fontColor($r('app.color.accent'))
-          .onClick(() => {
-            this.handleExport();
-          })
-        Blank()
-        Text('从 JSON 导入')
-          .fontSize(14)
-          .fontColor($r('app.color.accent'))
-          .onClick(() => {
-            this.handleImport();
-          })
-      }
-      .width('100%')
-      .margin({ top: 16 })
     }
     .width('100%')
     .height('100%')
-    .padding({ left: 16, right: 16, top: 28, bottom: 16 })
+    .padding({ left: 16, right: 16, top: 28, bottom: 8 })
     .backgroundColor($r('app.color.page_bg'))
   }
 }

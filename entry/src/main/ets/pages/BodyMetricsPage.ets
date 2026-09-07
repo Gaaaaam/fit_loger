@@ -41,7 +41,7 @@ struct BodyMetricsPage {
   build() {
     Column() {
       Row() {
-        Text('< 日历')
+        Text('< 我的')
           .fontSize(16)
           .fontColor($r('app.color.accent'))
           .onClick(() => {

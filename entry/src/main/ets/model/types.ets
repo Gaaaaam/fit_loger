@@ -2,6 +2,8 @@ export type PartKey = 'chest' | 'shoulder' | 'back' | 'arm' | 'glute' | 'leg';
 
 export type SetStatus = 'planned' | 'done';
 
+export type DayDotKind = 'trained' | 'planned' | 'rest' | 'empty';
+
 export type Technique = 'drop' | 'ramp' | 'rest_pause' | 'amrap';
 
 export type Equipment = 'barbell' | 'dumbbell' | 'machine' | 'cable' | 'bodyweight';
@@ -70,6 +72,19 @@ export function toSetStatus(value: string): SetStatus {
     return 'planned';
   }
   return 'done';
+}
+
+export function toDayDotKind(value: string): DayDotKind {
+  if (value === 'trained') {
+    return 'trained';
+  }
+  if (value === 'planned') {
+    return 'planned';
+  }
+  if (value === 'rest') {
+    return 'rest';
+  }
+  return 'empty';
 }
 
 export function toEquipment(value: string): Equipment {

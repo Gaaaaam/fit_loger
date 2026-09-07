@@ -161,6 +161,23 @@ export function groupExercisesByPart(exercises) {
   return groups;
 }
 
+export function calendarCellKey(date, dotKind) {
+  return `${date}#${dotKind}`;
+}
+
+export function dayDotKind(date, today, hasDone, hasRecord) {
+  if (hasDone) {
+    return 'trained';
+  }
+  if (hasRecord) {
+    return 'planned';
+  }
+  if (date < today) {
+    return 'rest';
+  }
+  return 'empty';
+}
+
 export function datesWithDoneSets(rows) {
   const seen = {};
   const dates = [];
