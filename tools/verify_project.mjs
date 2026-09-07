@@ -33,12 +33,14 @@ const requiredFiles = [
   'entry/src/main/ets/components/BodyPartSheet.ets',
   'entry/src/main/ets/components/ExerciseSheet.ets',
   'entry/src/main/ets/components/CreateExerciseSheet.ets',
+  'entry/src/main/ets/components/TrendSparkline.ets',
   'entry/src/main/ets/model/types.ets',
   'entry/src/main/ets/model/exerciseCatalog.ets',
   'entry/src/main/ets/model/DayModels.ets',
   'entry/src/main/ets/common/DateUtil.ets',
   'entry/src/main/ets/common/InputUtil.ets',
   'entry/src/main/ets/common/WorkoutLogic.ets',
+  'entry/src/main/ets/common/TrendLogic.ets',
   'entry/src/main/ets/common/AppSettings.ets',
   'entry/src/main/ets/db/WorkoutDatabase.ets',
   'entry/src/main/ets/db/WorkoutRepository.ets',
@@ -85,7 +87,9 @@ for (const method of [
   'exportAllJson',
   'clearPlannedSets',
   'checkPr',
-  'upsertBodyMetric'
+  'upsertBodyMetric',
+  'loadTrendSets',
+  'loadTrendWeights'
 ]) {
   assert(repo.includes(method), `repository missing ${method}`);
 }
@@ -153,7 +157,25 @@ assert(mine.includes('导出 JSON/CSV'), 'export lives on mine');
 assert(mine.includes('pages/BodyMetricsPage'), 'mine must open daily weight page');
 
 const trends = readFileSync(join(root, 'entry/src/main/ets/pages/TrendsPage.ets'), 'utf8');
-assert(trends.includes('趋势图表稍后提供'), 'trends is a placeholder');
+assert(!trends.includes('趋势图表稍后提供'), 'trends placeholder should be gone');
+assert(trends.includes('本周'), 'trends must show this-week summary');
+assert(trends.includes('力量'), 'trends must show strength');
+assert(trends.includes('容量'), 'trends must show volume');
+assert(trends.includes('身体'), 'trends must show body');
+assert(trends.includes('TrendSparkline'), 'trends must render sparklines');
+assert(trends.includes('calRefresh'), 'trends must refresh with tab stamp');
+
+const trendLogic = readFileSync(join(root, 'entry/src/main/ets/common/TrendLogic.ets'), 'utf8');
+for (const name of ['isCompoundLift', 'epleyE1rm', 'pickKeyLifts', 'buildLiftSeries', 'partVolumeRows', 'buildTrendDigest']) {
+  assert(trendLogic.includes(name), `TrendLogic missing ${name}`);
+}
+assert(trendLogic.includes("status === 'done'"), 'trend metrics must require done sets');
+assert(trendLogic.includes('isWarmup === 0'), 'trend metrics must exclude warmup');
+
+const dateUtil = readFileSync(join(root, 'entry/src/main/ets/common/DateUtil.ets'), 'utf8');
+assert(dateUtil.includes('isoWeekStart'), 'DateUtil must expose ISO week start');
+assert(dateUtil.includes('addDays'), 'DateUtil must expose addDays');
+assert(dateUtil.includes('rangeStart'), 'DateUtil must expose rangeStart');
 
 const ability = readFileSync(join(root, 'entry/src/main/ets/entryability/EntryAbility.ets'), 'utf8');
 assert(ability.includes('pages/MainPage'), 'EntryAbility must load MainPage');

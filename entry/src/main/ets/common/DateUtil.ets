@@ -109,3 +109,28 @@ export function monthRange(year: number, monthIndex: number): string[] {
   const end: string = formatYmd(year, monthIndex, daysInMonth(year, monthIndex));
   return [start, end];
 }
+
+export function addDays(dateStr: string, delta: number): string {
+  const parts: string[] = dateStr.split('-');
+  if (parts.length !== 3) {
+    return dateStr;
+  }
+  const date: Date = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]) + delta);
+  return formatDate(date);
+}
+
+export function isoWeekStart(dateStr: string): string {
+  const parts: string[] = dateStr.split('-');
+  if (parts.length !== 3) {
+    return dateStr;
+  }
+  const date: Date = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+  return addDays(dateStr, -mondayFirstIndex(date.getDay()));
+}
+
+export function rangeStart(today: string, weeks: number): string {
+  if (weeks < 1) {
+    return today;
+  }
+  return addDays(today, -(weeks * 7 - 1));
+}

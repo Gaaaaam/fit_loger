@@ -19,6 +19,7 @@ import {
   WeightReps
 } from '../common/WorkoutLogic';
 import { ExerciseDef } from '../model/exerciseCatalog';
+import { TrendSetRow, TrendWeightRow } from '../common/TrendLogic';
 import { BodyMetric, DayMark, DayModel, ExerciseItem, PartItem, PrResult, RecentDayInfo, SetItem } from '../model/DayModels';
 import {
   Equipment,
@@ -793,6 +794,53 @@ export class WorkoutRepository {
     return metric;
   }
 
+  static async loadTrendSets(fromDate: string, today: string): Promise<TrendSetRow[]> {
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    let sql: string =
+      'SELECT d.date AS date, e.exercise_id AS exercise_id, x.name AS name, x.part_key AS part_key, ' +
+      'x.movement_pattern AS movement_pattern, x.is_bodyweight AS is_bodyweight, ' +
+      's.weight AS weight, s.reps AS reps, s.rir AS rir, s.is_warmup AS is_warmup, s.status AS status ' +
+      'FROM workout_sets s ' +
+      'JOIN day_exercises e ON e.id = s.day_exercise_id ' +
+      'JOIN workout_days d ON d.id = e.day_id ' +
+      'LEFT JOIN exercises x ON x.id = e.exercise_id ' +
+      'WHERE s.status = \'done\' AND s.is_warmup = 0 AND d.date <= ?';
+    const args: Array<string | number> = [today];
+    if (fromDate.length > 0) {
+      sql += ' AND d.date >= ?';
+      args.push(fromDate);
+    }
+    sql += ' ORDER BY d.date, e.exercise_id, s.sort_order, s.id';
+    const rs: relationalStore.ResultSet = await store.querySql(sql, args);
+    const rows: TrendSetRow[] = [];
+    let hasRow: boolean = rs.goToFirstRow();
+    while (hasRow) {
+      rows.push(WorkoutRepository.readTrendSet(rs));
+      hasRow = rs.goToNextRow();
+    }
+    rs.close();
+    return rows;
+  }
+
+  static async loadTrendWeights(today: string): Promise<TrendWeightRow[]> {
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const rs: relationalStore.ResultSet = await store.querySql(
+      'SELECT date, weight_kg FROM body_metrics WHERE weight_kg IS NOT NULL AND date <= ? ORDER BY date',
+      [today]
+    );
+    const rows: TrendWeightRow[] = [];
+    let hasRow: boolean = rs.goToFirstRow();
+    while (hasRow) {
+      const item: TrendWeightRow = new TrendWeightRow();
+      item.date = rs.getString(rs.getColumnIndex('date'));
+      item.weightKg = rs.getDouble(rs.getColumnIndex('weight_kg'));
+      rows.push(item);
+      hasRow = rs.goToNextRow();
+    }
+    rs.close();
+    return rows;
+  }
+
   static async exportAllJson(): Promise<string> {
     return await ExportService.exportAllJson();
   }
@@ -852,6 +900,32 @@ export class WorkoutRepository {
     }
     rs.close();
     return value;
+  }
+
+  private static readTrendSet(rs: relationalStore.ResultSet): TrendSetRow {
+    const row: TrendSetRow = new TrendSetRow();
+    row.date = WorkoutRepository.strOr(rs, 'date', '');
+    row.exerciseId = WorkoutRepository.strOr(rs, 'exercise_id', '');
+    row.exerciseName = WorkoutRepository.strOr(rs, 'name', row.exerciseId);
+    row.partKey = WorkoutRepository.strOr(rs, 'part_key', 'chest');
+    row.movementPattern = WorkoutRepository.strOr(rs, 'movement_pattern', 'isolation');
+    if (!rs.isColumnNull(rs.getColumnIndex('is_bodyweight'))) {
+      row.isBodyweight = rs.getLong(rs.getColumnIndex('is_bodyweight'));
+    }
+    if (!rs.isColumnNull(rs.getColumnIndex('weight'))) {
+      row.weight = rs.getDouble(rs.getColumnIndex('weight'));
+    }
+    if (!rs.isColumnNull(rs.getColumnIndex('reps'))) {
+      row.reps = rs.getLong(rs.getColumnIndex('reps'));
+    }
+    if (!rs.isColumnNull(rs.getColumnIndex('rir'))) {
+      row.rir = rs.getLong(rs.getColumnIndex('rir'));
+    }
+    if (!rs.isColumnNull(rs.getColumnIndex('is_warmup'))) {
+      row.isWarmup = rs.getLong(rs.getColumnIndex('is_warmup'));
+    }
+    row.status = WorkoutRepository.strOr(rs, 'status', 'done');
+    return row;
   }
 
   private static strOr(rs: relationalStore.ResultSet, name: string, fallback: string): string {
