@@ -201,12 +201,9 @@ export function inheritFromPreviousSet(previousInSession: WeightReps | null,
 
 export function statusAfterEdit(currentStatus: string, nowMs: number): StatusChange {
   const change: StatusChange = new StatusChange();
-  change.status = 'done';
-  if (currentStatus === 'planned') {
-    change.completedAt = nowMs;
-  } else {
-    change.completedAt = null;
-  }
+  // Editing values never completes a set or changes its completion time.
+  change.status = currentStatus;
+  change.completedAt = null;
   return change;
 }
 

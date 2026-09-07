@@ -53,7 +53,16 @@ export const EXERCISE_CATALOG: ExerciseDef[] = [
   { id: 'leg_extension', partKey: 'leg', name: '腿屈伸', equipment: 'machine', movementPattern: 'isolation', weightStep: 5, isBodyweight: 0, isUnilateral: 0, aliases: '', primaryMuscles: 'quad', secondaryMuscles: '' },
   { id: 'leg_curl', partKey: 'leg', name: '腿弯举', equipment: 'machine', movementPattern: 'isolation', weightStep: 5, isBodyweight: 0, isUnilateral: 0, aliases: '', primaryMuscles: 'hamstring', secondaryMuscles: '' },
   { id: 'leg_lunge', partKey: 'leg', name: '箭步蹲', equipment: 'dumbbell', movementPattern: 'lunge', weightStep: 2, isBodyweight: 0, isUnilateral: 1, aliases: '', primaryMuscles: 'quad', secondaryMuscles: 'glute' },
-  { id: 'leg_calf_raise', partKey: 'leg', name: '提踵', equipment: 'machine', movementPattern: 'isolation', weightStep: 5, isBodyweight: 0, isUnilateral: 0, aliases: '', primaryMuscles: 'calf', secondaryMuscles: '' }
+  { id: 'leg_calf_raise', partKey: 'leg', name: '提踵', equipment: 'machine', movementPattern: 'isolation', weightStep: 5, isBodyweight: 0, isUnilateral: 0, aliases: '', primaryMuscles: 'calf', secondaryMuscles: '' },
+
+  { id: 'abs_crunch', partKey: 'abs', name: '卷腹', equipment: 'bodyweight', movementPattern: 'isolation', weightStep: 0, isBodyweight: 1, isUnilateral: 0, aliases: '', primaryMuscles: 'abs', secondaryMuscles: '' },
+  { id: 'abs_reverse_crunch', partKey: 'abs', name: '反向卷腹', equipment: 'bodyweight', movementPattern: 'isolation', weightStep: 0, isBodyweight: 1, isUnilateral: 0, aliases: '', primaryMuscles: 'abs', secondaryMuscles: '' },
+  { id: 'abs_leg_raise', partKey: 'abs', name: '仰卧举腿', equipment: 'bodyweight', movementPattern: 'isolation', weightStep: 0, isBodyweight: 1, isUnilateral: 0, aliases: '', primaryMuscles: 'abs', secondaryMuscles: '' },
+  { id: 'core_dead_bug', partKey: 'core', name: '死虫式', equipment: 'bodyweight', movementPattern: 'isolation', weightStep: 0, isBodyweight: 1, isUnilateral: 0, aliases: '', primaryMuscles: 'core', secondaryMuscles: '' },
+  { id: 'core_bird_dog', partKey: 'core', name: '鸟狗式', equipment: 'bodyweight', movementPattern: 'isolation', weightStep: 0, isBodyweight: 1, isUnilateral: 0, aliases: '', primaryMuscles: 'core', secondaryMuscles: '' },
+  { id: 'core_shoulder_tap', partKey: 'core', name: '支撑交替触肩', equipment: 'bodyweight', movementPattern: 'isolation', weightStep: 0, isBodyweight: 1, isUnilateral: 0, aliases: '', primaryMuscles: 'core', secondaryMuscles: '' },
+  { id: 'cardio_jump_rope', partKey: 'cardio', name: '跳绳（按次数）', equipment: 'bodyweight', movementPattern: 'isolation', weightStep: 0, isBodyweight: 1, isUnilateral: 0, aliases: '', primaryMuscles: 'cardio', secondaryMuscles: '' },
+  { id: 'cardio_jumping_jack', partKey: 'cardio', name: '开合跳（按次数）', equipment: 'bodyweight', movementPattern: 'isolation', weightStep: 0, isBodyweight: 1, isUnilateral: 0, aliases: '', primaryMuscles: 'cardio', secondaryMuscles: '' }
 ];
 
 export function exercisesOf(partKey: PartKey): ExerciseDef[] {

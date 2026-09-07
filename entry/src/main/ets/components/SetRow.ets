@@ -16,7 +16,7 @@ export struct SetRow {
   onStatusChanged: () => void = () => {
   };
   private saveTimer: number = -1;
-  private becameDonePending: boolean = false;
+  @State showTagPicker: boolean = false;
 
   aboutToDisappear(): void {
     if (this.saveTimer !== -1) {
@@ -37,20 +37,12 @@ export struct SetRow {
   }
 
   private markEdited(): void {
-    const wasPlanned: boolean = this.setItem.status === 'planned';
     const change = statusAfterEdit(this.setItem.status, Date.now());
     this.setItem.status = change.status === 'done' ? 'done' : 'planned';
-    if (change.completedAt !== null) {
-      this.setItem.completedAt = change.completedAt;
-    }
-    if (wasPlanned) {
-      this.becameDonePending = true;
-    }
     this.scheduleSave();
-    this.onStatusChanged();
   }
 
-  private flushSave(): void {
+  private flushSave(notifyDone: boolean = false): void {
     const w: ParseResult = parseWeight(this.setItem.weightText);
     const r: ParseResult = parseReps(this.setItem.repsText);
     if (!w.ok) {
@@ -67,68 +59,77 @@ export struct SetRow {
         this.setItem.inputError = err;
         return;
       }
-      if (this.becameDonePending) {
-        this.becameDonePending = false;
+      if (notifyDone && this.setItem.status === 'done') {
         this.onBecameDone(this.setItem);
       }
     }).catch(() => {
+      this.setItem.inputError = '保存失败，请重试';
       hilog.error(0xF170, 'SetRow', 'writeSet failed');
     });
   }
 
   private toggleDone(): void {
+    const weight: ParseResult = parseWeight(this.setItem.weightText);
+    const reps: ParseResult = parseReps(this.setItem.repsText);
+    if (!weight.ok || !reps.ok) {
+      this.setItem.inputError = !weight.ok ? weight.error : reps.error;
+      return;
+    }
+    if (this.saveTimer !== -1) {
+      clearTimeout(this.saveTimer);
+      this.saveTimer = -1;
+    }
     const change = toggleSetStatus(this.setItem.status, Date.now());
     const nowDone: boolean = change.status === 'done';
     this.setItem.status = nowDone ? 'done' : 'planned';
     this.setItem.completedAt = change.completedAt === null ? 0 : change.completedAt;
-    this.flushSave();
+    this.flushSave(nowDone);
     this.onStatusChanged();
-    if (nowDone) {
-      this.onBecameDone(this.setItem);
-    }
   }
 
   private pickTag(): void {
-    ActionSheet.show({
-      title: '这一组的标记',
-      message: '正式组默认不用选。热身不计入容量，递减和递增是技法。',
-      sheets: [
-        {
-          title: '正式',
-          action: () => {
-            this.setItem.isWarmup = 0;
-            this.setItem.technique = '';
-            this.flushSave();
-          }
-        },
-        {
-          title: '热身',
-          action: () => {
-            this.setItem.isWarmup = 1;
-            this.setItem.technique = '';
-            this.flushSave();
-          }
-        },
-        {
-          title: '递减',
-          action: () => {
-            this.setItem.isWarmup = 0;
-            this.setItem.technique = 'drop';
-            this.flushSave();
-          }
-        },
-        {
-          title: '递增',
-          action: () => {
-            this.setItem.isWarmup = 0;
-            this.setItem.technique = 'ramp';
-            this.flushSave();
-          }
-        }
-      ],
-      cancel: () => {
-      }
-    });
+    this.showTagPicker = true;
+  }
+
+  @Builder
+  tagButton(label: string, warmup: number, technique: string) {
+    Button(label)
+      .layoutWeight(1)
+      .height(48)
+      .fontSize(16)
+      .fontColor(this.setItem.isWarmup === warmup && this.setItem.technique === technique ?
+        $r('app.color.text_on_accent') : $r('app.color.text_primary'))
+      .backgroundColor(this.setItem.isWarmup === warmup && this.setItem.technique === technique ?
+        $r('app.color.accent') : $r('app.color.chip_bg'))
+      .onClick(() => {
+        this.setItem.isWarmup = warmup;
+        this.setItem.technique = technique;
+        this.flushSave();
+        this.showTagPicker = false;
+      })
+  }
+
+  @Builder
+  TagPicker() {
+    Column({ space: 12 }) {
+      Text('这一组的标记')
+        .fontSize(18)
+        .fontWeight(FontWeight.Medium)
+        .fontColor($r('app.color.text_primary'))
+      Row({ space: 12 }) {
+        this.tagButton('正式', 0, '');
+        this.tagButton('热身', 1, '');
+      }.width('100%')
+      Row({ space: 12 }) {
+        this.tagButton('递减', 0, 'drop');
+        this.tagButton('递增', 0, 'ramp');
+      }.width('100%')
+      Text('热身用于准备；递减表示降低重量继续训练，递增表示逐组加重。选择标记不会完成这一组。')
+        .fontSize(13)
+        .fontColor($r('app.color.text_secondary'))
+    }
+    .width('100%')
+    .padding(20)
   }
 
   @Builder
@@ -155,7 +156,10 @@ export struct SetRow {
         Text(this.setItem.status === 'done' ? '✓' : '○')
           .fontSize(20)
           .fontColor(this.setItem.status === 'done' ? $r('app.color.accent') : $r('app.color.text_secondary'))
-          .width(28)
+          .width(40)
+          .height(44)
+          .textAlign(TextAlign.Center)
+          .accessibilityText(this.setItem.status === 'done' ? '取消完成' : '标记完成')
           .onClick(() => {
             this.toggleDone();
           })
@@ -192,7 +196,7 @@ export struct SetRow {
               this.pickTag();
             })
         } else {
-          Text('标记')
+          Text('正式')
             .fontSize(11)
             .fontColor($r('app.color.text_secondary'))
             .padding({ left: 6, right: 4 })
@@ -209,7 +213,6 @@ export struct SetRow {
           })
       }
       .width('100%')
-      .opacity(this.setItem.status === 'planned' ? 0.55 : 1)
 
       if (this.setItem.inputError.length > 0) {
         Text(this.setItem.inputError)
@@ -233,5 +236,10 @@ export struct SetRow {
     }
     .width('100%')
     .padding({ top: 8, bottom: 8 })
+    .bindSheet($$this.showTagPicker, this.TagPicker, {
+      height: 300,
+      dragBar: true,
+      showClose: true
+    })
   }
 }

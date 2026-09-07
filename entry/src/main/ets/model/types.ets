@@ -1,4 +1,4 @@
-export type PartKey = 'chest' | 'shoulder' | 'back' | 'arm' | 'glute' | 'leg';
+export type PartKey = 'chest' | 'shoulder' | 'back' | 'arm' | 'glute' | 'leg' | 'abs' | 'core' | 'cardio';
 
 export type SetStatus = 'planned' | 'done';
 
@@ -13,6 +13,8 @@ export type MovementPattern = 'push' | 'pull' | 'hinge' | 'squat' | 'lunge' | 'c
 export interface BodyPartInfo {
   key: PartKey;
   name: string;
+  description: string;
+  image: Resource;
 }
 
 export interface EquipmentInfo {
@@ -21,12 +23,15 @@ export interface EquipmentInfo {
 }
 
 export const BODY_PARTS: BodyPartInfo[] = [
-  { key: 'chest', name: '胸' },
-  { key: 'shoulder', name: '肩' },
-  { key: 'back', name: '背' },
-  { key: 'arm', name: '手臂' },
-  { key: 'glute', name: '臀部' },
-  { key: 'leg', name: '腿' }
+  { key: 'chest', name: '胸', description: '胸部推举与夹胸', image: $r('app.media.part_chest') },
+  { key: 'shoulder', name: '肩', description: '肩部推举与侧平举', image: $r('app.media.part_shoulder') },
+  { key: 'back', name: '背', description: '背部拉力与划船', image: $r('app.media.part_back') },
+  { key: 'arm', name: '手臂', description: '肱二头肌与肱三头肌', image: $r('app.media.part_arm') },
+  { key: 'glute', name: '臀部', description: '髋伸展与臀部训练', image: $r('app.media.part_glute') },
+  { key: 'leg', name: '腿', description: '大腿与小腿训练', image: $r('app.media.part_leg') },
+  { key: 'abs', name: '腹部', description: '卷腹、举腿等腹肌训练', image: $r('app.media.part_abs') },
+  { key: 'core', name: '核心', description: '躯干稳定与抗旋转', image: $r('app.media.part_core') },
+  { key: 'cardio', name: '有氧', description: '心肺耐力训练', image: $r('app.media.part_cardio') }
 ];
 
 export const EQUIPMENT_OPTIONS: EquipmentInfo[] = [
@@ -63,6 +68,15 @@ export function toPartKey(value: string): PartKey {
   }
   if (value === 'leg') {
     return 'leg';
+  }
+  if (value === 'abs') {
+    return 'abs';
+  }
+  if (value === 'core') {
+    return 'core';
+  }
+  if (value === 'cardio') {
+    return 'cardio';
   }
   return 'chest';
 }

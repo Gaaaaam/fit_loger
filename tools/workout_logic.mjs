@@ -74,10 +74,7 @@ export function inheritFromPreviousSet(previousInSession, lastSessionFirstWork) 
 }
 
 export function statusAfterEdit(currentStatus, nowMs) {
-  if (currentStatus === 'planned') {
-    return { status: 'done', completedAt: nowMs };
-  }
-  return { status: 'done', completedAt: null };
+  return { status: currentStatus, completedAt: null };
 }
 
 export function toggleSetStatus(currentStatus, nowMs) {

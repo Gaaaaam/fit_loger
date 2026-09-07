@@ -32,6 +32,14 @@ export struct ExerciseSheet {
         .margin({ bottom: 12 })
         .width('100%')
 
+      if (this.partKey === 'cardio') {
+        Text('当前按组和次数记录；跑步、骑行的时长与距离记录暂未支持。')
+          .fontSize(13)
+          .fontColor($r('app.color.text_secondary'))
+          .width('100%')
+          .margin({ bottom: 12 })
+      }
+
       List() {
         ForEach(this.items, (item: ExerciseDef) => {
           ListItem() {

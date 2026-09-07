@@ -63,8 +63,8 @@ assert.deepEqual(inheritFromPreviousSet(null, null), { weight: null, reps: null 
 
 // --- status machine ---
 const edited = statusAfterEdit('planned', 1700000000000);
-assert.equal(edited.status, 'done');
-assert.equal(edited.completedAt, 1700000000000);
+assert.equal(edited.status, 'planned');
+assert.equal(edited.completedAt, null);
 const alreadyDone = statusAfterEdit('done', 1700000000000);
 assert.equal(alreadyDone.status, 'done');
 assert.equal(alreadyDone.completedAt, null); // keep existing completed_at

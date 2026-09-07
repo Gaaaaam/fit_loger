@@ -142,16 +142,18 @@ struct DayDetailPage {
     this.notifyExercises(part);
     this.notifyParts();
     this.plannedTick++;
-    this.scheduleScrollToPart(loaded.partKey);
+
   }
 
   private openExercisePicker(partKey: string): void {
+    this.getUIContext().getFocusController().clearFocus();
     this.pickerPartKey = toPartKey(partKey);
     this.sheetMode = 'exercise';
     this.showSheet = true;
   }
 
   private async handleAddSet(exerciseRowId: number): Promise<void> {
+    this.getUIContext().getFocusController().clearFocus();
     const setItem: SetItem = await WorkoutRepository.addSet(exerciseRowId);
     const ex: ExerciseItem | null = this.findExercise(exerciseRowId);
     if (ex !== null) {
@@ -263,20 +265,6 @@ struct DayDetailPage {
     this.plannedTick++;
   }
 
-  private scheduleScrollToPart(partKey: PartKey): void {
-    setTimeout(() => {
-      let index: number = 0;
-      if (this.hasPlanned()) {
-        index = 1;
-      }
-      for (let i = 0; i < this.day.parts.length; i++) {
-        if (this.day.parts[i].partKey === partKey) {
-          this.listScroller.scrollToIndex(index + i, true, ScrollAlign.END);
-          return;
-        }
-      }
-    }, 80);
-  }
 
   private async openCopySheet(): Promise<void> {
     this.recentDays = await WorkoutRepository.listRecentDays(8);
@@ -449,28 +437,25 @@ struct DayDetailPage {
         .layoutWeight(1)
         .justifyContent(FlexAlign.Center)
       } else {
-        List({ scroller: this.listScroller }) {
-          if (this.hasPlanned()) {
-            ListItem() {
-              Row() {
-                Text('还有未完成的组')
-                  .fontSize(13)
-                  .fontColor($r('app.color.text_secondary'))
-                  .layoutWeight(1)
-                Text('清理未完成组')
-                  .fontSize(13)
-                  .fontColor($r('app.color.accent'))
-                  .onClick(() => {
-                    this.handleClearPlanned();
-                  })
-              }
-              .width('100%')
-              .padding({ bottom: 10 })
-            }
-          }
+        Row() {
+          Text(this.hasPlanned() ? '还有未完成的组' : '所有组已完成')
+            .fontSize(13)
+            .fontColor($r('app.color.text_secondary'))
+            .layoutWeight(1)
+          Text('清理未完成组')
+            .fontSize(13)
+            .fontColor($r('app.color.accent'))
+            .visibility(this.hasPlanned() ? Visibility.Visible : Visibility.Hidden)
+            .onClick(() => {
+              this.handleClearPlanned();
+            })
+        }
+        .width('100%')
+        .height(36)
 
+        Scroll(this.listScroller) {
+          Column() {
           ForEach(this.day.parts, (part: PartItem) => {
-            ListItem() {
               PartSection({
                 part: part,
                 listStamp: this.plannedTick,
@@ -496,10 +481,8 @@ struct DayDetailPage {
                   this.plannedTick++;
                 }
               })
-            }
           }, (part: PartItem) => part.partKey)
 
-          ListItem() {
             Button('添加部位')
               .fontSize(15)
               .fontColor($r('app.color.accent'))
@@ -508,10 +491,11 @@ struct DayDetailPage {
               .height(44)
               .margin({ bottom: 24 })
               .onClick(() => {
+                this.getUIContext().getFocusController().clearFocus();
                 this.sheetMode = 'part';
                 this.showSheet = true;
               })
-          }
+          }.width('100%')
         }
         .width('100%')
         .layoutWeight(1)

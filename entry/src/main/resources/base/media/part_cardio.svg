@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240">
+<title>有氧跑步</title>
+<desc>原创运动肌群示意图，绿色强调训练区域；非医学解剖图。</desc>
+<defs>
+  <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#E2EBED"/><stop offset=".46" stop-color="#AFBFC7"/><stop offset="1" stop-color="#708994"/>
+  </linearGradient>
+  <linearGradient id="muscle" x1="0" y1="0" x2=".8" y2="1">
+    <stop stop-color="#F0F5F4"/><stop offset=".4" stop-color="#CDDADF"/><stop offset="1" stop-color="#91A7B2"/>
+  </linearGradient>
+  <linearGradient id="target" x1="0" y1="0" x2=".85" y2="1">
+    <stop stop-color="#8EE4BC"/><stop offset=".35" stop-color="#39B38D"/><stop offset=".72" stop-color="#168269"/><stop offset="1" stop-color="#0B534D"/>
+  </linearGradient>
+  <linearGradient id="targetDeep" x1="0" y1="0" x2="1" y2=".8">
+    <stop stop-color="#53CBA1"/><stop offset=".65" stop-color="#168269"/><stop offset="1" stop-color="#083D3D"/>
+  </linearGradient>
+  <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#EDD0AD"/><stop offset=".5" stop-color="#C99670"/><stop offset="1" stop-color="#946345"/>
+  </linearGradient>
+  <linearGradient id="kit" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#405764"/><stop offset="1" stop-color="#142C39"/>
+  </linearGradient>
+</defs>
+<ellipse cx="160" cy="124" rx="115" ry="105" fill="#E9F3EF"/>
+<path d="M49 83 A116 106 0 0 1 226 34 M260 166 A116 106 0 0 1 102 221" fill="none" stroke="#C5DDD3" stroke-width="1.3"/>
+<circle cx="52" cy="80" r="3" fill="#52AD8D"/>
+<circle cx="260" cy="168" r="2" fill="#93C7B2"/>
+<svg x="18" y="9" width="284" height="222" viewBox="18 8 270 250" preserveAspectRatio="xMidYMid meet" overflow="hidden">
+<ellipse cx="162" cy="238" rx="95" ry="5" fill="#345D60" opacity=".10"/><path d="M181 73 Q193 72 201 90 L216 104 L236 90 L243 81 Q250 77 253 84 L250 94 L221 120 Q214 123 207 117 L184 99 Z" fill="url(#skin)" stroke="#9A7256" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M151 133 L172 145 Q158 170 135 186 Q121 197 107 190 L74 172 L69 160 L82 159 L116 176 L139 147 Z" fill="url(#skin)" stroke="#9A7256" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M78 157 L83 171 L70 177 Q64 175 59 166 L49 153 Q47 147 53 144 L60 146 L66 156 Z" fill="url(#kit)" stroke="#243E4B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M50 151 L62 166 L70 171 L79 168 L82 173 L70 180 Q63 178 57 169 L46 154 Z" fill="#EDF2EB" stroke="#738F96" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" /><path d="M62 153 L70 159 M59 157 L67 163" fill="none" stroke="#92DCC4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/><path d="M165 133 Q188 139 203 154 L218 170 Q226 180 219 193 L195 227 L181 225 Q187 203 201 183 L178 173 L156 157 Z" fill="url(#skin)" stroke="#9A7256" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M188 151 Q207 165 212 174 Q217 182 210 187 L193 171 L176 163 Z" fill="#B8815E" stroke="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M207 191 Q214 190 210 200 L194 221 L188 218 Z" fill="#E5BC94" stroke="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M181 219 L196 224 L195 234 L215 238 Q221 242 216 247 L178 246 Q174 240 178 230 Z" fill="url(#kit)" stroke="#243E4B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M177 241 Q193 244 218 242 L218 248 L178 248 Z" fill="#EDF2EB" stroke="#738F96" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" /><path d="M190 230 L198 232 M187 234 L202 237" fill="none" stroke="#92DCC4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/><path d="M145 118 L180 127 L187 147 L171 160 L158 146 L146 165 L128 153 Z" fill="url(#kit)" stroke="#243E4B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M158 129 L153 147 M133 151 L143 157 M177 147 L173 153" fill="none" stroke="#839FA6" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/><path d="M180 56 Q191 62 192 77 L185 104 L181 131 Q160 139 143 123 L151 95 Q151 71 163 62 Z" fill="url(#target)" stroke="#226B5E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M179 67 Q185 89 172 108 L166 132 L181 131 L185 104 L192 77 Z" fill="#0D6657" stroke="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M158 107 Q169 112 177 108 M151 119 L160 122" fill="none" stroke="#A2E8C5" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/><path d="M173 58 L178 46 L192 45 L191 64 L183 72 Z" fill="url(#skin)" stroke="#9A7256" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M177 28 Q183 15 197 22 Q209 26 207 38 L212 46 L206 49 L204 58 Q199 64 187 56 L178 46 Z" fill="url(#skin)" stroke="#9A7256" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M177 42 Q171 32 178 23 Q184 15 198 20 Q207 20 209 29 L203 34 L188 30 L184 40 Z" fill="#253B43" stroke="#253B43" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M184 39 Q178 36 178 43 Q179 48 184 47" fill="#DAB08A" stroke="#9A7256" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" /><path d="M202 39 L205 40 M201 53 L204 53" fill="none" stroke="#79553F" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="1"/><path d="M165 69 C154 63 146 73 139 86 L126 99 L108 87 L102 73 Q98 67 92 72 L88 80 L93 91 L117 113 Q127 120 137 111 L158 96 Q175 83 165 69 Z" fill="url(#skin)" stroke="#9A7256" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M154 70 Q164 66 164 76 Q162 86 151 93 L139 102 L132 102 Q141 93 145 83 Z" fill="#E6BE98" stroke="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M143 91 Q151 88 155 80 M116 105 L125 109 M93 77 L99 78 M92 82 L100 84" fill="none" stroke="#9A7256" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/><path d="M53 98 L89 98 M43 111 L79 111 M48 124 L68 124" fill="none" stroke="#7CB9A9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+</svg>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240">
+<title>手臂肌群</title>
+<desc>原创运动肌群示意图，绿色强调训练区域；非医学解剖图。</desc>
+<defs>
+  <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#E2EBED"/><stop offset=".46" stop-color="#AFBFC7"/><stop offset="1" stop-color="#708994"/>
+  </linearGradient>
+  <linearGradient id="muscle" x1="0" y1="0" x2=".8" y2="1">
+    <stop stop-color="#F0F5F4"/><stop offset=".4" stop-color="#CDDADF"/><stop offset="1" stop-color="#91A7B2"/>
+  </linearGradient>
+  <linearGradient id="target" x1="0" y1="0" x2=".85" y2="1">
+    <stop stop-color="#8EE4BC"/><stop offset=".35" stop-color="#39B38D"/><stop offset=".72" stop-color="#168269"/><stop offset="1" stop-color="#0B534D"/>
+  </linearGradient>
+  <linearGradient id="targetDeep" x1="0" y1="0" x2="1" y2=".8">
+    <stop stop-color="#53CBA1"/><stop offset=".65" stop-color="#168269"/><stop offset="1" stop-color="#083D3D"/>
+  </linearGradient>
+  <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#EDD0AD"/><stop offset=".5" stop-color="#C99670"/><stop offset="1" stop-color="#946345"/>
+  </linearGradient>
+  <linearGradient id="kit" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#405764"/><stop offset="1" stop-color="#142C39"/>
+  </linearGradient>
+</defs>
+<ellipse cx="160" cy="124" rx="115" ry="105" fill="#E9F3EF"/>
+<path d="M49 83 A116 106 0 0 1 226 34 M260 166 A116 106 0 0 1 102 221" fill="none" stroke="#C5DDD3" stroke-width="1.3"/>
+<circle cx="52" cy="80" r="3" fill="#52AD8D"/>
+<circle cx="260" cy="168" r="2" fill="#93C7B2"/>
+<svg x="18" y="9" width="284" height="222" viewBox="40 20 220 225" preserveAspectRatio="xMidYMid meet" overflow="hidden">
+<path d="M64 217 C65 190 73 166 83 153 C87 142 99 133 112 132 L151 124 L176 116 L184 90 L178 62 L176 44 C176 36 183 33 190 34 L205 38 C214 38 219 46 216 53 L210 62 L211 86 C218 111 214 134 207 149 C198 164 181 174 161 181 L139 188 L132 222 Z" fill="url(#body)" stroke="#627D88" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M84 154 C91 137 109 129 123 137 L141 155 C132 174 109 187 85 185 Z" fill="url(#target)" stroke="#246E62" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M115 142 C136 124 163 122 178 131 C190 138 179 154 165 160 L140 168 C129 168 121 158 115 142 Z" fill="url(#target)" stroke="#246E62" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M92 187 Q115 181 133 165 L156 175 Q148 190 131 198 L125 219 L70 219 Z" fill="url(#targetDeep)" stroke="#246E62" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M181 120 L189 87 L187 65 L202 63 C207 87 211 112 201 135 Q193 145 185 141 Z" fill="url(#targetDeep)" stroke="#246E62" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M173 131 Q181 116 181 104 L189 72 L195 71 L196 101 Q196 124 182 139 Z" fill="url(#target)" stroke="#246E62" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M177 44 Q180 37 187 40 L197 44 L206 42 L211 47 L206 56 L195 59 L185 54 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M185 43 L193 48 M191 41 L201 46 M193 55 L201 52 M180 49 L186 55" fill="none" stroke="#718C96" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/><path d="M95 153 Q107 144 117 148" fill="none" stroke="#C6F4DB" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/><path d="M129 143 Q150 132 165 138" fill="none" stroke="#C6F4DB" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/><path d="M132 151 Q150 140 170 144" fill="none" stroke="#C6F4DB" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/><path d="M187 94 L188 118" fill="none" stroke="#C6F4DB" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/><path d="M86 197 Q113 192 126 179" fill="none" stroke="#C6F4DB" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+</svg>
+</svg>

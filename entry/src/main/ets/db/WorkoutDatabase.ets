@@ -66,6 +66,7 @@ export class WorkoutDatabase {
 
   private static async migrate(store: relationalStore.RdbStore, context: common.UIAbilityContext): Promise<void> {
     if (store.version >= CURRENT_VERSION) {
+      await seedBuiltinExercises(store);
       return;
     }
     const hasDays: boolean = await WorkoutDatabase.tableExists(store, 'workout_days');
