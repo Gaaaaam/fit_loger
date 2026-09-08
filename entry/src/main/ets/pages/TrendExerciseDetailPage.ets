@@ -1,6 +1,8 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { router } from '@kit.ArkUI';
 import { TrendSparkline } from '../components/TrendSparkline';
+import { TermHint } from '../components/TermHint';
+import { findTerm } from '../common/TrendGuide';
 import {
   buildExerciseTrendDetail,
   chartFromDate,
@@ -26,6 +28,8 @@ struct TrendExerciseDetailPage {
   @State rangeKind: string = '12';
   @State detail: ExerciseTrendDetail = new ExerciseTrendDetail();
   @State loaded: boolean = false;
+  @State showTermSheet: boolean = false;
+  @State activeTermId: string = '';
 
   aboutToAppear(): void {
     const raw: Object | undefined = router.getParams();
@@ -76,6 +80,11 @@ struct TrendExerciseDetailPage {
     });
   }
 
+  private openTerm(id: string): void {
+    this.activeTermId = id;
+    this.showTermSheet = true;
+  }
+
   private rangeText(): string {
     const first: ExerciseSessionRow[] = this.detail.recentSessions;
     if (first.length === 0) {
@@ -119,6 +128,12 @@ struct TrendExerciseDetailPage {
       Text(item.minRir === null ? 'RIR 未记录' : `RIR ${item.minRir}`)
         .fontSize(13)
         .fontColor($r('app.color.text_secondary'))
+      TermHint({
+        termId: 'rir',
+        onOpen: (id: string) => {
+          this.openTerm(id);
+        }
+      })
     }
     .width('100%')
     .padding({ top: 10, bottom: 10 })
@@ -146,12 +161,22 @@ struct TrendExerciseDetailPage {
         .fontWeight(FontWeight.Bold)
         .fontColor($r('app.color.text_primary'))
         .width('100%')
-      Text(this.detail.partKey.length > 0 ? `${partName(this.detail.partKey)} · ${this.detail.metricLabel}` :
-        this.detail.metricLabel)
-        .fontSize(13)
-        .fontColor($r('app.color.text_secondary'))
-        .width('100%')
-        .margin({ top: 4, bottom: 16 })
+      Row() {
+        Text(this.detail.partKey.length > 0 ? `${partName(this.detail.partKey)} · ${this.detail.metricLabel}` :
+          this.detail.metricLabel)
+          .fontSize(13)
+          .fontColor($r('app.color.text_secondary'))
+        if (this.detail.metric === 'e1rm') {
+          TermHint({
+            termId: 'e1rm',
+            onOpen: (id: string) => {
+              this.openTerm(id);
+            }
+          })
+        }
+      }
+      .width('100%')
+      .margin({ top: 4, bottom: 16 })
 
       Row() {
         this.rangeChip('4周', '4')
@@ -176,11 +201,20 @@ struct TrendExerciseDetailPage {
           } else {
             Column() {
               if (this.detail.insufficientData) {
-                Text('数据不足：需要至少 2 次满足 RIR ≤1、次数 ≤8 的正式组才能计算稳定的 e1RM')
-                  .fontSize(12)
-                  .fontColor($r('app.color.text_secondary'))
-                  .width('100%')
-                  .margin({ bottom: 8 })
+                Row() {
+                  Text('数据不足：需要至少 2 次满足 RIR ≤1、次数 ≤8 的正式组才能计算稳定的 e1RM')
+                    .fontSize(12)
+                    .fontColor($r('app.color.text_secondary'))
+                    .layoutWeight(1)
+                  TermHint({
+                    termId: 'insufficient',
+                    onOpen: (id: string) => {
+                      this.openTerm(id);
+                    }
+                  })
+                }
+                .width('100%')
+                .margin({ bottom: 8 })
               }
               Text(this.rangeText())
                 .fontSize(12)
@@ -196,6 +230,12 @@ struct TrendExerciseDetailPage {
                   .fontSize(12)
                   .fontColor($r('app.color.text_secondary'))
                   .margin({ left: 12 })
+                TermHint({
+                  termId: 'work_set',
+                  onOpen: (id: string) => {
+                    this.openTerm(id);
+                  }
+                })
               }
               .width('100%')
               .margin({ top: 8 })
@@ -260,5 +300,30 @@ struct TrendExerciseDetailPage {
     .height('100%')
     .padding({ left: 16, right: 16, top: 24, bottom: 12 })
     .backgroundColor($r('app.color.page_bg'))
+    .bindSheet($$this.showTermSheet, this.TermSheet, {
+      height: SheetSize.MEDIUM,
+      dragBar: true,
+      showClose: true,
+      backgroundColor: $r('app.color.card_bg')
+    })
+  }
+
+  @Builder
+  TermSheet() {
+    Column() {
+      Text(findTerm(this.activeTermId).title)
+        .fontSize(20)
+        .fontWeight(FontWeight.Medium)
+        .fontColor($r('app.color.text_primary'))
+        .width('100%')
+      Text(findTerm(this.activeTermId).body)
+        .fontSize(15)
+        .fontColor($r('app.color.text_secondary'))
+        .width('100%')
+        .margin({ top: 12 })
+    }
+    .width('100%')
+    .padding({ left: 20, right: 20, top: 8, bottom: 24 })
+    .alignItems(HorizontalAlign.Start)
   }
 }

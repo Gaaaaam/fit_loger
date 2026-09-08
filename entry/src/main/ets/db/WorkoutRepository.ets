@@ -915,6 +915,17 @@ export class WorkoutRepository {
     return meta;
   }
 
+  static async hasAnyDoneWorkSet(): Promise<boolean> {
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const rs: relationalStore.ResultSet = await store.querySql(
+      'SELECT id FROM workout_sets WHERE status = \'done\' AND is_warmup = 0 LIMIT 1',
+      []
+    );
+    const found: boolean = rs.goToFirstRow();
+    rs.close();
+    return found;
+  }
+
   static async listExercisesWithHistory(): Promise<WatchableExercise[]> {
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     const sql: string =
