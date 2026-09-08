@@ -1,9 +1,37 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\26017\\.ohos\\config\\default_fit_loger_uMOptSOixvQh9CRaY1RRiclvT2Fe6eiTVSQ8wUzvviw=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BC0E2BBB6CA913F4890FC73F61D815EC913F945B0473D20A56FA410B9491996A3D27D37E9180159",
+          "profile": "C:\\Users\\26017\\.ohos\\config\\default_fit_loger_uMOptSOixvQh9CRaY1RRiclvT2Fe6eiTVSQ8wUzvviw=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\26017\\.ohos\\config\\default_fit_loger_uMOptSOixvQh9CRaY1RRiclvT2Fe6eiTVSQ8wUzvviw=.p12",
+          "storePassword": "0000001B5B1018A1E0748A720AAA212A7659C227299BF6A7A3D23941E24D6E1F3C914E1483603458CCFF7B"
+        }
+      },
+      {
+        "name": "fitloger",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\26017\\.ohos\\config\\fitloger_fit_loger_uMOptSOixvQh9CRaY1RRiclvT2Fe6eiTVSQ8wUzvviw=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BC61425DE378D370B46D36856E8BBA38F807D8188D3FFBFAC31F831A24B6E4CC8EDD08AFCFF9B60",
+          "profile": "C:\\Users\\26017\\.ohos\\config\\fitloger_fit_loger_uMOptSOixvQh9CRaY1RRiclvT2Fe6eiTVSQ8wUzvviw=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\26017\\.ohos\\config\\fitloger_fit_loger_uMOptSOixvQh9CRaY1RRiclvT2Fe6eiTVSQ8wUzvviw=.p12",
+          "storePassword": "0000001BCBC721778BBC8AB7CEFCBB905D27C0829444D08781576B6A4980A61F673A74C97084DF43975909"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
+        "signingConfig": "default",
         "compatibleSdkVersion": "6.0.0(20)",
         "targetSdkVersion": "6.0.0(20)",
         "runtimeOS": "HarmonyOS",

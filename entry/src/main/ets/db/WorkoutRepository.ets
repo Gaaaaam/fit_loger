@@ -19,7 +19,7 @@ import {
   WeightReps
 } from '../common/WorkoutLogic';
 import { ExerciseDef } from '../model/exerciseCatalog';
-import { TrendSetRow, TrendWeightRow } from '../common/TrendLogic';
+import { ExerciseMeta, PartGoalRow, TrendPreferences, TrendSetRow, TrendWeightRow, WatchableExercise } from '../common/TrendLogic';
 import { BodyMetric, DayMark, DayModel, ExerciseItem, PartItem, PrResult, RecentDayInfo, SetItem } from '../model/DayModels';
 import {
   Equipment,
@@ -33,6 +33,8 @@ import { WorkoutDatabase } from './WorkoutDatabase';
 import { ExportService } from './ExportService';
 
 export class WorkoutRepository {
+  private static setWriteTail: Promise<void> = Promise.resolve();
+  private static batchTail: Promise<void> = Promise.resolve();
   static async listMonthDayMarks(year: number, monthIndex: number): Promise<DayMark[]> {
     const range: string[] = monthRange(year, monthIndex);
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
@@ -88,6 +90,7 @@ export class WorkoutRepository {
       hasRow = rs.goToNextRow();
     }
     rs.close();
+    day.exercises = exList;
     day.parts = WorkoutRepository.groupParts(exList);
     await WorkoutRepository.attachLastHints(day, date);
     return day;
@@ -262,10 +265,79 @@ export class WorkoutRepository {
     return await store.insert('day_exercises', bucket);
   }
 
+  static async listDayExerciseIds(date: string): Promise<string[]> {
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const rs: relationalStore.ResultSet = await store.querySql(
+      'SELECT e.exercise_id FROM day_exercises e JOIN workout_days d ON d.id = e.day_id ' +
+      'WHERE d.date = ? ORDER BY e.sort_order, e.id', [date]);
+    const ids: string[] = [];
+    let hasRow: boolean = rs.goToFirstRow();
+    while (hasRow) {
+      const id: string = rs.getString(rs.getColumnIndex('exercise_id'));
+      if (ids.indexOf(id) < 0) {
+        ids.push(id);
+      }
+      hasRow = rs.goToNextRow();
+    }
+    rs.close();
+    return ids;
+  }
+
+  static async addExercisesBatch(date: string, ids: string[]): Promise<number[]> {
+    const requested: string[] = ids.slice();
+    const result: Promise<number[]> = WorkoutRepository.batchTail.then(() =>
+      WorkoutRepository.insertExercisesBatch(date, requested));
+    WorkoutRepository.batchTail = result.then(() => {}).catch(() => {});
+    return await result;
+  }
+
+  private static async insertExercisesBatch(date: string, ids: string[]): Promise<number[]> {
+    if (ids.length === 0) {
+      return [];
+    }
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    store.beginTransaction();
+    try {
+      const unique: string[] = [];
+      for (let i = 0; i < ids.length; i++) {
+        if (unique.indexOf(ids[i]) >= 0) {
+          continue;
+        }
+        const rs: relationalStore.ResultSet = await store.querySql(
+          'SELECT id FROM exercises WHERE id = ? AND is_archived = 0', [ids[i]]);
+        const valid: boolean = rs.goToFirstRow();
+        rs.close();
+        if (!valid) {
+          throw new Error('动作不存在或已归档');
+        }
+        unique.push(ids[i]);
+      }
+      const existing: string[] = await WorkoutRepository.listDayExerciseIds(date);
+      const pending: string[] = unique.filter((id: string) => existing.indexOf(id) < 0);
+      const rows: number[] = [];
+      if (pending.length > 0) {
+        const dayId: number = await WorkoutRepository.ensureDayId(date);
+        const order: number = await WorkoutRepository.nextOrder(
+          'SELECT IFNULL(MAX(sort_order), -1) + 1 AS next_order FROM day_exercises WHERE day_id = ?', [dayId]);
+        for (let i = 0; i < pending.length; i++) {
+          const bucket: relationalStore.ValuesBucket = {
+            'day_id': dayId, 'exercise_id': pending[i], 'sort_order': order + i
+          };
+          rows.push(await store.insert('day_exercises', bucket));
+        }
+      }
+      store.commit();
+      return rows;
+    } catch (err) {
+      store.rollBack();
+      throw new Error('添加动作失败，请重试');
+    }
+  }
+
   static async loadExerciseRow(exerciseRowId: number, date: string): Promise<ExerciseItem | null> {
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     const sql: string =
-      'SELECT e.id AS ex_row_id, e.exercise_id AS exercise_id, e.note AS ex_note, ' +
+      'SELECT e.id AS ex_row_id, e.exercise_id AS exercise_id, e.sort_order AS ex_sort, e.note AS ex_note, ' +
       'x.name AS ex_name, x.part_key AS part_key, x.weight_step AS weight_step, x.is_bodyweight AS is_bodyweight ' +
       'FROM day_exercises e LEFT JOIN exercises x ON x.id = e.exercise_id WHERE e.id = ?';
     const rs: relationalStore.ResultSet = await store.querySql(sql, [exerciseRowId]);
@@ -276,6 +348,8 @@ export class WorkoutRepository {
     const createdEx: ExerciseItem = new ExerciseItem();
     createdEx.id = rs.getLong(rs.getColumnIndex('ex_row_id'));
     createdEx.exerciseId = rs.getString(rs.getColumnIndex('exercise_id'));
+    createdEx.sortOrder = rs.getLong(rs.getColumnIndex('ex_sort'));
+    createdEx.note = WorkoutRepository.strOr(rs, 'ex_note', '');
     if (!rs.isColumnNull(rs.getColumnIndex('ex_name'))) {
       createdEx.name = rs.getString(rs.getColumnIndex('ex_name'));
     } else {
@@ -380,65 +454,28 @@ export class WorkoutRepository {
     if (!repsParsed.ok) {
       return repsParsed.error;
     }
-    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
-    const predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('workout_sets');
-    predicates.equalTo('id', item.id);
+    // Capture every value before awaiting. A single update also clears nullable fields atomically.
     const bucket: relationalStore.ValuesBucket = {
+      'weight': weightParsed.value,
+      'reps': repsParsed.value,
       'is_warmup': item.isWarmup,
+      'technique': item.technique.length > 0 ? item.technique : null,
+      'rir': item.rir >= 0 ? item.rir : null,
       'status': item.status,
+      'completed_at': item.completedAt > 0 ? item.completedAt : null,
+      'note': item.note.length > 0 ? item.note : null,
       'sort_order': item.sortOrder
     };
-    if (weightParsed.value !== null) {
-      bucket['weight'] = weightParsed.value;
-    }
-    if (repsParsed.value !== null) {
-      bucket['reps'] = repsParsed.value;
-    }
-    if (item.technique.length > 0) {
-      bucket['technique'] = item.technique;
-    }
-    if (item.rir >= 0) {
-      bucket['rir'] = item.rir;
-    }
-    if (item.completedAt > 0) {
-      bucket['completed_at'] = item.completedAt;
-    }
-    if (item.note.length > 0) {
-      bucket['note'] = item.note;
-    }
-    await store.update(bucket, predicates);
-    if (weightParsed.value === null || repsParsed.value === null || item.technique.length === 0 ||
-      item.rir < 0 || item.completedAt <= 0 || item.note.length === 0) {
-      await WorkoutRepository.writeNulls(item, weightParsed.value === null, repsParsed.value === null);
-    }
+    const setId: number = item.id;
+    const result: Promise<void> = WorkoutRepository.setWriteTail.then(async () => {
+      const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+      const predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('workout_sets');
+      predicates.equalTo('id', setId);
+      await store.update(bucket, predicates);
+    });
+    WorkoutRepository.setWriteTail = result.catch(() => {});
+    await result;
     return '';
-  }
-
-  private static async writeNulls(item: SetItem, weightNull: boolean, repsNull: boolean): Promise<void> {
-    const parts: string[] = [];
-    if (weightNull) {
-      parts.push('weight = NULL');
-    }
-    if (repsNull) {
-      parts.push('reps = NULL');
-    }
-    if (item.technique.length === 0) {
-      parts.push('technique = NULL');
-    }
-    if (item.rir < 0) {
-      parts.push('rir = NULL');
-    }
-    if (item.completedAt <= 0) {
-      parts.push('completed_at = NULL');
-    }
-    if (item.note.length === 0) {
-      parts.push('note = NULL');
-    }
-    if (parts.length === 0) {
-      return;
-    }
-    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
-    await store.executeSql(`UPDATE workout_sets SET ${parts.join(', ')} WHERE id = ?`, [item.id]);
   }
 
   static async setLastSetRir(exerciseRowId: number, rir: number): Promise<void> {
@@ -633,12 +670,16 @@ export class WorkoutRepository {
   }
 
   static async listExercises(partKey: PartKey): Promise<ExerciseDef[]> {
+    const all: ExerciseDef[] = await WorkoutRepository.listAllExercises();
+    return all.filter((def: ExerciseDef) => def.partKey === partKey);
+  }
+
+  static async listAllExercises(): Promise<ExerciseDef[]> {
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     const rs: relationalStore.ResultSet = await store.querySql(
       'SELECT id, name, part_key, equipment, movement_pattern, weight_step, is_bodyweight, is_unilateral, ' +
         'aliases, primary_muscles, secondary_muscles ' +
-        'FROM exercises WHERE part_key = ? AND is_archived = 0 ORDER BY is_builtin DESC, name',
-      [partKey]
+        'FROM exercises WHERE is_archived = 0 ORDER BY is_builtin DESC, name, id', []
     );
     const list: ExerciseDef[] = [];
     let hasRow: boolean = rs.goToFirstRow();
@@ -799,7 +840,8 @@ export class WorkoutRepository {
     let sql: string =
       'SELECT d.date AS date, e.exercise_id AS exercise_id, x.name AS name, x.part_key AS part_key, ' +
       'x.movement_pattern AS movement_pattern, x.is_bodyweight AS is_bodyweight, ' +
-      's.weight AS weight, s.reps AS reps, s.rir AS rir, s.is_warmup AS is_warmup, s.status AS status ' +
+      's.weight AS weight, s.reps AS reps, s.rir AS rir, s.is_warmup AS is_warmup, s.technique AS technique, ' +
+      's.status AS status ' +
       'FROM workout_sets s ' +
       'JOIN day_exercises e ON e.id = s.day_exercise_id ' +
       'JOIN workout_days d ON d.id = e.day_id ' +
@@ -820,6 +862,203 @@ export class WorkoutRepository {
     }
     rs.close();
     return rows;
+  }
+
+  static async loadTrendSetsForExercise(exerciseId: string, fromDate: string, today: string): Promise<TrendSetRow[]> {
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    let sql: string =
+      'SELECT d.date AS date, e.exercise_id AS exercise_id, x.name AS name, x.part_key AS part_key, ' +
+      'x.movement_pattern AS movement_pattern, x.is_bodyweight AS is_bodyweight, ' +
+      's.weight AS weight, s.reps AS reps, s.rir AS rir, s.is_warmup AS is_warmup, s.technique AS technique, ' +
+      's.status AS status ' +
+      'FROM workout_sets s ' +
+      'JOIN day_exercises e ON e.id = s.day_exercise_id ' +
+      'JOIN workout_days d ON d.id = e.day_id ' +
+      'LEFT JOIN exercises x ON x.id = e.exercise_id ' +
+      'WHERE s.status = \'done\' AND s.is_warmup = 0 AND e.exercise_id = ? AND d.date <= ?';
+    const args: Array<string | number> = [exerciseId, today];
+    if (fromDate.length > 0) {
+      sql += ' AND d.date >= ?';
+      args.push(fromDate);
+    }
+    sql += ' ORDER BY d.date, s.sort_order, s.id';
+    const rs: relationalStore.ResultSet = await store.querySql(sql, args);
+    const rows: TrendSetRow[] = [];
+    let hasRow: boolean = rs.goToFirstRow();
+    while (hasRow) {
+      rows.push(WorkoutRepository.readTrendSet(rs));
+      hasRow = rs.goToNextRow();
+    }
+    rs.close();
+    return rows;
+  }
+
+  static async loadExerciseMeta(exerciseId: string): Promise<ExerciseMeta | null> {
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const rs: relationalStore.ResultSet = await store.querySql(
+      'SELECT id, name, part_key, movement_pattern, is_bodyweight FROM exercises WHERE id = ?',
+      [exerciseId]
+    );
+    if (!rs.goToFirstRow()) {
+      rs.close();
+      return null;
+    }
+    const meta: ExerciseMeta = new ExerciseMeta();
+    meta.exerciseId = exerciseId;
+    meta.name = WorkoutRepository.strOr(rs, 'name', exerciseId);
+    meta.partKey = WorkoutRepository.strOr(rs, 'part_key', 'chest');
+    meta.movementPattern = WorkoutRepository.strOr(rs, 'movement_pattern', 'isolation');
+    if (!rs.isColumnNull(rs.getColumnIndex('is_bodyweight'))) {
+      meta.isBodyweight = rs.getLong(rs.getColumnIndex('is_bodyweight'));
+    }
+    rs.close();
+    return meta;
+  }
+
+  static async listExercisesWithHistory(): Promise<WatchableExercise[]> {
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const sql: string =
+      'SELECT e.exercise_id AS exercise_id, x.name AS name, x.part_key AS part_key, ' +
+      'COUNT(DISTINCT d.date) AS sessions, COUNT(s.id) AS work_sets ' +
+      'FROM workout_sets s ' +
+      'JOIN day_exercises e ON e.id = s.day_exercise_id ' +
+      'JOIN workout_days d ON d.id = e.day_id ' +
+      'LEFT JOIN exercises x ON x.id = e.exercise_id ' +
+      'WHERE s.status = \'done\' AND s.is_warmup = 0 ' +
+      'GROUP BY e.exercise_id ORDER BY sessions DESC, work_sets DESC, name ASC';
+    const rs: relationalStore.ResultSet = await store.querySql(sql, []);
+    const list: WatchableExercise[] = [];
+    let hasRow: boolean = rs.goToFirstRow();
+    while (hasRow) {
+      const item: WatchableExercise = new WatchableExercise();
+      item.exerciseId = WorkoutRepository.strOr(rs, 'exercise_id', '');
+      item.name = WorkoutRepository.strOr(rs, 'name', item.exerciseId);
+      item.partKey = WorkoutRepository.strOr(rs, 'part_key', 'chest');
+      item.sessions = rs.getLong(rs.getColumnIndex('sessions'));
+      item.workSets = rs.getLong(rs.getColumnIndex('work_sets'));
+      list.push(item);
+      hasRow = rs.goToNextRow();
+    }
+    rs.close();
+    return list;
+  }
+
+  static async loadTrendPreferences(): Promise<TrendPreferences> {
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const prefs: TrendPreferences = new TrendPreferences();
+    const idsRs: relationalStore.ResultSet = await store.querySql(
+      'SELECT exercise_id FROM watched_exercises ORDER BY sort_order',
+      []
+    );
+    let hasRow: boolean = idsRs.goToFirstRow();
+    while (hasRow) {
+      prefs.watchedExerciseIds.push(idsRs.getString(idsRs.getColumnIndex('exercise_id')));
+      hasRow = idsRs.goToNextRow();
+    }
+    idsRs.close();
+
+    const sessRs: relationalStore.ResultSet = await store.querySql(
+      'SELECT sessions_target FROM trend_settings WHERE id = 1',
+      []
+    );
+    if (sessRs.goToFirstRow()) {
+      if (!sessRs.isColumnNull(sessRs.getColumnIndex('sessions_target'))) {
+        prefs.sessionsTarget = sessRs.getLong(sessRs.getColumnIndex('sessions_target'));
+      }
+    }
+    sessRs.close();
+
+    const goalRs: relationalStore.ResultSet = await store.querySql(
+      'SELECT part_key, work_sets_target FROM trend_part_goals',
+      []
+    );
+    hasRow = goalRs.goToFirstRow();
+    while (hasRow) {
+      if (!goalRs.isColumnNull(goalRs.getColumnIndex('work_sets_target'))) {
+        const goal: PartGoalRow = new PartGoalRow();
+        goal.partKey = goalRs.getString(goalRs.getColumnIndex('part_key'));
+        goal.workSetsTarget = goalRs.getLong(goalRs.getColumnIndex('work_sets_target'));
+        prefs.partGoals.push(goal);
+      }
+      hasRow = goalRs.goToNextRow();
+    }
+    goalRs.close();
+    return prefs;
+  }
+
+  static async saveSessionsTarget(target: number | null): Promise<void> {
+    const saved: number | null = WorkoutRepository.clampInt(target, 1, 7);
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const bucket: relationalStore.ValuesBucket = {
+      'id': 1,
+      'updated_at': Date.now()
+    };
+    if (saved !== null) {
+      bucket['sessions_target'] = saved;
+    }
+    try {
+      await store.insert('trend_settings', bucket);
+    } catch (err) {
+      const predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('trend_settings');
+      predicates.equalTo('id', 1);
+      await store.update(bucket, predicates);
+      if (saved === null) {
+        await store.executeSql('UPDATE trend_settings SET sessions_target = NULL WHERE id = 1', []);
+      }
+    }
+  }
+
+  static async savePartGoal(partKey: string, target: number | null): Promise<void> {
+    const saved: number | null = WorkoutRepository.clampInt(target, 1, 50);
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    if (saved === null) {
+      const predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('trend_part_goals');
+      predicates.equalTo('part_key', partKey);
+      await store.delete(predicates);
+      return;
+    }
+    const bucket: relationalStore.ValuesBucket = {
+      'part_key': partKey,
+      'work_sets_target': saved,
+      'updated_at': Date.now()
+    };
+    try {
+      await store.insert('trend_part_goals', bucket);
+    } catch (err) {
+      const predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('trend_part_goals');
+      predicates.equalTo('part_key', partKey);
+      await store.update(bucket, predicates);
+    }
+  }
+
+  static async setWatchedExercises(ids: string[]): Promise<void> {
+    const deduped: string[] = [];
+    for (let i = 0; i < ids.length; i++) {
+      if (deduped.length >= 5) {
+        break;
+      }
+      if (deduped.indexOf(ids[i]) === -1) {
+        deduped.push(ids[i]);
+      }
+    }
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    store.beginTransaction();
+    try {
+      await store.executeSql('DELETE FROM watched_exercises', []);
+      for (let i = 0; i < deduped.length; i++) {
+        const bucket: relationalStore.ValuesBucket = {
+          'exercise_id': deduped[i],
+          'sort_order': i,
+          'created_at': Date.now()
+        };
+        await store.insert('watched_exercises', bucket);
+      }
+      store.commit();
+    } catch (err) {
+      store.rollBack();
+      WorkoutDatabase.logError('setWatchedExercises', err as BusinessError);
+      throw new Error('setWatchedExercises failed');
+    }
   }
 
   static async loadTrendWeights(today: string): Promise<TrendWeightRow[]> {
@@ -924,6 +1163,7 @@ export class WorkoutRepository {
     if (!rs.isColumnNull(rs.getColumnIndex('is_warmup'))) {
       row.isWarmup = rs.getLong(rs.getColumnIndex('is_warmup'));
     }
+    row.technique = WorkoutRepository.strOr(rs, 'technique', '');
     row.status = WorkoutRepository.strOr(rs, 'status', 'done');
     return row;
   }
@@ -934,5 +1174,18 @@ export class WorkoutRepository {
       return fallback;
     }
     return rs.getString(idx);
+  }
+
+  private static clampInt(value: number | null, min: number, max: number): number | null {
+    if (value === null) {
+      return null;
+    }
+    if (value < min || value > max) {
+      return null;
+    }
+    if (Math.floor(value) !== value) {
+      return null;
+    }
+    return value;
   }
 }

@@ -1,4 +1,4 @@
-export const CURRENT_VERSION: number = 1;
+export const CURRENT_VERSION: number = 2;
 
 export const SQL_CREATE_EXERCISES: string =
   'CREATE TABLE IF NOT EXISTS exercises (' +
@@ -68,4 +68,28 @@ export const SQL_CREATE_BODY_METRICS: string =
     'weight_kg REAL,' +
     'note TEXT,' +
     'created_at INTEGER' +
+  ')';
+
+// v2: 趋势配置——关注动作、每周训练目标、各部位每周正式组目标。
+// 这三张表只存用户偏好，不参与历史训练数据的事实记录，可安全地用
+// CREATE TABLE IF NOT EXISTS 幂等创建，无需从旧表迁移数据。
+export const SQL_CREATE_WATCHED_EXERCISES: string =
+  'CREATE TABLE IF NOT EXISTS watched_exercises (' +
+    'exercise_id TEXT PRIMARY KEY,' +
+    'sort_order INTEGER NOT NULL,' +
+    'created_at INTEGER' +
+  ')';
+
+export const SQL_CREATE_TREND_SETTINGS: string =
+  'CREATE TABLE IF NOT EXISTS trend_settings (' +
+    'id INTEGER PRIMARY KEY,' +
+    'sessions_target INTEGER,' +
+    'updated_at INTEGER' +
+  ')';
+
+export const SQL_CREATE_TREND_PART_GOALS: string =
+  'CREATE TABLE IF NOT EXISTS trend_part_goals (' +
+    'part_key TEXT PRIMARY KEY,' +
+    'work_sets_target INTEGER,' +
+    'updated_at INTEGER' +
   ')';

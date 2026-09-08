@@ -4,13 +4,16 @@ import { CsvSetRow, setCsvHeader, setToCsvRow } from '../common/WorkoutLogic';
 import { WorkoutDatabase } from './WorkoutDatabase';
 
 class JsonDump {
-  version: number = 1;
+  version: number = 2;
   exportedAt: number = 0;
   exercises: relationalStore.ValuesBucket[] = [];
   workout_days: relationalStore.ValuesBucket[] = [];
   day_exercises: relationalStore.ValuesBucket[] = [];
   workout_sets: relationalStore.ValuesBucket[] = [];
   body_metrics: relationalStore.ValuesBucket[] = [];
+  watched_exercises: relationalStore.ValuesBucket[] = [];
+  trend_settings: relationalStore.ValuesBucket[] = [];
+  trend_part_goals: relationalStore.ValuesBucket[] = [];
 }
 
 export class ExportService {
@@ -39,6 +42,18 @@ export class ExportService {
     dump.body_metrics = await ExportService.readBuckets(
       'SELECT date, weight_kg, note, created_at FROM body_metrics',
       ['date', 'weight_kg', 'note', 'created_at']
+    );
+    dump.watched_exercises = await ExportService.readBuckets(
+      'SELECT exercise_id, sort_order, created_at FROM watched_exercises',
+      ['exercise_id', 'sort_order', 'created_at']
+    );
+    dump.trend_settings = await ExportService.readBuckets(
+      'SELECT id, sessions_target, updated_at FROM trend_settings',
+      ['id', 'sessions_target', 'updated_at']
+    );
+    dump.trend_part_goals = await ExportService.readBuckets(
+      'SELECT part_key, work_sets_target, updated_at FROM trend_part_goals',
+      ['part_key', 'work_sets_target', 'updated_at']
     );
     return JSON.stringify(dump);
   }
@@ -101,6 +116,11 @@ export class ExportService {
       await ExportService.replaceTable(store, 'workout_days', dump.workout_days);
       await ExportService.replaceTable(store, 'body_metrics', dump.body_metrics);
       await ExportService.replaceTable(store, 'exercises', dump.exercises);
+      // v1 导出的 JSON 没有这三张表，字段在解析后是 undefined，
+      // replaceTable 会直接跳过，保留本机现有的趋势配置，视为空配置兼容。
+      await ExportService.replaceTable(store, 'watched_exercises', dump.watched_exercises);
+      await ExportService.replaceTable(store, 'trend_settings', dump.trend_settings);
+      await ExportService.replaceTable(store, 'trend_part_goals', dump.trend_part_goals);
       store.commit();
     } catch (err) {
       store.rollBack();

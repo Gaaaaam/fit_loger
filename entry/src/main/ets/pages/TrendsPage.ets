@@ -1,7 +1,21 @@
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { router } from '@kit.ArkUI';
 import { TrendSparkline } from '../components/TrendSparkline';
-import { digestQueryStart, buildTrendDigest, formatTrendNumber, liftChangeText, liftMetricLabel,
-  KeyLiftSeries, PartVolumeRow, TrendDigest, TrendPoint, TrendSetRow, TrendWeightRow, weightDeltaText } from '../common/TrendLogic';
-import { todayString } from '../common/DateUtil';
+import {
+  buildTrendDigest,
+  chartFromDate,
+  KeyLiftSeries,
+  liftChangeText,
+  liftMetricLabel,
+  PartGoalProgress,
+  TrendDigest,
+  TrendInsight,
+  TrendPreferences,
+  TrendSetRow,
+  TrendWeightRow,
+  weightDeltaText
+} from '../common/TrendLogic';
+import { addDays, isoWeekStart, todayString } from '../common/DateUtil';
 import { WorkoutRepository } from '../db/WorkoutRepository';
 import { partName } from '../model/types';
 
@@ -10,6 +24,7 @@ export struct TrendsPage {
   @Consume('calRefresh') @Watch('onRefreshStamp') refreshStamp: number = 0;
   @State rangeKind: string = '12';
   @State digest: TrendDigest = new TrendDigest();
+  @State prefs: TrendPreferences = new TrendPreferences();
 
   aboutToAppear(): void {
     this.reload();
@@ -21,13 +36,16 @@ export struct TrendsPage {
 
   private async reload(): Promise<void> {
     const today: string = todayString();
-    const fromDate: string = digestQueryStart(today, this.rangeKind);
     try {
+      this.prefs = await WorkoutRepository.loadTrendPreferences();
+      const fromDate: string = chartFromDate(today, this.rangeKind);
       const rows: TrendSetRow[] = await WorkoutRepository.loadTrendSets(fromDate, today);
       const weights: TrendWeightRow[] = await WorkoutRepository.loadTrendWeights(today);
-      this.digest = buildTrendDigest(rows, weights, today, this.rangeKind);
+      this.digest = buildTrendDigest(rows, weights, today, this.rangeKind, this.prefs);
     } catch (err) {
+      hilog.error(0xF170, 'TrendsPage', 'reload failed');
       this.digest = new TrendDigest();
+      this.prefs = new TrendPreferences();
     }
   }
 
@@ -39,38 +57,37 @@ export struct TrendsPage {
     this.reload();
   }
 
-  private valuesOf(points: TrendPoint[]): number[] {
-    const vals: number[] = [];
-    for (let i = 0; i < points.length; i++) {
-      vals.push(points[i].value);
-    }
-    return vals;
+  private openSettings(): void {
+    router.pushUrl({ url: 'pages/TrendSettingsPage' }).catch(() => {
+      hilog.error(0xF170, 'TrendsPage', 'failed to open settings');
+    });
   }
 
-  private volumeMax(): number {
-    let max: number = 1;
-    for (let i = 0; i < this.digest.parts.length; i++) {
-      const row: PartVolumeRow = this.digest.parts[i];
-      if (row.thisWeek > max) {
-        max = row.thisWeek;
-      }
-      if (row.avg4 > max) {
-        max = row.avg4;
-      }
+  private openDetail(exerciseId: string): void {
+    if (exerciseId.length === 0) {
+      return;
     }
-    return max;
+    router.pushUrl({
+      url: 'pages/TrendExerciseDetailPage',
+      params: { exerciseId: exerciseId, rangeKind: this.rangeKind }
+    }).catch(() => {
+      hilog.error(0xF170, 'TrendsPage', 'failed to open exercise detail');
+    });
   }
 
-  private barPercent(value: number): string {
-    const pct: number = (value / this.volumeMax()) * 100;
-    if (pct < 0) {
-      return '0%';
+  private insightText(): string {
+    const insight: TrendInsight = this.digest.insight;
+    if (insight.kind === 'part_goal') {
+      return `${partName(insight.partKey)}本周还差 ${insight.remaining} 组正式组`;
     }
-    return `${pct}%`;
+    return insight.message;
   }
 
-  private belowAvg(row: PartVolumeRow): boolean {
-    return row.thisWeek + 0.05 < row.avg4;
+  private weekGoalTitle(): string {
+    const today: string = todayString();
+    const start: string = isoWeekStart(today);
+    const end: string = addDays(start, 6);
+    return `本周目标 · ${start.slice(5).replace('-', '/')}–${end.slice(5).replace('-', '/')}`;
   }
 
   @Builder
@@ -89,20 +106,74 @@ export struct TrendsPage {
   }
 
   @Builder
-  summaryCell(label: string, value: string) {
-    Column() {
-      Text(label)
+  sectionHeader(title: string, showSettings: boolean) {
+    Row() {
+      Text(title)
+        .fontSize(14)
+        .fontColor($r('app.color.text_secondary'))
+        .layoutWeight(1)
+      if (showSettings) {
+        Text('设置')
+          .fontSize(13)
+          .fontColor($r('app.color.accent'))
+          .onClick(() => {
+            this.openSettings();
+          })
+      }
+    }
+    .width('100%')
+    .margin({ top: 20, bottom: 8 })
+  }
+
+  @Builder
+  insightCard() {
+    if (this.digest.insight.kind !== 'none') {
+      Row() {
+        Text(this.insightText())
+          .fontSize(14)
+          .fontColor($r('app.color.text_on_accent'))
+          .layoutWeight(1)
+        if (this.digest.insight.kind === 'setup') {
+          Text('去设置')
+            .fontSize(13)
+            .fontColor($r('app.color.text_on_accent'))
+            .onClick(() => {
+              this.openSettings();
+            })
+        } else if (this.digest.insight.kind === 'stall' || this.digest.insight.kind === 'progress') {
+          Text('查看')
+            .fontSize(13)
+            .fontColor($r('app.color.text_on_accent'))
+            .onClick(() => {
+              this.openDetail(this.digest.insight.exerciseId);
+            })
+        }
+      }
+      .width('100%')
+      .padding(14)
+      .backgroundColor($r('app.color.accent'))
+      .borderRadius(16)
+      .margin({ top: 16 })
+    }
+  }
+
+  @Builder
+  partGoalRow(row: PartGoalProgress) {
+    Row() {
+      Text(partName(row.partKey))
+        .fontSize(14)
+        .fontColor($r('app.color.text_primary'))
+        .width(48)
+      Text(`${row.done} / ${row.target} 组`)
+        .fontSize(14)
+        .fontColor(row.done >= row.target ? $r('app.color.accent') : $r('app.color.text_primary'))
+        .layoutWeight(1)
+      Text(row.done >= row.target ? '已达标' : `还差 ${row.target - row.done}`)
         .fontSize(12)
         .fontColor($r('app.color.text_secondary'))
-      Text(value)
-        .fontSize(16)
-        .fontWeight(FontWeight.Medium)
-        .fontColor($r('app.color.text_primary'))
-        .margin({ top: 4 })
-        .maxLines(2)
     }
-    .layoutWeight(1)
-    .alignItems(HorizontalAlign.Start)
+    .width('100%')
+    .margin({ bottom: 8 })
   }
 
   @Builder
@@ -124,44 +195,13 @@ export struct TrendsPage {
         .fontColor($r('app.color.text_secondary'))
         .width('100%')
         .margin({ top: 2, bottom: 6 })
-      TrendSparkline({ values: this.valuesOf(lift.points) })
+      TrendSparkline({ points: lift.points })
     }
     .width('100%')
     .margin({ bottom: 12 })
-  }
-
-  @Builder
-  partBlock(row: PartVolumeRow) {
-    Column() {
-      Row() {
-        Text(partName(row.partKey))
-          .fontSize(14)
-          .fontColor($r('app.color.text_primary'))
-          .width(40)
-        Column() {
-          Column()
-            .width(this.barPercent(row.thisWeek))
-            .height(8)
-            .borderRadius(4)
-            .backgroundColor($r('app.color.accent'))
-        }
-        .layoutWeight(1)
-        .margin({ left: 8, right: 8 })
-        .alignItems(HorizontalAlign.Start)
-        Text(`${row.thisWeek}`)
-          .fontSize(14)
-          .fontColor($r('app.color.text_primary'))
-      }
-      .width('100%')
-      Text(this.belowAvg(row) ? `近4周均值 ${formatTrendNumber(row.avg4)} · 低于近 4 周` :
-        `近4周均值 ${formatTrendNumber(row.avg4)}`)
-        .fontSize(12)
-        .fontColor($r('app.color.text_secondary'))
-        .width('100%')
-        .margin({ top: 4, left: 48 })
-    }
-    .width('100%')
-    .margin({ bottom: 10 })
+    .onClick(() => {
+      this.openDetail(lift.exerciseId);
+    })
   }
 
   build() {
@@ -179,37 +219,65 @@ export struct TrendsPage {
           this.rangeChip('全部', 'all')
         }
         .width('100%')
-        .margin({ top: 16, bottom: 16 })
+        .margin({ top: 16 })
 
-        Text('本周')
-          .fontSize(14)
-          .fontColor($r('app.color.text_secondary'))
+        this.insightCard()
+
+        this.sectionHeader(this.weekGoalTitle(), true)
+
+        Column() {
+          Row() {
+            Text('训练次数')
+              .fontSize(14)
+              .fontColor($r('app.color.text_primary'))
+              .layoutWeight(1)
+            Text(this.digest.weekGoal.sessionsTarget === null ? `${this.digest.weekGoal.sessionsDone} 次` :
+              `${this.digest.weekGoal.sessionsDone} / ${this.digest.weekGoal.sessionsTarget} 次`)
+              .fontSize(14)
+              .fontColor($r('app.color.text_primary'))
+          }
           .width('100%')
-          .margin({ bottom: 8 })
+          .margin({ bottom: this.digest.weekGoal.parts.length > 0 ? 10 : 0 })
 
-        Row() {
-          this.summaryCell('训练', `${this.digest.sessions} 次`)
-          this.summaryCell('正式组', `${this.digest.workSets}`)
-          this.summaryCell('体重', weightDeltaText(this.digest))
+          if (this.digest.weekGoal.parts.length > 0) {
+            ForEach(this.digest.weekGoal.parts, (row: PartGoalProgress) => {
+              this.partGoalRow(row)
+            }, (row: PartGoalProgress) => row.partKey)
+          }
+
+          if (this.digest.weekGoal.sessionsTarget === null && this.digest.weekGoal.parts.length === 0) {
+            Text('还没有设置每周目标，去设置一下')
+              .fontSize(13)
+              .fontColor($r('app.color.text_secondary'))
+              .width('100%')
+              .margin({ top: 8 })
+              .onClick(() => {
+                this.openSettings();
+              })
+          }
         }
         .width('100%')
         .padding(14)
         .backgroundColor($r('app.color.card_bg'))
         .borderRadius(16)
 
-        Text('力量')
-          .fontSize(14)
-          .fontColor($r('app.color.text_secondary'))
-          .width('100%')
-          .margin({ top: 20, bottom: 8 })
+        this.sectionHeader('关注动作', true)
 
         Column() {
           if (this.digest.lifts.length === 0) {
-            Text('还没有足够的动作记录')
+            Text(this.prefs.watchedExerciseIds.length === 0 ? '还没有足够的训练记录，先去练几组吧' :
+              '关注的动作在当前范围内还没有记录')
               .fontSize(14)
               .fontColor($r('app.color.text_secondary'))
               .width('100%')
           } else {
+            if (this.prefs.watchedExerciseIds.length === 0) {
+              Text('还没有设置关注动作，先自动展示训练最多的动作')
+                .fontSize(12)
+                .fontColor($r('app.color.text_secondary'))
+                .width('100%')
+                .margin({ bottom: 10 })
+            }
             ForEach(this.digest.lifts, (lift: KeyLiftSeries) => {
               this.liftBlock(lift)
             }, (lift: KeyLiftSeries) => lift.exerciseId)
@@ -220,54 +288,28 @@ export struct TrendsPage {
         .backgroundColor($r('app.color.card_bg'))
         .borderRadius(16)
 
-        Text('容量')
-          .fontSize(14)
-          .fontColor($r('app.color.text_secondary'))
-          .width('100%')
-          .margin({ top: 20, bottom: 8 })
+        this.sectionHeader('身体趋势', false)
 
         Column() {
-          if (this.digest.parts.length === 0) {
-            Text('本周还没有正式组')
-              .fontSize(14)
-              .fontColor($r('app.color.text_secondary'))
-              .width('100%')
-          } else {
-            ForEach(this.digest.parts, (row: PartVolumeRow) => {
-              this.partBlock(row)
-            }, (row: PartVolumeRow) => row.partKey)
-          }
-        }
-        .width('100%')
-        .padding(14)
-        .backgroundColor($r('app.color.card_bg'))
-        .borderRadius(16)
-
-        Text('身体')
-          .fontSize(14)
-          .fontColor($r('app.color.text_secondary'))
-          .width('100%')
-          .margin({ top: 20, bottom: 8 })
-
-        Column() {
-          if (this.digest.weights.length === 0) {
+          if (!this.digest.weightTrend.hasWeight) {
             Text('还没有体重记录')
               .fontSize(14)
               .fontColor($r('app.color.text_secondary'))
               .width('100%')
           } else {
-            Text(weightDeltaText(this.digest))
+            Text(weightDeltaText(this.digest.weightTrend))
               .fontSize(14)
               .fontColor($r('app.color.text_primary'))
               .width('100%')
               .margin({ bottom: 8 })
-            TrendSparkline({ values: this.valuesOf(this.digest.weights) })
+            TrendSparkline({ points: this.digest.weightPoints })
           }
         }
         .width('100%')
         .padding(14)
         .backgroundColor($r('app.color.card_bg'))
         .borderRadius(16)
+        .margin({ bottom: 16 })
       }
       .width('100%')
       .padding({ left: 16, right: 16, top: 28, bottom: 16 })

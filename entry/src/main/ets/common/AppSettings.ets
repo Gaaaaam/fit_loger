@@ -45,6 +45,22 @@ export class AppSettings {
     }
   }
 
+  static async loadWorkoutMode(): Promise<string> {
+    if (AppSettings.store === null) {
+      return 'part';
+    }
+    const value: preferences.ValueType = await AppSettings.prefs().get('workout_mode', 'part');
+    return value === 'exercise' ? 'exercise' : 'part';
+  }
+
+  static async saveWorkoutMode(mode: string): Promise<void> {
+    if (AppSettings.store === null) {
+      return;
+    }
+    await AppSettings.prefs().put('workout_mode', mode === 'exercise' ? 'exercise' : 'part');
+    await AppSettings.prefs().flush();
+  }
+
   static async loadHeightCm(): Promise<number> {
     if (AppSettings.store === null) {
       return 0;

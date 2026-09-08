@@ -3,6 +3,8 @@ import { promptAction, router } from '@kit.ArkUI';
 import { BodyPartSheet } from '../components/BodyPartSheet';
 import { CreateExerciseSheet } from '../components/CreateExerciseSheet';
 import { ExerciseSheet } from '../components/ExerciseSheet';
+import { ExerciseCard } from '../components/ExerciseCard';
+import { AppSettings } from '../common/AppSettings';
 import { PartSection } from '../components/PartSection';
 import { displayChineseDate, todayString } from '../common/DateUtil';
 import { parseReps, parseWeight } from '../common/WorkoutLogic';
@@ -18,6 +20,9 @@ interface RouterDateParams {
 @Component
 struct DayDetailPage {
   @State dateStr: string = '';
+  @State workoutMode: string = 'part';
+  @State changingMode: boolean = false;
+  private returningFromPicker: boolean = false;
   @State titleText: string = '';
   @State day: DayModel = new DayModel();
   @State showSheet: boolean = false;
@@ -44,7 +49,86 @@ struct DayDetailPage {
       this.dateStr = todayString();
     }
     this.titleText = displayChineseDate(this.dateStr);
-    this.reload(true);
+    this.initialize();
+  }
+
+  private async initialize(): Promise<void> {
+    this.workoutMode = await AppSettings.loadWorkoutMode();
+    await this.reload();
+  }
+
+  onPageShow(): void {
+    if (this.returningFromPicker) {
+      this.returningFromPicker = false;
+      this.reload();
+    }
+  }
+
+  onBackPress(): boolean {
+    this.leavePage();
+    return true;
+  }
+
+  private async flushPendingSets(): Promise<boolean> {
+    this.getUIContext().getFocusController().clearFocus();
+    try {
+      for (let i = 0; i < this.day.exercises.length; i++) {
+        const sets: SetItem[] = this.day.exercises[i].sets;
+        for (let j = 0; j < sets.length; j++) {
+          const error: string = await WorkoutRepository.writeSet(sets[j]);
+          sets[j].inputError = error;
+          if (error.length > 0) {
+            promptAction.showToast({ message: '请先修正组内的输入', duration: 2000 });
+            return false;
+          }
+        }
+      }
+      return true;
+    } catch (err) {
+      promptAction.showToast({ message: '保存失败，请重试', duration: 2000 });
+      return false;
+    }
+  }
+
+  private async switchMode(mode: string): Promise<void> {
+    if (mode === this.workoutMode || this.changingMode) {
+      return;
+    }
+    this.changingMode = true;
+    try {
+      if (await this.flushPendingSets()) {
+        await AppSettings.saveWorkoutMode(mode);
+        this.workoutMode = mode;
+      }
+    } catch (err) {
+      promptAction.showToast({ message: '切换失败，请重试', duration: 2000 });
+    } finally {
+      this.changingMode = false;
+    }
+  }
+
+  private async leavePage(): Promise<void> {
+    if (await this.flushPendingSets()) {
+      router.back();
+    }
+  }
+
+  private async openAddPicker(): Promise<void> {
+    if (!await this.flushPendingSets()) {
+      return;
+    }
+    if (this.workoutMode === 'exercise') {
+      this.returningFromPicker = true;
+      try {
+        await router.pushUrl({ url: 'pages/MusclePickerPage', params: { date: this.dateStr } });
+      } catch (err) {
+        this.returningFromPicker = false;
+        promptAction.showToast({ message: '打开动作选择失败', duration: 2000 });
+      }
+    } else {
+      this.sheetMode = 'part';
+      this.showSheet = true;
+    }
   }
 
   private hasPlanned(): boolean {
@@ -95,6 +179,14 @@ struct DayDetailPage {
   // 改完数组后必须换成新引用，ForEach / 空态才能立刻刷新，且 ForEach key 不变故不会拆掉正在输入的组。
   private notifyParts(): void {
     this.day.parts = this.day.parts.slice();
+    const flat: ExerciseItem[] = [];
+    for (let i = 0; i < this.day.parts.length; i++) {
+      for (let j = 0; j < this.day.parts[i].exercises.length; j++) {
+        flat.push(this.day.parts[i].exercises[j]);
+      }
+    }
+    flat.sort((a: ExerciseItem, b: ExerciseItem) => a.sortOrder - b.sortOrder || a.id - b.id);
+    this.day.exercises = flat;
   }
 
   private notifyExercises(part: PartItem): void {
@@ -105,14 +197,10 @@ struct DayDetailPage {
     ex.sets = ex.sets.slice();
   }
 
-  private async reload(autoOpenPart: boolean): Promise<void> {
+  private async reload(): Promise<void> {
     try {
       this.day = await WorkoutRepository.loadDay(this.dateStr);
       this.plannedTick++;
-      if (autoOpenPart && this.day.parts.length === 0) {
-        this.sheetMode = 'part';
-        this.showSheet = true;
-      }
     } catch (err) {
       hilog.error(0xF170, 'DayDetailPage', 'reload failed');
       this.day = new DayModel();
@@ -273,9 +361,12 @@ struct DayDetailPage {
   }
 
   private async handleCopy(fromDate: string): Promise<void> {
+    if (!await this.flushPendingSets()) {
+      return;
+    }
     this.showSheet = false;
     await WorkoutRepository.copyDay(fromDate, this.dateStr);
-    await this.reload(false);
+    await this.reload();
   }
 
   private async handleCreated(exerciseId: string): Promise<void> {
@@ -389,7 +480,7 @@ struct DayDetailPage {
           .fontSize(16)
           .fontColor($r('app.color.accent'))
           .onClick(() => {
-            router.back();
+            this.leavePage();
           })
         Blank()
         if (this.day.parts.length > 0) {
@@ -411,6 +502,25 @@ struct DayDetailPage {
         .width('100%')
         .margin({ bottom: 16 })
 
+      Row({ space: 8 }) {
+        Button('按部位')
+          .layoutWeight(1)
+          .height(40)
+          .fontColor(this.workoutMode === 'part' ? $r('app.color.text_on_accent') : $r('app.color.text_primary'))
+          .backgroundColor(this.workoutMode === 'part' ? $r('app.color.accent') : $r('app.color.chip_bg'))
+          .enabled(!this.changingMode)
+          .onClick(() => { this.switchMode('part'); })
+        Button('按动作')
+          .layoutWeight(1)
+          .height(40)
+          .fontColor(this.workoutMode === 'exercise' ? $r('app.color.text_on_accent') : $r('app.color.text_primary'))
+          .backgroundColor(this.workoutMode === 'exercise' ? $r('app.color.accent') : $r('app.color.chip_bg'))
+          .enabled(!this.changingMode)
+          .onClick(() => { this.switchMode('exercise'); })
+      }
+      .width('100%')
+      .margin({ bottom: 12 })
+
       if (this.day.parts.length === 0) {
         Column() {
           Text('这一天还没有训练记录')
@@ -422,8 +532,7 @@ struct DayDetailPage {
             .fontColor($r('app.color.text_on_accent'))
             .margin({ bottom: 12 })
             .onClick(() => {
-              this.sheetMode = 'part';
-              this.showSheet = true;
+              this.openAddPicker();
             })
           Button('复制上次训练')
             .fontSize(15)
@@ -455,6 +564,7 @@ struct DayDetailPage {
 
         Scroll(this.listScroller) {
           Column() {
+            if (this.workoutMode === 'part') {
           ForEach(this.day.parts, (part: PartItem) => {
               PartSection({
                 part: part,
@@ -483,7 +593,21 @@ struct DayDetailPage {
               })
           }, (part: PartItem) => part.partKey)
 
-            Button('添加部位')
+            } else {
+              ForEach(this.day.exercises, (exercise: ExerciseItem) => {
+                ExerciseCard({
+                  exercise: exercise,
+                  listStamp: this.plannedTick,
+                  onAddSet: (id: number) => { this.handleAddSet(id); },
+                  onDeleteExercise: (id: number) => { this.handleDeleteExercise(id); },
+                  onDeleteSet: (id: number) => { this.handleDeleteSet(id); },
+                  onSetBecameDone: (id: string, item: SetItem) => { this.handleBecameDone(id, item); },
+                  onStatusChanged: () => { this.plannedTick++; }
+                })
+              }, (exercise: ExerciseItem) => `${exercise.id}`)
+            }
+
+            Button(this.workoutMode === 'part' ? '添加部位' : '添加动作')
               .fontSize(15)
               .fontColor($r('app.color.accent'))
               .backgroundColor($r('app.color.accent_soft'))
@@ -491,9 +615,7 @@ struct DayDetailPage {
               .height(44)
               .margin({ bottom: 24 })
               .onClick(() => {
-                this.getUIContext().getFocusController().clearFocus();
-                this.sheetMode = 'part';
-                this.showSheet = true;
+                this.openAddPicker();
               })
           }.width('100%')
         }

@@ -1,0 +1,18 @@
+FitLoger anatomical muscle map — adapted asset
+
+This adapted model is provided under Creative Commons Attribution-ShareAlike 4.0 International:
+https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+Original anatomical sources:
+BodyParts3D, (c) The Database Center for Life Science, CC Attribution-Share Alike 2.1 Japan.
+https://creativecommons.org/licenses/by-sa/2.1/jp/legalcode
+Z-Anatomy — The libre 3D atlas of anatomy, by Gauthier Kervyn and contributors, CC BY-SA 4.0.
+https://github.com/Z-Anatomy/Models-of-human-anatomy
+
+Intermediate mesh preparation/alignment: Johan Bellander / BodyExplorer.
+https://github.com/JohanBellander/BodyExplorer
+
+FitLoger changes: filtering, coordinate normalization, decimation, training-region
+grouping, source-derived cranium shell, and neutral materials. Exact source hashes
+and anatomical structure names are in muscle_manifest.json. See ATTRIBUTION.md
+for rebuild instructions. These notices apply to model assets, not the app code.
