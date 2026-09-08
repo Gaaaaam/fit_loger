@@ -5,6 +5,7 @@ import {
   parseWeight,
   parseReps,
   inheritFromPreviousSet,
+  insertIndexBySortOrder,
   statusAfterEdit,
   toggleSetStatus,
   isWeightPr,
@@ -44,6 +45,8 @@ assert.deepEqual(parseWeight('  '), { ok: true, value: null, error: '' });
 assert.deepEqual(parseWeight('60'), { ok: true, value: 60, error: '' });
 assert.deepEqual(parseWeight('12.5'), { ok: true, value: 12.5, error: '' });
 assert.equal(parseWeight('.').ok, false);
+assert.equal(parseWeight('12.').ok, false);
+assert.deepEqual(parseWeight('12.5'), { ok: true, value: 12.5, error: '' });
 assert.equal(parseWeight('-1').ok, false);
 assert.deepEqual(parseReps(''), { ok: true, value: null, error: '' });
 assert.deepEqual(parseReps('8'), { ok: true, value: 8, error: '' });
@@ -60,6 +63,12 @@ assert.deepEqual(
   { weight: 80, reps: 3 }
 );
 assert.deepEqual(inheritFromPreviousSet(null, null), { weight: null, reps: null });
+assert.deepEqual(
+  inheritFromPreviousSet({ weight: null, reps: null }, { weight: 80, reps: 5 }),
+  { weight: 80, reps: 5 }
+);
+assert.equal(insertIndexBySortOrder([0, 2], 1), 1);
+assert.equal(insertIndexBySortOrder([0, 1], 2), 2);
 
 // --- status machine ---
 const edited = statusAfterEdit('planned', 1700000000000);

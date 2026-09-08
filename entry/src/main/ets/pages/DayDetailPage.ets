@@ -8,7 +8,7 @@ import { ExerciseInfoView } from '../components/ExerciseInfoView';
 import { ExerciseSheet } from '../components/ExerciseSheet';
 import { PartSection } from '../components/PartSection';
 import { displayChineseDate, todayString } from '../common/DateUtil';
-import { parseReps, parseWeight, ParseResult } from '../common/WorkoutLogic';
+import { parseReps, parseWeight, ParseResult, insertIndexBySortOrder } from '../common/WorkoutLogic';
 import { WorkoutRepository } from '../db/WorkoutRepository';
 import { DayModel, ExerciseItem, PartItem, PrResult, RecentDayInfo, SetItem } from '../model/DayModels';
 import { WorkoutViewMode } from '../model/muscleTypes';
@@ -253,7 +253,12 @@ struct DayDetailPage {
     this.undoItem.id = newId;
     const ex: ExerciseItem | null = this.findExercise(this.undoExerciseRowId);
     if (ex !== null) {
-      ex.sets.push(this.undoItem);
+      const orders: number[] = [];
+      for (let i = 0; i < ex.sets.length; i++) {
+        orders.push(ex.sets[i].sortOrder);
+      }
+      const at: number = insertIndexBySortOrder(orders, this.undoItem.sortOrder);
+      ex.sets.splice(at, 0, this.undoItem);
       this.notifySets(ex);
       this.plannedTick++;
     }
@@ -427,7 +432,11 @@ struct DayDetailPage {
 
   private async handleCopy(fromDate: string): Promise<void> {
     this.showSheet = false;
-    await WorkoutRepository.copyDay(fromDate, this.dateStr);
+    const copied: boolean = await WorkoutRepository.copyDay(fromDate, this.dateStr);
+    if (!copied) {
+      promptAction.showToast({ message: '当天已有动作，未复制', duration: 2000 });
+      return;
+    }
     await this.reload();
   }
 

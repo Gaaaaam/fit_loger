@@ -136,7 +136,7 @@ export function parseWeight(text: string): ParseResult {
     result.error = '';
     return result;
   }
-  if (trimmed === '.' || trimmed === '-') {
+  if (trimmed === '.' || trimmed === '-' || trimmed.charAt(trimmed.length - 1) === '.') {
     result.ok = false;
     result.value = null;
     result.error = '重量无效';
@@ -186,17 +186,28 @@ export function parseReps(text: string): ParseResult {
 export function inheritFromPreviousSet(previousInSession: WeightReps | null,
   lastSessionFirstWork: WeightReps | null): WeightReps {
   const result: WeightReps = new WeightReps();
-  if (previousInSession !== null) {
-    result.weight = previousInSession.weight;
-    result.reps = previousInSession.reps;
+  const previous: WeightReps | null = previousInSession;
+  if (previous !== null && (previous.weight !== null || previous.reps !== null)) {
+    result.weight = previous.weight;
+    result.reps = previous.reps;
     return result;
   }
-  if (lastSessionFirstWork !== null) {
-    result.weight = lastSessionFirstWork.weight;
-    result.reps = lastSessionFirstWork.reps;
+  const lastWork: WeightReps | null = lastSessionFirstWork;
+  if (lastWork !== null && (lastWork.weight !== null || lastWork.reps !== null)) {
+    result.weight = lastWork.weight;
+    result.reps = lastWork.reps;
     return result;
   }
   return result;
+}
+
+export function insertIndexBySortOrder(sortOrders: number[], newSort: number): number {
+  for (let i = 0; i < sortOrders.length; i++) {
+    if (sortOrders[i] > newSort) {
+      return i;
+    }
+  }
+  return sortOrders.length;
 }
 
 export function statusAfterEdit(currentStatus: string, nowMs: number): StatusChange {

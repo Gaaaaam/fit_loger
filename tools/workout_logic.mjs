@@ -38,7 +38,7 @@ export function parseWeight(text) {
   if (trimmed.length === 0) {
     return { ok: true, value: null, error: '' };
   }
-  if (trimmed === '.' || trimmed === '-') {
+  if (trimmed === '.' || trimmed === '-' || trimmed.charAt(trimmed.length - 1) === '.') {
     return { ok: false, value: null, error: '重量无效' };
   }
   const value = Number(trimmed);
@@ -63,14 +63,27 @@ export function parseReps(text) {
   return { ok: true, value: value, error: '' };
 }
 
+function hasInheritValues(set) {
+  return set !== null && (set.weight !== null || set.reps !== null);
+}
+
 export function inheritFromPreviousSet(previousInSession, lastSessionFirstWork) {
-  if (previousInSession !== null) {
+  if (hasInheritValues(previousInSession)) {
     return { weight: previousInSession.weight, reps: previousInSession.reps };
   }
-  if (lastSessionFirstWork !== null) {
+  if (hasInheritValues(lastSessionFirstWork)) {
     return { weight: lastSessionFirstWork.weight, reps: lastSessionFirstWork.reps };
   }
   return { weight: null, reps: null };
+}
+
+export function insertIndexBySortOrder(sortOrders, newSort) {
+  for (let i = 0; i < sortOrders.length; i++) {
+    if (sortOrders[i] > newSort) {
+      return i;
+    }
+  }
+  return sortOrders.length;
 }
 
 export function statusAfterEdit(currentStatus, nowMs) {

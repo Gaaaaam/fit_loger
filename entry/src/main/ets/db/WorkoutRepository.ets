@@ -226,7 +226,7 @@ export class WorkoutRepository {
       'SELECT d.date AS date FROM workout_days d ' +
       'INNER JOIN day_exercises e ON e.day_id = d.id ' +
       'INNER JOIN workout_sets s ON s.day_exercise_id = e.id ' +
-      'WHERE e.exercise_id = ? AND d.date < ? AND s.status = \'done\' ' +
+      'WHERE e.exercise_id = ? AND d.date < ? AND s.status = \'done\' AND s.is_warmup = 0 ' +
       'ORDER BY d.date DESC LIMIT 1';
     const dateRs: relationalStore.ResultSet = await store.querySql(dateSql, [exerciseId, beforeDate]);
     if (!dateRs.goToFirstRow()) {
@@ -239,7 +239,7 @@ export class WorkoutRepository {
       'SELECT s.weight AS weight, s.reps AS reps FROM workout_sets s ' +
       'INNER JOIN day_exercises e ON e.id = s.day_exercise_id ' +
       'INNER JOIN workout_days d ON d.id = e.day_id ' +
-      'WHERE e.exercise_id = ? AND d.date = ? AND s.status = \'done\' ' +
+      'WHERE e.exercise_id = ? AND d.date = ? AND s.status = \'done\' AND s.is_warmup = 0 ' +
       'ORDER BY s.sort_order, s.id';
     const setRs: relationalStore.ResultSet = await store.querySql(setSql, [exerciseId, lastDate]);
     const sets: HintSet[] = [];
@@ -360,7 +360,7 @@ export class WorkoutRepository {
       }
     }
     prevRs.close();
-    if (previous !== null) {
+    if (previous !== null && (previous.weight !== null || previous.reps !== null)) {
       return inheritFromPreviousSet(previous, null);
     }
     const lastSql: string =
@@ -562,10 +562,10 @@ export class WorkoutRepository {
     return list;
   }
 
-  static async copyDay(fromDate: string, toDate: string): Promise<void> {
+  static async copyDay(fromDate: string, toDate: string): Promise<boolean> {
     const target: DayModel = await WorkoutRepository.loadDay(toDate);
-    if (target.parts.length > 0) {
-      return;
+    if (target.parts.length > 0 || target.exercises.length > 0) {
+      return false;
     }
     const source: DayModel = await WorkoutRepository.loadDay(fromDate);
     const ordered: ExerciseItem[] = [];
@@ -598,6 +598,7 @@ export class WorkoutRepository {
         await WorkoutRepository.insertSetCopy(newExId, copy);
       }
     }
+    return true;
   }
 
   static async clearPlannedSets(date: string): Promise<void> {

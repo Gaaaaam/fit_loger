@@ -1,6 +1,7 @@
 import { relationalStore } from '@kit.ArkData';
 import { fileIo } from '@kit.CoreFileKit';
 import { CsvSetRow, setCsvHeader, setToCsvRow } from '../common/WorkoutLogic';
+import { seedBuiltinExercises } from './ExerciseSeed';
 import { WorkoutDatabase } from './WorkoutDatabase';
 
 class JsonDump {
@@ -101,6 +102,7 @@ export class ExportService {
       await ExportService.replaceTable(store, 'workout_days', dump.workout_days);
       await ExportService.replaceTable(store, 'body_metrics', dump.body_metrics);
       await ExportService.replaceTable(store, 'exercises', dump.exercises);
+      await seedBuiltinExercises(store);
       store.commit();
     } catch (err) {
       store.rollBack();
@@ -141,6 +143,9 @@ export class ExportService {
   private static async replaceTable(store: relationalStore.RdbStore, table: string,
     rows: relationalStore.ValuesBucket[]): Promise<void> {
     if (rows === undefined || rows === null) {
+      return;
+    }
+    if (table === 'exercises' && rows.length === 0) {
       return;
     }
     await store.executeSql(`DELETE FROM ${table}`, []);
