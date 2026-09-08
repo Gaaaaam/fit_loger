@@ -195,7 +195,16 @@ export struct TrendsPage {
         .fontColor($r('app.color.text_secondary'))
         .width('100%')
         .margin({ top: 2, bottom: 6 })
-      TrendSparkline({ points: lift.points })
+      if (lift.insufficientData || lift.points.length === 0) {
+        Text('数据不足：还没有足够的可比较正式组')
+          .fontSize(12)
+          .fontColor($r('app.color.text_secondary'))
+          .width('100%')
+          .margin({ bottom: 6 })
+      }
+      if (lift.points.length > 0) {
+        TrendSparkline({ points: lift.points })
+      }
     }
     .width('100%')
     .margin({ bottom: 12 })

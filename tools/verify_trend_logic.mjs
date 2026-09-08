@@ -348,6 +348,18 @@ assert.equal(emptyDigest.weightTrend.hasWeight, false);
 assert.equal(emptyDigest.lifts.length, 0);
 assert.equal(emptyDigest.insight.kind, 'setup');
 
+const highRirWatched = [
+  row({ date: '2026-08-18', rir: 3 }),
+  row({ date: '2026-08-25', rir: 3 }),
+  row({ date: '2026-09-01', rir: 3 })
+];
+const watchedInsufficient = buildTrendDigest(highRirWatched, [], today, '12', prefs({
+  watchedExerciseIds: ['chest_bb_bench']
+}));
+assert.equal(watchedInsufficient.lifts.length, 1, 'watched compound with no eligible e1RM must still appear');
+assert.equal(watchedInsufficient.lifts[0].insufficientData, true);
+assert.equal(watchedInsufficient.lifts[0].points.length, 0);
+
 // ---- buildExerciseTrendDetail ----
 const compoundMeta = {
   exerciseId: 'chest_bb_bench', name: '杠铃卧推', partKey: 'chest', movementPattern: 'push', isBodyweight: 0
