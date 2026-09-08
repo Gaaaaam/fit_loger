@@ -255,7 +255,8 @@ export function buildLiftSeries(rows, pick) {
     metric: 'top_weight',
     points: [],
     firstValue: 0,
-    lastValue: 0
+    lastValue: 0,
+    insufficientData: false
   };
   const days = aggregateDays(rows, pick.exerciseId);
   const metric = liftMetricFor(pick.isBodyweight, pick.isCompound);
@@ -271,6 +272,9 @@ export function buildLiftSeries(rows, pick) {
   if (series.points.length > 0) {
     series.firstValue = series.points[0].value;
     series.lastValue = series.points[series.points.length - 1].value;
+  }
+  if (metric === 'e1rm' && series.points.length < 2) {
+    series.insufficientData = true;
   }
   return series;
 }
@@ -515,9 +519,10 @@ export function buildTrendDigest(rows, weights, today, rangeKind, prefs) {
   const chartFrom = chartFromDate(today, rangeKind);
   const chartRows = filterSetsFrom(rows, chartFrom, today);
   const picks = resolveWatchedLifts(chartRows, prefs.watchedExerciseIds, 3);
+  const pinned = prefs.watchedExerciseIds.length > 0;
   for (let i = 0; i < picks.length; i++) {
     const series = buildLiftSeries(chartRows, picks[i]);
-    if (series.points.length === 0) {
+    if (series.points.length === 0 && !pinned) {
       continue;
     }
     digest.lifts.push(series);

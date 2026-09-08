@@ -53,6 +53,7 @@ export class KeyLiftSeries {
   points: TrendPoint[] = [];
   firstValue: number = 0;
   lastValue: number = 0;
+  insufficientData: boolean = false;
 }
 
 export class PartGoalRow {
@@ -369,6 +370,9 @@ export function buildLiftSeries(rows: TrendSetRow[], pick: KeyLiftPick): KeyLift
     series.firstValue = series.points[0].value;
     series.lastValue = series.points[series.points.length - 1].value;
   }
+  if (metric === 'e1rm' && series.points.length < 2) {
+    series.insufficientData = true;
+  }
   return series;
 }
 
@@ -644,9 +648,12 @@ export function buildTrendDigest(rows: TrendSetRow[], weights: TrendWeightRow[],
   const chartFrom: string = chartFromDate(today, rangeKind);
   const chartRows: TrendSetRow[] = filterSetsFrom(rows, chartFrom, today);
   const picks: KeyLiftPick[] = resolveWatchedLifts(chartRows, prefs.watchedExerciseIds, 3);
+  const pinned: boolean = prefs.watchedExerciseIds.length > 0;
   for (let i = 0; i < picks.length; i++) {
     const series: KeyLiftSeries = buildLiftSeries(chartRows, picks[i]);
-    if (series.points.length === 0) {
+    // 自动推荐仍跳过没有可比较点的动作；用户关注的动作必须留下，
+    // 即使 e1RM 点不够，也要在概览上标明数据不足，而不是整行消失。
+    if (series.points.length === 0 && !pinned) {
       continue;
     }
     digest.lifts.push(series);
