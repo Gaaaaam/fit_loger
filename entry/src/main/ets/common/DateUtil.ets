@@ -134,3 +134,15 @@ export function rangeStart(today: string, weeks: number): string {
   }
   return addDays(today, -(weeks * 7 - 1));
 }
+
+// 返回 'YYYY-MM-DD' 距离本地时区纪元的整数天数，用于按真实日期间距
+// 计算图表上两个日期点之间的相对位置（差值即相隔天数），不受时段/DST
+// 影响，因为全程只使用本地日期的午夜时刻。
+export function daysSinceEpoch(dateStr: string): number {
+  const parts: string[] = dateStr.split('-');
+  if (parts.length !== 3) {
+    return 0;
+  }
+  const date: Date = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+  return Math.floor(date.getTime() / 86400000);
+}

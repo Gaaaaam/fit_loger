@@ -41,6 +41,7 @@ export class PartItem {
 export class DayModel {
   date: string = '';
   dayId: number = 0;
+  exercises: ExerciseItem[] = [];
   parts: PartItem[] = [];
 }
 

@@ -1,0 +1,1613 @@
+{
+  "source": "JohanBellander/BodyExplorer (BodyParts3D and Z-Anatomy)",
+  "sourceSha256": {
+    "anatomy.glb": "6e84529b60b64cc8f8d5cef665fda932e359e828b66d0c2dd44ec1bd9d0bd01f",
+    "skeleton.glb": "894ed0e98a266b727a7e290f0d4123bb087c4afe84a48d55af71d1a351ca99a5"
+  },
+  "structures": [
+    {
+      "structure": "abdominal part of left pectoralis major",
+      "node": "pick_chest_L"
+    },
+    {
+      "structure": "abdominal part of right pectoralis major",
+      "node": "pick_chest_R"
+    },
+    {
+      "structure": "abductor digiti minimi of left foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "abductor digiti minimi of left hand",
+      "node": "base_connective"
+    },
+    {
+      "structure": "abductor digiti minimi of right foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "abductor digiti minimi of right hand",
+      "node": "base_connective"
+    },
+    {
+      "structure": "acromial part of left deltoid",
+      "node": "pick_side_delt_L"
+    },
+    {
+      "structure": "acromial part of right deltoid",
+      "node": "pick_side_delt_R"
+    },
+    {
+      "structure": "ascending part of left trapezius",
+      "node": "pick_upper_back_L"
+    },
+    {
+      "structure": "ascending part of right trapezius",
+      "node": "pick_upper_back_R"
+    },
+    {
+      "structure": "clavicular part of left deltoid",
+      "node": "pick_front_delt_L"
+    },
+    {
+      "structure": "clavicular part of left pectoralis major",
+      "node": "pick_chest_L"
+    },
+    {
+      "structure": "clavicular part of right deltoid",
+      "node": "pick_front_delt_R"
+    },
+    {
+      "structure": "clavicular part of right pectoralis major",
+      "node": "pick_chest_R"
+    },
+    {
+      "structure": "descending part of left trapezius",
+      "node": "pick_traps_L"
+    },
+    {
+      "structure": "descending part of right trapezius",
+      "node": "pick_traps_R"
+    },
+    {
+      "structure": "external intercostal muscle",
+      "node": "base_connective"
+    },
+    {
+      "structure": "first lumbrical of left foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "first lumbrical of right foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "first plantar interosseous of left foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "first plantar interosseous of right foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "flexor digiti minimi brevis of left foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "flexor digiti minimi brevis of left hand",
+      "node": "base_connective"
+    },
+    {
+      "structure": "flexor digiti minimi brevis of right foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "flexor digiti minimi brevis of right hand",
+      "node": "base_connective"
+    },
+    {
+      "structure": "flexor retinaculum of left wrist",
+      "node": "base_connective"
+    },
+    {
+      "structure": "flexor retinaculum of right wrist",
+      "node": "base_connective"
+    },
+    {
+      "structure": "fourth lumbrical of left foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "fourth lumbrical of right foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "humeral head of left flexor carpi ulnaris",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "humeral head of left pronator teres",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "humeral head of right flexor carpi ulnaris",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "humeral head of right pronator teres",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "innermost intercostal muscle",
+      "node": "base_connective"
+    },
+    {
+      "structure": "internal intercostal muscle",
+      "node": "base_connective"
+    },
+    {
+      "structure": "lateral head of left flexor hallucis brevis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "lateral head of left gastrocnemius",
+      "node": "pick_calves_L"
+    },
+    {
+      "structure": "lateral head of left triceps brachii",
+      "node": "pick_triceps_L"
+    },
+    {
+      "structure": "lateral head of right flexor hallucis brevis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "lateral head of right gastrocnemius",
+      "node": "pick_calves_R"
+    },
+    {
+      "structure": "lateral head of right triceps brachii",
+      "node": "pick_triceps_R"
+    },
+    {
+      "structure": "left abductor hallucis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left abductor pollicis longus",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left adductor longus",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left adductor magnus",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left anconeus",
+      "node": "pick_triceps_L"
+    },
+    {
+      "structure": "left brachialis",
+      "node": "pick_biceps_L"
+    },
+    {
+      "structure": "left brachioradialis",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left calcaneal tendon",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left coracobrachialis",
+      "node": "pick_biceps_L"
+    },
+    {
+      "structure": "left extensor carpi radialis brevis",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left extensor carpi radialis longus",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left extensor carpi ulnaris",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left extensor carpi ulnaris (2)",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left extensor digiti minimi",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left extensor digitorum",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left extensor hallucis brevis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left extensor hallucis longus",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left extensor indicis",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left extensor pollicis brevis",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left extensor pollicis longus",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left external oblique",
+      "node": "pick_obliques_L"
+    },
+    {
+      "structure": "left fibularis brevis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left fibularis longus",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left flexor carpi radialis",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left flexor digitorum profundus",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left flexor digitorum superficialis",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left flexor digitorum superficialis (2)",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left flexor hallucis longus",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left flexor pollicis longus",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left gluteus maximus",
+      "node": "pick_glute_max_L"
+    },
+    {
+      "structure": "left gluteus medius",
+      "node": "pick_glute_med_L"
+    },
+    {
+      "structure": "left gracilis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left iliocostalis cervicis",
+      "node": "pick_erector_spinae_L"
+    },
+    {
+      "structure": "left iliocostalis lumborum",
+      "node": "pick_erector_spinae_L"
+    },
+    {
+      "structure": "left iliocostalis thoracis",
+      "node": "pick_erector_spinae_L"
+    },
+    {
+      "structure": "left infraspinatus muscle",
+      "node": "pick_upper_back_L"
+    },
+    {
+      "structure": "left interspinalis thoracis",
+      "node": "pick_erector_spinae_L"
+    },
+    {
+      "structure": "left longissimus thoracis",
+      "node": "pick_erector_spinae_L"
+    },
+    {
+      "structure": "left palmaris longus",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left platysma",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left pronator quadratus",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left rectus femoris",
+      "node": "pick_quads_L"
+    },
+    {
+      "structure": "left rhomboid major",
+      "node": "pick_upper_back_L"
+    },
+    {
+      "structure": "left rhomboid minor",
+      "node": "pick_upper_back_L"
+    },
+    {
+      "structure": "left sartorius",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left semimembranosus",
+      "node": "pick_hamstrings_L"
+    },
+    {
+      "structure": "left semispinalis thoracis",
+      "node": "pick_erector_spinae_L"
+    },
+    {
+      "structure": "left semitendinosus",
+      "node": "pick_hamstrings_L"
+    },
+    {
+      "structure": "left serratus anterior",
+      "node": "pick_obliques_L"
+    },
+    {
+      "structure": "left soleus",
+      "node": "pick_calves_L"
+    },
+    {
+      "structure": "left spinalis thoracis",
+      "node": "pick_erector_spinae_L"
+    },
+    {
+      "structure": "left splenius capitis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left sternocleidomastoid",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left sternohyoid",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left supinator",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "left teres major",
+      "node": "pick_upper_back_L"
+    },
+    {
+      "structure": "left teres minor",
+      "node": "pick_upper_back_L"
+    },
+    {
+      "structure": "left tibialis anterior",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left vastus intermedius",
+      "node": "pick_quads_L"
+    },
+    {
+      "structure": "left vastus lateralis",
+      "node": "pick_quads_L"
+    },
+    {
+      "structure": "left vastus medialis",
+      "node": "pick_quads_L"
+    },
+    {
+      "structure": "long head of left biceps brachii",
+      "node": "pick_biceps_L"
+    },
+    {
+      "structure": "long head of left biceps femoris",
+      "node": "pick_hamstrings_L"
+    },
+    {
+      "structure": "long head of left triceps brachii",
+      "node": "pick_triceps_L"
+    },
+    {
+      "structure": "long head of right biceps brachii",
+      "node": "pick_biceps_R"
+    },
+    {
+      "structure": "long head of right biceps femoris",
+      "node": "pick_hamstrings_R"
+    },
+    {
+      "structure": "long head of right triceps brachii",
+      "node": "pick_triceps_R"
+    },
+    {
+      "structure": "medial head of left flexor hallucis brevis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "medial head of left gastrocnemius",
+      "node": "pick_calves_L"
+    },
+    {
+      "structure": "medial head of left triceps brachii",
+      "node": "pick_triceps_L"
+    },
+    {
+      "structure": "medial head of right flexor hallucis brevis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "medial head of right gastrocnemius",
+      "node": "pick_calves_R"
+    },
+    {
+      "structure": "medial head of right triceps brachii",
+      "node": "pick_triceps_R"
+    },
+    {
+      "structure": "oblique head of left adductor hallucis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "oblique head of right adductor hallucis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "opponens digiti minimi of left foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "opponens digiti minimi of left hand",
+      "node": "base_connective"
+    },
+    {
+      "structure": "opponens digiti minimi of right foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "opponens digiti minimi of right hand",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right abductor hallucis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right abductor pollicis longus",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right adductor longus",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right adductor magnus",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right anconeus",
+      "node": "pick_triceps_R"
+    },
+    {
+      "structure": "right brachialis",
+      "node": "pick_biceps_R"
+    },
+    {
+      "structure": "right brachioradialis",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right calcaneal tendon",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right coracobrachialis",
+      "node": "pick_biceps_R"
+    },
+    {
+      "structure": "right extensor carpi radialis brevis",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right extensor carpi radialis longus",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right extensor carpi ulnaris",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right extensor carpi ulnaris (2)",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right extensor digiti minimi",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right extensor digitorum",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right extensor hallucis brevis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right extensor hallucis longus",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right extensor indicis",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right extensor pollicis brevis",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right extensor pollicis longus",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right external oblique",
+      "node": "pick_obliques_R"
+    },
+    {
+      "structure": "right fibularis brevis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right fibularis longus",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right flexor carpi radialis",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right flexor digitorum profundus",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right flexor digitorum superficialis",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right flexor digitorum superficialis (2)",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right flexor hallucis longus",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right flexor pollicis longus",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right gluteus maximus",
+      "node": "pick_glute_max_R"
+    },
+    {
+      "structure": "right gluteus medius",
+      "node": "pick_glute_med_R"
+    },
+    {
+      "structure": "right gracilis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right iliocostalis cervicis",
+      "node": "pick_erector_spinae_R"
+    },
+    {
+      "structure": "right iliocostalis lumborum",
+      "node": "pick_erector_spinae_R"
+    },
+    {
+      "structure": "right iliocostalis thoracis",
+      "node": "pick_erector_spinae_R"
+    },
+    {
+      "structure": "right infraspinatus muscle",
+      "node": "pick_upper_back_R"
+    },
+    {
+      "structure": "right intermediate tendon",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right interspinalis thoracis",
+      "node": "pick_erector_spinae_R"
+    },
+    {
+      "structure": "right longissimus thoracis",
+      "node": "pick_erector_spinae_R"
+    },
+    {
+      "structure": "right palmaris longus",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right platysma",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right pronator quadratus",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right rectus femoris",
+      "node": "pick_quads_R"
+    },
+    {
+      "structure": "right rhomboid major",
+      "node": "pick_upper_back_R"
+    },
+    {
+      "structure": "right rhomboid minor",
+      "node": "pick_upper_back_R"
+    },
+    {
+      "structure": "right sartorius",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right semimembranosus",
+      "node": "pick_hamstrings_R"
+    },
+    {
+      "structure": "right semispinalis thoracis",
+      "node": "pick_erector_spinae_R"
+    },
+    {
+      "structure": "right semitendinosus",
+      "node": "pick_hamstrings_R"
+    },
+    {
+      "structure": "right serratus anterior",
+      "node": "pick_obliques_R"
+    },
+    {
+      "structure": "right soleus",
+      "node": "pick_calves_R"
+    },
+    {
+      "structure": "right spinalis thoracis",
+      "node": "pick_erector_spinae_R"
+    },
+    {
+      "structure": "right splenius capitis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right sternocleidomastoid",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right sternohyoid",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right supinator",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "right teres major",
+      "node": "pick_upper_back_R"
+    },
+    {
+      "structure": "right teres minor",
+      "node": "pick_upper_back_R"
+    },
+    {
+      "structure": "right tibialis anterior",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right vastus intermedius",
+      "node": "pick_quads_R"
+    },
+    {
+      "structure": "right vastus lateralis",
+      "node": "pick_quads_R"
+    },
+    {
+      "structure": "right vastus medialis",
+      "node": "pick_quads_R"
+    },
+    {
+      "structure": "second lumbrical of left foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "second lumbrical of right foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "second plantar interosseous of left foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "second plantar interosseous of right foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "set of dorsal interossei of left hand",
+      "node": "base_connective"
+    },
+    {
+      "structure": "set of dorsal interossei of right hand",
+      "node": "base_connective"
+    },
+    {
+      "structure": "set of lumbricals of left hand",
+      "node": "base_connective"
+    },
+    {
+      "structure": "set of lumbricals of right hand",
+      "node": "base_connective"
+    },
+    {
+      "structure": "set of palmar interossei of left hand",
+      "node": "base_connective"
+    },
+    {
+      "structure": "set of palmar interossei of right hand",
+      "node": "base_connective"
+    },
+    {
+      "structure": "short head of left biceps brachii",
+      "node": "pick_biceps_L"
+    },
+    {
+      "structure": "short head of left biceps femoris",
+      "node": "pick_hamstrings_L"
+    },
+    {
+      "structure": "short head of right biceps brachii",
+      "node": "pick_biceps_R"
+    },
+    {
+      "structure": "short head of right biceps femoris",
+      "node": "pick_hamstrings_R"
+    },
+    {
+      "structure": "spinal part of left deltoid",
+      "node": "pick_rear_delt_L"
+    },
+    {
+      "structure": "spinal part of right deltoid",
+      "node": "pick_rear_delt_R"
+    },
+    {
+      "structure": "sternocostal part of left pectoralis major",
+      "node": "pick_chest_L"
+    },
+    {
+      "structure": "sternocostal part of right pectoralis major",
+      "node": "pick_chest_R"
+    },
+    {
+      "structure": "tendon of right levator palpebrae superioris",
+      "node": "base_connective"
+    },
+    {
+      "structure": "third lumbrical of left foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "third lumbrical of right foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "third plantar interosseous of left foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "third plantar interosseous of right foot",
+      "node": "base_connective"
+    },
+    {
+      "structure": "transverse head of left adductor hallucis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "transverse head of right adductor hallucis",
+      "node": "base_connective"
+    },
+    {
+      "structure": "transverse part of left trapezius",
+      "node": "pick_upper_back_L"
+    },
+    {
+      "structure": "transverse part of right trapezius",
+      "node": "pick_upper_back_R"
+    },
+    {
+      "structure": "ulnar head of left flexor carpi ulnaris",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "ulnar head of left pronator teres",
+      "node": "pick_forearm_L"
+    },
+    {
+      "structure": "ulnar head of right flexor carpi ulnaris",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "ulnar head of right pronator teres",
+      "node": "pick_forearm_R"
+    },
+    {
+      "structure": "left latissimus dorsi",
+      "node": "pick_lats_L"
+    },
+    {
+      "structure": "right latissimus dorsi",
+      "node": "pick_lats_R"
+    },
+    {
+      "structure": "left rectus abdominis",
+      "node": "pick_rectus_abdominis_L"
+    },
+    {
+      "structure": "right rectus abdominis",
+      "node": "pick_rectus_abdominis_R"
+    },
+    {
+      "structure": "left iliotibial tract",
+      "node": "base_connective"
+    },
+    {
+      "structure": "right iliotibial tract",
+      "node": "base_connective"
+    },
+    {
+      "structure": "left posterior layer of thoracolumbar fascia",
+      "node": "pick_erector_spinae_L"
+    },
+    {
+      "structure": "right posterior layer of thoracolumbar fascia",
+      "node": "pick_erector_spinae_R"
+    },
+    {
+      "structure": "left anterior layer of thoracolumbar fascia",
+      "node": "pick_erector_spinae_L"
+    },
+    {
+      "structure": "right anterior layer of thoracolumbar fascia",
+      "node": "pick_erector_spinae_R"
+    },
+    {
+      "structure": "left middle layer of thoracolumbar fascia",
+      "node": "pick_erector_spinae_L"
+    },
+    {
+      "structure": "right middle layer of thoracolumbar fascia",
+      "node": "pick_erector_spinae_R"
+    },
+    {
+      "structure": "body of sternum",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of left big toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of left fourth toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of left index finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of left little finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of left little toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of left middle finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of left ring finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of left second toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of left third toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of left thumb",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of right big toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of right fourth toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of right index finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of right little finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of right little toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of right middle finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of right ring finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of right second toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of right third toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "distal phalanx of right thumb",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "eighth thoracic vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "eleventh thoracic vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "fifth cervical vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "fifth lumbar vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "fifth thoracic vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "first lumbar vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "first thoracic vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "fourth lumbar vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "fourth thoracic vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left calcaneus",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left capitate",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left clavicle",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left cuboid bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left eighth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left eleventh rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left femur",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left fibula",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left fifth metacarpal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left fifth metatarsal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left fifth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left first metacarpal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left first metatarsal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left first rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left fourth metacarpal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left fourth metatarsal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left fourth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left hamate",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left hip bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left humerus",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left intermediate cuneiform bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left lateral cuneiform bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left lunate",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left medial cuneiform bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left ninth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left patella",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left pisiform",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left radius",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left scaphoid",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left scapula",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left second metacarpal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left second metatarsal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left second rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left seventh rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left sixth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left talus",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left tenth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left third metacarpal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left third metatarsal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left third rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left tibia",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left trapezium",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left trapezoid",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left twelfth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "left ulna",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "manubrium",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of left fourth toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of left index finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of left little finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of left little toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of left middle finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of left ring finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of left second toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of left third toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of right fourth toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of right index finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of right little finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of right little toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of right middle finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of right ring finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of right second toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "middle phalanx of right third toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "navicular bone of left foot",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "navicular bone of right foot",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "ninth thoracic vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of left big toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of left fourth toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of left index finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of left little finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of left little toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of left middle finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of left ring finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of left second toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of left third toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of left thumb",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of right big toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of right fourth toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of right index finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of right little finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of right little toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of right middle finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of right ring finger",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of right second toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of right third toe",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "proximal phalanx of right thumb",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right calcaneus",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right capitate",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right clavicle",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right cuboid bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right eighth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right eleventh rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right femur",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right fibula",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right fifth metacarpal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right fifth metatarsal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right fifth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right first metacarpal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right first metatarsal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right first rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right fourth metacarpal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right fourth metatarsal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right fourth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right hamate",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right hip bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right humerus",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right intermediate cuneiform bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right lateral cuneiform bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right lunate",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right medial cuneiform bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right ninth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right patella",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right pisiform",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right radius",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right scaphoid",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right scapula",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right second metacarpal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right second metatarsal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right second rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right seventh rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right sixth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right talus",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right tenth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right third metacarpal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right third metatarsal bone",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right third rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right tibia",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right trapezium",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right trapezoid",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right twelfth rib",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "right ulna",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "second lumbar vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "second thoracic vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "sesamoid bone of left foot",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "sesamoid bone of left foot (2)",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "sesamoid bone of right foot",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "sesamoid bone of right foot (2)",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "seventh cervical vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "seventh thoracic vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "sixth cervical vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "sixth thoracic vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "tenth thoracic vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "third lumbar vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "third thoracic vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "twelfth thoracic vertebra",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "xiphoid process",
+      "node": "base_skeleton"
+    },
+    {
+      "structure": "Source cranium silhouette (convex shell)",
+      "node": "base_head"
+    }
+  ]
+}

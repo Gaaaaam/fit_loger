@@ -57,3 +57,6 @@ material/
 .env.*
 *.local.bak
 build-profile.json5.local.bak
+
+# Local model sources and visual verification
+/.work/

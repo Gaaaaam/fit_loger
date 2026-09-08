@@ -26,6 +26,8 @@ const requiredFiles = [
   'entry/src/main/ets/pages/MinePage.ets',
   'entry/src/main/ets/pages/DayDetailPage.ets',
   'entry/src/main/ets/pages/BodyMetricsPage.ets',
+  'entry/src/main/ets/pages/TrendSettingsPage.ets',
+  'entry/src/main/ets/pages/TrendExerciseDetailPage.ets',
   'entry/src/main/ets/components/MonthCalendar.ets',
   'entry/src/main/ets/components/PartSection.ets',
   'entry/src/main/ets/components/ExerciseCard.ets',
@@ -89,7 +91,14 @@ for (const method of [
   'checkPr',
   'upsertBodyMetric',
   'loadTrendSets',
-  'loadTrendWeights'
+  'loadTrendWeights',
+  'loadTrendSetsForExercise',
+  'loadExerciseMeta',
+  'listExercisesWithHistory',
+  'loadTrendPreferences',
+  'saveSessionsTarget',
+  'savePartGoal',
+  'setWatchedExercises'
 ]) {
   assert(repo.includes(method), `repository missing ${method}`);
 }
@@ -100,18 +109,25 @@ assert(repo.includes("status = 'done'") || repo.includes('status = \\\'done\\\''
 const db = readFileSync(join(root, 'entry/src/main/ets/db/WorkoutDatabase.ets'), 'utf8');
 assert(db.includes('store.version'), 'database must use store.version');
 assert(db.includes('backupBeforeMigrate') || db.includes('.backup('), 'database must backup before migrate');
+assert(db.includes('createTrendSchema'), 'database must create trend preference tables on v2 migrate');
 
 const schema = readFileSync(join(root, 'entry/src/main/ets/db/schemaSql.ets'), 'utf8');
-for (const table of ['exercises', 'workout_days', 'day_exercises', 'workout_sets', 'body_metrics']) {
+for (const table of [
+  'exercises', 'workout_days', 'day_exercises', 'workout_sets', 'body_metrics',
+  'watched_exercises', 'trend_settings', 'trend_part_goals'
+]) {
   assert(schema.includes(table), `schema missing table ${table}`);
 }
 assert(schema.includes('is_warmup'), 'workout_sets must include is_warmup');
 assert(schema.includes("status TEXT NOT NULL DEFAULT 'done'") || schema.includes('status TEXT NOT NULL DEFAULT \\\'done\\\''), 'status default done');
+assert(schema.includes('CURRENT_VERSION: number = 2'), 'schema must be bumped to v2 for trend preferences');
 
 const pages = readFileSync(join(root, 'entry/src/main/resources/base/profile/main_pages.json'), 'utf8');
 assert(pages.includes('pages/MainPage'), 'main_pages should register MainPage first');
 assert(pages.includes('pages/DayDetailPage'), 'main_pages should register DayDetailPage');
 assert(pages.includes('pages/BodyMetricsPage'), 'main_pages should register BodyMetricsPage');
+assert(pages.includes('pages/TrendSettingsPage'), 'main_pages should register TrendSettingsPage');
+assert(pages.includes('pages/TrendExerciseDetailPage'), 'main_pages should register TrendExerciseDetailPage');
 assert(!pages.includes('pages/CalendarPage'), 'CalendarPage is a tab component, not a router page');
 
 const app = readFileSync(join(root, 'AppScope/app.json5'), 'utf8');
@@ -158,24 +174,53 @@ assert(mine.includes('pages/BodyMetricsPage'), 'mine must open daily weight page
 
 const trends = readFileSync(join(root, 'entry/src/main/ets/pages/TrendsPage.ets'), 'utf8');
 assert(!trends.includes('趋势图表稍后提供'), 'trends placeholder should be gone');
-assert(trends.includes('本周'), 'trends must show this-week summary');
-assert(trends.includes('力量'), 'trends must show strength');
-assert(trends.includes('容量'), 'trends must show volume');
-assert(trends.includes('身体'), 'trends must show body');
+assert(trends.includes('本周目标'), 'trends must show goal-based weekly progress');
+assert(trends.includes('关注动作'), 'trends must show watched exercises');
+assert(trends.includes('身体趋势'), 'trends must show body weight trend');
 assert(trends.includes('TrendSparkline'), 'trends must render sparklines');
 assert(trends.includes('calRefresh'), 'trends must refresh with tab stamp');
+assert(trends.includes('loadTrendPreferences'), 'trends must load watched exercises and goals');
+assert(trends.includes('TrendExerciseDetailPage'), 'trends must link into the exercise detail page');
+assert(trends.includes('TrendSettingsPage'), 'trends must link into the settings page');
+assert(!trends.includes('低于近 4 周'), 'mid-week avg-4-week verdicts are retired in favor of goal progress');
+
+const settings = readFileSync(join(root, 'entry/src/main/ets/pages/TrendSettingsPage.ets'), 'utf8');
+assert(settings.includes('每周训练天数'), 'settings must edit weekly session target');
+assert(settings.includes('关注动作'), 'settings must edit watched exercises');
+assert(settings.includes('最多关注 5 个动作'), 'settings must cap watched exercises at 5');
+assert(settings.includes('saveSessionsTarget'), 'settings must persist session target');
+assert(settings.includes('savePartGoal'), 'settings must persist part goals');
+assert(settings.includes('setWatchedExercises'), 'settings must persist watched exercises');
+
+const detail = readFileSync(join(root, 'entry/src/main/ets/pages/TrendExerciseDetailPage.ets'), 'utf8');
+assert(detail.includes('loadTrendSetsForExercise'), 'detail must query a single exercise');
+assert(detail.includes('近期训练'), 'detail must list recent sessions');
+assert(detail.includes('pages/DayDetailPage'), 'detail must jump to the matching training day');
+assert(detail.includes('showLabels'), 'detail chart must show date labels');
+
+const exportService = readFileSync(join(root, 'entry/src/main/ets/db/ExportService.ets'), 'utf8');
+assert(exportService.includes('watched_exercises'), 'JSON export must include watched exercises');
+assert(exportService.includes('trend_settings'), 'JSON export must include trend settings');
+assert(exportService.includes('trend_part_goals'), 'JSON export must include part goals');
+assert(exportService.includes('version: number = 2'), 'JSON dump version must be 2');
 
 const trendLogic = readFileSync(join(root, 'entry/src/main/ets/common/TrendLogic.ets'), 'utf8');
-for (const name of ['isCompoundLift', 'epleyE1rm', 'pickKeyLifts', 'buildLiftSeries', 'partVolumeRows', 'buildTrendDigest']) {
+for (const name of [
+  'isCompoundLift', 'epleyE1rm', 'pickKeyLifts', 'buildLiftSeries', 'buildTrendDigest',
+  'isLiftPerformancePoint', 'resolveWatchedLifts', 'buildWeekGoalProgress', 'buildWeightTrend',
+  'buildTrendInsight', 'datedChartPositions', 'buildExerciseTrendDetail'
+]) {
   assert(trendLogic.includes(name), `TrendLogic missing ${name}`);
 }
 assert(trendLogic.includes("status === 'done'"), 'trend metrics must require done sets');
 assert(trendLogic.includes('isWarmup === 0'), 'trend metrics must exclude warmup');
+assert(!trendLogic.includes('partVolumeRows'), 'avg-4-week volume comparison is retired in favor of goal progress');
 
 const dateUtil = readFileSync(join(root, 'entry/src/main/ets/common/DateUtil.ets'), 'utf8');
 assert(dateUtil.includes('isoWeekStart'), 'DateUtil must expose ISO week start');
 assert(dateUtil.includes('addDays'), 'DateUtil must expose addDays');
 assert(dateUtil.includes('rangeStart'), 'DateUtil must expose rangeStart');
+assert(dateUtil.includes('daysSinceEpoch'), 'DateUtil must expose daysSinceEpoch for date-based chart positions');
 
 const ability = readFileSync(join(root, 'entry/src/main/ets/entryability/EntryAbility.ets'), 'utf8');
 assert(ability.includes('pages/MainPage'), 'EntryAbility must load MainPage');
