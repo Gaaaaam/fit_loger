@@ -19,6 +19,8 @@ export struct PartSection {
   };
   onStatusChanged: () => void = () => {
   };
+  onOpenDetail: (exercise: ExerciseItem) => void = (_exercise: ExerciseItem) => {
+  };
 
   private exerciseKey(exercise: ExerciseItem): string {
     const stamp: number = this.listStamp;
@@ -85,6 +87,9 @@ export struct PartSection {
           },
           onStatusChanged: () => {
             this.onStatusChanged();
+          },
+          onOpenDetail: (item: ExerciseItem) => {
+            this.onOpenDetail(item);
           }
         })
       }, (exercise: ExerciseItem) => this.exerciseKey(exercise))

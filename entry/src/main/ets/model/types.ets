@@ -6,7 +6,8 @@ export type DayDotKind = 'trained' | 'planned' | 'rest' | 'empty';
 
 export type Technique = 'drop' | 'ramp' | 'rest_pause' | 'amrap';
 
-export type Equipment = 'barbell' | 'dumbbell' | 'machine' | 'cable' | 'bodyweight';
+export type Equipment = 'barbell' | 'dumbbell' | 'machine' | 'cable' | 'bodyweight' |
+  'band' | 'kettlebell' | 'ezbar' | 'other';
 
 export type MovementPattern = 'push' | 'pull' | 'hinge' | 'squat' | 'lunge' | 'carry' | 'isolation';
 
@@ -39,7 +40,11 @@ export const EQUIPMENT_OPTIONS: EquipmentInfo[] = [
   { key: 'dumbbell', name: '哑铃' },
   { key: 'machine', name: '器械' },
   { key: 'cable', name: '绳索' },
-  { key: 'bodyweight', name: '自重' }
+  { key: 'bodyweight', name: '自重' },
+  { key: 'band', name: '弹力带' },
+  { key: 'kettlebell', name: '壶铃' },
+  { key: 'ezbar', name: '曲杆' },
+  { key: 'other', name: '其他' }
 ];
 
 export const RIR_OPTIONS: number[] = [0, 1, 3];
@@ -102,6 +107,9 @@ export function toDayDotKind(value: string): DayDotKind {
 }
 
 export function toEquipment(value: string): Equipment {
+  if (value === 'barbell') {
+    return 'barbell';
+  }
   if (value === 'dumbbell') {
     return 'dumbbell';
   }
@@ -114,7 +122,16 @@ export function toEquipment(value: string): Equipment {
   if (value === 'bodyweight') {
     return 'bodyweight';
   }
-  return 'barbell';
+  if (value === 'band') {
+    return 'band';
+  }
+  if (value === 'kettlebell') {
+    return 'kettlebell';
+  }
+  if (value === 'ezbar') {
+    return 'ezbar';
+  }
+  return 'other';
 }
 
 export function equipmentName(key: string): string {

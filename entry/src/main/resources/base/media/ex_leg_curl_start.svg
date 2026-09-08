@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240">
+<title>腿弯举（起始）</title>
+<desc>原创训练示意图，绿色强调目标肌群；姿势与文字说明一致，未描摹来源不明照片。</desc>
+<defs>
+  <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#E2EBED"/><stop offset=".46" stop-color="#AFBFC7"/><stop offset="1" stop-color="#708994"/>
+  </linearGradient>
+  <linearGradient id="muscle" x1="0" y1="0" x2=".8" y2="1">
+    <stop stop-color="#F0F5F4"/><stop offset=".4" stop-color="#CDDADF"/><stop offset="1" stop-color="#91A7B2"/>
+  </linearGradient>
+  <linearGradient id="target" x1="0" y1="0" x2=".85" y2="1">
+    <stop stop-color="#8EE4BC"/><stop offset=".35" stop-color="#39B38D"/><stop offset=".72" stop-color="#168269"/><stop offset="1" stop-color="#0B534D"/>
+  </linearGradient>
+  <linearGradient id="targetDeep" x1="0" y1="0" x2="1" y2=".8">
+    <stop stop-color="#53CBA1"/><stop offset=".65" stop-color="#168269"/><stop offset="1" stop-color="#083D3D"/>
+  </linearGradient>
+  <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#EDD0AD"/><stop offset=".5" stop-color="#C99670"/><stop offset="1" stop-color="#946345"/>
+  </linearGradient>
+  <linearGradient id="kit" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#405764"/><stop offset="1" stop-color="#142C39"/>
+  </linearGradient>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 1 L9 5 L0 9 Z" fill="#168269"/>
+  </marker>
+</defs>
+<ellipse cx="160" cy="124" rx="115" ry="105" fill="#E9F3EF"/>
+<path d="M49 83 A116 106 0 0 1 226 34 M260 166 A116 106 0 0 1 102 221" fill="none" stroke="#C5DDD3" stroke-width="1.3"/>
+<circle cx="52" cy="80" r="3" fill="#52AD8D"/>
+<circle cx="260" cy="168" r="2" fill="#93C7B2"/>
+<rect x="64" y="36" width="200" height="176" rx="8" fill="none" stroke="#3A5561" stroke-width="5"/>
+    <rect x="72" y="198" width="184" height="10" rx="3" fill="#243E4B"/><circle cx="232.88" cy="159.36" r="7" fill="url(#kit)" stroke="#627D88" stroke-width="1.1"/><line x1="232.88" y1="159.36" x2="232.88" y2="143.36" stroke="#168269" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arr)" opacity=".85"/>
+<path d="M 140.67672712528898 129.1189256533434 L 130.67672712528898 85.11892565334341 A 13 13 0 0 1 105.32327287471102 90.88107434665659 L 115.32327287471102 134.8810743466566 A 13 13 0 0 1 140.67672712528898 129.1189256533434 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 127.07390764023046 140.95222614443895 L 185.07390764023046 146.95222614443895 A 9 9 0 0 1 186.92609235976954 129.04777385556105 L 128.92609235976954 123.04777385556103 A 9 9 0 0 1 127.07390764023046 140.95222614443895 Z" fill="url(#target)" stroke="#246E62" stroke-width="1.2" stroke-linejoin="round"/><path d="M 183.09764763063538 144.3699568855718 L 229.97764763063537 165.72995688557182 A 7 7 0 0 1 235.78235236936462 152.9900431144282 L 188.90235236936462 131.6300431144282 A 7 7 0 0 1 183.09764763063538 144.3699568855718 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 113.83974852831078 94.24037720753383 L 143.8397485283108 114.24037720753383 A 7.5 7.5 0 0 1 152.1602514716892 101.75962279246617 L 122.16025147168922 81.75962279246617 A 7.5 7.5 0 0 1 113.83974852831078 94.24037720753383 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 145.31671842700024 113.36656314599949 L 165.31671842700024 123.36656314599949 A 6 6 0 0 1 170.68328157299976 112.63343685400051 L 150.68328157299976 102.63343685400051 A 6 6 0 0 1 145.31671842700024 113.36656314599949 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><circle cx="118" cy="88" r="8" fill="url(#muscle)" stroke="#627D88" stroke-width="1.1"/><circle cx="108" cy="66" r="11" fill="url(#skin)" stroke="#9A7256" stroke-width="1.1"/><path d="M 101 62 Q 108 53 116 63" fill="#253B43"/><circle cx="232.88" cy="159.36" r="5" fill="url(#kit)" stroke="#243E4B" stroke-width="1.1"/>
+</svg>

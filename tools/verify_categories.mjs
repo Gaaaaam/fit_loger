@@ -11,7 +11,9 @@ function load(relative, names, dependencies = {}) {
   runInNewContext(stripTypeScriptTypes(source) + `\nglobalThis.result = { ${names.join(',')} };`, context);
   return context.result;
 }
-const types = load('model/types.ets', ['BODY_PARTS', 'toPartKey', 'partName'], { $r: (name) => name });
+const types = load('model/types.ets', ['BODY_PARTS', 'toPartKey', 'partName', 'toEquipment'], { $r: (name) => name });
+assert.equal(types.toEquipment('band'), 'band');
+assert.equal(types.toEquipment('unknown-kit'), 'other');
 const { EXERCISE_CATALOG } = load('model/exerciseCatalog.ets', ['EXERCISE_CATALOG']);
 assert.equal(types.BODY_PARTS.length, 9);
 for (const part of types.BODY_PARTS) {

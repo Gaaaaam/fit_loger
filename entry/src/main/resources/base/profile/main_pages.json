@@ -2,6 +2,7 @@
   "src": [
     "pages/MainPage",
     "pages/DayDetailPage",
-    "pages/BodyMetricsPage"
+    "pages/BodyMetricsPage",
+    "pages/MusclePickerPage"
   ]
 }

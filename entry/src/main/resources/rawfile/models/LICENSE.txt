@@ -1,0 +1,11 @@
+FitLoger body_muscles.glb
+Original low-poly training figure with stable pick_* node names.
+
+Intended replacement source for a future derived mesh:
+Z-Anatomy / Models-of-human-anatomy
+https://github.com/Z-Anatomy/Models-of-human-anatomy
+License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Any Z-Anatomy-derived replacement must keep CC BY-SA 4.0 attribution
+and the pick_* node names documented in tools/anatomy/ATTRIBUTION.md.

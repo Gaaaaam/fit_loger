@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240">
+<title>反向卷腹（动作）</title>
+<desc>原创训练示意图，绿色强调目标肌群；姿势与文字说明一致，未描摹来源不明照片。</desc>
+<defs>
+  <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#E2EBED"/><stop offset=".46" stop-color="#AFBFC7"/><stop offset="1" stop-color="#708994"/>
+  </linearGradient>
+  <linearGradient id="muscle" x1="0" y1="0" x2=".8" y2="1">
+    <stop stop-color="#F0F5F4"/><stop offset=".4" stop-color="#CDDADF"/><stop offset="1" stop-color="#91A7B2"/>
+  </linearGradient>
+  <linearGradient id="target" x1="0" y1="0" x2=".85" y2="1">
+    <stop stop-color="#8EE4BC"/><stop offset=".35" stop-color="#39B38D"/><stop offset=".72" stop-color="#168269"/><stop offset="1" stop-color="#0B534D"/>
+  </linearGradient>
+  <linearGradient id="targetDeep" x1="0" y1="0" x2="1" y2=".8">
+    <stop stop-color="#53CBA1"/><stop offset=".65" stop-color="#168269"/><stop offset="1" stop-color="#083D3D"/>
+  </linearGradient>
+  <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#EDD0AD"/><stop offset=".5" stop-color="#C99670"/><stop offset="1" stop-color="#946345"/>
+  </linearGradient>
+  <linearGradient id="kit" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#405764"/><stop offset="1" stop-color="#142C39"/>
+  </linearGradient>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 1 L9 5 L0 9 Z" fill="#168269"/>
+  </marker>
+</defs>
+<ellipse cx="160" cy="124" rx="115" ry="105" fill="#E9F3EF"/>
+<path d="M49 83 A116 106 0 0 1 226 34 M260 166 A116 106 0 0 1 102 221" fill="none" stroke="#C5DDD3" stroke-width="1.3"/>
+<circle cx="52" cy="80" r="3" fill="#52AD8D"/>
+<circle cx="260" cy="168" r="2" fill="#93C7B2"/>
+<ellipse cx="160" cy="222" rx="108" ry="7" fill="#345D60" opacity=".12"/><line x1="124.4" y1="136" x2="130.55636257986205" y2="119.08553282585365" stroke="#168269" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arr)" opacity=".85"/>
+<path d="M 191.99286776695882 156.46372954860428 L 130.39286776695883 124.46372954860428 A 13 13 0 0 1 118.40713223304118 147.53627045139572 L 180.00713223304118 179.53627045139572 A 13 13 0 0 1 191.99286776695882 156.46372954860428 Z" fill="url(#target)" stroke="#246E62" stroke-width="1.2" stroke-linejoin="round"/><circle cx="162.59199999999998" cy="155.84" r="9" fill="url(#target)" stroke="#246E62" stroke-width="1.1"/><path d="M 193.2720677719474 173.302549417045 L 221.2720677719474 134.90254941704498 A 9 9 0 0 1 206.7279322280526 124.29745058295502 L 178.7279322280526 162.697450582955 A 9 9 0 0 1 193.2720677719474 173.302549417045 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 220.9988841954181 129.47501992508182 L 220.59888419541812 107.0750199250818 A 7 7 0 0 1 206.60111580458187 107.32498007491817 L 207.0011158045819 129.72498007491816 A 7 7 0 0 1 220.9988841954181 129.47501992508182 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 126.96515107494253 143.0476946558943 L 149.51777397380434 134.83921121607827 A 7.5 7.5 0 0 1 144.3874718239193 120.74382190428963 L 121.83484892505749 128.9523053441057 A 7.5 7.5 0 0 1 126.96515107494253 143.0476946558943 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 146.05265134924736 133.72363685649324 L 158.95310755882502 135.68078590029978 A 6 6 0 0 1 160.75305065805395 123.81654530768122 L 147.85259444847628 121.85939626387467 A 6 6 0 0 1 146.05265134924736 133.72363685649324 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><circle cx="124.4" cy="136" r="8" fill="url(#muscle)" stroke="#627D88" stroke-width="1.1"/><circle cx="109.07911113762044" cy="123.14424780626922" r="11" fill="url(#skin)" stroke="#9A7256" stroke-width="1.1"/><path d="M 102.07911113762044 119.14424780626922 Q 109.07911113762044 110.14424780626922 117.07911113762044 120.14424780626922" fill="#253B43"/><circle cx="213.6" cy="107.19999999999999" r="5" fill="url(#kit)" stroke="#243E4B" stroke-width="1.1"/>
+</svg>

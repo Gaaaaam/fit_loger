@@ -1,0 +1,4542 @@
+{
+  "source": {
+    "name": "free-exercise-db",
+    "url": "https://github.com/yuhonas/free-exercise-db",
+    "commit": "a859101d633a01c4a1a920d6a8ce41dabba0705f",
+    "license": "Unlicense",
+    "licenseUrl": "https://github.com/yuhonas/free-exercise-db/blob/main/LICENSE.md",
+    "photoNote": "Upstream photos are not used. Artwork is original vector illustration."
+  },
+  "count": 120,
+  "exercises": [
+    {
+      "id": "chest_bb_bench",
+      "existing": true,
+      "partKey": "chest",
+      "name": "杠铃卧推",
+      "englishName": "Barbell Bench Press",
+      "aliases": [
+        "平板卧推",
+        "杠铃平板卧推"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "push",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "chest",
+      "secondaryMuscles": "triceps,front_delt",
+      "primaryMusclesZh": "胸大肌",
+      "secondaryMusclesZh": "肱三头肌、前束",
+      "difficulty": "intermediate",
+      "startPosition": "仰卧于平板凳，双脚踩实地面，杠铃位于眼睛上方，双手略宽于肩握住杠铃。",
+      "steps": [
+        "收肩胛、挺胸，将杠铃移到乳头线上方。",
+        "吸气下放，肘部约呈 45–70 度，杠铃轻触胸部。",
+        "呼气将杠铃垂直推起至手臂伸直，不要过度弹胸。"
+      ],
+      "cues": [
+        "肩胛持续后收下沉，臀部不要离开凳面。",
+        "手腕与前臂保持竖直，不要翻腕。"
+      ],
+      "counting": "杠铃下放至胸再推起至手臂伸直，计 1 次。",
+      "sourceId": "Barbell_Bench_Press_-_Medium_Grip",
+      "pose": {
+        "family": "bench_press",
+        "kit": "barbell",
+        "incline": 0,
+        "cardPhase": 0.15
+      }
+    },
+    {
+      "id": "chest_db_bench",
+      "existing": true,
+      "partKey": "chest",
+      "name": "哑铃卧推",
+      "englishName": "Dumbbell Bench Press",
+      "aliases": [
+        "哑铃平板卧推"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "push",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "chest",
+      "secondaryMuscles": "triceps,front_delt",
+      "primaryMusclesZh": "胸大肌",
+      "secondaryMusclesZh": "肱三头肌、前束",
+      "difficulty": "intermediate",
+      "startPosition": "坐在平板凳一端，双手持哑铃置于膝上，再躺下将哑铃举至胸口上方。",
+      "steps": [
+        "哑铃位于肩正上方，掌心相对或朝前。",
+        "屈肘下放至上臂与地面接近平行。",
+        "将哑铃沿弧线推回至胸上方，顶端可轻微内收。"
+      ],
+      "cues": [
+        "下放时控制速度，避免肩部向前滚。",
+        "底部不要过度开肘。"
+      ],
+      "counting": "两侧哑铃同时下放再推起，计 1 次。",
+      "sourceId": "Dumbbell_Bench_Press",
+      "pose": {
+        "family": "bench_press",
+        "kit": "dumbbell",
+        "incline": 0,
+        "cardPhase": 0.18
+      }
+    },
+    {
+      "id": "chest_incline_bench",
+      "existing": true,
+      "partKey": "chest",
+      "name": "上斜卧推",
+      "englishName": "Incline Barbell Bench Press",
+      "aliases": [
+        "上斜杠铃卧推",
+        "上斜推胸"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "push",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "upper_chest",
+      "secondaryMuscles": "triceps,front_delt",
+      "primaryMusclesZh": "胸大肌上部",
+      "secondaryMusclesZh": "肱三头肌、前束",
+      "difficulty": "intermediate",
+      "startPosition": "将凳面调至约 30–45 度，仰卧后双脚踩实，杠铃位于锁骨上方。",
+      "steps": [
+        "解开杠铃，移到上胸部上方。",
+        "下放至锁骨与乳头之间。",
+        "沿斜面推起至手臂伸直。"
+      ],
+      "cues": [
+        "角度不宜过高，以免变成推肩。",
+        "肩胛贴凳，不要耸肩。"
+      ],
+      "counting": "杠铃触碰上胸再推直，计 1 次。",
+      "sourceId": "Barbell_Incline_Bench_Press_-_Medium_Grip",
+      "pose": {
+        "family": "bench_press",
+        "kit": "barbell",
+        "incline": 28,
+        "cardPhase": 0.18
+      }
+    },
+    {
+      "id": "chest_fly",
+      "existing": true,
+      "partKey": "chest",
+      "name": "飞鸟",
+      "englishName": "Dumbbell Flyes",
+      "aliases": [
+        "哑铃飞鸟",
+        "平板飞鸟"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "isolation",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "chest",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "胸大肌",
+      "secondaryMusclesZh": "前束",
+      "difficulty": "beginner",
+      "startPosition": "仰卧平板凳，双手持哑铃于胸口上方，肘微屈。",
+      "steps": [
+        "保持肘部固定微屈，向两侧打开。",
+        "直到胸部有拉伸感、上臂接近水平。",
+        "用胸肌将哑铃沿弧线夹回上方。"
+      ],
+      "cues": [
+        "不要把飞鸟做成推举，肘角全程几乎不变。",
+        "底部不要低于肩太多。"
+      ],
+      "counting": "双臂打开再夹拢至胸上，计 1 次。",
+      "sourceId": "Dumbbell_Flyes",
+      "pose": {
+        "family": "fly",
+        "kit": "dumbbell",
+        "incline": 0,
+        "cardPhase": 0.2
+      }
+    },
+    {
+      "id": "chest_cable_crossover",
+      "existing": true,
+      "partKey": "chest",
+      "name": "绳索夹胸",
+      "englishName": "Cable Crossover",
+      "aliases": [
+        "龙门架夹胸",
+        "绳索交叉夹胸"
+      ],
+      "equipment": "cable",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "chest",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "胸大肌",
+      "secondaryMusclesZh": "前束",
+      "difficulty": "beginner",
+      "startPosition": "站在龙门架中间，双手各握高位手柄，向前迈一步成弓步，肘微屈。",
+      "steps": [
+        "略前倾，双手由两侧向身前下方夹拢。",
+        "在身体中线短暂交会或接近。",
+        "控制回到两侧拉伸位。"
+      ],
+      "cues": [
+        "用胸口发力，不要靠甩臂。",
+        "肩胛保持稳定。"
+      ],
+      "counting": "双手夹至身前再回到两侧，计 1 次。",
+      "sourceId": "Cable_Crossover",
+      "pose": {
+        "family": "fly",
+        "kit": "cable",
+        "incline": 0,
+        "cardPhase": 0.75
+      }
+    },
+    {
+      "id": "chest_dip",
+      "existing": true,
+      "partKey": "chest",
+      "name": "双杠臂屈伸",
+      "englishName": "Chest Dip",
+      "aliases": [
+        "双杠撑体",
+        "胸部双杠"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "push",
+      "weightStep": 2.5,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "chest",
+      "secondaryMuscles": "triceps",
+      "primaryMusclesZh": "胸大肌",
+      "secondaryMusclesZh": "肱三头肌",
+      "difficulty": "intermediate",
+      "startPosition": "双手撑住双杠，手臂伸直，身体略前倾，屈膝离地。",
+      "steps": [
+        "前倾躯干，屈肘下放至上臂接近平行。",
+        "胸部有拉伸后，推起至手臂伸直。",
+        "不要用腿大幅借力晃动。"
+      ],
+      "cues": [
+        "更前倾、肘略外展偏胸；更直立偏肱三头。",
+        "肩不要过度下沉超过舒适范围。"
+      ],
+      "counting": "下放至底部再撑起至手臂伸直，计 1 次。可负重。",
+      "sourceId": "Dips_-_Chest_Version",
+      "pose": {
+        "family": "dip",
+        "cardPhase": 0.2
+      }
+    },
+    {
+      "id": "chest_pushup",
+      "existing": true,
+      "partKey": "chest",
+      "name": "俯卧撑",
+      "englishName": "Push-Up",
+      "aliases": [
+        "标准俯卧撑"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "push",
+      "weightStep": 2.5,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "chest",
+      "secondaryMuscles": "triceps,front_delt",
+      "primaryMusclesZh": "胸大肌",
+      "secondaryMusclesZh": "肱三头肌、前束",
+      "difficulty": "beginner",
+      "startPosition": "俯撑，双手约肩宽，身体从头到踝成一条直线。",
+      "steps": [
+        "收腹，屈肘下放至胸部接近地面。",
+        "推起至手臂伸直，肩胛不要塌陷。",
+        "全程保持躯干稳定。"
+      ],
+      "cues": [
+        "髋不要先塌或先抬。",
+        "手掌均匀推地。"
+      ],
+      "counting": "胸部接近地面再撑直，计 1 次。",
+      "sourceId": "Pushups",
+      "pose": {
+        "family": "pushup",
+        "cardPhase": 0.2
+      }
+    },
+    {
+      "id": "chest_decline_bench",
+      "existing": false,
+      "partKey": "chest",
+      "name": "下斜杠铃卧推",
+      "englishName": "Decline Barbell Bench Press",
+      "aliases": [
+        "下斜卧推"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "push",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "chest",
+      "secondaryMuscles": "triceps,front_delt",
+      "primaryMusclesZh": "胸大肌下部",
+      "secondaryMusclesZh": "肱三头肌、前束",
+      "difficulty": "intermediate",
+      "startPosition": "仰卧下斜凳，小腿固定，杠铃位于下胸上方。",
+      "steps": [
+        "解开杠铃至下胸上方。",
+        "下放至下胸部。",
+        "垂直推起至手臂伸直。"
+      ],
+      "cues": [
+        "头低脚高，注意杠铃路径不要滑向颈部。",
+        "不要借助反弹。"
+      ],
+      "counting": "杠铃触下胸再推直，计 1 次。",
+      "sourceId": "Decline_Barbell_Bench_Press",
+      "pose": {
+        "family": "bench_press",
+        "kit": "barbell",
+        "incline": -18,
+        "cardPhase": 0.18
+      }
+    },
+    {
+      "id": "chest_incline_db_press",
+      "existing": false,
+      "partKey": "chest",
+      "name": "上斜哑铃卧推",
+      "englishName": "Incline Dumbbell Press",
+      "aliases": [
+        "上斜哑铃推胸"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "push",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "upper_chest",
+      "secondaryMuscles": "triceps,front_delt",
+      "primaryMusclesZh": "胸大肌上部",
+      "secondaryMusclesZh": "肱三头肌、前束",
+      "difficulty": "intermediate",
+      "startPosition": "上斜凳 30–45 度，双手持哑铃躺好，哑铃位于上胸两侧。",
+      "steps": [
+        "哑铃推至上胸上方。",
+        "屈肘下放至上臂接近平行。",
+        "再沿斜面推起。"
+      ],
+      "cues": [
+        "手腕稳定，底部保持胸廓打开。",
+        "避免过度挺腰。"
+      ],
+      "counting": "两侧同时下放再推起，计 1 次。",
+      "sourceId": "Incline_Dumbbell_Press",
+      "pose": {
+        "family": "bench_press",
+        "kit": "dumbbell",
+        "incline": 28,
+        "cardPhase": 0.18
+      }
+    },
+    {
+      "id": "chest_decline_db_press",
+      "existing": false,
+      "partKey": "chest",
+      "name": "下斜哑铃卧推",
+      "englishName": "Decline Dumbbell Bench Press",
+      "aliases": [
+        "下斜哑铃推胸"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "push",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "chest",
+      "secondaryMuscles": "triceps,front_delt",
+      "primaryMusclesZh": "胸大肌下部",
+      "secondaryMusclesZh": "肱三头肌、前束",
+      "difficulty": "intermediate",
+      "startPosition": "仰卧下斜凳并固定下肢，双手持哑铃于下胸上方。",
+      "steps": [
+        "屈肘下放至下胸两侧。",
+        "推起至手臂伸直。",
+        "控制哑铃不要向头侧滑。"
+      ],
+      "cues": [
+        "肩胛贴凳。",
+        "底部停稳再推。"
+      ],
+      "counting": "两侧同时完成一次下放与推起，计 1 次。",
+      "sourceId": "Decline_Dumbbell_Bench_Press",
+      "pose": {
+        "family": "bench_press",
+        "kit": "dumbbell",
+        "incline": -18,
+        "cardPhase": 0.2
+      }
+    },
+    {
+      "id": "chest_incline_fly",
+      "existing": false,
+      "partKey": "chest",
+      "name": "上斜哑铃飞鸟",
+      "englishName": "Incline Dumbbell Flyes",
+      "aliases": [
+        "上斜飞鸟"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "isolation",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "upper_chest",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "胸大肌上部",
+      "secondaryMusclesZh": "前束",
+      "difficulty": "beginner",
+      "startPosition": "上斜仰卧，双手持哑铃于上胸上方，肘微屈。",
+      "steps": [
+        "向两侧打开至上胸拉伸。",
+        "保持肘角，沿弧线夹回。",
+        "顶端不要把哑铃撞在一起。"
+      ],
+      "cues": [
+        "动作像拥抱，不是推举。",
+        "重量应轻于卧推。"
+      ],
+      "counting": "双臂打开再夹拢，计 1 次。",
+      "sourceId": "Incline_Dumbbell_Flyes",
+      "pose": {
+        "family": "fly",
+        "kit": "dumbbell",
+        "incline": 28,
+        "cardPhase": 0.2
+      }
+    },
+    {
+      "id": "chest_machine_press",
+      "existing": false,
+      "partKey": "chest",
+      "name": "器械推胸",
+      "englishName": "Machine Bench Press",
+      "aliases": [
+        "坐姿推胸器",
+        "固定器械卧推"
+      ],
+      "equipment": "machine",
+      "movementPattern": "push",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "chest",
+      "secondaryMuscles": "triceps,front_delt",
+      "primaryMusclesZh": "胸大肌",
+      "secondaryMusclesZh": "肱三头肌、前束",
+      "difficulty": "beginner",
+      "startPosition": "坐在推胸器上，背部贴靠垫，把手约在胸中部高度。",
+      "steps": [
+        "握住把手，推至手臂接近伸直。",
+        "控制回到胸部有拉伸的位置。",
+        "不要在底部完全放松肩胛。"
+      ],
+      "cues": [
+        "座椅高度使手柄对齐乳头线。",
+        "双脚踩实。"
+      ],
+      "counting": "把手推远再回到胸口，计 1 次。",
+      "sourceId": "Machine_Bench_Press",
+      "pose": {
+        "family": "bench_press",
+        "kit": "machine",
+        "incline": 8,
+        "cardPhase": 0.7
+      }
+    },
+    {
+      "id": "chest_pec_deck",
+      "existing": false,
+      "partKey": "chest",
+      "name": "蝴蝶机夹胸",
+      "englishName": "Pec Deck / Butterfly",
+      "aliases": [
+        " pec deck",
+        "器械夹胸"
+      ],
+      "equipment": "machine",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "chest",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "胸大肌",
+      "secondaryMusclesZh": "前束",
+      "difficulty": "beginner",
+      "startPosition": "坐在蝴蝶机上，前臂贴靠垫或握住把手，肘与肩同高。",
+      "steps": [
+        "将两侧挡臂向身体中线夹拢。",
+        "在胸口前短暂停留。",
+        "控制打开至胸部拉伸。"
+      ],
+      "cues": [
+        "肩不要耸起。",
+        "用胸而不是用手推垫。"
+      ],
+      "counting": "夹拢再打开一次，计 1 次。",
+      "sourceId": "Butterfly",
+      "pose": {
+        "family": "pecdeck",
+        "kind": "pecdeck",
+        "cardPhase": 0.7
+      }
+    },
+    {
+      "id": "chest_close_pushup",
+      "existing": false,
+      "partKey": "chest",
+      "name": "窄距俯卧撑",
+      "englishName": "Close-Grip Push-Up",
+      "aliases": [
+        "钻石俯卧撑",
+        "窄手俯卧撑"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "push",
+      "weightStep": 2.5,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "chest",
+      "secondaryMuscles": "triceps",
+      "primaryMusclesZh": "胸大肌",
+      "secondaryMusclesZh": "肱三头肌",
+      "difficulty": "beginner",
+      "startPosition": "俯撑，双手间距小于肩宽，可接近成钻石形。",
+      "steps": [
+        "屈肘贴近躯干下放。",
+        "胸部接近手后再撑起。",
+        "肘不要大幅外展。"
+      ],
+      "cues": [
+        "更强调肱三头与胸内侧。",
+        "肩保持稳定。"
+      ],
+      "counting": "下放再撑起，计 1 次。",
+      "sourceId": "Push-Ups_-_Close_Triceps_Position",
+      "pose": {
+        "family": "pushup",
+        "close": true,
+        "cardPhase": 0.2
+      }
+    },
+    {
+      "id": "chest_incline_pushup",
+      "existing": false,
+      "partKey": "chest",
+      "name": "上斜俯卧撑",
+      "englishName": "Incline Push-Up",
+      "aliases": [
+        "手高脚低俯卧撑"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "push",
+      "weightStep": 2.5,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "chest",
+      "secondaryMuscles": "triceps,front_delt",
+      "primaryMusclesZh": "胸大肌",
+      "secondaryMusclesZh": "肱三头肌、前束",
+      "difficulty": "beginner",
+      "startPosition": "双手撑在稳固的凳面或台阶上，身体成直线，脚在地面。",
+      "steps": [
+        "屈肘下放至胸部接近支撑面。",
+        "推起至手臂伸直。",
+        "难度随支撑面降低而增加。"
+      ],
+      "cues": [
+        "适合作为标准俯卧撑的退阶。",
+        "髋不要折断。"
+      ],
+      "counting": "胸部接近支撑面再撑直，计 1 次。",
+      "sourceId": "Incline_Push-Up",
+      "pose": {
+        "family": "pushup",
+        "incline": true,
+        "cardPhase": 0.25
+      }
+    },
+    {
+      "id": "chest_decline_pushup",
+      "existing": false,
+      "partKey": "chest",
+      "name": "下斜俯卧撑",
+      "englishName": "Decline Push-Up",
+      "aliases": [
+        "脚高手低俯卧撑"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "push",
+      "weightStep": 2.5,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "upper_chest",
+      "secondaryMuscles": "triceps,front_delt",
+      "primaryMusclesZh": "胸大肌上部",
+      "secondaryMusclesZh": "肱三头肌、前束",
+      "difficulty": "intermediate",
+      "startPosition": "双脚放在凳上，双手撑地，身体成直线。",
+      "steps": [
+        "屈肘下放至头和胸接近地面。",
+        "推起至手臂伸直。",
+        "不要塌腰。"
+      ],
+      "cues": [
+        "脚越高越难，先用低凳。",
+        "肩不要过度前移超过手腕太多。"
+      ],
+      "counting": "下放再撑起，计 1 次。",
+      "sourceId": "Decline_Push-Up",
+      "pose": {
+        "family": "pushup",
+        "decline": true,
+        "cardPhase": 0.2
+      }
+    },
+    {
+      "id": "chest_pullover",
+      "existing": false,
+      "partKey": "chest",
+      "name": "哑铃过顶",
+      "englishName": "Dumbbell Pullover",
+      "aliases": [
+        "哑铃拉力器",
+        "仰卧过顶"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "isolation",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "chest",
+      "secondaryMuscles": "lats",
+      "primaryMusclesZh": "胸大肌",
+      "secondaryMusclesZh": "背阔肌",
+      "difficulty": "beginner",
+      "startPosition": "上背横躺凳面或仰卧平板，双手托住一只哑铃于胸口上方。",
+      "steps": [
+        "微屈肘，将哑铃向头后下方放。",
+        "至胸与背有拉伸后，拉回至胸口上方。",
+        "髋保持稳定。"
+      ],
+      "cues": [
+        "不要过度塌腰。",
+        "肘角基本固定。"
+      ],
+      "counting": "哑铃放到头后下方再拉回，计 1 次。",
+      "sourceId": "Bent-Arm_Dumbbell_Pullover",
+      "pose": {
+        "family": "pullover",
+        "kind": "pullover",
+        "cardPhase": 0.2
+      }
+    },
+    {
+      "id": "shoulder_bb_press",
+      "existing": true,
+      "partKey": "shoulder",
+      "name": "杠铃推举",
+      "englishName": "Barbell Shoulder Press",
+      "aliases": [
+        "站姿推举",
+        "军事推举"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "push",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "front_delt",
+      "secondaryMuscles": "triceps",
+      "primaryMusclesZh": "三角肌前束",
+      "secondaryMusclesZh": "肱三头肌",
+      "difficulty": "intermediate",
+      "startPosition": "站立，杠铃置于锁骨上方，双手略宽于肩，核心收紧。",
+      "steps": [
+        "将杠铃沿面部前方推至头顶上方。",
+        "头部略前移让杠铃到头顶后侧。",
+        "控制下放至锁骨上方。"
+      ],
+      "cues": [
+        "不要过度后仰把腰椎当杠杆。",
+        "肘不要过度后展。"
+      ],
+      "counting": "从锁骨推至头顶再放回，计 1 次。",
+      "sourceId": "Barbell_Shoulder_Press",
+      "pose": {
+        "family": "press",
+        "kit": "barbell",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "shoulder_db_press",
+      "existing": true,
+      "partKey": "shoulder",
+      "name": "哑铃推举",
+      "englishName": "Dumbbell Shoulder Press",
+      "aliases": [
+        "站姿哑铃推举"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "push",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "front_delt",
+      "secondaryMuscles": "triceps",
+      "primaryMusclesZh": "三角肌前束",
+      "secondaryMusclesZh": "肱三头肌",
+      "difficulty": "beginner",
+      "startPosition": "站立或坐姿，双手持哑铃至耳侧，掌心朝前。",
+      "steps": [
+        "将哑铃向上推至手臂接近伸直。",
+        "顶端不要猛撞。",
+        "控制放到耳侧。"
+      ],
+      "cues": [
+        "核心绷紧，避免晃肩。",
+        "手腕保持中立。"
+      ],
+      "counting": "两侧同时推起再放下，计 1 次。",
+      "sourceId": "Dumbbell_Shoulder_Press",
+      "pose": {
+        "family": "press",
+        "kit": "dumbbell",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "shoulder_lateral_raise",
+      "existing": true,
+      "partKey": "shoulder",
+      "name": "侧平举",
+      "englishName": "Side Lateral Raise",
+      "aliases": [
+        "侧举",
+        "哑铃侧平举"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "isolation",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "side_delt",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "三角肌中束",
+      "secondaryMusclesZh": "斜方肌上部（尽量减少）",
+      "difficulty": "beginner",
+      "startPosition": "站立，双手持哑铃于体侧，肘微屈。",
+      "steps": [
+        "将哑铃向两侧抬至接近肩高。",
+        "短暂停留。",
+        "控制放回体侧。"
+      ],
+      "cues": [
+        "小指略高于拇指，像倒水。",
+        "不要借甩腰和耸肩。"
+      ],
+      "counting": "双臂抬至肩高再放下，计 1 次。",
+      "sourceId": "Side_Lateral_Raise",
+      "pose": {
+        "family": "raise",
+        "dir": "side",
+        "kit": "dumbbell",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "shoulder_front_raise",
+      "existing": true,
+      "partKey": "shoulder",
+      "name": "前平举",
+      "englishName": "Front Dumbbell Raise",
+      "aliases": [
+        "前举"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "isolation",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "front_delt",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "三角肌前束",
+      "secondaryMusclesZh": "胸大肌上部",
+      "difficulty": "beginner",
+      "startPosition": "站立，哑铃置于大腿前方，肘微屈。",
+      "steps": [
+        "将哑铃抬至眼前约肩高。",
+        "可交替或同时。",
+        "控制放回。"
+      ],
+      "cues": [
+        "不要摆动躯干。",
+        "顶端不超过眼睛太多。"
+      ],
+      "counting": "双臂同时完成一次抬放计 1 次；左右交替时一侧来回计 1 次，左右各完成记为 1 组内的两次。",
+      "sourceId": "Front_Dumbbell_Raise",
+      "pose": {
+        "family": "raise",
+        "dir": "front",
+        "kit": "dumbbell",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "shoulder_reverse_fly",
+      "existing": true,
+      "partKey": "shoulder",
+      "name": "反向飞鸟",
+      "englishName": "Reverse Flyes",
+      "aliases": [
+        "后束飞鸟",
+        "俯身飞鸟"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "isolation",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "rear_delt",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "三角肌后束",
+      "secondaryMusclesZh": "上背",
+      "difficulty": "beginner",
+      "startPosition": "髋铰链俯身，背部接近平行地面，双手持哑铃自然下垂。",
+      "steps": [
+        "肘微屈，向两侧打开至与肩同高。",
+        "挤压后束。",
+        "控制放回。"
+      ],
+      "cues": [
+        "不要用斜方猛提。",
+        "躯干保持不动。"
+      ],
+      "counting": "双臂打开再合拢，计 1 次。",
+      "sourceId": "Reverse_Flyes",
+      "pose": {
+        "family": "raise",
+        "dir": "rear",
+        "kit": "dumbbell",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "shoulder_face_pull",
+      "existing": true,
+      "partKey": "shoulder",
+      "name": "面拉",
+      "englishName": "Face Pull",
+      "aliases": [
+        "面部牵引",
+        "绳索面拉"
+      ],
+      "equipment": "cable",
+      "movementPattern": "pull",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "rear_delt",
+      "secondaryMuscles": "upper_back",
+      "primaryMusclesZh": "三角肌后束",
+      "secondaryMusclesZh": "上背、外旋肌群",
+      "difficulty": "beginner",
+      "startPosition": "绳索调至头上或面部高度，握住绳索两端，后退至手臂伸直。",
+      "steps": [
+        "将绳索拉向面部，肘向外上方。",
+        "手向外分开，外旋肩。",
+        "控制回到前方。"
+      ],
+      "cues": [
+        "想象把绳子撕开。",
+        "不要做成高位下拉。"
+      ],
+      "counting": "拉至面部再放回，计 1 次。",
+      "sourceId": "Face_Pull",
+      "pose": {
+        "family": "facepull",
+        "kind": "facepull",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "shoulder_seated_bb_press",
+      "existing": false,
+      "partKey": "shoulder",
+      "name": "坐姿杠铃推举",
+      "englishName": "Seated Barbell Military Press",
+      "aliases": [
+        "坐姿推举",
+        "靠背推举"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "push",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "front_delt",
+      "secondaryMuscles": "triceps",
+      "primaryMusclesZh": "三角肌前束",
+      "secondaryMusclesZh": "肱三头肌",
+      "difficulty": "intermediate",
+      "startPosition": "坐在有靠背的凳上，杠铃从架上取至锁骨上方。",
+      "steps": [
+        "沿面部推至头顶。",
+        "控制下放。",
+        "背部贴靠垫，减少借力。"
+      ],
+      "cues": [
+        "比站姿更隔离肩部。",
+        "不要挺腰离开靠垫。"
+      ],
+      "counting": "推至头顶再放回锁骨，计 1 次。",
+      "sourceId": "Seated_Barbell_Military_Press",
+      "pose": {
+        "family": "press",
+        "kit": "barbell",
+        "sit": true,
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "shoulder_arnold",
+      "existing": false,
+      "partKey": "shoulder",
+      "name": "阿诺德推举",
+      "englishName": "Arnold Press",
+      "aliases": [
+        "阿诺推举",
+        "旋转推举"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "push",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "front_delt",
+      "secondaryMuscles": "triceps,side_delt",
+      "primaryMusclesZh": "三角肌前束",
+      "secondaryMusclesZh": "中束、肱三头肌",
+      "difficulty": "intermediate",
+      "startPosition": "坐姿，哑铃置于胸前，掌心朝向自己。",
+      "steps": [
+        "一边外旋一边向上推。",
+        "至头顶时掌心朝前。",
+        "原路旋转放回胸前。"
+      ],
+      "cues": [
+        "旋转要平滑，不要甩肘。",
+        "重量应轻于普通推举。"
+      ],
+      "counting": "从胸前推至头顶再转回，计 1 次。",
+      "sourceId": "Arnold_Dumbbell_Press",
+      "pose": {
+        "family": "press",
+        "kit": "dumbbell",
+        "arnold": true,
+        "sit": true,
+        "cardPhase": 0.7
+      }
+    },
+    {
+      "id": "shoulder_machine_press",
+      "existing": false,
+      "partKey": "shoulder",
+      "name": "器械推举",
+      "englishName": "Machine Shoulder Press",
+      "aliases": [
+        "推肩器"
+      ],
+      "equipment": "machine",
+      "movementPattern": "push",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "front_delt",
+      "secondaryMuscles": "triceps",
+      "primaryMusclesZh": "三角肌前束",
+      "secondaryMusclesZh": "肱三头肌",
+      "difficulty": "beginner",
+      "startPosition": "坐在推肩器上，把手约在耳侧。",
+      "steps": [
+        "向上推至手臂接近伸直。",
+        "控制回到耳侧。",
+        "不要耸肩顶起。"
+      ],
+      "cues": [
+        "座椅高度让起始点在下颌到耳之间。",
+        "背部贴垫。"
+      ],
+      "counting": "推起再落下，计 1 次。",
+      "sourceId": "Machine_Shoulder_Military_Press",
+      "pose": {
+        "family": "press",
+        "kit": "machine",
+        "sit": true,
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "shoulder_cable_lateral",
+      "existing": false,
+      "partKey": "shoulder",
+      "name": "绳索侧平举",
+      "englishName": "Cable Lateral Raise",
+      "aliases": [
+        "绳索侧举"
+      ],
+      "equipment": "cable",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "side_delt",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "三角肌中束",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "侧向低位绳索站立，外侧手握住手柄，置于体前或体侧。",
+      "steps": [
+        "将手柄向外上方抬至肩高。",
+        "停留片刻。",
+        "控制放回。"
+      ],
+      "cues": [
+        "可单臂进行以便更专注。",
+        "身体不要倾斜借力。"
+      ],
+      "counting": "单侧抬起再放下计 1 次；左右各做相同次数为一组。",
+      "sourceId": "Cable_Seated_Lateral_Raise",
+      "pose": {
+        "family": "raise",
+        "dir": "side",
+        "kit": "cable",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "shoulder_cable_rear_fly",
+      "existing": false,
+      "partKey": "shoulder",
+      "name": "绳索后束飞鸟",
+      "englishName": "Cable Rear Delt Fly",
+      "aliases": [
+        "绳索反向飞鸟"
+      ],
+      "equipment": "cable",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "rear_delt",
+      "secondaryMuscles": "upper_back",
+      "primaryMusclesZh": "三角肌后束",
+      "secondaryMusclesZh": "上背",
+      "difficulty": "beginner",
+      "startPosition": "站在龙门架中间，双手交叉握住对侧高位或中位手柄。",
+      "steps": [
+        "向两侧打开至与肩同线。",
+        "挤压后束。",
+        "控制回到身前。"
+      ],
+      "cues": [
+        "肘微屈固定。",
+        "不要做成扩胸过度挺腰。"
+      ],
+      "counting": "打开再合拢，计 1 次。",
+      "sourceId": "Cable_Rear_Delt_Fly",
+      "pose": {
+        "family": "raise",
+        "dir": "rear",
+        "kit": "cable",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "shoulder_machine_reverse_fly",
+      "existing": false,
+      "partKey": "shoulder",
+      "name": "器械反向飞鸟",
+      "englishName": "Reverse Machine Flyes",
+      "aliases": [
+        "反向蝴蝶机",
+        "后束器械"
+      ],
+      "equipment": "machine",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "rear_delt",
+      "secondaryMuscles": "upper_back",
+      "primaryMusclesZh": "三角肌后束",
+      "secondaryMusclesZh": "上背",
+      "difficulty": "beginner",
+      "startPosition": "面向后束飞鸟机坐下，胸部贴靠垫，握住把手。",
+      "steps": [
+        "向后打开双臂。",
+        "在后束收缩位停留。",
+        "控制回到前方。"
+      ],
+      "cues": [
+        "胸贴垫，减少借力。",
+        "不要耸肩。"
+      ],
+      "counting": "打开再回到前方，计 1 次。",
+      "sourceId": "Reverse_Machine_Flyes",
+      "pose": {
+        "family": "raise",
+        "dir": "rear",
+        "kit": "machine",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "shoulder_bent_over_raise",
+      "existing": false,
+      "partKey": "shoulder",
+      "name": "俯身侧平举",
+      "englishName": "Bent-Over Lateral Raise",
+      "aliases": [
+        "俯身侧举"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "isolation",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "rear_delt",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "三角肌后束",
+      "secondaryMusclesZh": "中束",
+      "difficulty": "beginner",
+      "startPosition": "俯身或额头抵凳，双手持哑铃下垂。",
+      "steps": [
+        "向两侧抬至与肩同高。",
+        "顶峰收缩后束。",
+        "缓慢放下。"
+      ],
+      "cues": [
+        "重量要轻。",
+        "像把哑铃推向远处而不是向上甩。"
+      ],
+      "counting": "双臂抬起再放下，计 1 次。",
+      "sourceId": "Bent_Over_Dumbbell_Rear_Delt_Raise_With_Head_On_Bench",
+      "pose": {
+        "family": "raise",
+        "dir": "rear",
+        "kit": "dumbbell",
+        "cardPhase": 0.82
+      }
+    },
+    {
+      "id": "shoulder_cable_front",
+      "existing": false,
+      "partKey": "shoulder",
+      "name": "绳索前平举",
+      "englishName": "Cable Front Raise",
+      "aliases": [
+        "绳索前举"
+      ],
+      "equipment": "cable",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "front_delt",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "三角肌前束",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "背对或侧向低位绳索，双手或单手握住手柄置于大腿前。",
+      "steps": [
+        "将手柄向前上方抬至肩高。",
+        "停留。",
+        "控制放回。"
+      ],
+      "cues": [
+        "绳索提供连续张力。",
+        "不要甩腰。"
+      ],
+      "counting": "抬至肩高再放下，计 1 次。单手做则左右各计。",
+      "sourceId": "",
+      "pose": {
+        "family": "raise",
+        "dir": "front",
+        "kit": "cable",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "back_pullup",
+      "existing": true,
+      "partKey": "back",
+      "name": "引体向上",
+      "englishName": "Pull-Up",
+      "aliases": [
+        "正手引体"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "pull",
+      "weightStep": 2.5,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "biceps",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "肱二头肌",
+      "difficulty": "intermediate",
+      "startPosition": "正手握杠，双手约肩宽或略宽，身体悬垂，肩下沉。",
+      "steps": [
+        "将胸部拉向杠，肘向后下方。",
+        "下颌过杠或胸部接近杠。",
+        "控制放到悬垂。"
+      ],
+      "cues": [
+        "避免大幅甩腿。",
+        "顶峰不要耸肩缩成一团。"
+      ],
+      "counting": "下颌过杠再放到手臂伸直，计 1 次。可负重。",
+      "sourceId": "Pullups",
+      "pose": {
+        "family": "pull",
+        "hanging": true,
+        "wide": true,
+        "cardPhase": 0.75
+      }
+    },
+    {
+      "id": "back_lat_pulldown",
+      "existing": true,
+      "partKey": "back",
+      "name": "高位下拉",
+      "englishName": "Lat Pulldown",
+      "aliases": [
+        "下拉",
+        "背阔肌下拉"
+      ],
+      "equipment": "machine",
+      "movementPattern": "pull",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "biceps",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "肱二头肌",
+      "difficulty": "beginner",
+      "startPosition": "坐在下拉器上，大腿固定，双手握住横杆。",
+      "steps": [
+        "将杆拉至锁骨或上胸。",
+        "肘向两侧后下方。",
+        "控制回到高位拉伸。"
+      ],
+      "cues": [
+        "躯干可略后倾，不要大幅后倒甩。",
+        "用背发力而不是只弯肘。"
+      ],
+      "counting": "拉至上胸再放回高位，计 1 次。",
+      "sourceId": "Wide-Grip_Lat_Pulldown",
+      "pose": {
+        "family": "pull",
+        "hanging": false,
+        "wide": true,
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "back_bb_row",
+      "existing": true,
+      "partKey": "back",
+      "name": "杠铃划船",
+      "englishName": "Bent-Over Barbell Row",
+      "aliases": [
+        "俯身划船"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "pull",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "biceps,rear_delt",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "肱二头肌、后束",
+      "difficulty": "intermediate",
+      "startPosition": "髋铰链俯身，背部接近平坦，杠铃悬于小腿前。",
+      "steps": [
+        "将杠铃拉向下腹或髋上。",
+        "挤压背部。",
+        "控制放到手臂伸直。"
+      ],
+      "cues": [
+        "脊柱中立，不要上下甩躯干。",
+        "拉向髋更偏背阔，拉向胸口更偏上背。"
+      ],
+      "counting": "拉至躯干再放直，计 1 次。",
+      "sourceId": "Bent_Over_Barbell_Row",
+      "pose": {
+        "family": "row",
+        "kit": "barbell",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "back_db_row",
+      "existing": true,
+      "partKey": "back",
+      "name": "哑铃划船",
+      "englishName": "One-Arm Dumbbell Row",
+      "aliases": [
+        "单臂划船",
+        "单手哑铃划船"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "pull",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "biceps",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "肱二头肌",
+      "difficulty": "beginner",
+      "startPosition": "一侧手膝撑凳，另一手持哑铃自然下垂，背部平坦。",
+      "steps": [
+        "将哑铃拉向髋侧。",
+        "肘贴近身体。",
+        "控制放到底部拉伸。"
+      ],
+      "cues": [
+        "不要转腰甩动。",
+        "肩胛向后下方收。"
+      ],
+      "counting": "单侧拉起再放下计 1 次；左右各完成相同次数为一组。",
+      "sourceId": "One-Arm_Dumbbell_Row",
+      "pose": {
+        "family": "row",
+        "kit": "dumbbell",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "back_seated_row",
+      "existing": true,
+      "partKey": "back",
+      "name": "坐姿划船",
+      "englishName": "Seated Cable Row",
+      "aliases": [
+        "坐姿绳索划船"
+      ],
+      "equipment": "machine",
+      "movementPattern": "pull",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "biceps",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "肱二头肌、上背",
+      "difficulty": "beginner",
+      "startPosition": "坐在划船器上，双脚踩踏板，握住把手，手臂伸直。",
+      "steps": [
+        "将把手拉向腹部。",
+        "挺胸收肩胛。",
+        "控制前伸至背阔拉伸，不要过度含胸圆背。"
+      ],
+      "cues": [
+        "拉的时候躯干基本直立。",
+        "不要用下背大幅后仰。"
+      ],
+      "counting": "拉至腹再伸直，计 1 次。",
+      "sourceId": "Seated_Cable_Rows",
+      "pose": {
+        "family": "row",
+        "kit": "machine",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "back_deadlift",
+      "existing": true,
+      "partKey": "back",
+      "name": "硬拉",
+      "englishName": "Barbell Deadlift",
+      "aliases": [
+        "传统硬拉"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "hinge",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "posterior_chain",
+      "secondaryMuscles": "back,glute",
+      "primaryMusclesZh": "后链、竖脊肌",
+      "secondaryMusclesZh": "背部、臀大肌",
+      "difficulty": "advanced",
+      "startPosition": "杠铃贴近小腿，髋低于肩，背平坦，双手握杠。",
+      "steps": [
+        "蹬地伸髋将杠铃拉起至站直。",
+        "顶端髋膝伸展，不要过度后仰。",
+        "髋先向后，控制放回地面。"
+      ],
+      "cues": [
+        "杠铃贴腿走。",
+        "这是髋主导，不是蹲起。"
+      ],
+      "counting": "从地面拉至站直再放回，计 1 次。",
+      "sourceId": "Barbell_Deadlift",
+      "pose": {
+        "family": "hinge",
+        "kit": "barbell",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "back_chinup",
+      "existing": false,
+      "partKey": "back",
+      "name": "反手引体",
+      "englishName": "Chin-Up",
+      "aliases": [
+        "反握引体向上"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "pull",
+      "weightStep": 2.5,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "biceps",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "肱二头肌",
+      "difficulty": "intermediate",
+      "startPosition": "反手握杠，双手约肩宽，悬垂。",
+      "steps": [
+        "将身体拉起，下颌过杠。",
+        "比正手更募集肱二头。",
+        "控制下降。"
+      ],
+      "cues": [
+        "肩先下沉再屈肘。",
+        "避免甩动。"
+      ],
+      "counting": "下颌过杠再放到伸直，计 1 次。",
+      "sourceId": "Chin-Up",
+      "pose": {
+        "family": "pull",
+        "hanging": true,
+        "wide": false,
+        "cardPhase": 0.75
+      }
+    },
+    {
+      "id": "back_wide_pulldown",
+      "existing": false,
+      "partKey": "back",
+      "name": "宽握下拉",
+      "englishName": "Wide-Grip Lat Pulldown",
+      "aliases": [
+        "宽握高位下拉"
+      ],
+      "equipment": "machine",
+      "movementPattern": "pull",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "biceps",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "肱二头肌",
+      "difficulty": "beginner",
+      "startPosition": "双手宽握横杆，坐稳固定大腿。",
+      "steps": [
+        "将杆拉至锁骨。",
+        "肘指向两侧下方。",
+        "控制回高位。"
+      ],
+      "cues": [
+        "宽握更强调背阔外侧。",
+        "不要拉到脑后。"
+      ],
+      "counting": "拉至锁骨再放回，计 1 次。",
+      "sourceId": "Wide-Grip_Lat_Pulldown",
+      "pose": {
+        "family": "pull",
+        "hanging": false,
+        "wide": true,
+        "cardPhase": 0.82
+      }
+    },
+    {
+      "id": "back_close_pulldown",
+      "existing": false,
+      "partKey": "back",
+      "name": "窄握下拉",
+      "englishName": "Close-Grip Lat Pulldown",
+      "aliases": [
+        "对握下拉",
+        "V 把下拉"
+      ],
+      "equipment": "machine",
+      "movementPattern": "pull",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "biceps",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "肱二头肌",
+      "difficulty": "beginner",
+      "startPosition": "使用 V 把或窄距握杆，坐稳。",
+      "steps": [
+        "将把手拉向下胸。",
+        "肘贴近身体向前下方。",
+        "控制回到高位。"
+      ],
+      "cues": [
+        "行程可以更长。",
+        "胸挺起。"
+      ],
+      "counting": "拉至下胸再放回，计 1 次。",
+      "sourceId": "Close-Grip_Front_Lat_Pulldown",
+      "pose": {
+        "family": "pull",
+        "hanging": false,
+        "wide": false,
+        "cardPhase": 0.82
+      }
+    },
+    {
+      "id": "back_reverse_pulldown",
+      "existing": false,
+      "partKey": "back",
+      "name": "反握下拉",
+      "englishName": "Reverse-Grip Lat Pulldown",
+      "aliases": [
+        "反手下拉"
+      ],
+      "equipment": "machine",
+      "movementPattern": "pull",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "biceps",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "肱二头肌",
+      "difficulty": "beginner",
+      "startPosition": "反手握住下拉杆，约肩宽，坐稳。",
+      "steps": [
+        "拉至上胸。",
+        "肘向后。",
+        "控制回高位。"
+      ],
+      "cues": [
+        "肱二头参与更多。",
+        "腕保持中立舒适。"
+      ],
+      "counting": "拉至上胸再放回，计 1 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "pull",
+        "hanging": false,
+        "wide": false,
+        "cardPhase": 0.82
+      }
+    },
+    {
+      "id": "back_chest_supported_row",
+      "existing": false,
+      "partKey": "back",
+      "name": "胸托划船",
+      "englishName": "Chest-Supported Row",
+      "aliases": [
+        "上斜划船",
+        "靠胸划船"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "pull",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "biceps,rear_delt",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "肱二头肌、后束",
+      "difficulty": "beginner",
+      "startPosition": "俯卧于上斜凳，胸部贴靠，双手持哑铃下垂。",
+      "steps": [
+        "将哑铃拉向髋或凳侧。",
+        "挤压上背。",
+        "控制放下。"
+      ],
+      "cues": [
+        "减少下背借力。",
+        "头保持中立。"
+      ],
+      "counting": "两侧同时拉起再放下，计 1 次。",
+      "sourceId": "Dumbbell_Incline_Row",
+      "pose": {
+        "family": "row",
+        "kit": "dumbbell",
+        "supported": true,
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "back_straight_arm_pulldown",
+      "existing": false,
+      "partKey": "back",
+      "name": "直臂下拉",
+      "englishName": "Straight-Arm Pulldown",
+      "aliases": [
+        "直臂下压",
+        "背阔直臂下拉"
+      ],
+      "equipment": "cable",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "胸大肌（长头）",
+      "difficulty": "beginner",
+      "startPosition": "面对高位绳索，双手握住横杆或绳索，手臂伸直微屈，躯干略前倾。",
+      "steps": [
+        "将手柄沿弧线拉向大腿。",
+        "背阔收缩。",
+        "控制回到头前上方。"
+      ],
+      "cues": [
+        "肘几乎伸直，不是下压肱三头。",
+        "不要甩腰。"
+      ],
+      "counting": "拉至大腿再回到高位，计 1 次。",
+      "sourceId": "Straight-Arm_Pulldown",
+      "pose": {
+        "family": "straightarm",
+        "kind": "straightarm",
+        "cardPhase": 0.75
+      }
+    },
+    {
+      "id": "back_hyperextension",
+      "existing": false,
+      "partKey": "back",
+      "name": "背伸",
+      "englishName": "Back Extension",
+      "aliases": [
+        "罗马椅",
+        "挺身",
+        "超伸"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "hinge",
+      "weightStep": 2.5,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "erector_spinae",
+      "secondaryMuscles": "glute",
+      "primaryMusclesZh": "竖脊肌",
+      "secondaryMusclesZh": "臀大肌、腘绳肌",
+      "difficulty": "beginner",
+      "startPosition": "俯卧于罗马椅，髋垫在髋关节处，上身悬空，双手交叉于胸前。",
+      "steps": [
+        "下放至躯干与地面约 45–70 度。",
+        "伸髋将躯干抬至与腿成直线。",
+        "不要过度后仰挤压腰椎。"
+      ],
+      "cues": [
+        "用臀和后链，不是猛甩头。",
+        "可抱杠铃片加重。"
+      ],
+      "counting": "躯干抬至与腿一条线再放下，计 1 次。",
+      "sourceId": "Hyperextensions_Back_Extensions",
+      "pose": {
+        "family": "hyper",
+        "kind": "hyper",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "back_tbar_row",
+      "existing": false,
+      "partKey": "back",
+      "name": "T 杠划船",
+      "englishName": "T-Bar Row",
+      "aliases": [
+        "T杠",
+        "地雷管划船"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "pull",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "biceps,upper_back",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "上背、肱二头肌",
+      "difficulty": "intermediate",
+      "startPosition": "跨站在 T 杠或杠铃一端，俯身握住把手，背平坦。",
+      "steps": [
+        "将重量拉向胸口。",
+        "挤压中上背。",
+        "控制放下。"
+      ],
+      "cues": [
+        "髋铰链固定。",
+        "不要靠站起来借力。"
+      ],
+      "counting": "拉至胸再放直，计 1 次。",
+      "sourceId": "T-Bar_Row_with_Handle",
+      "pose": {
+        "family": "row",
+        "kit": "tbar",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "back_inverted_row",
+      "existing": false,
+      "partKey": "back",
+      "name": "反向划船",
+      "englishName": "Inverted Row",
+      "aliases": [
+        "水平引体",
+        "桌下划船"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "pull",
+      "weightStep": 2.5,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "biceps,upper_back",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "上背、肱二头肌",
+      "difficulty": "beginner",
+      "startPosition": "身体仰卧在低杠下，双手正握，身体成直线，脚踩地或伸直。",
+      "steps": [
+        "将胸部拉向杠。",
+        "全身保持板状。",
+        "控制放到手臂伸直。"
+      ],
+      "cues": [
+        "脚越前、身体越水平越难。",
+        "髋不要先掉。"
+      ],
+      "counting": "胸接近杠再放直，计 1 次。",
+      "sourceId": "Inverted_Row",
+      "pose": {
+        "family": "inverted",
+        "kind": "inverted",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "back_one_arm_cable_row",
+      "existing": false,
+      "partKey": "back",
+      "name": "单臂绳索划船",
+      "englishName": "One-Arm Cable Row",
+      "aliases": [
+        "单手高位划船"
+      ],
+      "equipment": "cable",
+      "movementPattern": "pull",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "lats",
+      "secondaryMuscles": "biceps",
+      "primaryMusclesZh": "背阔肌",
+      "secondaryMusclesZh": "肱二头肌",
+      "difficulty": "beginner",
+      "startPosition": "侧向或面对中高位绳索，单手握住手柄，对侧可跪姿或站稳。",
+      "steps": [
+        "将手柄拉向髋侧或下肋。",
+        "肘向后，躯干少转。",
+        "控制放到手臂伸直后换边。"
+      ],
+      "cues": [
+        "不要大幅转腰。",
+        "拉向髋更偏背阔。"
+      ],
+      "counting": "单侧拉起再放直计 1 次；左右各做相同次数为一组。",
+      "sourceId": "Kneeling_Single-Arm_High_Pulley_Row",
+      "pose": {
+        "family": "row",
+        "kit": "cable",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "arm_bb_curl",
+      "existing": true,
+      "partKey": "arm",
+      "name": "杠铃弯举",
+      "englishName": "Barbell Curl",
+      "aliases": [
+        "站姿杠铃弯举"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "isolation",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "biceps",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "肱二头肌",
+      "secondaryMusclesZh": "前臂",
+      "difficulty": "beginner",
+      "startPosition": "站立，双手反握杠铃于大腿前，肘贴体侧。",
+      "steps": [
+        "屈肘将杠铃弯至肩前。",
+        "顶端挤压肱二头。",
+        "控制放回。"
+      ],
+      "cues": [
+        "肘不要向前大幅移动。",
+        "不要甩腰。"
+      ],
+      "counting": "弯至肩前再放直，计 1 次。",
+      "sourceId": "Barbell_Curl",
+      "pose": {
+        "family": "curl",
+        "kit": "barbell",
+        "cardPhase": 0.75
+      }
+    },
+    {
+      "id": "arm_db_curl",
+      "existing": true,
+      "partKey": "arm",
+      "name": "哑铃弯举",
+      "englishName": "Dumbbell Bicep Curl",
+      "aliases": [
+        "站姿哑铃弯举"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "isolation",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "biceps",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "肱二头肌",
+      "secondaryMusclesZh": "前臂",
+      "difficulty": "beginner",
+      "startPosition": "站立，双手持哑铃于体侧，掌心朝前或先朝内再旋外。",
+      "steps": [
+        "屈肘弯起哑铃。",
+        "可同时或交替。",
+        "控制放下。"
+      ],
+      "cues": [
+        "上臂保持不动。",
+        "底部完全伸展但不甩。"
+      ],
+      "counting": "双臂同时完成一次计 1 次；交替时一侧来回计 1 次，左右各一次记两次。",
+      "sourceId": "Dumbbell_Bicep_Curl",
+      "pose": {
+        "family": "curl",
+        "kit": "dumbbell",
+        "cardPhase": 0.75
+      }
+    },
+    {
+      "id": "arm_hammer_curl",
+      "existing": true,
+      "partKey": "arm",
+      "name": "锤式弯举",
+      "englishName": "Hammer Curl",
+      "aliases": [
+        "中立弯举",
+        "锤击弯举"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "isolation",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "brachialis",
+      "secondaryMuscles": "biceps",
+      "primaryMusclesZh": "肱肌",
+      "secondaryMusclesZh": "肱二头肌、前臂",
+      "difficulty": "beginner",
+      "startPosition": "站立，哑铃中立握（掌心相对）于体侧。",
+      "steps": [
+        "保持中立握屈肘弯起。",
+        "顶端不要内旋。",
+        "控制放下。"
+      ],
+      "cues": [
+        "更打到肱肌和前臂。",
+        "肘贴肋。"
+      ],
+      "counting": "同时完成一次计 1 次；交替按单侧计。",
+      "sourceId": "Alternate_Hammer_Curl",
+      "pose": {
+        "family": "curl",
+        "kit": "dumbbell",
+        "cardPhase": 0.75
+      }
+    },
+    {
+      "id": "arm_pushdown",
+      "existing": true,
+      "partKey": "arm",
+      "name": "绳索下压",
+      "englishName": "Triceps Pushdown",
+      "aliases": [
+        "下压",
+        "肱三头下压"
+      ],
+      "equipment": "cable",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "triceps",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "肱三头肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "面对高位绳索，握住直杆或绳索，肘贴体侧。",
+      "steps": [
+        "将手柄向下压至手臂伸直。",
+        "挤压肱三头。",
+        "控制回到约 90 度。"
+      ],
+      "cues": [
+        "上臂固定。",
+        "不要含胸甩肩。"
+      ],
+      "counting": "压直再回到屈肘，计 1 次。",
+      "sourceId": "Cable_Incline_Pushdown",
+      "pose": {
+        "family": "pushdown",
+        "kind": "pushdown",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "arm_skull_crusher",
+      "existing": true,
+      "partKey": "arm",
+      "name": "仰卧臂屈伸",
+      "englishName": "EZ-Bar Skullcrusher",
+      "aliases": [
+        "颅骨粉碎者",
+        "躺式臂屈伸"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "isolation",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "triceps",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "肱三头肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "intermediate",
+      "startPosition": "仰卧，双手持曲杆于胸口上方，手臂伸直。",
+      "steps": [
+        "只屈肘，将杠放到前额或头后。",
+        "伸肘推回。",
+        "上臂指向天花板基本不动。"
+      ],
+      "cues": [
+        "重量居中，保护肘。",
+        "可放到头后以增加拉伸。"
+      ],
+      "counting": "屈肘放下再伸直，计 1 次。",
+      "sourceId": "EZ-Bar_Skullcrusher",
+      "pose": {
+        "family": "skull",
+        "kind": "skull",
+        "cardPhase": 0.2
+      }
+    },
+    {
+      "id": "arm_incline_curl",
+      "existing": false,
+      "partKey": "arm",
+      "name": "上斜弯举",
+      "englishName": "Incline Dumbbell Curl",
+      "aliases": [
+        "上斜哑铃弯举"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "isolation",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "biceps",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "肱二头肌（长头）",
+      "secondaryMusclesZh": "前臂",
+      "difficulty": "beginner",
+      "startPosition": "仰卧于 45–60 度上斜凳，双手持哑铃自然下垂。",
+      "steps": [
+        "在拉伸位屈肘弯起。",
+        "顶端挤压。",
+        "完全放回拉伸。"
+      ],
+      "cues": [
+        "肩不要向前卷。",
+        "比站姿更难借力。"
+      ],
+      "counting": "两侧同时弯起再放下，计 1 次。",
+      "sourceId": "Incline_Dumbbell_Curl",
+      "pose": {
+        "family": "curl",
+        "kit": "dumbbell",
+        "cardPhase": 0.7
+      }
+    },
+    {
+      "id": "arm_preacher_curl",
+      "existing": false,
+      "partKey": "arm",
+      "name": "牧师凳弯举",
+      "englishName": "Preacher Curl",
+      "aliases": [
+        "托臂弯举",
+        "牧师椅"
+      ],
+      "equipment": "ezbar",
+      "movementPattern": "isolation",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "biceps",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "肱二头肌",
+      "secondaryMusclesZh": "前臂",
+      "difficulty": "beginner",
+      "startPosition": "坐在牧师凳上，上臂贴靠斜垫，握住曲杆，手臂伸展。",
+      "steps": [
+        "屈肘将杠弯起。",
+        "不要完全锁死底部若肘不适。",
+        "控制下放。"
+      ],
+      "cues": [
+        "上臂始终贴垫。",
+        "底部慢放。"
+      ],
+      "counting": "弯起再放下，计 1 次。",
+      "sourceId": "Preacher_Curl",
+      "pose": {
+        "family": "curl",
+        "kit": "ezbar",
+        "preacher": true,
+        "cardPhase": 0.7
+      }
+    },
+    {
+      "id": "arm_cable_curl",
+      "existing": false,
+      "partKey": "arm",
+      "name": "绳索弯举",
+      "englishName": "Cable Bicep Curl",
+      "aliases": [
+        "低位绳索弯举"
+      ],
+      "equipment": "cable",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "biceps",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "肱二头肌",
+      "secondaryMusclesZh": "前臂",
+      "difficulty": "beginner",
+      "startPosition": "面对低位绳索，反握直杆或手柄，肘贴体侧。",
+      "steps": [
+        "弯起至肩前。",
+        "绳索保持连续张力。",
+        "控制放回。"
+      ],
+      "cues": [
+        "不要前后晃。",
+        "可使用绳索做锤式。"
+      ],
+      "counting": "弯起再放直，计 1 次。",
+      "sourceId": "Standing_Biceps_Cable_Curl",
+      "pose": {
+        "family": "curl",
+        "kit": "cable",
+        "cardPhase": 0.75
+      }
+    },
+    {
+      "id": "arm_concentration_curl",
+      "existing": false,
+      "partKey": "arm",
+      "name": "集中弯举",
+      "englishName": "Concentration Curl",
+      "aliases": [
+        "专注弯举"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "isolation",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "biceps",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "肱二头肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "坐姿，肘抵在同侧大腿内侧，手持哑铃下垂。",
+      "steps": [
+        "屈肘将哑铃弯向肩。",
+        "挤压后缓慢放下。",
+        "躯干不要晃。"
+      ],
+      "cues": [
+        "非常隔离。",
+        "视线可看肱二头。"
+      ],
+      "counting": "单侧弯起再放下计 1 次；换边做满相同次数。",
+      "sourceId": "Concentration_Curls",
+      "pose": {
+        "family": "concentration",
+        "kind": "concentration",
+        "cardPhase": 0.7
+      }
+    },
+    {
+      "id": "arm_overhead_extension",
+      "existing": false,
+      "partKey": "arm",
+      "name": "过顶臂屈伸",
+      "englishName": "Overhead Triceps Extension",
+      "aliases": [
+        "颈后臂屈伸",
+        "过头屈伸"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "isolation",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "triceps",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "肱三头肌（长头）",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "坐姿或站姿，双手或单手将哑铃举过头顶，手臂伸直。",
+      "steps": [
+        "屈肘将哑铃放到头后。",
+        "伸肘推回头顶。",
+        "肘指向前上方，不要大幅外展。"
+      ],
+      "cues": [
+        "核心收紧。",
+        "单手做则左右分别计次。"
+      ],
+      "counting": "双侧同时做时下放再伸直计 1 次；单手则单侧计 1 次。",
+      "sourceId": "Dumbbell_One-Arm_Triceps_Extension",
+      "pose": {
+        "family": "ohext",
+        "kind": "ohext",
+        "kit": "dumbbell",
+        "cardPhase": 0.25
+      }
+    },
+    {
+      "id": "arm_one_arm_pushdown",
+      "existing": false,
+      "partKey": "arm",
+      "name": "单臂下压",
+      "englishName": "One-Arm Cable Pushdown",
+      "aliases": [
+        "单手绳索下压"
+      ],
+      "equipment": "cable",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "triceps",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "肱三头肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "侧向或面对高位绳索，单手握住手柄，肘贴肋。",
+      "steps": [
+        "将手柄向下压直。",
+        "挤压后控制回 90 度。",
+        "完成一侧再换边。"
+      ],
+      "cues": [
+        "可掌心向下或中立。",
+        "上臂锁死。"
+      ],
+      "counting": "单侧压直再回到屈肘计 1 次；左右各做相同次数。",
+      "sourceId": "Cable_One_Arm_Tricep_Extension",
+      "pose": {
+        "family": "pushdown",
+        "kind": "pushdown",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "arm_kickback",
+      "existing": false,
+      "partKey": "arm",
+      "name": "臂屈伸踢后",
+      "englishName": "Tricep Kickback",
+      "aliases": [
+        "肱三头踢腿",
+        "俯身臂屈伸"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "isolation",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "triceps",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "肱三头肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "俯身，上臂贴体侧与地面平行，手持哑铃，肘屈 90 度。",
+      "steps": [
+        "伸肘将哑铃向后踢直至手臂伸直。",
+        "挤压肱三头。",
+        "屈肘回到 90 度。"
+      ],
+      "cues": [
+        "上臂始终平行地面。",
+        "重量宜轻。"
+      ],
+      "counting": "单侧伸直再屈回计 1 次；左右分别计。",
+      "sourceId": "Tricep_Dumbbell_Kickback",
+      "pose": {
+        "family": "kickback_arm",
+        "kind": "kickback_arm",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "arm_wrist_curl",
+      "existing": false,
+      "partKey": "arm",
+      "name": "腕弯举",
+      "englishName": "Wrist Curl",
+      "aliases": [
+        "前臂弯举"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "isolation",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "forearm",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "前臂屈肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "前臂放在凳上或大腿上，手腕伸出，反握杠铃或哑铃。",
+      "steps": [
+        "向上弯腕。",
+        "可在底部让杠略滚动至手指再卷回。",
+        "控制放下。"
+      ],
+      "cues": [
+        "小幅度，不要甩肘。",
+        "重量不要过大。"
+      ],
+      "counting": "弯腕再放下，计 1 次。",
+      "sourceId": "Palms-Up_Barbell_Wrist_Curl_Over_A_Bench",
+      "pose": {
+        "family": "wrist",
+        "kind": "wrist",
+        "cardPhase": 0.7
+      }
+    },
+    {
+      "id": "arm_reverse_wrist",
+      "existing": false,
+      "partKey": "arm",
+      "name": "反向腕弯举",
+      "englishName": "Reverse Wrist Curl",
+      "aliases": [
+        "前臂伸腕"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "isolation",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "forearm",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "前臂伸肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "前臂支撑，正握杠铃，手腕伸出凳沿。",
+      "steps": [
+        "向上伸腕。",
+        "控制放回。",
+        "幅度小于屈腕。"
+      ],
+      "cues": [
+        "重量明显轻于腕弯举。",
+        "前臂贴实。"
+      ],
+      "counting": "伸腕再放下，计 1 次。",
+      "sourceId": "Palms-Down_Wrist_Curl_Over_A_Bench",
+      "pose": {
+        "family": "wrist",
+        "kind": "wrist",
+        "cardPhase": 0.7
+      }
+    },
+    {
+      "id": "arm_ez_curl",
+      "existing": false,
+      "partKey": "arm",
+      "name": "曲杆弯举",
+      "englishName": "EZ-Bar Curl",
+      "aliases": [
+        "EZ 杠弯举",
+        "弯杆弯举"
+      ],
+      "equipment": "ezbar",
+      "movementPattern": "isolation",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "biceps",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "肱二头肌",
+      "secondaryMusclesZh": "前臂",
+      "difficulty": "beginner",
+      "startPosition": "站立，握住曲杆斜把，杠置于大腿前。",
+      "steps": [
+        "屈肘弯起。",
+        "曲杆减少腕部压力。",
+        "控制放下。"
+      ],
+      "cues": [
+        "选自己舒服的斜握角度。",
+        "肘贴体侧。"
+      ],
+      "counting": "弯起再放直，计 1 次。",
+      "sourceId": "EZ-Bar_Curl",
+      "pose": {
+        "family": "curl",
+        "kit": "ezbar",
+        "cardPhase": 0.75
+      }
+    },
+    {
+      "id": "arm_close_grip_bench",
+      "existing": false,
+      "partKey": "arm",
+      "name": "窄距卧推",
+      "englishName": "Close-Grip Bench Press",
+      "aliases": [
+        "窄握卧推"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "push",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "triceps",
+      "secondaryMuscles": "chest",
+      "primaryMusclesZh": "肱三头肌",
+      "secondaryMusclesZh": "胸大肌、前束",
+      "difficulty": "intermediate",
+      "startPosition": "仰卧平板，双手间距约与肩同宽或略窄，握住杠铃。",
+      "steps": [
+        "下放至下胸，肘贴近躯干。",
+        "推起至手臂伸直。",
+        "不要握得过窄压迫腕。"
+      ],
+      "cues": [
+        "这是复合推，但主打肱三头。",
+        "肩胛稳定同普通卧推。"
+      ],
+      "counting": "下放再推直，计 1 次。",
+      "sourceId": "Close-Grip_Barbell_Bench_Press",
+      "pose": {
+        "family": "bench_press",
+        "kit": "barbell",
+        "incline": 0,
+        "cardPhase": 0.18
+      }
+    },
+    {
+      "id": "glute_hip_thrust",
+      "existing": true,
+      "partKey": "glute",
+      "name": "臀推",
+      "englishName": "Barbell Hip Thrust",
+      "aliases": [
+        "髋推",
+        "杠铃臀推"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "hinge",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "glute",
+      "secondaryMuscles": "hamstring",
+      "primaryMusclesZh": "臀大肌",
+      "secondaryMusclesZh": "腘绳肌",
+      "difficulty": "intermediate",
+      "startPosition": "上背靠凳，杠铃垫于髋，双脚平放，小腿接近垂直。",
+      "steps": [
+        "伸髋将杠铃推起至肩、髋、膝一条线。",
+        "顶峰挤压臀部。",
+        "控制下放。"
+      ],
+      "cues": [
+        "不要过度挺腰。",
+        "下巴微收。"
+      ],
+      "counting": "髋推至顶再放下，计 1 次。",
+      "sourceId": "Barbell_Hip_Thrust",
+      "pose": {
+        "family": "bridge",
+        "bar": true,
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "glute_rdl",
+      "existing": true,
+      "partKey": "glute",
+      "name": "罗马尼亚硬拉",
+      "englishName": "Romanian Deadlift",
+      "aliases": [
+        "RDL",
+        "罗马尼亚拉"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "hinge",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "glute",
+      "secondaryMuscles": "hamstring",
+      "primaryMusclesZh": "臀大肌",
+      "secondaryMusclesZh": "腘绳肌",
+      "difficulty": "intermediate",
+      "startPosition": "站直持杠于大腿前，膝微屈。",
+      "steps": [
+        "髋向后推，杠贴腿下放至腘绳拉伸。",
+        "背保持平坦。",
+        "伸髋站直。"
+      ],
+      "cues": [
+        "杠不离腿。",
+        "不是蹲，膝角度变化很小。"
+      ],
+      "counting": "放到拉伸位再站直，计 1 次。",
+      "sourceId": "Romanian_Deadlift",
+      "pose": {
+        "family": "hinge",
+        "kit": "barbell",
+        "cardPhase": 0.2
+      }
+    },
+    {
+      "id": "glute_bridge",
+      "existing": true,
+      "partKey": "glute",
+      "name": "臀桥",
+      "englishName": "Glute Bridge",
+      "aliases": [
+        "桥式",
+        "仰卧举髋"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "hinge",
+      "weightStep": 2.5,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "glute",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "臀大肌",
+      "secondaryMusclesZh": "腘绳肌",
+      "difficulty": "beginner",
+      "startPosition": "仰卧，屈膝，脚平放，手臂置于体侧。",
+      "steps": [
+        "伸髋将臀部抬起。",
+        "顶峰挤压。",
+        "控制放下。"
+      ],
+      "cues": [
+        "用臀不是用腰。",
+        "可把杠铃放髋上加重。"
+      ],
+      "counting": "髋抬至顶再放下，计 1 次。",
+      "sourceId": "Barbell_Glute_Bridge",
+      "pose": {
+        "family": "bridge",
+        "bar": false,
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "glute_abduction",
+      "existing": true,
+      "partKey": "glute",
+      "name": "髋外展",
+      "englishName": "Hip Abduction",
+      "aliases": [
+        "外展机",
+        "蝴蝶外展"
+      ],
+      "equipment": "machine",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "glute_medius",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "臀中肌",
+      "secondaryMusclesZh": "臀大肌上部",
+      "difficulty": "beginner",
+      "startPosition": "坐在外展机上，双膝抵住挡垫。",
+      "steps": [
+        "将双腿向外打开。",
+        "在外侧停留。",
+        "控制合拢。"
+      ],
+      "cues": [
+        "不要借甩。",
+        "躯干保持直立。"
+      ],
+      "counting": "打开再合拢，计 1 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "abduction",
+        "kind": "machine",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "glute_single_leg_thrust",
+      "existing": false,
+      "partKey": "glute",
+      "name": "单腿臀推",
+      "englishName": "Single-Leg Hip Thrust",
+      "aliases": [
+        "单腿髋推"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "hinge",
+      "weightStep": 2.5,
+      "isBodyweight": 1,
+      "isUnilateral": 1,
+      "primaryMuscles": "glute",
+      "secondaryMuscles": "hamstring",
+      "primaryMusclesZh": "臀大肌",
+      "secondaryMusclesZh": "腘绳肌",
+      "difficulty": "beginner",
+      "startPosition": "上背靠凳，一脚踩地，另一腿抬起。",
+      "steps": [
+        "用支撑腿伸髋推起。",
+        "骨盆保持水平。",
+        "控制下放后换边。"
+      ],
+      "cues": [
+        "不要向支撑侧塌。",
+        "可负重。"
+      ],
+      "counting": "单侧推起再放下计 1 次；左右各做相同次数。",
+      "sourceId": "",
+      "pose": {
+        "family": "bridge",
+        "bar": false,
+        "single": true,
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "glute_single_leg_bridge",
+      "existing": false,
+      "partKey": "glute",
+      "name": "单腿臀桥",
+      "englishName": "Single-Leg Glute Bridge",
+      "aliases": [
+        "单腿桥"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "hinge",
+      "weightStep": 2.5,
+      "isBodyweight": 1,
+      "isUnilateral": 1,
+      "primaryMuscles": "glute",
+      "secondaryMuscles": "hamstring",
+      "primaryMusclesZh": "臀大肌",
+      "secondaryMusclesZh": "腘绳肌",
+      "difficulty": "beginner",
+      "startPosition": "仰卧屈膝，一脚踩地，另一腿伸直或屈髋举起。",
+      "steps": [
+        "支撑腿把髋推起。",
+        "顶峰停顿。",
+        "放下后换边。"
+      ],
+      "cues": [
+        "骨盆不要旋转。",
+        "比双腿臀桥更难。"
+      ],
+      "counting": "单侧抬髋再放下计 1 次；左右分别计。",
+      "sourceId": "Single_Leg_Glute_Bridge",
+      "pose": {
+        "family": "bridge",
+        "single": true,
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "glute_cable_kickback",
+      "existing": false,
+      "partKey": "glute",
+      "name": "绳索后踢",
+      "englishName": "Cable Kickback",
+      "aliases": [
+        "绳索踢腿",
+        "髋伸绳索"
+      ],
+      "equipment": "cable",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "glute",
+      "secondaryMuscles": "hamstring",
+      "primaryMusclesZh": "臀大肌",
+      "secondaryMusclesZh": "腘绳肌",
+      "difficulty": "beginner",
+      "startPosition": "面对低位绳索，脚踝套住，略前倾扶稳。",
+      "steps": [
+        "向后上方踢腿至髋伸展。",
+        "挤压臀部。",
+        "控制回到前方，不要靠甩腰。"
+      ],
+      "cues": [
+        "膝可微屈。",
+        "躯干尽量固定。"
+      ],
+      "counting": "单侧后踢再收回计 1 次；换边做满。",
+      "sourceId": "",
+      "pose": {
+        "family": "kickback",
+        "cable": true,
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "glute_donkey_kick",
+      "existing": false,
+      "partKey": "glute",
+      "name": "跪姿髋伸",
+      "englishName": "Donkey Kick",
+      "aliases": [
+        "驴踢",
+        "跪姿后踢"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 1,
+      "primaryMuscles": "glute",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "臀大肌",
+      "secondaryMusclesZh": "腘绳肌",
+      "difficulty": "beginner",
+      "startPosition": "四肢着地，双手在肩下，膝在髋下。",
+      "steps": [
+        "保持膝屈约 90 度，将一脚向后上方蹬。",
+        "髋伸展到底。",
+        "放回后再换边或做完一侧。"
+      ],
+      "cues": [
+        "不要把腰过度塌下去。",
+        "脚后跟向天花板。"
+      ],
+      "counting": "单侧蹬出再收回计 1 次；左右各计。",
+      "sourceId": "",
+      "pose": {
+        "family": "kickback",
+        "cable": false,
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "glute_side_lying_abduction",
+      "existing": false,
+      "partKey": "glute",
+      "name": "侧卧外展",
+      "englishName": "Side-Lying Hip Abduction",
+      "aliases": [
+        "侧卧抬腿"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 1,
+      "primaryMuscles": "glute_medius",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "臀中肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "侧卧，身体成直线，下方腿微屈，上方腿伸直。",
+      "steps": [
+        "将上方腿向外上方抬起。",
+        "脚尖略内扣。",
+        "控制放下，不要前后摆。"
+      ],
+      "cues": [
+        "动的是髋外展不是腰。",
+        "可加沙袋或弹力带。"
+      ],
+      "counting": "单侧抬起再放下计 1 次；完成一侧再换边。",
+      "sourceId": "",
+      "pose": {
+        "family": "abduction",
+        "kind": "side",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "glute_band_lateral_walk",
+      "existing": false,
+      "partKey": "glute",
+      "name": "弹力带侧步",
+      "englishName": "Banded Lateral Walk",
+      "aliases": [
+        "怪兽步",
+        "横走"
+      ],
+      "equipment": "band",
+      "movementPattern": "isolation",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "glute_medius",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "臀中肌",
+      "secondaryMusclesZh": "臀大肌",
+      "difficulty": "beginner",
+      "startPosition": "弹力带套在膝上或踝上，半蹲，双脚与肩同宽。",
+      "steps": [
+        "向一侧迈步，保持带宽张力。",
+        "另一脚跟上，不要并拢失张。",
+        "走若干步后反向。"
+      ],
+      "cues": [
+        "始终半蹲。",
+        "脚不要内八。"
+      ],
+      "counting": "向一侧迈一步并跟上计 1 次；左右方向分别记次数或按总步数记。",
+      "sourceId": "Monster_Walk",
+      "pose": {
+        "family": "abduction",
+        "kind": "walk",
+        "cardPhase": 0.7
+      }
+    },
+    {
+      "id": "glute_clamshell",
+      "existing": false,
+      "partKey": "glute",
+      "name": "蚌式开合",
+      "englishName": "Clamshell",
+      "aliases": [
+        "蚌式",
+        "侧卧开膝"
+      ],
+      "equipment": "band",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "glute_medius",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "臀中肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "侧卧，髋膝屈曲，双脚并拢，可在膝上套弹力带。",
+      "steps": [
+        "上方膝向外打开，双脚仍接触。",
+        "在外侧停留。",
+        "缓慢合拢。"
+      ],
+      "cues": [
+        "骨盆不要后滚。",
+        "幅度不必很大。"
+      ],
+      "counting": "单侧打开再合拢计 1 次；左右分别计。",
+      "sourceId": "",
+      "pose": {
+        "family": "abduction",
+        "kind": "clam",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "glute_pull_through",
+      "existing": false,
+      "partKey": "glute",
+      "name": "绳索拉穿",
+      "englishName": "Pull Through",
+      "aliases": [
+        "穿拉",
+        "胯下拉"
+      ],
+      "equipment": "cable",
+      "movementPattern": "hinge",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "glute",
+      "secondaryMuscles": "hamstring",
+      "primaryMusclesZh": "臀大肌",
+      "secondaryMusclesZh": "腘绳肌",
+      "difficulty": "beginner",
+      "startPosition": "背对低位绳索，双手从胯下握住绳索，向前走至有张力，髋铰链。",
+      "steps": [
+        "伸髋站直，绳索贴身。",
+        "顶峰挤压臀。",
+        "髋后再回到铰链。"
+      ],
+      "cues": [
+        "手臂只是挂钩。",
+        "像 RDL 的绳索版。"
+      ],
+      "counting": "站直再铰链回去，计 1 次。",
+      "sourceId": "Pull_Through",
+      "pose": {
+        "family": "pullthrough",
+        "kind": "pullthrough",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "glute_frog_pump",
+      "existing": false,
+      "partKey": "glute",
+      "name": "蛙式臀桥",
+      "englishName": "Frog Pump",
+      "aliases": [
+        "蛙泵",
+        "蛙式桥"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "hinge",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "glute",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "臀大肌",
+      "secondaryMusclesZh": "臀中肌",
+      "difficulty": "beginner",
+      "startPosition": "仰卧，双脚掌相对，膝向外打开，髋外旋。",
+      "steps": [
+        "伸髋把臀部泵起。",
+        "顶峰挤压。",
+        "小幅度快速或标准节奏均可。"
+      ],
+      "cues": [
+        "膝保持打开。",
+        "适合高次数。"
+      ],
+      "counting": "髋上再下，计 1 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "bridge",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "leg_squat",
+      "existing": true,
+      "partKey": "leg",
+      "name": "杠铃深蹲",
+      "englishName": "Barbell Back Squat",
+      "aliases": [
+        "背蹲",
+        "深蹲"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "squat",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "quad",
+      "secondaryMuscles": "glute",
+      "primaryMusclesZh": "股四头肌",
+      "secondaryMusclesZh": "臀大肌",
+      "difficulty": "intermediate",
+      "startPosition": "杠铃置于上背，双手握杠，站距约肩宽，脚略外展。",
+      "steps": [
+        "吸气，屈髋屈膝下蹲。",
+        "至大腿至少平行。",
+        "蹬地站直。"
+      ],
+      "cues": [
+        "膝与脚尖方向一致。",
+        "腰背中立。"
+      ],
+      "counting": "下蹲再站直，计 1 次。",
+      "sourceId": "Barbell_Full_Squat",
+      "pose": {
+        "family": "squat",
+        "kit": "barbell",
+        "cardPhase": 0.15
+      }
+    },
+    {
+      "id": "leg_press",
+      "existing": true,
+      "partKey": "leg",
+      "name": "腿举",
+      "englishName": "Leg Press",
+      "aliases": [
+        "倒蹬",
+        "腿部推举"
+      ],
+      "equipment": "machine",
+      "movementPattern": "squat",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "quad",
+      "secondaryMuscles": "glute",
+      "primaryMusclesZh": "股四头肌",
+      "secondaryMusclesZh": "臀大肌",
+      "difficulty": "beginner",
+      "startPosition": "坐在腿举机上，双脚置于踏板中部，放下安全销。",
+      "steps": [
+        "屈膝下放至舒适深度。",
+        "推起至膝接近伸直但不锁死。",
+        "腰始终贴靠垫。"
+      ],
+      "cues": [
+        "不要借手推膝。",
+        "脚位高低改变刺激。"
+      ],
+      "counting": "屈膝再推直，计 1 次。",
+      "sourceId": "Leg_Press",
+      "pose": {
+        "family": "leg_machine",
+        "press": true,
+        "cardPhase": 0.25
+      }
+    },
+    {
+      "id": "leg_extension",
+      "existing": true,
+      "partKey": "leg",
+      "name": "腿屈伸",
+      "englishName": "Leg Extension",
+      "aliases": [
+        "踢腿器",
+        "伸膝"
+      ],
+      "equipment": "machine",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "quad",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "股四头肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "坐在腿屈伸机上，踝垫在脚背上方，背部贴靠。",
+      "steps": [
+        "伸膝将腿踢直。",
+        "顶端挤压股四头。",
+        "控制放下。"
+      ],
+      "cues": [
+        "不要猛甩。",
+        "座椅让膝与转轴对齐。"
+      ],
+      "counting": "伸直再放下，计 1 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "leg_machine",
+        "extension": true,
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "leg_curl",
+      "existing": true,
+      "partKey": "leg",
+      "name": "腿弯举",
+      "englishName": "Lying Leg Curl",
+      "aliases": [
+        "俯卧腿弯举"
+      ],
+      "equipment": "machine",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "hamstring",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腘绳肌",
+      "secondaryMusclesZh": "小腿",
+      "difficulty": "beginner",
+      "startPosition": "俯卧于腿弯举机，踝垫在跟腱上方。",
+      "steps": [
+        "屈膝将垫子拉向臀部。",
+        "挤压腘绳。",
+        "控制放回。"
+      ],
+      "cues": [
+        "髋不要离开垫面。",
+        "底部不要完全甩开。"
+      ],
+      "counting": "弯起再放直，计 1 次。",
+      "sourceId": "Lying_Leg_Curls",
+      "pose": {
+        "family": "leg_machine",
+        "curl": true,
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "leg_lunge",
+      "existing": true,
+      "partKey": "leg",
+      "name": "箭步蹲",
+      "englishName": "Dumbbell Lunge",
+      "aliases": [
+        "弓步",
+        "前箭步"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "lunge",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "quad",
+      "secondaryMuscles": "glute",
+      "primaryMusclesZh": "股四头肌",
+      "secondaryMusclesZh": "臀大肌",
+      "difficulty": "beginner",
+      "startPosition": "双手持哑铃于体侧，向前迈一大步。",
+      "steps": [
+        "双膝屈曲至前膝约 90 度。",
+        "后膝接近地面。",
+        "蹬前脚回站立，换腿或走步。"
+      ],
+      "cues": [
+        "前膝不要过度内扣。",
+        "躯干略直。"
+      ],
+      "counting": "一侧下蹲再回站计 1 次；左右交替时按单侧计，或约定左右各一次记 2 次。",
+      "sourceId": "Dumbbell_Lunges",
+      "pose": {
+        "family": "lunge",
+        "kit": "dumbbell",
+        "cardPhase": 0.2
+      }
+    },
+    {
+      "id": "leg_calf_raise",
+      "existing": true,
+      "partKey": "leg",
+      "name": "提踵",
+      "englishName": "Calf Raise",
+      "aliases": [
+        "器械提踵"
+      ],
+      "equipment": "machine",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "calf",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "小腿三头肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "在提踵器上，肩抵垫，前脚掌站在踏板上，脚跟悬空。",
+      "steps": [
+        "脚跟尽量下沉拉伸。",
+        "踮起至最高。",
+        "控制下降。"
+      ],
+      "cues": [
+        "膝保持伸直或固定微屈。",
+        "不要弹震。"
+      ],
+      "counting": "踮起再放下，计 1 次。",
+      "sourceId": "Standing_Calf_Raises",
+      "pose": {
+        "family": "calf",
+        "sit": false,
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "leg_front_squat",
+      "existing": false,
+      "partKey": "leg",
+      "name": "前蹲",
+      "englishName": "Front Squat",
+      "aliases": [
+        "前杠深蹲"
+      ],
+      "equipment": "barbell",
+      "movementPattern": "squat",
+      "weightStep": 2.5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "quad",
+      "secondaryMuscles": "glute",
+      "primaryMusclesZh": "股四头肌",
+      "secondaryMusclesZh": "臀大肌、核心",
+      "difficulty": "advanced",
+      "startPosition": "杠铃置于前肩三角肌上，肘抬高，核心收紧。",
+      "steps": [
+        "保持肘高下蹲。",
+        "躯干比背蹲更直立。",
+        "蹬地站直。"
+      ],
+      "cues": [
+        "肘掉则杠会滚。",
+        "可高翻握或交叉握。"
+      ],
+      "counting": "下蹲再站直，计 1 次。",
+      "sourceId": "Front_Squat_Clean_Grip",
+      "pose": {
+        "family": "squat",
+        "kit": "barbell",
+        "cardPhase": 0.15
+      }
+    },
+    {
+      "id": "leg_goblet_squat",
+      "existing": false,
+      "partKey": "leg",
+      "name": "高脚杯深蹲",
+      "englishName": "Goblet Squat",
+      "aliases": [
+        "酒杯蹲",
+        "壶铃深蹲"
+      ],
+      "equipment": "kettlebell",
+      "movementPattern": "squat",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "quad",
+      "secondaryMuscles": "glute",
+      "primaryMusclesZh": "股四头肌",
+      "secondaryMusclesZh": "臀大肌",
+      "difficulty": "beginner",
+      "startPosition": "双手在胸前托住壶铃或哑铃，肘向下。",
+      "steps": [
+        "下蹲至肘靠近膝内侧。",
+        "挺胸。",
+        "站直。"
+      ],
+      "cues": [
+        "适合学习深蹲轨迹。",
+        "重量贴胸。"
+      ],
+      "counting": "下蹲再站直，计 1 次。",
+      "sourceId": "Goblet_Squat",
+      "pose": {
+        "family": "squat",
+        "kit": "dumbbell",
+        "goblet": true,
+        "cardPhase": 0.18
+      }
+    },
+    {
+      "id": "leg_split_squat",
+      "existing": false,
+      "partKey": "leg",
+      "name": "分腿蹲",
+      "englishName": "Split Squat",
+      "aliases": [
+        "原地分腿蹲"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "lunge",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "quad",
+      "secondaryMuscles": "glute",
+      "primaryMusclesZh": "股四头肌",
+      "secondaryMusclesZh": "臀大肌",
+      "difficulty": "beginner",
+      "startPosition": "前后分腿站立，双手可持哑铃，重心在两脚之间。",
+      "steps": [
+        "原地屈膝下蹲。",
+        "前膝与后膝同时屈曲。",
+        "蹬起，不换脚直到该侧做完。"
+      ],
+      "cues": [
+        "比箭步蹲更稳定。",
+        "后脚只辅助平衡。"
+      ],
+      "counting": "单侧一次下蹲站起计 1 次；做完一侧再换边。",
+      "sourceId": "Split_Squats",
+      "pose": {
+        "family": "lunge",
+        "kit": "dumbbell",
+        "cardPhase": 0.2
+      }
+    },
+    {
+      "id": "leg_bulgarian_split",
+      "existing": false,
+      "partKey": "leg",
+      "name": "保加利亚分腿蹲",
+      "englishName": "Bulgarian Split Squat",
+      "aliases": [
+        "后脚抬高分腿蹲"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "lunge",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "quad",
+      "secondaryMuscles": "glute",
+      "primaryMusclesZh": "股四头肌",
+      "secondaryMusclesZh": "臀大肌",
+      "difficulty": "intermediate",
+      "startPosition": "后脚放在凳上，前脚向前迈出足够距离，双手持哑铃。",
+      "steps": [
+        "前腿屈膝下蹲。",
+        "躯干略前倾可更打臀。",
+        "蹬前脚站起。"
+      ],
+      "cues": [
+        "前脚要够远，避免膝盖过脚尖过多。",
+        "不要用后脚猛蹬。"
+      ],
+      "counting": "单侧下蹲站起计 1 次；左右分别完成。",
+      "sourceId": "Elevated_Back_Lunge",
+      "pose": {
+        "family": "lunge",
+        "kit": "dumbbell",
+        "cardPhase": 0.18
+      }
+    },
+    {
+      "id": "leg_step_up",
+      "existing": false,
+      "partKey": "leg",
+      "name": "登阶",
+      "englishName": "Step-Up",
+      "aliases": [
+        "上台阶",
+        "踏步"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "lunge",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "quad",
+      "secondaryMuscles": "glute",
+      "primaryMusclesZh": "股四头肌",
+      "secondaryMusclesZh": "臀大肌",
+      "difficulty": "beginner",
+      "startPosition": "面对稳固箱子或凳，双手可持哑铃。",
+      "steps": [
+        "一脚踏上，用该腿把身体带上。",
+        "在箱上站直。",
+        "控制下来，减少另一腿借力。"
+      ],
+      "cues": [
+        "箱高约到膝。",
+        "上箱那条腿才是工作腿。"
+      ],
+      "counting": "单侧上箱再下来计 1 次；左右交替或做完一侧再换。",
+      "sourceId": "Dumbbell_Step_Ups",
+      "pose": {
+        "family": "lunge",
+        "kit": "dumbbell",
+        "step": true,
+        "cardPhase": 0.7
+      }
+    },
+    {
+      "id": "leg_hack_squat",
+      "existing": false,
+      "partKey": "leg",
+      "name": "哈克深蹲",
+      "englishName": "Hack Squat",
+      "aliases": [
+        "Hack 蹲",
+        "倒蹬深蹲器"
+      ],
+      "equipment": "machine",
+      "movementPattern": "squat",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "quad",
+      "secondaryMuscles": "glute",
+      "primaryMusclesZh": "股四头肌",
+      "secondaryMusclesZh": "臀大肌",
+      "difficulty": "intermediate",
+      "startPosition": "肩抵哈克机垫，双脚置于踏板，解开安全销。",
+      "steps": [
+        "屈膝下蹲。",
+        "至大腿平行或更深。",
+        "推起至膝接近伸直。"
+      ],
+      "cues": [
+        "腰贴垫。",
+        "脚越前越偏臀，越后越偏股四。"
+      ],
+      "counting": "下蹲再推起，计 1 次。",
+      "sourceId": "Hack_Squat",
+      "pose": {
+        "family": "squat",
+        "kit": "machine",
+        "cardPhase": 0.18
+      }
+    },
+    {
+      "id": "leg_seated_curl",
+      "existing": false,
+      "partKey": "leg",
+      "name": "坐姿腿弯举",
+      "englishName": "Seated Leg Curl",
+      "aliases": [
+        "坐姿腘绳弯举"
+      ],
+      "equipment": "machine",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "hamstring",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腘绳肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "坐在坐姿弯举机上，踝后抵垫，大腿被固定。",
+      "steps": [
+        "屈膝将小腿向下向后弯。",
+        "挤压腘绳。",
+        "控制伸直。"
+      ],
+      "cues": [
+        "髋被固定，更隔离腘绳。",
+        "不要借手拉把手甩。"
+      ],
+      "counting": "弯起再伸直，计 1 次。",
+      "sourceId": "Seated_Leg_Curl",
+      "pose": {
+        "family": "leg_machine",
+        "curl": true,
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "leg_standing_calf",
+      "existing": false,
+      "partKey": "leg",
+      "name": "站姿提踵",
+      "englishName": "Standing Calf Raise",
+      "aliases": [
+        "站立提踵"
+      ],
+      "equipment": "machine",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "calf",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腓肠肌",
+      "secondaryMusclesZh": "比目鱼肌",
+      "difficulty": "beginner",
+      "startPosition": "站在台阶或器械上，膝伸直，前脚掌支撑。",
+      "steps": [
+        "脚跟下沉。",
+        "踮到最高。",
+        "慢下。"
+      ],
+      "cues": [
+        "膝伸直更打腓肠肌。",
+        "两侧均匀。"
+      ],
+      "counting": "踮起再放下，计 1 次。",
+      "sourceId": "Standing_Calf_Raises",
+      "pose": {
+        "family": "calf",
+        "sit": false,
+        "cardPhase": 0.88
+      }
+    },
+    {
+      "id": "leg_seated_calf",
+      "existing": false,
+      "partKey": "leg",
+      "name": "坐姿提踵",
+      "englishName": "Seated Calf Raise",
+      "aliases": [
+        "坐姿小腿"
+      ],
+      "equipment": "machine",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "calf",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "比目鱼肌",
+      "secondaryMusclesZh": "腓肠肌",
+      "difficulty": "beginner",
+      "startPosition": "坐在提踵器上，膝屈约 90 度，膝上压垫，前脚掌在踏板上。",
+      "steps": [
+        "脚跟下沉拉伸。",
+        "踮起。",
+        "控制下降。"
+      ],
+      "cues": [
+        "屈膝更打比目鱼。",
+        "行程要完整。"
+      ],
+      "counting": "踮起再放下，计 1 次。",
+      "sourceId": "Seated_Calf_Raise",
+      "pose": {
+        "family": "calf",
+        "sit": true,
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "leg_walking_lunge",
+      "existing": false,
+      "partKey": "leg",
+      "name": "行走箭步蹲",
+      "englishName": "Walking Lunge",
+      "aliases": [
+        "走步弓箭步"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "lunge",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "quad",
+      "secondaryMuscles": "glute",
+      "primaryMusclesZh": "股四头肌",
+      "secondaryMusclesZh": "臀大肌",
+      "difficulty": "beginner",
+      "startPosition": "双手持哑铃，向前行走空间充足。",
+      "steps": [
+        "向前迈步下蹲。",
+        "后腿蹬起，下一步换另一腿。",
+        "连续行走。"
+      ],
+      "cues": [
+        "步幅稳定。",
+        "可持杠铃于背。"
+      ],
+      "counting": "每迈出一步并完成下蹲计 1 次（单侧一步）；左右各一步记 2 次。",
+      "sourceId": "Barbell_Walking_Lunge",
+      "pose": {
+        "family": "lunge",
+        "kit": "dumbbell",
+        "cardPhase": 0.25
+      }
+    },
+    {
+      "id": "leg_reverse_lunge",
+      "existing": false,
+      "partKey": "leg",
+      "name": "后箭步蹲",
+      "englishName": "Reverse Lunge",
+      "aliases": [
+        "后退弓步"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "lunge",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 1,
+      "primaryMuscles": "quad",
+      "secondaryMuscles": "glute",
+      "primaryMusclesZh": "股四头肌",
+      "secondaryMusclesZh": "臀大肌",
+      "difficulty": "beginner",
+      "startPosition": "站立持哑铃，向后退一步。",
+      "steps": [
+        "后膝下降。",
+        "前腿承重。",
+        "蹬前脚回到并立。"
+      ],
+      "cues": [
+        "通常比前箭步更膝友好。",
+        "躯干微前倾打臀。"
+      ],
+      "counting": "一侧后退下蹲再回站计 1 次；左右分别或交替计。",
+      "sourceId": "Dumbbell_Rear_Lunge",
+      "pose": {
+        "family": "lunge",
+        "kit": "dumbbell",
+        "cardPhase": 0.2
+      }
+    },
+    {
+      "id": "leg_sumo_squat",
+      "existing": false,
+      "partKey": "leg",
+      "name": "相扑深蹲",
+      "englishName": "Sumo Squat",
+      "aliases": [
+        "宽距深蹲",
+        "犁式蹲"
+      ],
+      "equipment": "dumbbell",
+      "movementPattern": "squat",
+      "weightStep": 2,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "quad",
+      "secondaryMuscles": "glute",
+      "primaryMusclesZh": "股四头肌",
+      "secondaryMusclesZh": "臀大肌、内收肌",
+      "difficulty": "beginner",
+      "startPosition": "站距明显宽于肩，脚外展，双手于身前持哑铃或壶铃。",
+      "steps": [
+        "屈膝下蹲，膝指向脚尖。",
+        "躯干尽量直立。",
+        "蹬地站直。"
+      ],
+      "cues": [
+        "髋外展打开。",
+        "不要变成体前屈。"
+      ],
+      "counting": "下蹲再站直，计 1 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "squat",
+        "kit": "dumbbell",
+        "goblet": true,
+        "cardPhase": 0.18
+      }
+    },
+    {
+      "id": "abs_crunch",
+      "existing": true,
+      "partKey": "abs",
+      "name": "卷腹",
+      "englishName": "Crunch",
+      "aliases": [
+        "仰卧起坐（卷腹）"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "abs",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腹直肌",
+      "secondaryMusclesZh": "腹斜肌",
+      "difficulty": "beginner",
+      "startPosition": "仰卧，屈膝，脚平放，双手置于耳侧或胸前。",
+      "steps": [
+        "将肩胛卷离地面。",
+        "下背保持贴地。",
+        "缓慢放回。"
+      ],
+      "cues": [
+        "是卷不是甩头。",
+        "不要用手拉脖子。"
+      ],
+      "counting": "肩胛离地再放下，计 1 次。",
+      "sourceId": "Crunches",
+      "pose": {
+        "family": "crunch",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "abs_reverse_crunch",
+      "existing": true,
+      "partKey": "abs",
+      "name": "反向卷腹",
+      "englishName": "Reverse Crunch",
+      "aliases": [
+        "反向卷"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "abs",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腹直肌下部",
+      "secondaryMusclesZh": "髋屈肌",
+      "difficulty": "beginner",
+      "startPosition": "仰卧，髋膝屈曲，小腿可抬起。",
+      "steps": [
+        "将髋卷离地面，膝向胸口。",
+        "骨盆后倾。",
+        "控制放回。"
+      ],
+      "cues": [
+        "用腹而不是猛甩腿。",
+        "下背不要借惯性拍打地面。"
+      ],
+      "counting": "髋离地再放下，计 1 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "crunch",
+        "reverse": true,
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "abs_leg_raise",
+      "existing": true,
+      "partKey": "abs",
+      "name": "仰卧举腿",
+      "englishName": "Lying Leg Raise",
+      "aliases": [
+        "躺姿举腿"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "abs",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腹直肌",
+      "secondaryMusclesZh": "髋屈肌",
+      "difficulty": "beginner",
+      "startPosition": "仰卧，双手可握身侧或垫在臀下，双腿伸直。",
+      "steps": [
+        "将双腿向上举起至接近垂直。",
+        "可在顶端将髋微微卷起。",
+        "控制放下至离地数厘米。"
+      ],
+      "cues": [
+        "下背尽量贴地。",
+        "膝可微屈减难。"
+      ],
+      "counting": "双腿举起再放下，计 1 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "legraise",
+        "kind": "legraise",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "abs_machine_crunch",
+      "existing": false,
+      "partKey": "abs",
+      "name": "器械卷腹",
+      "englishName": "Ab Crunch Machine",
+      "aliases": [
+        "卷腹机"
+      ],
+      "equipment": "machine",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "abs",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腹直肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "坐在卷腹机上，胸垫或把手置于胸前，调整配重。",
+      "steps": [
+        "将躯干卷向大腿。",
+        "挤压腹肌。",
+        "控制回到起始。"
+      ],
+      "cues": [
+        "用腹不是用手臂猛拉。",
+        "底部不要完全放松弹回。"
+      ],
+      "counting": "卷到底再回，计 1 次。",
+      "sourceId": "Ab_Crunch_Machine",
+      "pose": {
+        "family": "crunch",
+        "kit": "machine",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "abs_cable_crunch",
+      "existing": false,
+      "partKey": "abs",
+      "name": "绳索卷腹",
+      "englishName": "Cable Crunch",
+      "aliases": [
+        "跪姿绳索卷腹"
+      ],
+      "equipment": "cable",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "abs",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腹直肌",
+      "secondaryMusclesZh": "无特别强调",
+      "difficulty": "beginner",
+      "startPosition": "跪在高位绳索前，双手握住绳索置于头侧。",
+      "steps": [
+        "屈髋屈脊柱将肘向膝卷。",
+        "挤压腹直肌。",
+        "控制伸直但不站起。"
+      ],
+      "cues": [
+        "是卷脊柱不是鞠躬甩髋。",
+        "髋位置相对固定。"
+      ],
+      "counting": "卷到底再回到伸展，计 1 次。",
+      "sourceId": "Cable_Crunch",
+      "pose": {
+        "family": "crunch",
+        "kit": "cable",
+        "cardPhase": 0.75
+      }
+    },
+    {
+      "id": "abs_hanging_knee",
+      "existing": false,
+      "partKey": "abs",
+      "name": "悬垂举膝",
+      "englishName": "Hanging Knee Raise",
+      "aliases": [
+        "悬垂屈膝"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "abs",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腹直肌",
+      "secondaryMusclesZh": "髋屈肌",
+      "difficulty": "intermediate",
+      "startPosition": "双手悬垂于单杠，身体稳定，肩下沉。",
+      "steps": [
+        "屈髋屈膝将膝抬向胸口。",
+        "骨盆后倾。",
+        "控制放下。"
+      ],
+      "cues": [
+        "减少摆动。",
+        "比直腿举腿容易。"
+      ],
+      "counting": "双膝上举再放下，计 1 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "hanging",
+        "kind": "hanging",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "abs_hanging_leg",
+      "existing": false,
+      "partKey": "abs",
+      "name": "悬垂举腿",
+      "englishName": "Hanging Leg Raise",
+      "aliases": [
+        "悬垂直腿"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "abs",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腹直肌",
+      "secondaryMusclesZh": "髋屈肌",
+      "difficulty": "advanced",
+      "startPosition": "悬垂于单杠，双腿伸直。",
+      "steps": [
+        "将双腿抬至至少平行地面。",
+        "高级者可抬至杠。",
+        "控制下降，抑制钟摆。"
+      ],
+      "cues": [
+        "先学举膝。",
+        "可在双杠支撑架上进行。"
+      ],
+      "counting": "双腿举起再放下，计 1 次。",
+      "sourceId": "Hanging_Leg_Raise",
+      "pose": {
+        "family": "hanging",
+        "kind": "hanging",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "abs_alt_crunch",
+      "existing": false,
+      "partKey": "abs",
+      "name": "交替卷腹",
+      "englishName": "Cross-Body Crunch",
+      "aliases": [
+        "交叉卷腹",
+        "异侧卷腹"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 1,
+      "primaryMuscles": "abs",
+      "secondaryMuscles": "obliques",
+      "primaryMusclesZh": "腹直肌",
+      "secondaryMusclesZh": "腹斜肌",
+      "difficulty": "beginner",
+      "startPosition": "仰卧屈膝，双手置于耳侧。",
+      "steps": [
+        "右肘向左膝方向卷。",
+        "放回后换左侧。",
+        "肩胛离地。"
+      ],
+      "cues": [
+        "是旋转卷腹不是自行车的完整蹬腿。",
+        "不要拉头。"
+      ],
+      "counting": "一侧卷起计 1 次；左右各一次记 2 次。",
+      "sourceId": "Cross-Body_Crunch",
+      "pose": {
+        "family": "crunch",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "abs_heel_touch",
+      "existing": false,
+      "partKey": "abs",
+      "name": "触踵",
+      "englishName": "Heel Touch",
+      "aliases": [
+        "交替触踵",
+        "左右摸脚"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 1,
+      "primaryMuscles": "abs",
+      "secondaryMuscles": "obliques",
+      "primaryMusclesZh": "腹斜肌",
+      "secondaryMusclesZh": "腹直肌",
+      "difficulty": "beginner",
+      "startPosition": "仰卧屈膝，肩微离地，双臂置于体侧。",
+      "steps": [
+        "向右侧屈，手指触右脚跟。",
+        "回到中间再触左侧。",
+        "肩保持微微离地。"
+      ],
+      "cues": [
+        "小幅度侧屈。",
+        "颈部放松。"
+      ],
+      "counting": "触一侧脚跟计 1 次；左右各触一次记 2 次。",
+      "sourceId": "Alternate_Heel_Touchers",
+      "pose": {
+        "family": "crunch",
+        "cardPhase": 0.6
+      }
+    },
+    {
+      "id": "abs_flutter_kick",
+      "existing": false,
+      "partKey": "abs",
+      "name": "交替踢腿",
+      "englishName": "Flutter Kick",
+      "aliases": [
+        "扑打踢",
+        "剪刀踢"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 1,
+      "primaryMuscles": "abs",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腹直肌下部",
+      "secondaryMusclesZh": "髋屈肌",
+      "difficulty": "beginner",
+      "startPosition": "仰卧，双手垫臀或握身侧，双腿伸直离地。",
+      "steps": [
+        "左右腿交替小幅度上下踢。",
+        "下背贴地。",
+        "腿尽量伸直。"
+      ],
+      "cues": [
+        "幅度小而快或按节奏。",
+        "腰痛则屈膝或缩短时间。"
+      ],
+      "counting": "一只脚完成一次上下为 1 次；也可按左右各一次记 2 次，需全程同一口径。",
+      "sourceId": "Flutter_Kicks",
+      "pose": {
+        "family": "legraise",
+        "kind": "legraise",
+        "cardPhase": 0.5
+      }
+    },
+    {
+      "id": "abs_decline_crunch",
+      "existing": false,
+      "partKey": "abs",
+      "name": "下斜卷腹",
+      "englishName": "Decline Crunch",
+      "aliases": [
+        "下斜板卷腹"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "abs",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腹直肌",
+      "secondaryMusclesZh": "髋屈肌",
+      "difficulty": "beginner",
+      "startPosition": "坐在下斜凳上，小腿固定，上身后仰，双手置于耳侧。",
+      "steps": [
+        "将躯干卷向大腿。",
+        "不要完全躺平若过难。",
+        "控制后仰。"
+      ],
+      "cues": [
+        "比平板卷腹更难。",
+        "可抱杠铃片。"
+      ],
+      "counting": "卷起再后仰，计 1 次。",
+      "sourceId": "Decline_Crunch",
+      "pose": {
+        "family": "crunch",
+        "cardPhase": 0.75
+      }
+    },
+    {
+      "id": "abs_v_up",
+      "existing": false,
+      "partKey": "abs",
+      "name": "V 字起",
+      "englishName": "V-Up",
+      "aliases": [
+        "V 起",
+        "折叠起"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "abs",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腹直肌",
+      "secondaryMusclesZh": "髋屈肌",
+      "difficulty": "intermediate",
+      "startPosition": "仰卧，手脚伸直。",
+      "steps": [
+        "同时抬起躯干和双腿，手脚在空中靠近。",
+        "身体成 V 形。",
+        "控制放回。"
+      ],
+      "cues": [
+        "可先做屈膝版本。",
+        "不要靠甩。"
+      ],
+      "counting": "手脚靠近再放回，计 1 次。",
+      "sourceId": "Cocoons",
+      "pose": {
+        "family": "crunch",
+        "reverse": true,
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "core_dead_bug",
+      "existing": true,
+      "partKey": "core",
+      "name": "死虫式",
+      "englishName": "Dead Bug",
+      "aliases": [
+        "死亡虫"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 1,
+      "primaryMuscles": "core",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "核心、腹直肌",
+      "secondaryMusclesZh": "腹斜肌",
+      "difficulty": "beginner",
+      "startPosition": "仰卧，髋膝 90 度，双臂指向天花板，下背贴地。",
+      "steps": [
+        "对侧手臂与腿缓慢伸展。",
+        "下背始终贴地。",
+        "收回后换边。"
+      ],
+      "cues": [
+        "宁慢勿拱腰。",
+        "呼气帮助收腹。"
+      ],
+      "counting": "一侧伸展再收回计 1 次；左右各一次记 2 次。",
+      "sourceId": "Dead_Bug",
+      "pose": {
+        "family": "dead_bug",
+        "cardPhase": 0.7
+      }
+    },
+    {
+      "id": "core_bird_dog",
+      "existing": true,
+      "partKey": "core",
+      "name": "鸟狗式",
+      "englishName": "Bird Dog",
+      "aliases": [
+        "四足对侧伸"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 1,
+      "primaryMuscles": "core",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "核心、竖脊肌",
+      "secondaryMusclesZh": "臀、肩稳定",
+      "difficulty": "beginner",
+      "startPosition": "四肢着地，脊柱中立。",
+      "steps": [
+        "伸出对侧手臂与腿，与躯干成直线。",
+        "骨盆不要旋转。",
+        "收回后换边。"
+      ],
+      "cues": [
+        "想象杯子放在腰上。",
+        "不要过度抬头。"
+      ],
+      "counting": "一侧伸展再收回计 1 次；左右交替各一次记 2 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "bird_dog",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "core_shoulder_tap",
+      "existing": true,
+      "partKey": "core",
+      "name": "支撑交替触肩",
+      "englishName": "Shoulder Tap",
+      "aliases": [
+        "平板支撑拍肩"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 1,
+      "primaryMuscles": "core",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "核心",
+      "secondaryMusclesZh": "肩稳定、腹斜肌",
+      "difficulty": "beginner",
+      "startPosition": "高位平板支撑，双手在肩下，身体成直线。",
+      "steps": [
+        "一手轻触对侧肩。",
+        "髋尽量不晃。",
+        "放回后换手。"
+      ],
+      "cues": [
+        "双脚可略宽增稳。",
+        "这是计次抗旋转，不是计时平板。"
+      ],
+      "counting": "触一次肩计 1 次；左右各触一次记 2 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "tap",
+        "kind": "tap",
+        "cardPhase": 0.7
+      }
+    },
+    {
+      "id": "core_pallof",
+      "existing": false,
+      "partKey": "core",
+      "name": "抗旋转推",
+      "englishName": "Pallof Press",
+      "aliases": [
+        "帕洛夫推",
+        "动态抗旋转"
+      ],
+      "equipment": "cable",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "core",
+      "secondaryMuscles": "obliques",
+      "primaryMusclesZh": "腹斜肌、核心",
+      "secondaryMusclesZh": "肩带",
+      "difficulty": "beginner",
+      "startPosition": "侧向绳索站立，双手握手柄于胸口，双脚与肩同宽。",
+      "steps": [
+        "将手柄向前推直。",
+        "抵抗被拉转，可在伸直位短暂停留或小幅旋转再回。",
+        "收回到胸口。"
+      ],
+      "cues": [
+        "髋肩正对前方。",
+        "不要被配重转走。"
+      ],
+      "counting": "推直再收回计 1 次；完成一侧后转身做另一侧。",
+      "sourceId": "Pallof_Press_With_Rotation",
+      "pose": {
+        "family": "core",
+        "kind": "pallof",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "core_side_plank_hip",
+      "existing": false,
+      "partKey": "core",
+      "name": "侧支撑提髋",
+      "englishName": "Side Plank Hip Lift",
+      "aliases": [
+        "侧桥抬髋"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 1,
+      "primaryMuscles": "core",
+      "secondaryMuscles": "obliques",
+      "primaryMusclesZh": "腹斜肌、核心",
+      "secondaryMusclesZh": "臀中肌",
+      "difficulty": "beginner",
+      "startPosition": "侧卧，肘在肩下支撑，脚叠放或前后分开，髋先着地。",
+      "steps": [
+        "将髋向上推起成侧直线。",
+        "停留片刻。",
+        "控制放下但不完全放松，再推起。"
+      ],
+      "cues": [
+        "肩堆在肘上。",
+        "这是计次抬髋，不是计时长支撑。"
+      ],
+      "counting": "单侧髋上再下计 1 次；做完一侧换边。",
+      "sourceId": "",
+      "pose": {
+        "family": "core",
+        "kind": "side",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "core_up_down",
+      "existing": false,
+      "partKey": "core",
+      "name": "支撑起落",
+      "englishName": "Plank Up-Down",
+      "aliases": [
+        "平板起落",
+        "从肘到掌"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "core",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "核心",
+      "secondaryMusclesZh": "肩、肱三头",
+      "difficulty": "beginner",
+      "startPosition": "肘支撑平板开始，身体成直线。",
+      "steps": [
+        "一手撑起至掌，再另一手撑起成高位支撑。",
+        "再依次回到肘撑。",
+        "交替先动手以平衡两侧。"
+      ],
+      "cues": [
+        "髋尽量不左右扭。",
+        "完整一来一回为一轮。"
+      ],
+      "counting": "从肘撑到掌撑再回到肘撑，计 1 次。可约定先左或先右，组内保持一致。",
+      "sourceId": "Body-Up",
+      "pose": {
+        "family": "core",
+        "kind": "updown",
+        "cardPhase": 0.6
+      }
+    },
+    {
+      "id": "core_russian_twist",
+      "existing": false,
+      "partKey": "core",
+      "name": "俄罗斯转体",
+      "englishName": "Russian Twist",
+      "aliases": [
+        "俄式扭转",
+        "坐姿转体"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 1,
+      "primaryMuscles": "core",
+      "secondaryMuscles": "obliques",
+      "primaryMusclesZh": "腹斜肌",
+      "secondaryMusclesZh": "腹直肌",
+      "difficulty": "beginner",
+      "startPosition": "坐地，躯干后倾，双脚离地或着地，双手合于身前。",
+      "steps": [
+        "将双手转到一侧。",
+        "再转到另一侧。",
+        "可持杠铃片加重。"
+      ],
+      "cues": [
+        "转的是胸椎不是只甩手。",
+        "脚着地较易。"
+      ],
+      "counting": "转到一侧计 1 次；左右各一次记 2 次。",
+      "sourceId": "Russian_Twist",
+      "pose": {
+        "family": "core",
+        "kind": "twist",
+        "cardPhase": 0.7
+      }
+    },
+    {
+      "id": "core_woodchop",
+      "existing": false,
+      "partKey": "core",
+      "name": "伐木",
+      "englishName": "Cable Woodchop",
+      "aliases": [
+        "绳索劈砍",
+        "木斩"
+      ],
+      "equipment": "cable",
+      "movementPattern": "isolation",
+      "weightStep": 5,
+      "isBodyweight": 0,
+      "isUnilateral": 0,
+      "primaryMuscles": "core",
+      "secondaryMuscles": "obliques",
+      "primaryMusclesZh": "腹斜肌、核心",
+      "secondaryMusclesZh": "肩带",
+      "difficulty": "beginner",
+      "startPosition": "侧向高位或中位绳索，双手握住手柄于外侧上方。",
+      "steps": [
+        "将手柄斜向对侧髋下劈。",
+        "髋可小幅转动但膝稳定。",
+        "控制回到高位。"
+      ],
+      "cues": [
+        "对角线发力。",
+        "低位往高拉则是反向伐木。"
+      ],
+      "counting": "劈一次再回到高位计 1 次；换边做另一侧。",
+      "sourceId": "",
+      "pose": {
+        "family": "core",
+        "kind": "chop",
+        "cardPhase": 0.4
+      }
+    },
+    {
+      "id": "core_hollow_rock",
+      "existing": false,
+      "partKey": "core",
+      "name": "空心体摇摆",
+      "englishName": "Hollow Body Rock",
+      "aliases": [
+        "空心石头",
+        "船式摇摆"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "core",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "腹直肌、核心",
+      "secondaryMusclesZh": "髋屈肌",
+      "difficulty": "beginner",
+      "startPosition": "仰卧成空心体：下背贴地，肩和腿离地，手脚伸展。",
+      "steps": [
+        "保持空心体形状前后小幅摇摆。",
+        "腰不离开地面。",
+        "幅度以能维持形状为准。"
+      ],
+      "cues": [
+        "先能稳住空心体再摇摆。",
+        "这是计次摇摆，不是计时平板。"
+      ],
+      "counting": "向前再向后完成一个来回，计 1 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "core",
+        "kind": "hollow",
+        "cardPhase": 0.8
+      }
+    },
+    {
+      "id": "core_body_saw",
+      "existing": false,
+      "partKey": "core",
+      "name": "身体锯",
+      "englishName": "Body Saw",
+      "aliases": [
+        "平板前后滑"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "core",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "核心",
+      "secondaryMusclesZh": "肩",
+      "difficulty": "beginner",
+      "startPosition": "肘撑平板，双脚踩滑盘或穿袜子在滑面上。",
+      "steps": [
+        "将身体向后推，肩角变大。",
+        "再拉回至标准平板。",
+        "全程保持一条直线。"
+      ],
+      "cues": [
+        "不要塌腰。",
+        "无滑面时可改用小幅度前后移动肩。"
+      ],
+      "counting": "向后推再拉回，计 1 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "core",
+        "kind": "saw",
+        "cardPhase": 0.6
+      }
+    },
+    {
+      "id": "cardio_jump_rope",
+      "existing": true,
+      "partKey": "cardio",
+      "name": "跳绳（按次数）",
+      "englishName": "Jump Rope",
+      "aliases": [
+        "跳绳"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "cardio",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "心肺、小腿",
+      "secondaryMusclesZh": "全身",
+      "difficulty": "beginner",
+      "startPosition": "双手握绳于髋侧，绳在身后，微屈膝。",
+      "steps": [
+        "甩绳用腕，前脚掌轻跳。",
+        "每次跳跃让绳通过脚下。",
+        "保持节奏，落地缓冲。"
+      ],
+      "cues": [
+        "本应用按次记录，不记时长。",
+        "双摇可按每次通过脚下计。"
+      ],
+      "counting": "绳子每通过脚下 1 次计 1 次；双摇一次通过计 1 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "cardio",
+        "kind": "rope",
+        "cardPhase": 0.5
+      }
+    },
+    {
+      "id": "cardio_jumping_jack",
+      "existing": true,
+      "partKey": "cardio",
+      "name": "开合跳（按次数）",
+      "englishName": "Jumping Jack",
+      "aliases": [
+        "开合跳",
+        "跳跃开合"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "cardio",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "心肺",
+      "secondaryMusclesZh": "肩、髋外展",
+      "difficulty": "beginner",
+      "startPosition": "站立，双脚并拢，双手置于体侧。",
+      "steps": [
+        "跳起同时双脚打开、双手上举。",
+        "再跳回并拢。",
+        "落地屈膝缓冲。"
+      ],
+      "cues": [
+        "按完整开合计次。",
+        "不记时长。"
+      ],
+      "counting": "打开再合拢为 1 次。",
+      "sourceId": "",
+      "pose": {
+        "family": "cardio",
+        "kind": "jack",
+        "cardPhase": 0.85
+      }
+    },
+    {
+      "id": "cardio_mountain_climber",
+      "existing": false,
+      "partKey": "cardio",
+      "name": "登山跑（按次数）",
+      "englishName": "Mountain Climber",
+      "aliases": [
+        "登山者",
+        "快速交替登阶"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 1,
+      "primaryMuscles": "cardio",
+      "secondaryMuscles": "core",
+      "primaryMusclesZh": "心肺、核心",
+      "secondaryMusclesZh": "髋屈肌",
+      "difficulty": "beginner",
+      "startPosition": "高位支撑，身体成直线。",
+      "steps": [
+        "一膝快速向胸口收。",
+        "换另一腿，像跑步。",
+        "髋不要过度抬高。"
+      ],
+      "cues": [
+        "本应用按次记录。",
+        "保持肩在手腕上方。"
+      ],
+      "counting": "一侧膝盖向前收再换边，每收一次计 1 次；左右各一次记 2 次。",
+      "sourceId": "Mountain_Climbers",
+      "pose": {
+        "family": "cardio",
+        "kind": "mountain",
+        "cardPhase": 0.6
+      }
+    },
+    {
+      "id": "cardio_burpee",
+      "existing": false,
+      "partKey": "cardio",
+      "name": "波比跳（按次数）",
+      "englishName": "Burpee",
+      "aliases": [
+        "立卧撑跳",
+        "Burpee"
+      ],
+      "equipment": "bodyweight",
+      "movementPattern": "isolation",
+      "weightStep": 0,
+      "isBodyweight": 1,
+      "isUnilateral": 0,
+      "primaryMuscles": "cardio",
+      "secondaryMuscles": "",
+      "primaryMusclesZh": "心肺、全身",
+      "secondaryMusclesZh": "胸、腿、核心",
+      "difficulty": "intermediate",
+      "startPosition": "站立。",
+      "steps": [
+        "下蹲双手撑地，双脚后蹬成俯撑。",
+        "可选择做一次俯卧撑。",
+        "双脚收回，跳起举手过顶。"
+      ],
+      "cues": [
+        "约定本组是否含俯卧撑，保持一致。",
+        "只按完整动作计次，不记时长。"
+      ],
+      "counting": "从站立到跳起落地为 1 次；是否含俯卧撑在备注中统一。",
+      "sourceId": "",
+      "pose": {
+        "family": "cardio",
+        "kind": "burpee",
+        "cardPhase": 0.3
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240">
+<title>支撑交替触肩（起始）</title>
+<desc>原创训练示意图，绿色强调目标肌群；姿势与文字说明一致，未描摹来源不明照片。</desc>
+<defs>
+  <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#E2EBED"/><stop offset=".46" stop-color="#AFBFC7"/><stop offset="1" stop-color="#708994"/>
+  </linearGradient>
+  <linearGradient id="muscle" x1="0" y1="0" x2=".8" y2="1">
+    <stop stop-color="#F0F5F4"/><stop offset=".4" stop-color="#CDDADF"/><stop offset="1" stop-color="#91A7B2"/>
+  </linearGradient>
+  <linearGradient id="target" x1="0" y1="0" x2=".85" y2="1">
+    <stop stop-color="#8EE4BC"/><stop offset=".35" stop-color="#39B38D"/><stop offset=".72" stop-color="#168269"/><stop offset="1" stop-color="#0B534D"/>
+  </linearGradient>
+  <linearGradient id="targetDeep" x1="0" y1="0" x2="1" y2=".8">
+    <stop stop-color="#53CBA1"/><stop offset=".65" stop-color="#168269"/><stop offset="1" stop-color="#083D3D"/>
+  </linearGradient>
+  <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#EDD0AD"/><stop offset=".5" stop-color="#C99670"/><stop offset="1" stop-color="#946345"/>
+  </linearGradient>
+  <linearGradient id="kit" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#405764"/><stop offset="1" stop-color="#142C39"/>
+  </linearGradient>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 1 L9 5 L0 9 Z" fill="#168269"/>
+  </marker>
+</defs>
+<ellipse cx="160" cy="124" rx="115" ry="105" fill="#E9F3EF"/>
+<path d="M49 83 A116 106 0 0 1 226 34 M260 166 A116 106 0 0 1 102 221" fill="none" stroke="#C5DDD3" stroke-width="1.3"/>
+<circle cx="52" cy="80" r="3" fill="#52AD8D"/>
+<circle cx="260" cy="168" r="2" fill="#93C7B2"/>
+<ellipse cx="160" cy="222" rx="108" ry="7" fill="#345D60" opacity=".12"/>
+<path d="M 191.89142187643282 111.13833124025692 L 123.8914218764328 101.13833124025692 A 13 13 0 0 1 120.1085781235672 126.86166875974308 L 188.10857812356718 136.86166875974308 A 13 13 0 0 1 191.89142187643282 111.13833124025692 Z" fill="url(#target)" stroke="#246E62" stroke-width="1.2" stroke-linejoin="round"/><circle cx="164.16" cy="120.2" r="9" fill="url(#target)" stroke="#246E62" stroke-width="1.1"/><path d="M 183.18859293007756 129.88257883311482 L 221.18859293007756 173.88257883311482 A 9 9 0 0 1 234.81140706992244 162.11742116688518 L 196.81140706992244 118.11742116688517 A 9 9 0 0 1 183.18859293007756 129.88257883311482 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 224.2146968608055 173.88824932763586 L 252.2146968608055 191.88824932763586 A 7 7 0 0 1 259.78530313919447 180.11175067236414 L 231.7853031391945 162.11175067236414 A 7 7 0 0 1 224.2146968608055 173.88824932763586 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 114.62538496261655 112.63433054863269 L 104.62538496261655 166.6343305486327 A 7.5 7.5 0 0 1 119.37461503738345 169.3656694513673 L 129.37461503738345 115.36566945136731 A 7.5 7.5 0 0 1 114.62538496261655 112.63433054863269 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 106.71600371221378 165.1575744107081 L 100.47600371221378 176.7575744107081 A 6 6 0 0 1 111.04399628778623 182.4424255892919 L 117.28399628778622 170.8424255892919 A 6 6 0 0 1 106.71600371221378 165.1575744107081 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><circle cx="122" cy="114" r="8" fill="url(#muscle)" stroke="#627D88" stroke-width="1.1"/><circle cx="102" cy="104" r="11" fill="url(#skin)" stroke="#9A7256" stroke-width="1.1"/><path d="M 95 100 Q 102 91 110 101" fill="#253B43"/><circle cx="256" cy="186" r="5" fill="url(#kit)" stroke="#243E4B" stroke-width="1.1"/>
+</svg>

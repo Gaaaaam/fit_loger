@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240">
+<title>仰卧臂屈伸（结束）</title>
+<desc>原创训练示意图，绿色强调目标肌群；姿势与文字说明一致，未描摹来源不明照片。</desc>
+<defs>
+  <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#E2EBED"/><stop offset=".46" stop-color="#AFBFC7"/><stop offset="1" stop-color="#708994"/>
+  </linearGradient>
+  <linearGradient id="muscle" x1="0" y1="0" x2=".8" y2="1">
+    <stop stop-color="#F0F5F4"/><stop offset=".4" stop-color="#CDDADF"/><stop offset="1" stop-color="#91A7B2"/>
+  </linearGradient>
+  <linearGradient id="target" x1="0" y1="0" x2=".85" y2="1">
+    <stop stop-color="#8EE4BC"/><stop offset=".35" stop-color="#39B38D"/><stop offset=".72" stop-color="#168269"/><stop offset="1" stop-color="#0B534D"/>
+  </linearGradient>
+  <linearGradient id="targetDeep" x1="0" y1="0" x2="1" y2=".8">
+    <stop stop-color="#53CBA1"/><stop offset=".65" stop-color="#168269"/><stop offset="1" stop-color="#083D3D"/>
+  </linearGradient>
+  <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#EDD0AD"/><stop offset=".5" stop-color="#C99670"/><stop offset="1" stop-color="#946345"/>
+  </linearGradient>
+  <linearGradient id="kit" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#405764"/><stop offset="1" stop-color="#142C39"/>
+  </linearGradient>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 1 L9 5 L0 9 Z" fill="#168269"/>
+  </marker>
+</defs>
+<ellipse cx="160" cy="124" rx="115" ry="105" fill="#E9F3EF"/>
+<path d="M49 83 A116 106 0 0 1 226 34 M260 166 A116 106 0 0 1 102 221" fill="none" stroke="#C5DDD3" stroke-width="1.3"/>
+<circle cx="52" cy="80" r="3" fill="#52AD8D"/>
+<circle cx="260" cy="168" r="2" fill="#93C7B2"/>
+<rect x="90" y="136" width="160" height="14" rx="6" fill="url(#kit)" stroke="#142C39" transform="rotate(0 170 143)"/><rect x="100" y="150" width="8" height="28" rx="2" fill="#243E4B"/><rect x="232" y="150" width="8" height="28" rx="2" fill="#243E4B"/><line x1="144.48" y1="116.72" x2="220.48" y2="116.72" stroke="#2A4450" stroke-width="3.2" stroke-linecap="round"/><g transform="translate(144.48 116.72) rotate(0)">
+      <rect x="-4" y="-14" width="8" height="28" rx="2" fill="url(#kit)"/>
+      <rect x="-7" y="-11" width="5" height="22" rx="1.5" fill="#1B3340"/>
+    </g><g transform="translate(220.48 116.72) rotate(0)">
+      <rect x="-4" y="-14" width="8" height="28" rx="2" fill="url(#kit)"/>
+      <rect x="-7" y="-11" width="5" height="22" rx="1.5" fill="#1B3340"/>
+    </g><circle cx="182.48" cy="116.72" r="2.2" fill="#D7E3E0" stroke="none" stroke-width="1.1"/>
+<path d="M 198.28527830028756 119.20244151838973 L 142.28527830028756 109.20244151838973 A 13 13 0 0 1 137.71472169971244 134.79755848161025 L 193.71472169971244 144.79755848161025 A 13 13 0 0 1 198.28527830028756 119.20244151838973 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 196 141 L 242 141 A 9 9 0 0 1 242 123 L 196 123 A 9 9 0 0 1 196 141 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 243.87350704650265 138.74462536740958 L 279.87350704650265 128.74462536740958 A 7 7 0 0 1 276.12649295349735 115.25537463259042 L 240.12649295349735 125.25537463259042 A 7 7 0 0 1 243.87350704650265 138.74462536740958 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 147.27606875108998 123.8190171877725 L 155.27606875108998 91.8190171877725 A 7.5 7.5 0 0 1 140.72393124891002 88.1809828122275 L 132.72393124891002 120.1809828122275 A 7.5 7.5 0 0 1 147.27606875108998 123.8190171877725 Z" fill="url(#target)" stroke="#246E62" stroke-width="1.2" stroke-linejoin="round"/><path d="M 144.18815719233845 94.63355742488199 L 176.66815719233844 121.35355742488198 A 6 6 0 0 1 184.29184280766154 112.08644257511801 L 151.81184280766155 85.36644257511801 A 6 6 0 0 1 144.18815719233845 94.63355742488199 Z" fill="url(#target)" stroke="#246E62" stroke-width="1.2" stroke-linejoin="round"/><circle cx="140" cy="122" r="8" fill="url(#muscle)" stroke="#627D88" stroke-width="1.1"/><circle cx="118" cy="112" r="11" fill="url(#skin)" stroke="#9A7256" stroke-width="1.1"/><path d="M 111 108 Q 118 99 126 109" fill="#253B43"/><circle cx="278" cy="122" r="5" fill="url(#kit)" stroke="#243E4B" stroke-width="1.1"/>
+</svg>

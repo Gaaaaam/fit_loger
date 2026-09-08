@@ -15,6 +15,8 @@ export struct ExerciseCard {
   };
   onStatusChanged: () => void = () => {
   };
+  onOpenDetail: (exercise: ExerciseItem) => void = (_exercise: ExerciseItem) => {
+  };
 
   private setKey(setItem: SetItem): string {
     const stamp: number = this.listStamp;
@@ -52,7 +54,16 @@ export struct ExerciseCard {
           .fontSize(17)
           .fontWeight(FontWeight.Medium)
           .fontColor($r('app.color.text_primary'))
+          .maxLines(2)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
           .layoutWeight(1)
+        Text('详情')
+          .fontSize(13)
+          .fontColor($r('app.color.accent'))
+          .padding({ left: 8, top: 4, bottom: 4, right: 8 })
+          .onClick(() => {
+            this.onOpenDetail(this.exercise);
+          })
         Text('删除')
           .fontSize(13)
           .fontColor($r('app.color.danger'))

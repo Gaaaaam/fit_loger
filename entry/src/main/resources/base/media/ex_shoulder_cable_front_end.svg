@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240">
+<title>绳索前平举（结束）</title>
+<desc>原创训练示意图，绿色强调目标肌群；姿势与文字说明一致，未描摹来源不明照片。</desc>
+<defs>
+  <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#E2EBED"/><stop offset=".46" stop-color="#AFBFC7"/><stop offset="1" stop-color="#708994"/>
+  </linearGradient>
+  <linearGradient id="muscle" x1="0" y1="0" x2=".8" y2="1">
+    <stop stop-color="#F0F5F4"/><stop offset=".4" stop-color="#CDDADF"/><stop offset="1" stop-color="#91A7B2"/>
+  </linearGradient>
+  <linearGradient id="target" x1="0" y1="0" x2=".85" y2="1">
+    <stop stop-color="#8EE4BC"/><stop offset=".35" stop-color="#39B38D"/><stop offset=".72" stop-color="#168269"/><stop offset="1" stop-color="#0B534D"/>
+  </linearGradient>
+  <linearGradient id="targetDeep" x1="0" y1="0" x2="1" y2=".8">
+    <stop stop-color="#53CBA1"/><stop offset=".65" stop-color="#168269"/><stop offset="1" stop-color="#083D3D"/>
+  </linearGradient>
+  <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#EDD0AD"/><stop offset=".5" stop-color="#C99670"/><stop offset="1" stop-color="#946345"/>
+  </linearGradient>
+  <linearGradient id="kit" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#405764"/><stop offset="1" stop-color="#142C39"/>
+  </linearGradient>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 1 L9 5 L0 9 Z" fill="#168269"/>
+  </marker>
+</defs>
+<ellipse cx="160" cy="124" rx="115" ry="105" fill="#E9F3EF"/>
+<path d="M49 83 A116 106 0 0 1 226 34 M260 166 A116 106 0 0 1 102 221" fill="none" stroke="#C5DDD3" stroke-width="1.3"/>
+<circle cx="52" cy="80" r="3" fill="#52AD8D"/>
+<circle cx="260" cy="168" r="2" fill="#93C7B2"/>
+<ellipse cx="160" cy="222" rx="108" ry="7" fill="#345D60" opacity=".12"/><g>
+    <rect x="36" y="40" width="22" height="118" rx="4" fill="#3A5561" stroke="#142C39"/>
+    <rect x="40" y="48" width="14" height="10" rx="1" fill="#AFBFC7"/>
+    <rect x="40" y="60" width="14" height="70" rx="1" fill="#1B3340"/>
+    <circle cx="47" cy="40" r="5" fill="#708994"/>
+  </g><line x1="47" y1="158" x2="147.78245184735513" y2="24.556199417775176" stroke="#91A7B2" stroke-width="1.8"/><rect x="139.78245184735513" y="21.556199417775176" width="16" height="6" rx="2" fill="#2A4450"/><line x1="172.21754815264487" y1="24.556199417775176" x2="172.21754815264487" y2="8.556199417775176" stroke="#168269" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arr)" opacity=".85"/>
+<path d="M 149.93505331748682 148.98268547211708 L 139.93505331748682 70.98268547211708 A 8 8 0 0 1 124.0649466825132 73.01731452788292 L 134.06494668251318 151.01731452788292 A 8 8 0 0 1 149.93505331748682 148.98268547211708 Z" fill="url(#body)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 185.93505331748682 151.01731452788292 L 195.93505331748682 73.01731452788292 A 8 8 0 0 1 180.06494668251318 70.98268547211708 L 170.06494668251318 148.98268547211708 A 8 8 0 0 1 185.93505331748682 151.01731452788292 Z" fill="url(#body)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 132 84 L 188 84 A 12 12 0 0 1 188 60 L 132 60 A 12 12 0 0 1 132 84 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 142 161 L 178 161 A 11 11 0 0 1 178 139 L 142 139 A 11 11 0 0 1 142 161 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 134.0123171743567 149.55623984301982 L 132.0123171743567 185.55623984301982 A 8 8 0 0 1 147.9876828256433 186.44376015698018 L 149.9876828256433 150.44376015698018 A 8 8 0 0 1 134.0123171743567 149.55623984301982 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 170.0123171743567 150.44376015698018 L 172.0123171743567 186.44376015698018 A 8 8 0 0 1 187.9876828256433 185.55623984301982 L 185.9876828256433 149.55623984301982 A 8 8 0 0 1 170.0123171743567 150.44376015698018 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 133.5165184511002 185.5368941750786 L 131.5165184511002 213.5368941750786 A 6.5 6.5 0 0 1 144.4834815488998 214.4631058249214 L 146.4834815488998 186.4631058249214 A 6.5 6.5 0 0 1 133.5165184511002 185.5368941750786 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 173.5165184511002 186.4631058249214 L 175.5165184511002 214.4631058249214 A 6.5 6.5 0 0 1 188.4834815488998 213.5368941750786 L 186.4834815488998 185.5368941750786 A 6.5 6.5 0 0 1 173.5165184511002 186.4631058249214 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 138.64213208151148 74.20954325862972 L 146.84900704213615 49.538766955872816 A 7 7 0 0 1 133.5647428791132 45.11968043861337 L 125.35786791848852 69.79045674137028 A 7 7 0 0 1 138.64213208151148 74.20954325862972 Z" fill="url(#target)" stroke="#246E62" stroke-width="1.2" stroke-linejoin="round"/><path d="M 194.64213208151148 69.79045674137028 L 186.4352571208868 45.11968043861337 A 7 7 0 0 1 173.15099295786385 49.538766955872816 L 181.35786791848852 74.20954325862972 A 7 7 0 0 1 194.64213208151148 69.79045674137028 Z" fill="url(#target)" stroke="#246E62" stroke-width="1.2" stroke-linejoin="round"/><path d="M 145.90013103049165 49.22311791892571 L 153.4757079172221 26.45009363945779 A 6 6 0 0 1 142.08919577748816 22.66230519609256 L 134.5136188907577 45.43532947556048 A 6 6 0 0 1 145.90013103049165 49.22311791892571 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><path d="M 185.4863811092423 45.43532947556048 L 177.91080422251184 22.66230519609256 A 6 6 0 0 1 166.5242920827779 26.45009363945779 L 174.09986896950835 49.22311791892571 A 6 6 0 0 1 185.4863811092423 45.43532947556048 Z" fill="url(#muscle)" stroke="#627D88" stroke-width="1.2" stroke-linejoin="round"/><circle cx="132" cy="72" r="8" fill="url(#target)" stroke="#246E62" stroke-width="1.1"/><circle cx="188" cy="72" r="8" fill="url(#target)" stroke="#246E62" stroke-width="1.1"/><circle cx="160" cy="46" r="12" fill="url(#skin)" stroke="#9A7256" stroke-width="1.1"/><path d="M 153 42 Q 160 32 168 43" fill="#253B43"/><circle cx="138" cy="214" r="5" fill="url(#kit)" stroke="#243E4B" stroke-width="1.1"/><circle cx="182" cy="214" r="5" fill="url(#kit)" stroke="#243E4B" stroke-width="1.1"/>
+</svg>

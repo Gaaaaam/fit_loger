@@ -1,9 +1,11 @@
 import { common, ConfigurationConstant } from '@kit.AbilityKit';
 import { preferences } from '@kit.ArkData';
+import { toWorkoutViewMode, WorkoutViewMode } from '../model/muscleTypes';
 
 const STORE_NAME: string = 'fit_loger_settings';
 const KEY_THEME: string = 'theme';
 const KEY_HEIGHT: string = 'height_cm';
+const KEY_VIEW_MODE: string = 'workout_view_mode';
 
 export class AppSettings {
   private static store: preferences.Preferences | null = null;
@@ -61,6 +63,25 @@ export class AppSettings {
       return;
     }
     await AppSettings.prefs().put(KEY_HEIGHT, heightCm);
+    await AppSettings.prefs().flush();
+  }
+
+  static async loadWorkoutViewMode(): Promise<WorkoutViewMode> {
+    if (AppSettings.store === null) {
+      return 'part';
+    }
+    const value: preferences.ValueType = await AppSettings.prefs().get(KEY_VIEW_MODE, 'part');
+    if (typeof value === 'string') {
+      return toWorkoutViewMode(value);
+    }
+    return 'part';
+  }
+
+  static async saveWorkoutViewMode(mode: WorkoutViewMode): Promise<void> {
+    if (AppSettings.store === null) {
+      return;
+    }
+    await AppSettings.prefs().put(KEY_VIEW_MODE, mode);
     await AppSettings.prefs().flush();
   }
 }

@@ -1,13 +1,17 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { promptAction, router } from '@kit.ArkUI';
+import { AppSettings } from '../common/AppSettings';
 import { BodyPartSheet } from '../components/BodyPartSheet';
 import { CreateExerciseSheet } from '../components/CreateExerciseSheet';
+import { ExerciseCard } from '../components/ExerciseCard';
+import { ExerciseInfoView } from '../components/ExerciseInfoView';
 import { ExerciseSheet } from '../components/ExerciseSheet';
 import { PartSection } from '../components/PartSection';
 import { displayChineseDate, todayString } from '../common/DateUtil';
-import { parseReps, parseWeight } from '../common/WorkoutLogic';
+import { parseReps, parseWeight, ParseResult } from '../common/WorkoutLogic';
 import { WorkoutRepository } from '../db/WorkoutRepository';
 import { DayModel, ExerciseItem, PartItem, PrResult, RecentDayInfo, SetItem } from '../model/DayModels';
+import { WorkoutViewMode } from '../model/muscleTypes';
 import { PartKey, partName, toPartKey } from '../model/types';
 
 interface RouterDateParams {
@@ -20,9 +24,13 @@ struct DayDetailPage {
   @State dateStr: string = '';
   @State titleText: string = '';
   @State day: DayModel = new DayModel();
+  @State viewMode: WorkoutViewMode = 'part';
   @State showSheet: boolean = false;
   @State sheetMode: string = 'part';
   @State pickerPartKey: PartKey = 'chest';
+  @State infoId: string = '';
+  @State infoName: string = '';
+  @State infoPart: PartKey = 'chest';
   @State recentDays: RecentDayInfo[] = [];
   @State undoVisible: boolean = false;
   @State undoLabel: string = '';
@@ -31,6 +39,7 @@ struct DayDetailPage {
   private undoExerciseRowId: number = 0;
   private undoTimer: number = -1;
   private listScroller: Scroller = new Scroller();
+  private pickerOpened: boolean = false;
 
   aboutToAppear(): void {
     const raw: Object | undefined = router.getParams();
@@ -44,7 +53,19 @@ struct DayDetailPage {
       this.dateStr = todayString();
     }
     this.titleText = displayChineseDate(this.dateStr);
-    this.reload(true);
+    this.loadViewMode();
+    this.reload();
+  }
+
+  onPageShow(): void {
+    if (this.pickerOpened) {
+      this.pickerOpened = false;
+      this.reload();
+    }
+  }
+
+  private async loadViewMode(): Promise<void> {
+    this.viewMode = await AppSettings.loadWorkoutViewMode();
   }
 
   private hasPlanned(): boolean {
@@ -52,25 +73,40 @@ struct DayDetailPage {
     if (tick < 0) {
       return false;
     }
-    for (let i = 0; i < this.day.parts.length; i++) {
-      for (let j = 0; j < this.day.parts[i].exercises.length; j++) {
-        const sets: SetItem[] = this.day.parts[i].exercises[j].sets;
-        for (let k = 0; k < sets.length; k++) {
-          if (sets[k].status === 'planned') {
-            return true;
-          }
+    const list: ExerciseItem[] = this.orderedExercises();
+    for (let i = 0; i < list.length; i++) {
+      const sets: SetItem[] = list[i].sets;
+      for (let k = 0; k < sets.length; k++) {
+        if (sets[k].status === 'planned') {
+          return true;
         }
       }
     }
     return false;
   }
 
-  private findExercise(exerciseRowId: number): ExerciseItem | null {
+  private orderedExercises(): ExerciseItem[] {
+    if (this.day.exercises.length > 0) {
+      return this.day.exercises;
+    }
+    const list: ExerciseItem[] = [];
     for (let i = 0; i < this.day.parts.length; i++) {
       for (let j = 0; j < this.day.parts[i].exercises.length; j++) {
-        if (this.day.parts[i].exercises[j].id === exerciseRowId) {
-          return this.day.parts[i].exercises[j];
-        }
+        list.push(this.day.parts[i].exercises[j]);
+      }
+    }
+    return list;
+  }
+
+  private hasRecords(): boolean {
+    return this.orderedExercises().length > 0;
+  }
+
+  private findExercise(exerciseRowId: number): ExerciseItem | null {
+    const list: ExerciseItem[] = this.orderedExercises();
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].id === exerciseRowId) {
+        return list[i];
       }
     }
     return null;
@@ -105,19 +141,19 @@ struct DayDetailPage {
     ex.sets = ex.sets.slice();
   }
 
-  private async reload(autoOpenPart: boolean): Promise<void> {
+  private notifyDayExercises(): void {
+    this.day.exercises = this.day.exercises.slice();
+  }
+
+  private async reload(): Promise<void> {
     try {
       this.day = await WorkoutRepository.loadDay(this.dateStr);
       this.plannedTick++;
-      if (autoOpenPart && this.day.parts.length === 0) {
-        this.sheetMode = 'part';
-        this.showSheet = true;
-      }
     } catch (err) {
       hilog.error(0xF170, 'DayDetailPage', 'reload failed');
-      this.day = new DayModel();
-      this.day.date = this.dateStr;
-      this.plannedTick++;
+      if (this.day.date.length === 0) {
+        this.day.date = this.dateStr;
+      }
     }
   }
 
@@ -139,16 +175,29 @@ struct DayDetailPage {
     }
     const part: PartItem = this.ensurePart(loaded.partKey);
     part.exercises.push(loaded);
+    this.day.exercises.push(loaded);
     this.notifyExercises(part);
+    this.notifyDayExercises();
     this.notifyParts();
     this.plannedTick++;
 
   }
 
-  private openExercisePicker(partKey: string): void {
-    this.getUIContext().getFocusController().clearFocus();
+  private async openExercisePicker(partKey: string): Promise<void> {
+    const ok: boolean = await this.flushAllInputs();
+    if (!ok) {
+      return;
+    }
     this.pickerPartKey = toPartKey(partKey);
     this.sheetMode = 'exercise';
+    this.showSheet = true;
+  }
+
+  private openExerciseInfo(exercise: ExerciseItem): void {
+    this.infoId = exercise.exerciseId;
+    this.infoName = exercise.name;
+    this.infoPart = exercise.partKey;
+    this.sheetMode = 'info';
     this.showSheet = true;
   }
 
@@ -164,22 +213,21 @@ struct DayDetailPage {
   }
 
   private handleDeleteSet(setId: number): void {
-    for (let i = 0; i < this.day.parts.length; i++) {
-      for (let j = 0; j < this.day.parts[i].exercises.length; j++) {
-        const ex: ExerciseItem = this.day.parts[i].exercises[j];
-        for (let k = 0; k < ex.sets.length; k++) {
-          if (ex.sets[k].id === setId) {
-            this.undoItem = ex.sets[k];
-            this.undoExerciseRowId = ex.id;
-            ex.sets.splice(k, 1);
-            this.notifySets(ex);
-            WorkoutRepository.deleteSet(setId).catch(() => {
-              hilog.error(0xF170, 'DayDetailPage', 'deleteSet failed');
-            });
-            this.showUndoBar('已删除一组');
-            this.plannedTick++;
-            return;
-          }
+    const list: ExerciseItem[] = this.orderedExercises();
+    for (let i = 0; i < list.length; i++) {
+      const ex: ExerciseItem = list[i];
+      for (let k = 0; k < ex.sets.length; k++) {
+        if (ex.sets[k].id === setId) {
+          this.undoItem = ex.sets[k];
+          this.undoExerciseRowId = ex.id;
+          ex.sets.splice(k, 1);
+          this.notifySets(ex);
+          WorkoutRepository.deleteSet(setId).catch(() => {
+            hilog.error(0xF170, 'DayDetailPage', 'deleteSet failed');
+          });
+          this.showUndoBar('已删除一组');
+          this.plannedTick++;
+          return;
         }
       }
     }
@@ -221,6 +269,7 @@ struct DayDetailPage {
         if (part.exercises[j].id === exerciseRowId) {
           part.exercises.splice(j, 1);
           this.notifyExercises(part);
+          this.removeDayExercise(exerciseRowId);
           if (part.exercises.length === 0) {
             this.day.parts.splice(i, 1);
           }
@@ -236,6 +285,10 @@ struct DayDetailPage {
     await WorkoutRepository.deleteExercisesOfPart(this.dateStr, toPartKey(partKey));
     for (let i = 0; i < this.day.parts.length; i++) {
       if (this.day.parts[i].partKey === partKey) {
+        const removed: PartItem = this.day.parts[i];
+        for (let j = 0; j < removed.exercises.length; j++) {
+          this.removeDayExercise(removed.exercises[j].id);
+        }
         this.day.parts.splice(i, 1);
         this.notifyParts();
         this.plannedTick++;
@@ -262,11 +315,111 @@ struct DayDetailPage {
       }
     }
     this.notifyParts();
+    this.notifyDayExercises();
     this.plannedTick++;
   }
 
+  private removeDayExercise(exerciseRowId: number): void {
+    for (let i = 0; i < this.day.exercises.length; i++) {
+      if (this.day.exercises[i].id === exerciseRowId) {
+        this.day.exercises.splice(i, 1);
+        this.notifyDayExercises();
+        return;
+      }
+    }
+  }
+
+  private async flushAllInputs(): Promise<boolean> {
+    this.getUIContext().getFocusController().clearFocus();
+    const list: ExerciseItem[] = this.orderedExercises();
+    for (let i = 0; i < list.length; i++) {
+      const sets: SetItem[] = list[i].sets;
+      for (let k = 0; k < sets.length; k++) {
+        const item: SetItem = sets[k];
+        const w: ParseResult = parseWeight(item.weightText);
+        const r: ParseResult = parseReps(item.repsText);
+        if (!w.ok) {
+          item.inputError = w.error;
+          promptAction.showToast({ message: '请先修正输入', duration: 2000 });
+          return false;
+        }
+        if (!r.ok) {
+          item.inputError = r.error;
+          promptAction.showToast({ message: '请先修正输入', duration: 2000 });
+          return false;
+        }
+        try {
+          const err: string = await WorkoutRepository.writeSet(item);
+          if (err.length > 0) {
+            item.inputError = err;
+            promptAction.showToast({ message: '保存失败，请先修正输入', duration: 2000 });
+            return false;
+          }
+          item.inputError = '';
+        } catch (e) {
+          item.inputError = '保存失败，请重试';
+          promptAction.showToast({ message: '保存失败，请先修正输入', duration: 2000 });
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  private async setViewMode(mode: WorkoutViewMode): Promise<void> {
+    if (this.viewMode === mode) {
+      return;
+    }
+    const ok: boolean = await this.flushAllInputs();
+    if (!ok) {
+      return;
+    }
+    const previous: WorkoutViewMode = this.viewMode;
+    this.viewMode = mode;
+    try {
+      await AppSettings.saveWorkoutViewMode(mode);
+    } catch (err) {
+      this.viewMode = previous;
+      hilog.error(0xF170, 'DayDetailPage', 'save view mode failed');
+    }
+  }
+
+  private async openMusclePicker(): Promise<void> {
+    if (this.pickerOpened) {
+      return;
+    }
+    this.pickerOpened = true;
+    const ok: boolean = await this.flushAllInputs();
+    if (!ok) {
+      this.pickerOpened = false;
+      return;
+    }
+    router.pushUrl({
+      url: 'pages/MusclePickerPage',
+      params: { date: this.dateStr }
+    }).catch(() => {
+      this.pickerOpened = false;
+    });
+  }
+
+  private async openAddEntry(): Promise<void> {
+    if (this.viewMode === 'exercise') {
+      await this.openMusclePicker();
+      return;
+    }
+    const ok: boolean = await this.flushAllInputs();
+    if (!ok) {
+      return;
+    }
+    this.sheetMode = 'part';
+    this.showSheet = true;
+  }
 
   private async openCopySheet(): Promise<void> {
+    const ok: boolean = await this.flushAllInputs();
+    if (!ok) {
+      return;
+    }
     this.recentDays = await WorkoutRepository.listRecentDays(8);
     this.sheetMode = 'copy';
     this.showSheet = true;
@@ -275,7 +428,7 @@ struct DayDetailPage {
   private async handleCopy(fromDate: string): Promise<void> {
     this.showSheet = false;
     await WorkoutRepository.copyDay(fromDate, this.dateStr);
-    await this.reload(false);
+    await this.reload();
   }
 
   private async handleCreated(exerciseId: string): Promise<void> {
@@ -342,6 +495,24 @@ struct DayDetailPage {
             this.handleCreated(exerciseId);
           }
         })
+      } else if (this.sheetMode === 'info') {
+        Column() {
+          Text('动作说明')
+            .fontSize(18)
+            .fontWeight(FontWeight.Medium)
+            .fontColor($r('app.color.text_primary'))
+            .width('100%')
+            .margin({ bottom: 12 })
+          ExerciseInfoView({
+            exerciseId: this.infoId,
+            displayName: this.infoName,
+            partKey: this.infoPart,
+            showAdd: false
+          })
+        }
+        .width('100%')
+        .height('100%')
+        .padding({ left: 16, right: 16, top: 8, bottom: 16 })
       } else if (this.sheetMode === 'copy') {
         Column() {
           Text('复制哪一次训练')
@@ -392,7 +563,7 @@ struct DayDetailPage {
             router.back();
           })
         Blank()
-        if (this.day.parts.length > 0) {
+        if (this.hasRecords()) {
           Text('删除当天')
             .fontSize(16)
             .fontColor($r('app.color.danger'))
@@ -409,9 +580,34 @@ struct DayDetailPage {
         .fontWeight(FontWeight.Bold)
         .fontColor($r('app.color.text_primary'))
         .width('100%')
-        .margin({ bottom: 16 })
+        .margin({ bottom: 10 })
 
-      if (this.day.parts.length === 0) {
+      Row({ space: 8 }) {
+        Text('部位')
+          .fontSize(14)
+          .fontWeight(this.viewMode === 'part' ? FontWeight.Medium : FontWeight.Regular)
+          .fontColor(this.viewMode === 'part' ? $r('app.color.accent') : $r('app.color.text_secondary'))
+          .backgroundColor(this.viewMode === 'part' ? $r('app.color.accent_soft') : Color.Transparent)
+          .padding({ left: 14, right: 14, top: 6, bottom: 6 })
+          .borderRadius(14)
+          .onClick(() => {
+            this.setViewMode('part');
+          })
+        Text('动作')
+          .fontSize(14)
+          .fontWeight(this.viewMode === 'exercise' ? FontWeight.Medium : FontWeight.Regular)
+          .fontColor(this.viewMode === 'exercise' ? $r('app.color.accent') : $r('app.color.text_secondary'))
+          .backgroundColor(this.viewMode === 'exercise' ? $r('app.color.accent_soft') : Color.Transparent)
+          .padding({ left: 14, right: 14, top: 6, bottom: 6 })
+          .borderRadius(14)
+          .onClick(() => {
+            this.setViewMode('exercise');
+          })
+      }
+      .width('100%')
+      .margin({ bottom: 12 })
+
+      if (!this.hasRecords()) {
         Column() {
           Text('这一天还没有训练记录')
             .fontSize(15)
@@ -422,8 +618,7 @@ struct DayDetailPage {
             .fontColor($r('app.color.text_on_accent'))
             .margin({ bottom: 12 })
             .onClick(() => {
-              this.sheetMode = 'part';
-              this.showSheet = true;
+              this.openAddEntry();
             })
           Button('复制上次训练')
             .fontSize(15)
@@ -455,35 +650,65 @@ struct DayDetailPage {
 
         Scroll(this.listScroller) {
           Column() {
-          ForEach(this.day.parts, (part: PartItem) => {
-              PartSection({
-                part: part,
-                listStamp: this.plannedTick,
-                onAddExercise: (partKey: string) => {
-                  this.openExercisePicker(partKey);
-                },
-                onDeletePart: (partKey: string) => {
-                  this.handleDeletePart(partKey);
-                },
-                onAddSet: (exerciseRowId: number) => {
-                  this.handleAddSet(exerciseRowId);
-                },
-                onDeleteExercise: (exerciseRowId: number) => {
-                  this.handleDeleteExercise(exerciseRowId);
-                },
-                onDeleteSet: (setId: number) => {
-                  this.handleDeleteSet(setId);
-                },
-                onSetBecameDone: (exerciseId: string, item: SetItem) => {
-                  this.handleBecameDone(exerciseId, item);
-                },
-                onStatusChanged: () => {
-                  this.plannedTick++;
-                }
-              })
-          }, (part: PartItem) => part.partKey)
+            if (this.viewMode === 'exercise') {
+              ForEach(this.day.exercises, (exercise: ExerciseItem) => {
+                ExerciseCard({
+                  exercise: exercise,
+                  listStamp: this.plannedTick,
+                  onAddSet: (exerciseRowId: number) => {
+                    this.handleAddSet(exerciseRowId);
+                  },
+                  onDeleteExercise: (exerciseRowId: number) => {
+                    this.handleDeleteExercise(exerciseRowId);
+                  },
+                  onDeleteSet: (setId: number) => {
+                    this.handleDeleteSet(setId);
+                  },
+                  onSetBecameDone: (exerciseId: string, item: SetItem) => {
+                    this.handleBecameDone(exerciseId, item);
+                  },
+                  onStatusChanged: () => {
+                    this.plannedTick++;
+                  },
+                  onOpenDetail: (item: ExerciseItem) => {
+                    this.openExerciseInfo(item);
+                  }
+                })
+              }, (exercise: ExerciseItem) => `${exercise.id}`)
+            } else {
+              ForEach(this.day.parts, (part: PartItem) => {
+                PartSection({
+                  part: part,
+                  listStamp: this.plannedTick,
+                  onAddExercise: (partKey: string) => {
+                    this.openExercisePicker(partKey);
+                  },
+                  onDeletePart: (partKey: string) => {
+                    this.handleDeletePart(partKey);
+                  },
+                  onAddSet: (exerciseRowId: number) => {
+                    this.handleAddSet(exerciseRowId);
+                  },
+                  onDeleteExercise: (exerciseRowId: number) => {
+                    this.handleDeleteExercise(exerciseRowId);
+                  },
+                  onDeleteSet: (setId: number) => {
+                    this.handleDeleteSet(setId);
+                  },
+                  onSetBecameDone: (exerciseId: string, item: SetItem) => {
+                    this.handleBecameDone(exerciseId, item);
+                  },
+                  onStatusChanged: () => {
+                    this.plannedTick++;
+                  },
+                  onOpenDetail: (item: ExerciseItem) => {
+                    this.openExerciseInfo(item);
+                  }
+                })
+              }, (part: PartItem) => part.partKey)
+            }
 
-            Button('添加部位')
+            Button(this.viewMode === 'exercise' ? '添加动作' : '添加部位')
               .fontSize(15)
               .fontColor($r('app.color.accent'))
               .backgroundColor($r('app.color.accent_soft'))
@@ -491,9 +716,7 @@ struct DayDetailPage {
               .height(44)
               .margin({ bottom: 24 })
               .onClick(() => {
-                this.getUIContext().getFocusController().clearFocus();
-                this.sheetMode = 'part';
-                this.showSheet = true;
+                this.openAddEntry();
               })
           }.width('100%')
         }
