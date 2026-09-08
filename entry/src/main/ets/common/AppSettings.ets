@@ -4,6 +4,7 @@ import { preferences } from '@kit.ArkData';
 const STORE_NAME: string = 'fit_loger_settings';
 const KEY_THEME: string = 'theme';
 const KEY_HEIGHT: string = 'height_cm';
+const KEY_TRENDS_GUIDE_SEEN: string = 'trends_guide_seen';
 
 export class AppSettings {
   private static store: preferences.Preferences | null = null;
@@ -77,6 +78,22 @@ export class AppSettings {
       return;
     }
     await AppSettings.prefs().put(KEY_HEIGHT, heightCm);
+    await AppSettings.prefs().flush();
+  }
+
+  static async loadTrendsGuideSeen(): Promise<boolean> {
+    if (AppSettings.store === null) {
+      return false;
+    }
+    const value: preferences.ValueType = await AppSettings.prefs().get(KEY_TRENDS_GUIDE_SEEN, 0);
+    return value === true || value === 1;
+  }
+
+  static async saveTrendsGuideSeen(seen: boolean): Promise<void> {
+    if (AppSettings.store === null) {
+      return;
+    }
+    await AppSettings.prefs().put(KEY_TRENDS_GUIDE_SEEN, seen ? 1 : 0);
     await AppSettings.prefs().flush();
   }
 }
