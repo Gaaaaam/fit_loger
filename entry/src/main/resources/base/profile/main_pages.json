@@ -3,6 +3,8 @@
     "pages/MainPage",
     "pages/DayDetailPage",
     "pages/BodyMetricsPage",
-    "pages/MusclePickerPage"
+    "pages/MusclePickerPage",
+    "pages/TrendSettingsPage",
+    "pages/TrendExerciseDetailPage"
   ]
 }

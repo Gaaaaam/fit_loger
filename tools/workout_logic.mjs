@@ -273,6 +273,64 @@ export function formatLastHint(dateStr, sets) {
   return `上次 ${month}月${day}日：${bits.join(' / ')}`;
 }
 
+function isHintWorkSet(set) {
+  return set.isWarmup !== 1;
+}
+
+export function bestHintWorkSet(sets) {
+  let best = null;
+  for (let i = 0; i < sets.length; i++) {
+    const set = sets[i];
+    if (!isHintWorkSet(set) || set.weight === null || set.weight === undefined) {
+      continue;
+    }
+    if (best === null || best.weight === null || best.weight === undefined) {
+      best = set;
+      continue;
+    }
+    if (set.weight > best.weight) {
+      best = set;
+      continue;
+    }
+    if (set.weight === best.weight && set.reps != null && (best.reps == null || set.reps > best.reps)) {
+      best = set;
+    }
+  }
+  return best;
+}
+
+function formatDeltaNumber(value) {
+  const rounded = Math.round(value * 10) / 10;
+  if (rounded === Math.floor(rounded)) {
+    return `${Math.floor(rounded)}`;
+  }
+  return `${rounded}`;
+}
+
+export function vsLastProgressText(weight, reps, lastSets) {
+  if (weight === null || weight === undefined) {
+    return '';
+  }
+  const last = bestHintWorkSet(lastSets);
+  if (last === null || last.weight === null || last.weight === undefined) {
+    return '';
+  }
+  if (weight !== last.weight) {
+    const delta = weight - last.weight;
+    const shown = delta > 0 ? `+${formatDeltaNumber(delta)}` : formatDeltaNumber(delta);
+    return `比上次 ${shown} kg`;
+  }
+  if (reps === null || reps === undefined || last.reps === null || last.reps === undefined) {
+    return '与上次持平';
+  }
+  if (reps === last.reps) {
+    return '与上次持平';
+  }
+  const deltaReps = reps - last.reps;
+  const shownReps = deltaReps > 0 ? `+${deltaReps}` : `${deltaReps}`;
+  return `比上次 ${shownReps} 次`;
+}
+
 export function customExerciseId(nowMs) {
   return `usr_${nowMs}`;
 }

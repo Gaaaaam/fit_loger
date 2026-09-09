@@ -6,6 +6,7 @@ const STORE_NAME: string = 'fit_loger_settings';
 const KEY_THEME: string = 'theme';
 const KEY_HEIGHT: string = 'height_cm';
 const KEY_VIEW_MODE: string = 'workout_view_mode';
+const KEY_TRENDS_GUIDE_SEEN: string = 'trends_guide_seen';
 
 export class AppSettings {
   private static store: preferences.Preferences | null = null;
@@ -47,6 +48,22 @@ export class AppSettings {
     }
   }
 
+  static async loadWorkoutMode(): Promise<string> {
+    if (AppSettings.store === null) {
+      return 'part';
+    }
+    const value: preferences.ValueType = await AppSettings.prefs().get('workout_mode', 'part');
+    return value === 'exercise' ? 'exercise' : 'part';
+  }
+
+  static async saveWorkoutMode(mode: string): Promise<void> {
+    if (AppSettings.store === null) {
+      return;
+    }
+    await AppSettings.prefs().put('workout_mode', mode === 'exercise' ? 'exercise' : 'part');
+    await AppSettings.prefs().flush();
+  }
+
   static async loadHeightCm(): Promise<number> {
     if (AppSettings.store === null) {
       return 0;
@@ -82,6 +99,22 @@ export class AppSettings {
       return;
     }
     await AppSettings.prefs().put(KEY_VIEW_MODE, mode);
+    await AppSettings.prefs().flush();
+  }
+
+  static async loadTrendsGuideSeen(): Promise<boolean> {
+    if (AppSettings.store === null) {
+      return false;
+    }
+    const value: preferences.ValueType = await AppSettings.prefs().get(KEY_TRENDS_GUIDE_SEEN, 0);
+    return value === true || value === 1;
+  }
+
+  static async saveTrendsGuideSeen(seen: boolean): Promise<void> {
+    if (AppSettings.store === null) {
+      return;
+    }
+    await AppSettings.prefs().put(KEY_TRENDS_GUIDE_SEEN, seen ? 1 : 0);
     await AppSettings.prefs().flush();
   }
 }

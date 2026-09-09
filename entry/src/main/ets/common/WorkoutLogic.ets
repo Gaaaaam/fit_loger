@@ -54,6 +54,7 @@ export class PartGroup {
 export class HintSet {
   weight: number | null = null;
   reps: number | null = null;
+  isWarmup: number = 0;
 }
 
 export class CsvSetRow {
@@ -397,6 +398,64 @@ export function formatLastHint(dateStr: string, sets: HintSet[]): string {
     bits.push(`${wText}×${rText}`);
   }
   return `上次 ${month}月${day}日：${bits.join(' / ')}`;
+}
+
+function isHintWorkSet(set: HintSet): boolean {
+  return set.isWarmup !== 1;
+}
+
+export function bestHintWorkSet(sets: HintSet[]): HintSet | null {
+  let best: HintSet | null = null;
+  for (let i = 0; i < sets.length; i++) {
+    const set: HintSet = sets[i];
+    if (!isHintWorkSet(set) || set.weight === null) {
+      continue;
+    }
+    if (best === null || best.weight === null) {
+      best = set;
+      continue;
+    }
+    if (set.weight > best.weight) {
+      best = set;
+      continue;
+    }
+    if (set.weight === best.weight && set.reps !== null && (best.reps === null || set.reps > best.reps)) {
+      best = set;
+    }
+  }
+  return best;
+}
+
+function formatDeltaNumber(value: number): string {
+  const rounded: number = Math.round(value * 10) / 10;
+  if (rounded === Math.floor(rounded)) {
+    return `${Math.floor(rounded)}`;
+  }
+  return `${rounded}`;
+}
+
+export function vsLastProgressText(weight: number | null, reps: number | null, lastSets: HintSet[]): string {
+  if (weight === null) {
+    return '';
+  }
+  const last: HintSet | null = bestHintWorkSet(lastSets);
+  if (last === null || last.weight === null) {
+    return '';
+  }
+  if (weight !== last.weight) {
+    const delta: number = weight - last.weight;
+    const shown: string = delta > 0 ? `+${formatDeltaNumber(delta)}` : formatDeltaNumber(delta);
+    return `比上次 ${shown} kg`;
+  }
+  if (reps === null || last.reps === null) {
+    return '与上次持平';
+  }
+  if (reps === last.reps) {
+    return '与上次持平';
+  }
+  const deltaReps: number = reps - last.reps;
+  const shownReps: string = deltaReps > 0 ? `+${deltaReps}` : `${deltaReps}`;
+  return `比上次 ${shownReps} 次`;
 }
 
 export function customExerciseId(nowMs: number): string {

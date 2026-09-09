@@ -16,6 +16,9 @@ import {
   SQL_CREATE_BODY_METRICS,
   SQL_CREATE_DAY_EXERCISES,
   SQL_CREATE_EXERCISES,
+  SQL_CREATE_TREND_PART_GOALS,
+  SQL_CREATE_TREND_SETTINGS,
+  SQL_CREATE_WATCHED_EXERCISES,
   SQL_CREATE_WORKOUT_DAYS,
   SQL_CREATE_WORKOUT_SETS,
   SQL_IDX_DAY_EXERCISES_DAY,
@@ -66,6 +69,8 @@ export class WorkoutDatabase {
 
   private static async migrate(store: relationalStore.RdbStore, context: common.UIAbilityContext): Promise<void> {
     if (store.version >= CURRENT_VERSION) {
+      // 幂等：即便版本号已是最新，也确保趋势配置表存在（例如从中断的升级恢复）。
+      await WorkoutDatabase.createTrendSchema(store);
       await seedBuiltinExercises(store);
       return;
     }
@@ -87,6 +92,8 @@ export class WorkoutDatabase {
     }
 
     if (alreadyV1) {
+      // v1 -> v2：只新增趋势配置表，训练历史表结构不变，无需搬数据。
+      await WorkoutDatabase.createTrendSchema(store);
       await seedBuiltinExercises(store);
       store.version = CURRENT_VERSION;
       return;
@@ -94,11 +101,13 @@ export class WorkoutDatabase {
 
     if (needsLegacyCopy) {
       await WorkoutDatabase.migrateLegacy(store);
+      await WorkoutDatabase.createTrendSchema(store);
       store.version = CURRENT_VERSION;
       return;
     }
 
     await WorkoutDatabase.createV1Schema(store);
+    await WorkoutDatabase.createTrendSchema(store);
     await seedBuiltinExercises(store);
     store.version = CURRENT_VERSION;
   }
@@ -113,6 +122,12 @@ export class WorkoutDatabase {
     await store.executeSql(SQL_CREATE_WORKOUT_SETS);
     await store.executeSql(SQL_IDX_WORKOUT_SETS_DE);
     await store.executeSql(SQL_CREATE_BODY_METRICS);
+  }
+
+  private static async createTrendSchema(store: relationalStore.RdbStore): Promise<void> {
+    await store.executeSql(SQL_CREATE_WATCHED_EXERCISES);
+    await store.executeSql(SQL_CREATE_TREND_SETTINGS);
+    await store.executeSql(SQL_CREATE_TREND_PART_GOALS);
   }
 
   private static async migrateLegacy(store: relationalStore.RdbStore): Promise<void> {

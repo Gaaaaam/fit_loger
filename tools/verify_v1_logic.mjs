@@ -16,6 +16,7 @@ import {
   setCsvHeader,
   setToCsvRow,
   formatLastHint,
+  vsLastProgressText,
   formatBackupName,
   customExerciseId,
   dayDotKind,
@@ -166,6 +167,39 @@ assert.equal(
   '上次 8月28日：60×5 / 60×5 / 60×4'
 );
 assert.equal(formatLastHint('', []), '');
+
+assert.equal(
+  vsLastProgressText(62.5, 5, [{ weight: 60, reps: 5 }]),
+  '比上次 +2.5 kg'
+);
+assert.equal(
+  vsLastProgressText(60, 6, [{ weight: 60, reps: 5 }]),
+  '比上次 +1 次'
+);
+assert.equal(
+  vsLastProgressText(60, 5, [{ weight: 60, reps: 5 }]),
+  '与上次持平'
+);
+assert.equal(
+  vsLastProgressText(55, 5, [{ weight: 60, reps: 5 }]),
+  '比上次 -5 kg'
+);
+assert.equal(
+  vsLastProgressText(60, 3, [{ weight: 60, reps: 5 }]),
+  '比上次 -2 次'
+);
+assert.equal(vsLastProgressText(60, 5, []), '');
+assert.equal(vsLastProgressText(null, 5, [{ weight: 60, reps: 5 }]), '');
+assert.equal(
+  vsLastProgressText(70, 3, [{ weight: 40, reps: 10 }, { weight: 60, reps: 5 }]),
+  '比上次 +10 kg',
+  'compare against last session best work set, not the first set'
+);
+assert.equal(
+  vsLastProgressText(60, 5, [{ weight: 40, reps: 8, isWarmup: 1 }]),
+  '',
+  'warmup sets from last session are ignored'
+);
 
 assert.equal(customExerciseId(1700000000000), 'usr_1700000000000');
 

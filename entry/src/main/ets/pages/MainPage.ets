@@ -6,7 +6,7 @@ import { TrendsPage } from './TrendsPage';
 @Component
 struct MainPage {
   @Provide('calRefresh') refreshStamp: number = 0;
-  @State currentIndex: number = 0;
+  @Provide('mainTabIndex') currentIndex: number = 0;
   private controller: TabsController = new TabsController();
 
   onPageShow(): void {

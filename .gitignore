@@ -60,3 +60,4 @@ build-profile.json5.local.bak
 
 # Local model source downloads and visual verification output
 /.work/
+.worktrees/
