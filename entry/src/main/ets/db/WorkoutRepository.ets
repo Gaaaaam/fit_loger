@@ -35,7 +35,7 @@ import { WorkoutDatabase } from './WorkoutDatabase';
 import { ExportService } from './ExportService';
 
 export class WorkoutRepository {
-  private static batchBusy: boolean = false;
+  private static batchTail: Promise<void> = Promise.resolve();
   private static EMPTY_ARGS: Array<string | number> = [];
 
   static async listMonthDayMarks(year: number, monthIndex: number): Promise<DayMark[]> {
@@ -297,57 +297,6 @@ export class WorkoutRepository {
     }
     rs.close();
     return ids;
-  }
-
-  static async addExercisesBatch(date: string, ids: string[]): Promise<number[]> {
-    const requested: string[] = ids.slice();
-    const result: Promise<number[]> = WorkoutRepository.batchTail.then(() =>
-      WorkoutRepository.insertExercisesBatch(date, requested));
-    WorkoutRepository.batchTail = result.then(() => {}).catch(() => {});
-    return await result;
-  }
-
-  private static async insertExercisesBatch(date: string, ids: string[]): Promise<number[]> {
-    if (ids.length === 0) {
-      return [];
-    }
-    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
-    store.beginTransaction();
-    try {
-      const unique: string[] = [];
-      for (let i = 0; i < ids.length; i++) {
-        if (unique.indexOf(ids[i]) >= 0) {
-          continue;
-        }
-        const rs: relationalStore.ResultSet = await store.querySql(
-          'SELECT id FROM exercises WHERE id = ? AND is_archived = 0', [ids[i]]);
-        const valid: boolean = rs.goToFirstRow();
-        rs.close();
-        if (!valid) {
-          throw new Error('动作不存在或已归档');
-        }
-        unique.push(ids[i]);
-      }
-      const existing: string[] = await WorkoutRepository.listDayExerciseIds(date);
-      const pending: string[] = unique.filter((id: string) => existing.indexOf(id) < 0);
-      const rows: number[] = [];
-      if (pending.length > 0) {
-        const dayId: number = await WorkoutRepository.ensureDayId(date);
-        const order: number = await WorkoutRepository.nextOrder(
-          'SELECT IFNULL(MAX(sort_order), -1) + 1 AS next_order FROM day_exercises WHERE day_id = ?', [dayId]);
-        for (let i = 0; i < pending.length; i++) {
-          const bucket: relationalStore.ValuesBucket = {
-            'day_id': dayId, 'exercise_id': pending[i], 'sort_order': order + i
-          };
-          rows.push(await store.insert('day_exercises', bucket));
-        }
-      }
-      store.commit();
-      return rows;
-    } catch (err) {
-      store.rollBack();
-      throw new Error('添加动作失败，请重试');
-    }
   }
 
   static async loadExerciseRow(exerciseRowId: number, date: string): Promise<ExerciseItem | null> {
@@ -730,48 +679,47 @@ export class WorkoutRepository {
   }
 
   static async addExercisesBatch(date: string, exerciseIds: string[]): Promise<number> {
-    if (WorkoutRepository.batchBusy) {
-      throw new Error('busy');
-    }
-    WorkoutRepository.batchBusy = true;
+    const requested: string[] = exerciseIds.slice();
+    const result: Promise<number> = WorkoutRepository.batchTail.then(() =>
+      WorkoutRepository.insertExercisesBatch(date, requested));
+    WorkoutRepository.batchTail = result.then(() => {}).catch(() => {});
+    return await result;
+  }
+
+  private static async insertExercisesBatch(date: string, exerciseIds: string[]): Promise<number> {
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    store.beginTransaction();
     try {
-      const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
-      store.beginTransaction();
-      try {
-        // Validate and deduplicate against the same snapshot used for insertion.
-        const validIds: string[] = await WorkoutRepository.listValidExerciseIds();
-        const already: string[] = await WorkoutRepository.listAddedExerciseIds(date);
-        const plan: BatchPlan = planBatchAdd(exerciseIds, already, validIds);
-        if (!plan.ok) {
-          throw new Error(plan.error);
-        }
-        if (plan.toInsert.length === 0) {
-          store.commit();
-          return 0;
-        }
-        const dayId: number = await WorkoutRepository.ensureDayId(date);
-        let order: number = await WorkoutRepository.nextOrder(
-          'SELECT IFNULL(MAX(sort_order), -1) + 1 AS next_order FROM day_exercises WHERE day_id = ?',
-          [dayId]
-        );
-        for (let i = 0; i < plan.toInsert.length; i++) {
-          const bucket: relationalStore.ValuesBucket = {
-            'day_id': dayId,
-            'exercise_id': plan.toInsert[i],
-            'sort_order': order
-          };
-          await store.insert('day_exercises', bucket);
-          order++;
-        }
-        store.commit();
-        return plan.toInsert.length;
-      } catch (err) {
-        store.rollBack();
-        WorkoutDatabase.logError('addExercisesBatch', err as BusinessError);
-        throw new Error('addExercisesBatch failed');
+      const validIds: string[] = await WorkoutRepository.listValidExerciseIds();
+      const already: string[] = await WorkoutRepository.listAddedExerciseIds(date);
+      const plan: BatchPlan = planBatchAdd(exerciseIds, already, validIds);
+      if (!plan.ok) {
+        throw new Error(plan.error);
       }
-    } finally {
-      WorkoutRepository.batchBusy = false;
+      if (plan.toInsert.length === 0) {
+        store.commit();
+        return 0;
+      }
+      const dayId: number = await WorkoutRepository.ensureDayId(date);
+      let order: number = await WorkoutRepository.nextOrder(
+        'SELECT IFNULL(MAX(sort_order), -1) + 1 AS next_order FROM day_exercises WHERE day_id = ?',
+        [dayId]
+      );
+      for (let i = 0; i < plan.toInsert.length; i++) {
+        const bucket: relationalStore.ValuesBucket = {
+          'day_id': dayId,
+          'exercise_id': plan.toInsert[i],
+          'sort_order': order
+        };
+        await store.insert('day_exercises', bucket);
+        order++;
+      }
+      store.commit();
+      return plan.toInsert.length;
+    } catch (err) {
+      store.rollBack();
+      WorkoutDatabase.logError('addExercisesBatch', err as BusinessError);
+      throw new Error('addExercisesBatch failed');
     }
   }
 

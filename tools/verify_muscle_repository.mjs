@@ -32,7 +32,7 @@ const store = {
   beginTransaction: () => db.exec('BEGIN'), commit: () => db.exec('COMMIT'), rollBack: () => db.exec('ROLLBACK')
 };
 const context = { $r: (s) => s, WorkoutDatabase: { getStore: () => store, logError() {} }, relationalStore: { RdbPredicates: Predicates } };
-for (const file of ['model/types.ets', 'model/DayModels.ets', 'common/WorkoutLogic.ets', 'common/DateUtil.ets', 'model/exerciseCatalog.ets', 'db/schemaSql.ets', 'db/WorkoutRepository.ets']) {
+for (const file of ['model/types.ets', 'model/DayModels.ets', 'common/WorkoutLogic.ets', 'common/DateUtil.ets', 'model/exerciseCatalog.ets', 'model/muscleTypes.ets', 'model/exerciseDetails.ets', 'common/MuscleLogic.ets', 'db/schemaSql.ets', 'db/WorkoutRepository.ets']) {
   const source = readFileSync(new URL(file, base), 'utf8').replace(/^import[\s\S]*?;\s*$/gm, '').replace(/export /g, '').replace(/@Observed\s*/g, '');
   runInNewContext(stripTypeScriptTypes(source), context);
 }
@@ -41,16 +41,16 @@ const { WorkoutRepository: repo, SetItem, EXERCISE_CATALOG: defs, schema } = con
 schema.forEach((sql) => db.exec(sql));
 for (const d of defs) await store.insert('exercises', { id: d.id, name: d.name, part_key: d.partKey, equipment: d.equipment, movement_pattern: d.movementPattern, weight_step: d.weightStep, is_builtin: 1, is_archived: 0, created_at: 0 });
 assert.equal((await repo.listExercisesAll()).length, defs.length);
-assert.equal((await repo.addExercisesBatch('2026-09-08', [])).length, 0);
+assert.equal(await repo.addExercisesBatch('2026-09-08', []), 0);
 assert.equal(db.prepare('SELECT count(*) AS n FROM workout_days').get().n, 0);
 const ids = [defs[0].id, defs[7].id, defs[1].id];
-assert.equal((await repo.addExercisesBatch('2026-09-08', [...ids, ids[0]])).length, 3);
+assert.equal(await repo.addExercisesBatch('2026-09-08', [...ids, ids[0]]), 3);
 assert.deepEqual(Array.from(await repo.listDayExerciseIds('2026-09-08')), ids);
-assert.equal((await repo.addExercisesBatch('2026-09-08', ids)).length, 0);
+assert.equal(await repo.addExercisesBatch('2026-09-08', ids), 0);
 const overlapping = await Promise.all([
   repo.addExercisesBatch('2026-09-12', ids), repo.addExercisesBatch('2026-09-12', ids)
 ]);
-assert.equal(overlapping[0].length + overlapping[1].length, 3, 'overlapping requests cannot duplicate rows');
+assert.equal(overlapping[0] + overlapping[1], 3, 'overlapping requests cannot duplicate rows');
 await assert.rejects(repo.addExercisesBatch('2026-09-09', [ids[0], 'missing']));
 assert.equal(db.prepare("SELECT count(*) AS n FROM workout_days WHERE date = '2026-09-09'").get().n, 0);
 failInsert = ids[1];
