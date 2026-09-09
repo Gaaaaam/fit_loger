@@ -331,6 +331,14 @@ export function vsLastProgressText(weight, reps, lastSets) {
   return `比上次 ${shownReps} 次`;
 }
 
+export function vsLastCardText(currentSets, lastSets) {
+  const current = bestHintWorkSet(currentSets);
+  if (current === null) {
+    return '';
+  }
+  return vsLastProgressText(current.weight, current.reps, lastSets);
+}
+
 export function customExerciseId(nowMs) {
   return `usr_${nowMs}`;
 }

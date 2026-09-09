@@ -1,3 +1,4 @@
+import { parseReps, parseWeight, HintSet, vsLastCardText } from '../common/WorkoutLogic';
 import { ExerciseItem, SetItem } from '../model/DayModels';
 import { SetRow } from './SetRow';
 
@@ -24,6 +25,23 @@ export struct ExerciseCard {
       return `x${setItem.id}`;
     }
     return `${setItem.id}`;
+  }
+
+  private progressText(): string {
+    const current: HintSet[] = [];
+    for (let i = 0; i < this.exercise.sets.length; i++) {
+      const item: SetItem = this.exercise.sets[i];
+      if (item.status !== 'done' || item.isWarmup === 1) {
+        continue;
+      }
+      const w = parseWeight(item.weightText);
+      const r = parseReps(item.repsText);
+      const hint: HintSet = new HintSet();
+      hint.weight = w.ok ? w.value : null;
+      hint.reps = r.ok ? r.value : null;
+      current.push(hint);
+    }
+    return vsLastCardText(current, this.exercise.lastSets);
   }
 
   private confirmDelete(): void {
@@ -79,6 +97,14 @@ export struct ExerciseCard {
           .fontColor($r('app.color.text_secondary'))
           .width('100%')
           .margin({ top: 4 })
+      }
+
+      if (this.progressText().length > 0) {
+        Text(this.progressText())
+          .fontSize(13)
+          .fontColor(this.progressText().indexOf('+') >= 0 ? $r('app.color.accent') : $r('app.color.text_secondary'))
+          .width('100%')
+          .margin({ top: 2 })
       }
 
       if (this.exercise.sets.length === 0) {

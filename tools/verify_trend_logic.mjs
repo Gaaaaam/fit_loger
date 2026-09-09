@@ -27,7 +27,9 @@ import {
   buildVolumeSeries,
   buildPrBoard,
   isE1rmEstimated,
-  isE1rmCountable
+  isE1rmCountable,
+  volumeChangeText,
+  prBoardLine
 } from './trend_logic.mjs';
 
 function row(partial) {
@@ -405,6 +407,9 @@ const volumeCurve = buildVolumeSeries([
 ]);
 assert.deepEqual(volumeCurve.map((p) => p.date), ['2026-08-10', '2026-08-17']);
 assert.deepEqual(volumeCurve.map((p) => p.value), [600, 250]);
+assert.equal(volumeChangeText(volumeCurve), '600 → 250');
+assert.equal(volumeChangeText([]), '');
+assert.equal(volumeChangeText([{ date: '2026-08-10', value: 300 }]), '300');
 
 const digestWithVolume = buildTrendDigest([
   row({ date: '2026-08-10', weight: 60, reps: 5 }),
@@ -431,6 +436,8 @@ assert.equal(board[0].repsDate, '2026-08-17');
 assert.equal(board[1].exerciseId, 'leg_squat');
 assert.equal(board[1].maxWeight, 100);
 assert.equal(board[1].repsAtWeight, 5);
+assert.equal(prBoardLine(board[0]), '70 kg × 5');
+assert.equal(prBoardLine(board[1]), '100 kg × 5');
 
 const digestWithPr = buildTrendDigest(prRows, [], today, 'all', prefs({ watchedExerciseIds: ['chest_bb_bench'] }));
 assert.ok(digestWithPr.prBoard.length >= 1);
@@ -454,6 +461,7 @@ assert.equal(estimatedSeries.points.length, 2);
 assert.equal(estimatedSeries.insufficientData, false);
 assert.equal(estimatedSeries.estimated, true);
 assert.equal(estimatedSeries.points[0].value, 70);
+assert.equal(liftChangeText(estimatedSeries), '70 → 72.9 · 估算');
 
 const estimatedDetail = buildExerciseTrendDetail(noRirCompound, compoundMeta);
 assert.equal(estimatedDetail.points.length, 2);

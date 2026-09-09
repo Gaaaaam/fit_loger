@@ -17,6 +17,7 @@ import {
   setToCsvRow,
   formatLastHint,
   vsLastProgressText,
+  vsLastCardText,
   formatBackupName,
   customExerciseId,
   dayDotKind,
@@ -200,6 +201,15 @@ assert.equal(
   '',
   'warmup sets from last session are ignored'
 );
+assert.equal(
+  vsLastCardText(
+    [{ weight: 62.5, reps: 3 }, { weight: 50, reps: 8, isWarmup: 1 }],
+    [{ weight: 60, reps: 5 }]
+  ),
+  '比上次 +2.5 kg',
+  'card compares the best done work set against last session'
+);
+assert.equal(vsLastCardText([], [{ weight: 60, reps: 5 }]), '');
 
 assert.equal(customExerciseId(1700000000000), 'usr_1700000000000');
 

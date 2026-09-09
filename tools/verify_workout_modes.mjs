@@ -16,7 +16,7 @@ function load(path, names, dependencies = {}) {
 const types = load('model/types.ets', ['toPartKey', 'partName', 'toEquipment', 'toSetStatus'], { $r: x => x });
 const muscles = load('model/muscleTypes.ets', ['toMuscleKey', 'MUSCLE_REGIONS']);
 const catalog = load('model/exerciseCatalog.ets', ['EXERCISE_CATALOG', 'findExercise']);
-const logic = load('common/WorkoutLogic.ets', ['formatWeight', 'formatLastHint', 'groupExercisesByPart', 'GroupEx', 'HintSet', 'parseWeight', 'parseReps']);
+const logic = load('common/WorkoutLogic.ets', ['formatWeight', 'formatLastHint', 'groupExercisesByPart', 'GroupEx', 'HintSet', 'LastHint', 'parseWeight', 'parseReps']);
 const muscleLogic = load('common/MuscleLogic.ets', ['planBatchAdd', 'BatchPlan', 'recommendForMuscle'], { ...muscles, ...catalog });
 const models = load('model/DayModels.ets', ['DayModel', 'PartItem', 'ExerciseItem', 'SetItem']);
 const schema = load('db/schemaSql.ets', ['SQL_CREATE_EXERCISES', 'SQL_CREATE_WORKOUT_DAYS', 'SQL_CREATE_DAY_EXERCISES', 'SQL_CREATE_WORKOUT_SETS']);

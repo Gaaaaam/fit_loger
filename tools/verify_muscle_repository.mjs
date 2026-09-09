@@ -40,7 +40,7 @@ runInNewContext('globalThis.api = { WorkoutRepository, SetItem, EXERCISE_CATALOG
 const { WorkoutRepository: repo, SetItem, EXERCISE_CATALOG: defs, schema } = context.api;
 schema.forEach((sql) => db.exec(sql));
 for (const d of defs) await store.insert('exercises', { id: d.id, name: d.name, part_key: d.partKey, equipment: d.equipment, movement_pattern: d.movementPattern, weight_step: d.weightStep, is_builtin: 1, is_archived: 0, created_at: 0 });
-assert.equal((await repo.listAllExercises()).length, defs.length);
+assert.equal((await repo.listExercisesAll()).length, defs.length);
 assert.equal((await repo.addExercisesBatch('2026-09-08', [])).length, 0);
 assert.equal(db.prepare('SELECT count(*) AS n FROM workout_days').get().n, 0);
 const ids = [defs[0].id, defs[7].id, defs[1].id];
@@ -63,7 +63,7 @@ failInsert = '';
 assert.deepEqual(Array.from(await repo.listDayExerciseIds('2026-09-08')), ids, 'rollback preserves an existing day');
 db.prepare('UPDATE exercises SET is_archived = 1 WHERE id = ?').run(ids[1]);
 await assert.rejects(repo.addExercisesBatch('2026-09-11', [ids[1]]));
-assert.equal((await repo.listAllExercises()).length, defs.length - 1);
+assert.equal((await repo.listExercisesAll()).length, defs.length - 1);
 const day = await repo.loadDay('2026-09-08');
 assert.deepEqual(Array.from(day.exercises, (e) => e.exerciseId), ids);
 assert.equal(day.parts[0].exercises[0], day.exercises[0], 'both modes share object identity');

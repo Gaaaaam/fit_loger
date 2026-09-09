@@ -57,6 +57,11 @@ export class HintSet {
   isWarmup: number = 0;
 }
 
+export class LastHint {
+  text: string = '';
+  sets: HintSet[] = [];
+}
+
 export class CsvSetRow {
   date: string = '';
   exerciseName: string = '';
@@ -456,6 +461,14 @@ export function vsLastProgressText(weight: number | null, reps: number | null, l
   const deltaReps: number = reps - last.reps;
   const shownReps: string = deltaReps > 0 ? `+${deltaReps}` : `${deltaReps}`;
   return `比上次 ${shownReps} 次`;
+}
+
+export function vsLastCardText(currentSets: HintSet[], lastSets: HintSet[]): string {
+  const current: HintSet | null = bestHintWorkSet(currentSets);
+  if (current === null) {
+    return '';
+  }
+  return vsLastProgressText(current.weight, current.reps, lastSets);
 }
 
 export function customExerciseId(nowMs: number): string {

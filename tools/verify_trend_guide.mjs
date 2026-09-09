@@ -59,6 +59,7 @@ assert.ok(lifts.body.indexOf('e1RM') >= 0);
 assert.ok(lifts.body.indexOf('RIR') >= 0);
 assert.ok(lifts.body.indexOf('正式组') >= 0);
 assert.ok(lifts.body.indexOf('数据不足') >= 0);
+assert.ok(lifts.body.indexOf('估算') >= 0);
 
 assert.deepEqual(allTermIds(), TERM_IDS);
 for (let i = 0; i < TERM_IDS.length; i++) {
@@ -71,5 +72,7 @@ for (let i = 0; i < TERM_IDS.length; i++) {
 assert.equal(findTerm('missing').id, '');
 assert.equal(findTerm('e1rm').title, 'e1RM');
 assert.ok(findTerm('insufficient').body.indexOf('RIR') >= 0);
+assert.ok(findTerm('e1rm').body.indexOf('估算') >= 0);
+assert.ok(findTerm('insufficient').body.indexOf('没填 RIR') >= 0);
 
 console.log('trend guide checks passed');

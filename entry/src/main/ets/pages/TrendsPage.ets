@@ -11,11 +11,14 @@ import {
   liftChangeText,
   liftMetricLabel,
   PartGoalProgress,
+  PrBoardRow,
+  prBoardLine,
   TrendDigest,
   TrendInsight,
   TrendPreferences,
   TrendSetRow,
   TrendWeightRow,
+  volumeChangeText,
   weightDeltaText
 } from '../common/TrendLogic';
 import { closeCtaKind, findTerm, guideHighlight, nextGuideStep } from '../common/TrendGuide';
@@ -279,6 +282,26 @@ export struct TrendsPage {
   }
 
   @Builder
+  prRow(row: PrBoardRow) {
+    Row() {
+      Text(row.name)
+        .fontSize(15)
+        .fontColor($r('app.color.text_primary'))
+        .layoutWeight(1)
+        .maxLines(1)
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+      Text(prBoardLine(row))
+        .fontSize(14)
+        .fontColor($r('app.color.text_primary'))
+    }
+    .width('100%')
+    .padding({ top: 8, bottom: 8 })
+    .onClick(() => {
+      this.openDetail(row.exerciseId);
+    })
+  }
+
+  @Builder
   liftBlock(lift: KeyLiftSeries) {
     Column() {
       Row() {
@@ -454,6 +477,52 @@ export struct TrendsPage {
             color: $r('app.color.accent')
           })
           .id('trendLifts')
+
+          this.sectionHeader('训练容量', false)
+
+          Column() {
+            if (this.digest.volumePoints.length === 0) {
+              Text('还没有容量数据。完成带重量和次数的正式组后会出现在这里')
+                .fontSize(14)
+                .fontColor($r('app.color.text_secondary'))
+                .width('100%')
+            } else {
+              Text(volumeChangeText(this.digest.volumePoints))
+                .fontSize(14)
+                .fontColor($r('app.color.text_primary'))
+                .width('100%')
+                .margin({ bottom: 8 })
+              Text('正式组重量 × 次数')
+                .fontSize(12)
+                .fontColor($r('app.color.text_secondary'))
+                .width('100%')
+                .margin({ bottom: 6 })
+              TrendSparkline({ points: this.digest.volumePoints })
+            }
+          }
+          .width('100%')
+          .padding(14)
+          .backgroundColor($r('app.color.card_bg'))
+          .borderRadius(16)
+
+          this.sectionHeader('个人纪录', false)
+
+          Column() {
+            if (this.digest.prBoard.length === 0) {
+              Text('完成正式组后会出现最重重量和该重量下的最好次数')
+                .fontSize(14)
+                .fontColor($r('app.color.text_secondary'))
+                .width('100%')
+            } else {
+              ForEach(this.digest.prBoard, (row: PrBoardRow) => {
+                this.prRow(row)
+              }, (row: PrBoardRow) => row.exerciseId)
+            }
+          }
+          .width('100%')
+          .padding(14)
+          .backgroundColor($r('app.color.card_bg'))
+          .borderRadius(16)
 
           this.sectionHeader('身体趋势', false)
 

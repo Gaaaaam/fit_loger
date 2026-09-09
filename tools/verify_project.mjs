@@ -200,6 +200,10 @@ const trends = readFileSync(join(root, 'entry/src/main/ets/pages/TrendsPage.ets'
 assert(!trends.includes('趋势图表稍后提供'), 'trends placeholder should be gone');
 assert(trends.includes('本周目标'), 'trends must show goal-based weekly progress');
 assert(trends.includes('关注动作'), 'trends must show watched exercises');
+assert(trends.includes('训练容量'), 'trends must show volume curve');
+assert(trends.includes('个人纪录'), 'trends must show PR board');
+assert(trends.includes('volumePoints'), 'trends must bind digest volume points');
+assert(trends.includes('prBoard'), 'trends must bind digest PR board');
 assert(trends.includes('身体趋势'), 'trends must show body weight trend');
 assert(trends.includes('TrendSparkline'), 'trends must render sparklines');
 assert(trends.includes('calRefresh'), 'trends must refresh with tab stamp');
@@ -219,6 +223,7 @@ assert(settings.includes('setWatchedExercises'), 'settings must persist watched 
 const detail = readFileSync(join(root, 'entry/src/main/ets/pages/TrendExerciseDetailPage.ets'), 'utf8');
 assert(detail.includes('loadTrendSetsForExercise'), 'detail must query a single exercise');
 assert(detail.includes('近期训练'), 'detail must list recent sessions');
+assert(detail.includes('估算'), 'detail must label estimated e1RM when RIR is missing');
 assert(detail.includes('pages/DayDetailPage'), 'detail must jump to the matching training day');
 assert(detail.includes('showLabels'), 'detail chart must show date labels');
 
@@ -232,7 +237,8 @@ const trendLogic = readFileSync(join(root, 'entry/src/main/ets/common/TrendLogic
 for (const name of [
   'isCompoundLift', 'epleyE1rm', 'pickKeyLifts', 'buildLiftSeries', 'buildTrendDigest',
   'isLiftPerformancePoint', 'resolveWatchedLifts', 'buildWeekGoalProgress', 'buildWeightTrend',
-  'buildTrendInsight', 'datedChartPositions', 'buildExerciseTrendDetail'
+  'buildTrendInsight', 'datedChartPositions', 'buildExerciseTrendDetail',
+  'buildVolumeSeries', 'buildPrBoard', 'isE1rmEstimated', 'volumeChangeText'
 ]) {
   assert(trendLogic.includes(name), `TrendLogic missing ${name}`);
 }
@@ -273,9 +279,10 @@ assert(sheet.includes('重试'), 'exercise sheet must retry after load failure')
 const card = readFileSync(join(root, 'entry/src/main/ets/components/ExerciseCard.ets'), 'utf8');
 assert(card.includes('详情'), 'added exercise cards must open details');
 assert(card.includes('onOpenDetail'), 'added exercise cards must expose a detail callback');
+assert(card.includes('vsLastCardText'), 'exercise cards must show progress vs last session');
 
 const logic = readFileSync(join(root, 'entry/src/main/ets/common/WorkoutLogic.ets'), 'utf8');
-for (const name of ['mapLegacyTag', 'parseWeight', 'statusAfterEdit', 'isWeightPr', 'retainBackupNames', 'formatLastHint', 'dayDotKind', 'calendarCellKey']) {
+for (const name of ['mapLegacyTag', 'parseWeight', 'statusAfterEdit', 'isWeightPr', 'retainBackupNames', 'formatLastHint', 'vsLastProgressText', 'vsLastCardText', 'dayDotKind', 'calendarCellKey']) {
   assert(logic.includes(name), `WorkoutLogic missing ${name}`);
 }
 

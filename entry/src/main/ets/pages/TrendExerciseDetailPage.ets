@@ -200,9 +200,16 @@ struct TrendExerciseDetailPage {
               .width('100%')
           } else {
             Column() {
+              if (this.detail.estimated && !this.detail.insufficientData) {
+                Text('未填 RIR，曲线为估算')
+                  .fontSize(12)
+                  .fontColor($r('app.color.text_secondary'))
+                  .width('100%')
+                  .margin({ bottom: 8 })
+              }
               if (this.detail.insufficientData) {
                 Row() {
-                  Text('数据不足：需要至少 2 次满足 RIR ≤1、次数 ≤8 的正式组才能计算稳定的 e1RM')
+                  Text('数据不足：还需要至少 2 次可比较的正式组（次数 ≤ 8；没填 RIR 也会按估算计入）')
                     .fontSize(12)
                     .fontColor($r('app.color.text_secondary'))
                     .layoutWeight(1)

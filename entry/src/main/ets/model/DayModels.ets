@@ -1,4 +1,5 @@
 import { DayDotKind, PartKey, SetStatus } from './types';
+import { HintSet } from '../common/WorkoutLogic';
 
 @Observed
 export class SetItem {
@@ -24,6 +25,7 @@ export class ExerciseItem {
   weightStep: number = 2.5;
   isBodyweight: number = 0;
   lastHint: string = '';
+  lastSets: HintSet[] = [];
   note: string = '';
   sortOrder: number = 0;
   sets: SetItem[] = [];

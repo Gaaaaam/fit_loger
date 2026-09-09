@@ -11,6 +11,7 @@ import {
   HintSet,
   HistSet,
   inheritFromPreviousSet,
+  LastHint,
   isRepsPr,
   isWeightPr,
   ParseResult,
@@ -207,7 +208,9 @@ export class WorkoutRepository {
   private static async attachLastHints(day: DayModel, date: string): Promise<void> {
     const list: ExerciseItem[] = day.exercises.length > 0 ? day.exercises : WorkoutRepository.flattenParts(day);
     for (let i = 0; i < list.length; i++) {
-      list[i].lastHint = await WorkoutRepository.lastHintFor(list[i].exerciseId, date);
+      const hint: LastHint = await WorkoutRepository.lastHintFor(list[i].exerciseId, date);
+      list[i].lastHint = hint.text;
+      list[i].lastSets = hint.sets;
     }
   }
 
@@ -221,7 +224,8 @@ export class WorkoutRepository {
     return list;
   }
 
-  private static async lastHintFor(exerciseId: string, beforeDate: string): Promise<string> {
+  private static async lastHintFor(exerciseId: string, beforeDate: string): Promise<LastHint> {
+    const empty: LastHint = new LastHint();
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     const dateSql: string =
       'SELECT d.date AS date FROM workout_days d ' +
@@ -232,7 +236,7 @@ export class WorkoutRepository {
     const dateRs: relationalStore.ResultSet = await store.querySql(dateSql, [exerciseId, beforeDate]);
     if (!dateRs.goToFirstRow()) {
       dateRs.close();
-      return '';
+      return empty;
     }
     const lastDate: string = dateRs.getString(dateRs.getColumnIndex('date'));
     dateRs.close();
@@ -257,7 +261,9 @@ export class WorkoutRepository {
       hasRow = setRs.goToNextRow();
     }
     setRs.close();
-    return formatLastHint(lastDate, sets);
+    empty.text = formatLastHint(lastDate, sets);
+    empty.sets = sets;
+    return empty;
   }
 
   static async addExercise(date: string, exerciseId: string): Promise<number> {
@@ -378,7 +384,9 @@ export class WorkoutRepository {
       createdEx.sortOrder = rs.getLong(rs.getColumnIndex('ex_sort'));
     }
     rs.close();
-    createdEx.lastHint = await WorkoutRepository.lastHintFor(createdEx.exerciseId, date);
+    const hint: LastHint = await WorkoutRepository.lastHintFor(createdEx.exerciseId, date);
+    createdEx.lastHint = hint.text;
+    createdEx.lastSets = hint.sets;
     return createdEx;
   }
 

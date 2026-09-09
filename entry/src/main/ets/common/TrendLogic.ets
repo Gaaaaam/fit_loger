@@ -353,6 +353,20 @@ export function buildPrBoard(rows: TrendSetRow[]): PrBoardRow[] {
     item.repsDate = acc.repsDate.length > 0 ? acc.repsDate : acc.weightDate;
     board.push(item);
   }
+  board.sort((a: PrBoardRow, b: PrBoardRow) => {
+    const aLast: string = a.repsDate > a.weightDate ? a.repsDate : a.weightDate;
+    const bLast: string = b.repsDate > b.weightDate ? b.repsDate : b.weightDate;
+    if (aLast > bLast) {
+      return -1;
+    }
+    if (aLast < bLast) {
+      return 1;
+    }
+    if (a.exerciseId < b.exerciseId) {
+      return -1;
+    }
+    return 1;
+  });
   return board;
 }
 
@@ -390,10 +404,32 @@ export function liftChangeText(series: KeyLiftSeries): string {
     return '';
   }
   const last: string = formatTrendNumber(series.lastValue);
-  if (series.points.length === 1) {
+  let text: string = last;
+  if (series.points.length > 1) {
+    text = `${formatTrendNumber(series.firstValue)} → ${last}`;
+  }
+  if (series.estimated) {
+    return `${text} · 估算`;
+  }
+  return text;
+}
+
+export function volumeChangeText(points: TrendPoint[]): string {
+  if (points.length === 0) {
+    return '';
+  }
+  const last: string = formatTrendNumber(points[points.length - 1].value);
+  if (points.length === 1) {
     return last;
   }
-  return `${formatTrendNumber(series.firstValue)} → ${last}`;
+  return `${formatTrendNumber(points[0].value)} → ${last}`;
+}
+
+export function prBoardLine(row: PrBoardRow): string {
+  if (row.repsAtWeight > 0) {
+    return `${formatTrendNumber(row.maxWeight)} kg × ${row.repsAtWeight}`;
+  }
+  return `${formatTrendNumber(row.maxWeight)} kg`;
 }
 
 export function weightDeltaText(trend: WeightTrendSummary): string {

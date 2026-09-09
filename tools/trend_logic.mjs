@@ -240,10 +240,32 @@ export function liftChangeText(series) {
     return '';
   }
   const last = formatTrendNumber(series.lastValue);
-  if (series.points.length === 1) {
+  let text = last;
+  if (series.points.length > 1) {
+    text = `${formatTrendNumber(series.firstValue)} → ${last}`;
+  }
+  if (series.estimated) {
+    return `${text} · 估算`;
+  }
+  return text;
+}
+
+export function volumeChangeText(points) {
+  if (points.length === 0) {
+    return '';
+  }
+  const last = formatTrendNumber(points[points.length - 1].value);
+  if (points.length === 1) {
     return last;
   }
-  return `${formatTrendNumber(series.firstValue)} → ${last}`;
+  return `${formatTrendNumber(points[0].value)} → ${last}`;
+}
+
+export function prBoardLine(row) {
+  if (row.repsAtWeight > 0) {
+    return `${formatTrendNumber(row.maxWeight)} kg × ${row.repsAtWeight}`;
+  }
+  return `${formatTrendNumber(row.maxWeight)} kg`;
 }
 
 export function weightDeltaText(trend) {
