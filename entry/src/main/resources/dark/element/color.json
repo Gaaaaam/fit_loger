@@ -53,16 +53,16 @@
       "value": "#6B7280"
     },
     {
-      "name": "dot_rest",
-      "value": "#4ADE80"
+      "name": "dot_trained",
+      "value": "#2BA384"
     },
     {
       "name": "dot_planned",
       "value": "#60A5FA"
     },
     {
-      "name": "dot_empty",
-      "value": "#4B5563"
+      "name": "dot_missed",
+      "value": "#6B7280"
     }
   ]
 }

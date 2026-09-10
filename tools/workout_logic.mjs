@@ -180,6 +180,9 @@ export function dayDotKind(date, today, hasDone, hasRecord) {
     return 'trained';
   }
   if (hasRecord) {
+    if (date < today) {
+      return 'missed';
+    }
     return 'planned';
   }
   if (date < today) {

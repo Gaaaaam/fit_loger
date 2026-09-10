@@ -32,7 +32,7 @@ export struct MonthCalendar {
         .height(8)
         .borderRadius(4)
         .margin({ top: 4 })
-        .backgroundColor($r('app.color.danger'))
+        .backgroundColor($r('app.color.dot_trained'))
     } else if (kind === 'planned') {
       Column()
         .width(8)
@@ -40,20 +40,20 @@ export struct MonthCalendar {
         .borderRadius(4)
         .margin({ top: 4 })
         .backgroundColor($r('app.color.dot_planned'))
-    } else if (kind === 'rest') {
+    } else if (kind === 'missed') {
       Column()
         .width(8)
         .height(8)
         .borderRadius(4)
         .margin({ top: 4 })
-        .backgroundColor($r('app.color.dot_rest'))
+        .backgroundColor($r('app.color.dot_missed'))
     } else {
       Column()
         .width(8)
         .height(8)
         .borderRadius(4)
         .margin({ top: 4 })
-        .backgroundColor($r('app.color.dot_empty'))
+        .backgroundColor(Color.Transparent)
     }
   }
 

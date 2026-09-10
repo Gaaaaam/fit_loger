@@ -59,19 +59,12 @@ export struct CalendarPage {
   @Builder
   legendItem(kind: string, label: string) {
     Row() {
-      if (kind === 'rest') {
+      if (kind === 'trained') {
         Column()
           .width(8)
           .height(8)
           .borderRadius(4)
-          .backgroundColor($r('app.color.dot_rest'))
-          .margin({ right: 6 })
-      } else if (kind === 'trained') {
-        Column()
-          .width(8)
-          .height(8)
-          .borderRadius(4)
-          .backgroundColor($r('app.color.danger'))
+          .backgroundColor($r('app.color.dot_trained'))
           .margin({ right: 6 })
       } else if (kind === 'planned') {
         Column()
@@ -80,12 +73,12 @@ export struct CalendarPage {
           .borderRadius(4)
           .backgroundColor($r('app.color.dot_planned'))
           .margin({ right: 6 })
-      } else {
+      } else if (kind === 'missed') {
         Column()
           .width(8)
           .height(8)
           .borderRadius(4)
-          .backgroundColor($r('app.color.dot_empty'))
+          .backgroundColor($r('app.color.dot_missed'))
           .margin({ right: 6 })
       }
       Text(label)
@@ -130,10 +123,9 @@ export struct CalendarPage {
         })
 
         Row() {
-          this.legendItem('rest', '休息')
           this.legendItem('trained', '已训练')
           this.legendItem('planned', '已计划')
-          this.legendItem('empty', '未安排')
+          this.legendItem('missed', '已计划未训练')
         }
         .width('100%')
         .justifyContent(FlexAlign.SpaceAround)

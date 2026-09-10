@@ -2,7 +2,7 @@ export type PartKey = 'chest' | 'shoulder' | 'back' | 'arm' | 'glute' | 'leg' | 
 
 export type SetStatus = 'planned' | 'done';
 
-export type DayDotKind = 'trained' | 'planned' | 'rest' | 'empty';
+export type DayDotKind = 'trained' | 'planned' | 'missed' | 'rest' | 'empty';
 
 export type Technique = 'drop' | 'ramp' | 'rest_pause' | 'amrap';
 
@@ -99,6 +99,9 @@ export function toDayDotKind(value: string): DayDotKind {
   }
   if (value === 'planned') {
     return 'planned';
+  }
+  if (value === 'missed') {
+    return 'missed';
   }
   if (value === 'rest') {
     return 'rest';

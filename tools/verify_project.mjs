@@ -184,10 +184,11 @@ assert(dayPage.includes("sheetMode === 'info'"), 'day page must host a read-only
 const calendar = readFileSync(join(root, 'entry/src/main/ets/pages/CalendarPage.ets'), 'utf8');
 assert(calendar.includes('记录今天'), 'calendar must have today shortcut');
 assert(calendar.includes('todayString'), 'today shortcut must open today');
-assert(calendar.includes('休息'), 'calendar legend must include rest');
 assert(calendar.includes('已训练'), 'calendar legend must include trained');
 assert(calendar.includes('已计划'), 'calendar legend must include planned');
-assert(calendar.includes('未安排'), 'calendar legend must include empty');
+assert(calendar.includes('已计划未训练'), 'calendar legend must include missed');
+assert(!calendar.includes('休息'), 'calendar legend must not include rest');
+assert(!calendar.includes('未安排'), 'calendar legend must not include empty');
 assert(!calendar.includes('@Entry'), 'calendar must be a tab component without @Entry');
 assert(!calendar.includes('体重'), 'weight entry moved to MinePage');
 assert(!calendar.includes('导出 JSON'), 'export moved to MinePage');
@@ -266,9 +267,9 @@ assert(ability.includes('pages/MainPage'), 'EntryAbility must load MainPage');
 assert(ability.includes('AppSettings'), 'EntryAbility must apply saved theme');
 
 const colors = readFileSync(join(root, 'entry/src/main/resources/base/element/color.json'), 'utf8');
-assert(colors.includes('dot_rest'), 'light colors must include rest dot');
+assert(colors.includes('dot_trained'), 'light colors must include trained dot');
 assert(colors.includes('dot_planned'), 'light colors must include planned dot');
-assert(colors.includes('dot_empty'), 'light colors must include empty dot');
+assert(colors.includes('dot_missed'), 'light colors must include missed dot');
 
 const setRow = readFileSync(join(root, 'entry/src/main/ets/components/SetRow.ets'), 'utf8');
 assert(!setRow.includes('Select(['), 'tag Select should be replaced by compact chip');

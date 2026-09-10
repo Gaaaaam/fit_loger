@@ -70,6 +70,7 @@ function assert(cond, message) {
 }
 
 const sept2026 = buildMonthCells(2026, 8, [
+  { date: '2026-09-01', hasDone: false, hasRecord: true },
   { date: '2026-09-03', hasDone: true, hasRecord: true },
   { date: '2026-09-15', hasDone: false, hasRecord: true }
 ], '2026-09-04');
@@ -77,12 +78,16 @@ assert(sept2026.length % 7 === 0, 'grid must be full weeks');
 const firstInMonth = sept2026.find((c) => c.inMonth);
 assert(firstInMonth.date === '2026-09-01', `expected 2026-09-01, got ${firstInMonth.date}`);
 assert(firstInMonth.day === 1, 'first in-month cell should be day 1');
-assert(firstInMonth.dotKind === 'rest', 'past empty day should be rest');
+assert(firstInMonth.dotKind === 'missed', 'past planned-but-not-trained day should be missed');
 // 2026-09-01 is Tuesday; Monday-first means one leading blank.
 assert(!sept2026[0].inMonth, 'first cell should be leading blank (Mon)');
 assert(sept2026[1].date === '2026-09-01', 'Tuesday Sep 1 should be second cell');
 const trained = sept2026.filter((c) => c.dotKind === 'trained').map((c) => c.date);
 assert(trained.join(',') === '2026-09-03', `trained: ${trained.join(',')}`);
+const missed = sept2026.filter((c) => c.dotKind === 'missed').map((c) => c.date);
+assert(missed.join(',') === '2026-09-01', `missed: ${missed.join(',')}`);
+const restDay = sept2026.find((c) => c.date === '2026-09-02');
+assert(restDay.dotKind === 'rest', 'past empty day should be rest');
 const planned = sept2026.filter((c) => c.dotKind === 'planned').map((c) => c.date);
 assert(planned.join(',') === '2026-09-15', `planned: ${planned.join(',')}`);
 const todayCell = sept2026.find((c) => c.date === '2026-09-04');

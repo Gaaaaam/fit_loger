@@ -324,6 +324,9 @@ export function dayDotKind(date: string, today: string, hasDone: boolean, hasRec
     return 'trained';
   }
   if (hasRecord) {
+    if (date < today) {
+      return 'missed';
+    }
     return 'planned';
   }
   if (date < today) {
