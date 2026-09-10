@@ -148,6 +148,15 @@ assert(pages.includes('pages/TrendSettingsPage'), 'main_pages should register Tr
 assert(pages.includes('pages/TrendExerciseDetailPage'), 'main_pages should register TrendExerciseDetailPage');
 assert(!pages.includes('pages/CalendarPage'), 'CalendarPage is a tab component, not a router page');
 
+const profileRaw = readFileSync(join(root, 'build-profile.json5'), 'utf8');
+assert(!/"(keyPassword|storePassword)"\s*:/.test(profileRaw), 'build-profile.json5 must not contain signing passwords; keep them in gitignored build-profile.signing.local.json5');
+assert(!/Users[\\/]|[\\/]home[\\/]/.test(profileRaw), 'build-profile.json5 must not contain local user paths');
+const profileJson = JSON.parse(profileRaw);
+assert(Array.isArray(profileJson.app.signingConfigs) && profileJson.app.signingConfigs.length === 0, 'committed build-profile.json5 must keep signingConfigs empty');
+for (const product of profileJson.app.products ?? []) {
+  assert(!product.signingConfig, `product ${product.name} must not pin a local signingConfig`);
+}
+
 const app = readFileSync(join(root, 'AppScope/app.json5'), 'utf8');
 assert(app.includes('com.fitloger.app'), 'bundleName should be com.fitloger.app');
 assert(app.includes('训练日志') === false, 'app.json5 uses string resource for label');

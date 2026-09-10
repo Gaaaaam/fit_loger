@@ -57,6 +57,11 @@ material/
 .env.*
 *.local.bak
 build-profile.json5.local.bak
+# DevEco 会把本机证书路径和密码写进 build-profile.json5；
+# 工程配置必须入库，签名覆盖放在下面这个本地文件里。
+build-profile.signing.local.json5
+*.signing.local.json5
+signing-config.local.json5
 
 # Local model source downloads and visual verification output
 /.work/
