@@ -20,6 +20,16 @@ const logic = load('common/ExerciseArtworkLogic.ets', [
 ]);
 const { toExerciseModelPreference, autoGenderForExercise, resolveExerciseModelGender, safeArtworkFrameIndex } = logic;
 
+const appSettings = readFileSync(new URL('../entry/src/main/ets/common/AppSettings.ets', import.meta.url), 'utf8');
+const minePage = readFileSync(new URL('../entry/src/main/ets/pages/MinePage.ets', import.meta.url), 'utf8');
+assert(appSettings.includes("const KEY_EXERCISE_MODEL_GENDER: string = 'exercise_model_gender'"));
+assert(appSettings.includes('loadExerciseModelPreference'));
+assert(appSettings.includes('saveExerciseModelPreference'));
+assert(minePage.includes("Text('动作模特')"));
+assert(minePage.includes("'自动混合'"));
+assert(minePage.includes("'女性模特'"));
+assert(minePage.includes("'男性模特'"));
+
 assert.equal(toExerciseModelPreference('female'), 'female');
 assert.equal(toExerciseModelPreference('male'), 'male');
 assert.equal(toExerciseModelPreference('auto'), 'auto');

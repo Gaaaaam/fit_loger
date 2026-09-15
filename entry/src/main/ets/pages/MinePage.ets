@@ -4,6 +4,7 @@ import { promptAction, router } from '@kit.ArkUI';
 import { fileIo, picker } from '@kit.CoreFileKit';
 import { util } from '@kit.ArkTS';
 import { AppSettings } from '../common/AppSettings';
+import { ExerciseModelPreference } from '../common/ExerciseArtworkLogic';
 import { keepWeight } from '../common/InputUtil';
 import { parseWeight } from '../common/WorkoutLogic';
 import { WorkoutRepository } from '../db/WorkoutRepository';
@@ -13,6 +14,7 @@ import { BodyMetric } from '../model/DayModels';
 export struct MinePage {
   @Consume('calRefresh') @Watch('onRefreshStamp') refreshStamp: number = 0;
   @State theme: string = 'light';
+  @State exerciseModelPreference: ExerciseModelPreference = 'auto';
   @State heightText: string = '';
   @State heightError: string = '';
   @State latestWeightText: string = '未记录';
@@ -27,6 +29,7 @@ export struct MinePage {
 
   private async load(): Promise<void> {
     this.theme = await AppSettings.loadTheme();
+    this.exerciseModelPreference = await AppSettings.loadExerciseModelPreference();
     const heightCm: number = await AppSettings.loadHeightCm();
     if (heightCm > 0) {
       this.heightText = `${heightCm}`;
@@ -66,6 +69,17 @@ export struct MinePage {
     await AppSettings.saveTheme(next);
     const ctx: common.UIAbilityContext = getContext(this) as common.UIAbilityContext;
     AppSettings.applyTheme(ctx, next);
+  }
+
+  private async setExerciseModelPreference(next: ExerciseModelPreference): Promise<void> {
+    const previous: ExerciseModelPreference = this.exerciseModelPreference;
+    this.exerciseModelPreference = next;
+    try {
+      await AppSettings.saveExerciseModelPreference(next);
+    } catch (err) {
+      this.exerciseModelPreference = previous;
+      promptAction.showToast({ message: '保存失败，请重试', duration: 2000 });
+    }
   }
 
   private async handleExport(): Promise<void> {
@@ -211,6 +225,51 @@ export struct MinePage {
           .backgroundColor(this.theme === 'dark' ? $r('app.color.accent') : $r('app.color.chip_bg'))
           .onClick(() => {
             this.setTheme('dark');
+          })
+      }
+      .width('100%')
+
+      Text('动作模特')
+        .fontSize(14)
+        .fontColor($r('app.color.text_secondary'))
+        .width('100%')
+        .margin({ top: 20, bottom: 8 })
+
+      Row() {
+        Text('自动混合')
+          .fontSize(15)
+          .fontColor(this.exerciseModelPreference === 'auto' ? $r('app.color.text_on_accent') : $r('app.color.text_primary'))
+          .textAlign(TextAlign.Center)
+          .layoutWeight(1)
+          .height(40)
+          .borderRadius(8)
+          .backgroundColor(this.exerciseModelPreference === 'auto' ? $r('app.color.accent') : $r('app.color.chip_bg'))
+          .onClick(() => {
+            this.setExerciseModelPreference('auto');
+          })
+        Text('女性模特')
+          .fontSize(15)
+          .fontColor(this.exerciseModelPreference === 'female' ? $r('app.color.text_on_accent') : $r('app.color.text_primary'))
+          .textAlign(TextAlign.Center)
+          .layoutWeight(1)
+          .height(40)
+          .margin({ left: 10 })
+          .borderRadius(8)
+          .backgroundColor(this.exerciseModelPreference === 'female' ? $r('app.color.accent') : $r('app.color.chip_bg'))
+          .onClick(() => {
+            this.setExerciseModelPreference('female');
+          })
+        Text('男性模特')
+          .fontSize(15)
+          .fontColor(this.exerciseModelPreference === 'male' ? $r('app.color.text_on_accent') : $r('app.color.text_primary'))
+          .textAlign(TextAlign.Center)
+          .layoutWeight(1)
+          .height(40)
+          .margin({ left: 10 })
+          .borderRadius(8)
+          .backgroundColor(this.exerciseModelPreference === 'male' ? $r('app.color.accent') : $r('app.color.chip_bg'))
+          .onClick(() => {
+            this.setExerciseModelPreference('male');
           })
       }
       .width('100%')
