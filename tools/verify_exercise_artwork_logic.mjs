@@ -22,6 +22,7 @@ const { toExerciseModelPreference, autoGenderForExercise, resolveExerciseModelGe
 
 assert.equal(toExerciseModelPreference('female'), 'female');
 assert.equal(toExerciseModelPreference('male'), 'male');
+assert.equal(toExerciseModelPreference('auto'), 'auto');
 assert.equal(toExerciseModelPreference('AUTO'), 'auto');
 assert.equal(toExerciseModelPreference(''), 'auto');
 assert.equal(resolveExerciseModelGender('female', 'leg_squat'), 'female');
