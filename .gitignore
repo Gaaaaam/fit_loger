@@ -66,3 +66,4 @@ signing-config.local.json5
 # Local model source downloads and visual verification output
 /.work/
 .worktrees/
+/.superpowers/
