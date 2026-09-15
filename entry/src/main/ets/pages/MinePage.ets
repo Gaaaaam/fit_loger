@@ -15,6 +15,7 @@ export struct MinePage {
   @Consume('calRefresh') @Watch('onRefreshStamp') refreshStamp: number = 0;
   @State theme: string = 'light';
   @State exerciseModelPreference: ExerciseModelPreference = 'auto';
+  private exerciseModelPreferenceRequestVersion: number = 0;
   @State heightText: string = '';
   @State heightError: string = '';
   @State latestWeightText: string = '未记录';
@@ -73,10 +74,14 @@ export struct MinePage {
 
   private async setExerciseModelPreference(next: ExerciseModelPreference): Promise<void> {
     const previous: ExerciseModelPreference = this.exerciseModelPreference;
+    const requestVersion: number = ++this.exerciseModelPreferenceRequestVersion;
     this.exerciseModelPreference = next;
     try {
       await AppSettings.saveExerciseModelPreference(next);
     } catch (err) {
+      if (requestVersion !== this.exerciseModelPreferenceRequestVersion) {
+        return;
+      }
       this.exerciseModelPreference = previous;
       promptAction.showToast({ message: '保存失败，请重试', duration: 2000 });
     }

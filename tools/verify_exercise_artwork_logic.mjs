@@ -30,6 +30,30 @@ assert(minePage.includes("'自动混合'"));
 assert(minePage.includes("'女性模特'"));
 assert(minePage.includes("'男性模特'"));
 
+const mineHandlers = minePage.slice(minePage.indexOf('struct MinePage'), minePage.indexOf('  build()'))
+  .replace('struct MinePage', 'class MinePage')
+  .replace(/@(?:Consume|Watch)\([^)]*\)\s*/g, '')
+  .replace(/@State\s*/g, '') + '\n}\nglobalThis.MinePage = MinePage;';
+const pendingPreferenceSaves = [];
+const mineContext = {
+  AppSettings: {
+    saveExerciseModelPreference: preference => new Promise((resolve, reject) => {
+      pendingPreferenceSaves.push({ preference, resolve, reject });
+    })
+  },
+  promptAction: { showToast: () => {} }
+};
+runInNewContext(stripTypeScriptTypes(mineHandlers), mineContext);
+const mine = new mineContext.MinePage();
+mine.exerciseModelPreference = 'auto';
+const firstChoice = mine.setExerciseModelPreference('female');
+const secondChoice = mine.setExerciseModelPreference('male');
+assert.deepEqual(pendingPreferenceSaves.map(save => save.preference), ['female', 'male']);
+pendingPreferenceSaves[0].reject(new Error('first save failed'));
+pendingPreferenceSaves[1].resolve();
+await Promise.all([firstChoice, secondChoice]);
+assert.equal(mine.exerciseModelPreference, 'male', 'a stale failed save must not roll back a newer choice');
+
 assert.equal(toExerciseModelPreference('female'), 'female');
 assert.equal(toExerciseModelPreference('male'), 'male');
 assert.equal(toExerciseModelPreference('auto'), 'auto');
