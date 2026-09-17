@@ -7,10 +7,10 @@
       "layout": "horizontal-3",
       "captions": ["稳定起始", "控制下放", "推起结束"],
       "cardFrameIndex": 1,
-      "view": "three-quarter side view showing bench contact and bar path",
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view showing bench contact and bar path",
       "equipmentNotes": "Flat bench and full barbell with both weight plates visible; feet planted, upper back and glutes supported, secure closed grip.",
-      "muscleNotes": "Highlight pectoralis major in warm red, with subtle triceps and anterior deltoid involvement.",
-      "status": "planned"
+      "muscleNotes": "Highlight pectoralis major in project green #1F8A70, with subtle triceps and anterior deltoid involvement. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "approved"
     },
     {
       "id": "leg_squat",
@@ -19,10 +19,10 @@
       "layout": "horizontal-3",
       "captions": ["站立起始", "控制下蹲", "底部换向"],
       "cardFrameIndex": 2,
-      "view": "three-quarter side view showing hip depth and knee alignment",
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view showing hip depth and knee alignment",
       "equipmentNotes": "Full barbell rests securely across upper back, both hands grip the bar; both plates and both feet remain visible.",
-      "muscleNotes": "Highlight quadriceps in warm red and gluteus maximus subtly; show neutral spine and knees aligned with toes.",
-      "status": "planned"
+      "muscleNotes": "Highlight quadriceps in project green #1F8A70 and gluteus maximus subtly; show neutral spine and knees aligned with toes. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "approved"
     },
     {
       "id": "back_deadlift",
@@ -31,10 +31,10 @@
       "layout": "horizontal-3",
       "captions": ["地面起始", "贴身拉起", "站立锁定"],
       "cardFrameIndex": 1,
-      "view": "three-quarter side view showing neutral spine and bar close to legs",
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view showing neutral spine and bar close to legs",
       "equipmentNotes": "Full barbell and both plates visible, plates touch floor at start; hands maintain closed grip, bar follows shins and thighs.",
-      "muscleNotes": "Highlight posterior chain, spinal erectors, glutes and hamstrings; lock out standing tall without leaning backward.",
-      "status": "planned"
+      "muscleNotes": "Highlight posterior chain, spinal erectors, glutes and hamstrings in project green #1F8A70; lock out standing tall without leaning backward. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "approved"
     },
     {
       "id": "shoulder_arnold",
@@ -43,10 +43,10 @@
       "layout": "horizontal-3",
       "captions": ["掌心相对起始", "旋转推起", "头顶结束"],
       "cardFrameIndex": 1,
-      "view": "front three-quarter view making forearm rotation and overhead finish visible",
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view making forearm rotation and overhead finish visible",
       "equipmentNotes": "Seated on a bench with feet planted; one complete dumbbell in each hand, closed grips, stable wrists and controlled rotation.",
-      "muscleNotes": "Highlight anterior deltoids in warm red with subtle lateral deltoid and triceps involvement; no exaggerated lower-back arch.",
-      "status": "planned"
+      "muscleNotes": "Highlight anterior deltoids in project green #1F8A70 with subtle lateral deltoid and triceps involvement; no exaggerated lower-back arch. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "approved"
     },
     {
       "id": "core_bird_dog",
@@ -55,10 +55,10 @@
       "layout": "horizontal-2",
       "captions": ["四点支撑", "对侧伸展"],
       "cardFrameIndex": 1,
-      "view": "three-quarter side view clearly separating the opposite extended arm and leg",
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly separating the opposite extended arm and leg",
       "equipmentNotes": "Bodyweight on a plain exercise mat; show supporting palm and opposite knee contact, all fingertips and toes visible.",
-      "muscleNotes": "Highlight deep core and spinal stabilizers with subtle glute and shoulder stabilizer involvement; keep pelvis level and spine neutral.",
-      "status": "planned"
+      "muscleNotes": "Highlight deep core and spinal stabilizers in project green #1F8A70 with subtle glute and shoulder stabilizer involvement; keep pelvis level and spine neutral. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "approved"
     },
     {
       "id": "cardio_burpee",
@@ -67,10 +67,10 @@
       "layout": "grid-4",
       "captions": ["下蹲撑地", "后跳成平板", "收腿回蹲", "向上跳起"],
       "cardFrameIndex": 3,
-      "view": "three-quarter side view with enough headroom for the overhead jump",
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view with enough headroom for the overhead jump",
       "equipmentNotes": "Bodyweight without equipment; use the no-push-up variant, palms planted during plank, feet visibly leave the ground during final jump.",
-      "muscleNotes": "Show coordinated full-body effort with subtle leg, chest and core highlights; maintain aligned plank and controlled knee position.",
-      "status": "planned"
+      "muscleNotes": "Show coordinated full-body effort with subtle leg, chest and core highlights in project green #1F8A70; maintain aligned plank and controlled knee position. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "approved"
     }
   ]
 }
