@@ -221,7 +221,10 @@ console.log(JSON.stringify(context.result));"""
         for term in ["no text", "no watermark", "female", "horizontal-3", "站立起始", "控制下蹲", "底部换向",
                      "Barbell Back Squat", "scientific-educational", "full-body", "neutral background"]:
             self.assertIn(term, job["prompt"])
-        jobs = [json.loads(line) for line in self.run_tool("guidance_prompt.mjs", "--jobs", "--part", "chest").stdout.splitlines()]
+        self.write_manifest([self.entry,
+                             {**self.entry, "id": "chest_bb_bench", "partKey": "chest"}])
+        jobs = [json.loads(line) for line in self.run_tool("guidance_prompt.mjs", "--manifest", self.manifest,
+                                                          "--jobs", "--part", "chest").stdout.splitlines()]
         self.assertEqual([(job["id"], job["gender"]) for job in jobs],
                          [("chest_bb_bench", "female"), ("chest_bb_bench", "male")])
         self.run_tool("guidance_prompt.mjs", "leg_squat", "other", success=False)
