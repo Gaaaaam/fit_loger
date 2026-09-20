@@ -78,6 +78,27 @@ const picker = load('common/ExerciseLogic.ets', ['filterPickerList', 'isCustomEx
   ...details
 });
 
+const generated = load('model/exerciseGuidanceArtwork.generated.ets', ['GENERATED_GUIDANCE_ARTWORK'], {
+  $r: (name) => name
+});
+const artworkLogic = load('common/ExerciseArtworkLogic.ets', [
+  'resolveExerciseModelGender', 'safeArtworkFrameIndex'
+]);
+const artwork = load('model/exerciseArtwork.ets', [
+  'guidanceFramesOf', 'guidanceCaptionsOf', 'cardImageOf'
+], {
+  $r: (name) => name,
+  ...generated,
+  ...artworkLogic
+});
+assert.equal(artwork.guidanceFramesOf('leg_squat', 'leg', 'female').length, 3);
+assert.equal(artwork.guidanceFramesOf('leg_squat', 'leg', 'male').length, 3);
+assert.deepEqual([...artwork.guidanceCaptionsOf('core_bird_dog')], ['四点支撑', '对侧伸展']);
+assert.equal(artwork.guidanceFramesOf('chest_db_bench', 'chest', 'female').length, 2);
+assert.equal(artwork.guidanceCaptionsOf('chest_db_bench').length, 2);
+assert(artwork.cardImageOf('leg_squat', 'leg', 'female').includes('female_03'));
+assert(artwork.cardImageOf('usr_1', 'leg', 'female').includes('part_leg'));
+
 const chest = EXERCISE_CATALOG.filter((item) => item.partKey === 'chest');
 assert(picker.filterPickerList(chest, 'bench press', '').some((item) => item.id === 'chest_bb_bench'));
 assert(picker.filterPickerList(chest, '平板卧推', '').some((item) => item.id === 'chest_bb_bench'));

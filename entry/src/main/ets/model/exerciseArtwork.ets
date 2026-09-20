@@ -1,4 +1,6 @@
 import { PartKey } from './types';
+import { GeneratedGuidanceArtwork, GENERATED_GUIDANCE_ARTWORK } from './exerciseGuidanceArtwork.generated';
+import { ExerciseModelPreference, resolveExerciseModelGender, safeArtworkFrameIndex } from '../common/ExerciseArtworkLogic';
 
 export interface ExerciseArtwork {
   id: string;
@@ -139,7 +141,67 @@ export function artworkOf(exerciseId: string): ExerciseArtwork | null {
   return null;
 }
 
-export function cardImageOf(exerciseId: string, partKey: PartKey): Resource {
+function generatedArtworkOf(exerciseId: string): GeneratedGuidanceArtwork | null {
+  for (let i = 0; i < GENERATED_GUIDANCE_ARTWORK.length; i++) {
+    if (GENERATED_GUIDANCE_ARTWORK[i].id === exerciseId) {
+      return GENERATED_GUIDANCE_ARTWORK[i];
+    }
+  }
+  return null;
+}
+
+function generatedFramesOf(
+  artwork: GeneratedGuidanceArtwork,
+  exerciseId: string,
+  preference: ExerciseModelPreference
+): Resource[] | null {
+  const gender = resolveExerciseModelGender(preference, exerciseId);
+  const frames: Resource[] = gender === 'female' ? artwork.femaleFrames : artwork.maleFrames;
+  return frames !== null && frames !== undefined && frames.length > 0 ? frames : null;
+}
+
+export function guidanceFramesOf(
+  exerciseId: string,
+  partKey: PartKey,
+  preference: ExerciseModelPreference
+): Resource[] {
+  const generated = generatedArtworkOf(exerciseId);
+  if (generated !== null) {
+    const frames = generatedFramesOf(generated, exerciseId, preference);
+    if (frames !== null) {
+      return frames;
+    }
+  }
+  const art: ExerciseArtwork | null = artworkOf(exerciseId);
+  if (art !== null) {
+    return [art.start, art.end];
+  }
+  return [partFallback(partKey)];
+}
+
+export function guidanceCaptionsOf(exerciseId: string): string[] {
+  const generated = generatedArtworkOf(exerciseId);
+  if (generated !== null && generated.frameCaptions !== null && generated.frameCaptions !== undefined && generated.frameCaptions.length > 0) {
+    return generated.frameCaptions;
+  }
+  if (artworkOf(exerciseId) !== null) {
+    return ['起始', '结束'];
+  }
+  return ['动作示意'];
+}
+
+export function cardImageOf(
+  exerciseId: string,
+  partKey: PartKey,
+  preference: ExerciseModelPreference = 'auto'
+): Resource {
+  const generated = generatedArtworkOf(exerciseId);
+  if (generated !== null) {
+    const frames = generatedFramesOf(generated, exerciseId, preference);
+    if (frames !== null) {
+      return frames[safeArtworkFrameIndex(generated.cardFrameIndex, frames.length)];
+    }
+  }
   const art: ExerciseArtwork | null = artworkOf(exerciseId);
   if (art !== null) {
     return art.card;
