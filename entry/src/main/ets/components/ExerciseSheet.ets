@@ -1,4 +1,5 @@
 import { filterPickerList, equipmentKeysIn, isCustomExercise } from '../common/ExerciseLogic';
+import { ExerciseModelPreference } from '../common/ExerciseArtworkLogic';
 import { WorkoutRepository } from '../db/WorkoutRepository';
 import { cardImageOf } from '../model/exerciseArtwork';
 import { ExerciseDef } from '../model/exerciseCatalog';
@@ -14,6 +15,7 @@ import { ExerciseInfoView } from './ExerciseInfoView';
 @Component
 export struct ExerciseSheet {
   @Prop partKey: PartKey = 'chest';
+  @Prop modelPreference: ExerciseModelPreference = 'auto';
   @State allItems: ExerciseDef[] = [];
   @State visibleItems: ExerciseDef[] = [];
   @State filterChips: EquipmentInfo[] = [];
@@ -112,7 +114,7 @@ export struct ExerciseSheet {
   CardItem(item: ExerciseDef) {
     Column({ space: 6 }) {
       Column({ space: 4 }) {
-        Image(cardImageOf(item.id, item.partKey))
+        Image(cardImageOf(item.id, item.partKey, this.modelPreference))
           .width('100%')
           .height(92)
           .objectFit(ImageFit.Contain)
@@ -183,6 +185,7 @@ export struct ExerciseSheet {
         exerciseId: this.detailId,
         displayName: this.selectedName(),
         partKey: this.selectedPart(),
+        modelPreference: this.modelPreference,
         showAdd: true,
         onAdd: () => {
           this.onPick(this.detailId);

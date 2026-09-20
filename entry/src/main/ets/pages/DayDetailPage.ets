@@ -1,6 +1,7 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { promptAction, router } from '@kit.ArkUI';
 import { AppSettings } from '../common/AppSettings';
+import { ExerciseModelPreference } from '../common/ExerciseArtworkLogic';
 import { BodyPartSheet } from '../components/BodyPartSheet';
 import { CreateExerciseSheet } from '../components/CreateExerciseSheet';
 import { ExerciseCard } from '../components/ExerciseCard';
@@ -25,6 +26,7 @@ struct DayDetailPage {
   @State titleText: string = '';
   @State day: DayModel = new DayModel();
   @State viewMode: WorkoutViewMode = 'part';
+  @State exerciseModelPreference: ExerciseModelPreference = 'auto';
   @State showSheet: boolean = false;
   @State sheetMode: string = 'part';
   @State pickerPartKey: PartKey = 'chest';
@@ -40,6 +42,7 @@ struct DayDetailPage {
   private undoTimer: number = -1;
   private listScroller: Scroller = new Scroller();
   private pickerOpened: boolean = false;
+  private exerciseModelPreferenceLoaded: boolean = false;
 
   aboutToAppear(): void {
     const raw: Object | undefined = router.getParams();
@@ -54,6 +57,7 @@ struct DayDetailPage {
     }
     this.titleText = displayChineseDate(this.dateStr);
     this.loadViewMode();
+    this.loadExerciseModelPreference();
     this.reload();
   }
 
@@ -66,6 +70,18 @@ struct DayDetailPage {
 
   private async loadViewMode(): Promise<void> {
     this.viewMode = await AppSettings.loadWorkoutViewMode();
+  }
+
+  private async loadExerciseModelPreference(): Promise<void> {
+    if (this.exerciseModelPreferenceLoaded) {
+      return;
+    }
+    this.exerciseModelPreferenceLoaded = true;
+    try {
+      this.exerciseModelPreference = await AppSettings.loadExerciseModelPreference();
+    } catch (err) {
+      hilog.warn(0xF170, 'DayDetailPage', 'exercise model preference load failed');
+    }
   }
 
   private hasPlanned(): boolean {
@@ -490,6 +506,7 @@ struct DayDetailPage {
       if (this.sheetMode === 'exercise') {
         ExerciseSheet({
           partKey: this.pickerPartKey,
+          modelPreference: this.exerciseModelPreference,
           onPick: (exerciseId: string) => {
             this.handlePickExercise(exerciseId);
           },
@@ -516,6 +533,7 @@ struct DayDetailPage {
             exerciseId: this.infoId,
             displayName: this.infoName,
             partKey: this.infoPart,
+            modelPreference: this.exerciseModelPreference,
             showAdd: false
           })
         }

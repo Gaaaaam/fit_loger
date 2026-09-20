@@ -1,14 +1,17 @@
 import { isCustomExercise, joinZh, numberedLine } from '../common/ExerciseLogic';
-import { artworkOf, ExerciseArtwork, partFallback } from '../model/exerciseArtwork';
+import { ExerciseModelPreference } from '../common/ExerciseArtworkLogic';
+import { guidanceFramesOf, guidanceCaptionsOf, partFallback } from '../model/exerciseArtwork';
 import { ExerciseDef, findExercise } from '../model/exerciseCatalog';
 import { difficultyLabel, ExerciseDetail, findExerciseDetail } from '../model/exerciseDetails';
 import { equipmentName, PartKey } from '../model/types';
+import { ExerciseGuidanceCarousel } from './ExerciseGuidanceCarousel';
 
 @Component
 export struct ExerciseInfoView {
   @Prop exerciseId: string = '';
   @Prop displayName: string = '';
   @Prop partKey: PartKey = 'chest';
+  @Prop modelPreference: ExerciseModelPreference = 'auto';
   @Prop showAdd: boolean = false;
   onAdd: () => void = () => {
   };
@@ -49,22 +52,6 @@ export struct ExerciseInfoView {
       return equipmentName(def.equipment);
     }
     return '其他';
-  }
-
-  private startImage(): Resource {
-    const art: ExerciseArtwork | null = artworkOf(this.exerciseId);
-    if (art !== null) {
-      return art.start;
-    }
-    return partFallback(this.resolvedPart());
-  }
-
-  private endImage(): Resource {
-    const art: ExerciseArtwork | null = artworkOf(this.exerciseId);
-    if (art !== null) {
-      return art.end;
-    }
-    return partFallback(this.resolvedPart());
   }
 
   private detailSteps(): string[] {
@@ -199,29 +186,10 @@ export struct ExerciseInfoView {
         }
         .width('100%')
 
-        Row({ space: 8 }) {
-          Column({ space: 4 }) {
-            Text('起始')
-              .fontSize(12)
-              .fontColor($r('app.color.text_secondary'))
-            Image(this.startImage())
-              .width('100%')
-              .height(110)
-              .objectFit(ImageFit.Contain)
-          }
-          .layoutWeight(1)
-          Column({ space: 4 }) {
-            Text('结束')
-              .fontSize(12)
-              .fontColor($r('app.color.text_secondary'))
-            Image(this.endImage())
-              .width('100%')
-              .height(110)
-              .objectFit(ImageFit.Contain)
-          }
-          .layoutWeight(1)
-        }
-        .width('100%')
+        ExerciseGuidanceCarousel({
+          frames: guidanceFramesOf(this.exerciseId, this.resolvedPart(), this.modelPreference),
+          captions: guidanceCaptionsOf(this.exerciseId)
+        })
 
         if (this.detail() !== null) {
           Text('主肌群  ' + this.detailPrimary())
