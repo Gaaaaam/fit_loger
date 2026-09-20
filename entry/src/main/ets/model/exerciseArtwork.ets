@@ -141,13 +141,31 @@ export function artworkOf(exerciseId: string): ExerciseArtwork | null {
   return null;
 }
 
-function generatedArtworkOf(exerciseId: string): GeneratedGuidanceArtwork | null {
+export function guidanceArtworkOf(exerciseId: string): GeneratedGuidanceArtwork | null {
   for (let i = 0; i < GENERATED_GUIDANCE_ARTWORK.length; i++) {
     if (GENERATED_GUIDANCE_ARTWORK[i].id === exerciseId) {
       return GENERATED_GUIDANCE_ARTWORK[i];
     }
   }
   return null;
+}
+
+function validGuidanceArtworkOf(exerciseId: string): GeneratedGuidanceArtwork | null {
+  const artwork = guidanceArtworkOf(exerciseId);
+  if (artwork === null) {
+    return null;
+  }
+  const femaleFrames = artwork.femaleFrames;
+  const maleFrames = artwork.maleFrames;
+  const captions = artwork.frameCaptions;
+  const frameCount = femaleFrames === null || femaleFrames === undefined ? 0 : femaleFrames.length;
+  if (maleFrames === null || maleFrames === undefined || captions === null || captions === undefined ||
+      frameCount < 2 || frameCount > 4 || maleFrames.length !== frameCount || captions.length !== frameCount ||
+      artwork.cardFrameIndex < 0 || artwork.cardFrameIndex >= frameCount ||
+      Math.floor(artwork.cardFrameIndex) !== artwork.cardFrameIndex) {
+    return null;
+  }
+  return artwork;
 }
 
 function generatedFramesOf(
@@ -165,7 +183,7 @@ export function guidanceFramesOf(
   partKey: PartKey,
   preference: ExerciseModelPreference
 ): Resource[] {
-  const generated = generatedArtworkOf(exerciseId);
+  const generated = validGuidanceArtworkOf(exerciseId);
   if (generated !== null) {
     const frames = generatedFramesOf(generated, exerciseId, preference);
     if (frames !== null) {
@@ -180,7 +198,7 @@ export function guidanceFramesOf(
 }
 
 export function guidanceCaptionsOf(exerciseId: string): string[] {
-  const generated = generatedArtworkOf(exerciseId);
+  const generated = validGuidanceArtworkOf(exerciseId);
   if (generated !== null && generated.frameCaptions !== null && generated.frameCaptions !== undefined && generated.frameCaptions.length > 0) {
     return generated.frameCaptions;
   }
@@ -195,7 +213,7 @@ export function cardImageOf(
   partKey: PartKey,
   preference: ExerciseModelPreference = 'auto'
 ): Resource {
-  const generated = generatedArtworkOf(exerciseId);
+  const generated = validGuidanceArtworkOf(exerciseId);
   if (generated !== null) {
     const frames = generatedFramesOf(generated, exerciseId, preference);
     if (frames !== null) {

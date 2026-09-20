@@ -85,12 +85,14 @@ const artworkLogic = load('common/ExerciseArtworkLogic.ets', [
   'resolveExerciseModelGender', 'safeArtworkFrameIndex'
 ]);
 const artwork = load('model/exerciseArtwork.ets', [
-  'guidanceFramesOf', 'guidanceCaptionsOf', 'cardImageOf'
+  'guidanceArtworkOf', 'guidanceFramesOf', 'guidanceCaptionsOf', 'cardImageOf'
 ], {
   $r: (name) => name,
   ...generated,
   ...artworkLogic
 });
+assert.equal(artwork.guidanceArtworkOf('leg_squat').id, 'leg_squat');
+assert.equal(artwork.guidanceArtworkOf('usr_1'), null);
 assert.equal(artwork.guidanceFramesOf('leg_squat', 'leg', 'female').length, 3);
 assert.equal(artwork.guidanceFramesOf('leg_squat', 'leg', 'male').length, 3);
 assert.deepEqual([...artwork.guidanceCaptionsOf('core_bird_dog')], ['四点支撑', '对侧伸展']);
@@ -98,6 +100,26 @@ assert.equal(artwork.guidanceFramesOf('chest_db_bench', 'chest', 'female').lengt
 assert.equal(artwork.guidanceCaptionsOf('chest_db_bench').length, 2);
 assert(artwork.cardImageOf('leg_squat', 'leg', 'female').includes('female_03'));
 assert(artwork.cardImageOf('usr_1', 'leg', 'female').includes('part_leg'));
+
+const invalidGenerated = [{
+  id: 'chest_db_bench',
+  femaleFrames: [],
+  maleFrames: [],
+  frameCaptions: ['不应使用'],
+  cardFrameIndex: 99
+}];
+const invalidArtwork = load('model/exerciseArtwork.ets', [
+  'guidanceFramesOf', 'guidanceCaptionsOf', 'cardImageOf'
+], {
+  $r: (name) => name,
+  GENERATED_GUIDANCE_ARTWORK: invalidGenerated,
+  ...artworkLogic
+});
+assert.deepEqual([...invalidArtwork.guidanceFramesOf('chest_db_bench', 'chest', 'female')], [
+  'app.media.ex_chest_db_bench_start', 'app.media.ex_chest_db_bench_end'
+]);
+assert.deepEqual([...invalidArtwork.guidanceCaptionsOf('chest_db_bench')], ['起始', '结束']);
+assert.equal(invalidArtwork.cardImageOf('chest_db_bench', 'chest', 'female'), 'app.media.ex_chest_db_bench_card');
 
 const chest = EXERCISE_CATALOG.filter((item) => item.partKey === 'chest');
 assert(picker.filterPickerList(chest, 'bench press', '').some((item) => item.id === 'chest_bb_bench'));
