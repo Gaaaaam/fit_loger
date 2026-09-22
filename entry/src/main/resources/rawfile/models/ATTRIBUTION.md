@@ -8,6 +8,6 @@
 - **Z-Anatomy**，Gauthier Kervyn，采用 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)。
 - 网格前处理、合并与对齐：Johan Bellander / BodyExplorer。
 
-FitLoger 对网格进行了训练肌群筛选、坐标归一化、减面、法线重算、区域合并、材质替换及头部外形简化。挡在胸/腿前方的肋间肌、缝匠肌、内收肌、胫骨前肌等并入邻近可点选训练区；头、手、脚仍作为不可点选遮挡。派生模型采用 CC BY-SA 4.0，并保留以上原始署名。此模型用于训练动作导航，不是医学解剖教学模型。
+FitLoger 对网格进行了训练肌群筛选、坐标归一化、减面、法线重算、区域合并、材质替换及头部外形简化。挡在胸/腿前方的肋间肌、缝匠肌、内收肌、胫骨前肌等并入邻近可点选训练区。头、手、脚不进入 `pick_*`：头部是独立外壳 `base_head`，点选时会挡住后面的肌群；手和脚并入 `base_connective`，骨骼并入 `base_skeleton`。这两块的包围盒包住整身，运行时不把它们当作遮挡。派生模型采用 CC BY-SA 4.0，并保留以上原始署名。此模型用于训练动作导航，不是医学解剖教学模型。
 
 重建入口：`tools/anatomy/build_muscle_glb.py`（numpy、scipy、fast-simplification 0.1.9）。将上述来源文件和 `mesh_mapping.json` 放入 `.work/anatomy` 后运行脚本。GLB 与 `muscle_manifest.json` 记录原始文件 SHA-256 和保留的解剖结构；18 个训练区域按 `pick_<MuscleKey>_L/R` 命名，模型高 1.8 个单位，正面朝 +Z。

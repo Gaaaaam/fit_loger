@@ -1,6 +1,8 @@
 # 训练日志（Fit Loger）
 
-HarmonyOS NEXT 上的离线训练记录应用。面向自己长期使用：把当天训练记得又快又准，并把数据结构一次打对，方便以后做趋势分析和导出。
+HarmonyOS NEXT 上的离线训练记录应用。把当天训练记得又快又准，历史可导出，趋势能看见有没有变强。
+
+现行需求以 [docs/PRD.md](docs/PRD.md) 为准。另见 [竞品对照](docs/competitors.md)、[技术决策](docs/adr/2026-09-10-harmonyos-local.md)、[设计系统](docs/design-system.md)、[真机清单](docs/qa-device.md)。
 
 包名：`com.fitloger.app`  
 当前版本：`1.0.0`  
@@ -79,7 +81,7 @@ fit_loger/
 │   ├── trend_logic.mjs                与 TrendLogic.ets 同源的 Node 实现
 │   ├── local_signing.mjs              本机签名写入 / 从跟踪文件剥离
 │   ├── exercises/                     由 curated.json 生成目录、详情、SVG
-│   └── anatomy/                       人体模型许可说明
+│   └── anatomy/                       人体模型重建、映射与许可
 ├── docs/                              设计与实现笔记
 ├── build-profile.json5                工程配置（signingConfigs 必须为空）
 └── oh-package.json5
@@ -135,7 +137,19 @@ Schema 版本：`CURRENT_VERSION = 2`（见 `entry/src/main/ets/db/schemaSql.ets
 node tools/exercises/generate.mjs
 ```
 
-源数据在 `tools/exercises/curated.json`。上游参考 [yuhonas/free-exercise-db](https://github.com/yuhonas/free-exercise-db)（Unlicense）；本应用不使用上游照片，配图为原创矢量图。人体模型说明见 `entry/src/main/resources/rawfile/models/ATTRIBUTION.md`。
+源数据在 `tools/exercises/curated.json`。上游参考 [yuhonas/free-exercise-db](https://github.com/yuhonas/free-exercise-db)（Unlicense）；本应用不使用上游照片，配图为原创矢量图。
+
+人体选肌模型由 `tools/anatomy/build_muscle_glb.py` 从 BodyExplorer 的 `anatomy.glb` / `skeleton.glb` 重建。把源文件和 `mesh_mapping.json` 放到 `.work/anatomy` 后运行：
+
+```bash
+python tools/anatomy/build_muscle_glb.py
+python tools/anatomy/verify_mapping.py
+python tools/anatomy/verify_asset.py
+```
+
+许可与结构清单见 `entry/src/main/resources/rawfile/models/ATTRIBUTION.md` 和 `muscle_manifest.json`。
+
+点选按包围盒入口，不按三角面。骨骼和结缔组织不挡肌群，只有头部外壳会挡。重叠处（尤其肩和胸）在最近入口的 0.12 单位内，选射线最靠近包围盒中心的肌群。规则在 `entry/src/main/ets/common/SceneInteraction.ets` 的 `nearestSceneMuscle`，由 `node tools/verify_scene.mjs` 锁住。取舍见 [技术决策](docs/adr/2026-09-10-harmonyos-local.md)。
 
 ## 校验
 
@@ -151,12 +165,14 @@ node tools/verify_editing.mjs
 node tools/verify_workout_modes.mjs
 node tools/verify_muscle.mjs
 node tools/verify_scene.mjs
+python tools/anatomy/verify_mapping.py
+python tools/anatomy/verify_asset.py
 node tools/verify_batch_add.mjs
 node tools/verify_trend_logic.mjs
 node tools/verify_trend_guide.mjs
 ```
 
-它们会核对必需文件、schema、动作数量、日历打点、录入状态机、肌群点选、相机约束、批量添加和趋势聚合等。`verify_project.mjs` 还会拒绝把签名密码写进 `build-profile.json5`。真机行为仍需在 DevEco 里编译安装后确认。
+它们会核对必需文件、schema、动作数量、日历打点、录入状态机、肌群点选、相机约束、批量添加和趋势聚合等。`verify_project.mjs` 还会拒绝把签名密码写进 `build-profile.json5`。真机步骤见 [docs/qa-device.md](docs/qa-device.md)，需在至少两款真机上填写结果表。
 
 ## 许可与署名
 
