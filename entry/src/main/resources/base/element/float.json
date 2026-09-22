@@ -1,0 +1,40 @@
+{
+  "float": [
+    {
+      "name": "font_caption",
+      "value": "12fp"
+    },
+    {
+      "name": "font_body",
+      "value": "14fp"
+    },
+    {
+      "name": "font_title",
+      "value": "17fp"
+    },
+    {
+      "name": "font_hero",
+      "value": "24fp"
+    },
+    {
+      "name": "space_page",
+      "value": "16vp"
+    },
+    {
+      "name": "radius_sm",
+      "value": "8vp"
+    },
+    {
+      "name": "radius_md",
+      "value": "12vp"
+    },
+    {
+      "name": "radius_lg",
+      "value": "16vp"
+    },
+    {
+      "name": "radius_xl",
+      "value": "22vp"
+    }
+  ]
+}

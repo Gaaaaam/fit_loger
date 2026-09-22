@@ -1,11 +1,13 @@
-FitLoger body_muscles.glb
-Original low-poly training figure with stable pick_* node names.
-
-Intended replacement source for a future derived mesh:
-Z-Anatomy / Models-of-human-anatomy
-https://github.com/Z-Anatomy/Models-of-human-anatomy
-License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+FitLoger body_muscles.glb — adapted anatomical mesh, CC BY-SA 4.0.
 https://creativecommons.org/licenses/by-sa/4.0/
 
-Any Z-Anatomy-derived replacement must keep CC BY-SA 4.0 attribution
-and the pick_* node names documented in tools/anatomy/ATTRIBUTION.md.
+BodyParts3D © The Database Center for Life Science — CC BY-SA 2.1 Japan.
+https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en
+Z-Anatomy by Gauthier Kervyn — CC BY-SA 4.0.
+Mesh preparation: Johan Bellander / BodyExplorer.
+https://github.com/JohanBellander/BodyExplorer
+
+FitLoger modifications: selected training surfaces, coordinate normalization,
+decimation, normal recalculation, region merging, neutral materials and a
+simplified head shell. Retain attribution and share adaptations under the
+applicable ShareAlike license. See ATTRIBUTION.md and muscle_manifest.json.

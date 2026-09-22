@@ -71,7 +71,7 @@
     },
     {
       "structure": "external intercostal muscle",
-      "node": "base_connective"
+      "node": "pick_chest_R"
     },
     {
       "structure": "first lumbrical of left foot",
@@ -139,11 +139,11 @@
     },
     {
       "structure": "innermost intercostal muscle",
-      "node": "base_connective"
+      "node": "pick_chest_R"
     },
     {
       "structure": "internal intercostal muscle",
-      "node": "base_connective"
+      "node": "pick_chest_R"
     },
     {
       "structure": "lateral head of left flexor hallucis brevis",
@@ -179,11 +179,11 @@
     },
     {
       "structure": "left adductor longus",
-      "node": "base_connective"
+      "node": "pick_quads_L"
     },
     {
       "structure": "left adductor magnus",
-      "node": "base_connective"
+      "node": "pick_quads_L"
     },
     {
       "structure": "left anconeus",
@@ -196,10 +196,6 @@
     {
       "structure": "left brachioradialis",
       "node": "pick_forearm_L"
-    },
-    {
-      "structure": "left calcaneal tendon",
-      "node": "base_connective"
     },
     {
       "structure": "left coracobrachialis",
@@ -255,11 +251,11 @@
     },
     {
       "structure": "left fibularis brevis",
-      "node": "base_connective"
+      "node": "pick_calves_L"
     },
     {
       "structure": "left fibularis longus",
-      "node": "base_connective"
+      "node": "pick_calves_L"
     },
     {
       "structure": "left flexor carpi radialis",
@@ -295,7 +291,7 @@
     },
     {
       "structure": "left gracilis",
-      "node": "base_connective"
+      "node": "pick_quads_L"
     },
     {
       "structure": "left iliocostalis cervicis",
@@ -347,7 +343,7 @@
     },
     {
       "structure": "left sartorius",
-      "node": "base_connective"
+      "node": "pick_quads_L"
     },
     {
       "structure": "left semimembranosus",
@@ -399,7 +395,7 @@
     },
     {
       "structure": "left tibialis anterior",
-      "node": "base_connective"
+      "node": "pick_calves_L"
     },
     {
       "structure": "left vastus intermedius",
@@ -495,11 +491,11 @@
     },
     {
       "structure": "right adductor longus",
-      "node": "base_connective"
+      "node": "pick_quads_R"
     },
     {
       "structure": "right adductor magnus",
-      "node": "base_connective"
+      "node": "pick_quads_R"
     },
     {
       "structure": "right anconeus",
@@ -512,10 +508,6 @@
     {
       "structure": "right brachioradialis",
       "node": "pick_forearm_R"
-    },
-    {
-      "structure": "right calcaneal tendon",
-      "node": "base_connective"
     },
     {
       "structure": "right coracobrachialis",
@@ -571,11 +563,11 @@
     },
     {
       "structure": "right fibularis brevis",
-      "node": "base_connective"
+      "node": "pick_calves_R"
     },
     {
       "structure": "right fibularis longus",
-      "node": "base_connective"
+      "node": "pick_calves_R"
     },
     {
       "structure": "right flexor carpi radialis",
@@ -611,7 +603,7 @@
     },
     {
       "structure": "right gracilis",
-      "node": "base_connective"
+      "node": "pick_quads_R"
     },
     {
       "structure": "right iliocostalis cervicis",
@@ -628,10 +620,6 @@
     {
       "structure": "right infraspinatus muscle",
       "node": "pick_upper_back_R"
-    },
-    {
-      "structure": "right intermediate tendon",
-      "node": "base_connective"
     },
     {
       "structure": "right interspinalis thoracis",
@@ -667,7 +655,7 @@
     },
     {
       "structure": "right sartorius",
-      "node": "base_connective"
+      "node": "pick_quads_R"
     },
     {
       "structure": "right semimembranosus",
@@ -719,7 +707,7 @@
     },
     {
       "structure": "right tibialis anterior",
-      "node": "base_connective"
+      "node": "pick_calves_R"
     },
     {
       "structure": "right vastus intermedius",
@@ -806,10 +794,6 @@
       "node": "pick_chest_R"
     },
     {
-      "structure": "tendon of right levator palpebrae superioris",
-      "node": "base_connective"
-    },
-    {
       "structure": "third lumbrical of left foot",
       "node": "base_connective"
     },
@@ -875,11 +859,11 @@
     },
     {
       "structure": "left iliotibial tract",
-      "node": "base_connective"
+      "node": "pick_quads_L"
     },
     {
       "structure": "right iliotibial tract",
-      "node": "base_connective"
+      "node": "pick_quads_R"
     },
     {
       "structure": "left posterior layer of thoracolumbar fascia",

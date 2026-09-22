@@ -1,12 +1,16 @@
 """Build real anatomical training surfaces. See ATTRIBUTION.md for sources.
-Requires numpy and scipy. Run python tools/anatomy/build_muscle_glb.py.
+Requires numpy, scipy and fast-simplification 0.1.9.
+Run python tools/anatomy/build_muscle_glb.py.
 """
-import argparse, hashlib, json, struct
+import argparse, hashlib, json, struct, sys
 from collections import defaultdict
 from pathlib import Path
+from surface_map import assign_group
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / '.work/pydeps'))
 import numpy as np
 from scipy.spatial import ConvexHull
-ROOT = Path(__file__).resolve().parents[2]
+import fast_simplification
 OUTPUT = ROOT / 'entry/src/main/resources/rawfile/models/body_muscles.glb'
 COPYRIGHT = 'BodyParts3D (c) The Database Center for Life Science, CC BY-SA 2.1 Japan; Z-Anatomy by Gauthier Kervyn, CC BY-SA 4.0. Mesh preparation: Johan Bellander / BodyExplorer. FitLoger adaptation: CC BY-SA 4.0.'
 
@@ -27,29 +31,6 @@ def load_glb(path):
         for p in doc['meshes'][node['mesh']]['primitives']:
             meshes.append((node['name'],accessor(p['attributes']['POSITION']),accessor(p['attributes']['NORMAL']),accessor(p['indices']).reshape(-1,3)))
     return meshes, hashlib.sha256(raw).hexdigest()
-
-def region_for(name):
-    if 'pectoralis major' in name: return 'chest'
-    if 'deltoid' in name: return 'front_delt' if 'clavicular' in name else 'rear_delt' if 'spinal' in name else 'side_delt'
-    if 'trapezius' in name: return 'traps' if 'descending' in name else 'upper_back'
-    if any(s in name for s in ('infraspinatus','teres major','teres minor','rhomboid')): return 'upper_back'
-    if 'latissimus dorsi' in name: return 'lats'
-    if any(s in name for s in ('iliocostalis','longissimus thoracis','spinalis thoracis','thoracolumbar fascia')): return 'erector_spinae'
-    if 'biceps brachii' in name or 'brachialis' in name: return 'biceps'
-    if 'triceps brachii' in name or 'anconeus' in name: return 'triceps'
-    if any(s in name for s in ('carpi','brachioradialis','pronator','supinator','palmaris longus','flexor digitorum superficialis','flexor digitorum profundus','extensor digiti minimi','extensor indicis','pollicis longus','extensor pollicis brevis')): return 'forearm'
-    if name.endswith('extensor digitorum'): return 'forearm'
-    if 'rectus abdominis' in name: return 'rectus_abdominis'
-    if 'external oblique' in name or 'serratus anterior' in name: return 'obliques'
-    if 'gluteus maximus' in name: return 'glute_max'
-    if 'gluteus medius' in name: return 'glute_med'
-    if 'vastus' in name or 'rectus femoris' in name: return 'quads'
-    if any(s in name for s in ('biceps femoris','semitendinosus','semimembranosus')): return 'hamstrings'
-    if 'gastrocnemius' in name or 'soleus' in name: return 'calves'
-    return None
-
-def context_surface(name):
-    return any(s in name for s in ('sternocleidomastoid','platysma','splenius capitis','sternohyoid','sartorius','adductor longus','adductor magnus','gracilis','tibialis anterior','fibularis longus','fibularis brevis','iliotibial','tendon','retinaculum','hand','foot','hallucis','intercostal'))
 
 def normals_for(v,f):
     tri = v[f]; fn = np.cross(tri[:,1]-tri[:,0],tri[:,2]-tri[:,0]); normal = np.zeros_like(v)
@@ -73,10 +54,8 @@ def build(source_dir,output):
         return np.column_stack(((v[:,0]-center_x)*scale,(v[:,2]-lo[2])*scale,-(v[:,1]-center_y)*scale)).astype('<f4'),np.column_stack((n[:,0],n[:,2],-n[:,1])).astype('<f4')
     groups = defaultdict(list); manifest = []
     for name,v,n,f in muscles:
-        key = region_for(name)
-        if key and 'tendon' not in name: group = 'pick_'+key+('_L' if 'left' in name else '_R')
-        elif context_surface(name): group = 'base_connective'
-        else: continue
+        group = assign_group(name)
+        if group is None: continue
         v,n = transform(v,n); groups[group].append((name,v,n,f)); manifest.append({'structure':name,'node':group})
     head=[]
     for name,v,n,f in bones:
@@ -95,6 +74,11 @@ def build(source_dir,output):
     for group,chunks in sorted(groups.items()):
         vertices=[]; normals=[]; indices=[]; names=[]; offset=0
         for name,v,n,f in chunks:
+            if len(f) > 500 and group != 'base_head':
+                ratio = .32 if group.startswith('pick_') else .13 if group == 'base_skeleton' else .18
+                v, f = fast_simplification.simplify(v.astype(np.float64), f.astype(np.int32),
+                    target_count=max(250, int(len(f) * ratio)), agg=5)
+                n = normals_for(v, f)
             vertices.append(v); normals.append(n); indices.append(f+offset); names.append(name); offset+=len(v)
         v=np.concatenate(vertices).astype('<f4'); n=np.concatenate(normals).astype('<f4'); f=np.concatenate(indices).astype('<u4')
         shade=[.52,.57,.55,1] if group.startswith('pick_') else [.46,.50,.49,1]
@@ -107,7 +91,8 @@ def build(source_dir,output):
     output.parent.mkdir(parents=True,exist_ok=True); output.write_bytes(struct.pack('<III',0x46546C67,2,28+len(j)+len(binary))+struct.pack('<II',len(j),0x4E4F534A)+j+struct.pack('<II',len(binary),0x004E4942)+binary)
     output.with_name('muscle_manifest.json').write_text(json.dumps({'source':'JohanBellander/BodyExplorer (BodyParts3D and Z-Anatomy)','sourceSha256':doc['asset']['extras']['sourceSha256'],'structures':manifest},ensure_ascii=False,indent=2),encoding='utf-8')
     bounds=np.concatenate([np.concatenate([c[1] for c in chunks]) for chunks in groups.values()])
-    print(f'{len(groups)} draw groups, {sum(len(c[3]) for cs in groups.values() for c in cs):,} triangles, {output.stat().st_size/1024/1024:.1f} MiB'); print('Bounds:',bounds.min(axis=0),bounds.max(axis=0))
+    triangles = sum(doc['accessors'][p['indices']]['count'] // 3 for m in doc['meshes'] for p in m['primitives'])
+    print(f'{len(groups)} draw groups, {triangles:,} triangles, {output.stat().st_size/1024/1024:.1f} MiB'); print('Bounds:',bounds.min(axis=0),bounds.max(axis=0))
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(); parser.add_argument('--source-dir',type=Path,default=ROOT/'.work/anatomy'); parser.add_argument('--output',type=Path,default=OUTPUT); args=parser.parse_args(); build(args.source_dir,args.output)

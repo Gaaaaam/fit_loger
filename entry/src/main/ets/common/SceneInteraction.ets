@@ -6,26 +6,94 @@ export interface SceneHit {
   names: string[];
   position: Vec3;
   visible: boolean;
+  boxCenter: Vec3 | null;
 }
 
+// Overlapping muscle boxes: a larger neighbour can stick a couple of centimetres
+// past the shoulder, so the nearest box face is the arm or the chest. Keep hits
+// this close to that face and choose the box whose centre the ray actually
+// passes. 0.12 reaches the deltoid behind the chest box without reaching the
+// back muscles behind the torso.
+const ENTRY_BAND: number = 0.12;
+
 export function nearestSceneMuscle(hits: SceneHit[], eye: Vec3): MuscleKey | null {
-  let nearest: SceneHit | undefined = undefined;
-  let best: number = Number.MAX_VALUE;
+  let nearestEntry: number = Number.MAX_VALUE;
+  let blockerDistance: number = Number.MAX_VALUE;
   for (const hit of hits) {
     if (!hit.visible) {
       continue;
     }
-    const dx: number = hit.position.x - eye.x;
-    const dy: number = hit.position.y - eye.y;
-    const dz: number = hit.position.z - eye.z;
-    const distance: number = dx * dx + dy * dy + dz * dz;
-    if (distance < best) {
-      best = distance;
-      nearest = hit;
+    const entry: number = entryDistance(hit.position, eye);
+    const key: MuscleKey | null = muscleFromNodeChain(hit.names);
+    if (key !== null) {
+      if (entry < nearestEntry) {
+        nearestEntry = entry;
+      }
+    } else if (isHeadShell(hit.names) && entry < blockerDistance) {
+      blockerDistance = entry;
     }
   }
-  // An unselectable foreground surface blocks muscles behind it.
-  return nearest === undefined ? null : muscleFromNodeChain(nearest.names);
+  let muscle: MuscleKey | null = null;
+  let bestAim: number = Number.MAX_VALUE;
+  let bestEntry: number = Number.MAX_VALUE;
+  for (const hit of hits) {
+    if (!hit.visible) {
+      continue;
+    }
+    const key: MuscleKey | null = muscleFromNodeChain(hit.names);
+    if (key === null) {
+      continue;
+    }
+    const entry: number = entryDistance(hit.position, eye);
+    if (entry > nearestEntry + ENTRY_BAND) {
+      continue;
+    }
+    const aim: number = aimOffset(hit, eye);
+    if (muscle === null || aim < bestAim || (aim === bestAim && entry < bestEntry)) {
+      muscle = key;
+      bestAim = aim;
+      bestEntry = entry;
+    }
+  }
+  // The head shell is a real outer surface. Skeleton and connective boxes are
+  // not: their bounds wrap muscles that are already the visible surface.
+  if (muscle === null || blockerDistance < bestEntry) {
+    return null;
+  }
+  return muscle;
+}
+
+function entryDistance(point: Vec3, eye: Vec3): number {
+  const dx: number = point.x - eye.x;
+  const dy: number = point.y - eye.y;
+  const dz: number = point.z - eye.z;
+  return Math.sqrt(dx * dx + dy * dy + dz * dz);
+}
+
+function aimOffset(hit: SceneHit, eye: Vec3): number {
+  const center: Vec3 | null = hit.boxCenter;
+  if (center === null || center === undefined) {
+    return Number.MAX_VALUE;
+  }
+  const rx: number = hit.position.x - eye.x;
+  const ry: number = hit.position.y - eye.y;
+  const rz: number = hit.position.z - eye.z;
+  const span: number = rx * rx + ry * ry + rz * rz;
+  if (span < 0.000001) {
+    return Number.MAX_VALUE;
+  }
+  const t: number = ((center.x - eye.x) * rx + (center.y - eye.y) * ry + (center.z - eye.z) * rz) / span;
+  const px: number = eye.x + t * rx;
+  const py: number = eye.y + t * ry;
+  const pz: number = eye.z + t * rz;
+  const dx: number = center.x - px;
+  const dy: number = center.y - py;
+  const dz: number = center.z - pz;
+  return dx * dx + dy * dy + dz * dz;
+}
+
+function isHeadShell(names: string[]): boolean {
+  return names.length > 0 && names[0] === 'base_head';
 }
 
 export interface ScenePointer {

@@ -223,7 +223,14 @@ release(1);
 await Promise.all([first, second]);
 assert.equal(batchCalls.filter((c) => c.ids[0] === 'arm_bb_curl').length, 1, 'double tap must not start a second batch');
 
+screen.submitting = false;
+screen.handleMissedPick();
+assert.equal(toasts[toasts.length - 1], '没有点到肌群，试试靠近一些，或用肌群列表');
 screen.submitting = true;
+screen.handleMissedPick();
+assert.equal(toasts.filter((message) => message === '没有点到肌群，试试靠近一些，或用肌群列表').length, 1,
+  'submitting must not toast a missed pick');
+
 const locked = screen.selectedIds.slice();
 screen.handleToggle({ id: 'chest_fly', addedToday: false });
 screen.removeSelected('arm_bb_curl');

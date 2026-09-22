@@ -20,5 +20,12 @@ for node in doc['nodes']:
         pos = doc['accessors'][prim['attributes']['POSITION']]
         assert all(-1 < v < 2 for v in pos['min'] + pos['max']), 'Model must be normalized to metres'
         assert pos['count'] > 0
-assert len(raw) < 24 * 1024 * 1024, 'Mobile model should stay below 24 MiB'
+assert len(raw) < 12 * 1024 * 1024, 'Mobile model should stay below 12 MiB'
+manifest = json.loads((ROOT / 'entry/src/main/resources/rawfile/models/muscle_manifest.json').read_text(encoding='utf-8'))
+blocking = ('intercostal', 'sartorius', 'adductor longus', 'adductor magnus', 'gracilis',
+            'tibialis anterior', 'fibularis longus', 'fibularis brevis', 'iliotibial')
+for item in manifest['structures']:
+    name = item['structure']
+    if any(token in name for token in blocking) and 'hallucis' not in name:
+        assert item['node'].startswith('pick_'), f'{name} must merge into a nearby pick region, not {item["node"]}'
 print(f'Anatomy provenance, 18 regions, normalized bounds and asset size passed ({len(raw)/1024/1024:.1f} MiB)')

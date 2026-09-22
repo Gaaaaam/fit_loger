@@ -63,6 +63,94 @@
     {
       "name": "dot_missed",
       "value": "#D1D5DB"
+    },
+    {
+      "name": "scene_bg",
+      "value": "#EDF3F0"
+    },
+    {
+      "name": "scene_ink",
+      "value": "#213D34"
+    },
+    {
+      "name": "scene_muted",
+      "value": "#71867C"
+    },
+    {
+      "name": "scene_panel",
+      "value": "#FBFCF8"
+    },
+    {
+      "name": "scene_soft",
+      "value": "#E5EFE7"
+    },
+    {
+      "name": "scene_stroke",
+      "value": "#E8EDE6"
+    },
+    {
+      "name": "scene_disabled",
+      "value": "#E2EAE1"
+    },
+    {
+      "name": "scene_tab_track",
+      "value": "#DDE8E1"
+    },
+    {
+      "name": "scene_tab_active",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "scene_overlay",
+      "value": "#EFFFFFFF"
+    },
+    {
+      "name": "scene_control_bar",
+      "value": "#F2FFFFFF"
+    },
+    {
+      "name": "scene_divider",
+      "value": "#D8E2DC"
+    },
+    {
+      "name": "scene_row",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "scene_row_selected",
+      "value": "#F0F7F1"
+    },
+    {
+      "name": "scene_row_border",
+      "value": "#ECF0EA"
+    },
+    {
+      "name": "scene_row_border_selected",
+      "value": "#BED8C5"
+    },
+    {
+      "name": "scene_fill",
+      "value": "#F1F4ED"
+    },
+    {
+      "name": "scene_fill_selected",
+      "value": "#E4F1E5"
+    },
+    {
+      "name": "scene_mark_border",
+      "value": "#CAD8D0"
+    },
+    {
+      "name": "scene_role",
+      "value": "#EAF4EC"
+    },
+    {
+      "name": "scene_search",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "scene_header_btn",
+      "value": "#FFFFFF"
     }
   ]
 }

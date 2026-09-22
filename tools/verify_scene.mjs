@@ -83,9 +83,36 @@ const hits = [
 assert.equal(interaction.nearestSceneMuscle(hits,{x:0,y:0,z:3}),'chest');
 assert.equal(interaction.nearestSceneMuscle(hits,{x:0,y:0,z:-3}),'lats');
 hits.push({names:['base_head'],position:{x:0,y:0,z:0.3},visible:true});
-assert.equal(interaction.nearestSceneMuscle(hits,{x:0,y:0,z:3}),null,'solid unselectable geometry occludes muscles');
+assert.equal(interaction.nearestSceneMuscle(hits,{x:0,y:0,z:3}),null,'head shell occludes muscles');
 hits[2].visible=false;
 assert.equal(interaction.nearestSceneMuscle(hits,{x:0,y:0,z:3}),'chest');
+const front = [
+  {names:['base_skeleton','BodyRoot'],position:{x:-0.1,y:1.16,z:0.137},visible:true},
+  {names:['base_connective','BodyRoot'],position:{x:-0.1,y:1.16,z:0.123},visible:true},
+  {names:['pick_chest_R','BodyRoot'],position:{x:-0.1,y:1.16,z:0.119},visible:true}
+];
+assert.equal(interaction.nearestSceneMuscle(front,{x:0,y:0.9,z:3.089}),'chest','skeleton bounds must not hide the chest');
+const side = [
+  {names:['base_skeleton','BodyRoot'],position:{x:0.341,y:1.45,z:-0.04},visible:true},
+  {names:['pick_side_delt_L','BodyRoot'],position:{x:0.239,y:1.44,z:-0.03},visible:true}
+];
+assert.equal(interaction.nearestSceneMuscle(side,{x:1.01,y:1.57,z:-0.19}),'side_delt');
+const shoulder = [
+  {names:['pick_biceps_L'],position:{x:0.248,y:1.435,z:-0.038},visible:true,boxCenter:{x:0.192,y:1.306,z:-0.022}},
+  {names:['pick_side_delt_L'],position:{x:0.239,y:1.432,z:-0.037},visible:true,boxCenter:{x:0.197,y:1.422,z:-0.036}}
+];
+assert.equal(interaction.nearestSceneMuscle(shoulder,{x:0.879,y:1.678,z:-0.111}),'side_delt','middle of the shoulder is the deltoid, not the longer arm box');
+const frontShoulder = [
+  {names:['pick_chest_L'],position:{x:0.15,y:1.42,z:0.119},visible:true,boxCenter:{x:0.105,y:1.361,z:0.047}},
+  {names:['pick_front_delt_L'],position:{x:0.15,y:1.42,z:0.016},visible:true,boxCenter:{x:0.154,y:1.424,z:-0.008}}
+];
+assert.equal(interaction.nearestSceneMuscle(frontShoulder,{x:0,y:0.9,z:3.089}),'front_delt');
+const chest = [
+  {names:['pick_chest_L'],position:{x:0.02,y:1.30,z:0.119},visible:true,boxCenter:{x:0.105,y:1.361,z:0.047}},
+  {names:['pick_front_delt_L'],position:{x:0.02,y:1.30,z:0.016},visible:true,boxCenter:{x:0.154,y:1.424,z:-0.008}},
+  {names:['pick_rectus_abdominis_R'],position:{x:0.02,y:1.30,z:0.116},visible:true,boxCenter:{x:-0.044,y:1.108,z:0.076}}
+];
+assert.equal(interaction.nearestSceneMuscle(chest,{x:0,y:0.9,z:3.089}),'chest','a chest tap stays on the chest');
 console.log('scene gesture arbitration and nearest visible intersection passed');
 
 function deferred() {
@@ -136,4 +163,9 @@ const late=makeScene('late');
 loads[2].resolve(late);
 await pending;
 assert.equal(late.destroyed,true,'late native load after timeout must be released');
+const sceneSource = readFileSync(new URL('../entry/src/main/ets/components/MuscleSceneView.ets', import.meta.url), 'utf8');
+assert.equal(sceneSource.includes('JSON.stringify'), false, 'pick path must not dump hit JSON');
+assert.ok(sceneSource.includes('onMissed'), 'empty pick must notify the page');
+assert.ok(sceneSource.includes('app.color.scene_bg'), 'scene stage must use scene_bg');
+assert.ok(sceneSource.includes('0.0134'), 'selected highlight must use linear accent #1F8A70');
 console.log('scene retry races, disposal and loading timeout passed');
