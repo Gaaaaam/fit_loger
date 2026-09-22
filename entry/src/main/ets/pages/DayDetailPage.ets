@@ -780,7 +780,8 @@ struct DayDetailPage {
     .bindSheet($$this.showSheet, this.SheetBuilder, {
       height: SheetSize.LARGE,
       dragBar: true,
-      showClose: true
+      showClose: true,
+      backgroundColor: $r('app.color.card_bg')
     })
   }
 }

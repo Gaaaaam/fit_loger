@@ -48,6 +48,8 @@ for (const name of ['ExerciseSheet', 'ExerciseInfoView']) {
 assert(!/loadExerciseModelPreference/.test(sheet + info), 'children must share the page load');
 assert.equal((dayDetail.match(/AppSettings\.loadExerciseModelPreference\(/g) || []).length, 1);
 assert(dayDetail.includes('this.loadExerciseModelPreference();'), 'page appearance must start the preference load');
+assert(/\.bindSheet\(\$\$this\.showSheet, this\.SheetBuilder, \{[\s\S]*?backgroundColor: \$r\('app\.color\.card_bg'\)[\s\S]*?\n\s*\}\)/.test(dayDetail),
+  'DayDetailPage guidance sheet must use an opaque card background');
 
 // Execute production handlers: missing reset, stale onChange, or a second load must fail.
 function handlers(source, name, end, dependencies = {}) {
