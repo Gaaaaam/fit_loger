@@ -32,8 +32,9 @@ export struct MinePage {
   }
 
   private async load(): Promise<void> {
+    const priorSaves: Promise<void> = this.exerciseModelPreferenceSaveQueue;
     const themeLoad: Promise<string> = AppSettings.loadTheme();
-    this.exerciseModelPreferenceLoad = themeLoad.then(async () => {
+    this.exerciseModelPreferenceLoad = priorSaves.then(async () => {
       const preference: ExerciseModelPreference = await AppSettings.loadExerciseModelPreference();
       this.persistedExerciseModelPreference = preference;
       if (this.exerciseModelPreferenceRequestVersion === 0) {
@@ -85,10 +86,11 @@ export struct MinePage {
 
   private async setExerciseModelPreference(next: ExerciseModelPreference): Promise<void> {
     const requestVersion: number = ++this.exerciseModelPreferenceRequestVersion;
+    const preferenceLoadAtClick: Promise<void> = this.exerciseModelPreferenceLoad;
     this.exerciseModelPreference = next;
     const saveOperation: Promise<void> = this.exerciseModelPreferenceSaveQueue.then(async () => {
       try {
-        await this.exerciseModelPreferenceLoad;
+        await preferenceLoadAtClick;
         await AppSettings.saveExerciseModelPreference(next);
         this.persistedExerciseModelPreference = next;
       } catch (err) {
