@@ -251,6 +251,37 @@ console.log(JSON.stringify(context.result));"""
         self.assertIn("头顶结束", job["prompt"])
         self.assertNotIn("掌心朝向自己", job["prompt"])
 
+    def test_prompt_prefers_manifest_movement_reference_over_catalog_variants(self):
+        selected = "Start from a high-bar squat with both heels planted."
+        self.write_manifest([{**self.entry, "movementReference": selected}])
+        job = json.loads(self.run_tool("guidance_prompt.mjs", "--manifest", self.manifest,
+                                       "--jobs").stdout.splitlines()[0])
+        self.assertIn(selected, job["prompt"])
+        self.assertNotIn("杠铃置于上背", job["prompt"])
+        self.assertIn("selected variation is authoritative", job["prompt"])
+
+    def test_selected_catalog_variants_are_unambiguous_in_generated_prompts(self):
+        cases = [
+            ("arm_overhead_extension", "right hand holds one dumbbell overhead", "坐姿或站姿"),
+            ("shoulder_db_press", "standing bilateral dumbbell press", "站立或坐姿"),
+            ("shoulder_cable_front", "both hands grasp one straight-bar attachment", "背对或侧向"),
+            ("back_one_arm_cable_row", "half-kneeling facing the high pulley", "侧向或面对"),
+        ]
+        for exercise_id, chosen, rejected in cases:
+            with self.subTest(exercise_id=exercise_id):
+                prompt = json.loads(self.run_tool("guidance_prompt.mjs", exercise_id, "female").stdout)["prompt"]
+                self.assertIn(chosen, prompt)
+                self.assertNotIn(rejected, prompt)
+
+    def test_incline_dumbbell_press_starts_over_chest_and_straight_arm_anatomy_is_valid(self):
+        incline = json.loads(self.run_tool("guidance_prompt.mjs", "chest_incline_db_press", "female").stdout)["prompt"]
+        self.assertIn("extend both arms with dumbbells directly above upper chest", incline)
+        self.assertIn("upper arms are approximately parallel to the floor", incline)
+        self.assertNotIn("哑铃位于上胸两侧", incline)
+        straight_arm = json.loads(self.run_tool("guidance_prompt.mjs", "back_straight_arm_pulldown", "female").stdout)["prompt"]
+        self.assertNotIn("胸大肌（长头）", straight_arm)
+        self.assertIn("肱三头肌长头", straight_arm)
+
 
 if __name__ == "__main__":
     unittest.main()

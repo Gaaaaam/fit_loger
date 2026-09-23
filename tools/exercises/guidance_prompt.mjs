@@ -38,6 +38,11 @@ export function loadGuidanceManifest(path = defaultManifest) {
     for (const field of ['partKey', 'view', 'equipmentNotes', 'muscleNotes']) {
       if (typeof entry[field] !== 'string' || !entry[field].trim()) throw new Error(`${entry.id}: missing ${field}`);
     }
+    for (const field of ['movementReference', 'secondaryMusclesOverride']) {
+      if (entry[field] !== undefined && (typeof entry[field] !== 'string' || !entry[field].trim())) {
+        throw new Error(`${entry.id}: invalid ${field}`);
+      }
+    }
     const exercise = catalog.find(item => item.id === entry.id);
     if (!exercise || exercise.partKey !== entry.partKey) throw new Error(`${entry.id}: catalog ID/partKey mismatch`);
   }
@@ -53,6 +58,9 @@ export function buildGuidanceJob(entry, gender) {
     : `one row of ${entry.frameCount} equal ${1536 / entry.frameCount}x1024 columns, ordered left to right`;
   // The approved stage plan overrides the catalog's different Arnold start grip.
   const startPosition = entry.id === 'shoulder_arnold' ? entry.captions[0] : exercise.startPosition;
+  const movementReference = entry.movementReference ??
+    `start ${startPosition} Steps: ${exercise.steps.join(' ')} Cues: ${exercise.cues.join(' ')}`;
+  const secondaryMuscles = entry.secondaryMusclesOverride ?? exercise.secondaryMusclesZh;
   const prompt = [
     `Create a scientific-educational exercise guidance illustration of ${exercise.englishName} (${exercise.name}).`,
     `Output one 1536x1024 mother sheet in ${entry.layout} layout: ${arrangement}.`,
@@ -62,8 +70,9 @@ export function buildGuidanceJob(entry, gender) {
     `Use a ${entry.view}. Keep full-body framing in every cell, including head, hands, feet and all equipment, with a safe margin.`,
     `Stage semantics, in exact reading order (instructions only, never render captions): ${entry.captions.map((caption, index) => `${index + 1}: ${caption}`).join('; ')}.`,
     `Equipment: ${exercise.equipment}. ${entry.equipmentNotes}`,
-    `Target muscles: ${exercise.primaryMusclesZh}; supporting muscles: ${exercise.secondaryMusclesZh}. ${entry.muscleNotes}`,
-    `Movement reference: start ${startPosition} Steps: ${exercise.steps.join(' ')} Cues: ${exercise.cues.join(' ')}`,
+    `Target muscles: ${exercise.primaryMusclesZh}; supporting muscles: ${secondaryMuscles}. ${entry.muscleNotes}`,
+    `Movement reference: ${movementReference}`,
+    'The manifest-selected variation is authoritative for setup, grip, stance, handle and stage order; catalog alternatives must not appear as extra variants or frames.',
     'Illustrate the specified stages only; catalog return phases or optional variations do not add panels.',
     `Avoid: ${GUIDANCE_AVOID}.`
   ].join('\n');
