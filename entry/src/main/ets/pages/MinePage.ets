@@ -35,7 +35,7 @@ export struct MinePage {
     const priorLoad: Promise<void> = this.exerciseModelPreferenceLoad;
     const priorSaves: Promise<void> = this.exerciseModelPreferenceSaveQueue;
     const themeLoad: Promise<string> = AppSettings.loadTheme();
-    const preferenceLoad: Promise<void> = priorLoad.then(async () => {
+    const preferenceLoad: Promise<void> = priorLoad.catch(() => {}).then(async () => {
       await priorSaves;
       const preference: ExerciseModelPreference = await AppSettings.loadExerciseModelPreference();
       this.persistedExerciseModelPreference = preference;

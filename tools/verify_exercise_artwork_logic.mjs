@@ -304,6 +304,39 @@ if (process.argv[2] !== 'theme-reject') {
   assert.deepEqual(toasts, ['保存失败，请重试']);
 }
 
+{
+  const firstRead = createDeferred();
+  let preferenceReads = 0;
+  const { mine, pendingPreferenceSaves, toasts } = createMinePage('auto', {
+    preference: () => {
+      preferenceReads++;
+      return preferenceReads === 1 ? firstRead.promise : Promise.resolve('male');
+    }
+  });
+  const firstLoading = mine.load().catch(error => error);
+  const failedChoice = mine.setExerciseModelPreference('female');
+  await waitForPreferenceReads(() => preferenceReads, 1);
+  firstRead.reject(new Error('first preference read failed'));
+  const firstError = await firstLoading;
+  await failedChoice;
+  assert.equal(firstError.message, 'first preference read failed');
+  assert.equal(pendingPreferenceSaves.length, 0, 'a click tied to the failed read must not save');
+  assert.deepEqual(toasts, ['保存失败，请重试'], 'the earlier click must report its failed load');
+
+  const retryError = await mine.load().then(() => null, error => error);
+  assert.equal(retryError, null, 'a new load must recover from the rejected read');
+  assert.equal(preferenceReads, 2, 'the retry must actually read the stored preference');
+  assert.equal(mine.persistedExerciseModelPreference, 'male', 'the successful retry establishes the rollback baseline');
+
+  const nextChoice = mine.setExerciseModelPreference('female');
+  await waitForPendingSave(pendingPreferenceSaves, 1);
+  assert.equal(pendingPreferenceSaves[0].preference, 'female');
+  pendingPreferenceSaves[0].resolve();
+  await nextChoice;
+  assert.equal(mine.persistedExerciseModelPreference, 'female', 'a choice after retry must save successfully');
+  assert.deepEqual(toasts, ['保存失败，请重试'], 'the successful choice must not inherit the earlier failure');
+}
+
 assert.equal(toExerciseModelPreference('female'), 'female');
 assert.equal(toExerciseModelPreference('male'), 'male');
 assert.equal(toExerciseModelPreference('auto'), 'auto');
