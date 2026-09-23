@@ -224,6 +224,86 @@ if (process.argv[2] !== 'theme-reject') {
   assert.deepEqual(toasts, ['保存失败，请重试']);
 }
 
+{
+  let storedPreference = 'auto';
+  const pendingReads = [];
+  const { mine, pendingPreferenceSaves, toasts } = createMinePage('auto', {
+    preference: () => {
+      const read = createDeferred();
+      const snapshot = storedPreference;
+      pendingReads.push(read);
+      return read.promise.then(() => snapshot);
+    }
+  });
+  const firstLoading = mine.load();
+  const secondLoading = mine.load();
+  for (let attempt = 0; attempt < 10 && pendingReads.length === 0; attempt++) await Promise.resolve();
+  assert(pendingReads.length > 0, 'overlapping loads must start a preference read');
+  for (let attempt = 0; attempt < 10; attempt++) await Promise.resolve();
+  const readsWhileFirstPending = pendingReads.length;
+  if (readsWhileFirstPending === 2) {
+    pendingReads[1].resolve();
+    await secondLoading;
+  } else {
+    pendingReads[0].resolve();
+    await firstLoading;
+    await waitForPreferenceReads(() => pendingReads.length, 2);
+    pendingReads[1].resolve();
+    await secondLoading;
+  }
+  const savedChoice = mine.setExerciseModelPreference('female');
+  await waitForPendingSave(pendingPreferenceSaves, 1);
+  storedPreference = 'female';
+  pendingPreferenceSaves[0].resolve();
+  await savedChoice;
+  pendingReads[0].resolve();
+  await firstLoading;
+  const failedChoice = mine.setExerciseModelPreference('male');
+  await waitForPendingSave(pendingPreferenceSaves, 2);
+  pendingPreferenceSaves[1].reject(new Error('later save failed'));
+  await failedChoice;
+  assert.equal(mine.exerciseModelPreference, 'female', 'late older reads must not corrupt failed-save rollback');
+  assert.equal(mine.persistedExerciseModelPreference, 'female', 'late older reads must not replace the saved baseline');
+  assert.equal(readsWhileFirstPending, 1, 'overlapping loads must serialize preference reads');
+  assert.deepEqual(toasts, ['保存失败，请重试']);
+}
+
+{
+  let storedPreference = 'auto';
+  const pendingReads = [];
+  const { mine, pendingPreferenceSaves, toasts } = createMinePage('auto', {
+    preference: () => {
+      const read = createDeferred();
+      const snapshot = storedPreference;
+      pendingReads.push(read);
+      return read.promise.then(() => snapshot);
+    }
+  });
+  const firstLoading = mine.load();
+  const firstChoice = mine.setExerciseModelPreference('female');
+  const secondLoading = mine.load();
+  const secondChoice = mine.setExerciseModelPreference('male');
+  await waitForPreferenceReads(() => pendingReads.length, 1);
+  assert.equal(pendingPreferenceSaves.length, 0, 'first save must wait for the first read');
+  pendingReads[0].resolve();
+  await firstLoading;
+  await waitForPendingSave(pendingPreferenceSaves, 1);
+  assert.equal(pendingReads.length, 1, 'second read must wait for the first save');
+  storedPreference = 'female';
+  pendingPreferenceSaves[0].resolve();
+  await firstChoice;
+  await waitForPreferenceReads(() => pendingReads.length, 2);
+  assert.equal(pendingPreferenceSaves.length, 1, 'second save must wait for the second read');
+  pendingReads[1].resolve();
+  await secondLoading;
+  await waitForPendingSave(pendingPreferenceSaves, 2);
+  pendingPreferenceSaves[1].reject(new Error('second save failed'));
+  await secondChoice;
+  assert.equal(mine.exerciseModelPreference, 'female', 'load1 → save1 → load2 → save2 must finish without a cycle');
+  assert.equal(mine.persistedExerciseModelPreference, 'female');
+  assert.deepEqual(toasts, ['保存失败，请重试']);
+}
+
 assert.equal(toExerciseModelPreference('female'), 'female');
 assert.equal(toExerciseModelPreference('male'), 'male');
 assert.equal(toExerciseModelPreference('auto'), 'auto');

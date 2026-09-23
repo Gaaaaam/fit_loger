@@ -32,17 +32,20 @@ export struct MinePage {
   }
 
   private async load(): Promise<void> {
+    const priorLoad: Promise<void> = this.exerciseModelPreferenceLoad;
     const priorSaves: Promise<void> = this.exerciseModelPreferenceSaveQueue;
     const themeLoad: Promise<string> = AppSettings.loadTheme();
-    this.exerciseModelPreferenceLoad = priorSaves.then(async () => {
+    const preferenceLoad: Promise<void> = priorLoad.then(async () => {
+      await priorSaves;
       const preference: ExerciseModelPreference = await AppSettings.loadExerciseModelPreference();
       this.persistedExerciseModelPreference = preference;
       if (this.exerciseModelPreferenceRequestVersion === 0) {
         this.exerciseModelPreference = preference;
       }
     });
+    this.exerciseModelPreferenceLoad = preferenceLoad;
     this.theme = await themeLoad;
-    await this.exerciseModelPreferenceLoad;
+    await preferenceLoad;
     const heightCm: number = await AppSettings.loadHeightCm();
     if (heightCm > 0) {
       this.heightText = `${heightCm}`;
