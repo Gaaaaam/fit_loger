@@ -17,6 +17,7 @@ export struct MinePage {
   @State exerciseModelPreference: ExerciseModelPreference = 'auto';
   private persistedExerciseModelPreference: ExerciseModelPreference = 'auto';
   private exerciseModelPreferenceRequestVersion: number = 0;
+  private exerciseModelPreferenceLoad: Promise<void> = Promise.resolve();
   private exerciseModelPreferenceSaveQueue: Promise<void> = Promise.resolve();
   @State heightText: string = '';
   @State heightError: string = '';
@@ -31,10 +32,16 @@ export struct MinePage {
   }
 
   private async load(): Promise<void> {
-    this.theme = await AppSettings.loadTheme();
-    const preference: ExerciseModelPreference = await AppSettings.loadExerciseModelPreference();
-    this.exerciseModelPreference = preference;
-    this.persistedExerciseModelPreference = preference;
+    const themeLoad: Promise<string> = AppSettings.loadTheme();
+    this.exerciseModelPreferenceLoad = themeLoad.then(async () => {
+      const preference: ExerciseModelPreference = await AppSettings.loadExerciseModelPreference();
+      this.persistedExerciseModelPreference = preference;
+      if (this.exerciseModelPreferenceRequestVersion === 0) {
+        this.exerciseModelPreference = preference;
+      }
+    });
+    this.theme = await themeLoad;
+    await this.exerciseModelPreferenceLoad;
     const heightCm: number = await AppSettings.loadHeightCm();
     if (heightCm > 0) {
       this.heightText = `${heightCm}`;
@@ -81,6 +88,7 @@ export struct MinePage {
     this.exerciseModelPreference = next;
     const saveOperation: Promise<void> = this.exerciseModelPreferenceSaveQueue.then(async () => {
       try {
+        await this.exerciseModelPreferenceLoad;
         await AppSettings.saveExerciseModelPreference(next);
         this.persistedExerciseModelPreference = next;
       } catch (err) {

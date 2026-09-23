@@ -34,13 +34,23 @@ const mineHandlers = minePage.slice(minePage.indexOf('struct MinePage'), minePag
   .replace('struct MinePage', 'class MinePage')
   .replace(/@(?:Consume|Watch)\([^)]*\)\s*/g, '')
   .replace(/@State\s*/g, '') + '\n}\nglobalThis.MinePage = MinePage;';
-function createMinePage(loadedPreference = 'auto') {
+function createDeferred() {
+  let resolve;
+  let reject;
+  const promise = new Promise((resolvePromise, rejectPromise) => {
+    resolve = resolvePromise;
+    reject = rejectPromise;
+  });
+  return { promise, resolve, reject };
+}
+
+function createMinePage(loadedPreference = 'auto', loaders = {}) {
   const pendingPreferenceSaves = [];
   const toasts = [];
   const mineContext = {
     AppSettings: {
-      loadTheme: async () => 'light',
-      loadExerciseModelPreference: async () => loadedPreference,
+      loadTheme: loaders.theme ?? (async () => 'light'),
+      loadExerciseModelPreference: loaders.preference ?? (async () => loadedPreference),
       loadHeightCm: async () => 0,
       saveExerciseModelPreference: preference => new Promise((resolve, reject) => {
         pendingPreferenceSaves.push({ preference, resolve, reject });
@@ -60,6 +70,46 @@ async function waitForPendingSave(pendingPreferenceSaves, count) {
     await Promise.resolve();
   }
   assert.equal(pendingPreferenceSaves.length, count, `expected ${count} queued preference saves`);
+}
+
+{
+  const themeLoad = createDeferred();
+  const preferenceLoad = createDeferred();
+  let preferenceReadCount = 0;
+  const { mine, pendingPreferenceSaves, toasts } = createMinePage('auto', {
+    theme: () => themeLoad.promise,
+    preference: () => {
+      preferenceReadCount++;
+      return preferenceLoad.promise;
+    }
+  });
+  const loading = mine.load();
+  const firstChoice = mine.setExerciseModelPreference('female');
+  const visibleAtClick = mine.exerciseModelPreference;
+  for (let attempt = 0; attempt < 10; attempt++) await Promise.resolve();
+  const readsBeforeTheme = preferenceReadCount;
+  themeLoad.resolve('light');
+  for (let attempt = 0; attempt < 10 && preferenceReadCount === 0; attempt++) await Promise.resolve();
+  assert.equal(preferenceReadCount, 1, 'initial preference read must start after theme load');
+  const savesBeforePreferenceLoaded = pendingPreferenceSaves.length;
+  preferenceLoad.resolve('auto');
+  await loading;
+  const visibleAfterLoad = mine.exerciseModelPreference;
+  await waitForPendingSave(pendingPreferenceSaves, 1);
+  assert.equal(pendingPreferenceSaves[0].preference, 'female');
+  pendingPreferenceSaves[0].resolve();
+  await firstChoice;
+  const secondChoice = mine.setExerciseModelPreference('male');
+  await waitForPendingSave(pendingPreferenceSaves, 2);
+  pendingPreferenceSaves[1].reject(new Error('second save failed'));
+  await secondChoice;
+  assert.equal(readsBeforeTheme, 0, 'theme must still be pending when the first choice is made');
+  assert.equal(visibleAtClick, 'female', 'the early choice must appear immediately');
+  assert.equal(savesBeforePreferenceLoaded, 0, 'the first save must wait for the initial preference');
+  assert.equal(visibleAfterLoad, 'female', 'the late initial preference must not replace the early choice');
+  assert.equal(mine.exerciseModelPreference, 'female', 'a failed later choice must roll back to the saved choice');
+  assert.equal(mine.persistedExerciseModelPreference, 'female', 'the persisted baseline must remain the successful choice');
+  assert.deepEqual(toasts, ['保存失败，请重试']);
 }
 
 {
