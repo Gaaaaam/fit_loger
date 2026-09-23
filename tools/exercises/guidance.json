@@ -71,6 +71,1766 @@
       "equipmentNotes": "Bodyweight without equipment; use the no-push-up variant, palms planted during plank, feet visibly leave the ground during final jump.",
       "muscleNotes": "Show coordinated full-body effort with subtle leg, chest and core highlights in project green #1F8A70; maintain aligned plank and controlled knee position. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
       "status": "approved"
+    },
+    {
+      "id": "chest_db_bench",
+      "partKey": "chest",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "胸上举铃",
+        "屈肘下放",
+        "弧线推起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing flat bench contact and separate dumbbell arcs",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 坐在平板凳一端，双手持哑铃置于膝上，再躺下将哑铃举至胸口上方。",
+      "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_incline_bench",
+      "partKey": "chest",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "上胸起始",
+        "杠铃下放",
+        "斜向推起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing incline bench angle and upper-chest bar path",
+      "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 将凳面调至约 30–45 度，仰卧后双脚踩实，杠铃位于锁骨上方。",
+      "muscleNotes": "Highlight 胸大肌上部 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_fly",
+      "partKey": "chest",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "胸上合拢",
+        "两侧打开"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing fixed soft elbow bend and wide dumbbell arc",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 仰卧平板凳，双手持哑铃于胸口上方，肘微屈。",
+      "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_cable_crossover",
+      "partKey": "chest",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "两侧展臂",
+        "身前夹拢"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing both high pulleys and hands meeting below chest",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 站在龙门架中间，双手各握高位手柄，向前迈一步成弓步，肘微屈。",
+      "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_dip",
+      "partKey": "chest",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "直臂前倾",
+        "屈肘下放"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing parallel-bar grip and forward chest lean",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 双手撑住双杠，手臂伸直，身体略前倾，屈膝离地。",
+      "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 肱三头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_pushup",
+      "partKey": "chest",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "直线撑起",
+        "胸部下降"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing hand placement and straight head-to-heel line",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 俯撑，双手约肩宽，身体从头到踝成一条直线。",
+      "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_decline_bench",
+      "partKey": "chest",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "下胸起始",
+        "触及下胸",
+        "推至伸臂"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing decline bench and lower-chest bar path",
+      "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 仰卧下斜凳，小腿固定，杠铃位于下胸上方。",
+      "muscleNotes": "Highlight 胸大肌下部 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_incline_db_press",
+      "partKey": "chest",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "上胸持铃",
+        "屈肘下放",
+        "斜向推起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing incline bench and separate dumbbells",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 上斜凳 30–45 度，双手持哑铃躺好，哑铃位于上胸两侧。",
+      "muscleNotes": "Highlight 胸大肌上部 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_decline_db_press",
+      "partKey": "chest",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "下胸持铃",
+        "下放两侧",
+        "推至伸臂"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing decline bench, fixed legs and lower-chest arc",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 仰卧下斜凳并固定下肢，双手持哑铃于下胸上方。",
+      "muscleNotes": "Highlight 胸大肌下部 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_incline_fly",
+      "partKey": "chest",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "上胸合拢",
+        "两侧打开"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing incline bench and wide dumbbell fly arc",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 上斜仰卧，双手持哑铃于上胸上方，肘微屈。",
+      "muscleNotes": "Highlight 胸大肌上部 in project green #1F8A70; show 前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_machine_press",
+      "partKey": "chest",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "胸侧握柄",
+        "向前推直"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing seat, back pad and moving press handles",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 坐在推胸器上，背部贴靠垫，把手约在胸中部高度。",
+      "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_pec_deck",
+      "partKey": "chest",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "两侧展开",
+        "胸前夹拢"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing pec-deck forearm pads and matched arm travel",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 坐在蝴蝶机上，前臂贴靠垫或握住把手，肘与肩同高。",
+      "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_close_pushup",
+      "partKey": "chest",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "窄手撑起",
+        "贴肘下放"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing narrow hands and elbows close to torso",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 俯撑，双手间距小于肩宽，可接近成钻石形。",
+      "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 肱三头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_incline_pushup",
+      "partKey": "chest",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "凳上撑起",
+        "胸向凳面"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing hands on stable bench and feet on floor",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 双手撑在稳固的凳面或台阶上，身体成直线，脚在地面。",
+      "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_decline_pushup",
+      "partKey": "chest",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "脚高撑起",
+        "胸向地面"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing feet supported on bench and hands on floor",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 双脚放在凳上，双手撑地，身体成直线。",
+      "muscleNotes": "Highlight 胸大肌上部 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "chest_pullover",
+      "partKey": "chest",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "胸上持铃",
+        "向头后放",
+        "拉回胸上"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing one dumbbell held with both hands beyond bench",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 上背横躺凳面或仰卧平板，双手托住一只哑铃于胸口上方。",
+      "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 背阔肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "shoulder_bb_press",
+      "partKey": "shoulder",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "锁骨前持杠",
+        "经过面前",
+        "头顶推直"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing bar path around face and overhead alignment",
+      "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 站立，杠铃置于锁骨上方，双手略宽于肩，核心收紧。",
+      "muscleNotes": "Highlight 三角肌前束 in project green #1F8A70; show 肱三头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "shoulder_db_press",
+      "partKey": "shoulder",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "耳侧持铃",
+        "头顶推直"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing both dumbbells and wrists above shoulders",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 站立或坐姿，双手持哑铃至耳侧，掌心朝前。",
+      "muscleNotes": "Highlight 三角肌前束 in project green #1F8A70; show 肱三头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "shoulder_lateral_raise",
+      "partKey": "shoulder",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "哑铃体侧",
+        "举至肩高"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing symmetric arm abduction without shoulder shrug",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 站立，双手持哑铃于体侧，肘微屈。",
+      "muscleNotes": "Highlight 三角肌中束 in project green #1F8A70; show 斜方肌上部（尽量减少） only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "shoulder_front_raise",
+      "partKey": "shoulder",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "哑铃腿前",
+        "前举至肩高"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing forward dumbbell path and steady torso",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 站立，哑铃置于大腿前方，肘微屈。",
+      "muscleNotes": "Highlight 三角肌前束 in project green #1F8A70; show 胸大肌上部 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "shoulder_reverse_fly",
+      "partKey": "shoulder",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "俯身垂臂",
+        "向外展开"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing hip hinge and rear-deltoid arm spread",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 髋铰链俯身，背部接近平行地面，双手持哑铃自然下垂。",
+      "muscleNotes": "Highlight 三角肌后束 in project green #1F8A70; show 上背 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "shoulder_face_pull",
+      "partKey": "shoulder",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "绳索前伸",
+        "拉向面部",
+        "双手外旋"
+      ],
+      "cardFrameIndex": 2,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing rope ends separating by face and outward elbows",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 绳索调至头上或面部高度，握住绳索两端，后退至手臂伸直。",
+      "muscleNotes": "Highlight 三角肌后束 in project green #1F8A70; show 上背、外旋肌群 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "shoulder_seated_bb_press",
+      "partKey": "shoulder",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "锁骨前持杠",
+        "经过面前",
+        "头顶推直"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing back-supported seat and overhead bar clearance",
+      "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 坐在有靠背的凳上，杠铃从架上取至锁骨上方。",
+      "muscleNotes": "Highlight 三角肌前束 in project green #1F8A70; show 肱三头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "shoulder_machine_press",
+      "partKey": "shoulder",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "耳侧握柄",
+        "向上推直"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing machine handles, seat and back pad",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 坐在推肩器上，把手约在耳侧。",
+      "muscleNotes": "Highlight 三角肌前束 in project green #1F8A70; show 肱三头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "shoulder_cable_lateral",
+      "partKey": "shoulder",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "低位握柄",
+        "侧举至肩"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing single low pulley and outward handle path",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 侧向低位绳索站立，外侧手握住手柄，置于体前或体侧。",
+      "muscleNotes": "Highlight 三角肌中束 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "shoulder_cable_rear_fly",
+      "partKey": "shoulder",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "交叉握柄",
+        "向两侧展开"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing crossed cables and rear-shoulder contraction",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 站在龙门架中间，双手交叉握住对侧高位或中位手柄。",
+      "muscleNotes": "Highlight 三角肌后束 in project green #1F8A70; show 上背 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "shoulder_machine_reverse_fly",
+      "partKey": "shoulder",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "胸贴靠垫",
+        "双臂后展"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing chest pad and reverse-fly machine arms",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 面向后束飞鸟机坐下，胸部贴靠垫，握住把手。",
+      "muscleNotes": "Highlight 三角肌后束 in project green #1F8A70; show 上背 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "shoulder_bent_over_raise",
+      "partKey": "shoulder",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "俯身垂铃",
+        "两侧抬起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing bent torso and side dumbbell arc",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 俯身或额头抵凳，双手持哑铃下垂。",
+      "muscleNotes": "Highlight 三角肌后束 in project green #1F8A70; show 中束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "shoulder_cable_front",
+      "partKey": "shoulder",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "低位握柄",
+        "前举至肩"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing low pulley and forward handle travel",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 背对或侧向低位绳索，双手或单手握住手柄置于大腿前。",
+      "muscleNotes": "Highlight 三角肌前束 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_pullup",
+      "partKey": "back",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "悬垂起始",
+        "肘向下拉",
+        "胸近横杠"
+      ],
+      "cardFrameIndex": 2,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing overhand bar grip and full hanging body",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 正手握杠，双手约肩宽或略宽，身体悬垂，肩下沉。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 肱二头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_lat_pulldown",
+      "partKey": "back",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "高位握杆",
+        "拉至上胸",
+        "控制回伸"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing thigh restraint and bar-to-upper-chest path",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 坐在下拉器上，大腿固定，双手握住横杆。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 肱二头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_bb_row",
+      "partKey": "back",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "俯身垂杠",
+        "贴身上拉",
+        "放回伸臂"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing flat hip-hinge back and lower-abdomen bar path",
+      "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 髋铰链俯身，背部接近平坦，杠铃悬于小腿前。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 肱二头肌、后束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_db_row",
+      "partKey": "back",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "单侧垂铃",
+        "肘向髋拉",
+        "控制下放"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing one knee and hand on bench, one dumbbell",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 一侧手膝撑凳，另一手持哑铃自然下垂，背部平坦。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 肱二头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_seated_row",
+      "partKey": "back",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "伸臂握柄",
+        "拉向腹部",
+        "控制前伸"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing footplate, cable handle and torso posture",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 坐在划船器上，双脚踩踏板，握住把手，手臂伸直。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 肱二头肌、上背 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_chinup",
+      "partKey": "back",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "反手悬垂",
+        "屈肘上拉",
+        "下颌过杠"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing supinated grip and full pull-up bar",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 反手握杠，双手约肩宽，悬垂。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 肱二头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_wide_pulldown",
+      "partKey": "back",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "宽握高位",
+        "拉向锁骨"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing wide grip, full pulley and thigh restraint",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 双手宽握横杆，坐稳固定大腿。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 肱二头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_close_pulldown",
+      "partKey": "back",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "窄握高位",
+        "拉向下胸"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing V handle, close elbows and thigh restraint",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 使用 V 把或窄距握杆，坐稳。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 肱二头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_reverse_pulldown",
+      "partKey": "back",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "反握高位",
+        "拉向上胸"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing supinated shoulder-width grip and pulley",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 反手握住下拉杆，约肩宽，坐稳。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 肱二头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_chest_supported_row",
+      "partKey": "back",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "胸托垂铃",
+        "双肘后拉"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing incline bench chest contact and two dumbbells",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 俯卧于上斜凳，胸部贴靠，双手持哑铃下垂。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 肱二头肌、后束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_straight_arm_pulldown",
+      "partKey": "back",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "手臂前上方",
+        "直臂拉至腿前"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing high pulley, straight arms and thigh-level finish",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 面对高位绳索，双手握住横杆或绳索，手臂伸直微屈，躯干略前倾。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 胸大肌（长头） only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_hyperextension",
+      "partKey": "back",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "髋垫俯身",
+        "伸髋成直线"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing Roman-chair hip pad and aligned trunk",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 俯卧于罗马椅，髋垫在髋关节处，上身悬空，双手交叉于胸前。",
+      "muscleNotes": "Highlight 竖脊肌 in project green #1F8A70; show 臀大肌、腘绳肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_tbar_row",
+      "partKey": "back",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "俯身垂杠",
+        "向胸部拉",
+        "控制下放"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing anchored T-bar, handle and supported stance",
+      "equipmentNotes": "Show a securely anchored T-bar or barbell end, loaded front end and attached row handle; do not invent a free second loaded end. Catalog setup: 跨站在 T 杠或杠铃一端，俯身握住把手，背平坦。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 上背、肱二头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_inverted_row",
+      "partKey": "back",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "低杠下悬身",
+        "胸部靠近杠"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing low bar grip and straight body supported by heels",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 身体仰卧在低杠下，双手正握，身体成直线，脚踩地或伸直。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 上背、肱二头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "back_one_arm_cable_row",
+      "partKey": "back",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "单臂前伸",
+        "肘向髋拉",
+        "控制回伸"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing one cable handle and stable untwisted torso",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 侧向或面对中高位绳索，单手握住手柄，对侧可跪姿或站稳。",
+      "muscleNotes": "Highlight 背阔肌 in project green #1F8A70; show 肱二头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_bb_curl",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "杠铃腿前",
+        "弯至肩前"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing underhand barbell grip and fixed upper arms",
+      "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 站立，双手反握杠铃于大腿前，肘贴体侧。",
+      "muscleNotes": "Highlight 肱二头肌 in project green #1F8A70; show 前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_db_curl",
+      "partKey": "arm",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "双铃体侧",
+        "一侧弯起",
+        "换侧弯起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing one dumbbell in each hand and alternating curl",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 站立，双手持哑铃于体侧，掌心朝前或先朝内再旋外。",
+      "muscleNotes": "Highlight 肱二头肌 in project green #1F8A70; show 前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_hammer_curl",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "掌心相对下垂",
+        "中立握弯起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing neutral dumbbell grips through full curl",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 站立，哑铃中立握（掌心相对）于体侧。",
+      "muscleNotes": "Highlight 肱肌 in project green #1F8A70; show 肱二头肌、前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_pushdown",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "肘贴体侧",
+        "下压伸臂"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing high pulley and elbows anchored beside ribs",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 面对高位绳索，握住直杆或绳索，肘贴体侧。",
+      "muscleNotes": "Highlight 肱三头肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_skull_crusher",
+      "partKey": "arm",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "胸上伸臂",
+        "屈肘至头侧",
+        "伸肘还原"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing EZ bar above bench and stationary upper arms",
+      "equipmentNotes": "Show the entire curved EZ bar and both plates, with closed grips; upper arms remain steady over the bench. Catalog setup: 仰卧，双手持曲杆于胸口上方，手臂伸直。",
+      "muscleNotes": "Highlight 肱三头肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_incline_curl",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "上斜垂铃",
+        "屈肘弯起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing incline bench support and hanging arms",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 仰卧于 45–60 度上斜凳，双手持哑铃自然下垂。",
+      "muscleNotes": "Highlight 肱二头肌（长头） in project green #1F8A70; show 前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_preacher_curl",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "上臂贴垫",
+        "曲杆弯起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing preacher pad and EZ-bar grip",
+      "equipmentNotes": "Show the full curved EZ bar and secure angled grips. Catalog setup: 坐在牧师凳上，上臂贴靠斜垫，握住曲杆，手臂伸展。",
+      "muscleNotes": "Highlight 肱二头肌 in project green #1F8A70; show 前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_cable_curl",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "低位握柄",
+        "弯至肩前"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing low pulley cable and elbows by torso",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 面对低位绳索，反握直杆或手柄，肘贴体侧。",
+      "muscleNotes": "Highlight 肱二头肌 in project green #1F8A70; show 前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_concentration_curl",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "坐姿垂铃",
+        "单臂弯起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing working elbow braced against inner thigh",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 坐姿，肘抵在同侧大腿内侧，手持哑铃下垂。",
+      "muscleNotes": "Highlight 肱二头肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_overhead_extension",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "头顶伸臂",
+        "屈肘至头后"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing dumbbell above head and elbows pointing forward",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 坐姿或站姿，双手或单手将哑铃举过头顶，手臂伸直。",
+      "muscleNotes": "Highlight 肱三头肌（长头） in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_one_arm_pushdown",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "单肘贴肋",
+        "向下伸臂"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing single high cable handle and fixed elbow",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 侧向或面对高位绳索，单手握住手柄，肘贴肋。",
+      "muscleNotes": "Highlight 肱三头肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_kickback",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "俯身屈肘",
+        "向后伸直"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing upper arm level with torso and dumbbell behind",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 俯身，上臂贴体侧与地面平行，手持哑铃，肘屈 90 度。",
+      "muscleNotes": "Highlight 肱三头肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_wrist_curl",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "前臂托稳",
+        "掌心向上屈腕"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing underhand bar and wrists beyond support edge",
+      "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 前臂放在凳上或大腿上，手腕伸出，反握杠铃或哑铃。",
+      "muscleNotes": "Highlight 前臂屈肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_reverse_wrist",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "前臂托稳",
+        "正握向上伸腕"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing overhand bar and wrists beyond support edge",
+      "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 前臂支撑，正握杠铃，手腕伸出凳沿。",
+      "muscleNotes": "Highlight 前臂伸肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_ez_curl",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "曲杆腿前",
+        "弯至肩前"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing angled EZ-bar grips and stationary elbows",
+      "equipmentNotes": "Show the full curved EZ bar and secure angled grips. Catalog setup: 站立，握住曲杆斜把，杠置于大腿前。",
+      "muscleNotes": "Highlight 肱二头肌 in project green #1F8A70; show 前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "arm_close_grip_bench",
+      "partKey": "arm",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "胸上窄握",
+        "屈肘下放",
+        "向上推直"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing flat bench and shoulder-width bar grip",
+      "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 仰卧平板，双手间距约与肩同宽或略窄，握住杠铃。",
+      "muscleNotes": "Highlight 肱三头肌 in project green #1F8A70; show 胸大肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "glute_hip_thrust",
+      "partKey": "glute",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "髋部下沉",
+        "伸髋上推",
+        "肩髋膝成线"
+      ],
+      "cardFrameIndex": 2,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing bench supports upper back and padded bar rests on hips",
+      "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 上背靠凳，杠铃垫于髋，双脚平放，小腿接近垂直。",
+      "muscleNotes": "Highlight 臀大肌 in project green #1F8A70; show 腘绳肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "glute_rdl",
+      "partKey": "glute",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "站姿持杠",
+        "沿腿下放",
+        "伸髋站直"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing bar close to legs and soft knees",
+      "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 站直持杠于大腿前，膝微屈。",
+      "muscleNotes": "Highlight 臀大肌 in project green #1F8A70; show 腘绳肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "glute_bridge",
+      "partKey": "glute",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "仰卧屈膝",
+        "抬髋成线"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing feet flat and shoulders on floor",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 仰卧，屈膝，脚平放，手臂置于体侧。",
+      "muscleNotes": "Highlight 臀大肌 in project green #1F8A70; show 腘绳肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "glute_abduction",
+      "partKey": "glute",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "双膝贴垫",
+        "向外打开"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing hip-abduction machine knee pads",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 坐在外展机上，双膝抵住挡垫。",
+      "muscleNotes": "Highlight 臀中肌 in project green #1F8A70; show 臀大肌上部 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "glute_single_leg_thrust",
+      "partKey": "glute",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "单脚踩地",
+        "单腿推髋",
+        "骨盆水平"
+      ],
+      "cardFrameIndex": 2,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing upper back on bench and raised nonworking leg",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 上背靠凳，一脚踩地，另一腿抬起。",
+      "muscleNotes": "Highlight 臀大肌 in project green #1F8A70; show 腘绳肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "glute_single_leg_bridge",
+      "partKey": "glute",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "一脚踩地",
+        "单腿抬髋",
+        "骨盆水平"
+      ],
+      "cardFrameIndex": 2,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing one planted foot and one raised leg",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 仰卧屈膝，一脚踩地，另一腿伸直或屈髋举起。",
+      "muscleNotes": "Highlight 臀大肌 in project green #1F8A70; show 腘绳肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "glute_cable_kickback",
+      "partKey": "glute",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "踝扣低位绳索",
+        "后踢伸髋"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing ankle cuff attached to low cable and support hand",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 面对低位绳索，脚踝套住，略前倾扶稳。",
+      "muscleNotes": "Highlight 臀大肌 in project green #1F8A70; show 腘绳肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "glute_donkey_kick",
+      "partKey": "glute",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "四点支撑",
+        "屈膝向后蹬"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing both palms and support knee on floor",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 四肢着地，双手在肩下，膝在髋下。",
+      "muscleNotes": "Highlight 臀大肌 in project green #1F8A70; show 腘绳肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "glute_side_lying_abduction",
+      "partKey": "glute",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "侧卧双腿并拢",
+        "上腿向外抬"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing side-lying lower leg and free upper leg",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 侧卧，身体成直线，下方腿微屈，上方腿伸直。",
+      "muscleNotes": "Highlight 臀中肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "glute_band_lateral_walk",
+      "partKey": "glute",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "半蹲张带",
+        "侧向迈步",
+        "后脚跟进"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing taut band at knees and maintained squat",
+      "equipmentNotes": "Show the elastic band stretched between the specified contact points. Catalog setup: 弹力带套在膝上或踝上，半蹲，双脚与肩同宽。",
+      "muscleNotes": "Highlight 臀中肌 in project green #1F8A70; show 臀大肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "glute_clamshell",
+      "partKey": "glute",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "侧卧双膝并拢",
+        "上膝向外开"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing feet stay together beneath banded knees",
+      "equipmentNotes": "Show the elastic band stretched between the specified contact points. Catalog setup: 侧卧，髋膝屈曲，双脚并拢，可在膝上套弹力带。",
+      "muscleNotes": "Highlight 臀中肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "glute_pull_through",
+      "partKey": "glute",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "绳索穿胯",
+        "伸髋站直",
+        "髋后移还原"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing low pulley behind torso and rope between legs",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 背对低位绳索，双手从胯下握住绳索，向前走至有张力，髋铰链。",
+      "muscleNotes": "Highlight 臀大肌 in project green #1F8A70; show 腘绳肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "glute_frog_pump",
+      "partKey": "glute",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "脚掌相对屈膝",
+        "外展抬髋"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing soles touching and knees opened outward",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 仰卧，双脚掌相对，膝向外打开，髋外旋。",
+      "muscleNotes": "Highlight 臀大肌 in project green #1F8A70; show 臀中肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_press",
+      "partKey": "leg",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "屈膝靠垫",
+        "踏板推远"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing full leg-press machine and supported lower back",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 坐在腿举机上，双脚置于踏板中部，放下安全销。",
+      "muscleNotes": "Highlight 股四头肌 in project green #1F8A70; show 臀大肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_extension",
+      "partKey": "leg",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "坐姿屈膝",
+        "伸膝抬垫"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing ankle pad above foot and seat back support",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 坐在腿屈伸机上，踝垫在脚背上方，背部贴靠。",
+      "muscleNotes": "Highlight 股四头肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_curl",
+      "partKey": "leg",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "俯卧伸膝",
+        "屈膝拉垫"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing prone machine and heel-side ankle pad",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 俯卧于腿弯举机，踝垫在跟腱上方。",
+      "muscleNotes": "Highlight 腘绳肌 in project green #1F8A70; show 小腿 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_lunge",
+      "partKey": "leg",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "站姿迈步",
+        "双膝下降",
+        "蹬回站立"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing one dumbbell per hand and front foot grounded",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 双手持哑铃于体侧，向前迈一大步。",
+      "muscleNotes": "Highlight 股四头肌 in project green #1F8A70; show 臀大肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_calf_raise",
+      "partKey": "leg",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "脚跟下沉",
+        "踮起脚跟"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing forefeet on platform and shoulder pad",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 在提踵器上，肩抵垫，前脚掌站在踏板上，脚跟悬空。",
+      "muscleNotes": "Highlight 小腿三头肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_front_squat",
+      "partKey": "leg",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "前肩架杠",
+        "屈膝下蹲",
+        "蹬地站直"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing front-rack bar and high elbows",
+      "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 杠铃置于前肩三角肌上，肘抬高，核心收紧。",
+      "muscleNotes": "Highlight 股四头肌 in project green #1F8A70; show 臀大肌、核心 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_goblet_squat",
+      "partKey": "leg",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "胸前抱铃",
+        "下蹲至底",
+        "蹬地站起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing single kettlebell held close to chest",
+      "equipmentNotes": "Show the full kettlebell and both hands supporting it. Catalog setup: 双手在胸前托住壶铃或哑铃，肘向下。",
+      "muscleNotes": "Highlight 股四头肌 in project green #1F8A70; show 臀大肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_split_squat",
+      "partKey": "leg",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "前后分腿",
+        "原地下蹲",
+        "前腿蹬起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing fixed split stance and two dumbbells",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 前后分腿站立，双手可持哑铃，重心在两脚之间。",
+      "muscleNotes": "Highlight 股四头肌 in project green #1F8A70; show 臀大肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_bulgarian_split",
+      "partKey": "leg",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "后脚搭凳",
+        "前腿下蹲",
+        "前脚蹬起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing rear foot on bench and two dumbbells",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 后脚放在凳上，前脚向前迈出足够距离，双手持哑铃。",
+      "muscleNotes": "Highlight 股四头肌 in project green #1F8A70; show 臀大肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_step_up",
+      "partKey": "leg",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "一脚踩箱",
+        "单腿登上",
+        "控制下阶"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing stable step box and working foot planted",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 面对稳固箱子或凳，双手可持哑铃。",
+      "muscleNotes": "Highlight 股四头肌 in project green #1F8A70; show 臀大肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_hack_squat",
+      "partKey": "leg",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "肩抵靠垫",
+        "沿轨道下蹲"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing full hack-squat sled and footplate",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 肩抵哈克机垫，双脚置于踏板，解开安全销。",
+      "muscleNotes": "Highlight 股四头肌 in project green #1F8A70; show 臀大肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_seated_curl",
+      "partKey": "leg",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "坐姿伸膝",
+        "屈膝拉垫"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing thigh restraint and rear ankle pad",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 坐在坐姿弯举机上，踝后抵垫，大腿被固定。",
+      "muscleNotes": "Highlight 腘绳肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_standing_calf",
+      "partKey": "leg",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "脚跟下沉",
+        "伸踝踮起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing forefeet on step and knees straight",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 站在台阶或器械上，膝伸直，前脚掌支撑。",
+      "muscleNotes": "Highlight 腓肠肌 in project green #1F8A70; show 比目鱼肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_seated_calf",
+      "partKey": "leg",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "坐姿脚跟下沉",
+        "屈膝踮起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing knee pad and forefeet on platform",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 坐在提踵器上，膝屈约 90 度，膝上压垫，前脚掌在踏板上。",
+      "muscleNotes": "Highlight 比目鱼肌 in project green #1F8A70; show 腓肠肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_walking_lunge",
+      "partKey": "leg",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "持铃向前迈",
+        "一侧下蹲",
+        "换腿迈步"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing two dumbbells and sequential forward strides",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 双手持哑铃，向前行走空间充足。",
+      "muscleNotes": "Highlight 股四头肌 in project green #1F8A70; show 臀大肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_reverse_lunge",
+      "partKey": "leg",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "持铃并立",
+        "后撤屈膝",
+        "蹬回并立"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing two dumbbells and rearward stepping leg",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 站立持哑铃，向后退一步。",
+      "muscleNotes": "Highlight 股四头肌 in project green #1F8A70; show 臀大肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "leg_sumo_squat",
+      "partKey": "leg",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "宽距持铃",
+        "膝沿脚尖下蹲",
+        "蹬地站起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing wide outward toes and weight between legs",
+      "equipmentNotes": "Use one complete dumbbell held vertically by both hands between the legs; show the full wide stance and outward feet. Catalog setup: 站距明显宽于肩，脚外展，双手于身前持哑铃或壶铃。",
+      "muscleNotes": "Highlight 股四头肌 in project green #1F8A70; show 臀大肌、内收肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "abs_crunch",
+      "partKey": "abs",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "仰卧屈膝",
+        "肩胛卷起"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing floor or plain mat and planted feet",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 仰卧，屈膝，脚平放，双手置于耳侧或胸前。",
+      "muscleNotes": "Highlight 腹直肌 in project green #1F8A70; show 腹斜肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "abs_reverse_crunch",
+      "partKey": "abs",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "仰卧屈膝",
+        "骨盆卷离地"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing floor support and knees drawn toward chest",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 仰卧，髋膝屈曲，小腿可抬起。",
+      "muscleNotes": "Highlight 腹直肌下部 in project green #1F8A70; show 髋屈肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "abs_leg_raise",
+      "partKey": "abs",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "仰卧直腿",
+        "抬腿近垂直",
+        "控制放低"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing floor support and paired straight legs",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 仰卧，双手可握身侧或垫在臀下，双腿伸直。",
+      "muscleNotes": "Highlight 腹直肌 in project green #1F8A70; show 髋屈肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "abs_machine_crunch",
+      "partKey": "abs",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "坐姿靠垫",
+        "躯干向腿卷"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing machine chest pad and fixed seat",
+      "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 坐在卷腹机上，胸垫或把手置于胸前，调整配重。",
+      "muscleNotes": "Highlight 腹直肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "abs_cable_crunch",
+      "partKey": "abs",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "跪姿握绳",
+        "肘向膝卷"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing high cable rope and knees on floor",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 跪在高位绳索前，双手握住绳索置于头侧。",
+      "muscleNotes": "Highlight 腹直肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "abs_hanging_knee",
+      "partKey": "abs",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "单杠悬垂",
+        "屈膝上收",
+        "骨盆后卷"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing full pull-up bar and both hanging hands",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 双手悬垂于单杠，身体稳定，肩下沉。",
+      "muscleNotes": "Highlight 腹直肌 in project green #1F8A70; show 髋屈肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "abs_hanging_leg",
+      "partKey": "abs",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "直腿悬垂",
+        "双腿抬平",
+        "控制下放"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing full pull-up bar and straight legs",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 悬垂于单杠，双腿伸直。",
+      "muscleNotes": "Highlight 腹直肌 in project green #1F8A70; show 髋屈肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "abs_alt_crunch",
+      "partKey": "abs",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "仰卧屈膝",
+        "右肘向左膝",
+        "左肘向右膝"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing plain mat and alternated cross-body curl",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 仰卧屈膝，双手置于耳侧。",
+      "muscleNotes": "Highlight 腹直肌 in project green #1F8A70; show 腹斜肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "abs_heel_touch",
+      "partKey": "abs",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "屈膝抬肩",
+        "右手触右踵",
+        "左手触左踵"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing feet planted and alternating same-side reach",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 仰卧屈膝，肩微离地，双臂置于体侧。",
+      "muscleNotes": "Highlight 腹斜肌 in project green #1F8A70; show 腹直肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "abs_flutter_kick",
+      "partKey": "abs",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "双腿离地",
+        "左腿上踢",
+        "右腿上踢"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing floor support and low alternating straight legs",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 仰卧，双手垫臀或握身侧，双腿伸直离地。",
+      "muscleNotes": "Highlight 腹直肌下部 in project green #1F8A70; show 髋屈肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "abs_decline_crunch",
+      "partKey": "abs",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "下斜后仰",
+        "躯干卷向腿"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing decline bench and restrained lower legs",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 坐在下斜凳上，小腿固定，上身后仰，双手置于耳侧。",
+      "muscleNotes": "Highlight 腹直肌 in project green #1F8A70; show 髋屈肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "abs_v_up",
+      "partKey": "abs",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "仰卧伸展",
+        "手脚同时抬起",
+        "空中呈 V 形"
+      ],
+      "cardFrameIndex": 2,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing plain mat and simultaneous arm-leg reach",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 仰卧，手脚伸直。",
+      "muscleNotes": "Highlight 腹直肌 in project green #1F8A70; show 髋屈肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "core_dead_bug",
+      "partKey": "core",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "仰卧九十度",
+        "右手左腿伸展",
+        "左手右腿伸展"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing back on floor and opposite limbs separated",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 仰卧，髋膝 90 度，双臂指向天花板，下背贴地。",
+      "muscleNotes": "Highlight 核心、腹直肌 in project green #1F8A70; show 腹斜肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "core_shoulder_tap",
+      "partKey": "core",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "高位平板",
+        "右手触左肩",
+        "左手触右肩"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing both feet and one supporting palm grounded",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 高位平板支撑，双手在肩下，身体成直线。",
+      "muscleNotes": "Highlight 核心 in project green #1F8A70; show 肩稳定、腹斜肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "core_pallof",
+      "partKey": "core",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "胸前握柄",
+        "向前推直"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing side-mounted cable pulls against square shoulders",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 侧向绳索站立，双手握手柄于胸口，双脚与肩同宽。",
+      "muscleNotes": "Highlight 腹斜肌、核心 in project green #1F8A70; show 肩带 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "core_side_plank_hip",
+      "partKey": "core",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "侧卧髋低",
+        "侧撑抬髋"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing support elbow below shoulder and stacked feet",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 侧卧，肘在肩下支撑，脚叠放或前后分开，髋先着地。",
+      "muscleNotes": "Highlight 腹斜肌、核心 in project green #1F8A70; show 臀中肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "core_up_down",
+      "partKey": "core",
+      "frameCount": 4,
+      "layout": "grid-4",
+      "captions": [
+        "双肘平板",
+        "单掌撑起",
+        "双掌高撑",
+        "单肘回落"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing forearms and palms alternate floor contact",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 肘支撑平板开始，身体成直线。",
+      "muscleNotes": "Highlight 核心 in project green #1F8A70; show 肩、肱三头 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "core_russian_twist",
+      "partKey": "core",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "坐姿后倾",
+        "双手转右",
+        "双手转左"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing seated balance and torso rotation",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 坐地，躯干后倾，双脚离地或着地，双手合于身前。",
+      "muscleNotes": "Highlight 腹斜肌 in project green #1F8A70; show 腹直肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "core_woodchop",
+      "partKey": "core",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "外侧高位握柄",
+        "斜向对侧下劈",
+        "控制回高位"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing high cable and diagonal handle path",
+      "equipmentNotes": "Show pulley, taut cable, handle and continuous connection to the weight stack. Catalog setup: 侧向高位或中位绳索，双手握住手柄于外侧上方。",
+      "muscleNotes": "Highlight 腹斜肌、核心 in project green #1F8A70; show 肩带 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "core_hollow_rock",
+      "partKey": "core",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "空心体前摆",
+        "空心体后摆"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing lower back on floor and continuous hollow shape",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 仰卧成空心体：下背贴地，肩和腿离地，手脚伸展。",
+      "muscleNotes": "Highlight 腹直肌、核心 in project green #1F8A70; show 髋屈肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "core_body_saw",
+      "partKey": "core",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "肘撑平板",
+        "双脚后滑"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing forearms on floor and feet on sliding discs",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 肘撑平板，双脚踩滑盘或穿袜子在滑面上。",
+      "muscleNotes": "Highlight 核心 in project green #1F8A70; show 肩 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "cardio_jump_rope",
+      "partKey": "cardio",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "绳在身后",
+        "离地过绳",
+        "前掌落地"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing one real rope in both hands, visible under feet",
+      "equipmentNotes": "Show one complete jump rope held securely in both hands, with the rope visibly passing beneath both feet at the airborne stage. Catalog setup: 双手握绳于髋侧，绳在身后，微屈膝。",
+      "muscleNotes": "Highlight calves and lower-leg stabilizers in project green #1F8A70; show 全身 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "cardio_jumping_jack",
+      "partKey": "cardio",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": [
+        "双脚并拢",
+        "跳起开臂开腿"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing both arms overhead and both feet apart",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 站立，双脚并拢，双手置于体侧。",
+      "muscleNotes": "Highlight shoulders, hip abductors and leg muscles in project green #1F8A70; show 肩、髋外展 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
+    },
+    {
+      "id": "cardio_mountain_climber",
+      "partKey": "cardio",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": [
+        "高位平板",
+        "右膝向胸",
+        "左膝向胸"
+      ],
+      "cardFrameIndex": 1,
+      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing both palms grounded and alternating knees",
+      "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 高位支撑，身体成直线。",
+      "muscleNotes": "Highlight core and hip flexors in project green #1F8A70; show 髋屈肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
+      "status": "planned"
     }
   ]
 }

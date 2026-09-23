@@ -73,12 +73,27 @@ export function buildGuidanceJob(entry, gender) {
 function main() {
   const { values, positionals } = parseArgs({ options: {
     manifest: { type: 'string', default: defaultManifest },
-    check: { type: 'boolean' }, jobs: { type: 'boolean' }, part: { type: 'string' }
+    check: { type: 'boolean' }, jobs: { type: 'boolean' }, part: { type: 'string' },
+    'require-all': { type: 'boolean' }
   }, allowPositionals: true });
+  if (values['require-all'] && !values.check) throw new Error('--require-all requires --check');
   const entries = loadGuidanceManifest(values.manifest);
   if (values.check) {
-    if (values.jobs || positionals.length || values.part) throw new Error('--check cannot be combined with job selection');
-    for (const entry of entries) {
+    if (values.jobs || positionals.length || (values.part && values['require-all'])) {
+      throw new Error('--check cannot be combined with job selection or --require-all --part');
+    }
+    if (values['require-all']) {
+      const manifestIds = new Set(entries.map(entry => entry.id));
+      const catalogIds = new Set(catalog.map(item => item.id));
+      const missing = [...catalogIds].filter(id => !manifestIds.has(id));
+      const extra = [...manifestIds].filter(id => !catalogIds.has(id));
+      if (missing.length || extra.length) {
+        throw new Error(`catalog coverage mismatch: missing (${missing.length}): ${missing.join(', ')}; extra (${extra.length}): ${extra.join(', ')}`);
+      }
+    }
+    const checkedEntries = values.part ? entries.filter(entry => entry.partKey === values.part) : entries;
+    if (!checkedEntries.length) throw new Error(`no guidance entries for part: ${values.part}`);
+    for (const entry of checkedEntries) {
       for (const gender of ['female', 'male']) {
         const { prompt } = buildGuidanceJob(entry, gender);
         for (const term of ['no text', 'no watermark', gender, entry.layout, ...entry.captions]) {
@@ -86,7 +101,7 @@ function main() {
         }
       }
     }
-    console.log(`PASS: ${entries.length} exercises, ${entries.length * 2} gender prompts`);
+    console.log(`PASS: entries=${checkedEntries.length}, prompts=${checkedEntries.length * 2}, approved=${checkedEntries.filter(entry => entry.status === 'approved').length}, planned=${checkedEntries.filter(entry => entry.status === 'planned').length}`);
   } else if (values.jobs) {
     if (positionals.length) throw new Error('--jobs does not accept exercise/gender arguments');
     for (const entry of entries) {
