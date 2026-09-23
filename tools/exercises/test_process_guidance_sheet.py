@@ -282,6 +282,14 @@ console.log(JSON.stringify(context.result));"""
         self.assertNotIn("胸大肌（长头）", straight_arm)
         self.assertIn("肱三头肌长头", straight_arm)
 
+    def test_flutter_kick_movement_reference_matches_caption_order(self):
+        prompt = json.loads(self.run_tool("guidance_prompt.mjs", "abs_flutter_kick", "female").stdout)["prompt"]
+        reference = prompt.split("Movement reference: ", 1)[1].split("\n", 1)[0]
+        self.assertIn("left straight leg slightly higher", reference)
+        self.assertIn("right straight leg slightly higher", reference)
+        self.assertLess(reference.index("left straight leg slightly higher"),
+                        reference.index("right straight leg slightly higher"))
+
 
 if __name__ == "__main__":
     unittest.main()
