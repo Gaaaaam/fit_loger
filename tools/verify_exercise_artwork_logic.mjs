@@ -327,6 +327,7 @@ if (process.argv[2] !== 'theme-reject') {
   assert.equal(retryError, null, 'a new load must recover from the rejected read');
   assert.equal(preferenceReads, 2, 'the retry must actually read the stored preference');
   assert.equal(mine.persistedExerciseModelPreference, 'male', 'the successful retry establishes the rollback baseline');
+  assert.equal(mine.exerciseModelPreference, 'male', 'the successful retry must refresh the visible choice');
 
   const nextChoice = mine.setExerciseModelPreference('female');
   await waitForPendingSave(pendingPreferenceSaves, 1);
