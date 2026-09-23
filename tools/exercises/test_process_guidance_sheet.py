@@ -236,6 +236,14 @@ console.log(JSON.stringify(context.result));"""
         self.assertEqual([(job["id"], job["gender"]) for job in jobs],
                          [("core_bird_dog", "female"), ("core_bird_dog", "male")])
 
+    def test_prompt_rejects_non_string_layouts(self):
+        for layout in (["horizontal-2"], {"name": "grid-4"}, None):
+            with self.subTest(layout=layout):
+                self.write_manifest([{**self.entry, "layout": layout}])
+                result = self.run_tool("guidance_prompt.mjs", "--manifest", self.manifest,
+                                       "--jobs", success=False)
+                self.assertIn("invalid layout", result.stderr)
+
     def test_arnold_prompt_uses_manifest_start_without_conflicting_catalog_start(self):
         job = json.loads(self.run_tool("guidance_prompt.mjs", "shoulder_arnold", "female").stdout)
         self.assertIn("掌心相对起始", job["prompt"])

@@ -15,7 +15,9 @@ export struct MinePage {
   @Consume('calRefresh') @Watch('onRefreshStamp') refreshStamp: number = 0;
   @State theme: string = 'light';
   @State exerciseModelPreference: ExerciseModelPreference = 'auto';
+  private persistedExerciseModelPreference: ExerciseModelPreference = 'auto';
   private exerciseModelPreferenceRequestVersion: number = 0;
+  private exerciseModelPreferenceSaveQueue: Promise<void> = Promise.resolve();
   @State heightText: string = '';
   @State heightError: string = '';
   @State latestWeightText: string = '未记录';
@@ -30,7 +32,9 @@ export struct MinePage {
 
   private async load(): Promise<void> {
     this.theme = await AppSettings.loadTheme();
-    this.exerciseModelPreference = await AppSettings.loadExerciseModelPreference();
+    const preference: ExerciseModelPreference = await AppSettings.loadExerciseModelPreference();
+    this.exerciseModelPreference = preference;
+    this.persistedExerciseModelPreference = preference;
     const heightCm: number = await AppSettings.loadHeightCm();
     if (heightCm > 0) {
       this.heightText = `${heightCm}`;
@@ -73,18 +77,22 @@ export struct MinePage {
   }
 
   private async setExerciseModelPreference(next: ExerciseModelPreference): Promise<void> {
-    const previous: ExerciseModelPreference = this.exerciseModelPreference;
     const requestVersion: number = ++this.exerciseModelPreferenceRequestVersion;
     this.exerciseModelPreference = next;
-    try {
-      await AppSettings.saveExerciseModelPreference(next);
-    } catch (err) {
-      if (requestVersion !== this.exerciseModelPreferenceRequestVersion) {
-        return;
+    const saveOperation: Promise<void> = this.exerciseModelPreferenceSaveQueue.then(async () => {
+      try {
+        await AppSettings.saveExerciseModelPreference(next);
+        this.persistedExerciseModelPreference = next;
+      } catch (err) {
+        if (requestVersion !== this.exerciseModelPreferenceRequestVersion) {
+          return;
+        }
+        this.exerciseModelPreference = this.persistedExerciseModelPreference;
+        promptAction.showToast({ message: '保存失败，请重试', duration: 2000 });
       }
-      this.exerciseModelPreference = previous;
-      promptAction.showToast({ message: '保存失败，请重试', duration: 2000 });
-    }
+    });
+    this.exerciseModelPreferenceSaveQueue = saveOperation;
+    await saveOperation;
   }
 
   private async handleExport(): Promise<void> {

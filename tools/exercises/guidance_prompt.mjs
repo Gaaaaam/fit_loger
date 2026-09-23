@@ -21,7 +21,9 @@ export function loadGuidanceManifest(path = defaultManifest) {
     }
     if (seen.has(entry.id)) throw new Error(`duplicate ID: ${entry.id}`);
     seen.add(entry.id);
-    if (!Object.hasOwn(layoutCounts, entry.layout)) throw new Error(`${entry.id}: invalid layout`);
+    if (typeof entry.layout !== 'string' || !Object.hasOwn(layoutCounts, entry.layout)) {
+      throw new Error(`${entry.id}: invalid layout`);
+    }
     if (!Number.isInteger(entry.frameCount) || entry.frameCount !== layoutCounts[entry.layout]) {
       throw new Error(`${entry.id}: frameCount does not match layout`);
     }

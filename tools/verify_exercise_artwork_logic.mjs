@@ -34,25 +34,87 @@ const mineHandlers = minePage.slice(minePage.indexOf('struct MinePage'), minePag
   .replace('struct MinePage', 'class MinePage')
   .replace(/@(?:Consume|Watch)\([^)]*\)\s*/g, '')
   .replace(/@State\s*/g, '') + '\n}\nglobalThis.MinePage = MinePage;';
-const pendingPreferenceSaves = [];
-const mineContext = {
-  AppSettings: {
-    saveExerciseModelPreference: preference => new Promise((resolve, reject) => {
-      pendingPreferenceSaves.push({ preference, resolve, reject });
-    })
-  },
-  promptAction: { showToast: () => {} }
-};
-runInNewContext(stripTypeScriptTypes(mineHandlers), mineContext);
-const mine = new mineContext.MinePage();
-mine.exerciseModelPreference = 'auto';
-const firstChoice = mine.setExerciseModelPreference('female');
-const secondChoice = mine.setExerciseModelPreference('male');
-assert.deepEqual(pendingPreferenceSaves.map(save => save.preference), ['female', 'male']);
-pendingPreferenceSaves[0].reject(new Error('first save failed'));
-pendingPreferenceSaves[1].resolve();
-await Promise.all([firstChoice, secondChoice]);
-assert.equal(mine.exerciseModelPreference, 'male', 'a stale failed save must not roll back a newer choice');
+function createMinePage(loadedPreference = 'auto') {
+  const pendingPreferenceSaves = [];
+  const toasts = [];
+  const mineContext = {
+    AppSettings: {
+      loadTheme: async () => 'light',
+      loadExerciseModelPreference: async () => loadedPreference,
+      loadHeightCm: async () => 0,
+      saveExerciseModelPreference: preference => new Promise((resolve, reject) => {
+        pendingPreferenceSaves.push({ preference, resolve, reject });
+      })
+    },
+    WorkoutRepository: {
+      loadLatestBodyMetric: async () => ({ hasWeight: false })
+    },
+    promptAction: { showToast: options => toasts.push(options.message) }
+  };
+  runInNewContext(stripTypeScriptTypes(mineHandlers), mineContext);
+  return { mine: new mineContext.MinePage(), pendingPreferenceSaves, toasts };
+}
+
+async function waitForPendingSave(pendingPreferenceSaves, count) {
+  for (let attempt = 0; attempt < 10 && pendingPreferenceSaves.length < count; attempt++) {
+    await Promise.resolve();
+  }
+  assert.equal(pendingPreferenceSaves.length, count, `expected ${count} queued preference saves`);
+}
+
+{
+  const { mine, pendingPreferenceSaves, toasts } = createMinePage();
+  await mine.load();
+  const firstChoice = mine.setExerciseModelPreference('female');
+  const secondChoice = mine.setExerciseModelPreference('male');
+  await waitForPendingSave(pendingPreferenceSaves, 1);
+  assert.equal(pendingPreferenceSaves[0].preference, 'female');
+  pendingPreferenceSaves[0].reject(new Error('first save failed'));
+  await waitForPendingSave(pendingPreferenceSaves, 2);
+  assert.equal(pendingPreferenceSaves[1].preference, 'male');
+  pendingPreferenceSaves[1].reject(new Error('second save failed'));
+  await Promise.all([firstChoice, secondChoice]);
+  assert.equal(mine.exerciseModelPreference, 'auto', 'two failed saves must return to the persisted baseline');
+  assert.deepEqual(toasts, ['保存失败，请重试'], 'only the current failed choice should show a toast');
+}
+
+{
+  const { mine, pendingPreferenceSaves, toasts } = createMinePage();
+  await mine.load();
+  const firstChoice = mine.setExerciseModelPreference('female');
+  const secondChoice = mine.setExerciseModelPreference('male');
+  await waitForPendingSave(pendingPreferenceSaves, 1);
+  pendingPreferenceSaves[0].resolve();
+  await waitForPendingSave(pendingPreferenceSaves, 2);
+  pendingPreferenceSaves[1].reject(new Error('second save failed'));
+  await Promise.all([firstChoice, secondChoice]);
+  assert.equal(mine.exerciseModelPreference, 'female', 'a failed second save must return to the first persisted choice');
+  assert.deepEqual(toasts, ['保存失败，请重试']);
+}
+
+{
+  const { mine, pendingPreferenceSaves, toasts } = createMinePage();
+  await mine.load();
+  const firstChoice = mine.setExerciseModelPreference('female');
+  const secondChoice = mine.setExerciseModelPreference('male');
+  await waitForPendingSave(pendingPreferenceSaves, 1);
+  pendingPreferenceSaves[0].reject(new Error('first save failed'));
+  await waitForPendingSave(pendingPreferenceSaves, 2);
+  pendingPreferenceSaves[1].resolve();
+  await Promise.all([firstChoice, secondChoice]);
+  assert.equal(mine.exerciseModelPreference, 'male', 'a successful second save must keep the latest choice');
+  assert.deepEqual(toasts, [], 'a stale failed choice should not show a toast');
+}
+
+{
+  const { mine, pendingPreferenceSaves } = createMinePage('female');
+  await mine.load();
+  const choice = mine.setExerciseModelPreference('male');
+  await waitForPendingSave(pendingPreferenceSaves, 1);
+  pendingPreferenceSaves[0].reject(new Error('save failed'));
+  await choice;
+  assert.equal(mine.exerciseModelPreference, 'female', 'failed saves must use the loaded persisted preference as baseline');
+}
 
 assert.equal(toExerciseModelPreference('female'), 'female');
 assert.equal(toExerciseModelPreference('male'), 'male');
