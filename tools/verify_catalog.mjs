@@ -96,8 +96,8 @@ assert.equal(artwork.guidanceArtworkOf('usr_1'), null);
 assert.equal(artwork.guidanceFramesOf('leg_squat', 'leg', 'female').length, 3);
 assert.equal(artwork.guidanceFramesOf('leg_squat', 'leg', 'male').length, 3);
 assert.deepEqual([...artwork.guidanceCaptionsOf('core_bird_dog')], ['四点支撑', '对侧伸展']);
-assert.equal(artwork.guidanceFramesOf('chest_db_bench', 'chest', 'female').length, 2);
-assert.equal(artwork.guidanceCaptionsOf('chest_db_bench').length, 2);
+assert.equal(artwork.guidanceFramesOf('chest_db_bench', 'chest', 'female').length, 3);
+assert.deepEqual([...artwork.guidanceCaptionsOf('chest_db_bench')], ['胸上举铃', '屈肘下放', '弧线推起']);
 assert(artwork.cardImageOf('leg_squat', 'leg', 'female').includes('female_03'));
 assert(artwork.cardImageOf('usr_1', 'leg', 'female').includes('part_leg'));
 

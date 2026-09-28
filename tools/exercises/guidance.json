@@ -83,11 +83,11 @@
         "弧线推起"
       ],
       "cardFrameIndex": 1,
-      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing flat bench contact and separate dumbbell arcs",
+      "view": "premium anatomy-aware 3D scientific training illustration/render, pulled-back three-quarter side view clearly showing flat bench contact and separate dumbbell arcs; center the complete person, both shoes, both dumbbells and entire bench within the middle 70 percent of each narrow panel, leaving broad empty margins on all four sides",
       "equipmentNotes": "Flat bench, one complete dumbbell in each hand, feet planted; palms face forward throughout.",
       "movementReference": "Lie on a flat bench with one dumbbell above each shoulder and palms forward. Lower both dumbbells until upper arms approach floor parallel with elbows under wrists, then press in a shallow arc back above the chest.",
       "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_incline_bench",
@@ -103,7 +103,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing incline bench angle and upper-chest bar path",
       "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 将凳面调至约 30–45 度，仰卧后双脚踩实，杠铃位于锁骨上方。",
       "muscleNotes": "Highlight 胸大肌上部 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_fly",
@@ -116,9 +116,9 @@
       ],
       "cardFrameIndex": 1,
       "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing fixed soft elbow bend and wide dumbbell arc",
-      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 仰卧平板凳，双手持哑铃于胸口上方，肘微屈。",
+      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. The torso pad is a single flat horizontal platform parallel to the floor; shoulders and hips remain at the same height; no raised head-end or angled backrest in either panel. Catalog setup: 仰卧平板凳，双手持哑铃于胸口上方，肘微屈。",
       "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_cable_crossover",
@@ -134,7 +134,7 @@
       "equipmentNotes": "Stand in a split stance between two high pulleys, one handle in each hand and both cables taut.",
       "movementReference": "From arms opened to the sides with soft elbows, draw both handles forward and down until the hands meet just in front of the lower chest, then control the return without swinging.",
       "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_dip",
@@ -149,7 +149,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing parallel-bar grip and forward chest lean",
       "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 双手撑住双杠，手臂伸直，身体略前倾，屈膝离地。",
       "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 肱三头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_pushup",
@@ -164,7 +164,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing hand placement and straight head-to-heel line",
       "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 俯撑，双手约肩宽，身体从头到踝成一条直线。",
       "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_decline_bench",
@@ -177,10 +177,10 @@
         "推至伸臂"
       ],
       "cardFrameIndex": 1,
-      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing decline bench and lower-chest bar path",
-      "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 仰卧下斜凳，小腿固定，杠铃位于下胸上方。",
+      "view": "premium anatomy-aware 3D scientific training illustration/render, pulled-back three-quarter side view clearly showing a true decline bench: the model's head and shoulders are at the LOW end near the floor while the secured feet and legs are at the HIGH end; the torso platform slopes continuously downward toward the head, never an upward incline backrest; show the complete person, bench, bar and both plates inside every panel",
+      "equipmentNotes": "Use a true decline bench with a continuous downward-sloping torso platform, head lower than the secured legs and feet, and shins locked at the raised end. Show the entire bar, both plates, rack and a secure closed grip; the bar path is over the lower chest.",
       "muscleNotes": "Highlight 胸大肌下部 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_incline_db_press",
@@ -197,7 +197,7 @@
       "equipmentNotes": "Use a 30–45 degree incline bench, one complete dumbbell in each hand, feet planted and back supported; frame one begins after the setup press, with both arms extended above the upper chest.",
       "movementReference": "Lie on a 30–45 degree incline bench with feet planted. After setup, extend both arms with dumbbells directly above upper chest, one in each hand. Lower both dumbbells under control until the upper arms are approximately parallel to the floor, then press along the incline back to extended arms. Keep wrists steady and chest open without excessive lumbar arch.",
       "muscleNotes": "Highlight 胸大肌上部 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_decline_db_press",
@@ -210,10 +210,10 @@
         "推至伸臂"
       ],
       "cardFrameIndex": 1,
-      "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing decline bench, fixed legs and lower-chest arc",
-      "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 仰卧下斜凳并固定下肢，双手持哑铃于下胸上方。",
+      "view": "premium anatomy-aware 3D scientific training illustration/render, pulled-back three-quarter side view clearly showing a true decline bench: the model's head and shoulders are at the LOW end near the floor while the secured feet and legs are at the HIGH end; the torso platform slopes continuously downward toward the head, never an upward incline backrest; keep complete shoes, bench and both dumbbells inside every panel",
+      "equipmentNotes": "Use a true decline bench with a continuous downward-sloping torso platform, head lower than the secured legs and feet, and shins locked at the raised end. Show one complete dumbbell in each hand and secure wrist alignment; both dumbbells start above the lower chest.",
       "muscleNotes": "Highlight 胸大肌下部 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_incline_fly",
@@ -228,7 +228,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing incline bench and wide dumbbell fly arc",
       "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 上斜仰卧，双手持哑铃于上胸上方，肘微屈。",
       "muscleNotes": "Highlight 胸大肌上部 in project green #1F8A70; show 前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_machine_press",
@@ -243,7 +243,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing seat, back pad and moving press handles",
       "equipmentNotes": "Show the complete machine, moving handle or pad and all body support contacts. Catalog setup: 坐在推胸器上，背部贴靠垫，把手约在胸中部高度。",
       "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_pec_deck",
@@ -259,7 +259,7 @@
       "equipmentNotes": "Use the pec-deck forearm-pad version: both forearms contact the pads at shoulder height, back against seat and feet on floor.",
       "movementReference": "Sit upright with both forearms on the pec-deck pads and elbows level with shoulders. Close the pads toward the chest midline, briefly hold, and reopen under control.",
       "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_close_pushup",
@@ -274,7 +274,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing narrow hands and elbows close to torso",
       "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 俯撑，双手间距小于肩宽，可接近成钻石形。",
       "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 肱三头肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_incline_pushup",
@@ -290,7 +290,7 @@
       "equipmentNotes": "Show both palms on one stable bench and both feet on the floor; keep the full bench and body visible.",
       "movementReference": "Start in a straight incline plank with both hands on a bench and feet on the floor. Lower chest toward the bench by bending the elbows, then press back to straight arms without sagging the hips.",
       "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_decline_pushup",
@@ -305,7 +305,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing feet supported on bench and hands on floor",
       "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 双脚放在凳上，双手撑地，身体成直线。",
       "muscleNotes": "Highlight 胸大肌上部 in project green #1F8A70; show 肱三头肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "chest_pullover",
@@ -322,7 +322,7 @@
       "equipmentNotes": "Lie fully along a flat bench with feet planted; hold one complete dumbbell securely with both hands above the chest.",
       "movementReference": "With both hands supporting one dumbbell above the chest and elbows softly bent, lower it in an arc behind the head, then return along the same arc without arching the lower back.",
       "muscleNotes": "Highlight 胸大肌 in project green #1F8A70; show 背阔肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "shoulder_bb_press",

@@ -290,6 +290,20 @@ console.log(JSON.stringify(context.result));"""
         self.assertLess(reference.index("left straight leg slightly higher"),
                         reference.index("right straight leg slightly higher"))
 
+    def test_every_generated_panel_requires_visible_boundary_margin(self):
+        prompt = json.loads(self.run_tool("guidance_prompt.mjs", "chest_fly", "female").stdout)["prompt"]
+        self.assertIn("central 70 percent of each panel", prompt)
+        self.assertIn("no body part or equipment may touch a panel boundary", prompt)
+
+    def test_muscle_highlight_preserves_natural_anatomy_for_both_models(self):
+        for gender in ("female", "male"):
+            with self.subTest(gender=gender):
+                prompt = json.loads(self.run_tool("guidance_prompt.mjs", "chest_decline_bench", gender).stdout)["prompt"]
+                self.assertIn("flat translucent green overlay conforming to the natural body surface", prompt)
+                self.assertIn("no raised gray segmented muscles", prompt)
+                self.assertIn("no added muscle volume or distorted joints", prompt)
+                self.assertIn("natural athlete proportions", prompt)
+
 
 if __name__ == "__main__":
     unittest.main()
