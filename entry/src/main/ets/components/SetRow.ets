@@ -1,5 +1,5 @@
 import { keepReps, keepWeight } from '../common/InputUtil';
-import { parseReps, parseWeight, ParseResult, statusAfterEdit, toggleSetStatus } from '../common/WorkoutLogic';
+import { formatWeight, parseReps, parseWeight, ParseResult, statusAfterEdit, stepWeight, toggleSetStatus } from '../common/WorkoutLogic';
 import { WorkoutRepository } from '../db/WorkoutRepository';
 import { SetItem } from '../model/DayModels';
 import { isDefaultTag, rirLabel, tagChipLabel } from '../model/types';
@@ -10,6 +10,7 @@ export struct SetRow {
   @ObjectLink setItem: SetItem;
   @Prop weightPlaceholder: string = '重量 kg';
   @Prop repsPlaceholder: string = '次数';
+  @Prop weightStep: number = 0;
   onDeleted: (setId: number) => void = (_setId: number) => {
   };
   onBecameDone: (item: SetItem) => void = (_item: SetItem) => {
@@ -92,6 +93,32 @@ export struct SetRow {
     this.showTagPicker = true;
   }
 
+  private nudgeWeight(direction: number): void {
+    if (!(this.weightStep > 0)) {
+      return;
+    }
+    const parsed: ParseResult = parseWeight(this.setItem.weightText);
+    if (!parsed.ok) {
+      return;
+    }
+    this.setItem.weightText = formatWeight(stepWeight(parsed.value, this.weightStep, direction));
+    this.markEdited();
+  }
+
+  @Builder
+  weightStepButton(label: string, direction: number) {
+    Text(label)
+      .fontSize(18)
+      .fontColor($r('app.color.text_primary'))
+      .width(28)
+      .height(40)
+      .textAlign(TextAlign.Center)
+      .accessibilityText(direction < 0 ? '减少一步重量' : '增加一步重量')
+      .onClick(() => {
+        this.nudgeWeight(direction);
+      })
+  }
+
   @Builder
   tagButton(label: string, warmup: number, technique: string) {
     Button(label)
@@ -171,16 +198,35 @@ export struct SetRow {
           .onClick(() => {
             this.toggleDone();
           })
-        TextInput({ text: this.setItem.weightText, placeholder: this.weightPlaceholder })
+        if (this.weightStep > 0) {
+          Row() {
+            this.weightStepButton('−', -1)
+            TextInput({ text: this.setItem.weightText, placeholder: this.weightPlaceholder })
+              .layoutWeight(1)
+              .height(40)
+              .backgroundColor($r('app.color.chip_bg'))
+              .borderRadius(8)
+              .type(InputType.Normal)
+              .onChange((value: string) => {
+                this.setItem.weightText = keepWeight(value);
+                this.markEdited();
+              })
+            this.weightStepButton('+', 1)
+          }
           .layoutWeight(1)
-          .height(40)
-          .backgroundColor($r('app.color.chip_bg'))
-          .borderRadius(8)
-          .type(InputType.Normal)
-          .onChange((value: string) => {
-            this.setItem.weightText = keepWeight(value);
-            this.markEdited();
-          })
+          .alignItems(VerticalAlign.Center)
+        } else {
+          TextInput({ text: this.setItem.weightText, placeholder: this.weightPlaceholder })
+            .layoutWeight(1)
+            .height(40)
+            .backgroundColor($r('app.color.chip_bg'))
+            .borderRadius(8)
+            .type(InputType.Normal)
+            .onChange((value: string) => {
+              this.setItem.weightText = keepWeight(value);
+              this.markEdited();
+            })
+        }
         TextInput({ text: this.setItem.repsText, placeholder: this.repsPlaceholder })
           .layoutWeight(1)
           .height(40)

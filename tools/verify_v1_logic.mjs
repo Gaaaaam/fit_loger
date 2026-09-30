@@ -20,6 +20,9 @@ import {
   formatLastHint,
   vsLastProgressText,
   vsLastCardText,
+  stepWeight,
+  nextTargetText,
+  partGapLine,
   formatBackupName,
   customExerciseId,
   dayDotKind,
@@ -251,5 +254,46 @@ assert.notEqual(
   calendarCellKey('2026-09-01', 'trained'),
   'ForEach key must change when a missed day becomes trained'
 );
+
+assert.equal(stepWeight(60, 2.5, 1), 62.5);
+assert.equal(stepWeight(2.5, 2.5, -1), 0);
+assert.equal(stepWeight(null, 2.5, 1), 2.5);
+assert.equal(stepWeight(null, 2.5, -1), 0);
+assert.equal(stepWeight(10, 0, 1), 10);
+
+const hitTop = [
+  { weight: 60, reps: 10, isWarmup: 0, technique: '', rir: 1, rirLegacy: 0 },
+  { weight: 60, reps: 10, isWarmup: 0, technique: '', rir: 2, rirLegacy: 0 },
+  { weight: 40, reps: 6, isWarmup: 0, technique: '', rir: 1, rirLegacy: 0 }
+];
+assert.equal(nextTargetText(hitTop, 'push', 2.5, 0), '下次：62.5kg × 6–10');
+assert.equal(
+  nextTargetText([{ weight: 60, reps: 8, isWarmup: 0, technique: '', rir: 2, rirLegacy: 0 }], 'push', 2.5, 0),
+  '下次：60kg × 6–10'
+);
+assert.equal(
+  nextTargetText([{ weight: 60, reps: 10, isWarmup: 0, technique: '', rir: -1, rirLegacy: 0 }], 'squat', 2.5, 0),
+  '下次先保持 60kg，补上还能做几下再决定加不加'
+);
+assert.equal(
+  nextTargetText([{ weight: 60, reps: 10, isWarmup: 0, technique: '', rir: 0, rirLegacy: 0 }], 'hinge', 2.5, 0),
+  '下次：60kg × 6–10',
+  'RIR 0 does not add weight'
+);
+assert.equal(
+  nextTargetText([
+    { weight: 20, reps: 15, isWarmup: 0, technique: '', rir: 1, rirLegacy: 0 },
+    { weight: 30, reps: 8, isWarmup: 0, technique: 'drop', rir: 0, rirLegacy: 0 }
+  ], 'isolation', 2, 0),
+  '下次：22kg × 10–15'
+);
+assert.equal(nextTargetText(hitTop, 'push', 0, 0), '');
+assert.equal(
+  nextTargetText([{ weight: 10, reps: 12, isWarmup: 0, technique: 'amrap', rir: 1, rirLegacy: 0 }], 'pull', 2.5, 1),
+  '下次：额外负重 12.5kg × 6–10'
+);
+assert.equal(partGapLine('胸', 1), '胸上次是昨天。隔天再练同一部位，自己决定要不要练。');
+assert.equal(partGapLine('背', 3), '背上次是 3 天前。');
+assert.equal(partGapLine('腿', 0), '');
 
 console.log('v1 logic: all checks passed');

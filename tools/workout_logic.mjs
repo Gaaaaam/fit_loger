@@ -375,3 +375,137 @@ function pad2(value) {
   }
   return `${value}`;
 }
+
+export function formatWeight(weight) {
+  if (weight === Math.floor(weight)) {
+    return weight.toFixed(0);
+  }
+  return `${weight}`;
+}
+
+export function repBounds(movementPattern) {
+  if (movementPattern === 'push' || movementPattern === 'pull' ||
+    movementPattern === 'hinge' || movementPattern === 'squat') {
+    return [6, 10];
+  }
+  return [10, 15];
+}
+
+export function stepWeight(current, step, direction) {
+  if (!(step > 0)) {
+    if (current === null || current === undefined || current < 0) {
+      return 0;
+    }
+    return current;
+  }
+  const base = current === null || current === undefined ? 0 : current;
+  let next = Math.round((base + direction * step) * 10) / 10;
+  if (next < 0) {
+    next = 0;
+  }
+  return next;
+}
+
+function progressionSet(set) {
+  if (set.isWarmup === 1) {
+    return false;
+  }
+  const technique = set.technique || '';
+  if (technique === 'drop' || technique === 'ramp' || technique === 'rest_pause') {
+    return false;
+  }
+  return true;
+}
+
+function preciseRir(set) {
+  if (set.rirLegacy === 1 || set.rir === null || set.rir === undefined || set.rir < 0) {
+    return null;
+  }
+  return set.rir;
+}
+
+function loadLabel(weight, isBodyweight) {
+  const shown = formatWeight(weight);
+  if (isBodyweight === 1) {
+    return `额外负重 ${shown}kg`;
+  }
+  return `${shown}kg`;
+}
+
+export function nextTargetText(sets, movementPattern, weightStep, isBodyweight) {
+  if (!(weightStep > 0)) {
+    return '';
+  }
+  const bounds = repBounds(movementPattern);
+  const low = bounds[0];
+  const high = bounds[1];
+  const range = `${low}–${high}`;
+  let top = null;
+  for (let i = 0; i < sets.length; i++) {
+    const set = sets[i];
+    if (!progressionSet(set) || set.weight === null || set.weight === undefined) {
+      continue;
+    }
+    if (top === null || set.weight > top) {
+      top = set.weight;
+    }
+  }
+  if (top === null) {
+    return '';
+  }
+  let allHaveReps = true;
+  let allHit = true;
+  let missingRir = false;
+  let allRirReady = true;
+  let counted = 0;
+  for (let i = 0; i < sets.length; i++) {
+    const set = sets[i];
+    if (!progressionSet(set) || set.weight === null || set.weight === undefined || set.weight !== top) {
+      continue;
+    }
+    counted += 1;
+    if (set.reps === null || set.reps === undefined) {
+      allHaveReps = false;
+      allHit = false;
+      continue;
+    }
+    if (set.reps < high) {
+      allHit = false;
+    }
+    const rir = preciseRir(set);
+    if (rir === null) {
+      missingRir = true;
+      allRirReady = false;
+    } else if (rir < 1) {
+      allRirReady = false;
+    }
+  }
+  if (counted === 0) {
+    return '';
+  }
+  const hold = `下次：${loadLabel(top, isBodyweight)} × ${range}`;
+  if (!allHaveReps || !allHit) {
+    return hold;
+  }
+  if (missingRir) {
+    if (isBodyweight === 1) {
+      return `下次先保持额外负重 ${formatWeight(top)}kg，补上还能做几下再决定加不加`;
+    }
+    return `下次先保持 ${formatWeight(top)}kg，补上还能做几下再决定加不加`;
+  }
+  if (allRirReady) {
+    const next = stepWeight(top, weightStep, 1);
+    return `下次：${loadLabel(next, isBodyweight)} × ${range}`;
+  }
+  return hold;
+}
+
+export function partGapLine(partNameText, days) {
+  if (days === 1) {
+    return `${partNameText}上次是昨天。隔天再练同一部位，自己决定要不要练。`;
+  }
+  if (days > 1) {
+    return `${partNameText}上次是 ${days} 天前。`;
+  }
+  return '';
+}

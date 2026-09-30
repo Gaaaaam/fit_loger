@@ -172,6 +172,14 @@ export struct TrendsPage {
     return this.guideOpen && guideHighlight(this.guideStep) === section;
   }
 
+  private partGoalStatus(row: PartGoalProgress): string {
+    const gap: string = row.done >= row.target ? '已达标' : `还差 ${row.target - row.done}`;
+    if (row.suggested) {
+      return `建议 · ${gap}`;
+    }
+    return gap;
+  }
+
   private insightText(): string {
     const insight: TrendInsight = this.digest.insight;
     if (insight.kind === 'part_goal') {
@@ -273,7 +281,7 @@ export struct TrendsPage {
         .fontSize(14)
         .fontColor(row.done >= row.target ? $r('app.color.accent') : $r('app.color.text_primary'))
         .layoutWeight(1)
-      Text(row.done >= row.target ? '已达标' : `还差 ${row.target - row.done}`)
+      Text(this.partGoalStatus(row))
         .fontSize(12)
         .fontColor($r('app.color.text_secondary'))
     }
@@ -323,11 +331,25 @@ export struct TrendsPage {
         }
       }
       .width('100%')
-      Text(liftChangeText(lift))
-        .fontSize(13)
-        .fontColor($r('app.color.text_secondary'))
-        .width('100%')
-        .margin({ top: 2, bottom: 6 })
+        Text(liftChangeText(lift))
+          .fontSize(13)
+          .fontColor($r('app.color.text_secondary'))
+          .width('100%')
+          .margin({ top: 2, bottom: 6 })
+        if (lift.relativeText.length > 0) {
+          Text(lift.relativeText)
+            .fontSize(13)
+            .fontColor($r('app.color.text_primary'))
+            .width('100%')
+            .margin({ bottom: 2 })
+        }
+        if (lift.relativeNote.length > 0) {
+          Text(lift.relativeNote)
+            .fontSize(12)
+            .fontColor($r('app.color.text_secondary'))
+            .width('100%')
+            .margin({ bottom: 6 })
+        }
       if (lift.insufficientData || lift.points.length === 0) {
         Row() {
           Text('数据不足：还没有足够的可比较正式组')
@@ -425,6 +447,16 @@ export struct TrendsPage {
               }, (row: PartGoalProgress) => row.partKey)
             }
 
+            if (this.digest.weekGoal.balanceHints.length > 0) {
+              ForEach(this.digest.weekGoal.balanceHints, (hint: string) => {
+                Text(hint)
+                  .fontSize(13)
+                  .fontColor($r('app.color.text_secondary'))
+                  .width('100%')
+                  .margin({ top: 8 })
+              }, (hint: string) => hint)
+            }
+
             if (this.digest.weekGoal.sessionsTarget === null && this.digest.weekGoal.parts.length === 0) {
               Text('还没有设置每周目标，去设置一下')
                 .fontSize(13)
@@ -450,7 +482,7 @@ export struct TrendsPage {
 
           Column() {
             if (this.digest.lifts.length === 0) {
-              Text(this.prefs.watchedExerciseIds.length === 0 ? '还没有足够的训练记录，先去练几组吧' :
+              Text(this.prefs.watchedExerciseIds.length === 0 ? '完成几组正式训练后，这里会显示趋势' :
                 '关注的动作在当前范围内还没有记录')
                 .fontSize(14)
                 .fontColor($r('app.color.text_secondary'))
@@ -482,7 +514,7 @@ export struct TrendsPage {
 
           Column() {
             if (this.digest.volumePoints.length === 0) {
-              Text('还没有容量数据。完成带重量和次数的正式组后会出现在这里')
+              Text('还没有容量数据。自重复合动作要先记下体重，额外负重填 0 也会计入')
                 .fontSize(14)
                 .fontColor($r('app.color.text_secondary'))
                 .width('100%')
@@ -492,7 +524,7 @@ export struct TrendsPage {
                 .fontColor($r('app.color.text_primary'))
                 .width('100%')
                 .margin({ bottom: 8 })
-              Text('正式组重量 × 次数')
+              Text('复合自重按当天或之前的体重加额外负重，单侧按两侧合计')
                 .fontSize(12)
                 .fontColor($r('app.color.text_secondary'))
                 .width('100%')

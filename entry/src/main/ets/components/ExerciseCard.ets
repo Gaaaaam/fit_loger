@@ -1,5 +1,6 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { parseReps, parseWeight, HintSet, trimNote, vsLastCardText } from '../common/WorkoutLogic';
+import { formatExerciseVolume, TrendSetRow } from '../common/TrendLogic';
+import { parseReps, parseWeight, HintSet, nextTargetText, trimNote, vsLastCardText } from '../common/WorkoutLogic';
 import { WorkoutRepository } from '../db/WorkoutRepository';
 import { ExerciseItem, SetItem } from '../model/DayModels';
 import { SetRow } from './SetRow';
@@ -76,6 +77,43 @@ export struct ExerciseCard {
       current.push(hint);
     }
     return vsLastCardText(current, this.exercise.lastSets);
+  }
+
+  private nextText(): string {
+    return nextTargetText(this.exercise.lastSets, this.exercise.movementPattern, this.exercise.weightStep,
+      this.exercise.isBodyweight);
+  }
+
+  private volumeText(): string {
+    const rows: TrendSetRow[] = [];
+    for (let i = 0; i < this.exercise.sets.length; i++) {
+      const item: SetItem = this.exercise.sets[i];
+      const row: TrendSetRow = new TrendSetRow();
+      row.partKey = this.exercise.partKey;
+      row.movementPattern = this.exercise.movementPattern;
+      row.isBodyweight = this.exercise.isBodyweight;
+      row.isUnilateral = this.exercise.isUnilateral;
+      row.bodyWeightKg = this.exercise.bodyWeightKg;
+      row.isWarmup = item.isWarmup;
+      row.technique = item.technique;
+      row.status = item.status;
+      const parsedWeight = parseWeight(item.weightText);
+      const parsedReps = parseReps(item.repsText);
+      row.weight = parsedWeight.ok ? parsedWeight.value : null;
+      row.reps = parsedReps.ok ? parsedReps.value : null;
+      rows.push(row);
+    }
+    return formatExerciseVolume(rows);
+  }
+
+  private weightPlaceholder(): string {
+    if (this.exercise.isBodyweight === 1) {
+      return '额外负重 kg';
+    }
+    if (this.exercise.isUnilateral === 1) {
+      return '每侧 kg';
+    }
+    return '重量 kg';
   }
 
   private confirmDelete(): void {
@@ -164,6 +202,22 @@ export struct ExerciseCard {
             this.scheduleNote();
           })
 
+        if (this.volumeText().length > 0) {
+          Text(this.volumeText())
+            .fontSize(13)
+            .fontColor($r('app.color.text_primary'))
+            .width('100%')
+            .margin({ top: 8 })
+        }
+
+        if (this.exercise.isUnilateral === 1) {
+          Text('次数按每侧。左右做完算一组，容量按两侧合计。')
+            .fontSize(12)
+            .fontColor($r('app.color.text_secondary'))
+            .width('100%')
+            .margin({ top: 6 })
+        }
+
         if (this.exercise.lastHint.length > 0) {
           Text(this.exercise.lastHint)
             .fontSize(13)
@@ -180,6 +234,14 @@ export struct ExerciseCard {
             .margin({ top: 2 })
         }
 
+        if (this.nextText().length > 0) {
+          Text(this.nextText())
+            .fontSize(13)
+            .fontColor($r('app.color.text_primary'))
+            .width('100%')
+            .margin({ top: 2 })
+        }
+
         if (this.exercise.sets.length === 0) {
           Text('还没有组，点下方添加')
             .fontSize(13)
@@ -190,7 +252,8 @@ export struct ExerciseCard {
           ForEach(this.exercise.sets, (setItem: SetItem) => {
             SetRow({
               setItem: setItem,
-              weightPlaceholder: this.exercise.isBodyweight === 1 ? '额外负重 kg' : '重量 kg',
+              weightStep: this.exercise.weightStep,
+              weightPlaceholder: this.weightPlaceholder(),
               repsPlaceholder: this.exercise.isUnilateral === 1 ? '每侧次数' : '次数',
               onDeleted: (setId: number) => {
                 this.onDeleteSet(setId);

@@ -55,6 +55,9 @@ export class HintSet {
   weight: number | null = null;
   reps: number | null = null;
   isWarmup: number = 0;
+  technique: string = '';
+  rir: number = -1;
+  rirLegacy: number = 0;
 }
 
 export class LastHint {
@@ -492,6 +495,133 @@ export function vsLastCardText(currentSets: HintSet[], lastSets: HintSet[]): str
     return '';
   }
   return vsLastProgressText(current.weight, current.reps, lastSets);
+}
+
+export function repBounds(movementPattern: string): number[] {
+  if (movementPattern === 'push' || movementPattern === 'pull' ||
+    movementPattern === 'hinge' || movementPattern === 'squat') {
+    return [6, 10];
+  }
+  return [10, 15];
+}
+
+export function stepWeight(current: number | null, step: number, direction: number): number {
+  if (!(step > 0)) {
+    if (current === null || current < 0) {
+      return 0;
+    }
+    return current;
+  }
+  const base: number = current === null ? 0 : current;
+  let next: number = Math.round((base + direction * step) * 10) / 10;
+  if (next < 0) {
+    next = 0;
+  }
+  return next;
+}
+
+function progressionSet(set: HintSet): boolean {
+  if (set.isWarmup === 1) {
+    return false;
+  }
+  if (set.technique === 'drop' || set.technique === 'ramp' || set.technique === 'rest_pause') {
+    return false;
+  }
+  return true;
+}
+
+function preciseRir(set: HintSet): number | null {
+  if (set.rirLegacy === 1 || set.rir < 0) {
+    return null;
+  }
+  return set.rir;
+}
+
+function loadLabel(weight: number, isBodyweight: number): string {
+  const shown: string = formatWeight(weight);
+  if (isBodyweight === 1) {
+    return `额外负重 ${shown}kg`;
+  }
+  return `${shown}kg`;
+}
+
+export function nextTargetText(sets: HintSet[], movementPattern: string, weightStep: number,
+  isBodyweight: number): string {
+  if (!(weightStep > 0)) {
+    return '';
+  }
+  const bounds: number[] = repBounds(movementPattern);
+  const low: number = bounds[0];
+  const high: number = bounds[1];
+  const range: string = `${low}–${high}`;
+  let top: number | null = null;
+  for (let i = 0; i < sets.length; i++) {
+    const set: HintSet = sets[i];
+    if (!progressionSet(set) || set.weight === null) {
+      continue;
+    }
+    if (top === null || set.weight > top) {
+      top = set.weight;
+    }
+  }
+  if (top === null) {
+    return '';
+  }
+  let allHaveReps: boolean = true;
+  let allHit: boolean = true;
+  let missingRir: boolean = false;
+  let allRirReady: boolean = true;
+  let counted: number = 0;
+  for (let i = 0; i < sets.length; i++) {
+    const set: HintSet = sets[i];
+    if (!progressionSet(set) || set.weight === null || set.weight !== top) {
+      continue;
+    }
+    counted += 1;
+    if (set.reps === null) {
+      allHaveReps = false;
+      allHit = false;
+      continue;
+    }
+    if (set.reps < high) {
+      allHit = false;
+    }
+    const rir: number | null = preciseRir(set);
+    if (rir === null) {
+      missingRir = true;
+      allRirReady = false;
+    } else if (rir < 1) {
+      allRirReady = false;
+    }
+  }
+  if (counted === 0) {
+    return '';
+  }
+  const hold: string = `下次：${loadLabel(top, isBodyweight)} × ${range}`;
+  if (!allHaveReps || !allHit) {
+    return hold;
+  }
+  if (missingRir) {
+    if (isBodyweight === 1) {
+      return `下次先保持额外负重 ${formatWeight(top)}kg，补上还能做几下再决定加不加`;
+    }
+    return `下次先保持 ${formatWeight(top)}kg，补上还能做几下再决定加不加`;
+  }
+  if (allRirReady) {
+    const next: number = stepWeight(top, weightStep, 1);
+    return `下次：${loadLabel(next, isBodyweight)} × ${range}`;
+  }
+  return hold;
+}
+
+export function partGapLine(partNameText: string, days: number): string {
+  if (days === 1) {
+    return `${partNameText}上次是昨天。隔天再练同一部位，自己决定要不要练。`;
+  }
+  if (days > 1) {
+    return `${partNameText}上次是 ${days} 天前。`;
+  }
+  return '';
 }
 
 export function customExerciseId(nowMs: number): string {

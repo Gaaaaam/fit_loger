@@ -7,10 +7,10 @@ import { ExerciseCard } from '../components/ExerciseCard';
 import { ExerciseInfoView } from '../components/ExerciseInfoView';
 import { ExerciseSheet } from '../components/ExerciseSheet';
 import { PartSection } from '../components/PartSection';
-import { displayChineseDate, todayString } from '../common/DateUtil';
-import { parseReps, parseWeight, ParseResult, insertIndexBySortOrder, trimNote } from '../common/WorkoutLogic';
+import { daysSinceEpoch, displayChineseDate, todayString } from '../common/DateUtil';
+import { parseReps, parseWeight, ParseResult, insertIndexBySortOrder, partGapLine, trimNote } from '../common/WorkoutLogic';
 import { WorkoutRepository } from '../db/WorkoutRepository';
-import { DayModel, ExerciseItem, PartItem, PrResult, RecentDayInfo, SetItem } from '../model/DayModels';
+import { DayModel, ExerciseItem, PartItem, PartTrainDate, PrResult, RecentDayInfo, SetItem } from '../model/DayModels';
 import { WorkoutViewMode } from '../model/muscleTypes';
 import { PartKey, partName, toPartKey } from '../model/types';
 
@@ -38,6 +38,7 @@ struct DayDetailPage {
   @State plannedTick: number = 0;
   @State collapsedPartKeys: string[] = [];
   @State collapsedExerciseIds: number[] = [];
+  @State gapLines: string[] = [];
   private undoItem: SetItem = new SetItem();
   private undoExerciseRowId: number = 0;
   private undoTimer: number = -1;
@@ -184,12 +185,42 @@ struct DayDetailPage {
     this.collapsedExerciseIds = next;
   }
 
+  private buildGapLines(lasts: PartTrainDate[]): string[] {
+    const lines: string[] = [];
+    const seen: string[] = [];
+    for (let i = 0; i < this.day.parts.length; i++) {
+      const key: string = this.day.parts[i].partKey;
+      if (seen.indexOf(key) >= 0) {
+        continue;
+      }
+      seen.push(key);
+      let lastDate: string = '';
+      for (let j = 0; j < lasts.length; j++) {
+        if (lasts[j].partKey === key) {
+          lastDate = lasts[j].date;
+          break;
+        }
+      }
+      if (lastDate.length === 0) {
+        continue;
+      }
+      const days: number = daysSinceEpoch(this.dateStr) - daysSinceEpoch(lastDate);
+      const line: string = partGapLine(partName(key), days);
+      if (line.length > 0) {
+        lines.push(line);
+      }
+    }
+    return lines;
+  }
+
   private async reload(): Promise<void> {
     try {
       this.day = await WorkoutRepository.loadDay(this.dateStr);
       if (!this.dayNoteDirty) {
         this.dayNoteText = this.day.note;
       }
+      const lasts: PartTrainDate[] = await WorkoutRepository.lastWorkDatesByPart(this.dateStr);
+      this.gapLines = this.buildGapLines(lasts);
       this.plannedTick++;
     } catch (err) {
       hilog.error(0xF170, 'DayDetailPage', 'reload failed');
@@ -663,6 +694,16 @@ struct DayDetailPage {
         .fontColor($r('app.color.text_primary'))
         .width('100%')
         .margin({ bottom: 10 })
+
+      if (this.gapLines.length > 0) {
+        ForEach(this.gapLines, (line: string) => {
+          Text(line)
+            .fontSize(13)
+            .fontColor($r('app.color.text_secondary'))
+            .width('100%')
+            .margin({ bottom: 4 })
+        }, (line: string) => line)
+      }
 
       TextInput({ text: this.dayNoteText, placeholder: '今天的备注（可选）' })
         .height(40)

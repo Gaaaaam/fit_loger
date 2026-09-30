@@ -586,7 +586,7 @@ export const EXERCISES = [
     start: '俯身，上臂贴体侧与地面平行，手持哑铃，肘屈 90 度。',
     steps: ['伸肘将哑铃向后踢直至手臂伸直。', '挤压肱三头。', '屈肘回到 90 度。'],
     cues: ['上臂始终平行地面。', '重量宜轻。'],
-    count: '单侧伸直再屈回计 1 次；左右分别计。',
+    count: '单侧伸直再屈回计 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'kickback_arm', kind: 'kickback_arm', cardPhase: 0.85 }
   }),
   e('arm_wrist_curl', 'arm', '腕弯举', 'Wrist Curl', 'barbell', 'isolation', {
@@ -677,7 +677,7 @@ export const EXERCISES = [
     start: '仰卧屈膝，一脚踩地，另一腿伸直或屈髋举起。',
     steps: ['支撑腿把髋推起。', '顶峰停顿。', '放下后换边。'],
     cues: ['骨盆不要旋转。', '比双腿臀桥更难。'],
-    count: '单侧抬髋再放下计 1 次；左右分别计。',
+    count: '单侧抬髋再放下计 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'bridge', single: true, cardPhase: 0.85 }
   }),
   e('glute_cable_kickback', 'glute', '绳索后踢', 'Cable Kickback', 'cable', 'isolation', {
@@ -695,7 +695,7 @@ export const EXERCISES = [
     start: '四肢着地，双手在肩下，膝在髋下。',
     steps: ['保持膝屈约 90 度，将一脚向后上方蹬。', '髋伸展到底。', '放回后再换边或做完一侧。'],
     cues: ['不要把腰过度塌下去。', '脚后跟向天花板。'],
-    count: '单侧蹬出再收回计 1 次；左右各计。',
+    count: '单侧蹬出再收回计 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'kickback', cable: false, cardPhase: 0.8 }
   }),
   e('glute_side_lying_abduction', 'glute', '侧卧外展', 'Side-Lying Hip Abduction', 'bodyweight', 'isolation', {
@@ -722,7 +722,7 @@ export const EXERCISES = [
     start: '侧卧，髋膝屈曲，双脚并拢，可在膝上套弹力带。',
     steps: ['上方膝向外打开，双脚仍接触。', '在外侧停留。', '缓慢合拢。'],
     cues: ['骨盆不要后滚。', '幅度不必很大。'],
-    count: '单侧打开再合拢计 1 次；左右分别计。',
+    count: '单侧打开再合拢计 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'abduction', kind: 'clam', cardPhase: 0.8 }
   }),
   e('glute_pull_through', 'glute', '绳索拉穿', 'Pull Through', 'cable', 'hinge', {
@@ -786,7 +786,7 @@ export const EXERCISES = [
     start: '双手持哑铃于体侧，向前迈一大步。',
     steps: ['双膝屈曲至前膝约 90 度。', '后膝接近地面。', '蹬前脚回站立，换腿或走步。'],
     cues: ['前膝不要过度内扣。', '躯干略直。'],
-    count: '一侧下蹲再回站计 1 次；左右交替时按单侧计，或约定左右各一次记 2 次。',
+    count: '一侧下蹲再回站计 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'lunge', kit: 'dumbbell', cardPhase: 0.2 }
   }),
   e('leg_calf_raise', 'leg', '提踵', 'Calf Raise', 'machine', 'isolation', {
@@ -885,7 +885,7 @@ export const EXERCISES = [
     start: '双手持哑铃，向前行走空间充足。',
     steps: ['向前迈步下蹲。', '后腿蹬起，下一步换另一腿。', '连续行走。'],
     cues: ['步幅稳定。', '可持杠铃于背。'],
-    count: '每迈出一步并完成下蹲计 1 次（单侧一步）；左右各一步记 2 次。',
+    count: '每迈出一步并完成下蹲计 1 次（这一侧）。左右做完算一组，次数填每侧，不要把左右各一步记成两次。',
     pose: { family: 'lunge', kit: 'dumbbell', cardPhase: 0.25 }
   }),
   e('leg_reverse_lunge', 'leg', '后箭步蹲', 'Reverse Lunge', 'dumbbell', 'lunge', {
@@ -976,7 +976,7 @@ export const EXERCISES = [
     start: '仰卧屈膝，双手置于耳侧。',
     steps: ['右肘向左膝方向卷。', '放回后换左侧。', '肩胛离地。'],
     cues: ['是旋转卷腹不是自行车的完整蹬腿。', '不要拉头。'],
-    count: '一侧卷起计 1 次；左右各一次记 2 次。',
+    count: '一侧卷起计 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'crunch', cardPhase: 0.8 }
   }),
   e('abs_heel_touch', 'abs', '触踵', 'Heel Touch', 'bodyweight', 'isolation', {
@@ -985,7 +985,7 @@ export const EXERCISES = [
     start: '仰卧屈膝，肩微离地，双臂置于体侧。',
     steps: ['向右侧屈，手指触右脚跟。', '回到中间再触左侧。', '肩保持微微离地。'],
     cues: ['小幅度侧屈。', '颈部放松。'],
-    count: '触一侧脚跟计 1 次；左右各触一次记 2 次。',
+    count: '触一侧脚跟计 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'crunch', cardPhase: 0.6 }
   }),
   e('abs_flutter_kick', 'abs', '交替踢腿', 'Flutter Kick', 'bodyweight', 'isolation', {
@@ -994,7 +994,7 @@ export const EXERCISES = [
     start: '仰卧，双手垫臀或握身侧，双腿伸直离地。',
     steps: ['左右腿交替小幅度上下踢。', '下背贴地。', '腿尽量伸直。'],
     cues: ['幅度小而快或按节奏。', '腰痛则屈膝或缩短时间。'],
-    count: '一只脚完成一次上下为 1 次；也可按左右各一次记 2 次，需全程同一口径。',
+    count: '一只脚完成一次上下为 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'legraise', kind: 'legraise', cardPhase: 0.5 }
   }),
   e('abs_decline_crunch', 'abs', '下斜卷腹', 'Decline Crunch', 'bodyweight', 'isolation', {
@@ -1022,7 +1022,7 @@ export const EXERCISES = [
     start: '仰卧，髋膝 90 度，双臂指向天花板，下背贴地。',
     steps: ['对侧手臂与腿缓慢伸展。', '下背始终贴地。', '收回后换边。'],
     cues: ['宁慢勿拱腰。', '呼气帮助收腹。'],
-    count: '一侧伸展再收回计 1 次；左右各一次记 2 次。',
+    count: '一侧伸展再收回计 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'dead_bug', cardPhase: 0.7 }
   }),
   e('core_bird_dog', 'core', '鸟狗式', 'Bird Dog', 'bodyweight', 'isolation', {
@@ -1031,7 +1031,7 @@ export const EXERCISES = [
     start: '四肢着地，脊柱中立。',
     steps: ['伸出对侧手臂与腿，与躯干成直线。', '骨盆不要旋转。', '收回后换边。'],
     cues: ['想象杯子放在腰上。', '不要过度抬头。'],
-    count: '一侧伸展再收回计 1 次；左右交替各一次记 2 次。',
+    count: '一侧伸展再收回计 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'bird_dog', cardPhase: 0.85 }
   }),
   e('core_shoulder_tap', 'core', '支撑交替触肩', 'Shoulder Tap', 'bodyweight', 'isolation', {
@@ -1040,7 +1040,7 @@ export const EXERCISES = [
     start: '高位平板支撑，双手在肩下，身体成直线。',
     steps: ['一手轻触对侧肩。', '髋尽量不晃。', '放回后换手。'],
     cues: ['双脚可略宽增稳。', '这是计次抗旋转，不是计时平板。'],
-    count: '触一次肩计 1 次；左右各触一次记 2 次。',
+    count: '触一次肩计 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'tap', kind: 'tap', cardPhase: 0.7 }
   }),
   e('core_pallof', 'core', '抗旋转推', 'Pallof Press', 'cable', 'isolation', {
@@ -1076,7 +1076,7 @@ export const EXERCISES = [
     start: '坐地，躯干后倾，双脚离地或着地，双手合于身前。',
     steps: ['将双手转到一侧。', '再转到另一侧。', '可持杠铃片加重。'],
     cues: ['转的是胸椎不是只甩手。', '脚着地较易。'],
-    count: '转到一侧计 1 次；左右各一次记 2 次。',
+    count: '转到一侧计 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'core', kind: 'twist', cardPhase: 0.7 }
   }),
   e('core_woodchop', 'core', '伐木', 'Cable Woodchop', 'cable', 'isolation', {
@@ -1131,7 +1131,7 @@ export const EXERCISES = [
     start: '高位支撑，身体成直线。',
     steps: ['一膝快速向胸口收。', '换另一腿，像跑步。', '髋不要过度抬高。'],
     cues: ['本应用按次记录。', '保持肩在手腕上方。'],
-    count: '一侧膝盖向前收再换边，每收一次计 1 次；左右各一次记 2 次。',
+    count: '一侧膝盖向前收再换边，每收一次计 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'cardio', kind: 'mountain', cardPhase: 0.6 }
   }),
   e('cardio_burpee', 'cardio', '波比跳（按次数）', 'Burpee', 'bodyweight', 'isolation', {

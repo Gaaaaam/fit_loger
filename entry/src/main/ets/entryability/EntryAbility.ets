@@ -26,7 +26,7 @@ export default class EntryAbility extends UIAbility {
       this.loadMain(windowStage);
     }).catch((err: BusinessError) => {
       hilog.error(DOMAIN, TAG, 'Startup init failed: %{public}s', err.message);
-      this.loadMain(windowStage);
+      this.loadError(windowStage);
     });
   }
 
@@ -37,6 +37,16 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       hilog.info(DOMAIN, TAG, 'Content loaded');
+    });
+  }
+
+  private loadError(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/StartupErrorPage', (err) => {
+      if (err.code) {
+        hilog.error(DOMAIN, TAG, 'Failed to load error page: %{public}s', JSON.stringify(err));
+        return;
+      }
+      hilog.info(DOMAIN, TAG, 'Error page loaded');
     });
   }
 

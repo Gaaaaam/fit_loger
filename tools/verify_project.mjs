@@ -27,6 +27,7 @@ const requiredFiles = [
   'entry/src/main/ets/pages/DayDetailPage.ets',
   'entry/src/main/ets/pages/BodyMetricsPage.ets',
   'entry/src/main/ets/pages/MusclePickerPage.ets',
+  'entry/src/main/ets/pages/StartupErrorPage.ets',
   'entry/src/main/ets/pages/TrendSettingsPage.ets',
   'entry/src/main/ets/pages/TrendExerciseDetailPage.ets',
   'entry/src/main/ets/components/MonthCalendar.ets',
@@ -62,9 +63,16 @@ const requiredFiles = [
   'entry/src/main/ets/db/ExportService.ets',
   'entry/src/main/resources/base/profile/main_pages.json',
   'entry/src/main/resources/base/element/color.json',
+  'entry/src/main/resources/base/element/float.json',
   'entry/src/main/resources/dark/element/color.json',
+  'docs/PRD.md',
+  'docs/competitors.md',
+  'docs/adr/2026-09-10-harmonyos-local.md',
+  'docs/design-system.md',
+  'docs/qa-device.md',
   'entry/src/main/resources/base/media/startIcon.png',
   'entry/src/main/resources/rawfile/models/body_muscles.glb',
+  'entry/src/main/resources/rawfile/models/muscle_manifest.json',
   'entry/src/main/resources/rawfile/models/LICENSE.txt',
   'entry/src/main/resources/rawfile/exercises/ATTRIBUTION.md',
   'entry/src/main/resources/rawfile/exercises/LICENSE.txt'
@@ -147,6 +155,7 @@ assert(pages.includes('pages/BodyMetricsPage'), 'main_pages should register Body
 assert(pages.includes('pages/MusclePickerPage'), 'main_pages should register MusclePickerPage');
 assert(pages.includes('pages/TrendSettingsPage'), 'main_pages should register TrendSettingsPage');
 assert(pages.includes('pages/TrendExerciseDetailPage'), 'main_pages should register TrendExerciseDetailPage');
+assert(pages.includes('pages/StartupErrorPage'), 'main_pages must register StartupErrorPage');
 assert(!pages.includes('pages/CalendarPage'), 'CalendarPage is a tab component, not a router page');
 
 const profileRaw = readFileSync(join(root, 'build-profile.json5'), 'utf8');
@@ -184,6 +193,7 @@ assert(dayPage.includes("sheetMode === 'info'"), 'day page must host a read-only
 
 const calendar = readFileSync(join(root, 'entry/src/main/ets/pages/CalendarPage.ets'), 'utf8');
 assert(calendar.includes('记录今天'), 'calendar must have today shortcut');
+assert(calendar.includes('点日期或记录今天开始'), 'calendar empty month must show PRD copy');
 assert(calendar.includes('todayString'), 'today shortcut must open today');
 assert(calendar.includes('已训练'), 'calendar legend must include trained');
 assert(calendar.includes('已计划'), 'calendar legend must include planned');
@@ -206,8 +216,10 @@ assert(mine.includes('浅色'), 'mine must offer light theme');
 assert(mine.includes('暗色'), 'mine must offer dark theme');
 assert(mine.includes('导出 JSON/CSV'), 'export lives on mine');
 assert(mine.includes('pages/BodyMetricsPage'), 'mine must open daily weight page');
+assert(mine.includes('导入失败，请选择本应用导出的 JSON 文件'), 'import failure copy must match PRD');
 
 const trends = readFileSync(join(root, 'entry/src/main/ets/pages/TrendsPage.ets'), 'utf8');
+assert(trends.includes('完成几组正式训练后，这里会显示趋势'), 'trends empty copy must match PRD');
 assert(!trends.includes('趋势图表稍后提供'), 'trends placeholder should be gone');
 assert(trends.includes('本周目标'), 'trends must show goal-based weekly progress');
 assert(trends.includes('关注动作'), 'trends must show watched exercises');
@@ -266,12 +278,38 @@ assert(dateUtil.includes('daysSinceEpoch'), 'DateUtil must expose daysSinceEpoch
 
 const ability = readFileSync(join(root, 'entry/src/main/ets/entryability/EntryAbility.ets'), 'utf8');
 assert(ability.includes('pages/MainPage'), 'EntryAbility must load MainPage');
+assert(ability.includes('pages/StartupErrorPage'), 'EntryAbility must load StartupErrorPage on init failure');
 assert(ability.includes('AppSettings'), 'EntryAbility must apply saved theme');
+const initCatch = ability.match(/\.catch\(\(err: BusinessError\) => \{[\s\S]*?\}\);/);
+assert(initCatch, 'EntryAbility must catch startup init failure');
+assert(initCatch[0].includes('loadError'), 'startup failure must call loadError');
+assert(!initCatch[0].includes('loadMain'), 'startup failure must not silently load MainPage');
 
 const colors = readFileSync(join(root, 'entry/src/main/resources/base/element/color.json'), 'utf8');
 assert(colors.includes('dot_trained'), 'light colors must include trained dot');
 assert(colors.includes('dot_planned'), 'light colors must include planned dot');
 assert(colors.includes('dot_missed'), 'light colors must include missed dot');
+assert(colors.includes('scene_bg'), 'light colors must include scene_bg');
+assert(colors.includes('scene_ink'), 'light colors must include scene_ink');
+assert(colors.includes('scene_muted'), 'light colors must include scene_muted');
+
+const picker = readFileSync(join(root, 'entry/src/main/ets/pages/MusclePickerPage.ets'), 'utf8');
+assert(!picker.includes('#21795E'), 'MusclePickerPage must not hardcode old accent');
+assert(picker.includes('app.color.accent'), 'MusclePickerPage must use accent token');
+assert(picker.includes('app.color.scene_bg'), 'MusclePickerPage must use scene_bg');
+assert(picker.includes('app.float.font_hero'), 'MusclePickerPage must use font_hero');
+assert(picker.includes('app.float.font_title'), 'MusclePickerPage must use font_title');
+assert(picker.includes('handleMissedPick'), 'MusclePickerPage must toast a missed 3D pick');
+
+const sceneView = readFileSync(join(root, 'entry/src/main/ets/components/MuscleSceneView.ets'), 'utf8');
+assert(sceneView.includes('app.color.scene_bg'), 'MuscleSceneView must use scene_bg');
+assert(!sceneView.includes('JSON.stringify'), 'MuscleSceneView must not dump pick hits');
+assert(sceneView.includes('onMissed'), 'MuscleSceneView must report a missed pick');
+
+const prd = readFileSync(join(root, 'docs/PRD.md'), 'utf8');
+assert(prd.includes('一句话价值'), 'PRD must state the value proposition');
+assert(prd.includes('核心功能'), 'PRD must list core features');
+assert(prd.includes('冰柜'), 'PRD must freeze out-of-scope work');
 
 const setRow = readFileSync(join(root, 'entry/src/main/ets/components/SetRow.ets'), 'utf8');
 assert(!setRow.includes('Select(['), 'tag Select should be replaced by compact chip');

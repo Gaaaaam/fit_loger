@@ -101,7 +101,7 @@ export struct MinePage {
       promptAction.showToast({ message: '导入完成', duration: 2000 });
     } catch (err) {
       hilog.error(0xF170, 'MinePage', 'import failed');
-      promptAction.showToast({ message: '导入失败，请选择 JSON 导出文件', duration: 2500 });
+      promptAction.showToast({ message: '导入失败，请选择本应用导出的 JSON 文件', duration: 2500 });
     }
   }
 

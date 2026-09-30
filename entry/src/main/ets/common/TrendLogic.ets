@@ -30,6 +30,7 @@ export class TrendWeightRow {
 export class TrendPoint {
   date: string = '';
   value: number = 0;
+  bodyWeightKg: number | null = null;
 }
 
 export class ChartPoint {
@@ -58,6 +59,9 @@ export class KeyLiftSeries {
   lastValue: number = 0;
   insufficientData: boolean = false;
   estimated: boolean = false;
+  relativeText: string = '';
+  relativeNote: string = '';
+  cause: string = '';
 }
 
 export class PartGoalRow {
@@ -75,12 +79,14 @@ export class PartGoalProgress {
   partKey: string = '';
   done: number = 0;
   target: number = 0;
+  suggested: boolean = false;
 }
 
 export class WeekGoalProgress {
   sessionsDone: number = 0;
   sessionsTarget: number | null = null;
   parts: PartGoalProgress[] = [];
+  balanceHints: string[] = [];
 }
 
 export class WeightTrendSummary {
@@ -123,6 +129,8 @@ export class ExerciseTrendDetail {
   sessions: number = 0;
   workSets: number = 0;
   recentSessions: ExerciseSessionRow[] = [];
+  relativeText: string = '';
+  relativeNote: string = '';
 }
 
 export class WatchableExercise {
@@ -178,6 +186,7 @@ class DayAgg {
   bestE1rm: number | null = null;
   e1rmStrict: boolean = false;
   e1rmEstimated: boolean = false;
+  e1rmBodyKg: number | null = null;
   topWeight: number | null = null;
   bestReps: number | null = null;
 }
@@ -283,12 +292,15 @@ export function isE1rmCountable(row: TrendSetRow): boolean {
 }
 
 export function workingLoadKg(row: TrendSetRow): number | null {
-  if (row.isBodyweight === 1) {
+  if (row.isBodyweight === 1 && isCompoundLift(row.movementPattern, row.partKey)) {
     if (row.bodyWeightKg === null || row.bodyWeightKg <= 0) {
       return null;
     }
     const added: number = row.weight === null ? 0 : row.weight;
     return row.bodyWeightKg + added;
+  }
+  if (row.isBodyweight === 1 && (row.weight === null || row.weight <= 0)) {
+    return null;
   }
   return row.weight;
 }
@@ -303,6 +315,33 @@ export function setVolume(row: TrendSetRow): number | null {
   }
   const sides: number = row.isUnilateral === 1 ? 2 : 1;
   return load * row.reps * sides;
+}
+
+export function formatExerciseVolume(rows: TrendSetRow[]): string {
+  let total: number = 0;
+  let counted: number = 0;
+  let needsBody: boolean = false;
+  for (let i = 0; i < rows.length; i++) {
+    const row: TrendSetRow = rows[i];
+    const vol: number | null = setVolume(row);
+    if (vol !== null) {
+      total += vol;
+      counted += 1;
+      continue;
+    }
+    if (row.isBodyweight === 1 && isCompoundLift(row.movementPattern, row.partKey) &&
+      isWorkSet(row) && row.reps !== null && (row.weight === null || row.weight <= 0) &&
+      (row.bodyWeightKg === null || row.bodyWeightKg <= 0)) {
+      needsBody = true;
+    }
+  }
+  if (counted > 0) {
+    return `容量 ${formatTrendNumber(total)} kg`;
+  }
+  if (needsBody) {
+    return '记下体重后，自重复合动作才会计入容量';
+  }
+  return '';
 }
 
 export function sessionRirText(minRir: number | null, rirLegacy: number): string {
@@ -582,8 +621,14 @@ export function buildLiftSeries(rows: TrendSetRow[], pick: KeyLiftPick): KeyLift
     const point: TrendPoint = new TrendPoint();
     point.date = day.date;
     point.value = value;
+    if (metric === 'e1rm') {
+      point.bodyWeightKg = day.e1rmBodyKg;
+    }
     series.points.push(point);
   }
+  const relative: RelativeStrength = relativeStrengthText(series.exerciseId, metric, series.points);
+  series.relativeText = relative.text;
+  series.relativeNote = relative.note;
   if (series.points.length > 0) {
     series.firstValue = series.points[0].value;
     series.lastValue = series.points[series.points.length - 1].value;
@@ -676,7 +721,215 @@ function weekWorkSetsByPart(rows: TrendSetRow[], today: string): Map<string, num
   return counts;
 }
 
-// 只展示用户设置了目标的部位，且只在本周结束后才有意义地比较高低——
+export function suggestedPartGoal(partKey: string): number | null {
+  if (partKey === 'chest') {
+    return 12;
+  }
+  if (partKey === 'back') {
+    return 14;
+  }
+  if (partKey === 'shoulder') {
+    return 10;
+  }
+  if (partKey === 'leg') {
+    return 12;
+  }
+  if (partKey === 'glute') {
+    return 10;
+  }
+  if (partKey === 'arm') {
+    return 8;
+  }
+  if (partKey === 'abs') {
+    return 8;
+  }
+  if (partKey === 'core') {
+    return 6;
+  }
+  return null;
+}
+
+export function patternBalanceHints(rows: TrendSetRow[], today: string): string[] {
+  const weekStart: string = isoWeekStart(today);
+  const weekEnd: string = addDays(weekStart, 6);
+  let push: number = 0;
+  let pull: number = 0;
+  let hinge: number = 0;
+  let squat: number = 0;
+  for (let i = 0; i < rows.length; i++) {
+    const row: TrendSetRow = rows[i];
+    if (!isWorkSet(row) || row.date < weekStart || row.date > weekEnd) {
+      continue;
+    }
+    if (row.movementPattern === 'push') {
+      push += 1;
+    } else if (row.movementPattern === 'pull') {
+      pull += 1;
+    } else if (row.movementPattern === 'hinge') {
+      hinge += 1;
+    } else if (row.movementPattern === 'squat' || row.movementPattern === 'lunge') {
+      squat += 1;
+    }
+  }
+  const hints: string[] = [];
+  if (push >= 6 && pull < push * 0.8) {
+    hints.push('本周拉的正式组少于推的 80%。长期这样，肩和上背容易出问题。');
+  }
+  if (squat >= 6 && hinge < squat * 0.8) {
+    hints.push('本周髋铰链的正式组少于深蹲和分腿蹲的 80%。股四头长期远多于腘绳时，膝盖容易吃亏。');
+  }
+  return hints;
+}
+
+function positiveBodyKg(value: number | null): number | null {
+  if (value === null || value <= 0) {
+    return null;
+  }
+  return value;
+}
+
+function formatRatio(e1rm: number, bodyKg: number): string {
+  const rounded: number = Math.round((e1rm / bodyKg) * 10) / 10;
+  return rounded.toFixed(1);
+}
+
+export class RelativeStrength {
+  text: string = '';
+  note: string = '';
+}
+
+export function relativeStrengthText(exerciseId: string, metric: string, points: TrendPoint[]): RelativeStrength {
+  const result: RelativeStrength = new RelativeStrength();
+  if (metric !== 'e1rm' || points.length === 0) {
+    return result;
+  }
+  if (exerciseId !== 'chest_bb_bench' && exerciseId !== 'leg_squat' && exerciseId !== 'back_deadlift') {
+    return result;
+  }
+  const latest: TrendPoint = points[points.length - 1];
+  const latestBw: number | null = positiveBodyKg(latest.bodyWeightKg);
+  if (latestBw === null) {
+    result.text = '记下体重后可看相对力量';
+    return result;
+  }
+  result.text = `${formatRatio(latest.value, latestBw)} 倍体重`;
+  if (points.length < 2) {
+    return result;
+  }
+  const first: TrendPoint = points[0];
+  const firstBw: number | null = positiveBodyKg(first.bodyWeightKg);
+  if (firstBw === null) {
+    return result;
+  }
+  if (latest.value > first.value && (latest.value / latestBw) < (first.value / firstBw)) {
+    result.note = '绝对重量升了，相对体重轻了。';
+  }
+  return result;
+}
+
+class TopSetSnap {
+  topWeight: number = 0;
+  repsAtTop: number = 0;
+  minRir: number | null = null;
+  ok: boolean = false;
+}
+
+function snapshotTopSets(rows: TrendSetRow[], exerciseId: string, date: string): TopSetSnap {
+  const snap: TopSetSnap = new TopSetSnap();
+  let top: number | null = null;
+  for (let i = 0; i < rows.length; i++) {
+    const row: TrendSetRow = rows[i];
+    if (row.exerciseId !== exerciseId || row.date !== date || !isLiftPerformancePoint(row)) {
+      continue;
+    }
+    if (row.weight === null || row.reps === null) {
+      continue;
+    }
+    if (top === null || row.weight > top) {
+      top = row.weight;
+    }
+  }
+  if (top === null) {
+    return snap;
+  }
+  snap.topWeight = top;
+  snap.ok = true;
+  let bestReps: number = 0;
+  let haveReps: boolean = false;
+  let missingRir: boolean = false;
+  let minRir: number | null = null;
+  for (let i = 0; i < rows.length; i++) {
+    const row: TrendSetRow = rows[i];
+    if (row.exerciseId !== exerciseId || row.date !== date || !isLiftPerformancePoint(row)) {
+      continue;
+    }
+    if (row.weight === null || row.reps === null || row.weight !== top) {
+      continue;
+    }
+    if (!haveReps || row.reps > bestReps) {
+      bestReps = row.reps;
+      haveReps = true;
+    }
+    if (row.rirLegacy === 1 || row.rir === null) {
+      missingRir = true;
+    } else if (minRir === null || row.rir < minRir) {
+      minRir = row.rir;
+    }
+  }
+  snap.repsAtTop = bestReps;
+  snap.minRir = missingRir ? null : minRir;
+  return snap;
+}
+
+export function recentSessionCause(rows: TrendSetRow[], exerciseId: string): string {
+  const dates: string[] = [];
+  const seen: Map<string, boolean> = new Map();
+  for (let i = 0; i < rows.length; i++) {
+    const row: TrendSetRow = rows[i];
+    if (row.exerciseId !== exerciseId || !isLiftPerformancePoint(row)) {
+      continue;
+    }
+    if (row.weight === null || row.reps === null) {
+      continue;
+    }
+    if (seen.get(row.date) === true) {
+      continue;
+    }
+    seen.set(row.date, true);
+    dates.push(row.date);
+  }
+  dates.sort((a: string, b: string) => {
+    if (a < b) {
+      return -1;
+    }
+    if (a > b) {
+      return 1;
+    }
+    return 0;
+  });
+  if (dates.length < 2) {
+    return 'none';
+  }
+  const prev: TopSetSnap = snapshotTopSets(rows, exerciseId, dates[dates.length - 2]);
+  const last: TopSetSnap = snapshotTopSets(rows, exerciseId, dates[dates.length - 1]);
+  if (!prev.ok || !last.ok || last.repsAtTop >= prev.repsAtTop) {
+    return 'none';
+  }
+  if (last.topWeight === prev.topWeight && prev.minRir !== null && last.minRir !== null &&
+    last.minRir < prev.minRir && last.minRir <= 1) {
+    return 'fatigue';
+  }
+  if (last.topWeight < prev.topWeight && last.minRir !== null && last.minRir >= 2) {
+    return 'regression';
+  }
+  return 'none';
+}
+
+function e1rmBodyOf(row: TrendSetRow): number | null {
+  return positiveBodyKg(row.bodyWeightKg);
+}
+
+// 未设置的部位用增肌常见中间值，并标成建议。0 表示用户明确不跟踪。
 // 中途只展示 done/target 进度，不做「低于近 4 周」这类会被训练计划
 // 尚未执行完打断的判断。
 export function buildWeekGoalProgress(rows: TrendSetRow[], today: string, prefs: TrendPreferences): WeekGoalProgress {
@@ -693,16 +946,26 @@ export function buildWeekGoalProgress(rows: TrendSetRow[], today: string, prefs:
   }
   for (let i = 0; i < PART_ORDER.length; i++) {
     const key: string = PART_ORDER[i];
-    const target: number | undefined = goalByPart.get(key);
-    if (target === undefined) {
+    const saved: number | undefined = goalByPart.get(key);
+    if (saved === 0) {
       continue;
     }
     const row: PartGoalProgress = new PartGoalProgress();
     row.partKey = key;
     row.done = doneByPart.get(key) === undefined ? 0 : (doneByPart.get(key) as number);
-    row.target = target;
+    if (saved === undefined) {
+      const suggestion: number | null = suggestedPartGoal(key);
+      if (suggestion === null) {
+        continue;
+      }
+      row.target = suggestion;
+      row.suggested = true;
+    } else {
+      row.target = saved;
+    }
     progress.parts.push(row);
   }
+  progress.balanceHints = patternBalanceHints(rows, today);
   return progress;
 }
 
@@ -835,11 +1098,30 @@ export function buildTrendInsight(prefs: TrendPreferences, weekGoal: WeekGoalPro
   }
   for (let i = 0; i < weekGoal.parts.length; i++) {
     const row: PartGoalProgress = weekGoal.parts[i];
+    if (row.suggested === true) {
+      continue;
+    }
     const remaining: number = row.target - row.done;
     if (remaining > 0) {
       insight.kind = 'part_goal';
       insight.partKey = row.partKey;
       insight.remaining = remaining;
+      return insight;
+    }
+  }
+
+  for (let i = 0; i < lifts.length; i++) {
+    const series: KeyLiftSeries = lifts[i];
+    if (series.cause === 'fatigue') {
+      insight.kind = 'stall';
+      insight.exerciseId = series.exerciseId;
+      insight.message = `${series.name}重量没变，次数掉了，而且更接近力竭。多半是疲劳：下次少做一组，或重量减约 10%。`;
+      return insight;
+    }
+    if (series.cause === 'regression') {
+      insight.kind = 'stall';
+      insight.exerciseId = series.exerciseId;
+      insight.message = `${series.name}重量和次数一起掉了，剩余次数还比较多。更像是力量或技术退步，不是单纯该减载。`;
       return insight;
     }
   }
@@ -890,6 +1172,7 @@ export function buildTrendDigest(rows: TrendSetRow[], weights: TrendWeightRow[],
     if (series.points.length === 0 && !pinned) {
       continue;
     }
+    series.cause = recentSessionCause(rows, series.exerciseId);
     digest.lifts.push(series);
   }
   digest.weightPoints = filterWeights(weights, chartFrom, today);
@@ -939,8 +1222,14 @@ export function buildExerciseTrendDetail(rows: TrendSetRow[], meta: ExerciseMeta
     const point: TrendPoint = new TrendPoint();
     point.date = days[i].date;
     point.value = value;
+    if (metric === 'e1rm') {
+      point.bodyWeightKg = days[i].e1rmBodyKg;
+    }
     detail.points.push(point);
   }
+  const detailRelative: RelativeStrength = relativeStrengthText(detail.exerciseId, metric, detail.points);
+  detail.relativeText = detailRelative.text;
+  detail.relativeNote = detailRelative.note;
   if (metric === 'e1rm' && detail.points.length < 2) {
     detail.insufficientData = true;
   }
@@ -1209,12 +1498,14 @@ function aggregateDays(rows: TrendSetRow[], exerciseId: string): DayAgg[] {
         day.bestE1rm = e1rm;
         day.e1rmStrict = true;
         day.e1rmEstimated = false;
+        day.e1rmBodyKg = e1rmBodyOf(row);
       }
     } else if (!day.e1rmStrict && isE1rmEstimated(row)) {
       const e1rm: number | null = epleyE1rm(row.weight, e1rmEffectiveReps(row));
       if (e1rm !== null && (day.bestE1rm === null || e1rm > day.bestE1rm)) {
         day.bestE1rm = e1rm;
         day.e1rmEstimated = true;
+        day.e1rmBodyKg = e1rmBodyOf(row);
       }
     }
     if (row.weight !== null && (day.topWeight === null || row.weight > day.topWeight)) {

@@ -1,6 +1,6 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { promptAction, router } from '@kit.ArkUI';
-import { PART_ORDER, TrendPreferences, WatchableExercise } from '../common/TrendLogic';
+import { PART_ORDER, suggestedPartGoal, TrendPreferences, WatchableExercise } from '../common/TrendLogic';
 import { parseReps } from '../common/WorkoutLogic';
 import { WorkoutRepository } from '../db/WorkoutRepository';
 import { partName } from '../model/types';
@@ -40,7 +40,14 @@ struct TrendSettingsPage {
         const item: PartGoalInput = new PartGoalInput();
         item.partKey = PART_ORDER[i];
         const value: number | undefined = goalByPart.get(PART_ORDER[i]);
-        item.text = value === undefined ? '' : `${value}`;
+        if (value === undefined) {
+          const suggested: number | null = suggestedPartGoal(PART_ORDER[i]);
+          item.text = suggested === null ? '' : `${suggested}`;
+        } else if (value === 0) {
+          item.text = '';
+        } else {
+          item.text = `${value}`;
+        }
         inputs.push(item);
       }
       this.partGoalInputs = inputs;
@@ -130,7 +137,7 @@ struct TrendSettingsPage {
       for (let i = 0; i < this.partGoalInputs.length; i++) {
         const item: PartGoalInput = this.partGoalInputs[i];
         const trimmed: string = item.text.trim();
-        const target: number | null = trimmed.length === 0 ? null : Number(trimmed);
+        const target: number | null = trimmed.length === 0 ? 0 : Number(trimmed);
         await WorkoutRepository.savePartGoal(item.partKey, target);
       }
       await WorkoutRepository.setWatchedExercises(this.selectedIds);
@@ -152,7 +159,7 @@ struct TrendSettingsPage {
           .fontSize(15)
           .fontColor($r('app.color.text_primary'))
           .width(56)
-        TextInput({ text: item.text, placeholder: '不设目标' })
+        TextInput({ text: item.text, placeholder: '不跟踪' })
           .layoutWeight(1)
           .height(40)
           .type(InputType.Number)
@@ -268,6 +275,12 @@ struct TrendSettingsPage {
             .width('100%')
             .margin({ top: 20, bottom: 8 })
 
+          Text('这是增肌时常见的每周正式组中间值，可以改。数字只算这个部位的动作，不算协同肌。有氧不按组数。清空表示不跟踪。')
+            .fontSize(12)
+            .fontColor($r('app.color.text_secondary'))
+            .width('100%')
+            .margin({ bottom: 8 })
+
           Column() {
             ForEach(this.partGoalInputs, (item: PartGoalInput) => {
               this.partGoalRow(item)
@@ -292,7 +305,7 @@ struct TrendSettingsPage {
 
           Column() {
             if (this.watchable.length === 0) {
-              Text('还没有训练记录，先去练几组吧')
+              Text('完成几组正式训练后，这里会显示趋势')
                 .fontSize(14)
                 .fontColor($r('app.color.text_secondary'))
                 .width('100%')

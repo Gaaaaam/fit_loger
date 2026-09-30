@@ -26,6 +26,8 @@ export class ExerciseItem {
   weightStep: number = 2.5;
   isBodyweight: number = 0;
   isUnilateral: number = 0;
+  movementPattern: string = '';
+  bodyWeightKg: number | null = null;
   lastHint: string = '';
   lastSets: HintSet[] = [];
   note: string = '';
@@ -73,6 +75,11 @@ export class RecentDayInfo {
 export class PrResult {
   weightPr: boolean = false;
   repsPr: boolean = false;
+}
+
+export class PartTrainDate {
+  partKey: string = '';
+  date: string = '';
 }
 
 export class BodyMetric {

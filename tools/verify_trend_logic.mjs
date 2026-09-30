@@ -29,10 +29,15 @@ import {
   isE1rmEstimated,
   isE1rmCountable,
   volumeChangeText,
+  formatExerciseVolume,
   prBoardLine,
   e1rmEffectiveReps,
   workingLoadKg,
-  sessionRirText
+  sessionRirText,
+  suggestedPartGoal,
+  patternBalanceHints,
+  relativeStrengthText,
+  recentSessionCause
 } from './trend_logic.mjs';
 
 function row(partial) {
@@ -235,13 +240,57 @@ const goalProgress = buildWeekGoalProgress(volumeRows, today, prefs({
 }));
 assert.equal(goalProgress.sessionsDone, 1);
 assert.equal(goalProgress.sessionsTarget, 4);
-assert.deepEqual(goalProgress.parts.map((p) => [p.partKey, p.done, p.target]), [
-  ['chest', 2, 6],
-  ['leg', 0, 8]
-], 'parts with no data still show up with done=0 when a target exists');
+const chestGoal = goalProgress.parts.find((p) => p.partKey === 'chest');
+const legGoal = goalProgress.parts.find((p) => p.partKey === 'leg');
+const shoulderGoal = goalProgress.parts.find((p) => p.partKey === 'shoulder');
+assert.deepEqual([chestGoal.done, chestGoal.target, chestGoal.suggested], [2, 6, false]);
+assert.deepEqual([legGoal.done, legGoal.target, legGoal.suggested], [0, 8, false],
+  'parts with no data still show up with done=0 when a target exists');
+assert.equal(shoulderGoal.suggested, true);
+assert.equal(shoulderGoal.target, 10);
+assert.equal(goalProgress.parts.find((p) => p.partKey === 'cardio'), undefined);
+assert.deepEqual(goalProgress.balanceHints, []);
 
 const noGoals = buildWeekGoalProgress(volumeRows, today, prefs({}));
-assert.equal(noGoals.parts.length, 0, 'no target configured means no part rows, not an avg-4-week comparison');
+assert.equal(noGoals.parts.length, 8, 'unset parts use the hypertrophy midpoint, cardio stays out');
+assert.ok(noGoals.parts.every((p) => p.suggested));
+assert.equal(suggestedPartGoal('cardio'), null);
+assert.equal(suggestedPartGoal('arm'), 8);
+
+const optedOut = buildWeekGoalProgress(volumeRows, today, prefs({
+  partGoals: [{ partKey: 'arm', workSetsTarget: 0 }]
+}));
+assert.equal(optedOut.parts.find((p) => p.partKey === 'arm'), undefined, '0 means do not track that part');
+
+const pushHeavy = [];
+for (let i = 0; i < 6; i++) {
+  pushHeavy.push(row({ date: '2026-09-07', movementPattern: 'push', exerciseId: `push_${i}` }));
+}
+pushHeavy.push(row({ date: '2026-09-07', movementPattern: 'pull', exerciseId: 'pull_1', partKey: 'back' }));
+pushHeavy.push(row({ date: '2026-09-07', movementPattern: 'lunge', exerciseId: 'lunge_1', partKey: 'leg' }));
+assert.deepEqual(patternBalanceHints(pushHeavy, today), [
+  '本周拉的正式组少于推的 80%。长期这样，肩和上背容易出问题。'
+]);
+const balanced = [];
+for (let i = 0; i < 6; i++) {
+  balanced.push(row({ date: '2026-09-07', movementPattern: 'push', exerciseId: `push_${i}` }));
+  balanced.push(row({ date: '2026-09-07', movementPattern: 'pull', exerciseId: `pull_${i}`, partKey: 'back' }));
+}
+assert.deepEqual(patternBalanceHints(balanced, today), []);
+const squatHeavy = [];
+for (let i = 0; i < 8; i++) {
+  squatHeavy.push(row({ date: '2026-09-07', movementPattern: 'squat', exerciseId: `sq_${i}`, partKey: 'leg' }));
+}
+squatHeavy.push(row({ date: '2026-09-07', movementPattern: 'hinge', exerciseId: 'hinge_1', partKey: 'back' }));
+assert.deepEqual(patternBalanceHints(squatHeavy, today), [
+  '本周髋铰链的正式组少于深蹲和分腿蹲的 80%。股四头长期远多于腘绳时，膝盖容易吃亏。'
+]);
+const lungeHeavy = [];
+for (let i = 0; i < 8; i++) {
+  lungeHeavy.push(row({ date: '2026-09-07', movementPattern: 'lunge', exerciseId: `ln_${i}`, partKey: 'leg' }));
+}
+lungeHeavy.push(row({ date: '2026-09-07', movementPattern: 'hinge', exerciseId: 'hinge_only', partKey: 'back' }));
+assert.equal(patternBalanceHints(lungeHeavy, today).length, 1, 'split squats count with squats against hinges');
 
 // ---- buildWeightTrend: 7-day rolling average vs sparse fallback ----
 const denseWeights = [];
@@ -338,6 +387,76 @@ const noInsight = buildTrendInsight(
 );
 assert.equal(noInsight.kind, 'none', 'fewer than 3 comparable points must not produce a verdict');
 
+const fatigueLift = {
+  exerciseId: 'chest_bb_bench', name: '杠铃卧推', metric: 'e1rm', cause: 'fatigue',
+  points: [1], firstValue: 70, lastValue: 80
+};
+const fatigueInsight = buildTrendInsight(
+  prefs({ sessionsTarget: 4 }),
+  { sessionsDone: 4, sessionsTarget: 4, parts: noGoals.parts },
+  [fatigueLift]
+);
+assert.equal(fatigueInsight.kind, 'stall');
+assert.equal(
+  fatigueInsight.message,
+  '杠铃卧推重量没变，次数掉了，而且更接近力竭。多半是疲劳：下次少做一组，或重量减约 10%。'
+);
+const regressionLift = {
+  exerciseId: 'leg_squat', name: '杠铃深蹲', metric: 'e1rm', cause: 'regression',
+  points: [], firstValue: 0, lastValue: 0
+};
+const regressionInsight = buildTrendInsight(
+  prefs({ watchedExerciseIds: ['leg_squat'] }),
+  { sessionsDone: 0, sessionsTarget: null, parts: [] },
+  [regressionLift]
+);
+assert.equal(
+  regressionInsight.message,
+  '杠铃深蹲重量和次数一起掉了，剩余次数还比较多。更像是力量或技术退步，不是单纯该减载。'
+);
+
+const fatigueRows = [
+  row({ date: '2026-08-01', weight: 60, reps: 10, rir: 2, exerciseName: '杠铃卧推' }),
+  row({ date: '2026-09-01', weight: 60, reps: 6, rir: 0, exerciseName: '杠铃卧推' }),
+  row({ date: '2026-09-01', weight: 80, reps: 3, rir: 0, technique: 'drop', exerciseName: '杠铃卧推' })
+];
+assert.equal(recentSessionCause(fatigueRows, 'chest_bb_bench'), 'fatigue');
+assert.equal(recentSessionCause([
+  row({ date: '2026-08-01', weight: 80, reps: 8, rir: 2, exerciseId: 'leg_squat' }),
+  row({ date: '2026-09-01', weight: 70, reps: 6, rir: 2, exerciseId: 'leg_squat' })
+], 'leg_squat'), 'regression');
+assert.equal(recentSessionCause([
+  row({ date: '2026-08-01', weight: 80, reps: 8, rir: 2, exerciseId: 'leg_squat' }),
+  row({ date: '2026-09-01', weight: 70, reps: 6, rir: 0, exerciseId: 'leg_squat' })
+], 'leg_squat'), 'none');
+assert.equal(recentSessionCause([
+  row({ date: '2026-08-01', weight: 60, reps: 8, rir: 2 }),
+  row({ date: '2026-09-01', weight: 60, reps: 6, rir: 0, rirLegacy: 1 })
+], 'chest_bb_bench'), 'none', 'legacy RIR cannot separate fatigue from a real loss');
+
+const fatigueDigest = buildTrendDigest(fatigueRows, [], today, '4', prefs({
+  watchedExerciseIds: ['chest_bb_bench']
+}));
+assert.equal(fatigueDigest.insight.kind, 'stall');
+assert.ok(fatigueDigest.insight.message.includes('多半是疲劳'));
+
+const ratioPick = {
+  exerciseId: 'chest_bb_bench', name: '杠铃卧推', partKey: 'chest', movementPattern: 'push',
+  isBodyweight: 0, isCompound: true, sessions: 2, workSets: 2
+};
+const ratioSeries = buildLiftSeries([
+  row({ date: '2026-08-10', weight: 60, reps: 5, rir: 1, bodyWeightKg: 70 }),
+  row({ date: '2026-09-01', weight: 65, reps: 5, rir: 1, bodyWeightKg: 90 })
+], ratioPick);
+assert.equal(ratioSeries.relativeText, '0.9 倍体重');
+assert.equal(ratioSeries.relativeNote, '绝对重量升了，相对体重轻了。');
+assert.equal(relativeStrengthText('arm_bb_curl', 'top_weight', ratioSeries.points).text, '');
+const missingBw = buildLiftSeries([
+  row({ date: '2026-09-01', weight: 60, reps: 5, rir: 1, bodyWeightKg: null })
+], ratioPick);
+assert.equal(missingBw.relativeText, '记下体重后可看相对力量');
+assert.equal(missingBw.relativeNote, '');
+
 // ---- buildTrendDigest integration ----
 const digest = buildTrendDigest(
   [
@@ -417,6 +536,22 @@ assert.equal(setVolume(row({ isBodyweight: 1, bodyWeightKg: 70, weight: 10, reps
 assert.equal(setVolume(row({ isBodyweight: 1, bodyWeightKg: 70, weight: null, reps: 8 })), 560);
 assert.equal(setVolume(row({ isBodyweight: 1, bodyWeightKg: null, weight: 0, reps: 8 })), null);
 assert.equal(setVolume(row({ isUnilateral: 1, weight: 20, reps: 10 })), 400, 'per-side reps count both sides');
+assert.equal(setVolume(row({
+  isBodyweight: 1, bodyWeightKg: 70, weight: 0, reps: 8, movementPattern: 'pull', partKey: 'back'
+})), 560, 'compound bodyweight uses body weight plus added load');
+assert.equal(setVolume(row({
+  isBodyweight: 1, bodyWeightKg: 70, weight: 0, reps: 100, movementPattern: 'isolation', partKey: 'cardio'
+})), null, 'cardio reps are not bodyweight volume');
+assert.equal(setVolume(row({
+  isBodyweight: 1, bodyWeightKg: 70, weight: null, reps: 20, movementPattern: 'isolation', partKey: 'abs'
+})), null, 'isolation bodyweight does not invent a bodyweight load');
+assert.equal(formatExerciseVolume([row({
+  isBodyweight: 1, bodyWeightKg: 70, weight: 0, reps: 8, movementPattern: 'pull', partKey: 'back'
+})]), '容量 560 kg');
+assert.equal(formatExerciseVolume([row({
+  isBodyweight: 1, bodyWeightKg: null, weight: 0, reps: 8, movementPattern: 'pull', partKey: 'back'
+})]), '记下体重后，自重复合动作才会计入容量');
+assert.equal(formatExerciseVolume([row({ isUnilateral: 1, weight: 20, reps: 10 })]), '容量 400 kg');
 assert.equal(sessionRirText(1, 0), 'RIR 1');
 assert.equal(sessionRirText(null, 1), '早期 RIR');
 assert.equal(sessionRirText(null, 0), 'RIR 未记录');

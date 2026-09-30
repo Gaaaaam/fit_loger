@@ -23,7 +23,7 @@ import {
 } from '../common/WorkoutLogic';
 import { ExerciseDef } from '../model/exerciseCatalog';
 import { ExerciseMeta, PartGoalRow, TrendPreferences, TrendSetRow, TrendWeightRow, WatchableExercise } from '../common/TrendLogic';
-import { BodyMetric, DayMark, DayModel, ExerciseItem, PartItem, PrResult, RecentDayInfo, SetItem } from '../model/DayModels';
+import { BodyMetric, DayMark, DayModel, ExerciseItem, PartItem, PartTrainDate, PrResult, RecentDayInfo, SetItem } from '../model/DayModels';
 import {
   Equipment,
   PartKey,
@@ -72,7 +72,7 @@ export class WorkoutRepository {
     const sql: string =
       'SELECT d.id AS day_id, d.note AS day_note, e.id AS ex_row_id, e.exercise_id AS exercise_id, e.sort_order AS ex_sort, e.note AS ex_note, ' +
       'x.name AS ex_name, x.part_key AS part_key, x.weight_step AS weight_step, x.is_bodyweight AS is_bodyweight, ' +
-      'x.is_unilateral AS is_unilateral, ' +
+      'x.is_unilateral AS is_unilateral, x.movement_pattern AS movement_pattern, ' +
       's.id AS set_id, s.weight AS weight, s.reps AS reps, s.is_warmup AS is_warmup, s.technique AS technique, ' +
       's.rir AS rir, s.rir_legacy AS rir_legacy, s.status AS status, s.completed_at AS completed_at, s.note AS set_note, s.sort_order AS set_sort ' +
       'FROM workout_days d ' +
@@ -99,6 +99,7 @@ export class WorkoutRepository {
     day.exercises = exList;
     day.parts = WorkoutRepository.groupParts(exList);
     await WorkoutRepository.attachLastHints(day, date);
+    await WorkoutRepository.attachBodyWeight(day, date);
     return day;
   }
 
@@ -131,6 +132,7 @@ export class WorkoutRepository {
       if (unilateralIdx >= 0 && !rs.isColumnNull(unilateralIdx)) {
         createdEx.isUnilateral = rs.getLong(unilateralIdx);
       }
+      createdEx.movementPattern = WorkoutRepository.strOr(rs, 'movement_pattern', 'isolation');
       if (!rs.isColumnNull(rs.getColumnIndex('ex_sort'))) {
         createdEx.sortOrder = rs.getLong(rs.getColumnIndex('ex_sort'));
       }
@@ -216,6 +218,28 @@ export class WorkoutRepository {
     return parts;
   }
 
+  private static async attachBodyWeight(day: DayModel, date: string): Promise<void> {
+    const kg: number | null = await WorkoutRepository.bodyWeightOn(date);
+    const list: ExerciseItem[] = day.exercises.length > 0 ? day.exercises : WorkoutRepository.flattenParts(day);
+    for (let i = 0; i < list.length; i++) {
+      list[i].bodyWeightKg = kg;
+    }
+  }
+
+  private static async bodyWeightOn(date: string): Promise<number | null> {
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const rs: relationalStore.ResultSet = await store.querySql(
+      'SELECT weight_kg FROM body_metrics WHERE weight_kg IS NOT NULL AND date <= ? ORDER BY date DESC LIMIT 1',
+      [date]
+    );
+    let kg: number | null = null;
+    if (rs.goToFirstRow() && !rs.isColumnNull(rs.getColumnIndex('weight_kg'))) {
+      kg = rs.getDouble(rs.getColumnIndex('weight_kg'));
+    }
+    rs.close();
+    return kg;
+  }
+
   private static async attachLastHints(day: DayModel, date: string): Promise<void> {
     const list: ExerciseItem[] = day.exercises.length > 0 ? day.exercises : WorkoutRepository.flattenParts(day);
     for (let i = 0; i < list.length; i++) {
@@ -252,7 +276,8 @@ export class WorkoutRepository {
     const lastDate: string = dateRs.getString(dateRs.getColumnIndex('date'));
     dateRs.close();
     const setSql: string =
-      'SELECT s.weight AS weight, s.reps AS reps FROM workout_sets s ' +
+      'SELECT s.weight AS weight, s.reps AS reps, s.is_warmup AS is_warmup, s.technique AS technique, ' +
+      's.rir AS rir, s.rir_legacy AS rir_legacy FROM workout_sets s ' +
       'INNER JOIN day_exercises e ON e.id = s.day_exercise_id ' +
       'INNER JOIN workout_days d ON d.id = e.day_id ' +
       'WHERE e.exercise_id = ? AND d.date = ? AND s.status = \'done\' AND s.is_warmup = 0 ' +
@@ -268,6 +293,17 @@ export class WorkoutRepository {
       if (!setRs.isColumnNull(setRs.getColumnIndex('reps'))) {
         hint.reps = setRs.getLong(setRs.getColumnIndex('reps'));
       }
+      if (!setRs.isColumnNull(setRs.getColumnIndex('is_warmup'))) {
+        hint.isWarmup = setRs.getLong(setRs.getColumnIndex('is_warmup'));
+      }
+      hint.technique = WorkoutRepository.strOr(setRs, 'technique', '');
+      if (!setRs.isColumnNull(setRs.getColumnIndex('rir'))) {
+        hint.rir = setRs.getLong(setRs.getColumnIndex('rir'));
+      }
+      const hintLegacy: number = setRs.getColumnIndex('rir_legacy');
+      if (hintLegacy >= 0 && !setRs.isColumnNull(hintLegacy)) {
+        hint.rirLegacy = setRs.getLong(hintLegacy);
+      }
       sets.push(hint);
       hasRow = setRs.goToNextRow();
     }
@@ -275,6 +311,31 @@ export class WorkoutRepository {
     empty.text = formatLastHint(lastDate, sets);
     empty.sets = sets;
     return empty;
+  }
+
+  static async lastWorkDatesByPart(beforeDate: string): Promise<PartTrainDate[]> {
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const sql: string =
+      'SELECT x.part_key AS part_key, MAX(d.date) AS last_date FROM workout_sets s ' +
+      'INNER JOIN day_exercises e ON e.id = s.day_exercise_id ' +
+      'INNER JOIN workout_days d ON d.id = e.day_id ' +
+      'INNER JOIN exercises x ON x.id = e.exercise_id ' +
+      'WHERE d.date < ? AND s.status = \'done\' AND s.is_warmup = 0 ' +
+      'GROUP BY x.part_key';
+    const rs: relationalStore.ResultSet = await store.querySql(sql, [beforeDate]);
+    const list: PartTrainDate[] = [];
+    let hasRow: boolean = rs.goToFirstRow();
+    while (hasRow) {
+      const item: PartTrainDate = new PartTrainDate();
+      item.partKey = WorkoutRepository.strOr(rs, 'part_key', '');
+      item.date = WorkoutRepository.strOr(rs, 'last_date', '');
+      if (item.partKey.length > 0 && item.date.length > 0) {
+        list.push(item);
+      }
+      hasRow = rs.goToNextRow();
+    }
+    rs.close();
+    return list;
   }
 
   static async addExercise(date: string, exerciseId: string): Promise<number> {
@@ -315,7 +376,7 @@ export class WorkoutRepository {
     const sql: string =
       'SELECT e.id AS ex_row_id, e.exercise_id AS exercise_id, e.note AS ex_note, e.sort_order AS ex_sort, ' +
       'x.name AS ex_name, x.part_key AS part_key, x.weight_step AS weight_step, x.is_bodyweight AS is_bodyweight, ' +
-      'x.is_unilateral AS is_unilateral ' +
+      'x.is_unilateral AS is_unilateral, x.movement_pattern AS movement_pattern ' +
       'FROM day_exercises e LEFT JOIN exercises x ON x.id = e.exercise_id WHERE e.id = ?';
     const rs: relationalStore.ResultSet = await store.querySql(sql, [exerciseRowId]);
     if (!rs.goToFirstRow()) {
@@ -345,6 +406,7 @@ export class WorkoutRepository {
     if (rowUnilateralIdx >= 0 && !rs.isColumnNull(rowUnilateralIdx)) {
       createdEx.isUnilateral = rs.getLong(rowUnilateralIdx);
     }
+    createdEx.movementPattern = WorkoutRepository.strOr(rs, 'movement_pattern', 'isolation');
     if (!rs.isColumnNull(rs.getColumnIndex('ex_sort'))) {
       createdEx.sortOrder = rs.getLong(rs.getColumnIndex('ex_sort'));
     }
@@ -352,6 +414,7 @@ export class WorkoutRepository {
     const hint: LastHint = await WorkoutRepository.lastHintFor(createdEx.exerciseId, date);
     createdEx.lastHint = hint.text;
     createdEx.lastSets = hint.sets;
+    createdEx.bodyWeightKg = await WorkoutRepository.bodyWeightOn(date);
     return createdEx;
   }
 
@@ -1057,14 +1120,11 @@ export class WorkoutRepository {
   }
 
   static async savePartGoal(partKey: string, target: number | null): Promise<void> {
-    const saved: number | null = WorkoutRepository.clampInt(target, 1, 50);
-    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    let saved: number | null = WorkoutRepository.clampInt(target, 0, 50);
     if (saved === null) {
-      const predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('trend_part_goals');
-      predicates.equalTo('part_key', partKey);
-      await store.delete(predicates);
-      return;
+      saved = 0;
     }
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     const bucket: relationalStore.ValuesBucket = {
       'part_key': partKey,
       'work_sets_target': saved,

@@ -105,6 +105,14 @@ export struct CalendarPage {
           this.openDay(todayString());
         })
 
+      if (this.marks.length === 0) {
+        Text('点日期或记录今天开始')
+          .fontSize(14)
+          .fontColor($r('app.color.text_secondary'))
+          .width('100%')
+          .margin({ bottom: 12 })
+      }
+
       Column() {
         MonthCalendar({
           year: this.year,

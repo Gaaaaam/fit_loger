@@ -26,7 +26,7 @@ PALETTE = {
 
 OUT = Path(__file__).resolve().parent
 ROOT = Path(__file__).resolve().parents[3]
-APP_ICON_NAME = 'barbell'
+APP_ICON_NAME = 'cat'
 APP_ICON_TARGETS = (
     ROOT / 'AppScope/resources/base/media/app_icon.png',
     ROOT / 'entry/src/main/resources/base/media/app_icon.png',

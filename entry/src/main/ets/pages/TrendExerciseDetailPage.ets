@@ -229,6 +229,20 @@ struct TrendExerciseDetailPage {
                 .fontColor($r('app.color.text_secondary'))
                 .width('100%')
                 .margin({ bottom: 6 })
+              if (this.detail.relativeText.length > 0) {
+                Text(this.detail.relativeText)
+                  .fontSize(14)
+                  .fontColor($r('app.color.text_primary'))
+                  .width('100%')
+                  .margin({ bottom: 4 })
+              }
+              if (this.detail.relativeNote.length > 0) {
+                Text(this.detail.relativeNote)
+                  .fontSize(13)
+                  .fontColor($r('app.color.text_secondary'))
+                  .width('100%')
+                  .margin({ bottom: 6 })
+              }
               TrendSparkline({ points: this.detail.points, chartHeight: 160, showLabels: true, unit: this.detail.metricLabel })
               Row() {
                 Text(`${this.detail.sessions} 次训练`)

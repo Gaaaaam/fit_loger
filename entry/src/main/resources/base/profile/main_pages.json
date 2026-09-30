@@ -5,6 +5,7 @@
     "pages/BodyMetricsPage",
     "pages/MusclePickerPage",
     "pages/TrendSettingsPage",
-    "pages/TrendExerciseDetailPage"
+    "pages/TrendExerciseDetailPage",
+    "pages/StartupErrorPage"
   ]
 }

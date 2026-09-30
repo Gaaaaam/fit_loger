@@ -137,12 +137,15 @@ export function isE1rmCountable(row) {
 }
 
 export function workingLoadKg(row) {
-  if (row.isBodyweight === 1) {
+  if (row.isBodyweight === 1 && isCompoundLift(row.movementPattern, row.partKey)) {
     if (row.bodyWeightKg === null || row.bodyWeightKg === undefined || row.bodyWeightKg <= 0) {
       return null;
     }
     const added = row.weight === null || row.weight === undefined ? 0 : row.weight;
     return row.bodyWeightKg + added;
+  }
+  if (row.isBodyweight === 1 && (row.weight === null || row.weight === undefined || row.weight <= 0)) {
+    return null;
   }
   if (row.weight === null || row.weight === undefined) {
     return null;
@@ -163,6 +166,34 @@ export function setVolume(row) {
   }
   const sides = row.isUnilateral === 1 ? 2 : 1;
   return load * row.reps * sides;
+}
+
+export function formatExerciseVolume(rows) {
+  let total = 0;
+  let counted = 0;
+  let needsBody = false;
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    const vol = setVolume(row);
+    if (vol !== null && vol !== undefined) {
+      total += vol;
+      counted += 1;
+      continue;
+    }
+    const noAdded = row.weight === null || row.weight === undefined || row.weight <= 0;
+    const noBody = row.bodyWeightKg === null || row.bodyWeightKg === undefined || row.bodyWeightKg <= 0;
+    if (row.isBodyweight === 1 && isCompoundLift(row.movementPattern, row.partKey) &&
+      isWorkSet(row) && row.reps !== null && row.reps !== undefined && noAdded && noBody) {
+      needsBody = true;
+    }
+  }
+  if (counted > 0) {
+    return `容量 ${formatTrendNumber(total)} kg`;
+  }
+  if (needsBody) {
+    return '记下体重后，自重复合动作才会计入容量';
+  }
+  return '';
 }
 
 export function sessionRirText(minRir, rirLegacy) {
@@ -439,11 +470,19 @@ export function buildLiftSeries(rows, pick) {
     if (value === null) {
       continue;
     }
-    series.points.push({ date: day.date, value });
+    const point = { date: day.date, value, bodyWeightKg: null };
+    if (metric === 'e1rm') {
+      point.bodyWeightKg = day.e1rmBodyKg === undefined ? null : day.e1rmBodyKg;
+    }
+    series.points.push(point);
     if (metric === 'e1rm' && day.e1rmFromEstimate) {
       series.estimated = true;
     }
   }
+  const relative = relativeStrengthText(series.exerciseId, series.metric, series.points);
+  series.relativeText = relative.text;
+  series.relativeNote = relative.note;
+  series.cause = '';
   if (series.points.length > 0) {
     series.firstValue = series.points[0].value;
     series.lastValue = series.points[series.points.length - 1].value;
@@ -496,8 +535,164 @@ function weekWorkSetsByPart(rows, today) {
   return counts;
 }
 
+export function suggestedPartGoal(partKey) {
+  if (partKey === 'chest') return 12;
+  if (partKey === 'back') return 14;
+  if (partKey === 'shoulder') return 10;
+  if (partKey === 'leg') return 12;
+  if (partKey === 'glute') return 10;
+  if (partKey === 'arm') return 8;
+  if (partKey === 'abs') return 8;
+  if (partKey === 'core') return 6;
+  return null;
+}
+
+export function patternBalanceHints(rows, today) {
+  const weekStart = isoWeekStart(today);
+  const weekEnd = addDays(weekStart, 6);
+  let push = 0;
+  let pull = 0;
+  let hinge = 0;
+  let squat = 0;
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    if (!isWorkSet(row) || row.date < weekStart || row.date > weekEnd) {
+      continue;
+    }
+    if (row.movementPattern === 'push') push += 1;
+    else if (row.movementPattern === 'pull') pull += 1;
+    else if (row.movementPattern === 'hinge') hinge += 1;
+    else if (row.movementPattern === 'squat' || row.movementPattern === 'lunge') squat += 1;
+  }
+  const hints = [];
+  if (push >= 6 && pull < push * 0.8) {
+    hints.push('本周拉的正式组少于推的 80%。长期这样，肩和上背容易出问题。');
+  }
+  if (squat >= 6 && hinge < squat * 0.8) {
+    hints.push('本周髋铰链的正式组少于深蹲和分腿蹲的 80%。股四头长期远多于腘绳时，膝盖容易吃亏。');
+  }
+  return hints;
+}
+
+function positiveBodyKg(value) {
+  if (value === null || value === undefined || value <= 0) {
+    return null;
+  }
+  return value;
+}
+
+function formatRatio(e1rm, bodyKg) {
+  const rounded = Math.round((e1rm / bodyKg) * 10) / 10;
+  return rounded.toFixed(1);
+}
+
+export function relativeStrengthText(exerciseId, metric, points) {
+  const result = { text: '', note: '' };
+  if (metric !== 'e1rm' || points.length === 0) {
+    return result;
+  }
+  if (exerciseId !== 'chest_bb_bench' && exerciseId !== 'leg_squat' && exerciseId !== 'back_deadlift') {
+    return result;
+  }
+  const latest = points[points.length - 1];
+  const latestBw = positiveBodyKg(latest.bodyWeightKg);
+  if (latestBw === null) {
+    result.text = '记下体重后可看相对力量';
+    return result;
+  }
+  result.text = `${formatRatio(latest.value, latestBw)} 倍体重`;
+  if (points.length < 2) {
+    return result;
+  }
+  const first = points[0];
+  const firstBw = positiveBodyKg(first.bodyWeightKg);
+  if (firstBw === null) {
+    return result;
+  }
+  if (latest.value > first.value && (latest.value / latestBw) < (first.value / firstBw)) {
+    result.note = '绝对重量升了，相对体重轻了。';
+  }
+  return result;
+}
+
+function snapshotTopSets(rows, exerciseId, date) {
+  let top = null;
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    if (row.exerciseId !== exerciseId || row.date !== date || !isLiftPerformancePoint(row)) {
+      continue;
+    }
+    if (row.weight === null || row.weight === undefined || row.reps === null || row.reps === undefined) {
+      continue;
+    }
+    if (top === null || row.weight > top) {
+      top = row.weight;
+    }
+  }
+  if (top === null) {
+    return { ok: false, topWeight: 0, repsAtTop: 0, minRir: null };
+  }
+  let bestReps = 0;
+  let missingRir = false;
+  let minRir = null;
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    if (row.exerciseId !== exerciseId || row.date !== date || !isLiftPerformancePoint(row)) {
+      continue;
+    }
+    if (row.weight !== top || row.reps === null || row.reps === undefined) {
+      continue;
+    }
+    if (row.reps > bestReps) {
+      bestReps = row.reps;
+    }
+    if (row.rirLegacy === 1 || row.rir === null || row.rir === undefined) {
+      missingRir = true;
+    } else if (minRir === null || row.rir < minRir) {
+      minRir = row.rir;
+    }
+  }
+  return { ok: true, topWeight: top, repsAtTop: bestReps, minRir: missingRir ? null : minRir };
+}
+
+export function recentSessionCause(rows, exerciseId) {
+  const dates = [];
+  const seen = new Map();
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    if (row.exerciseId !== exerciseId || !isLiftPerformancePoint(row)) {
+      continue;
+    }
+    if (row.weight === null || row.weight === undefined || row.reps === null || row.reps === undefined) {
+      continue;
+    }
+    if (seen.get(row.date) === true) {
+      continue;
+    }
+    seen.set(row.date, true);
+    dates.push(row.date);
+  }
+  dates.sort();
+  if (dates.length < 2) {
+    return 'none';
+  }
+  const prev = snapshotTopSets(rows, exerciseId, dates[dates.length - 2]);
+  const last = snapshotTopSets(rows, exerciseId, dates[dates.length - 1]);
+  if (!prev.ok || !last.ok || last.repsAtTop >= prev.repsAtTop) {
+    return 'none';
+  }
+  if (last.topWeight === prev.topWeight && prev.minRir !== null && last.minRir !== null &&
+    last.minRir < prev.minRir && last.minRir <= 1) {
+    return 'fatigue';
+  }
+  if (last.topWeight < prev.topWeight && last.minRir !== null && last.minRir >= 2) {
+    return 'regression';
+  }
+  return 'none';
+}
+
 export function buildWeekGoalProgress(rows, today, prefs) {
-  const progress = { sessionsDone: 0, sessionsTarget: null, parts: [] };
+  const progress = { sessionsDone: 0, sessionsTarget: null, parts: [], balanceHints: [] };
   const summary = weekSummary(rows, today);
   progress.sessionsDone = summary[0];
   progress.sessionsTarget = prefs.sessionsTarget;
@@ -510,15 +705,29 @@ export function buildWeekGoalProgress(rows, today, prefs) {
   }
   for (let i = 0; i < PART_ORDER.length; i++) {
     const key = PART_ORDER[i];
-    if (!goalByPart.has(key)) {
+    const saved = goalByPart.has(key) ? goalByPart.get(key) : undefined;
+    if (saved === 0) {
       continue;
     }
-    progress.parts.push({
+    const part = {
       partKey: key,
       done: doneByPart.get(key) === undefined ? 0 : doneByPart.get(key),
-      target: goalByPart.get(key)
-    });
+      target: 0,
+      suggested: false
+    };
+    if (saved === undefined) {
+      const suggestion = suggestedPartGoal(key);
+      if (suggestion === null) {
+        continue;
+      }
+      part.target = suggestion;
+      part.suggested = true;
+    } else {
+      part.target = saved;
+    }
+    progress.parts.push(part);
   }
+  progress.balanceHints = patternBalanceHints(rows, today);
   return progress;
 }
 
@@ -638,11 +847,30 @@ export function buildTrendInsight(prefs, weekGoal, lifts) {
   }
   for (let i = 0; i < weekGoal.parts.length; i++) {
     const row = weekGoal.parts[i];
+    if (row.suggested === true) {
+      continue;
+    }
     const remaining = row.target - row.done;
     if (remaining > 0) {
       insight.kind = 'part_goal';
       insight.partKey = row.partKey;
       insight.remaining = remaining;
+      return insight;
+    }
+  }
+
+  for (let i = 0; i < lifts.length; i++) {
+    const series = lifts[i];
+    if (series.cause === 'fatigue') {
+      insight.kind = 'stall';
+      insight.exerciseId = series.exerciseId;
+      insight.message = `${series.name}重量没变，次数掉了，而且更接近力竭。多半是疲劳：下次少做一组，或重量减约 10%。`;
+      return insight;
+    }
+    if (series.cause === 'regression') {
+      insight.kind = 'stall';
+      insight.exerciseId = series.exerciseId;
+      insight.message = `${series.name}重量和次数一起掉了，剩余次数还比较多。更像是力量或技术退步，不是单纯该减载。`;
       return insight;
     }
   }
@@ -702,6 +930,7 @@ export function buildTrendDigest(rows, weights, today, rangeKind, prefs) {
     if (series.points.length === 0 && !pinned) {
       continue;
     }
+    series.cause = recentSessionCause(rows, series.exerciseId);
     digest.lifts.push(series);
   }
   digest.weightPoints = filterWeights(weights, chartFrom, today);
@@ -755,11 +984,18 @@ export function buildExerciseTrendDetail(rows, meta) {
     if (value === null) {
       continue;
     }
-    detail.points.push({ date: days[i].date, value });
+    const point = { date: days[i].date, value, bodyWeightKg: null };
+    if (metric === 'e1rm') {
+      point.bodyWeightKg = days[i].e1rmBodyKg === undefined ? null : days[i].e1rmBodyKg;
+    }
+    detail.points.push(point);
     if (metric === 'e1rm' && days[i].e1rmFromEstimate) {
       detail.estimated = true;
     }
   }
+  const detailRelative = relativeStrengthText(detail.exerciseId, metric, detail.points);
+  detail.relativeText = detailRelative.text;
+  detail.relativeNote = detailRelative.note;
   if (metric === 'e1rm' && detail.points.length < 2) {
     detail.insufficientData = true;
   }
@@ -988,7 +1224,8 @@ function aggregateDays(rows, exerciseId) {
         bestE1rm: null,
         topWeight: null,
         bestReps: null,
-        e1rmFromEstimate: false
+        e1rmFromEstimate: false,
+        e1rmBodyKg: null
       });
       idx = list.length - 1;
     }
@@ -1001,6 +1238,7 @@ function aggregateDays(rows, exerciseId) {
       if (e1rm !== null && (day.bestE1rm === null || e1rm > day.bestE1rm)) {
         day.bestE1rm = e1rm;
         day.e1rmFromEstimate = isE1rmEstimated(row);
+        day.e1rmBodyKg = positiveBodyKg(row.bodyWeightKg);
       }
     }
     if (row.weight !== null && row.weight !== undefined &&

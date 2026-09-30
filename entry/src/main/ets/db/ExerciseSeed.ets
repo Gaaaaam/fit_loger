@@ -7,6 +7,9 @@ export async function seedBuiltinExercises(store: relationalStore.RdbStore): Pro
     'INSERT OR IGNORE INTO exercises (id, name, aliases, part_key, primary_muscles, secondary_muscles, ' +
     'movement_pattern, equipment, is_unilateral, is_bodyweight, weight_step, is_builtin, is_archived, created_at) ' +
     'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+  const refreshSql: string =
+    'UPDATE exercises SET movement_pattern = ?, is_unilateral = ?, is_bodyweight = ?, weight_step = ? ' +
+    'WHERE id = ? AND is_builtin = 1';
   for (let i = 0; i < EXERCISE_CATALOG.length; i++) {
     const def: ExerciseDef = EXERCISE_CATALOG[i];
     await store.executeSql(sql, [
@@ -24,6 +27,13 @@ export async function seedBuiltinExercises(store: relationalStore.RdbStore): Pro
       1,
       0,
       now
+    ]);
+    await store.executeSql(refreshSql, [
+      def.movementPattern,
+      def.isUnilateral,
+      def.isBodyweight,
+      def.weightStep,
+      def.id
     ]);
   }
 }
