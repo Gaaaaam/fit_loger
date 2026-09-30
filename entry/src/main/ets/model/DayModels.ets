@@ -9,6 +9,7 @@ export class SetItem {
   isWarmup: number = 0;
   technique: string = '';
   rir: number = -1;
+  rirLegacy: number = 0;
   status: SetStatus = 'planned';
   completedAt: number = 0;
   note: string = '';
@@ -24,6 +25,7 @@ export class ExerciseItem {
   partKey: PartKey = 'chest';
   weightStep: number = 2.5;
   isBodyweight: number = 0;
+  isUnilateral: number = 0;
   lastHint: string = '';
   lastSets: HintSet[] = [];
   note: string = '';
@@ -43,6 +45,7 @@ export class PartItem {
 export class DayModel {
   date: string = '';
   dayId: number = 0;
+  note: string = '';
   exercises: ExerciseItem[] = [];
   parts: PartItem[] = [];
 }

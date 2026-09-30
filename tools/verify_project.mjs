@@ -137,7 +137,8 @@ for (const table of [
 }
 assert(schema.includes('is_warmup'), 'workout_sets must include is_warmup');
 assert(schema.includes("status TEXT NOT NULL DEFAULT 'done'") || schema.includes('status TEXT NOT NULL DEFAULT \\\'done\\\''), 'status default done');
-assert(schema.includes('CURRENT_VERSION: number = 2'), 'schema must be bumped to v2 for trend preferences');
+assert(schema.includes('CURRENT_VERSION: number = 3'), 'schema must be bumped to v3 for legacy RIR');
+assert(schema.includes('rir_legacy'), 'workout_sets must keep legacy RIR separate from exact RIR');
 
 const pages = readFileSync(join(root, 'entry/src/main/resources/base/profile/main_pages.json'), 'utf8');
 assert(pages.includes('pages/MainPage'), 'main_pages should register MainPage first');
@@ -241,7 +242,8 @@ const exportService = readFileSync(join(root, 'entry/src/main/ets/db/ExportServi
 assert(exportService.includes('watched_exercises'), 'JSON export must include watched exercises');
 assert(exportService.includes('trend_settings'), 'JSON export must include trend settings');
 assert(exportService.includes('trend_part_goals'), 'JSON export must include part goals');
-assert(exportService.includes('version: number = 2'), 'JSON dump version must be 2');
+assert(exportService.includes('version: number = 3'), 'JSON dump version must be 3');
+assert(exportService.includes('rir_legacy'), 'JSON export must include rir_legacy');
 
 const trendLogic = readFileSync(join(root, 'entry/src/main/ets/common/TrendLogic.ets'), 'utf8');
 for (const name of [
@@ -273,7 +275,11 @@ assert(colors.includes('dot_missed'), 'light colors must include missed dot');
 
 const setRow = readFileSync(join(root, 'entry/src/main/ets/components/SetRow.ets'), 'utf8');
 assert(!setRow.includes('Select(['), 'tag Select should be replaced by compact chip');
-assert(setRow.includes('练到力竭') || setRow.includes('rirLabel'), 'last set should expose rir chips');
+assert(setRow.includes('rirLabel'), 'set row should label RIR chips');
+assert(setRow.includes('还能做 2 下') || setRow.includes('rirChip(2)'), 'set row must offer exact RIR 2');
+assert(setRow.includes('休息暂停'), 'set row must offer rest-pause');
+assert(setRow.includes('AMRAP'), 'set row must offer AMRAP');
+assert(setRow.includes('这组备注（可选）'), 'set row must offer an optional note');
 
 const typesSrc = readFileSync(join(root, 'entry/src/main/ets/model/types.ets'), 'utf8');
 assert(typesSrc.includes("'band'"), 'equipment must include band');

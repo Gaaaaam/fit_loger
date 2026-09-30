@@ -29,7 +29,10 @@ import {
   isE1rmEstimated,
   isE1rmCountable,
   volumeChangeText,
-  prBoardLine
+  prBoardLine,
+  e1rmEffectiveReps,
+  workingLoadKg,
+  sessionRirText
 } from './trend_logic.mjs';
 
 function row(partial) {
@@ -43,6 +46,9 @@ function row(partial) {
     weight: 60,
     reps: 5,
     rir: 1,
+    rirLegacy: 0,
+    isUnilateral: 0,
+    bodyWeightKg: null,
     isWarmup: 0,
     technique: '',
     status: 'done'
@@ -80,6 +86,10 @@ assert.equal(epleyE1rm(60, 5), 70);
 assert.equal(epleyE1rm(100, 1), 100 * (1 + 1 / 30));
 assert.equal(epleyE1rm(null, 5), null);
 assert.equal(epleyE1rm(60, 0), null);
+assert.equal(e1rmEffectiveReps(row({ reps: 5, rir: 1, rirLegacy: 0 })), 6);
+assert.equal(e1rmEffectiveReps(row({ reps: 5, rir: 0, rirLegacy: 0 })), 5);
+assert.equal(e1rmEffectiveReps(row({ reps: 5, rir: 1, rirLegacy: 1 })), 5, 'legacy bucket does not add RIR');
+assert.equal(e1rmEffectiveReps(row({ reps: 5, rir: null })), 5);
 
 assert.equal(isWorkSet(row({ status: 'planned' })), false);
 assert.equal(isWorkSet(row({ isWarmup: 1 })), false);
@@ -99,6 +109,10 @@ assert.equal(isE1rmEligible(row({ rir: 0, reps: 8 })), true);
 assert.equal(isE1rmEligible(row({ status: 'planned', rir: 0 })), false);
 assert.equal(isE1rmEligible(row({ technique: 'drop', rir: 0 })), false, 'drop set cannot set e1RM');
 assert.equal(isE1rmEligible(row({ technique: 'amrap', rir: 0, reps: 6 })), true);
+assert.equal(isE1rmEligible(row({ rir: 2, reps: 6 })), false, 'exact RIR 2 is too far for e1RM');
+assert.equal(isE1rmEligible(row({ rir: 1, rirLegacy: 1, reps: 5 })), false, 'legacy 1-2 bucket is not exact RIR 1');
+assert.equal(isE1rmEstimated(row({ rir: 1, rirLegacy: 1, reps: 5 })), true, 'legacy 1-2 bucket stays an estimate');
+assert.equal(isE1rmEstimated(row({ rir: 3, rirLegacy: 1, reps: 5 })), false, 'legacy 3+ still means reps were left in reserve');
 
 // ---- stable metric assignment (no runtime switching) ----
 const sparseCompound = [
@@ -123,8 +137,8 @@ const noisy = [
 const e1rmSeries = buildLiftSeries(noisy, compoundPick);
 assert.equal(e1rmSeries.metric, 'e1rm');
 assert.equal(e1rmSeries.points.length, 2);
-assert.equal(e1rmSeries.points[0].value, 70);
-assert.equal(e1rmSeries.points[1].value, 62.5 * (1 + 5 / 30));
+assert.equal(e1rmSeries.points[0].value, 72, '60x5 @ RIR 1 uses 6 effective reps');
+assert.equal(e1rmSeries.points[1].value, 62.5 * (1 + 6 / 30));
 
 // drop/ramp/rest_pause sets must not set a new top_weight / e1RM
 const isolationPick = {
@@ -397,6 +411,15 @@ assert.equal(setVolume(row({ isWarmup: 1, weight: 40, reps: 8 })), null);
 assert.equal(setVolume(row({ status: 'planned', weight: 60, reps: 5 })), null);
 assert.equal(setVolume(row({ technique: 'drop', weight: 40, reps: 8 })), 320, 'drop sets still add volume');
 assert.equal(setVolume(row({ weight: null, reps: 5 })), null);
+assert.equal(workingLoadKg(row({ isBodyweight: 1, bodyWeightKg: 70, weight: 10 })), 80);
+assert.equal(workingLoadKg(row({ isBodyweight: 1, bodyWeightKg: null, weight: 10 })), null);
+assert.equal(setVolume(row({ isBodyweight: 1, bodyWeightKg: 70, weight: 10, reps: 8 })), 640);
+assert.equal(setVolume(row({ isBodyweight: 1, bodyWeightKg: 70, weight: null, reps: 8 })), 560);
+assert.equal(setVolume(row({ isBodyweight: 1, bodyWeightKg: null, weight: 0, reps: 8 })), null);
+assert.equal(setVolume(row({ isUnilateral: 1, weight: 20, reps: 10 })), 400, 'per-side reps count both sides');
+assert.equal(sessionRirText(1, 0), 'RIR 1');
+assert.equal(sessionRirText(null, 1), '早期 RIR');
+assert.equal(sessionRirText(null, 0), 'RIR 未记录');
 
 const volumeCurve = buildVolumeSeries([
   row({ date: '2026-08-10', weight: 60, reps: 5 }),

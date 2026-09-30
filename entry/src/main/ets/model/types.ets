@@ -47,7 +47,7 @@ export const EQUIPMENT_OPTIONS: EquipmentInfo[] = [
   { key: 'other', name: '其他' }
 ];
 
-export const RIR_OPTIONS: number[] = [0, 1, 3];
+export const RIR_OPTIONS: number[] = [0, 1, 2, 3];
 
 export function partName(key: string): string {
   for (let i = 0; i < BODY_PARTS.length; i++) {
@@ -146,15 +146,30 @@ export function equipmentName(key: string): string {
   return key;
 }
 
-export function rirLabel(rir: number): string {
+export function rirLabel(rir: number, legacy: number): string {
+  if (legacy === 1) {
+    if (rir === 0) {
+      return '力竭';
+    }
+    if (rir === 1) {
+      return '早期：还能做 1–2 下';
+    }
+    if (rir === 3) {
+      return '早期：还能做 3 下以上';
+    }
+    return '早期记录';
+  }
   if (rir === 0) {
-    return '练到力竭';
+    return '力竭';
   }
   if (rir === 1) {
-    return '还能做 1-2 下';
+    return '还能做 1 下';
+  }
+  if (rir === 2) {
+    return '还能做 2 下';
   }
   if (rir === 3) {
-    return '还能做 3 下以上';
+    return '还能做 3 下';
   }
   return '';
 }

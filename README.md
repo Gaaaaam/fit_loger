@@ -89,7 +89,7 @@ fit_loger/
 
 ## 数据模型
 
-Schema 版本：`CURRENT_VERSION = 2`（见 `entry/src/main/ets/db/schemaSql.ets`）。JSON 导出同样是 version `2`。
+Schema 版本：`CURRENT_VERSION = 3`（见 `entry/src/main/ets/db/schemaSql.ets`）。JSON 导出同样是 version `3`。v3 给每组增加 `rir_legacy`：升级前写成「还能做 1–2 下 / 3 下以上」的记录保持早期合并档，新记录用精确 RIR 0–3。
 
 | 表 | 作用 |
 | --- | --- |

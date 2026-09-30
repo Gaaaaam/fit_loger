@@ -8,7 +8,7 @@ import { ExerciseInfoView } from '../components/ExerciseInfoView';
 import { ExerciseSheet } from '../components/ExerciseSheet';
 import { PartSection } from '../components/PartSection';
 import { displayChineseDate, todayString } from '../common/DateUtil';
-import { parseReps, parseWeight, ParseResult, insertIndexBySortOrder } from '../common/WorkoutLogic';
+import { parseReps, parseWeight, ParseResult, insertIndexBySortOrder, trimNote } from '../common/WorkoutLogic';
 import { WorkoutRepository } from '../db/WorkoutRepository';
 import { DayModel, ExerciseItem, PartItem, PrResult, RecentDayInfo, SetItem } from '../model/DayModels';
 import { WorkoutViewMode } from '../model/muscleTypes';
@@ -23,6 +23,7 @@ interface RouterDateParams {
 struct DayDetailPage {
   @State dateStr: string = '';
   @State titleText: string = '';
+  @State dayNoteText: string = '';
   @State day: DayModel = new DayModel();
   @State viewMode: WorkoutViewMode = 'part';
   @State showSheet: boolean = false;
@@ -35,9 +36,13 @@ struct DayDetailPage {
   @State undoVisible: boolean = false;
   @State undoLabel: string = '';
   @State plannedTick: number = 0;
+  @State collapsedPartKeys: string[] = [];
+  @State collapsedExerciseIds: number[] = [];
   private undoItem: SetItem = new SetItem();
   private undoExerciseRowId: number = 0;
   private undoTimer: number = -1;
+  private dayNoteTimer: number = -1;
+  private dayNoteDirty: boolean = false;
   private listScroller: Scroller = new Scroller();
   private pickerOpened: boolean = false;
 
@@ -55,6 +60,14 @@ struct DayDetailPage {
     this.titleText = displayChineseDate(this.dateStr);
     this.loadViewMode();
     this.reload();
+  }
+
+  aboutToDisappear(): void {
+    if (this.dayNoteTimer !== -1) {
+      clearTimeout(this.dayNoteTimer);
+      this.dayNoteTimer = -1;
+    }
+    this.flushDayNote();
   }
 
   onPageShow(): void {
@@ -145,9 +158,38 @@ struct DayDetailPage {
     this.day.exercises = this.day.exercises.slice();
   }
 
+  private exerciseExpanded(exerciseRowId: number): boolean {
+    return this.collapsedExerciseIds.indexOf(exerciseRowId) < 0;
+  }
+
+  private togglePart(partKey: string): void {
+    const next: string[] = this.collapsedPartKeys.slice();
+    const index: number = next.indexOf(partKey);
+    if (index >= 0) {
+      next.splice(index, 1);
+    } else {
+      next.push(partKey);
+    }
+    this.collapsedPartKeys = next;
+  }
+
+  private toggleExercise(exerciseRowId: number): void {
+    const next: number[] = this.collapsedExerciseIds.slice();
+    const index: number = next.indexOf(exerciseRowId);
+    if (index >= 0) {
+      next.splice(index, 1);
+    } else {
+      next.push(exerciseRowId);
+    }
+    this.collapsedExerciseIds = next;
+  }
+
   private async reload(): Promise<void> {
     try {
       this.day = await WorkoutRepository.loadDay(this.dateStr);
+      if (!this.dayNoteDirty) {
+        this.dayNoteText = this.day.note;
+      }
       this.plannedTick++;
     } catch (err) {
       hilog.error(0xF170, 'DayDetailPage', 'reload failed');
@@ -155,6 +197,37 @@ struct DayDetailPage {
         this.day.date = this.dateStr;
       }
     }
+  }
+
+  private scheduleDayNote(): void {
+    this.dayNoteDirty = true;
+    if (this.dayNoteTimer !== -1) {
+      clearTimeout(this.dayNoteTimer);
+    }
+    this.dayNoteTimer = setTimeout(() => {
+      this.dayNoteTimer = -1;
+      this.flushDayNote();
+    }, 280);
+  }
+
+  private flushDayNote(): void {
+    if (this.dateStr.length === 0) {
+      return;
+    }
+    const text: string = this.dayNoteText;
+    WorkoutRepository.saveDayNote(this.dateStr, text).then((dayId: number) => {
+      if (dayId > 0) {
+        this.day.dayId = dayId;
+      } else if (trimNote(text).length === 0) {
+        this.day.dayId = 0;
+      }
+      if (this.dayNoteText === text) {
+        this.day.note = trimNote(text);
+        this.dayNoteDirty = false;
+      }
+    }).catch(() => {
+      hilog.error(0xF170, 'DayDetailPage', 'save day note failed');
+    });
   }
 
   private async handlePickPart(key: PartKey): Promise<void> {
@@ -591,6 +664,18 @@ struct DayDetailPage {
         .width('100%')
         .margin({ bottom: 10 })
 
+      TextInput({ text: this.dayNoteText, placeholder: '今天的备注（可选）' })
+        .height(40)
+        .width('100%')
+        .margin({ bottom: 12 })
+        .backgroundColor($r('app.color.chip_bg'))
+        .borderRadius(8)
+        .maxLength(80)
+        .onChange((value: string) => {
+          this.dayNoteText = value;
+          this.scheduleDayNote();
+        })
+
       Row({ space: 8 }) {
         Text('部位')
           .fontSize(14)
@@ -664,6 +749,10 @@ struct DayDetailPage {
                 ExerciseCard({
                   exercise: exercise,
                   listStamp: this.plannedTick,
+                  expanded: this.exerciseExpanded(exercise.id),
+                  onToggle: () => {
+                    this.toggleExercise(exercise.id);
+                  },
                   onAddSet: (exerciseRowId: number) => {
                     this.handleAddSet(exerciseRowId);
                   },
@@ -689,6 +778,14 @@ struct DayDetailPage {
                 PartSection({
                   part: part,
                   listStamp: this.plannedTick,
+                  collapsedPartKeys: this.collapsedPartKeys,
+                  collapsedExerciseIds: this.collapsedExerciseIds,
+                  onTogglePart: (partKey: string) => {
+                    this.togglePart(partKey);
+                  },
+                  onToggleExercise: (exerciseRowId: number) => {
+                    this.toggleExercise(exerciseRowId);
+                  },
                   onAddExercise: (partKey: string) => {
                     this.openExercisePicker(partKey);
                   },

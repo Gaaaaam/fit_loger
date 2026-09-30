@@ -1,11 +1,11 @@
 import { relationalStore } from '@kit.ArkData';
 import { fileIo } from '@kit.CoreFileKit';
-import { CsvSetRow, setCsvHeader, setToCsvRow } from '../common/WorkoutLogic';
+import { CsvSetRow, rirLegacyForImport, setCsvHeader, setToCsvRow } from '../common/WorkoutLogic';
 import { seedBuiltinExercises } from './ExerciseSeed';
 import { WorkoutDatabase } from './WorkoutDatabase';
 
 class JsonDump {
-  version: number = 2;
+  version: number = 3;
   exportedAt: number = 0;
   exercises: relationalStore.ValuesBucket[] = [];
   workout_days: relationalStore.ValuesBucket[] = [];
@@ -36,9 +36,9 @@ export class ExportService {
       ['id', 'day_id', 'exercise_id', 'sort_order', 'note']
     );
     dump.workout_sets = await ExportService.readBuckets(
-      'SELECT id, day_exercise_id, weight, reps, is_warmup, technique, rir, status, completed_at, note, sort_order FROM workout_sets',
-      ['id', 'day_exercise_id', 'weight', 'reps', 'is_warmup', 'technique', 'rir', 'status', 'completed_at', 'note',
-        'sort_order']
+      'SELECT id, day_exercise_id, weight, reps, is_warmup, technique, rir, rir_legacy, status, completed_at, note, sort_order FROM workout_sets',
+      ['id', 'day_exercise_id', 'weight', 'reps', 'is_warmup', 'technique', 'rir', 'rir_legacy', 'status',
+        'completed_at', 'note', 'sort_order']
     );
     dump.body_metrics = await ExportService.readBuckets(
       'SELECT date, weight_kg, note, created_at FROM body_metrics',
@@ -63,7 +63,7 @@ export class ExportService {
     const sql: string =
       'SELECT d.date AS date, x.name AS exercise_name, e.exercise_id AS exercise_id, x.part_key AS part_key, ' +
       's.weight AS weight, s.reps AS reps, s.is_warmup AS is_warmup, s.technique AS technique, ' +
-      's.rir AS rir, s.status AS status, s.completed_at AS completed_at, s.note AS note, s.sort_order AS sort_order ' +
+      's.rir AS rir, s.rir_legacy AS rir_legacy, s.status AS status, s.completed_at AS completed_at, s.note AS note, s.sort_order AS sort_order ' +
       'FROM workout_sets s ' +
       'INNER JOIN day_exercises e ON e.id = s.day_exercise_id ' +
       'INNER JOIN workout_days d ON d.id = e.day_id ' +
@@ -85,6 +85,8 @@ export class ExportService {
       row.isWarmup = warmup === null ? 0 : warmup;
       row.technique = ExportService.strCol(rs, 'technique');
       row.rir = ExportService.intCol(rs, 'rir');
+      const legacy: number | null = ExportService.intCol(rs, 'rir_legacy');
+      row.rirLegacy = legacy === null ? 0 : legacy;
       row.status = ExportService.strCol(rs, 'status');
       row.completedAt = ExportService.intCol(rs, 'completed_at');
       row.note = ExportService.strCol(rs, 'note');
@@ -112,6 +114,7 @@ export class ExportService {
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     store.beginTransaction();
     try {
+      ExportService.normalizeImportedSets(dump);
       await ExportService.replaceTable(store, 'workout_sets', dump.workout_sets);
       await ExportService.replaceTable(store, 'day_exercises', dump.day_exercises);
       await ExportService.replaceTable(store, 'workout_days', dump.workout_days);
@@ -128,6 +131,37 @@ export class ExportService {
       store.rollBack();
       throw new Error('importJsonText failed');
     }
+  }
+
+  private static normalizeImportedSets(dump: JsonDump): void {
+    if (dump.workout_sets === undefined || dump.workout_sets === null) {
+      return;
+    }
+    const version: number = dump.version > 0 ? dump.version : 2;
+    for (let i = 0; i < dump.workout_sets.length; i++) {
+      const row: relationalStore.ValuesBucket = dump.workout_sets[i];
+      const rir: number | null = ExportService.bucketNumber(row, 'rir');
+      const stored: number | null = ExportService.bucketNumber(row, 'rir_legacy');
+      row['rir_legacy'] = rirLegacyForImport(version, rir, stored);
+    }
+  }
+
+  private static bucketNumber(row: relationalStore.ValuesBucket, key: string): number | null {
+    const value: relationalStore.ValueType = row[key];
+    if (value === undefined || value === null) {
+      return null;
+    }
+    if (typeof value === 'number') {
+      return value;
+    }
+    if (typeof value === 'string' && value.length > 0) {
+      const parsed: number = Number.parseFloat(value);
+      if (Number.isNaN(parsed)) {
+        return null;
+      }
+      return parsed;
+    }
+    return null;
   }
 
   private static async readBuckets(sql: string, cols: string[]): Promise<relationalStore.ValuesBucket[]> {

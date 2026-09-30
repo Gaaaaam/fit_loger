@@ -14,6 +14,8 @@ import {
   groupExercisesByPart,
   datesWithDoneSets,
   setCsvHeader,
+  rirLegacyForImport,
+  trimNote,
   setToCsvRow,
   formatLastHint,
   vsLastProgressText,
@@ -138,7 +140,17 @@ assert.deepEqual(
 const header = setCsvHeader();
 assert.ok(header.includes('status'));
 assert.ok(header.includes('rir'));
+assert.ok(header.includes('rir_legacy'));
 assert.ok(header.includes('completed_at'));
+assert.equal(rirLegacyForImport(2, 1, null), 1);
+assert.equal(rirLegacyForImport(2, 3, null), 1);
+assert.equal(rirLegacyForImport(2, 0, null), 0);
+assert.equal(rirLegacyForImport(2, null, null), 0);
+assert.equal(rirLegacyForImport(3, 1, 0), 0, 'a version 3 exact RIR 1 stays exact');
+assert.equal(rirLegacyForImport(3, 1, 1), 1);
+assert.equal(trimNote('  左肩紧  '), '左肩紧');
+assert.equal(trimNote(''), '');
+assert.equal(trimNote('a'.repeat(90)).length, 80);
 const row = setToCsvRow({
   date: '2026-09-04',
   exerciseName: '杠铃卧推',

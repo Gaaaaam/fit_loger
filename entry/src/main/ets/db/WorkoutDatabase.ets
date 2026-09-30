@@ -69,8 +69,9 @@ export class WorkoutDatabase {
 
   private static async migrate(store: relationalStore.RdbStore, context: common.UIAbilityContext): Promise<void> {
     if (store.version >= CURRENT_VERSION) {
-      // 幂等：即便版本号已是最新，也确保趋势配置表存在（例如从中断的升级恢复）。
+      // 幂等：即便版本号已是最新，也确保趋势配置表和 rir_legacy 列存在。
       await WorkoutDatabase.createTrendSchema(store);
+      await WorkoutDatabase.ensureRirLegacy(store);
       await seedBuiltinExercises(store);
       return;
     }
@@ -95,6 +96,7 @@ export class WorkoutDatabase {
       // v1 -> v2：只新增趋势配置表，训练历史表结构不变，无需搬数据。
       await WorkoutDatabase.createTrendSchema(store);
       await seedBuiltinExercises(store);
+      await WorkoutDatabase.ensureRirLegacy(store);
       store.version = CURRENT_VERSION;
       return;
     }
@@ -102,6 +104,7 @@ export class WorkoutDatabase {
     if (needsLegacyCopy) {
       await WorkoutDatabase.migrateLegacy(store);
       await WorkoutDatabase.createTrendSchema(store);
+      await WorkoutDatabase.ensureRirLegacy(store);
       store.version = CURRENT_VERSION;
       return;
     }
@@ -109,7 +112,17 @@ export class WorkoutDatabase {
     await WorkoutDatabase.createV1Schema(store);
     await WorkoutDatabase.createTrendSchema(store);
     await seedBuiltinExercises(store);
+    await WorkoutDatabase.ensureRirLegacy(store);
     store.version = CURRENT_VERSION;
+  }
+
+  private static async ensureRirLegacy(store: relationalStore.RdbStore): Promise<void> {
+    const has: boolean = await WorkoutDatabase.columnExists(store, 'workout_sets', 'rir_legacy');
+    if (has) {
+      return;
+    }
+    await store.executeSql('ALTER TABLE workout_sets ADD COLUMN rir_legacy INTEGER NOT NULL DEFAULT 0');
+    await store.executeSql('UPDATE workout_sets SET rir_legacy = 1 WHERE rir IN (1, 3)');
   }
 
   private static async createV1Schema(store: relationalStore.RdbStore): Promise<void> {

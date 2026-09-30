@@ -14,6 +14,9 @@ export class TrendSetRow {
   weight: number | null = null;
   reps: number | null = null;
   rir: number | null = null;
+  rirLegacy: number = 0;
+  isUnilateral: number = 0;
+  bodyWeightKg: number | null = null;
   isWarmup: number = 0;
   technique: string = '';
   status: string = 'done';
@@ -103,6 +106,7 @@ export class ExerciseSessionRow {
   value: number | null = null;
   workSets: number = 0;
   minRir: number | null = null;
+  rirLegacy: number = 0;
 }
 
 export class ExerciseTrendDetail {
@@ -228,11 +232,25 @@ export function epleyE1rm(weight: number | null, reps: number | null): number | 
   return weight * (1 + reps / 30);
 }
 
+export function e1rmEffectiveReps(row: TrendSetRow): number | null {
+  if (row.reps === null) {
+    return null;
+  }
+  if (row.rirLegacy === 1 || row.rir === null) {
+    return row.reps;
+  }
+  return row.reps + row.rir;
+}
+
+function isLegacyBucketOne(row: TrendSetRow): boolean {
+  return row.rirLegacy === 1 && row.rir === 1;
+}
+
 export function isE1rmEligible(row: TrendSetRow): boolean {
   if (!isLiftPerformancePoint(row)) {
     return false;
   }
-  if (row.rir === null || row.rir > 1) {
+  if (row.rirLegacy === 1 || row.rir === null || row.rir > 1) {
     return false;
   }
   if (row.reps === null || row.reps < 1 || row.reps > 8) {
@@ -248,7 +266,7 @@ export function isE1rmEstimated(row: TrendSetRow): boolean {
   if (!isLiftPerformancePoint(row)) {
     return false;
   }
-  if (row.rir !== null) {
+  if (row.rir !== null && !isLegacyBucketOne(row)) {
     return false;
   }
   if (row.reps === null || row.reps < 1 || row.reps > 8) {
@@ -264,11 +282,37 @@ export function isE1rmCountable(row: TrendSetRow): boolean {
   return isE1rmEligible(row) || isE1rmEstimated(row);
 }
 
+export function workingLoadKg(row: TrendSetRow): number | null {
+  if (row.isBodyweight === 1) {
+    if (row.bodyWeightKg === null || row.bodyWeightKg <= 0) {
+      return null;
+    }
+    const added: number = row.weight === null ? 0 : row.weight;
+    return row.bodyWeightKg + added;
+  }
+  return row.weight;
+}
+
 export function setVolume(row: TrendSetRow): number | null {
-  if (!isWorkSet(row) || row.weight === null || row.reps === null) {
+  if (!isWorkSet(row) || row.reps === null) {
     return null;
   }
-  return row.weight * row.reps;
+  const load: number | null = workingLoadKg(row);
+  if (load === null) {
+    return null;
+  }
+  const sides: number = row.isUnilateral === 1 ? 2 : 1;
+  return load * row.reps * sides;
+}
+
+export function sessionRirText(minRir: number | null, rirLegacy: number): string {
+  if (minRir !== null) {
+    return `RIR ${minRir}`;
+  }
+  if (rirLegacy === 1) {
+    return '早期 RIR';
+  }
+  return 'RIR 未记录';
 }
 
 export function buildVolumeSeries(rows: TrendSetRow[]): TrendPoint[] {
@@ -997,6 +1041,7 @@ function exerciseSessionRows(rows: TrendSetRow[], exerciseId: string, metric: st
   const dateOrder: string[] = [];
   const workSetsByDate: Map<string, number> = new Map();
   const minRirByDate: Map<string, number> = new Map();
+  const legacyRirByDate: Map<string, number> = new Map();
   for (let i = 0; i < rows.length; i++) {
     const row: TrendSetRow = rows[i];
     if (row.exerciseId !== exerciseId || !isWorkSet(row)) {
@@ -1007,7 +1052,9 @@ function exerciseSessionRows(rows: TrendSetRow[], exerciseId: string, metric: st
       workSetsByDate.set(row.date, 0);
     }
     workSetsByDate.set(row.date, (workSetsByDate.get(row.date) as number) + 1);
-    if (row.rir !== null) {
+    if (row.rirLegacy === 1) {
+      legacyRirByDate.set(row.date, 1);
+    } else if (row.rir !== null) {
       const cur: number | undefined = minRirByDate.get(row.date);
       if (cur === undefined || row.rir < cur) {
         minRirByDate.set(row.date, row.rir);
@@ -1033,6 +1080,7 @@ function exerciseSessionRows(rows: TrendSetRow[], exerciseId: string, metric: st
     item.workSets = workSetsByDate.get(date) as number;
     const rirVal: number | undefined = minRirByDate.get(date);
     item.minRir = rirVal === undefined ? null : rirVal;
+    item.rirLegacy = rirVal === undefined && legacyRirByDate.get(date) === 1 ? 1 : 0;
     result.push(item);
   }
   return result;
@@ -1156,14 +1204,14 @@ function aggregateDays(rows: TrendSetRow[], exerciseId: string): DayAgg[] {
       continue;
     }
     if (isE1rmEligible(row)) {
-      const e1rm: number | null = epleyE1rm(row.weight, row.reps);
+      const e1rm: number | null = epleyE1rm(row.weight, e1rmEffectiveReps(row));
       if (e1rm !== null && (day.bestE1rm === null || !day.e1rmStrict || e1rm > day.bestE1rm)) {
         day.bestE1rm = e1rm;
         day.e1rmStrict = true;
         day.e1rmEstimated = false;
       }
     } else if (!day.e1rmStrict && isE1rmEstimated(row)) {
-      const e1rm: number | null = epleyE1rm(row.weight, row.reps);
+      const e1rm: number | null = epleyE1rm(row.weight, e1rmEffectiveReps(row));
       if (e1rm !== null && (day.bestE1rm === null || e1rm > day.bestE1rm)) {
         day.bestE1rm = e1rm;
         day.e1rmEstimated = true;

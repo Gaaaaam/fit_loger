@@ -208,6 +208,27 @@ export function datesWithDoneSets(rows) {
   return dates;
 }
 
+export function rirLegacyForImport(version, rir, storedLegacy) {
+  if (version >= 3 && storedLegacy !== null && storedLegacy !== undefined) {
+    return storedLegacy === 1 ? 1 : 0;
+  }
+  if (rir === 1 || rir === 3) {
+    return 1;
+  }
+  return 0;
+}
+
+export function trimNote(text) {
+  if (text === null || text === undefined) {
+    return '';
+  }
+  const trimmed = `${text}`.trim();
+  if (trimmed.length <= 80) {
+    return trimmed;
+  }
+  return trimmed.slice(0, 80);
+}
+
 export function setCsvHeader() {
   return [
     'date',
@@ -219,6 +240,7 @@ export function setCsvHeader() {
     'is_warmup',
     'technique',
     'rir',
+    'rir_legacy',
     'status',
     'completed_at',
     'note',
@@ -248,6 +270,7 @@ export function setToCsvRow(row) {
     csvCell(row.isWarmup),
     csvCell(row.technique),
     csvCell(row.rir),
+    csvCell(row.rirLegacy),
     csvCell(row.status),
     csvCell(row.completedAt),
     csvCell(row.note),

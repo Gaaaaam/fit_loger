@@ -85,11 +85,25 @@ export function epleyE1rm(weight, reps) {
   return weight * (1 + reps / 30);
 }
 
+export function e1rmEffectiveReps(row) {
+  if (row.reps === null || row.reps === undefined) {
+    return null;
+  }
+  if (row.rirLegacy === 1 || row.rir === null || row.rir === undefined) {
+    return row.reps;
+  }
+  return row.reps + row.rir;
+}
+
+function isLegacyBucketOne(row) {
+  return row.rirLegacy === 1 && row.rir === 1;
+}
+
 export function isE1rmEligible(row) {
   if (!isLiftPerformancePoint(row)) {
     return false;
   }
-  if (row.rir === null || row.rir === undefined || row.rir > 1) {
+  if (row.rirLegacy === 1 || row.rir === null || row.rir === undefined || row.rir > 1) {
     return false;
   }
   if (row.reps === null || row.reps === undefined || row.reps < 1 || row.reps > 8) {
@@ -105,7 +119,8 @@ export function isE1rmEstimated(row) {
   if (!isLiftPerformancePoint(row)) {
     return false;
   }
-  if (row.rir !== null && row.rir !== undefined) {
+  const missingRir = row.rir === null || row.rir === undefined;
+  if (!missingRir && !isLegacyBucketOne(row)) {
     return false;
   }
   if (row.reps === null || row.reps === undefined || row.reps < 1 || row.reps > 8) {
@@ -121,14 +136,43 @@ export function isE1rmCountable(row) {
   return isE1rmEligible(row) || isE1rmEstimated(row);
 }
 
+export function workingLoadKg(row) {
+  if (row.isBodyweight === 1) {
+    if (row.bodyWeightKg === null || row.bodyWeightKg === undefined || row.bodyWeightKg <= 0) {
+      return null;
+    }
+    const added = row.weight === null || row.weight === undefined ? 0 : row.weight;
+    return row.bodyWeightKg + added;
+  }
+  if (row.weight === null || row.weight === undefined) {
+    return null;
+  }
+  return row.weight;
+}
+
 export function setVolume(row) {
   if (!isWorkSet(row)) {
     return null;
   }
-  if (row.weight === null || row.weight === undefined || row.reps === null || row.reps === undefined) {
+  if (row.reps === null || row.reps === undefined) {
     return null;
   }
-  return row.weight * row.reps;
+  const load = workingLoadKg(row);
+  if (load === null) {
+    return null;
+  }
+  const sides = row.isUnilateral === 1 ? 2 : 1;
+  return load * row.reps * sides;
+}
+
+export function sessionRirText(minRir, rirLegacy) {
+  if (minRir !== null && minRir !== undefined) {
+    return `RIR ${minRir}`;
+  }
+  if (rirLegacy === 1) {
+    return '早期 RIR';
+  }
+  return 'RIR 未记录';
 }
 
 export function buildVolumeSeries(rows) {
@@ -788,6 +832,7 @@ function exerciseSessionRows(rows, exerciseId, metric) {
   const dateOrder = [];
   const workSetsByDate = new Map();
   const minRirByDate = new Map();
+  const legacyRirByDate = new Map();
   for (let i = 0; i < rows.length; i++) {
     const row = rows[i];
     if (row.exerciseId !== exerciseId || !isWorkSet(row)) {
@@ -798,7 +843,9 @@ function exerciseSessionRows(rows, exerciseId, metric) {
       workSetsByDate.set(row.date, 0);
     }
     workSetsByDate.set(row.date, workSetsByDate.get(row.date) + 1);
-    if (row.rir !== null) {
+    if (row.rirLegacy === 1) {
+      legacyRirByDate.set(row.date, 1);
+    } else if (row.rir !== null && row.rir !== undefined) {
       const cur = minRirByDate.get(row.date);
       if (cur === undefined || row.rir < cur) {
         minRirByDate.set(row.date, row.rir);
@@ -822,7 +869,8 @@ function exerciseSessionRows(rows, exerciseId, metric) {
       date,
       value: v === undefined ? null : v,
       workSets: workSetsByDate.get(date),
-      minRir: minRirByDate.get(date) === undefined ? null : minRirByDate.get(date)
+      minRir: minRirByDate.get(date) === undefined ? null : minRirByDate.get(date),
+      rirLegacy: minRirByDate.get(date) === undefined && legacyRirByDate.get(date) === 1 ? 1 : 0
     });
   }
   return result;
@@ -949,7 +997,7 @@ function aggregateDays(rows, exerciseId) {
       continue;
     }
     if (isE1rmCountable(row)) {
-      const e1rm = epleyE1rm(row.weight, row.reps);
+      const e1rm = epleyE1rm(row.weight, e1rmEffectiveReps(row));
       if (e1rm !== null && (day.bestE1rm === null || e1rm > day.bestE1rm)) {
         day.bestE1rm = e1rm;
         day.e1rmFromEstimate = isE1rmEstimated(row);

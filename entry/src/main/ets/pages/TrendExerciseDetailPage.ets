@@ -10,6 +10,7 @@ import {
   ExerciseSessionRow,
   ExerciseTrendDetail,
   formatTrendNumber,
+  sessionRirText,
   TrendSetRow
 } from '../common/TrendLogic';
 import { todayString } from '../common/DateUtil';
@@ -125,7 +126,7 @@ struct TrendExerciseDetailPage {
         .fontSize(13)
         .fontColor($r('app.color.text_secondary'))
         .margin({ right: 12 })
-      Text(item.minRir === null ? 'RIR 未记录' : `RIR ${item.minRir}`)
+      Text(sessionRirText(item.minRir, item.rirLegacy))
         .fontSize(13)
         .fontColor($r('app.color.text_secondary'))
       TermHint({

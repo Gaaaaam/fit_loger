@@ -1,4 +1,6 @@
-import { parseReps, parseWeight, HintSet, vsLastCardText } from '../common/WorkoutLogic';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { parseReps, parseWeight, HintSet, trimNote, vsLastCardText } from '../common/WorkoutLogic';
+import { WorkoutRepository } from '../db/WorkoutRepository';
 import { ExerciseItem, SetItem } from '../model/DayModels';
 import { SetRow } from './SetRow';
 
@@ -6,6 +8,9 @@ import { SetRow } from './SetRow';
 export struct ExerciseCard {
   @ObjectLink exercise: ExerciseItem;
   @Prop listStamp: number = 0;
+  @Prop expanded: boolean = true;
+  onToggle: () => void = () => {
+  };
   onAddSet: (exerciseRowId: number) => void = (_id: number) => {
   };
   onDeleteExercise: (exerciseRowId: number) => void = (_id: number) => {
@@ -18,6 +23,35 @@ export struct ExerciseCard {
   };
   onOpenDetail: (exercise: ExerciseItem) => void = (_exercise: ExerciseItem) => {
   };
+  private noteTimer: number = -1;
+
+  aboutToDisappear(): void {
+    if (this.noteTimer !== -1) {
+      clearTimeout(this.noteTimer);
+      this.noteTimer = -1;
+    }
+    this.flushNote();
+  }
+
+  private scheduleNote(): void {
+    if (this.noteTimer !== -1) {
+      clearTimeout(this.noteTimer);
+    }
+    this.noteTimer = setTimeout(() => {
+      this.noteTimer = -1;
+      this.flushNote();
+    }, 280);
+  }
+
+  private flushNote(): void {
+    if (this.exercise.id <= 0) {
+      return;
+    }
+    const note: string = trimNote(this.exercise.note);
+    WorkoutRepository.saveExerciseNote(this.exercise.id, note).catch(() => {
+      hilog.error(0xF170, 'ExerciseCard', 'save note failed');
+    });
+  }
 
   private setKey(setItem: SetItem): string {
     const stamp: number = this.listStamp;
@@ -68,13 +102,39 @@ export struct ExerciseCard {
   build() {
     Column() {
       Row() {
-        Text(this.exercise.name)
-          .fontSize(17)
-          .fontWeight(FontWeight.Medium)
-          .fontColor($r('app.color.text_primary'))
-          .maxLines(2)
-          .textOverflow({ overflow: TextOverflow.Ellipsis })
-          .layoutWeight(1)
+        Row() {
+          Column() {
+            Text(this.expanded ? '▼' : '▶')
+              .fontSize(11)
+              .fontWeight(FontWeight.Bold)
+              .fontColor($r('app.color.accent'))
+          }
+          .width(28)
+          .height(28)
+          .justifyContent(FlexAlign.Center)
+          .alignItems(HorizontalAlign.Center)
+          .backgroundColor($r('app.color.accent_soft'))
+          .borderRadius(14)
+          .margin({ right: 8 })
+          Text(this.exercise.name)
+            .fontSize(17)
+            .fontWeight(FontWeight.Medium)
+            .fontColor($r('app.color.text_primary'))
+            .maxLines(2)
+            .textOverflow({ overflow: TextOverflow.Ellipsis })
+            .layoutWeight(1)
+          if (!this.expanded) {
+            Text(`${this.exercise.sets.length} 组`)
+              .fontSize(13)
+              .fontColor($r('app.color.text_secondary'))
+              .margin({ left: 8 })
+          }
+        }
+        .layoutWeight(1)
+        .alignItems(VerticalAlign.Center)
+        .onClick(() => {
+          this.onToggle();
+        })
         Text('详情')
           .fontSize(13)
           .fontColor($r('app.color.accent'))
@@ -91,56 +151,71 @@ export struct ExerciseCard {
       }
       .width('100%')
 
-      if (this.exercise.lastHint.length > 0) {
-        Text(this.exercise.lastHint)
-          .fontSize(13)
-          .fontColor($r('app.color.text_secondary'))
+      if (this.expanded) {
+        TextInput({ text: this.exercise.note, placeholder: '这个动作的备注（可选）' })
+          .height(36)
           .width('100%')
-          .margin({ top: 4 })
-      }
-
-      if (this.progressText().length > 0) {
-        Text(this.progressText())
-          .fontSize(13)
-          .fontColor(this.progressText().indexOf('+') >= 0 ? $r('app.color.accent') : $r('app.color.text_secondary'))
-          .width('100%')
-          .margin({ top: 2 })
-      }
-
-      if (this.exercise.sets.length === 0) {
-        Text('还没有组，点下方添加')
-          .fontSize(13)
-          .fontColor($r('app.color.text_secondary'))
-          .margin({ top: 10, bottom: 6 })
-          .width('100%')
-      } else {
-        ForEach(this.exercise.sets, (setItem: SetItem) => {
-          SetRow({
-            setItem: setItem,
-            weightPlaceholder: this.exercise.isBodyweight === 1 ? '额外负重 kg' : '重量 kg',
-            onDeleted: (setId: number) => {
-              this.onDeleteSet(setId);
-            },
-            onBecameDone: (item: SetItem) => {
-              this.onSetBecameDone(this.exercise.exerciseId, item);
-            },
-            onStatusChanged: () => {
-              this.onStatusChanged();
-            }
+          .margin({ top: 8 })
+          .backgroundColor($r('app.color.chip_bg'))
+          .borderRadius(8)
+          .maxLength(80)
+          .onChange((value: string) => {
+            this.exercise.note = value;
+            this.scheduleNote();
           })
-        }, (setItem: SetItem) => this.setKey(setItem))
-      }
 
-      Button('添加组')
-        .fontSize(14)
-        .fontColor($r('app.color.accent'))
-        .backgroundColor($r('app.color.accent_soft'))
-        .height(36)
-        .width('100%')
-        .margin({ top: 8 })
-        .onClick(() => {
-          this.onAddSet(this.exercise.id);
-        })
+        if (this.exercise.lastHint.length > 0) {
+          Text(this.exercise.lastHint)
+            .fontSize(13)
+            .fontColor($r('app.color.text_secondary'))
+            .width('100%')
+            .margin({ top: 4 })
+        }
+
+        if (this.progressText().length > 0) {
+          Text(this.progressText())
+            .fontSize(13)
+            .fontColor(this.progressText().indexOf('+') >= 0 ? $r('app.color.accent') : $r('app.color.text_secondary'))
+            .width('100%')
+            .margin({ top: 2 })
+        }
+
+        if (this.exercise.sets.length === 0) {
+          Text('还没有组，点下方添加')
+            .fontSize(13)
+            .fontColor($r('app.color.text_secondary'))
+            .margin({ top: 10, bottom: 6 })
+            .width('100%')
+        } else {
+          ForEach(this.exercise.sets, (setItem: SetItem) => {
+            SetRow({
+              setItem: setItem,
+              weightPlaceholder: this.exercise.isBodyweight === 1 ? '额外负重 kg' : '重量 kg',
+              repsPlaceholder: this.exercise.isUnilateral === 1 ? '每侧次数' : '次数',
+              onDeleted: (setId: number) => {
+                this.onDeleteSet(setId);
+              },
+              onBecameDone: (item: SetItem) => {
+                this.onSetBecameDone(this.exercise.exerciseId, item);
+              },
+              onStatusChanged: () => {
+                this.onStatusChanged();
+              }
+            })
+          }, (setItem: SetItem) => this.setKey(setItem))
+        }
+
+        Button('添加组')
+          .fontSize(14)
+          .fontColor($r('app.color.accent'))
+          .backgroundColor($r('app.color.accent_soft'))
+          .height(36)
+          .width('100%')
+          .margin({ top: 8 })
+          .onClick(() => {
+            this.onAddSet(this.exercise.id);
+          })
+      }
     }
     .width('100%')
     .padding(14)

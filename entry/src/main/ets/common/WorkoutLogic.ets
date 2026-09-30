@@ -72,6 +72,7 @@ export class CsvSetRow {
   isWarmup: number = 0;
   technique: string = '';
   rir: number | null = null;
+  rirLegacy: number = 0;
   status: string = 'done';
   completedAt: number | null = null;
   note: string = '';
@@ -352,8 +353,26 @@ export function datesWithDoneSets(rows: DateStatusRow[]): string[] {
   return dates;
 }
 
+export function rirLegacyForImport(version: number, rir: number | null, storedLegacy: number | null): number {
+  if (version >= 3 && storedLegacy !== null) {
+    return storedLegacy === 1 ? 1 : 0;
+  }
+  if (rir === 1 || rir === 3) {
+    return 1;
+  }
+  return 0;
+}
+
+export function trimNote(text: string): string {
+  const trimmed: string = text.trim();
+  if (trimmed.length <= 80) {
+    return trimmed;
+  }
+  return trimmed.slice(0, 80);
+}
+
 export function setCsvHeader(): string {
-  return 'date,exercise_name,exercise_id,part_key,weight,reps,is_warmup,technique,rir,status,completed_at,note,sort_order';
+  return 'date,exercise_name,exercise_id,part_key,weight,reps,is_warmup,technique,rir,rir_legacy,status,completed_at,note,sort_order';
 }
 
 function csvCell(value: string): string {
@@ -381,6 +400,7 @@ export function setToCsvRow(row: CsvSetRow): string {
     `${row.isWarmup}`,
     csvCell(row.technique),
     csvNullable(row.rir),
+    `${row.rirLegacy}`,
     csvCell(row.status),
     csvNullable(row.completedAt),
     csvCell(row.note),

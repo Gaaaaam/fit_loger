@@ -1,4 +1,4 @@
-export const CURRENT_VERSION: number = 2;
+export const CURRENT_VERSION: number = 3;
 
 export const SQL_CREATE_EXERCISES: string =
   'CREATE TABLE IF NOT EXISTS exercises (' +
@@ -53,6 +53,7 @@ export const SQL_CREATE_WORKOUT_SETS: string =
     'is_warmup INTEGER NOT NULL DEFAULT 0,' +
     'technique TEXT,' +
     'rir INTEGER,' +
+    'rir_legacy INTEGER NOT NULL DEFAULT 0,' +
     'status TEXT NOT NULL DEFAULT \'done\',' +
     'completed_at INTEGER,' +
     'note TEXT,' +

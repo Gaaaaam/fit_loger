@@ -9,6 +9,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export struct SetRow {
   @ObjectLink setItem: SetItem;
   @Prop weightPlaceholder: string = '重量 kg';
+  @Prop repsPlaceholder: string = '次数';
   onDeleted: (setId: number) => void = (_setId: number) => {
   };
   onBecameDone: (item: SetItem) => void = (_item: SetItem) => {
@@ -124,7 +125,11 @@ export struct SetRow {
         this.tagButton('递减', 0, 'drop');
         this.tagButton('递增', 0, 'ramp');
       }.width('100%')
-      Text('热身用于准备；递减表示降低重量继续训练，递增表示逐组加重。选择标记不会完成这一组。')
+      Row({ space: 12 }) {
+        this.tagButton('休息暂停', 0, 'rest_pause');
+        this.tagButton('AMRAP', 0, 'amrap');
+      }.width('100%')
+      Text('热身不计入训练量。递减、递增、休息暂停不用于估计最大重量，AMRAP 可以。选择标记不会完成这一组。')
         .fontSize(13)
         .fontColor($r('app.color.text_secondary'))
     }
@@ -134,18 +139,21 @@ export struct SetRow {
 
   @Builder
   rirChip(value: number) {
-    Text(rirLabel(value))
+    Text(rirLabel(value, 0))
       .fontSize(12)
-      .fontColor(this.setItem.rir === value ? $r('app.color.text_on_accent') : $r('app.color.text_secondary'))
-      .backgroundColor(this.setItem.rir === value ? $r('app.color.accent') : $r('app.color.chip_bg'))
+      .fontColor(this.setItem.rirLegacy === 0 && this.setItem.rir === value ?
+        $r('app.color.text_on_accent') : $r('app.color.text_secondary'))
+      .backgroundColor(this.setItem.rirLegacy === 0 && this.setItem.rir === value ?
+        $r('app.color.accent') : $r('app.color.chip_bg'))
       .padding({ left: 8, right: 8, top: 4, bottom: 4 })
       .borderRadius(12)
       .onClick(() => {
-        if (this.setItem.rir === value) {
+        if (this.setItem.rirLegacy === 0 && this.setItem.rir === value) {
           this.setItem.rir = -1;
         } else {
           this.setItem.rir = value;
         }
+        this.setItem.rirLegacy = 0;
         this.flushSave();
       })
   }
@@ -173,7 +181,7 @@ export struct SetRow {
             this.setItem.weightText = keepWeight(value);
             this.markEdited();
           })
-        TextInput({ text: this.setItem.repsText, placeholder: '次数' })
+        TextInput({ text: this.setItem.repsText, placeholder: this.repsPlaceholder })
           .layoutWeight(1)
           .height(40)
           .margin({ left: 8 })
@@ -222,22 +230,44 @@ export struct SetRow {
           .margin({ top: 4 })
       }
 
-      Row() {
-        Text('这组感觉')
+      if (this.setItem.rirLegacy === 1 && this.setItem.rir >= 0) {
+        Text(rirLabel(this.setItem.rir, 1))
           .fontSize(12)
           .fontColor($r('app.color.text_secondary'))
-          .margin({ right: 8 })
+          .width('100%')
+          .margin({ top: 8 })
+      }
+
+      Row({ space: 8 }) {
         this.rirChip(0)
         this.rirChip(1)
-        this.rirChip(3)
       }
       .width('100%')
       .margin({ top: 8 })
+
+      Row({ space: 8 }) {
+        this.rirChip(2)
+        this.rirChip(3)
+      }
+      .width('100%')
+      .margin({ top: 6 })
+
+      TextInput({ text: this.setItem.note, placeholder: '这组备注（可选）' })
+        .height(36)
+        .width('100%')
+        .margin({ top: 8 })
+        .backgroundColor($r('app.color.chip_bg'))
+        .borderRadius(8)
+        .maxLength(80)
+        .onChange((value: string) => {
+          this.setItem.note = value;
+          this.scheduleSave();
+        })
     }
     .width('100%')
     .padding({ top: 8, bottom: 8 })
     .bindSheet($$this.showTagPicker, this.TagPicker, {
-      height: 300,
+      height: 420,
       dragBar: true,
       showClose: true
     })

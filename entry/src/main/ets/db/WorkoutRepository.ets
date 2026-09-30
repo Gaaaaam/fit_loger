@@ -18,6 +18,7 @@ import {
   parseReps,
   parseWeight,
   PartGroup,
+  trimNote,
   WeightReps
 } from '../common/WorkoutLogic';
 import { ExerciseDef } from '../model/exerciseCatalog';
@@ -69,10 +70,11 @@ export class WorkoutRepository {
     day.date = date;
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     const sql: string =
-      'SELECT d.id AS day_id, e.id AS ex_row_id, e.exercise_id AS exercise_id, e.sort_order AS ex_sort, e.note AS ex_note, ' +
+      'SELECT d.id AS day_id, d.note AS day_note, e.id AS ex_row_id, e.exercise_id AS exercise_id, e.sort_order AS ex_sort, e.note AS ex_note, ' +
       'x.name AS ex_name, x.part_key AS part_key, x.weight_step AS weight_step, x.is_bodyweight AS is_bodyweight, ' +
+      'x.is_unilateral AS is_unilateral, ' +
       's.id AS set_id, s.weight AS weight, s.reps AS reps, s.is_warmup AS is_warmup, s.technique AS technique, ' +
-      's.rir AS rir, s.status AS status, s.completed_at AS completed_at, s.note AS set_note, s.sort_order AS set_sort ' +
+      's.rir AS rir, s.rir_legacy AS rir_legacy, s.status AS status, s.completed_at AS completed_at, s.note AS set_note, s.sort_order AS set_sort ' +
       'FROM workout_days d ' +
       'LEFT JOIN day_exercises e ON e.day_id = d.id ' +
       'LEFT JOIN exercises x ON x.id = e.exercise_id ' +
@@ -88,6 +90,7 @@ export class WorkoutRepository {
       return day;
     }
     day.dayId = rs.getLong(rs.getColumnIndex('day_id'));
+    day.note = WorkoutRepository.strOr(rs, 'day_note', '');
     while (hasRow) {
       WorkoutRepository.appendRow(exList, exMap, rs);
       hasRow = rs.goToNextRow();
@@ -124,6 +127,10 @@ export class WorkoutRepository {
       if (!rs.isColumnNull(rs.getColumnIndex('is_bodyweight'))) {
         createdEx.isBodyweight = rs.getLong(rs.getColumnIndex('is_bodyweight'));
       }
+      const unilateralIdx: number = rs.getColumnIndex('is_unilateral');
+      if (unilateralIdx >= 0 && !rs.isColumnNull(unilateralIdx)) {
+        createdEx.isUnilateral = rs.getLong(unilateralIdx);
+      }
       if (!rs.isColumnNull(rs.getColumnIndex('ex_sort'))) {
         createdEx.sortOrder = rs.getLong(rs.getColumnIndex('ex_sort'));
       }
@@ -157,6 +164,10 @@ export class WorkoutRepository {
     }
     if (!rs.isColumnNull(rs.getColumnIndex('rir'))) {
       setItem.rir = rs.getLong(rs.getColumnIndex('rir'));
+    }
+    const legacyIdx: number = rs.getColumnIndex('rir_legacy');
+    if (legacyIdx >= 0 && !rs.isColumnNull(legacyIdx)) {
+      setItem.rirLegacy = rs.getLong(legacyIdx);
     }
     if (!rs.isColumnNull(rs.getColumnIndex('status'))) {
       setItem.status = toSetStatus(rs.getString(rs.getColumnIndex('status')));
@@ -303,7 +314,8 @@ export class WorkoutRepository {
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     const sql: string =
       'SELECT e.id AS ex_row_id, e.exercise_id AS exercise_id, e.note AS ex_note, e.sort_order AS ex_sort, ' +
-      'x.name AS ex_name, x.part_key AS part_key, x.weight_step AS weight_step, x.is_bodyweight AS is_bodyweight ' +
+      'x.name AS ex_name, x.part_key AS part_key, x.weight_step AS weight_step, x.is_bodyweight AS is_bodyweight, ' +
+      'x.is_unilateral AS is_unilateral ' +
       'FROM day_exercises e LEFT JOIN exercises x ON x.id = e.exercise_id WHERE e.id = ?';
     const rs: relationalStore.ResultSet = await store.querySql(sql, [exerciseRowId]);
     if (!rs.goToFirstRow()) {
@@ -328,6 +340,10 @@ export class WorkoutRepository {
     }
     if (!rs.isColumnNull(rs.getColumnIndex('is_bodyweight'))) {
       createdEx.isBodyweight = rs.getLong(rs.getColumnIndex('is_bodyweight'));
+    }
+    const rowUnilateralIdx: number = rs.getColumnIndex('is_unilateral');
+    if (rowUnilateralIdx >= 0 && !rs.isColumnNull(rowUnilateralIdx)) {
+      createdEx.isUnilateral = rs.getLong(rowUnilateralIdx);
     }
     if (!rs.isColumnNull(rs.getColumnIndex('ex_sort'))) {
       createdEx.sortOrder = rs.getLong(rs.getColumnIndex('ex_sort'));
@@ -427,6 +443,7 @@ export class WorkoutRepository {
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     const predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('workout_sets');
     predicates.equalTo('id', item.id);
+    const note: string = trimNote(item.note);
     const bucket: relationalStore.ValuesBucket = {
       'is_warmup': item.isWarmup,
       'status': item.status,
@@ -435,8 +452,9 @@ export class WorkoutRepository {
       'reps': repsParsed.value,
       'technique': item.technique.length > 0 ? item.technique : null,
       'rir': item.rir >= 0 ? item.rir : null,
+      'rir_legacy': item.rir >= 0 ? item.rirLegacy : 0,
       'completed_at': item.completedAt > 0 ? item.completedAt : null,
-      'note': item.note.length > 0 ? item.note : null
+      'note': note.length > 0 ? note : null
     };
     // Snapshot every field before awaiting: one update prevents an older autosave's
     // null-clearing pass from overwriting a newer edit during a mode switch.
@@ -457,9 +475,9 @@ export class WorkoutRepository {
     const setId: number = rs.getLong(rs.getColumnIndex('id'));
     rs.close();
     if (rir < 0) {
-      await store.executeSql('UPDATE workout_sets SET rir = NULL WHERE id = ?', [setId]);
+      await store.executeSql('UPDATE workout_sets SET rir = NULL, rir_legacy = 0 WHERE id = ?', [setId]);
     } else {
-      await store.executeSql('UPDATE workout_sets SET rir = ? WHERE id = ?', [rir, setId]);
+      await store.executeSql('UPDATE workout_sets SET rir = ?, rir_legacy = 0 WHERE id = ?', [rir, setId]);
     }
   }
 
@@ -491,12 +509,14 @@ export class WorkoutRepository {
     }
     if (item.rir >= 0) {
       bucket['rir'] = item.rir;
+      bucket['rir_legacy'] = item.rirLegacy;
     }
     if (item.completedAt > 0) {
       bucket['completed_at'] = item.completedAt;
     }
-    if (item.note.length > 0) {
-      bucket['note'] = item.note;
+    const copiedNote: string = trimNote(item.note);
+    if (copiedNote.length > 0) {
+      bucket['note'] = copiedNote;
     }
     return await store.insert('workout_sets', bucket);
   }
@@ -852,9 +872,11 @@ export class WorkoutRepository {
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     let sql: string =
       'SELECT d.date AS date, e.exercise_id AS exercise_id, x.name AS name, x.part_key AS part_key, ' +
-      'x.movement_pattern AS movement_pattern, x.is_bodyweight AS is_bodyweight, ' +
-      's.weight AS weight, s.reps AS reps, s.rir AS rir, s.is_warmup AS is_warmup, s.technique AS technique, ' +
-      's.status AS status ' +
+      'x.movement_pattern AS movement_pattern, x.is_bodyweight AS is_bodyweight, x.is_unilateral AS is_unilateral, ' +
+      's.weight AS weight, s.reps AS reps, s.rir AS rir, s.rir_legacy AS rir_legacy, s.is_warmup AS is_warmup, ' +
+      's.technique AS technique, s.status AS status, ' +
+      '(SELECT bm.weight_kg FROM body_metrics bm WHERE bm.weight_kg IS NOT NULL AND bm.date <= d.date ' +
+      'ORDER BY bm.date DESC LIMIT 1) AS body_weight_kg ' +
       'FROM workout_sets s ' +
       'JOIN day_exercises e ON e.id = s.day_exercise_id ' +
       'JOIN workout_days d ON d.id = e.day_id ' +
@@ -881,9 +903,11 @@ export class WorkoutRepository {
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     let sql: string =
       'SELECT d.date AS date, e.exercise_id AS exercise_id, x.name AS name, x.part_key AS part_key, ' +
-      'x.movement_pattern AS movement_pattern, x.is_bodyweight AS is_bodyweight, ' +
-      's.weight AS weight, s.reps AS reps, s.rir AS rir, s.is_warmup AS is_warmup, s.technique AS technique, ' +
-      's.status AS status ' +
+      'x.movement_pattern AS movement_pattern, x.is_bodyweight AS is_bodyweight, x.is_unilateral AS is_unilateral, ' +
+      's.weight AS weight, s.reps AS reps, s.rir AS rir, s.rir_legacy AS rir_legacy, s.is_warmup AS is_warmup, ' +
+      's.technique AS technique, s.status AS status, ' +
+      '(SELECT bm.weight_kg FROM body_metrics bm WHERE bm.weight_kg IS NOT NULL AND bm.date <= d.date ' +
+      'ORDER BY bm.date DESC LIMIT 1) AS body_weight_kg ' +
       'FROM workout_sets s ' +
       'JOIN day_exercises e ON e.id = s.day_exercise_id ' +
       'JOIN workout_days d ON d.id = e.day_id ' +
@@ -1147,11 +1171,69 @@ export class WorkoutRepository {
     );
     const hasEx: boolean = rs.goToFirstRow();
     rs.close();
-    if (!hasEx) {
-      const predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('workout_days');
-      predicates.equalTo('id', dayId);
-      await store.delete(predicates);
+    if (hasEx) {
+      return;
     }
+    const noteRs: relationalStore.ResultSet = await store.querySql(
+      'SELECT note FROM workout_days WHERE id = ?',
+      [dayId]
+    );
+    let note: string = '';
+    if (noteRs.goToFirstRow() && !noteRs.isColumnNull(noteRs.getColumnIndex('note'))) {
+      note = noteRs.getString(noteRs.getColumnIndex('note'));
+    }
+    noteRs.close();
+    if (trimNote(note).length > 0) {
+      return;
+    }
+    const predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('workout_days');
+    predicates.equalTo('id', dayId);
+    await store.delete(predicates);
+  }
+
+  static async saveDayNote(date: string, note: string): Promise<number> {
+    const trimmed: string = trimNote(note);
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const existing: relationalStore.ResultSet = await store.querySql(
+      'SELECT id FROM workout_days WHERE date = ?',
+      [date]
+    );
+    const found: boolean = existing.goToFirstRow();
+    existing.close();
+    if (!found && trimmed.length === 0) {
+      return 0;
+    }
+    const dayId: number = await WorkoutRepository.ensureDayId(date);
+    const predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('workout_days');
+    predicates.equalTo('id', dayId);
+    const bucket: relationalStore.ValuesBucket = {
+      'note': trimmed.length > 0 ? trimmed : null
+    };
+    await store.update(bucket, predicates);
+    if (trimmed.length === 0) {
+      await WorkoutRepository.cleanupEmptyDay(dayId);
+      const left: relationalStore.ResultSet = await store.querySql(
+        'SELECT id FROM workout_days WHERE id = ?',
+        [dayId]
+      );
+      const kept: boolean = left.goToFirstRow();
+      left.close();
+      if (!kept) {
+        return 0;
+      }
+    }
+    return dayId;
+  }
+
+  static async saveExerciseNote(exerciseRowId: number, note: string): Promise<void> {
+    const trimmed: string = trimNote(note);
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('day_exercises');
+    predicates.equalTo('id', exerciseRowId);
+    const bucket: relationalStore.ValuesBucket = {
+      'note': trimmed.length > 0 ? trimmed : null
+    };
+    await store.update(bucket, predicates);
   }
 
   private static async nextOrder(sql: string, args: Array<number | string>): Promise<number> {
@@ -1225,6 +1307,14 @@ export class WorkoutRepository {
     if (!rs.isColumnNull(rs.getColumnIndex('is_bodyweight'))) {
       row.isBodyweight = rs.getLong(rs.getColumnIndex('is_bodyweight'));
     }
+    const trendUnilateralIdx: number = rs.getColumnIndex('is_unilateral');
+    if (trendUnilateralIdx >= 0 && !rs.isColumnNull(trendUnilateralIdx)) {
+      row.isUnilateral = rs.getLong(trendUnilateralIdx);
+    }
+    const bodyIdx: number = rs.getColumnIndex('body_weight_kg');
+    if (bodyIdx >= 0 && !rs.isColumnNull(bodyIdx)) {
+      row.bodyWeightKg = rs.getDouble(bodyIdx);
+    }
     if (!rs.isColumnNull(rs.getColumnIndex('weight'))) {
       row.weight = rs.getDouble(rs.getColumnIndex('weight'));
     }
@@ -1233,6 +1323,10 @@ export class WorkoutRepository {
     }
     if (!rs.isColumnNull(rs.getColumnIndex('rir'))) {
       row.rir = rs.getLong(rs.getColumnIndex('rir'));
+    }
+    const trendLegacyIdx: number = rs.getColumnIndex('rir_legacy');
+    if (trendLegacyIdx >= 0 && !rs.isColumnNull(trendLegacyIdx)) {
+      row.rirLegacy = rs.getLong(trendLegacyIdx);
     }
     if (!rs.isColumnNull(rs.getColumnIndex('is_warmup'))) {
       row.isWarmup = rs.getLong(rs.getColumnIndex('is_warmup'));
