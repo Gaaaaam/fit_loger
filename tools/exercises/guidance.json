@@ -781,7 +781,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing underhand barbell grip and fixed upper arms",
       "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 站立，双手反握杠铃于大腿前，肘贴体侧。",
       "muscleNotes": "Highlight 肱二头肌 in project green #1F8A70; show 前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_db_curl",
@@ -798,7 +798,7 @@
       "equipmentNotes": "Stand with one complete dumbbell in each hand at the sides, palms forward; curl one arm at a time.",
       "movementReference": "Keep elbows near the ribs and palms forward. Curl the right dumbbell toward the shoulder while left arm stays lowered, return, then curl the left dumbbell in the same way without swinging.",
       "muscleNotes": "Highlight 肱二头肌 in project green #1F8A70; show 前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_hammer_curl",
@@ -813,7 +813,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing neutral dumbbell grips through full curl",
       "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 站立，哑铃中立握（掌心相对）于体侧。",
       "muscleNotes": "Highlight 肱肌 in project green #1F8A70; show 肱二头肌、前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_pushdown",
@@ -829,24 +829,23 @@
       "equipmentNotes": "Face one high pulley with a straight-bar attachment held in both hands; upper arms stay close to the ribs.",
       "movementReference": "Start with elbows bent roughly 90 degrees and close to the torso. Press the straight bar down until elbows extend, briefly squeeze the triceps, then return under control.",
       "muscleNotes": "Highlight 肱三头肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_skull_crusher",
       "partKey": "arm",
-      "frameCount": 3,
-      "layout": "horizontal-3",
+      "frameCount": 2,
+      "layout": "horizontal-2",
       "captions": [
         "胸上伸臂",
-        "屈肘至头侧",
-        "伸肘还原"
+        "屈肘至头后"
       ],
       "cardFrameIndex": 1,
       "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing EZ bar above bench and stationary upper arms",
       "equipmentNotes": "Lie on a flat bench and hold one full curved EZ bar with both hands, wrists neutral and upper arms nearly vertical.",
       "movementReference": "Start with the EZ bar above the chest. Keep upper arms steady while bending elbows to lower the bar just behind the head, then extend elbows back above the chest.",
       "muscleNotes": "Highlight 肱三头肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_incline_curl",
@@ -861,7 +860,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing incline bench support and hanging arms",
       "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 仰卧于 45–60 度上斜凳，双手持哑铃自然下垂。",
       "muscleNotes": "Highlight 肱二头肌（长头） in project green #1F8A70; show 前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_preacher_curl",
@@ -876,7 +875,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing preacher pad and EZ-bar grip",
       "equipmentNotes": "Show the full curved EZ bar and secure angled grips. Catalog setup: 坐在牧师凳上，上臂贴靠斜垫，握住曲杆，手臂伸展。",
       "muscleNotes": "Highlight 肱二头肌 in project green #1F8A70; show 前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_cable_curl",
@@ -892,7 +891,7 @@
       "equipmentNotes": "Face one low pulley and underhand-grip a straight-bar attachment with both hands, elbows close to the torso.",
       "movementReference": "From the straight bar at thigh level, curl it toward the shoulders by flexing the elbows, pause, then lower under continuous cable tension without swinging.",
       "muscleNotes": "Highlight 肱二头肌 in project green #1F8A70; show 前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_concentration_curl",
@@ -907,7 +906,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing working elbow braced against inner thigh",
       "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 坐姿，肘抵在同侧大腿内侧，手持哑铃下垂。",
       "muscleNotes": "Highlight 肱二头肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_overhead_extension",
@@ -923,7 +922,7 @@
       "equipmentNotes": "Show one complete dumbbell in the right hand, feet planted in a standing stance, left arm relaxed at the side; keep the right wrist steady and elbow pointing forward.",
       "movementReference": "Stand upright; the right hand holds one dumbbell overhead with the right arm extended and left arm relaxed at the side. Bend the right elbow to lower the dumbbell behind the head, then extend the elbow back overhead without swinging the trunk.",
       "muscleNotes": "Highlight 肱三头肌（长头） in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_one_arm_pushdown",
@@ -939,7 +938,7 @@
       "equipmentNotes": "Face a high pulley and hold one single handle in the right hand with a neutral grip, right elbow fixed at the ribs.",
       "movementReference": "Start with the right elbow bent roughly 90 degrees. Press the single handle down until the right arm extends, then return under control with the upper arm still beside the torso.",
       "muscleNotes": "Highlight 肱三头肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_kickback",
@@ -954,7 +953,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing upper arm level with torso and dumbbell behind",
       "equipmentNotes": "Show every complete dumbbell and a secure wrist alignment. Catalog setup: 俯身，上臂贴体侧与地面平行，手持哑铃，肘屈 90 度。",
       "muscleNotes": "Highlight 肱三头肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_wrist_curl",
@@ -970,7 +969,7 @@
       "equipmentNotes": "Rest both forearms on a flat bench with wrists beyond its edge; hold one full barbell in an underhand grip.",
       "movementReference": "With forearms fixed on the bench and palms up, curl the barbell upward by flexing the wrists, then lower it slowly through a comfortable range.",
       "muscleNotes": "Highlight 前臂屈肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_reverse_wrist",
@@ -985,7 +984,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing overhand bar and wrists beyond support edge",
       "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 前臂支撑，正握杠铃，手腕伸出凳沿。",
       "muscleNotes": "Highlight 前臂伸肌 in project green #1F8A70; keep supporting overlays minimal. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_ez_curl",
@@ -1000,7 +999,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing angled EZ-bar grips and stationary elbows",
       "equipmentNotes": "Show the full curved EZ bar and secure angled grips. Catalog setup: 站立，握住曲杆斜把，杠置于大腿前。",
       "muscleNotes": "Highlight 肱二头肌 in project green #1F8A70; show 前臂 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "arm_close_grip_bench",
@@ -1016,7 +1015,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing flat bench and shoulder-width bar grip",
       "equipmentNotes": "Show the entire bar, both plates and a secure closed grip. Catalog setup: 仰卧平板，双手间距约与肩同宽或略窄，握住杠铃。",
       "muscleNotes": "Highlight 肱三头肌 in project green #1F8A70; show 胸大肌、前束 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "glute_hip_thrust",
