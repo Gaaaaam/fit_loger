@@ -13,17 +13,19 @@
   "interpretation": "PASS means no visible defect found, not proof of hidden mechanics. UNCERTAIN is not PASS. All observations concern original packaged WebPs at the baseline hashes.",
   "repairProgress": {
     "baselineConfirmedDefectGroups": 30,
-    "independentlyClosedGroups": 6,
-    "openConfirmedDefectGroups": 24,
+    "additionalConfirmedDefectGroups": 2,
+    "currentConfirmedDefectGroups": 32,
+    "independentlyClosedGroups": 10,
+    "openConfirmedDefectGroups": 22,
     "baselineUncertainGroups": 6,
     "uncertainGroups": 8,
     "currentAssessmentCounts": {
-      "PASS": 208,
-      "DEFECT": 24,
+      "PASS": 210,
+      "DEFECT": 22,
       "UNCERTAIN": 8
     },
-    "changedProductionFrames": 6,
-    "interpretation": "groups/results remain immutable audit-baseline observations; repairs separately record accepted current production replacements. independentlyClosedGroups counts confirmed-defect closures, not unconditional PASS: two D009 groups remain UNCERTAIN for bench angle. Current assessment counts are disjoint and total240. Unlisted DEFECT groups remain open; UNCERTAIN is never PASS."
+    "changedProductionFrames": 8,
+    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus10closed leaves22open. UNCERTAIN is never PASS."
   },
   "repairs": [
     {
@@ -180,6 +182,164 @@
           "baselineSha256": "df0097aa970939bdd1edfdcb01464b6eac916898fc1614b86e83a182a031b3bf",
           "productionSha256": "dccbeb31c64831b1a0a976c209571ce235ab96df7b5b268e434081c68b724d36",
           "width": 512,
+          "height": 1024
+        }
+      ]
+    },
+    {
+      "id": "shoulder_arnold",
+      "gender": "female",
+      "checklistIds": [
+        "D011"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "f31c90d1b6733f528d800b352e09442ce821b09f",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-arnold-review.md",
+      "sourceSha256": "3bf93bafc1d47f422d6392620f369927a69b21a9a00b88de47dc1b4df90e7b7b",
+      "unchangedFrameIndices": [
+        2,
+        3
+      ],
+      "notes": "Actual01 now palms-self horizontal dumbbells at upper chest; correct caption/movement reference and ordinary catalog fallback independently reviewed with RED-to-GREEN behavior tests and executed mapping.",
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_shoulder_arnold_female_01.webp",
+          "baselineSha256": "fb96a80dd61079a079f6838783d0daf06a3f4b276a2e9e324f1700675d9ae0bf",
+          "productionSha256": "d9afa03fe55117e8f0888f68dea915059b865d38856366fc148532a6fc931588",
+          "width": 512,
+          "height": 1024
+        }
+      ]
+    },
+    {
+      "id": "shoulder_arnold",
+      "gender": "male",
+      "checklistIds": [
+        "D011"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "f31c90d1b6733f528d800b352e09442ce821b09f",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-arnold-review.md",
+      "sourceSha256": "8a52da69e02b1940f01463c72f1a513d51027fe53055df90bed2c803b5a6f19e",
+      "unchangedFrameIndices": [
+        2,
+        3
+      ],
+      "notes": "Actual01 now palms-self horizontal dumbbells at upper chest; unchanged02/03 preserve rotation and overhead finish; semantic/caption/mapping changes independently accepted.",
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_shoulder_arnold_male_01.webp",
+          "baselineSha256": "048bcd697db2f2ee5e60262d9a4ee6e810749f65053aa199f87372587b740383",
+          "productionSha256": "a1600b2eeeeab6deed69850ed9ed33e9b6598d34af4480515d97f0cd6bfcd03a",
+          "width": 512,
+          "height": 1024
+        }
+      ]
+    },
+    {
+      "id": "shoulder_cable_rear_fly",
+      "gender": "female",
+      "checklistIds": [
+        "D015"
+      ],
+      "kind": "METADATA_ONLY",
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "f31c90d1b6733f528d800b352e09442ce821b09f",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-arnold-review.md",
+      "sourceSha256": "797d4de51916b5babba81497aea93cadf07951d9c50d863462aab2ee19ce4163",
+      "unchangedFrameIndices": [
+        1,
+        2
+      ],
+      "notes": "Manifest selects permitted HIGH pulleys matching unchanged actual images, opposite crossed cables preserved.01 central attribution remains occluded; no hidden-contact proof or new redraw claimed. Inherited thin light outer strips unchanged, disclosed for final style triage.",
+      "frames": []
+    },
+    {
+      "id": "shoulder_cable_rear_fly",
+      "gender": "male",
+      "checklistIds": [
+        "D015"
+      ],
+      "kind": "METADATA_ONLY",
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "f31c90d1b6733f528d800b352e09442ce821b09f",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-arnold-review.md",
+      "sourceSha256": "8ece4cff37cdb24b46f12a7bfcebd0b5fde10ab0fc7075658beeb951701768dc",
+      "unchangedFrameIndices": [
+        1,
+        2
+      ],
+      "notes": "HIGH variant reconciliation only, no new generation or changed artwork. Visible02 opposite connections accepted;01 hidden central hand/cable attribution remains an explicit visibility limit. Inherited thin light outer strips unchanged.",
+      "frames": []
+    }
+  ],
+  "postAuditFindings": [
+    {
+      "id": "leg_calf_raise",
+      "gender": "female",
+      "checklistIds": [
+        "D018"
+      ],
+      "baselineResult": "PASS",
+      "currentResult": "DEFECT",
+      "discoveredDuring": "D006 semantic-duplicate reuse diagnostic; not retrospectively attributed to Task1",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-source-review.md",
+      "observations": "Fixed outer mast top y242→219 while floor base width401→402px and lower fastener height stay stable after approximately22px horizontal recentering. Same-machine/camera image continuity defect; no claim proving literal3D steel elongation. Eleven selected plate rows remain coherent; hidden far hand is not a confirmed detached-hand defect.",
+      "inspectedFrames": [
+        1,
+        2
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_01.webp",
+          "sha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+          "width": 768,
+          "height": 1024
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_02.webp",
+          "sha256": "31ad301eeaf5faee1dfeca6ae56f098fb08bd4145ddd220bef720f77c8a32eba",
+          "width": 768,
+          "height": 1024
+        }
+      ]
+    },
+    {
+      "id": "leg_calf_raise",
+      "gender": "male",
+      "checklistIds": [
+        "D018"
+      ],
+      "baselineResult": "PASS",
+      "currentResult": "DEFECT",
+      "discoveredDuring": "D006 semantic-duplicate reuse diagnostic; not retrospectively attributed to Task1",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-source-review.md",
+      "observations": "Selected upper block changes8→7 visible plate bands. Regular round selector holes are7→6 PLUS separate bottom pin/hardware band in each, not8→7 holes; top cylindrical cap excluded. Both block ends visible and plate pitch/lower stack broadly unchanged. No fixed-bottom/resting-contact claim.",
+      "inspectedFrames": [
+        1,
+        2
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_male_01.webp",
+          "sha256": "b2860c2692f8f60a311b6d932dd7ba8bd9b4a6e28bfc7ea01e104fe3de360e47",
+          "width": 768,
+          "height": 1024
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_male_02.webp",
+          "sha256": "18487a2569073b6585352da4c6c7375a79a40e87964f1d919e0b8cfdf12975e5",
+          "width": 768,
           "height": 1024
         }
       ]
