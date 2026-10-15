@@ -1,0 +1,596 @@
+{
+  "schema": "repair-provenance/v1",
+  "status": "INDEPENDENTLY_ACCEPTED",
+  "baseline_commit": "aef0fcb6607570fa732a618c74c39908d793d6f0",
+  "audit_baseline_commit": "61e39bc775e5233362155229d568eff59c1659ec",
+  "repair_base_commit": "aef0fcb6607570fa732a618c74c39908d793d6f0",
+  "id": "back_seated_row",
+  "exercise": "back_seated_row",
+  "gender": "male",
+  "frameIndices": [
+    1,
+    2,
+    3
+  ],
+  "scope": "Accepted D017 back_seated_row/male background-only repair at3ece98584b4f4dd6101d63b85b2d0b4c40287ef4; 3 actual frames changed, all3 current frames independently inspected. Task2 in progress; Task3 not started; whole objective not complete.",
+  "new_generation": false,
+  "generation": null,
+  "algorithm": {
+    "script": {
+      "path": ".work/exercise-guidance/divider-cleanup-20261015/prepare.py",
+      "sha256": "3f53abbc322ddd0620eecd3e27bb7b6f45b4d36842a7545de200b475bde0c35d",
+      "bytes": 6701
+    },
+    "description": "Use exact decoded original actual RGB. Crop one adjacent same-y background donor strip and paste to edge ROI. For each row/channel compute int16 seam offset from untouched interior anchor minus donor edge anchor; add uniformly to donor row, clamp 0..255, cast uint8. Binary mask replaces every ROI pixel (weight 1 inside, 0 outside); no old destination blend. No floating point, rounding, generated pixels, scale, geometry change, tiling or content crop.",
+    "arithmetic": "int16 add/subtract; clamp [0,255]; uint8 cast; no float/rounding.",
+    "source": "donors cropped from same original actual decoded RGB at matching y.",
+    "wholeMotherAssembly": "Three 512x1024 cells in a 1536x1024 candidate mother, unchanged cell positions."
+  },
+  "original_mother": {
+    "path": ".work/exercise-guidance/divider-cleanup-20261015/back_seated_row_male/original-mother.png",
+    "sha256": "3dfb774e766b4dd4a6bde92a707bb79aa19e706c55cfd6a24a72324c68d9132b",
+    "bytes": 1834003,
+    "dimensions": [
+      1536,
+      1024
+    ]
+  },
+  "candidate_mother": {
+    "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/candidate-mother-lossless.png",
+    "sha256": "90fee67315b679ce7509dc44fd970cb974971bd5fe7bf269e9c174dacd2dfb00",
+    "bytes": 774245,
+    "dimensions": [
+      1536,
+      1024
+    ]
+  },
+  "frames": [
+    {
+      "frameIndex": 1,
+      "originalActual": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/back_seated_row_male/01-original.webp",
+        "sha256": "6f4e373795280a588158f2d295c0ce201ddc95118e0de6b0ec024da9c45ed379",
+        "bytes": 26300,
+        "dimensions": [
+          512,
+          1024
+        ]
+      },
+      "originalCanonicalMother": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/back_seated_row_male/original-mother.png",
+        "sha256": "3dfb774e766b4dd4a6bde92a707bb79aa19e706c55cfd6a24a72324c68d9132b",
+        "bytes": 1834003,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "originalCanonicalCellRGBSHA256": "3fa0c7c220a37558198201588edf08010981b3b39c9b9132e5f28dee6868c507",
+      "priorPreparedCandidate": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/back_seated_row_male/ex_back_seated_row_male_01.webp",
+        "sha256": "7bf5dfe8666d9b8116a9106aee8b7e6d96c152bf609de4156a497ca4254ec781",
+        "bytes": 164152,
+        "dimensions": [
+          512,
+          1024
+        ]
+      },
+      "stagedCanonicalCell": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/01-canonical-staged-cell.png",
+        "sha256": "2a438a1b6dba414495bf51fa71ecee21e807969828e4077f152418207612c906",
+        "bytes": 261570
+      },
+      "stagedActual": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/ex_back_seated_row_male_01.webp",
+        "sha256": "aa0f792a350ab59e11355f431a41b7fcce26da045511f6ec3d706e7e16c3ba1d",
+        "bytes": 162590,
+        "dimensions": [
+          512,
+          1024
+        ]
+      },
+      "decodedRGBSHA256": "3fa0c7c220a37558198201588edf08010981b3b39c9b9132e5f28dee6868c507",
+      "encoding": {
+        "format": "WEBP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6,
+        "exif": ""
+      },
+      "normalizedStageFacts": {
+        "byteExactReproduction": true,
+        "byteHashMatchesProbe": true,
+        "priorCandidateDecodedRGBMismatchPixels": 0,
+        "outsideROIMismatchOriginalActualPixels": 0,
+        "stagedActualVsCandidateMotherCellMismatchPixels": 0
+      },
+      "operations": [
+        {
+          "side": "left",
+          "donorXYXY": [
+            10,
+            0,
+            20,
+            1024
+          ],
+          "destinationXYXY": [
+            0,
+            0,
+            10,
+            1024
+          ],
+          "mask": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/01-roi-mask.png",
+            "sha256": "63baaedfdc8e76cfb49b10c7ced2e98712f6358bb608aca9ef050b09b5353188",
+            "bytes": 2526
+          },
+          "donor": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/01-left-donor-native.png",
+            "sha256": "686fc621c0f678d843a8b245d873ca1dbcf7e406ef46d3c8ea9e093dfbcf9162",
+            "bytes": 1215
+          },
+          "offsetArray": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/01-left-offset-int16.npy",
+            "sha256": "00accaf275b4dbaab2b25408d3680303563e8f5e9888b5a947b735a29da8d7a8",
+            "bytes": 6272
+          },
+          "offsetRange": [
+            -5,
+            4
+          ],
+          "donorDecodedRGBSHA256": "8043b3385234f702d7ebc856cefc1fd686ef6cf0ed1f2edf02cc26064ea15259",
+          "repairedROIRGBSHA256": "3766facdecb6e693e55a04c1c4da00232c95b262f0e001eca4ebfe640bdceaf0",
+          "blendWeights": "ROI=1, outside=0; no old destination blended",
+          "equation": "offset[y,c] = original[y, firstUntouchedX, c] - donor[y, lastDonorX, c]"
+        },
+        {
+          "side": "right",
+          "donorXYXY": [
+            488,
+            0,
+            500,
+            1024
+          ],
+          "destinationXYXY": [
+            500,
+            0,
+            512,
+            1024
+          ],
+          "mask": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/01-roi-mask.png",
+            "sha256": "63baaedfdc8e76cfb49b10c7ced2e98712f6358bb608aca9ef050b09b5353188",
+            "bytes": 2526
+          },
+          "donor": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/01-right-donor-native.png",
+            "sha256": "95adf16f71fee51b12bebdeea94ce411cedbdf56dc79a0005753cab71eb45594",
+            "bytes": 1554
+          },
+          "offsetArray": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/01-right-offset-int16.npy",
+            "sha256": "8ff378445b7f045ce5caeaffe66249cb7fcd30b867f5196a9364e84d1450ab88",
+            "bytes": 6272
+          },
+          "offsetRange": [
+            -4,
+            4
+          ],
+          "donorDecodedRGBSHA256": "000eec55d568034e661a78a11495944e63d525c1b9fe4e60289fed3032689c0c",
+          "repairedROIRGBSHA256": "e745f20c49c88c68afb0e92861206f2b168b6fc53117c740aabbd9e170c0d546",
+          "blendWeights": "ROI=1, outside=0; no old destination blended",
+          "equation": "offset[y,c] = original[y, lastUntouchedX, c] - donor[y, firstDonorX, c]"
+        }
+      ],
+      "production_path_at_snapshot": "entry/src/main/resources/base/media/ex_back_seated_row_male_01.webp"
+    },
+    {
+      "frameIndex": 2,
+      "originalActual": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/back_seated_row_male/02-original.webp",
+        "sha256": "478b0f14576182517ddbe938370a62542e218c6bca24b7bef1b20c46d184acee",
+        "bytes": 26128,
+        "dimensions": [
+          512,
+          1024
+        ]
+      },
+      "originalCanonicalMother": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/back_seated_row_male/original-mother.png",
+        "sha256": "3dfb774e766b4dd4a6bde92a707bb79aa19e706c55cfd6a24a72324c68d9132b",
+        "bytes": 1834003,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "originalCanonicalCellRGBSHA256": "f559f72671d12918aef03e36b0b9a225d0b124728e717a86c115afc2376671af",
+      "priorPreparedCandidate": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/back_seated_row_male/ex_back_seated_row_male_02.webp",
+        "sha256": "87bc67c9432450d932385730d3a2e7e35fc8448457e2a452b0c58b99060032ee",
+        "bytes": 162396,
+        "dimensions": [
+          512,
+          1024
+        ]
+      },
+      "stagedCanonicalCell": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/02-canonical-staged-cell.png",
+        "sha256": "35aaf76836b97e9b97d75718fd354170bd2ceaa6550212c8635e7fef5821f737",
+        "bytes": 259120
+      },
+      "stagedActual": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/ex_back_seated_row_male_02.webp",
+        "sha256": "5d914da1cc2755ebce34743e96f92640e3f0e27787bae5d888590f895c02d63e",
+        "bytes": 160806,
+        "dimensions": [
+          512,
+          1024
+        ]
+      },
+      "decodedRGBSHA256": "f559f72671d12918aef03e36b0b9a225d0b124728e717a86c115afc2376671af",
+      "encoding": {
+        "format": "WEBP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6,
+        "exif": ""
+      },
+      "normalizedStageFacts": {
+        "byteExactReproduction": true,
+        "byteHashMatchesProbe": true,
+        "priorCandidateDecodedRGBMismatchPixels": 0,
+        "outsideROIMismatchOriginalActualPixels": 0,
+        "stagedActualVsCandidateMotherCellMismatchPixels": 0
+      },
+      "operations": [
+        {
+          "side": "left",
+          "donorXYXY": [
+            12,
+            0,
+            24,
+            1024
+          ],
+          "destinationXYXY": [
+            0,
+            0,
+            12,
+            1024
+          ],
+          "mask": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/02-roi-mask.png",
+            "sha256": "ba0d434a8dac6d90921f56a40018f3f2eb09d02041e28e7921e323460a96c72c",
+            "bytes": 2523
+          },
+          "donor": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/02-left-donor-native.png",
+            "sha256": "ba21f5c357483547ea6779e800b702176e6048939f3457f346211db074bdfc5a",
+            "bytes": 1601
+          },
+          "offsetArray": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/02-left-offset-int16.npy",
+            "sha256": "96fd3258c8df536811a165fe06ae1d0e2c93f3ef174b65a7e9b367e2d616856f",
+            "bytes": 6272
+          },
+          "offsetRange": [
+            -4,
+            5
+          ],
+          "donorDecodedRGBSHA256": "4b1da2d97c8878ea1b97fad271898eb07b5596c39e4c5ff029c5e7cca206ac89",
+          "repairedROIRGBSHA256": "71360efd4c12c80d44d07629c91997c05764ae1fca58e9dda53fd74b049c89b5",
+          "blendWeights": "ROI=1, outside=0; no old destination blended",
+          "equation": "offset[y,c] = original[y, firstUntouchedX, c] - donor[y, lastDonorX, c]"
+        },
+        {
+          "side": "right",
+          "donorXYXY": [
+            492,
+            0,
+            502,
+            1024
+          ],
+          "destinationXYXY": [
+            502,
+            0,
+            512,
+            1024
+          ],
+          "mask": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/02-roi-mask.png",
+            "sha256": "ba0d434a8dac6d90921f56a40018f3f2eb09d02041e28e7921e323460a96c72c",
+            "bytes": 2523
+          },
+          "donor": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/02-right-donor-native.png",
+            "sha256": "5cfc1ff584c9d15eef05620e68cc13a0ed9c09bba533b92c0fa15494f631ff9b",
+            "bytes": 1510
+          },
+          "offsetArray": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/02-right-offset-int16.npy",
+            "sha256": "3a72ea32ccf1f8c6dbf3693fb02bf6bf328746d55b1ccb4c433ece945952b8e5",
+            "bytes": 6272
+          },
+          "offsetRange": [
+            -5,
+            7
+          ],
+          "donorDecodedRGBSHA256": "0c45cf5f2b5ee8712f2a198f9861bacd1ec266c84772aa3302c5574f5aeadf35",
+          "repairedROIRGBSHA256": "25a835d3014a73ed863d5ed842c1cef47e8bfdfedf8c98021b9c6a63313e1e00",
+          "blendWeights": "ROI=1, outside=0; no old destination blended",
+          "equation": "offset[y,c] = original[y, lastUntouchedX, c] - donor[y, firstDonorX, c]"
+        }
+      ],
+      "production_path_at_snapshot": "entry/src/main/resources/base/media/ex_back_seated_row_male_02.webp"
+    },
+    {
+      "frameIndex": 3,
+      "originalActual": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/back_seated_row_male/03-original.webp",
+        "sha256": "0e156d2a032fe22c87296eaf8d89f0e133a93ccba0ae1e02970f9c878aded323",
+        "bytes": 25698,
+        "dimensions": [
+          512,
+          1024
+        ]
+      },
+      "originalCanonicalMother": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/back_seated_row_male/original-mother.png",
+        "sha256": "3dfb774e766b4dd4a6bde92a707bb79aa19e706c55cfd6a24a72324c68d9132b",
+        "bytes": 1834003,
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "originalCanonicalCellRGBSHA256": "3b5522e7e5ea9b7f6cda2b4f1491a4c5edee8a30e074cbc02eff70614f9d6dbe",
+      "priorPreparedCandidate": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/back_seated_row_male/ex_back_seated_row_male_03.webp",
+        "sha256": "ecb76b8f94425f2982c828312069c30fc021fc06316b5d1acd2e10701598d1a6",
+        "bytes": 164612,
+        "dimensions": [
+          512,
+          1024
+        ]
+      },
+      "stagedCanonicalCell": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/03-canonical-staged-cell.png",
+        "sha256": "b4f0fdbe5b422c134380427ee131a8d5400c63458919fbc2ba5aa32e306c3e0e",
+        "bytes": 261185
+      },
+      "stagedActual": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/ex_back_seated_row_male_03.webp",
+        "sha256": "fc3b37abeb63838f48612c634a377e6de8b3d56e3501f691c4f16b99d455d080",
+        "bytes": 163304,
+        "dimensions": [
+          512,
+          1024
+        ]
+      },
+      "decodedRGBSHA256": "3b5522e7e5ea9b7f6cda2b4f1491a4c5edee8a30e074cbc02eff70614f9d6dbe",
+      "encoding": {
+        "format": "WEBP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6,
+        "exif": ""
+      },
+      "normalizedStageFacts": {
+        "byteExactReproduction": true,
+        "byteHashMatchesProbe": true,
+        "priorCandidateDecodedRGBMismatchPixels": 0,
+        "outsideROIMismatchOriginalActualPixels": 0,
+        "stagedActualVsCandidateMotherCellMismatchPixels": 0
+      },
+      "operations": [
+        {
+          "side": "left",
+          "donorXYXY": [
+            12,
+            0,
+            24,
+            1024
+          ],
+          "destinationXYXY": [
+            0,
+            0,
+            12,
+            1024
+          ],
+          "mask": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/03-roi-mask.png",
+            "sha256": "ba0d434a8dac6d90921f56a40018f3f2eb09d02041e28e7921e323460a96c72c",
+            "bytes": 2523
+          },
+          "donor": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/03-left-donor-native.png",
+            "sha256": "0254742ec804aa98d91c11c0b808b6779f09fd6c8498387f01995a8d001985aa",
+            "bytes": 1567
+          },
+          "offsetArray": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/03-left-offset-int16.npy",
+            "sha256": "7b322693a82ec00ca3b7846cdc38357f3dd5297efb6be446edc54f11ae05e249",
+            "bytes": 6272
+          },
+          "offsetRange": [
+            -4,
+            5
+          ],
+          "donorDecodedRGBSHA256": "5ca954984d75d2c2db83deddd029e1ccf2e7196172f364462befc7e33ac14ffa",
+          "repairedROIRGBSHA256": "9089983807d944cb834daeaad8b1271cb2e4a2e36a959482bef26beb7485461b",
+          "blendWeights": "ROI=1, outside=0; no old destination blended",
+          "equation": "offset[y,c] = original[y, firstUntouchedX, c] - donor[y, lastDonorX, c]"
+        },
+        {
+          "side": "right",
+          "donorXYXY": [
+            492,
+            0,
+            502,
+            1024
+          ],
+          "destinationXYXY": [
+            502,
+            0,
+            512,
+            1024
+          ],
+          "mask": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/03-roi-mask.png",
+            "sha256": "ba0d434a8dac6d90921f56a40018f3f2eb09d02041e28e7921e323460a96c72c",
+            "bytes": 2523
+          },
+          "donor": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/03-right-donor-native.png",
+            "sha256": "fb1c214c69f6b73b5eb772dd77ee5f45d90a257bc64b07750e21c148c2988ac7",
+            "bytes": 1369
+          },
+          "offsetArray": {
+            "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/back_seated_row_male/03-right-offset-int16.npy",
+            "sha256": "0b1e98c57389f4d7ab807ef638c6299a57e85a3086526457a067869b29cf2909",
+            "bytes": 6272
+          },
+          "offsetRange": [
+            -3,
+            5
+          ],
+          "donorDecodedRGBSHA256": "43f0b6c0e7cd6257ab84ffd552352461dde3bd63357ab04f7393818c619a9337",
+          "repairedROIRGBSHA256": "e68815a9e46f31441209b1e55b8bf5a5f4d3dc2c014147f234a3ad61b8413ec7",
+          "blendWeights": "ROI=1, outside=0; no old destination blended",
+          "equation": "offset[y,c] = original[y, lastUntouchedX, c] - donor[y, firstDonorX, c]"
+        }
+      ],
+      "production_path_at_snapshot": "entry/src/main/resources/base/media/ex_back_seated_row_male_03.webp"
+    }
+  ],
+  "stage": {
+    "status": "INTEGRATED_AND_INDEPENDENTLY_ACCEPTED",
+    "evidence": {
+      "manifest": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/manifest.json",
+        "sha256": "ee17e0928b83f5c0eb26ea326e3c48c3cb7266ec2bd3869680606153f9e722cb",
+        "bytes": 111647
+      },
+      "stageIndex": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/bundled-encoder-stage/sha256-index.json",
+        "sha256": "c801e8f53f6c25cff349614e1a4786492df2d34fcb0fde4d27a91d88cd7437fb",
+        "bytes": 17283
+      },
+      "sourcePreparationProof": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/proof.json",
+        "sha256": "946ce87ef87aa16cd8b17d07cdeeabaf77929748b0798cb0e9d887add0cf43ee",
+        "bytes": 33209
+      },
+      "sourceFreeze": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/source-freeze.json",
+        "sha256": "30a8f1f9536f885f372bea3eb8687e8e453db51a1dd9c6366f4966b5f2227608",
+        "bytes": 5409
+      },
+      "algorithmScript": {
+        "path": ".work/exercise-guidance/divider-cleanup-20261015/prepare.py",
+        "sha256": "3f53abbc322ddd0620eecd3e27bb7b6f45b4d36842a7545de200b475bde0c35d",
+        "bytes": 6701
+      }
+    },
+    "runtime": {
+      "executable": "C:\\Users\\26017\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "pillow": "12.3.0",
+      "libwebp": "1.6.0",
+      "numpy": "2.3.5"
+    },
+    "oldCandidateVsNormalized": "For eight changed frames, old and bundled normalized encoded bytes differ while decoded RGB is identical (0 differing pixels). BB male03 unchanged q82 bytes are copied and byte-reproduce exactly; its lossy decode remains distinct from original canonical RGB.",
+    "all142IndexEntriesVerified": true,
+    "prior_stage_status": "NORMALIZED_READY_FOR_REVIEW_ONLY"
+  },
+  "integration": {
+    "status": "INTEGRATED",
+    "base": "aef0fcb6607570fa732a618c74c39908d793d6f0",
+    "commit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4",
+    "currentCanonicalPath": ".work/exercise-guidance/back_seated_row/male-sheet.png",
+    "currentProductionPaths": [
+      "entry/src/main/resources/base/media/ex_back_seated_row_male_01.webp",
+      "entry/src/main/resources/base/media/ex_back_seated_row_male_02.webp",
+      "entry/src/main/resources/base/media/ex_back_seated_row_male_03.webp"
+    ],
+    "provenance": {
+      "path": ".work/exercise-guidance/divider-cleanup-20261015/integration/integration-provenance.json",
+      "sha256": "b5791bdcd319a1fc71a79ec3a07e5113f684f502161fc9229b966a6927164e8d"
+    }
+  },
+  "independent_review": {
+    "status": "INDEPENDENTLY_ACCEPTED",
+    "report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-divider-review.md",
+    "reviewerAcceptanceCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4"
+  },
+  "acceptedCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4",
+  "missing_evidence": [],
+  "original_generation_history": "This mechanical repair introduces no ImageGen call, new prompt or event ID. Original artwork generation history is not reconstructed by this record; no prompt/call identifier is invented.",
+  "canonical_source": {
+    "path": ".work/exercise-guidance/back_seated_row/male-sheet.png",
+    "sha256": "90fee67315b679ce7509dc44fd970cb974971bd5fe7bf269e9c174dacd2dfb00",
+    "bytes": 774245,
+    "dimensions": [
+      1536,
+      1024
+    ]
+  },
+  "accepted_production_frames": [
+    {
+      "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_01.webp",
+      "sha256": "aa0f792a350ab59e11355f431a41b7fcce26da045511f6ec3d706e7e16c3ba1d",
+      "bytes": 162590,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "index": 1,
+      "encoder": {
+        "format": "WEBP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6,
+        "exif": ""
+      },
+      "unchanged_from_original": false
+    },
+    {
+      "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_02.webp",
+      "sha256": "5d914da1cc2755ebce34743e96f92640e3f0e27787bae5d888590f895c02d63e",
+      "bytes": 160806,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "index": 2,
+      "encoder": {
+        "format": "WEBP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6,
+        "exif": ""
+      },
+      "unchanged_from_original": false
+    },
+    {
+      "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_03.webp",
+      "sha256": "fc3b37abeb63838f48612c634a377e6de8b3d56e3501f691c4f16b99d455d080",
+      "bytes": 163304,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "index": 3,
+      "encoder": {
+        "format": "WEBP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6,
+        "exif": ""
+      },
+      "unchanged_from_original": false
+    }
+  ],
+  "encoding_reproduction": "Accepted bundled runtime is Python3.12.14/Pillow12.3.0/libwebp1.6.0. Changed current cells encode byte-exact with lossless=True, quality100, method6, emptyEXIF; old system Pillow8.3.2/libwebp1.2.1 lossless files differ in encoded bytes despite identical RGB. Unchanged BBmale03 uses original q82/method6/emptyEXIF actual bytes and raw original canonical cell. Generic uniform-q82 processing is not the accepted encoding proof.",
+  "source_identity_limit": "Outside-ROI equality compares original decoded actual RGB to repaired actual RGB. Changed source cells deliberately use decoded-actual foundations; no old uncompressed source-PNG outside-ROI identity claim. Body, supports and apparatus pixels are preserved, not newly certified hidden mechanics."
+}

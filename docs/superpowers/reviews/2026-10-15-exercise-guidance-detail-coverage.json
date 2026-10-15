@@ -15,17 +15,17 @@
     "baselineConfirmedDefectGroups": 30,
     "additionalConfirmedDefectGroups": 2,
     "currentConfirmedDefectGroups": 32,
-    "independentlyClosedGroups": 14,
-    "openConfirmedDefectGroups": 18,
+    "independentlyClosedGroups": 17,
+    "openConfirmedDefectGroups": 15,
     "baselineUncertainGroups": 6,
     "uncertainGroups": 8,
     "currentAssessmentCounts": {
-      "PASS": 214,
-      "DEFECT": 18,
+      "PASS": 217,
+      "DEFECT": 15,
       "UNCERTAIN": 8
     },
-    "changedProductionFrames": 19,
-    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus14closed leaves18open. UNCERTAIN is never PASS."
+    "changedProductionFrames": 27,
+    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus17closed leaves15open. UNCERTAIN is never PASS."
   },
   "repairs": [
     {
@@ -445,6 +445,184 @@
           "width": 512,
           "height": 1024,
           "bytes": 168680,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "back_bb_row",
+      "gender": "male",
+      "checklistIds": [
+        "D017"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-divider-review.md",
+      "sourceSha256": "a73ea095c7483ec199b01ea8325c095b672818bb3b5c1a2e07cd8ba32a64c4ee",
+      "unchangedFrameIndices": [
+        3
+      ],
+      "notes": "Background-only same-y adjacent donor-strip translation with measured per-row int16 RGB offsets, clipping and binary overwrite masks; no ImageGen/new prompt, invented geometry or repeated tiling. Original-actual RGB outside declared edge ROIs is exact, including body/support/equipment. Changed canonical cells base on original decoded actual, not old uncompressed PNG outside-ROI identity. Changed frames use bundled Python3.12.14/Pillow12.3.0/libwebp1.6.0 lossless=True/quality100/method6/emptyEXIF; old system-lossless bytes are not current accepted bytes. BBmale03 reported historical hairline was not reproduced in current originals;03 actual q82 bytes and original canonical raw cell remain unchanged, not a new replaced frame.",
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_back_bb_row_male_01.webp",
+          "baselineSha256": "43dd08a9418eadcd8f857f7a3f5b3984508437e02e49e15fcc176d46c96ebdc0",
+          "productionSha256": "75b948ea3306db79be0bf518c2b54a9a896ea8793df7c4e6479ff2e64e0516a0",
+          "bytes": 132534,
+          "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_back_bb_row_male_02.webp",
+          "baselineSha256": "cb8b353f9cbbeda27fe0e924d3f4236a1395ea1500e95a90bcd4a113b7c2a8c6",
+          "productionSha256": "703294e839545ffda6a5e14c488db9264e9a1bffddb18628ebb87eb625ff0d3a",
+          "bytes": 130446,
+          "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "back_seated_row",
+      "gender": "female",
+      "checklistIds": [
+        "D017"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-divider-review.md",
+      "sourceSha256": "d1f341c7b7a8b9ed0084c89ff90c0d735000339118cdd8259d4468a7dd18724c",
+      "unchangedFrameIndices": [],
+      "notes": "Background-only same-y adjacent donor-strip translation with measured per-row int16 RGB offsets, clipping and binary overwrite masks; no ImageGen/new prompt, invented geometry or repeated tiling. Original-actual RGB outside declared edge ROIs is exact, including body/support/equipment. Changed canonical cells base on original decoded actual, not old uncompressed PNG outside-ROI identity. Changed frames use bundled Python3.12.14/Pillow12.3.0/libwebp1.6.0 lossless=True/quality100/method6/emptyEXIF; old system-lossless bytes are not current accepted bytes.",
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_01.webp",
+          "baselineSha256": "709ad514b56e6b29182a3f6aed6657a0b3aff3a50071c86437838ee867f4a60e",
+          "productionSha256": "b737dd2041cb8f50d432264de862987a53f90fcaadd968e7d7a7c213a7101149",
+          "bytes": 145896,
+          "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_02.webp",
+          "baselineSha256": "8c5e029f0715bd683aaade8cd8e0866d1e084b621538e3ae390ca7c875ea85dc",
+          "productionSha256": "04ea3c303a821a1d59325145c7f08addb06859aa14518a1baee3030232ba8eab",
+          "bytes": 147558,
+          "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        },
+        {
+          "index": 3,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_03.webp",
+          "baselineSha256": "42e08efc42ae1cea5f5be876bc18790c007f93f3f2deb3e91dd69a4ed0de00ea",
+          "productionSha256": "479f82a96b7c0a0707ff6f1d605e0abdf842512d7f015ecda658e0ccf8f22087",
+          "bytes": 146206,
+          "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "back_seated_row",
+      "gender": "male",
+      "checklistIds": [
+        "D017"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-divider-review.md",
+      "sourceSha256": "90fee67315b679ce7509dc44fd970cb974971bd5fe7bf269e9c174dacd2dfb00",
+      "unchangedFrameIndices": [],
+      "notes": "Background-only same-y adjacent donor-strip translation with measured per-row int16 RGB offsets, clipping and binary overwrite masks; no ImageGen/new prompt, invented geometry or repeated tiling. Original-actual RGB outside declared edge ROIs is exact, including body/support/equipment. Changed canonical cells base on original decoded actual, not old uncompressed PNG outside-ROI identity. Changed frames use bundled Python3.12.14/Pillow12.3.0/libwebp1.6.0 lossless=True/quality100/method6/emptyEXIF; old system-lossless bytes are not current accepted bytes.",
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_01.webp",
+          "baselineSha256": "6f4e373795280a588158f2d295c0ce201ddc95118e0de6b0ec024da9c45ed379",
+          "productionSha256": "aa0f792a350ab59e11355f431a41b7fcce26da045511f6ec3d706e7e16c3ba1d",
+          "bytes": 162590,
+          "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_02.webp",
+          "baselineSha256": "478b0f14576182517ddbe938370a62542e218c6bca24b7bef1b20c46d184acee",
+          "productionSha256": "5d914da1cc2755ebce34743e96f92640e3f0e27787bae5d888590f895c02d63e",
+          "bytes": 160806,
+          "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        },
+        {
+          "index": 3,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_03.webp",
+          "baselineSha256": "0e156d2a032fe22c87296eaf8d89f0e133a93ccba0ae1e02970f9c878aded323",
+          "productionSha256": "fc3b37abeb63838f48612c634a377e6de8b3d56e3501f691c4f16b99d455d080",
+          "bytes": 163304,
+          "width": 512,
+          "height": 1024,
           "encoder": {
             "format": "WEBP",
             "lossless": true,
