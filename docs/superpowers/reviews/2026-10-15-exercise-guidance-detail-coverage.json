@@ -15,17 +15,17 @@
     "baselineConfirmedDefectGroups": 30,
     "additionalConfirmedDefectGroups": 2,
     "currentConfirmedDefectGroups": 32,
-    "independentlyClosedGroups": 13,
-    "openConfirmedDefectGroups": 19,
+    "independentlyClosedGroups": 14,
+    "openConfirmedDefectGroups": 18,
     "baselineUncertainGroups": 6,
     "uncertainGroups": 8,
     "currentAssessmentCounts": {
-      "PASS": 213,
-      "DEFECT": 19,
+      "PASS": 214,
+      "DEFECT": 18,
       "UNCERTAIN": 8
     },
-    "changedProductionFrames": 18,
-    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus13closed leaves19open. UNCERTAIN is never PASS."
+    "changedProductionFrames": 19,
+    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus14closed leaves18open. UNCERTAIN is never PASS."
   },
   "repairs": [
     {
@@ -410,6 +410,41 @@
           "productionSha256": "d3eb15d8a6c40757a5a3431e23bd3719e6703848538fffa90981f0165d8c3f1f",
           "width": 768,
           "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "leg_squat",
+      "gender": "female",
+      "checklistIds": [
+        "D016"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "039f4ae9d2dd7088568dacef37a0ff541068a197",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-squat-background-review.md",
+      "sourceSha256": "aaee32185e1da6273eb133923d3402e2c45b412ec7d44e2ac5d4bf1d9e831e3a",
+      "unchangedFrameIndices": [
+        2,
+        3
+      ],
+      "notes": "Background-only Phase4 repair independently accepted. Actual01 original decoded RGB is unchanged outside x472:512;36957 changed pixels, bbox[474,0,512,1024]. Retained Phase3 opaque ImageGen output is whole-image LANCZOS normalized, then exact rational row-RGB calibration and eight-column smoothstep seam match; no new Phase4 generation/prompt. Hybrid source01 uses decoded-original-actual foundation, not old uncompressed PNG outside-ROI identity. Actual02/03 and original canonical RGB cells02/03 preserved; original q82/method6/emptyEXIF reproduction. Actual01 explicit lossless=True/quality100/method6/emptyEXIF. Current03 is deepest squat/bottom, not return-upright. Prior failed phases remain historical failures.",
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_leg_squat_female_01.webp",
+          "baselineSha256": "cfa79c374c47b834c778c5c473edb86c72b84f793f160722f71d94e32a445640",
+          "productionSha256": "bb9a2e2d40bffe23ce5d8ced055e1463d87c104e01128447f7c75f5833d27761",
+          "width": 512,
+          "height": 1024,
+          "bytes": 168680,
           "encoder": {
             "format": "WEBP",
             "lossless": true,

@@ -1,0 +1,508 @@
+{
+  "schema": "repair-provenance/v1",
+  "status": "INDEPENDENTLY_ACCEPTED",
+  "audit_baseline_commit": "61e39bc775e5233362155229d568eff59c1659ec",
+  "repair_base_commit": "668ad06bb9fc733de8776349dcd75ce48e354465",
+  "id": "leg_squat",
+  "exercise": "leg_squat",
+  "gender": "female",
+  "frameIndices": [
+    1,
+    2,
+    3
+  ],
+  "scope": "Accepted female D016 Phase4 background repair, integrated at039f4ae and independently SPEC/QUALITY PASS in task-2-squat-background-review.md. Only actual01 changed;02/03 remain original bytes. Task2 in progress, Task3 not started, whole objective not complete.",
+  "phase3_generation": {
+    "tool": "built-in ImageGen",
+    "tool_event_call_id": null,
+    "call_id_note": "No ImageGen tool-event call ID established in retained evidence; generated PNG basename is output identifier only.",
+    "output_identifier": "exec-9edfd81f-6fc8-4080-884f-62e426f5d79a.png",
+    "prompt": "Use case: precise-object-edit.\nAsset type: existing exercise instructional illustration; fully opaque same-composition portrait edit.\nInput image 1 is the EDIT TARGET, original actual 512x1024 female barbell squat standing frame.\nPrimary request: remove ONLY the narrow vertical studio-background discontinuity near native x480 through the right edge. Replace the strip x472:512 with a seamless continuation of the immediately adjacent empty pale-gray studio background and matte floor at each matching vertical position. Preserve the same lighting and subtle neutral-gray wall-to-floor transition near y720. The original bright vertical band at x480 is a defect; eliminate it. Match the tone right at x472 exactly enough that a hard rectangular background-only paste at x472 has no visible join.\nKeep the complete woman and barbell exactly in their original position, scale and appearance. Preserve face, hair, gray training clothes, green thigh muscle tint, hands, grip, arms, legs, shoes, planted feet, bar and plates. Do not move or enlarge anything; the bar end must remain near x461, leaving the region x472:512 completely empty background. Do not change the camera, framing, pose or overall background.\nOutput the entire same-composition original frame as a fully opaque image. No transparency, no alpha fade, no vignette, no added border, no new shadow. Only the continuous gray studio background/floor strip needs correction. No vertical seam, tiling, repeating strip, grid, text, arrows, logo or watermark. Retain original 1:2 portrait aspect ratio.",
+    "prompt_source": {
+      "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase3-opaque-edit-prompt.txt",
+      "sha256": "384a47fabdb0a491f145afb57971701a60ecf35aee266faa61caaa4a9bf4a573",
+      "bytes": 1560,
+      "verbatim_note": "Exact saved prompt text, excluding only terminal newline."
+    },
+    "submitted_inputs": [
+      {
+        "role": "Image 1 edit target, frozen original actual female squat frame01",
+        "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/frozen/ex_leg_squat_female_01.webp",
+        "sha256": "cfa79c374c47b834c778c5c473edb86c72b84f793f160722f71d94e32a445640",
+        "bytes": 19926,
+        "dimensions": [
+          512,
+          1024
+        ]
+      }
+    ],
+    "raw_output": {
+      "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase3-opaque-tool-output.png",
+      "sha256": "5dd40c7acb151ce460c7006cea43671b19ec9bc57743f16aaa93322126fa7d90",
+      "bytes": 1679588,
+      "dimensions": [
+        887,
+        1774
+      ],
+      "mode": "RGB",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    "normalized_whole_output": {
+      "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase3-normalized-whole-output.png",
+      "sha256": "e602ccc978b5f466c46dafba46431382dee43d9645f4919800af9ce34f22251d",
+      "bytes": 542141,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "resampling": "whole 887x1774 image LANCZOS resampled to 512x1024; no crop"
+    },
+    "extracted_ROI": {
+      "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase3-extracted-background-rectangle.png",
+      "sha256": "60e29afacf32205891dc7978dd484f6dd088aa796ed6be3b839e9257214fec1b",
+      "bytes": 32934,
+      "dimensions": [
+        40,
+        1024
+      ],
+      "half_open_xyxy": [
+        472,
+        0,
+        512,
+        1024
+      ]
+    },
+    "phase3_composite_input": {
+      "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase3-original-decoded-actual-plus-opaque-ROI.png",
+      "sha256": "8e4d177957733ff6fc4b5923c3ce4f14baf75d6ecd41cb8ec0f9b8760a036e07",
+      "bytes": 259345,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "disposition": "Phase3 candidate was rejected for visible seam; retained only as Phase4 source lineage."
+    }
+  },
+  "phase4": {
+    "new_ImageGen_calls": 0,
+    "method": "Rowwise exact-rational RGB offset from existing pixel means, followed by smoothstep blend of existing decoded-original and matched generated pixels in first 8 ROI columns; matched generated pixels fill x480:512.",
+    "roi_half_open_xyxy": [
+      472,
+      0,
+      512,
+      1024
+    ],
+    "row_offset_equation": "delta[y,c]=(mean(O[x468:480,y,c])-mean(G[x472:480,y,c]))=(2*sum12(O)-3*sum8(G))/24",
+    "matched_pixel_equation": "M[x,y,c]=clamp_0_255(round_ties_to_even(G[x,y,c]+delta[y,c]))",
+    "join_equation": "For j=x-472 in 0..7: t=j/7; w=3*t^2-2*t^3=(21*j^2-2*j^3)/343; F=round_ties_to_even((1-w)*O+w*M). x480:512 uses M only; no original x480 bad stripe contribution.",
+    "rounding": "Exact rational arithmetic; Python Fraction.__round__ nearest integer ties-to-even. Matched values rounded before join blend.",
+    "clipping": "Clamp matched values to [0,255]; clipped channel values=0.",
+    "calibration_original_strip_half_open": [
+      468,
+      0,
+      480,
+      1024
+    ],
+    "calibration_generated_strip_half_open": [
+      472,
+      0,
+      480,
+      1024
+    ],
+    "join_weights": [
+      {
+        "x": 472,
+        "numerator": 0,
+        "denominator": 1
+      },
+      {
+        "x": 473,
+        "numerator": 19,
+        "denominator": 343
+      },
+      {
+        "x": 474,
+        "numerator": 68,
+        "denominator": 343
+      },
+      {
+        "x": 475,
+        "numerator": 135,
+        "denominator": 343
+      },
+      {
+        "x": 476,
+        "numerator": 208,
+        "denominator": 343
+      },
+      {
+        "x": 477,
+        "numerator": 275,
+        "denominator": 343
+      },
+      {
+        "x": 478,
+        "numerator": 324,
+        "denominator": 343
+      },
+      {
+        "x": 479,
+        "numerator": 1,
+        "denominator": 1
+      }
+    ],
+    "offset_RGB_ranges": [
+      [
+        3.7083333333333335,
+        12.375
+      ],
+      [
+        4.125,
+        11.166666666666666
+      ],
+      [
+        0,
+        8.125
+      ]
+    ],
+    "row_offsets": {
+      "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase4/row-offsets.json",
+      "sha256": "edf40be8e71e8c61574893ec1c8179c8b2c62fac1b549197d36b13024736fb72",
+      "bytes": 275645,
+      "contents": "All 1024 rows' original 12-pixel RGB sums, generated 8-pixel RGB sums, and exact RGB offset numerators/24."
+    },
+    "design": {
+      "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase4/design.json",
+      "sha256": "57abf74f98bdd6737a84c0cb2099e8aeb5fa11f57a639aff6b323612b17ea7e4",
+      "bytes": 1758
+    },
+    "implementation": {
+      "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase4/phase4.py",
+      "sha256": "9da63f033134fba5441be47de65177fe06cca8715b7898117f13431bba01b1e8",
+      "bytes": 7420
+    },
+    "matched_patch_before_join": {
+      "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase4/matched-generated-patch-before-join.png",
+      "sha256": "a8039fb5546add17143cd51c9972693f1cb0476963f1bfaba0a76b74860250c2",
+      "bytes": 34618,
+      "dimensions": [
+        40,
+        1024
+      ]
+    },
+    "matched_patch_after_join": {
+      "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase4/matched-patch-with-approved-join.png",
+      "sha256": "742871cf6163f69546a4cf24f5178fcf217015e120805d63bbaf2ffd2e7faf89",
+      "bytes": 32510,
+      "dimensions": [
+        40,
+        1024
+      ]
+    },
+    "staged_frames": [
+      {
+        "index": 1,
+        "source": {
+          "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase4/candidate01-original-decoded-actual-plus-matched-ROI.png",
+          "sha256": "83f55ec60397cf8d575356d09909dc27ce2d5de067ffed7966dd46dcd586b9e4",
+          "bytes": 257633,
+          "dimensions": [
+            512,
+            1024
+          ],
+          "mode": "RGB",
+          "encoding_basis": "original decoded actual01 RGB plus Phase4 matched ROI"
+        },
+        "actual": {
+          "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase4/LOSSLESS01-ORIGINAL02-03-CANDIDATE-ONLY/ex_leg_squat_female_01.webp",
+          "sha256": "bb9a2e2d40bffe23ce5d8ced055e1463d87c104e01128447f7c75f5833d27761",
+          "bytes": 168680,
+          "dimensions": [
+            512,
+            1024
+          ],
+          "encoder": {
+            "format": "WebP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": "empty"
+          }
+        },
+        "differences_from_original_actual": {
+          "different_rgb_pixels": 36957,
+          "bbox": [
+            474,
+            0,
+            512,
+            1024
+          ],
+          "max_channel_delta": 23,
+          "outside_roi_different_rgb_pixels": 0,
+          "roi_half_open_xyxy": [
+            472,
+            0,
+            512,
+            1024
+          ]
+        }
+      },
+      {
+        "index": 2,
+        "source": {
+          "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/frozen/female-sheet.png",
+          "sha256": "00fe859a1497ea845f28e48f3a8b3d441abdee9c2b82ebbee00fe9c7f332ff8e",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "cell_xyxy": [
+            512,
+            0,
+            1024,
+            1024
+          ],
+          "encoding_basis": "original canonical source RGB cell, not decoded-actual substitute"
+        },
+        "actual": {
+          "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase4/LOSSLESS01-ORIGINAL02-03-CANDIDATE-ONLY/ex_leg_squat_female_02.webp",
+          "sha256": "720002df84cd67ace93ced4f651045cadf1e5e97667b2c79d81f18ad9bd32605",
+          "bytes": 19336,
+          "dimensions": [
+            512,
+            1024
+          ],
+          "encoder": {
+            "format": "WebP",
+            "lossless": false,
+            "quality": 82,
+            "method": 6,
+            "exif": "empty"
+          }
+        }
+      },
+      {
+        "index": 3,
+        "source": {
+          "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/frozen/female-sheet.png",
+          "sha256": "00fe859a1497ea845f28e48f3a8b3d441abdee9c2b82ebbee00fe9c7f332ff8e",
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB",
+          "cell_xyxy": [
+            1024,
+            0,
+            1536,
+            1024
+          ],
+          "encoding_basis": "original canonical source RGB cell, not decoded-actual substitute"
+        },
+        "actual": {
+          "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase4/LOSSLESS01-ORIGINAL02-03-CANDIDATE-ONLY/ex_leg_squat_female_03.webp",
+          "sha256": "0f37769e6a2fb896cbeca7946e4b54378d7342e06325d3ca4139f5d9863e4e02",
+          "bytes": 18984,
+          "dimensions": [
+            512,
+            1024
+          ],
+          "encoder": {
+            "format": "WebP",
+            "lossless": false,
+            "quality": 82,
+            "method": 6,
+            "exif": "empty"
+          }
+        }
+      }
+    ],
+    "candidate_mother": {
+      "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase4/candidate-mother-mixed-encoding.png",
+      "sha256": "aaee32185e1da6273eb133923d3402e2c45b412ec7d44e2ac5d4bf1d9e831e3a",
+      "bytes": 1319510,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "assembly": "Cell01 from decoded-original-actual-based candidate01 RGB; cells02/03 from original canonical RGB cells."
+    },
+    "result": {
+      "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase4/result.json",
+      "sha256": "2da1a785f46729644a507eda0d76b48e2753da8d6447eb9f24b911f9e83d13e2",
+      "bytes": 5232
+    }
+  },
+  "original_source_backup": {
+    "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/frozen/female-sheet.png",
+    "sha256": "00fe859a1497ea845f28e48f3a8b3d441abdee9c2b82ebbee00fe9c7f332ff8e",
+    "bytes": 1791120,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGB",
+    "role": "Immutable original canonical mother backup; historical hash is not attached to current canonical path."
+  },
+  "original_production_snapshot": {
+    "status": "Immutable original snapshot values; production_path_at_snapshot identifies historical paths, frozen_backup preserves original bytes. Current accepted production is listed separately.",
+    "frames": [
+      {
+        "index": 1,
+        "production_path_at_snapshot": "entry/src/main/resources/base/media/ex_leg_squat_female_01.webp",
+        "sha256": "cfa79c374c47b834c778c5c473edb86c72b84f793f160722f71d94e32a445640",
+        "bytes": 19926,
+        "dimensions": [
+          512,
+          1024
+        ],
+        "frozen_backup": {
+          "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/frozen/ex_leg_squat_female_01.webp",
+          "sha256": "cfa79c374c47b834c778c5c473edb86c72b84f793f160722f71d94e32a445640",
+          "bytes": 19926,
+          "dimensions": [
+            512,
+            1024
+          ]
+        }
+      },
+      {
+        "index": 2,
+        "production_path_at_snapshot": "entry/src/main/resources/base/media/ex_leg_squat_female_02.webp",
+        "sha256": "720002df84cd67ace93ced4f651045cadf1e5e97667b2c79d81f18ad9bd32605",
+        "bytes": 19336,
+        "dimensions": [
+          512,
+          1024
+        ],
+        "frozen_backup": {
+          "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/frozen/ex_leg_squat_female_02.webp",
+          "sha256": "720002df84cd67ace93ced4f651045cadf1e5e97667b2c79d81f18ad9bd32605",
+          "bytes": 19336,
+          "dimensions": [
+            512,
+            1024
+          ]
+        }
+      },
+      {
+        "index": 3,
+        "production_path_at_snapshot": "entry/src/main/resources/base/media/ex_leg_squat_female_03.webp",
+        "sha256": "0f37769e6a2fb896cbeca7946e4b54378d7342e06325d3ca4139f5d9863e4e02",
+        "bytes": 18984,
+        "dimensions": [
+          512,
+          1024
+        ],
+        "frozen_backup": {
+          "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/frozen/ex_leg_squat_female_03.webp",
+          "sha256": "0f37769e6a2fb896cbeca7946e4b54378d7342e06325d3ca4139f5d9863e4e02",
+          "bytes": 18984,
+          "dimensions": [
+            512,
+            1024
+          ]
+        }
+      }
+    ]
+  },
+  "acceptance": {
+    "acceptedCommit": "039f4ae9d2dd7088568dacef37a0ff541068a197",
+    "independent_review_report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-squat-background-review.md",
+    "review_status": "INDEPENDENTLY_ACCEPTED",
+    "integration_status": "INTEGRATED"
+  },
+  "visible_claim_limits": [
+    "Phase4 changes only background pixels; outside ROI comparison is against original decoded actual01, not uncompressed source PNG.",
+    "Source02/03 in hybrid mother are original canonical RGB; their staged WebPs reproduce original bytes with q82/method6. Do not substitute decoded actuals.",
+    "Phase3 raw opaque ImageGen output is old lineage; Phase4 made no new generation.",
+    "Hidden anatomy/apparatus claims are not part of this background provenance."
+  ],
+  "missing_evidence": [
+    "ImageGen tool-event call ID is not recorded; output PNG basename is not treated as a call ID."
+  ],
+  "evidence_reports": [
+    ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-roi-pilot-report.md (Phase3/Phase4)",
+    ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-squat-background-integration-brief.md",
+    ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-squat-background-review.md"
+  ],
+  "repair_kind": "BACKGROUND_ONLY_D016",
+  "canonical_source": {
+    "path": ".work/exercise-guidance/leg_squat/female-sheet.png",
+    "sha256": "aaee32185e1da6273eb133923d3402e2c45b412ec7d44e2ac5d4bf1d9e831e3a",
+    "bytes": 1319510,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGB",
+    "assembly": "Cell01 is original decoded actual01 RGB plus matched background ROI; cells02/03 are original canonical RGB cells."
+  },
+  "accepted_production_frames": [
+    {
+      "path": "entry/src/main/resources/base/media/ex_leg_squat_female_01.webp",
+      "sha256": "bb9a2e2d40bffe23ce5d8ced055e1463d87c104e01128447f7c75f5833d27761",
+      "bytes": 168680,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "encoder": {
+        "format": "WebP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6,
+        "exif": "empty"
+      },
+      "index": 1,
+      "unchanged_from_original": false
+    },
+    {
+      "path": "entry/src/main/resources/base/media/ex_leg_squat_female_02.webp",
+      "sha256": "720002df84cd67ace93ced4f651045cadf1e5e97667b2c79d81f18ad9bd32605",
+      "bytes": 19336,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "encoder": {
+        "format": "WebP",
+        "lossless": false,
+        "quality": 82,
+        "method": 6,
+        "exif": "empty"
+      },
+      "index": 2,
+      "unchanged_from_original": true
+    },
+    {
+      "path": "entry/src/main/resources/base/media/ex_leg_squat_female_03.webp",
+      "sha256": "0f37769e6a2fb896cbeca7946e4b54378d7342e06325d3ca4139f5d9863e4e02",
+      "bytes": 18984,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "encoder": {
+        "format": "WebP",
+        "lossless": false,
+        "quality": 82,
+        "method": 6,
+        "exif": "empty"
+      },
+      "index": 3,
+      "unchanged_from_original": true
+    }
+  ],
+  "integration_provenance": {
+    "path": ".work/exercise-guidance/leg_squat/roi-pilot-20261015/phase4/integration-provenance.json",
+    "sha256": "5048c8ee12f27ac148a8bcb273a5b984da92005f3017cd9ba44662d49ef3e314"
+  },
+  "encoding_reproduction": "Mixed per-frame encoders:01 lossless=True/quality100/method6/emptyEXIF;02/03 original lossy q82/method6/emptyEXIF. Current hybrid canonical cells reproduce all three current production files byte-for-byte. Do not run a uniform-q82 rewrite.03 depicts deepest squat/bottom, not upright return.",
+  "historical_failures": "Phase1 repeating strip, Phase2 alpha/direct paste and Phase3 opaque direct paste were rejected and remain retained failures; accepted Phase4 reuses retained opaque output with the separately approved data-derived seam/color match. No new Phase4 ImageGen call or prompt."
+}
