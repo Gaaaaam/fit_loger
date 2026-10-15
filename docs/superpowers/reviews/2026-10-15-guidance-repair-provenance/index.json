@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "baselineCommit": "61e39bc775e5233362155229d568eff59c1659ec",
+  "acceptedThroughCommit": "bfe2495bc160679d4d787ca612db923fa5619be7",
+  "scope": "Ten independently accepted image-repair groups only; not the complete original120-action generation history. Two metadata-only rear-fly repairs remain in the coverage record, not new image generations.",
+  "coverageRecord": "../2026-10-15-exercise-guidance-detail-coverage.json",
+  "wholeGoalStatus": "IN_PROGRESS; this index is not final whole-change acceptance",
+  "disclosedLimits": [
+    "Original and generated mother images are retained locally, not bundled into the app or Git. Relative artifact paths resolve from the project worktree.",
+    "Exact historical style-edit prompt and output identifier for retained burpee improved sources could not be recovered; this is explicitly NOT_FOUND, not replaced by unrelated prompts. New female02/04 prompts and all accepted byte/source evidence are preserved.",
+    "Incline dumbbell toe/elbow defects are repaired, but both groups remain UNCERTAIN for physical bench angle. Accepted repair does not mean every group is unconditional PASS.",
+    "Inherited thin light pullover/rear-fly perimeters and original Node experimental warnings remain disclosed; final style/regression gates are pending."
+  ],
+  "groups": [
+    {
+      "id": "back_db_row",
+      "gender": "male",
+      "file": "back_db_row-male.json",
+      "acceptedCommit": "0ce998dc130324340bd3905026b2e2a5e81652c3"
+    },
+    {
+      "id": "glute_single_leg_thrust",
+      "gender": "female",
+      "file": "glute_single_leg_thrust-female.json",
+      "acceptedCommit": "9a5ed0ce26b2541fe3050a64d7849c4a0b29bcb7"
+    },
+    {
+      "id": "chest_pullover",
+      "gender": "female",
+      "file": "chest_pullover-female.json",
+      "acceptedCommit": "9a5ed0ce26b2541fe3050a64d7849c4a0b29bcb7"
+    },
+    {
+      "id": "chest_pullover",
+      "gender": "male",
+      "file": "chest_pullover-male.json",
+      "acceptedCommit": "9a5ed0ce26b2541fe3050a64d7849c4a0b29bcb7"
+    },
+    {
+      "id": "chest_incline_db_press",
+      "gender": "female",
+      "file": "chest_incline_db_press-female.json",
+      "acceptedCommit": "48870b3e81d275114e018fa143c4231f8584487d"
+    },
+    {
+      "id": "chest_incline_db_press",
+      "gender": "male",
+      "file": "chest_incline_db_press-male.json",
+      "acceptedCommit": "48870b3e81d275114e018fa143c4231f8584487d"
+    },
+    {
+      "id": "shoulder_arnold",
+      "gender": "female",
+      "file": "shoulder_arnold-female.json",
+      "acceptedCommit": "f31c90d1b6733f528d800b352e09442ce821b09f"
+    },
+    {
+      "id": "shoulder_arnold",
+      "gender": "male",
+      "file": "shoulder_arnold-male.json",
+      "acceptedCommit": "f31c90d1b6733f528d800b352e09442ce821b09f"
+    },
+    {
+      "id": "cardio_burpee",
+      "gender": "female",
+      "file": "cardio_burpee-female.json",
+      "acceptedCommit": "bfe2495bc160679d4d787ca612db923fa5619be7"
+    },
+    {
+      "id": "cardio_burpee",
+      "gender": "male",
+      "file": "cardio_burpee-male.json",
+      "acceptedCommit": "bfe2495bc160679d4d787ca612db923fa5619be7"
+    }
+  ]
+}

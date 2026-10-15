@@ -1,0 +1,72 @@
+{
+  "id": "chest_pullover",
+  "gender": "female",
+  "frameIndex": 2,
+  "tool": "built-in ImageGen",
+  "prompt": "Use case: precise-object-edit\nAsset type: ONE portrait exercise guidance middle frame, aspect1:2. Image1 is the edit target02. Image2 original01 and Image3 original03 are supporting person/style/grip references only. Return ONLY edited Image1, no montage.\nPrimary request: repair the FAR ARM in Image1, which currently bends sharply near90degrees while the foreground arm is almost straight. This is a dumbbell PULLOVER, a shoulder arc with both elbows fixed at a slight soft bend. Redraw the far shoulder-to-elbow-to-wrist chain so it extends naturally diagonally down-left alongside the near arm, with the elbow only slightly bent about15degrees, comparable to the near elbow and to both elbows in Image2/3. The far elbow must move down-left from its current high position beside the head; the upper arm must no longer turn a right angle at that point. Both upper arms travel beside the ears and both forearms approach the same weight together. Exactly TWO continuous arms from the two shoulders, exactly TWO hands visibly cupping the SAME UPPER HEAD of the ONE vertical dumbbell at the left of the bench. Preserve the weight's position and size; don't make a second dumbbell or triceps extension. Keep the near arm's soft bend and clean anatomy. Allow natural occlusion of part of the far arm by the head/near arm, but show a coherent slightly bent far elbow chain, no disconnected limb segments.\nConstraints: keep this same person, face, hair, gray training clothes, natural proportions, project-green chest tint, torso/hips/head/back supported on the same bench, both feet planted at original locations, entire bench, shoes, one complete dumbbell, camera, lighting, neutral gray studio, original canvas and margins. Change only arms/hands as needed for the specified correction. No new objects, labels, arrows, logos, border or watermark.",
+  "submitted_inputs": [
+    {
+      "role": "Image 1 edit target stage 02",
+      "path": ".work/exercise-guidance/chest_pullover/topology-female/original-cell-02.png",
+      "sha256": "7dd8ca9f281fc33b9f27472bc6dbfd00e51839e528c80370bd15c81ce16e53ae"
+    },
+    {
+      "role": "Image 2 supporting original stage 01",
+      "path": ".work/exercise-guidance/chest_pullover/topology-female/original-cell-01.png",
+      "sha256": "0d8ae01c258f90164102668e1fea6dda9200f593ea79560ac1760165a64f52db"
+    },
+    {
+      "role": "Image 3 supporting original stage 03",
+      "path": ".work/exercise-guidance/chest_pullover/topology-female/original-cell-03.png",
+      "sha256": "7c942697213a1f2543170a5df4bd96ee42ea1145b3240284ef713637a184f772"
+    }
+  ],
+  "original_mother": {
+    "path": ".work/exercise-guidance/chest_pullover/topology-female/original-sheet.png",
+    "sha256": "769c49bd31aa861982a4f6657370758c093d738d84369d798989a19d7b0a34e9"
+  },
+  "generation_output": {
+    "path": ".work/exercise-guidance/chest_pullover/topology-female/attempt-1-output.png",
+    "sha256": "b891914a62418ea31a894632ba3df4eecc4fd1d512a521bf1c06661cba677d58",
+    "dimensions": [
+      887,
+      1774
+    ]
+  },
+  "assembly": {
+    "accepted_mother_path": ".work/exercise-guidance/chest_pullover/topology-female/attempt-1-assembled.png",
+    "accepted_mother_sha256": "32922096f389d44ad0ebf665d875269b9ce13b69f200b3122d2944814ace9dce",
+    "accepted_mother_dimensions": [
+      1536,
+      1024
+    ],
+    "operations": "Resample the complete 887x1774 ImageGen output to 512x1024 with Lanczos; paste the full cell into the original 1536x1024 mother at stage 02, position (512,0). No painted pixels. process_sheet q82/method6; original stages 01/03 reproduced byte-identically.",
+    "evidence": [
+      ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-topology-review.md:21-25,49-51 (mother dimensions and complete-cell relation)",
+      ".work/exercise-guidance/chest_pullover/topology_work.py:56-57 (Lanczos resample and paste position)"
+    ]
+  },
+  "accepted_production": {
+    "path": "entry/src/main/resources/base/media/ex_chest_pullover_female_02.webp",
+    "sha256": "f6b36fa89a4e1e11ce1f30c6403d404b9e041313acb7818e32ef7dcf08b13a28"
+  },
+  "unchanged_indices": [
+    1,
+    3
+  ],
+  "acceptedCommit": "9a5ed0ce26b2541fe3050a64d7849c4a0b29bcb7",
+  "independent_review_report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-topology-report.md",
+  "unchanged_frames": [
+    {
+      "index": 1,
+      "path": "entry/src/main/resources/base/media/ex_chest_pullover_female_01.webp",
+      "sha256": "ca744938b5c8ce059961ef6db54c7a893ad0a00f64ba8d67c86f6ad0189702c5"
+    },
+    {
+      "index": 3,
+      "path": "entry/src/main/resources/base/media/ex_chest_pullover_female_03.webp",
+      "sha256": "e808a86a33c63bd2d033241692ba5c6c02ccdefe33992627027d544da85dd30e"
+    }
+  ],
+  "missing_evidence": []
+}

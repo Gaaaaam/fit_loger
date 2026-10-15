@@ -1,0 +1,205 @@
+{
+  "id": "cardio_burpee",
+  "gender": "female",
+  "frameIndices": [
+    2,
+    4
+  ],
+  "tool": "built-in ImageGen",
+  "prompt": null,
+  "original_mother": {
+    "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/prior-production-sources/female-sheet-before-task9-style.png",
+    "sha256": "a3c09c4a75fb24d42961a0d008b66902c7673b1c2382889719fcb27eb96274e8",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "role": "pre-Task-9-style mother; reproduces baseline production"
+  },
+  "retained_improved_style_mother": {
+    "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/retained-canonical/female-sheet.png",
+    "sha256": "27af14bb73f814a2239e40da272bc970442598ad8568db9012d3994fc4ab4ef4",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "role": "improved-style assembly base; pre-edit mother"
+  },
+  "generations": [
+    {
+      "frameIndex": 2,
+      "attempt": 1,
+      "tool": "built-in ImageGen",
+      "prompt": "Use case: precise-object-edit.\nAsset type: one full-cell female burpee stage02 high-plank teaching image, final logical size768x512 (3:2); output one1536x1024 image of the same aspect ratio.\nInput images: Image1 is the EDIT TARGET, the retained stage02 plank cell. Image2 is only a consistency reference for the same woman, gray clothing and soft green surface in the neighboring crouch stage; do not copy its pose or produce multiple panels.\nPrimary request: remove ONLY the tiny foreign skin-colored fingertip fragment at the extreme BOTTOM BORDER of Image1, around logical x347-348,y511. This fragment belongs to the next cell of an old sheet; the bottom margin must be uninterrupted cool-gray floor/backdrop, with no warm fragment touching the bottom edge. Keep the complete main woman and all her existing limbs and contacts intact. Do not crop, zoom, move, repaint or restyle her; keep her same position, body scale, camera direction, face, ponytail, expression, proportions, clothes and pose.\nScene/stage invariants: same light cool gray studio background and floor texture, soft lighting, three-quarter side view. Exactly one naturally proportioned woman in a straight-arm high plank, two palms planted on the floor under shoulders, two normal arms, two normal legs extending back into two planted forefeet/shoes, coherent aligned trunk. No push-up. Preserve all complete fingers, shoes, hair and all four clear cell margins. The skin fragment being removed is unrelated to her visible supporting palms.\nSurface invariants: preserve the same modest fitted gray sleeveless top, gray leggings and gray shoes; preserve restrained flat translucent project-green chest/core/leg tint over continuous gray clothing. No segmented gray/green muscle plates, raised shoulder caps, armor, added muscle volume, hard shaded green blocks, red/orange fibers or exposed midriff.\nConstraints: one full-cell scene only; no extra limbs or people, no text, arrows, logos, watermark, equipment, divider lines, borders or neighboring content. Change only the isolated foreign bottom-border fragment into matching neutral floor.",
+      "prompt_source": {
+        "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/female02-imagegen-prompt.txt",
+        "sha256": "7cf750375ebbbec1ff3f6d09e83133959da1d5e55a2600b78338d707b49ed9dd"
+      },
+      "submitted_inputs": [
+        {
+          "role": "Image 1 edit target, retained stage02 plank cell",
+          "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/staged/ex_cardio_burpee_female_02.webp",
+          "sha256": "a8338c35ab5d5cf0d72404cb401c3e5efb7dbd58b4b2d1a0a192b43fc9fa41fb",
+          "dimensions": [
+            768,
+            512
+          ]
+        },
+        {
+          "role": "Image 2 consistency reference, retained stage03",
+          "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/staged/ex_cardio_burpee_female_03.webp",
+          "sha256": "03a1e9f0630d6dc4974199f4cf6beb5a0a917fceb8dc15e68e079463cc88677f",
+          "dimensions": [
+            768,
+            512
+          ]
+        }
+      ],
+      "generation_output": {
+        "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/female02-imagegen-attempt1.png",
+        "default_basename": "exec-50a275ab-ede2-4df5-b96a-5ee107cab509.png",
+        "sha256": "9738fe500c80c63447c430ce33dfc9f85f3c064bf57d6e5e7c5b574a4aa04198",
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "resample": {
+        "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/female-edit02-04-v1/female-cell02-resampled.png",
+        "sha256": "16fd8f97d0387c6f44961e18599bf775e580d7f86c6d98f3d8a7c5461f635bbc",
+        "dimensions": [
+          768,
+          512
+        ],
+        "filter": "LANCZOS"
+      },
+      "paste": {
+        "origin": [
+          768,
+          0
+        ],
+        "operations": "Whole 1536x1024 output resampled to 768x512 with LANCZOS; complete cell pasted at (768,0), no paint/crop/padding."
+      }
+    },
+    {
+      "frameIndex": 4,
+      "attempt": 1,
+      "tool": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve.\nAsset type: one full-cell exercise teaching image, female burpee stage04, final logical size768x512 (3:2); output one1536x1024 image with the same aspect ratio.\nInput images: Image1 is the EDIT TARGET, the retained stage04 jump cell. Image2 is the retained whole mother sheet, only a consistency/full-hand reference; do not produce a sheet. Image3 is stage03, only a reference for the same woman, clothing and muted flat green surface.\nPrimary request: correct ONLY whole-scene containment in Image1. The highest raised fingertip is clipped against its top edge. Reframe the complete jumping woman proportionally as a single intact subject, placing the entire woman lower with a generous blank top margin; keep her natural body and hand proportions. In the768x512 logical cell, highest complete fingertips must be at least45px below the top, with the airborne shoes around y390 and the soft floor shadow clearly below both shoes. Retain ample blank side and bottom margins. No isolated finger shrinking, short arms or chopped hands.\nScene/backdrop: preserve the target's light cool gray studio backdrop, floor texture, three-quarter camera direction and soft lighting.\nSubject and stage: exactly the same adult woman, ponytail, face, fitted modest gray sleeveless training top and gray leggings, gray shoes, same overhead-arm vertical airborne jump. Exactly two normal arms ending in two anatomically normal complete hands, and two normal legs ending in two complete shoes. Both feet visibly suspended above their separated floor shadow; no ground contact in this jump.\nSurface invariants: preserve natural body silhouette and the existing soft, flat translucent project-green chest/core/leg tint over continuous gray clothing. Do not bring back segmented gray/green anatomical plates, raised-looking shoulder caps, armor, added muscle volume, hard green muscle blocks, red/orange anatomical fibers or exposed midriff. Keep the same clothing and person across the reference stages.\nConstraints: one single full-cell scene only, complete figure with all fingertips, hair and shoes inside all four edges. No text, arrows, logos, watermark, borders, divider lines, equipment, extra people or residual fragments.",
+      "prompt_source": {
+        "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/female04-imagegen-prompt.txt",
+        "sha256": "d93088dbf5210f093c625e8d9a9bc8bfa1ec23435338bf66d8f7dbedd8192434"
+      },
+      "submitted_inputs": [
+        {
+          "role": "Image 1 edit target, retained stage04 jump cell",
+          "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/staged/ex_cardio_burpee_female_04.webp",
+          "sha256": "4764a055010fb983f22b44c6b741f3d85262ee58f99724f71b52a6327806682e",
+          "dimensions": [
+            768,
+            512
+          ]
+        },
+        {
+          "role": "Image 2 full-hand/identity reference, retained improved mother",
+          "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/retained-canonical/female-sheet.png",
+          "sha256": "27af14bb73f814a2239e40da272bc970442598ad8568db9012d3994fc4ab4ef4",
+          "dimensions": [
+            1536,
+            1024
+          ]
+        },
+        {
+          "role": "Image 3 stage03 continuity reference",
+          "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/staged/ex_cardio_burpee_female_03.webp",
+          "sha256": "03a1e9f0630d6dc4974199f4cf6beb5a0a917fceb8dc15e68e079463cc88677f",
+          "dimensions": [
+            768,
+            512
+          ]
+        }
+      ],
+      "generation_output": {
+        "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/female04-imagegen-attempt1.png",
+        "default_basename": "exec-b95a26ed-1e0c-4102-9357-2025032fe5dd.png",
+        "sha256": "970d7fc5c6835a0f84874d983a3e6c5d269818574516f9f065e9a2f993e8bd4d",
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      "resample": {
+        "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/female-edit02-04-v1/female-cell04-resampled.png",
+        "sha256": "b07a859c5ed16d0cd77a73d14bbc51a80e23b31a23779cc929ba1aaea7b7c31b",
+        "dimensions": [
+          768,
+          512
+        ],
+        "filter": "LANCZOS"
+      },
+      "paste": {
+        "origin": [
+          768,
+          512
+        ],
+        "operations": "Whole 1536x1024 output resampled to 768x512 with LANCZOS; complete cell pasted at (768,512), no paint/crop/padding."
+      }
+    }
+  ],
+  "assembly": {
+    "accepted_mother_path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/female-edit02-04-v1/female-sheet-candidate.png",
+    "accepted_mother_sha256": "e2a1d9b171b4bfa51810eeee502d608463d40e2baaef728b8b6b48ce0389825b",
+    "accepted_mother_dimensions": [
+      1536,
+      1024
+    ],
+    "canonical_source_path": ".work/exercise-guidance/cardio_burpee/female-sheet.png",
+    "canonical_source_sha256": "e2a1d9b171b4bfa51810eeee502d608463d40e2baaef728b8b6b48ce0389825b",
+    "operations": "Improved-style source mother retains cells01/03; generated complete-cell resamples replace cells02/04. RGB WebP q82/method6/empty EXIF recuts."
+  },
+  "accepted_production_frames": [
+    {
+      "index": 1,
+      "path": "entry/src/main/resources/base/media/ex_cardio_burpee_female_01.webp",
+      "sha256": "3ad7f747ee98571c3d52b6ba433b165925e8025f06b3b6acc9ce10090537420b",
+      "dimensions": [
+        768,
+        512
+      ]
+    },
+    {
+      "index": 2,
+      "path": "entry/src/main/resources/base/media/ex_cardio_burpee_female_02.webp",
+      "sha256": "6454f534ee705c4a945c5e22ca5c7850bcd38e6733af03c0c1bf2073636ddde8",
+      "dimensions": [
+        768,
+        512
+      ]
+    },
+    {
+      "index": 3,
+      "path": "entry/src/main/resources/base/media/ex_cardio_burpee_female_03.webp",
+      "sha256": "03a1e9f0630d6dc4974199f4cf6beb5a0a917fceb8dc15e68e079463cc88677f",
+      "dimensions": [
+        768,
+        512
+      ]
+    },
+    {
+      "index": 4,
+      "path": "entry/src/main/resources/base/media/ex_cardio_burpee_female_04.webp",
+      "sha256": "d6b062eb1d49485d71a8c5357310c6db67e54ccf463b113cbc597b2bd1a5fa0e",
+      "dimensions": [
+        768,
+        512
+      ]
+    }
+  ],
+  "acceptedCommit": "bfe2495bc160679d4d787ca612db923fa5619be7",
+  "independent_review_report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-burpee-review.md",
+  "independentReviewStatus": "APPROVED",
+  "unchanged_indices": [],
+  "missing_evidence": [
+    "Historical Task 9 flat-tint style prompt/output identifier for retained improved-style mother is NOT_FOUND; see burpee-historical-prompt-lookup.json."
+  ]
+}

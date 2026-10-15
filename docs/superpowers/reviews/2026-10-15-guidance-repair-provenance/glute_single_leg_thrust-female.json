@@ -1,0 +1,72 @@
+{
+  "id": "glute_single_leg_thrust",
+  "gender": "female",
+  "frameIndex": 2,
+  "tool": "built-in ImageGen",
+  "prompt": "Use case: precise-object-edit\nAsset type: single exercise guidance frame, portrait 512x1024 aspect 1:2.\nInput images: Image1 edit target middle stage02; Image2 supporting original stage01; Image3 supporting original stage03. Output ONLY the edited Image1 whole cell, no montage.\nPrimary request: correct the leg occlusion identity of the woman doing a single-leg hip thrust in Image1. In Image2 and Image3 the leg CLOSEST TO THE CAMERA is the planted support leg. Image1 wrongly makes that foreground leg the raised one. Make the foreground green buttock flow continuously into the HORIZONTAL SUPPORTING THIGH toward the planted knee at right, down the vertical shin to the existing grounded shoe. The UPRIGHT RAISED THIGH must emerge BEHIND the foreground support thigh from the far side of the pelvis. Its knee, shin and raised shoe stay at the same positions. Remove the current front edge that makes the raised thigh pass in front of the supporting thigh. The raised leg's proximal attachment is occluded by the horizontal near support thigh, consistent with Image3.\nConstraints: change only this proximal thigh junction and depth ordering. Keep the existing high bridge pelvis height, planted foot position, raised knee/foot positions, two complete continuous hip-knee-ankle chains, same anatomy proportions, head, ponytail, clothes, arms, bench, upper-back bench contact, framing, camera, soft lighting, neutral blue studio and flat green glute tint. Exactly one woman, two arms, two legs, two shoes, one bench. Preserve the ENTIRE Image1 canvas and all margins. No reflection, no side swap, no text, arrows, borders or watermark.",
+  "submitted_inputs": [
+    {
+      "role": "Image 1 edit target stage 02",
+      "path": ".work/exercise-guidance/glute_single_leg_thrust/topology-female/original-cell-02.png",
+      "sha256": "5294102b96ebda73508ddd86874043bf1813c84f9a4c67cb5d2fa984e6bf4e3a"
+    },
+    {
+      "role": "Image 2 supporting original stage 01",
+      "path": ".work/exercise-guidance/glute_single_leg_thrust/topology-female/original-cell-01.png",
+      "sha256": "21df7b05d531de568c3503710e498d58e531ada6784c3a3413d08225b2df0290"
+    },
+    {
+      "role": "Image 3 supporting original stage 03",
+      "path": ".work/exercise-guidance/glute_single_leg_thrust/topology-female/original-cell-03.png",
+      "sha256": "f3f4daf85fb783101f6a1b08a991a6cc76f0925974b24897ca7446d2e3a3d620"
+    }
+  ],
+  "original_mother": {
+    "path": ".work/exercise-guidance/glute_single_leg_thrust/topology-female/original-sheet.png",
+    "sha256": "643fdfa9908aef1a934c0fde715b292b4418b8f997222da62f5ca2914ba203b5"
+  },
+  "generation_output": {
+    "path": ".work/exercise-guidance/glute_single_leg_thrust/topology-female/attempt-1-output.png",
+    "sha256": "fdb1bc2c82af2dc7977b3ec169340b70ba24d790a0c04a78b1e428094086a842",
+    "dimensions": [
+      887,
+      1774
+    ]
+  },
+  "assembly": {
+    "accepted_mother_path": ".work/exercise-guidance/glute_single_leg_thrust/topology-female/attempt-1-assembled.png",
+    "accepted_mother_sha256": "d29a4d2bb5b9f550de4b12cf1826655928ef6808b50a706b925a06a5fbe7107d",
+    "accepted_mother_dimensions": [
+      1536,
+      1024
+    ],
+    "operations": "Resample the complete 887x1774 ImageGen output to 512x1024 with Lanczos; paste the full cell into the original 1536x1024 mother at stage 02, position (512,0). No painted pixels. process_sheet q82/method6; original stages 01/03 reproduced byte-identically.",
+    "evidence": [
+      ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-topology-review.md:21-25,49-51 (mother dimensions and complete-cell relation)",
+      ".work/exercise-guidance/chest_pullover/topology_work.py:56-57 (Lanczos resample and paste position)"
+    ]
+  },
+  "accepted_production": {
+    "path": "entry/src/main/resources/base/media/ex_glute_single_leg_thrust_female_02.webp",
+    "sha256": "c86edb26e90c53c892df35045cf1e5598bd3e7e963a8ea0f58e9c2ae9a32c1db"
+  },
+  "unchanged_indices": [
+    1,
+    3
+  ],
+  "acceptedCommit": "9a5ed0ce26b2541fe3050a64d7849c4a0b29bcb7",
+  "independent_review_report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-topology-report.md",
+  "unchanged_frames": [
+    {
+      "index": 1,
+      "path": "entry/src/main/resources/base/media/ex_glute_single_leg_thrust_female_01.webp",
+      "sha256": "a663e194f502569330932def83f437ea28b556a9d19932772be90d6d4f368e00"
+    },
+    {
+      "index": 3,
+      "path": "entry/src/main/resources/base/media/ex_glute_single_leg_thrust_female_03.webp",
+      "sha256": "aa27dbf8980083b1c6a79a5c2e964b5d9a2b2edd82548cd5597e955aa32e5b6b"
+    }
+  ],
+  "missing_evidence": []
+}
