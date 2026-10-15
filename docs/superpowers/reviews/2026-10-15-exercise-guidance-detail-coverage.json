@@ -24,8 +24,9 @@
       "DEFECT": 14,
       "UNCERTAIN": 8
     },
-    "changedProductionFrames": 29,
-    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus18closed leaves14open. UNCERTAIN is never PASS."
+    "changedProductionFrames": 31,
+    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus18closed leaves14open. UNCERTAIN is never PASS. There are19 accepted repair records:18 prior records including2metadata-only, plus1 independently accepted PARTIAL female incline-barbell containment correction that does not close its group.17image-provenance groups include this partial; confirmed-group closures remain18, open14, uncertain8.31production frames differ from baseline;559remain identical.",
+    "independentlyAcceptedPartialGroups": 1
   },
   "repairs": [
     {
@@ -680,6 +681,52 @@
           }
         }
       ]
+    },
+    {
+      "id": "chest_incline_bench",
+      "gender": "female",
+      "checklistIds": [
+        "D008"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED_PARTIAL",
+      "closesConfirmedGroup": false,
+      "phaseIndices": [
+        1,
+        3
+      ],
+      "groupCurrentResult": "DEFECT",
+      "acceptedCommit": "46c6675da31980a050d25cbbb55908758f8a68be",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-female-incline-boundary-integration-review.md",
+      "candidateReviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-female-incline-boundary-candidate-review.md",
+      "sourceSha256": "0de05396d6cdfd42e62e16a6cfc578566da996f9729314ffb50a2af2db6225ca",
+      "unchangedFrameIndices": [
+        2
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_chest_incline_bench_female_01.webp",
+          "baselineSha256": "82cf62cf9a53170d6fd67d9d9c1a06112e801fe98d8b859bc57c1532c4d79015",
+          "productionSha256": "07c9fe8fc9e981ff30e6917eb796f1506e0c8f0b6b437c64f9f8298200087f7d",
+          "width": 512,
+          "height": 1024
+        },
+        {
+          "index": 3,
+          "path": "entry/src/main/resources/base/media/ex_chest_incline_bench_female_03.webp",
+          "baselineSha256": "688c7120e84913cae498aff75cc5dba63f21c627ff06ee0dc77519ac4f356b1b",
+          "productionSha256": "f6a0ed0d09e8a4fa3474cb205c2ffab62dea8e1ca92d002fb0b4dc6730a3af97",
+          "width": 512,
+          "height": 1024
+        }
+      ],
+      "unresolved": [
+        "Original02 remains DEFECT/OPEN: neck/chin endpoint, clipped left sleeve, right neighbor sleeve fragment/divider.",
+        "Mild framing/scale drift through retained02 remains a disclosed nonblocking concern.",
+        "FBB1 remains rejected as a COMPLETE repair; rejected generated02 is not accepted.",
+        "No numerical3D bench-angle, maleBB, D009, phone/HAP/install, fullTask3 or whole-goal acceptance."
+      ],
+      "notes": "Only01 neighbor/divider containment and03 clipped sleeve accepted; original02 remains DEFECT/OPEN. One partial record, not a new confirmed-group closure."
     }
   ],
   "postAuditFindings": [

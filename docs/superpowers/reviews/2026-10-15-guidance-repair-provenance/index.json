@@ -2,15 +2,16 @@
   "schemaVersion": 1,
   "date": "2026-10-15",
   "baselineCommit": "61e39bc775e5233362155229d568eff59c1659ec",
-  "acceptedThroughCommit": "09ffd047ff40741b5998147e3f784ce9daf2d84a",
-  "scope": "Sixteen independently accepted image-repair groups only; not the complete original120-action generation history. Two metadata-only rear-fly repairs remain in the coverage record, not new image generations.",
+  "acceptedThroughCommit": "46c6675da31980a050d25cbbb55908758f8a68be",
+  "scope": "Seventeen independently accepted image-repair groups:16 prior image groups plus1 PARTIAL female incline-barbell01/03 containment correction, which does not close its DEFECT group. Two metadata-only rear-fly repairs are elsewhere in coverage.19repair records are not19closures:18confirmed closures/14open/8uncertain. Not the complete original120-action generation history.",
   "coverageRecord": "../2026-10-15-exercise-guidance-detail-coverage.json",
   "wholeGoalStatus": "IN_PROGRESS; this index is not final whole-change acceptance",
   "disclosedLimits": [
     "Original and generated mother images are retained locally, not bundled into the app or Git. Relative artifact paths resolve from the project worktree.",
     "Exact historical style-edit prompt and output identifier for retained burpee improved sources could not be recovered; this is explicitly NOT_FOUND, not replaced by unrelated prompts. New female02/04 prompts and all accepted byte/source evidence are preserved.",
     "Incline dumbbell toe/elbow defects are repaired, but both groups remain UNCERTAIN for physical bench angle. Accepted repair does not mean every group is unconditional PASS.",
-    "Inherited thin light pullover/rear-fly perimeters and original Node experimental warnings remain disclosed; final style/regression gates are pending."
+    "Inherited thin light pullover/rear-fly perimeters and original Node experimental warnings remain disclosed; final style/regression gates are pending.",
+    "Female incline-barbell01/03 containment accepted only;02 remains original DEFECT/OPEN and mild framing drift remains. FBB1 complete repair is still rejected;18confirmed closures remain unchanged."
   ],
   "groups": [
     {
@@ -108,6 +109,18 @@
       "gender": "male",
       "file": "core_pallof-male.json",
       "acceptedCommit": "09ffd047ff40741b5998147e3f784ce9daf2d84a"
+    },
+    {
+      "id": "chest_incline_bench",
+      "gender": "female",
+      "file": "chest_incline_bench-female.json",
+      "acceptedCommit": "46c6675da31980a050d25cbbb55908758f8a68be",
+      "status": "INDEPENDENTLY_ACCEPTED_PARTIAL",
+      "phaseIndices": [
+        1,
+        3
+      ],
+      "closesConfirmedGroup": false
     }
   ]
 }
