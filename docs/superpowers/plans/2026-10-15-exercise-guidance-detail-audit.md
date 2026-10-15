@@ -10,7 +10,7 @@
 
 **Spec:** `docs/superpowers/specs/2026-09-15-exercise-guidance-artwork-design.md`; user-requested full fine-detail re-audit, including the seated-curl pad/leg occlusion defect.
 
-**Approval and current gate:** The user approved the full audit-and-repair plan. Task 1 is complete: 120 actions, 240 groups and 590 production frames; 204 PASS / 30 DEFECT / 6 UNCERTAIN. All 590 production hashes remain identical to baseline. Repairs and the final regression gate (Tasks 2–3) have not started.
+**Approval and current gate:** The user approved the full audit-and-repair plan. Task 1 is complete: 120 actions, 240 groups and590 production frames; baseline204 PASS /30 DEFECT /6 UNCERTAIN. Task2 is in progress: male DB-row02 independently accepted at`0ce998d`, one confirmed group closed and29 remain open; six uncertainties retained. Other589 production hashes remain baseline-identical. Task3 final regression has not started; this is not whole-goal completion.
 
 ## Global Constraints
 

@@ -11,6 +11,36 @@
     "DEFECT": 30
   },
   "interpretation": "PASS means no visible defect found, not proof of hidden mechanics. UNCERTAIN is not PASS. All observations concern original packaged WebPs at the baseline hashes.",
+  "repairProgress": {
+    "baselineConfirmedDefectGroups": 30,
+    "independentlyClosedGroups": 1,
+    "openConfirmedDefectGroups": 29,
+    "uncertainGroups": 6,
+    "changedProductionFrames": 1,
+    "interpretation": "groups/results remain immutable audit-baseline observations; repairs separately record independently accepted current production replacements. Unlisted DEFECT groups remain open, and UNCERTAIN is never counted as PASS."
+  },
+  "repairs": [
+    {
+      "id": "back_db_row",
+      "gender": "male",
+      "checklistIds": ["D003"],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "acceptedCommit": "0ce998dc130324340bd3905026b2e2a5e81652c3",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-row-review.md",
+      "sourceSha256": "0181174d744e1dcab90ad21c84189c9042c315d2c5b99648fd7dc1a0bc9101bd",
+      "unchangedFrameIndices": [1, 3],
+      "frames": [
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_back_db_row_male_02.webp",
+          "baselineSha256": "a1fe1859d8e24f1a28400b5e186849dd84af33ee26b3026f2b96ae3a79ef915e",
+          "productionSha256": "08358ca9865d9fca22f78649195d46fb30ffb2682dbb9f9a4efbcc688c61833d",
+          "width": 512,
+          "height": 1024
+        }
+      ]
+    }
+  ],
   "groups": [
     {
       "id": "chest_bb_bench",
