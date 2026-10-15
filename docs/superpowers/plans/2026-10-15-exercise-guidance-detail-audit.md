@@ -10,7 +10,7 @@
 
 **Spec:** `docs/superpowers/specs/2026-09-15-exercise-guidance-artwork-design.md`; user-requested full fine-detail re-audit, including the seated-curl pad/leg occlusion defect.
 
-**Approval and current gate:** The user approved the full audit-and-repair plan. Task1 is complete:120 actions,240 groups and590 production frames; baseline204 PASS /30 DEFECT /6 UNCERTAIN. Task2 is in progress: row male02 at`0ce998d`, thrust female02 and pullover female/male02 at`9a5ed0c` independently accepted. Four confirmed groups closed,26 remain open and six uncertainties retained. Other586 production hashes remain baseline-identical. Inherited1px pullover perimeters are disclosed nonblocking style exceptions. Task3 final regression has not started; this is not whole-goal completion.
+**Approval and current gate:** The user approved the full audit-and-repair plan. Task1 is complete:120 actions,240 groups and590 production frames; baseline204 PASS /30 DEFECT /6 UNCERTAIN. Task2 is in progress: row male02 at`0ce998d`, thrust female02 and pullover female/male02 at`9a5ed0c`, incline DB female02/male03 at`48870b3` independently accepted for their confirmed defects. Six confirmed groups closed,24 remain open. Both DB groups still have unresolved numerical bench angle, so current disjoint assessment is208 PASS /24 DEFECT /8 UNCERTAIN, not six unconditional group passes. Six production frames changed; other584 hashes remain baseline-identical. Inherited1px pullover perimeters are disclosed nonblocking style exceptions. Task3 final regression has not started; this is not whole-goal completion.
 
 ## Global Constraints
 
