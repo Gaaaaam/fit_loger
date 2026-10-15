@@ -15,17 +15,17 @@
     "baselineConfirmedDefectGroups": 30,
     "additionalConfirmedDefectGroups": 2,
     "currentConfirmedDefectGroups": 32,
-    "independentlyClosedGroups": 10,
-    "openConfirmedDefectGroups": 22,
+    "independentlyClosedGroups": 12,
+    "openConfirmedDefectGroups": 20,
     "baselineUncertainGroups": 6,
     "uncertainGroups": 8,
     "currentAssessmentCounts": {
-      "PASS": 210,
-      "DEFECT": 22,
+      "PASS": 212,
+      "DEFECT": 20,
       "UNCERTAIN": 8
     },
-    "changedProductionFrames": 8,
-    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus10closed leaves22open. UNCERTAIN is never PASS."
+    "changedProductionFrames": 16,
+    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus12closed leaves20open. UNCERTAIN is never PASS."
   },
   "repairs": [
     {
@@ -277,6 +277,102 @@
       ],
       "notes": "HIGH variant reconciliation only, no new generation or changed artwork. Visible02 opposite connections accepted;01 hidden central hand/cable attribution remains an explicit visibility limit. Inherited thin light outer strips unchanged.",
       "frames": []
+    },
+    {
+      "id": "cardio_burpee",
+      "gender": "female",
+      "checklistIds": [
+        "D014"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "bfe2495bc160679d4d787ca612db923fa5619be7",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-burpee-review.md",
+      "sourceSha256": "e2a1d9b171b4bfa51810eeee502d608463d40e2baaef728b8b6b48ce0389825b",
+      "unchangedFrameIndices": [],
+      "notes": "Flat-tint retained source plus exactly2new whole-cell ImageGen corrections02/04; retained improved01/03 are NOT baseline production bytes. Foreign fingertip removed from02 and04 jump all fingers contained. Exact2new prompts/assembly preserved; historical initial style-edit prompt/output identifier unavailable and explicitly disclosed.",
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_cardio_burpee_female_01.webp",
+          "baselineSha256": "bdb132d4175e96848b56d47e4dd4d7267c06424dd6e3df26c016718316879802",
+          "productionSha256": "3ad7f747ee98571c3d52b6ba433b165925e8025f06b3b6acc9ce10090537420b",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_cardio_burpee_female_02.webp",
+          "baselineSha256": "f1a03bc689c74a3034f3242e28b604d1102d7f4531d8c33d2ecbe4e331096584",
+          "productionSha256": "6454f534ee705c4a945c5e22ca5c7850bcd38e6733af03c0c1bf2073636ddde8",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "index": 3,
+          "path": "entry/src/main/resources/base/media/ex_cardio_burpee_female_03.webp",
+          "baselineSha256": "a267dd7dfe73c937211150654de60dd0fe9d3640f4a04a5c23bbe24ad8aec85d",
+          "productionSha256": "03a1e9f0630d6dc4974199f4cf6beb5a0a917fceb8dc15e68e079463cc88677f",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "index": 4,
+          "path": "entry/src/main/resources/base/media/ex_cardio_burpee_female_04.webp",
+          "baselineSha256": "e81d38255c288ff708faa53a19d79fc0e8528c9ca6bec2ff96ed3b15e6db62f6",
+          "productionSha256": "d6b062eb1d49485d71a8c5357310c6db67e54ccf463b113cbc597b2bd1a5fa0e",
+          "width": 768,
+          "height": 512
+        }
+      ]
+    },
+    {
+      "id": "cardio_burpee",
+      "gender": "male",
+      "checklistIds": [
+        "D014"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "bfe2495bc160679d4d787ca612db923fa5619be7",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-burpee-review.md",
+      "sourceSha256": "2cacbc98b340f399d8188edb0471b1ab1098e9a299fbc1b7be210fa8978fa321",
+      "unchangedFrameIndices": [],
+      "notes": "Existing improved source reused, no new male generation. All4actual native/verified320 frames flat-tint, complete four phases and containment independently accepted; source encoding exact. Historical style-edit exactprompt/output identifier unavailable, not replaced by unrelated older prompt; current-thread lookup NOT_FOUND. Natural muscle/cloth shading is not a separate raised overlay.",
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_cardio_burpee_male_01.webp",
+          "baselineSha256": "8e46f46bb9cc8f8ec5924da58572f7861eace40053c13e8478f4b3349e1ca3f2",
+          "productionSha256": "c0993972865b821e5b2b85e4d26601d421cc9db150d4353f86ae95d7c7696855",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_cardio_burpee_male_02.webp",
+          "baselineSha256": "64b143e897999aaddee67eda411ba1a9c00f1c5cc1952d761fa4bae53e296ea1",
+          "productionSha256": "a5c37c592855e7779a823ef2e007c03362896600ab8ca627e0cc4f6d1f60493f",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "index": 3,
+          "path": "entry/src/main/resources/base/media/ex_cardio_burpee_male_03.webp",
+          "baselineSha256": "3d871ea2cce87d0a1aa2d5348962e40ec38cfb664c5c91cad71cd736ab9c5a12",
+          "productionSha256": "688258cfb143f4205f2cad150b94d65181b0249f86921d040df78751195b6015",
+          "width": 768,
+          "height": 512
+        },
+        {
+          "index": 4,
+          "path": "entry/src/main/resources/base/media/ex_cardio_burpee_male_04.webp",
+          "baselineSha256": "0cee531f844ec29c3fe17225a75c4d65a1c0961db9bd0c4998ce70f4a4b29340",
+          "productionSha256": "404fecdcd357c0b1eaaaaeae95a1f7d19df4710aebe2fa39417197e4b8e10c47",
+          "width": 768,
+          "height": 512
+        }
+      ]
     }
   ],
   "postAuditFindings": [
@@ -322,7 +418,8 @@
       "currentResult": "DEFECT",
       "discoveredDuring": "D006 semantic-duplicate reuse diagnostic; not retrospectively attributed to Task1",
       "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-source-review.md",
-      "observations": "Selected upper block changes8→7 visible plate bands. Regular round selector holes are7→6 PLUS separate bottom pin/hardware band in each, not8→7 holes; top cylindrical cap excluded. Both block ends visible and plate pitch/lower stack broadly unchanged. No fixed-bottom/resting-contact claim.",
+      "observations": "Selected upper block changes8→7 visible plate bands. Regular round selector holes are7→6 PLUS separate bottom pin/hardware band in each, not8→7 holes; top cylindrical cap excluded. Both block ends visible and plate pitch/lower stack broadly unchanged. Follow-up independently confirms inherited outer-mast top~y220→204 while lower junction~845 and floor~947/948 stay level, with slightly narrower footprint; same-camera image continuity defect, not proof literal3D elongation. A retained candidate fixes count only, not mast; no production repair accepted. No fixed-bottom/resting-contact claim.",
+      "followupReviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-male-candidate-review.md",
       "inspectedFrames": [
         1,
         2
