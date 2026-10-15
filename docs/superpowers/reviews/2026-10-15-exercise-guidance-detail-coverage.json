@@ -13,28 +13,110 @@
   "interpretation": "PASS means no visible defect found, not proof of hidden mechanics. UNCERTAIN is not PASS. All observations concern original packaged WebPs at the baseline hashes.",
   "repairProgress": {
     "baselineConfirmedDefectGroups": 30,
-    "independentlyClosedGroups": 1,
-    "openConfirmedDefectGroups": 29,
+    "independentlyClosedGroups": 4,
+    "openConfirmedDefectGroups": 26,
     "uncertainGroups": 6,
-    "changedProductionFrames": 1,
+    "changedProductionFrames": 4,
     "interpretation": "groups/results remain immutable audit-baseline observations; repairs separately record independently accepted current production replacements. Unlisted DEFECT groups remain open, and UNCERTAIN is never counted as PASS."
   },
   "repairs": [
     {
       "id": "back_db_row",
       "gender": "male",
-      "checklistIds": ["D003"],
+      "checklistIds": [
+        "D003"
+      ],
       "status": "INDEPENDENTLY_ACCEPTED",
       "acceptedCommit": "0ce998dc130324340bd3905026b2e2a5e81652c3",
       "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-row-review.md",
       "sourceSha256": "0181174d744e1dcab90ad21c84189c9042c315d2c5b99648fd7dc1a0bc9101bd",
-      "unchangedFrameIndices": [1, 3],
+      "unchangedFrameIndices": [
+        1,
+        3
+      ],
       "frames": [
         {
           "index": 2,
           "path": "entry/src/main/resources/base/media/ex_back_db_row_male_02.webp",
           "baselineSha256": "a1fe1859d8e24f1a28400b5e186849dd84af33ee26b3026f2b96ae3a79ef915e",
           "productionSha256": "08358ca9865d9fca22f78649195d46fb30ffb2682dbb9f9a4efbcc688c61833d",
+          "width": 512,
+          "height": 1024
+        }
+      ]
+    },
+    {
+      "id": "glute_single_leg_thrust",
+      "gender": "female",
+      "checklistIds": [
+        "D007"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "acceptedCommit": "9a5ed0ce26b2541fe3050a64d7849c4a0b29bcb7",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-topology-review.md",
+      "sourceSha256": "d29a4d2bb5b9f550de4b12cf1826655928ef6808b50a706b925a06a5fbe7107d",
+      "unchangedFrameIndices": [
+        1,
+        3
+      ],
+      "frames": [
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_glute_single_leg_thrust_female_02.webp",
+          "baselineSha256": "9d006f9afd24fd3d2187a6d3cea3e91dcaaea8742dc34f7a78689580ffbf4a87",
+          "productionSha256": "c86edb26e90c53c892df35045cf1e5598bd3e7e963a8ea0f58e9c2ae9a32c1db",
+          "width": 512,
+          "height": 1024
+        }
+      ]
+    },
+    {
+      "id": "chest_pullover",
+      "gender": "female",
+      "checklistIds": [
+        "D010"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "acceptedCommit": "9a5ed0ce26b2541fe3050a64d7849c4a0b29bcb7",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-topology-review.md",
+      "sourceSha256": "32922096f389d44ad0ebf665d875269b9ce13b69f200b3122d2944814ace9dce",
+      "unchangedFrameIndices": [
+        1,
+        3
+      ],
+      "notes": "Instructional elbow defect independently closed; inherited approximately1px pale perimeter remains a disclosed nonblocking style exception for final triage.",
+      "frames": [
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_chest_pullover_female_02.webp",
+          "baselineSha256": "23a1839b9773904c1af349a4d83382c4e6201c50dc0baf3a7cb32581f15dac44",
+          "productionSha256": "f6b36fa89a4e1e11ce1f30c6403d404b9e041313acb7818e32ef7dcf08b13a28",
+          "width": 512,
+          "height": 1024
+        }
+      ]
+    },
+    {
+      "id": "chest_pullover",
+      "gender": "male",
+      "checklistIds": [
+        "D010"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "acceptedCommit": "9a5ed0ce26b2541fe3050a64d7849c4a0b29bcb7",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-topology-review.md",
+      "sourceSha256": "df8e7e3fadee7a15100a0063124a81c1d06d07842d05bef4004c13e718096b1a",
+      "unchangedFrameIndices": [
+        1,
+        3
+      ],
+      "notes": "Instructional elbow defect independently closed; inherited approximately1px pale perimeter remains a disclosed nonblocking style exception for final triage.",
+      "frames": [
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_chest_pullover_male_02.webp",
+          "baselineSha256": "ba2a24d951ed3942c84a98e0c40850c817d7cf9984e06d4a35be14d41aa80995",
+          "productionSha256": "698e8f9d3a6ea8f2e3a55e9c41008106e4965d40aafbb96ac89dc5817276c8d5",
           "width": 512,
           "height": 1024
         }
