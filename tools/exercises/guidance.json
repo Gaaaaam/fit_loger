@@ -41,10 +41,11 @@
       "partKey": "shoulder",
       "frameCount": 3,
       "layout": "horizontal-3",
-      "captions": ["掌心相对起始", "旋转推起", "头顶结束"],
+      "captions": ["掌心向己起始", "旋转推起", "头顶结束"],
       "cardFrameIndex": 1,
       "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view making forearm rotation and overhead finish visible",
       "equipmentNotes": "Seated on a bench with feet planted; one complete dumbbell in each hand, closed grips, stable wrists and controlled rotation.",
+      "movementReference": "Seated with feet planted and back and hips supported, begin with two horizontal dumbbells in front of the upper chest, elbows in front and palms facing the model's own face and torso. Rotate smoothly outward while pressing up, finishing overhead with palms facing forward, then reverse the same controlled path. Maintain closed grips and stable wrists throughout.",
       "muscleNotes": "Highlight anterior deltoids in project green #1F8A70 with subtle lateral deltoid and triceps involvement; no exaggerated lower-back arch. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
       "status": "approved"
     },
@@ -477,8 +478,8 @@
       ],
       "cardFrameIndex": 1,
       "view": "premium anatomy-aware 3D scientific training illustration/render, rear three-quarter view clearly showing crossed cables and rear-shoulder contraction",
-      "equipmentNotes": "Use two mid-height pulleys; cross the two handles in front of the torso and show both taut cables.",
-      "movementReference": "Stand centered between two mid-height pulleys with crossed handles. Open both arms out to shoulder level with soft elbows, then control the return to the crossed start.",
+      "equipmentNotes": "Use two high pulleys positioned above head height; each hand holds the opposite-side handle, with the arms crossed in front of the torso at the start. Show both separate taut cables and preserve their opposite-pulley connections throughout.",
+      "movementReference": "Stand centered between two high pulleys with each hand holding the opposite-side handle and the arms crossed in front of the torso. Open both arms laterally to shoulder level with a fixed soft elbow bend while maintaining the crossed opposite-pulley cable connections, then control the return to the crossed start.",
       "muscleNotes": "Highlight 三角肌后束 in project green #1F8A70; show 上背 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
       "status": "approved"
     },

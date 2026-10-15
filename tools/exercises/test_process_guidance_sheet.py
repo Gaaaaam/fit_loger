@@ -244,12 +244,43 @@ console.log(JSON.stringify(context.result));"""
                                        "--jobs", success=False)
                 self.assertIn("invalid layout", result.stderr)
 
-    def test_arnold_prompt_uses_manifest_start_without_conflicting_catalog_start(self):
-        job = json.loads(self.run_tool("guidance_prompt.mjs", "shoulder_arnold", "female").stdout)
-        self.assertIn("掌心相对起始", job["prompt"])
-        self.assertIn("旋转推起", job["prompt"])
-        self.assertIn("头顶结束", job["prompt"])
-        self.assertNotIn("掌心朝向自己", job["prompt"])
+    def test_arnold_prompt_teaches_palms_self_start_and_rotated_overhead_finish(self):
+        for gender in ("female", "male"):
+            with self.subTest(gender=gender):
+                job = json.loads(self.run_tool("guidance_prompt.mjs", "shoulder_arnold", gender).stdout)
+                prompt = job["prompt"]
+                for term in ("掌心向己起始", "two horizontal dumbbells", "in front of the upper chest",
+                             "elbows in front", "palms facing the model's own face and torso",
+                             "Rotate smoothly outward", "palms facing forward", "旋转推起", "头顶结束"):
+                    self.assertIn(term, prompt)
+                self.assertNotIn("掌心相对起始", prompt)
+                self.assertEqual((job["id"], job["gender"], job["sheetPath"]),
+                                 ("shoulder_arnold", gender,
+                                  f".work/exercise-guidance/shoulder_arnold/{gender}-sheet.png"))
+
+    def test_arnold_without_movement_reference_falls_back_to_full_catalog_start(self):
+        entries = json.loads((self.repo / "tools/exercises/guidance.json").read_text(encoding="utf-8"))["exercises"]
+        arnold = next(entry for entry in entries if entry["id"] == "shoulder_arnold")
+        arnold.pop("movementReference", None)
+        arnold["captions"][0] = "掌心向己起始"
+        self.write_manifest([arnold])
+        for gender in ("female", "male"):
+            with self.subTest(gender=gender):
+                prompt = json.loads(self.run_tool("guidance_prompt.mjs", "--manifest", self.manifest,
+                                                  "shoulder_arnold", gender).stdout)["prompt"]
+                self.assertIn("坐姿，哑铃置于胸前，掌心朝向自己。", prompt)
+                self.assertIn("至头顶时掌心朝前。", prompt)
+
+    def test_rear_fly_prompt_selects_high_pulleys_and_opposite_crossed_connections(self):
+        for gender in ("female", "male"):
+            with self.subTest(gender=gender):
+                prompt = json.loads(self.run_tool("guidance_prompt.mjs", "shoulder_cable_rear_fly", gender).stdout)["prompt"]
+                for term in ("two high pulleys", "above head height", "each hand holds the opposite-side handle",
+                             "arms crossed in front of the torso", "both separate taut cables",
+                             "shoulder level", "soft elbow bend", "crossed opposite-pulley cable connections"):
+                    self.assertIn(term, prompt)
+                self.assertNotIn("mid-height", prompt)
+                self.assertNotIn("高位或中位", prompt)
 
     def test_prompt_prefers_manifest_movement_reference_over_catalog_variants(self):
         selected = "Start from a high-bar squat with both heels planted."

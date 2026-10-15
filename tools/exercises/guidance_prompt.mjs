@@ -56,10 +56,8 @@ export function buildGuidanceJob(entry, gender) {
   const arrangement = entry.layout === 'grid-4'
     ? 'a 2 by 2 grid of equal 768x512 cells, ordered top-left, top-right, bottom-left, bottom-right'
     : `one row of ${entry.frameCount} equal ${1536 / entry.frameCount}x1024 columns, ordered left to right`;
-  // The approved stage plan overrides the catalog's different Arnold start grip.
-  const startPosition = entry.id === 'shoulder_arnold' ? entry.captions[0] : exercise.startPosition;
   const movementReference = entry.movementReference ??
-    `start ${startPosition} Steps: ${exercise.steps.join(' ')} Cues: ${exercise.cues.join(' ')}`;
+    `start ${exercise.startPosition} Steps: ${exercise.steps.join(' ')} Cues: ${exercise.cues.join(' ')}`;
   const secondaryMuscles = entry.secondaryMusclesOverride ?? exercise.secondaryMusclesZh;
   const prompt = [
     `Create a scientific-educational exercise guidance illustration of ${exercise.englishName} (${exercise.name}).`,
