@@ -6,7 +6,7 @@
 
 已检查全部 **120 个动作、男女 240 组、590 张实际应用 WebP**，逐组检查动作阶段、人体与握持、支撑接触、器械连接/运动和单帧边界。不是抽查，也不是只检查母图。基线审计结果：**204 组未发现可见缺陷、30 组存在明确问题、6 组仍有视角/遮挡疑点**。同一组可能包含多个问题；下面按问题族合并列出，不把它们误称为30个动作。
 
-**用户已批准完整计划；Task 1 已完成，Task 2 定向修复进行中。** 累计独立验收18组明确问题修复（D003、D007、D009/D010/D011/D013/D014/D015男女版及D016女性版和D017三组；D015只统一元数据，图片不变）。后续复用诊断另发现并独立确认D018两组，保留原始审计不回写。目前累计32组曾确认问题，已修18组、待修14组。D009凳角仍不确定；当前独立分组为218组未发现可见问题、14组明确问题、8组待核实，不能把局部修复都算成整组PASS。Task 3最终回归尚未开始。累计31帧已替换，其他559帧仍与基线哈希一致。D008女性01/03边界已独立验收为PARTIAL，02仍为原样DEFECT/OPEN，轻微跨阶段构图漂移保留；此项不新增整组关闭。当前19条修复记录含1条局部修复和2条仅元数据，图片来源17组；明确问题仍18关闭/14待修/8疑点。上面的204/30/6是基线审计结果，不是当前剩余问题数。
+**用户已批准完整计划；Task 1 已完成，Task 2 定向修复进行中。** 累计独立验收19组明确问题修复（D003、D007、D009/D010/D011/D013/D014/D015男女版及D016女性版和D017三组及D018女性版；D015只统一元数据，图片不变）。后续复用诊断另发现并独立确认D018两组，保留原始审计不回写。目前累计32组曾确认问题，已修19组、待修13组。D009凳角仍不确定；当前独立分组为219组未发现可见问题、13组明确问题、8组待核实，不能把局部修复都算成整组PASS。Task 3最终回归尚未开始。累计32帧已替换，其他558帧仍与基线哈希一致。D008女性01/03边界已独立验收为PARTIAL，02仍为原样DEFECT/OPEN，轻微跨阶段构图漂移保留；此项不新增整组关闭。D018女性固定cap/post/interface及背景修复已独立接受，男性D018及D006两版仍OPEN，不授权复用。当前20条修复记录含19条整组问题关闭记录（2条仅元数据）和1条局部记录，图片来源18组（17整组加1局部）；明确问题19关闭/13待修/8疑点。上面的204/30/6是基线审计结果，不是当前剩余问题数。
 
 完整逐组结果、每帧路径、尺寸、SHA-256及检查观察见 [全量覆盖记录](2026-10-15-exercise-guidance-detail-coverage.json)。其中`groups`保留原始审计与基线哈希，`postAuditFindings`单独追加后来发现的两组问题，`repairProgress`和`repairs`记录独立验收及替换后的哈希。`PASS`仅表示没有发现可见错误，不保证被遮挡的内部结构正确；`UNCERTAIN`不算通过。
 
@@ -33,7 +33,7 @@
 | D015 | 绳索反向飞鸟 `shoulder_cable_rear_fly` / 女、男 | 01–02 | manifest已统一选择图中的高位滑轮及对侧交叉接线，不重绘原本允许的变式。四张实际图片字节完全不变并经独立原尺寸/320px检查，02对侧连接可见；01中央归属仍部分遮挡，不冒充隐藏结构已验证。继承浅外沿留待最终样式核对。 | 低优先级变式不一致 / 已统一并独立验收（`f31c90d`） |
 | D016 | 杠铃深蹲 `leg_squat` / 女 | 01 | 原单元格约x=480/512处残留直线背景分隔/色差缝；动作本身未确认错误。已用获批Phase4背景RGB校准和8列接缝匹配移除色带，实际01在x472:512外与原实际图RGB完全一致；人体、器械和支撑接触不变。01无损q100/method6/空EXIF，02/03原字节及原来源RGB保留，03为最低蹲位。实际三帧原尺寸/320px与放大接缝/边界独立通过。 | 低优先级画面瑕疵 / 已修复并独立验收（`039f4ae`） |
 | D017 | 杠铃划船 `back_bb_row` / 男；坐姿划船 `back_seated_row` / 女、男 | 均01–03 | audit-b B4：男性杠铃划船01右边、02双边、03左边有细浅色分隔线；坐姿划船两版每帧双边有约4–8px白色竖条。人体、杠铃和器械内容完整，动作语义未发现错误。原始B4观察保留；当前BB男性03原图未复现所述左细线，实际字节及原始母图03格不变。已清除BB男性01/02及男女坐姿划船六帧残留边带，仅同高度邻近背景条带平移与测得逐行RGB偏移；声明边缘ROI外人体、器械和支撑RGB完全不变。三组九张当前实际图均经原尺寸/320px/边界独立复核通过，实际只替换八帧。 | 低优先级画面瑕疵（P3） / 三组已修复并独立验收（`3ece985`） |
-| D018 | 提踵 `leg_calf_raise` / 女、男 | 01–02，后续新发现 | 复用诊断发现原基线PASS中的新问题：男性选中上配重块由8条板层变7条（规则圆孔7→6，另有底部插销层，不混作孔数）；女性固定外柱顶部相对稳定底座上移约23px，男性后续也确认约16px固定柱/投影连续性偏差。不宣称证明真实钢柱伸长。男性候选只修好板层数，固定架仍不通过，未进生产；女性两次候选未修到位。女性11层配重未发现计数问题，远手遮挡不等于脱手；禁止直接复用这些未修素材。 | 男配重P2、两版固定架/投影连续性P3 / 待修，基线记录不回写 |
+| D018 | 提踵 `leg_calf_raise` / 女、男 | 01–02，后续新发现 | 复用诊断发现原基线PASS中的新问题：男性选中上配重块由8条板层变7条（规则圆孔7→6，另有底部插销层，不混作孔数）；女性固定外柱顶部相对稳定底座上移约23px，男性后续也确认约16px固定柱/投影连续性偏差。不宣称证明真实钢柱伸长。男性候选只修好板层数，固定架仍不通过，未进生产；女性早期两次及后续直接raw/机械/mask-fix候选均未通过，保留失败历史。女性现以原01固定cap/post、既有raw mount和完整AA背景重建，仅替换02，01原样保留；实际native/320及连接、11层负载、支撑和四边独立通过（`6aa03f3`），女性组问题关闭。女性11层配重未发现计数问题，远手仍遮挡，不认证隐藏握持；不证明校准3D。男性仍OPEN；D006两版仍OPEN，本记录不授权素材复用。 | 男配重P2、固定架/投影连续性P3 / 女性已独立验收；男性待修，基线记录不回写 |
 
 生产文件统一位于 `entry/src/main/resources/base/media/`，文件名为 `ex_<动作ID>_<female或male>_<两位帧号>.webp`。上表覆盖原始审计30组明确问题及后续D018新增2组，保留已修历史；不是说当前仍有32组未修。完整路径与基线哈希在覆盖记录中逐帧列出。
 
@@ -79,7 +79,7 @@
 
 用户已于2026-10-15异步明确同意“局部 ImageGen 修图与机械合成”。允许脚本仅裁切/粘贴锁定未修区域，新增绘画仍只由内置ImageGen完成，不能程序绘制人体或器械。先用纯背景瑕疵验证不改动人物/器械，再处理复杂器械图；候选仍需独立检查实际WebP和哈希，不因流程获批就降低验收标准。
 
-已独立验收图片修复的精确提示词、输入/输出版本、来源与生产哈希现保存于 [修复来源索引](2026-10-15-guidance-repair-provenance/index.json)。该索引覆盖17组图片来源（16组既有记录加1组女性上斜杠铃01/03局部修复；该组02仍DEFECT/OPEN，不计整组关闭），不把两组仅元数据统一当作新生成，也不冒充完整120动作最初生成历史。波比跳旧表面提示词缺失等限制逐项保留。
+已独立验收图片修复的精确提示词、输入/输出版本、来源与生产哈希现保存于 [修复来源索引](2026-10-15-guidance-repair-provenance/index.json)。该索引覆盖18组图片来源（17组整组问题关闭的图片修复，含新D018女性，加1组女性上斜杠铃01/03局部修复；该组02仍DEFECT/OPEN，不计整组关闭），不把两组仅元数据统一当作新生成，也不冒充完整120动作最初生成历史。波比跳旧表面提示词缺失等限制逐项保留。
 
 ### 局部合成试验的后续证据（2026-10-15）
 
@@ -125,4 +125,16 @@ D001/D002原双侧小腿接触仍OPEN：依据新`task-2-curl-architecture-diagn
 
 不可变整合证明`.work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/integration-provenance.json` SHA256 `81d7808a14d98ba375b1041b6aa4e42e4dd8ab50a5f87a32bb4b0bd3e8779df8`保存完整前后590实际/240来源、588其他实际/239其他来源不变、旧29帧差异/18记录/16JSON及缓存守卫。整合7项指定检查全部exit0，包括22项processor测试、prompt/590资源/catalog/artwork/UI/whitespace；仅既有Node stripTypeScriptTypes警告保留。此次文档阶段只跑focused record guards与whitespace，不重复图片目检、编码或整套测试。
 
-当前31帧偏离基线/559相同，总14095752字节低于120000000预算。19修复记录=原18条加1条PARTIAL（仍含2条仅元数据），图片来源17组=原16加1局部；明确问题仍32曾确认、18关闭/14待修、8疑点，218 PASS/14 DEFECT/8 UNCERTAIN。覆盖中新增`INDEPENDENTLY_ACCEPTED_PARTIAL`和`closesConfirmedGroup:false`，不可按记录数误算19关闭。原240组/590基线hash与观察、postAuditFindings及旧18记录不回写。Task2仍进行、Task3未开始，无新HAP/真机/安装/发布/合并或整体完成声明。
+该次D008局部接受后31帧偏离基线/559相同，总14095752字节低于120000000预算。19修复记录=原18条加1条PARTIAL（仍含2条仅元数据），图片来源17组=原16加1局部；明确问题仍32曾确认、18关闭/14待修、8疑点，218 PASS/14 DEFECT/8 UNCERTAIN。覆盖中新增`INDEPENDENTLY_ACCEPTED_PARTIAL`和`closesConfirmedGroup:false`，不可按记录数误算19关闭。原240组/590基线hash与观察、postAuditFindings及旧18记录不回写。Task2仍进行、Task3未开始，无新HAP/真机/安装/发布/合并或整体完成声明。
+
+### D018女性固定柱/接口及背景正式验收（2026-10-16）
+
+`6aa03f3928524032ee7f80d9161728708e6eef55`仅替换`ex_leg_calf_raise_female_02.webp`（22186→165464bytes），同步被忽略的hybrid来源；01保留原q82字节。候选独立`task-2-calf-background-candidate-review.md`（71项检查）与实际diff独立`.superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-background-integration-review.md`（69项检查）均SPEC PASS/TASKQUALITY PASS、无阻断事项。女性原固定顶部/投影连续性问题关闭；男性D018的负载/固定支撑和两版D006仍OPEN，本记录不接受任何复用。
+
+修复以原02解码actual RGB为底；原01固定cap/front-face按dx=-23、RGB偏移(-1,-2,-2)提取，既有内置ImageGen raw只取前景mount/pin/flange，按155/1275统一比例和(400,190)定位、RGB BICUBIC/mask NEAREST。原raw完整cap/interface输出及此前机械/mask-fix均仍FAIL，不倒算通过。完整旧cap暗/亮AA由原02同排x+60真实背景、224clean pairs的RGB差值曲面拟合和连续alpha消除；按声明floor(value+0.5)舍入，无程序绘制钢材/背景纹理。2424像素改变、union2532、范围外0；163pixel有效bar轮廓、身体/接触/11层负载/导杆/基座均0改变。旧宽矩形内六个旧cap AA与两个只+1绿色的背景点明确分开，不误称bar损伤。
+
+精确原提示词SHA `5c5e1a515b6e237343a5d7c2cc55b4d6853c25f6f4a3ea628cf114262751f1d1`、raw SHA `358dd4fa006b0ae938f144ea20370d2529fb2c71e2ad5faf95f8f1a0f2bcd6af`、输入/原actual与b6d209 canonical备份、polygon/mask/donor/registration/alpha/224pair系数与舍入/层序/失败历史/检查报告见[女性提踵来源](2026-10-15-guidance-repair-provenance/leg_calf_raise-female.json)。来源01保留原canonical raw PNG RGB（不是有损actual01 RGB），02是edited actual-derived RGB。两格分别q82/m6/空EXIF与losslessTrue/q100/m6/空EXIF复现；不可笼统q82重切。原canonicalCellRGB来自b6d209备份，绝非849dcc repairedsource。Python3.12.14/Pillow12.3.0/libwebp1.6.0；整合无新生成/遮罩或拟合变化；旧调用ID缺失明确null，文件名/会话仅artifact标识。本地忽略原始图片不打包app/Git。
+
+candidate proof `676207a36b83b099c4ad9aa56286c0f4163e85301e918c126f56d07cd1c648ee`、final verification `a7545bc9c5bb4682e5a00cddfdd02da5e063c1e8dcfa9261cae1eae8284c5a5b`与不可变整合证明`.work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/integration-provenance.json` SHA `97a13cd251b914984ac40a26aa1c6b9b3ae71c04c7b9d8b781f3b4f130746045`认证完全相同候选。实际native768x1024/320x427/8x连接独立支持bar/pin/flange/cap/post、干净背景、forefoot/shoulder/near-grip及完整边界；远手仍遮挡，不认证隐藏握持或校准3D。整合7项指定检查均exit0（22processor tests）；只保留既有Node stripTypeScriptTypes警告。本次仅focused records/hash/reference/whitespace守卫，无重复图片audit、编码或七套测试。
+
+当前32曾确认、19关闭/13待修/8疑点，219 PASS/13 DEFECT/8 UNCERTAIN；32帧改变/558基线相同，总14239030字节低于120000000。20修复记录=19整组问题关闭（含2仅元数据）+1femaleBB PARTIAL；18图片来源=17整组+1partial。femaleBB原01/03接受记录/falseclosure/02DEFECT与旧31actual差异全部保留；原240groups/590tuples/results/postAuditFindings/旧19repairs与17JSON/index值不回写。Task2 IN_PROGRESS、Task3 NOT_STARTED，无新phone/HAP/设备/安装/发布/合并或完整目标完成声明。

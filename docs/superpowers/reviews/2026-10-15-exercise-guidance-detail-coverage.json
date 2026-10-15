@@ -15,17 +15,17 @@
     "baselineConfirmedDefectGroups": 30,
     "additionalConfirmedDefectGroups": 2,
     "currentConfirmedDefectGroups": 32,
-    "independentlyClosedGroups": 18,
-    "openConfirmedDefectGroups": 14,
+    "independentlyClosedGroups": 19,
+    "openConfirmedDefectGroups": 13,
     "baselineUncertainGroups": 6,
     "uncertainGroups": 8,
     "currentAssessmentCounts": {
-      "PASS": 218,
-      "DEFECT": 14,
+      "PASS": 219,
+      "DEFECT": 13,
       "UNCERTAIN": 8
     },
-    "changedProductionFrames": 31,
-    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus18closed leaves14open. UNCERTAIN is never PASS. There are19 accepted repair records:18 prior records including2metadata-only, plus1 independently accepted PARTIAL female incline-barbell containment correction that does not close its group.17image-provenance groups include this partial; confirmed-group closures remain18, open14, uncertain8.31production frames differ from baseline;559remain identical.",
+    "changedProductionFrames": 32,
+    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings retains two newly confirmed original PASS groups;32ever-confirmed minus19confirmed-group closures leaves13open. Current disjoint219PASS/13DEFECT/8UNCERTAIN totals240;UNCERTAIN is never PASS.20accepted repair records comprise19closure records (including2metadata-only) plus1female incline-barbell PARTIAL record with closesConfirmedGroup:false.18image-provenance groups comprise17closedimage groups plus1partial. D018female now independently accepted; male and D006 remain OPEN. FemaleBB02 remains DEFECT/OPEN.32production frames differ from baseline;558remain identical. Two D009 groups remain UNCERTAIN for bench angle, so known-defect closure does not mean unconditional PASS.",
     "independentlyAcceptedPartialGroups": 1
   },
   "repairs": [
@@ -727,6 +727,42 @@
         "No numerical3D bench-angle, maleBB, D009, phone/HAP/install, fullTask3 or whole-goal acceptance."
       ],
       "notes": "Only01 neighbor/divider containment and03 clipped sleeve accepted; original02 remains DEFECT/OPEN. One partial record, not a new confirmed-group closure."
+    },
+    {
+      "id": "leg_calf_raise",
+      "gender": "female",
+      "checklistIds": [
+        "D018"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "closesConfirmedGroup": true,
+      "acceptedCommit": "6aa03f3928524032ee7f80d9161728708e6eef55",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-background-integration-review.md",
+      "candidateReviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-background-candidate-review.md",
+      "sourceSha256": "849dcc09cf41739a1ac310aef0b0dabfcfb414e06bdac78a5dc77097404c0f93",
+      "unchangedFrameIndices": [
+        1
+      ],
+      "frames": [
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_02.webp",
+          "baselineSha256": "31ad301eeaf5faee1dfeca6ae56f098fb08bd4145ddd220bef720f77c8a32eba",
+          "productionSha256": "e21ec864bc1decbb5459eff41b8f2842b8367c2ff5b00ee774f03bc2490ffd3d",
+          "width": 768,
+          "height": 1024,
+          "bytes": 165464,
+          "codec": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "emptyEXIF": true
+          }
+        }
+      ],
+      "notes": "Accepted original fixed-cap/post plus existing generated foreground mount, complete-AA background reconstruction;2424pixels within2532union;01 originalq82 unchanged/02losslessTrueq100m6emptyEXIF. Source rawRGB and actualRGB identities differ as documented. D018male/D006 remain OPEN; femaleBB partial does not close its group."
     }
   ],
   "postAuditFindings": [
