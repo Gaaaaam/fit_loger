@@ -15,17 +15,17 @@
     "baselineConfirmedDefectGroups": 30,
     "additionalConfirmedDefectGroups": 2,
     "currentConfirmedDefectGroups": 32,
-    "independentlyClosedGroups": 17,
-    "openConfirmedDefectGroups": 15,
+    "independentlyClosedGroups": 18,
+    "openConfirmedDefectGroups": 14,
     "baselineUncertainGroups": 6,
     "uncertainGroups": 8,
     "currentAssessmentCounts": {
-      "PASS": 217,
-      "DEFECT": 15,
+      "PASS": 218,
+      "DEFECT": 14,
       "UNCERTAIN": 8
     },
-    "changedProductionFrames": 27,
-    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus17closed leaves15open. UNCERTAIN is never PASS."
+    "changedProductionFrames": 29,
+    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus18closed leaves14open. UNCERTAIN is never PASS."
   },
   "repairs": [
     {
@@ -622,6 +622,54 @@
           "productionSha256": "fc3b37abeb63838f48612c634a377e6de8b3d56e3501f691c4f16b99d455d080",
           "bytes": 163304,
           "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "core_pallof",
+      "gender": "male",
+      "checklistIds": [
+        "D013"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "09ffd047ff40741b5998147e3f784ce9daf2d84a",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-male-pallof-review.md",
+      "sourceSha256": "d37028ca916b94ff0ae9a32f36b069131984923658607754fe11200dc204b673",
+      "unchangedFrameIndices": [],
+      "notes": "Approved fixed opaque closed-load variant independently accepted for visible external connection/instruction only. ORIGINAL production actual decoded RGB is the base, unlike female unshipped whole-pair candidate. Original actual outside final x90:146/y480:760 mask unchanged;15679/15680 changed pixels. One retained built-in whole-mother raw, no resize; component x90:146/y496:760, existing donor[90,496,146,670] translated16px up to[90,480,146,654],24-row630:654 float64 smoothstep/np.rint join; lower654onward equals retained component base. No new mechanical-stage prompt/generation/female pixels. Both explicit lossless=True/quality100/method6/emptyEXIF, not genericq82. Hybrid source uses decoded-original-actual foundation, not old uncompressedPNG identity. Hidden load count/travel/internal route remain unverified; earlier rejected stages remain failed history.",
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_core_pallof_male_01.webp",
+          "baselineSha256": "bb552b4bc9aa8f2e3733d7d0c05d5494b1a5d402242ee9979045d32ba5f11400",
+          "productionSha256": "28b5ab2420210e8fbc1fdb471543ca3b09c2998bed8baf201b996bf26d8eaa9c",
+          "bytes": 162394,
+          "width": 768,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_core_pallof_male_02.webp",
+          "baselineSha256": "095cc1bb9c5ec23817ce475a5c6b30cd9dcf295ea0a2d48bca8cb8fbfb2bcb76",
+          "productionSha256": "f1e23f9d78f038d6d7ac7b1aed906fb03e1eef6f903095fc91ca41368a1a556f",
+          "bytes": 157174,
+          "width": 768,
           "height": 1024,
           "encoder": {
             "format": "WEBP",

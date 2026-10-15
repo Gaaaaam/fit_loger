@@ -1,0 +1,641 @@
+{
+  "schema": "repair-provenance/v1",
+  "status": "INDEPENDENTLY_ACCEPTED",
+  "baseline_commit": "a68488131a1b78ca6aed7127fce36de9657ba440",
+  "audit_baseline_commit": "61e39bc775e5233362155229d568eff59c1659ec",
+  "repair_base_commit": "a68488131a1b78ca6aed7127fce36de9657ba440",
+  "id": "core_pallof",
+  "exercise": "core_pallof",
+  "gender": "male",
+  "phaseIndices": [
+    1,
+    2
+  ],
+  "scope": "Accepted D013 male panel-raised fixed-cover pair only, integrated at09ffd047 and independently SPEC/TASKQUALITY PASS. Visible instruction/external connection accepted; hidden load count/travel/internal route unverified. Task2 in progress, Task3 not started, whole objective incomplete.",
+  "original_generation": {
+    "tool": "built-in ImageGen",
+    "tool_event_call_id": null,
+    "call_id_evidence": "No tool-event call ID is recorded in retained local evidence; do not infer one from output filename.",
+    "output_identifier": "exec-8dbd25aa-4768-4258-807b-198d0e484510.png",
+    "prompt": "Use case: precise-object-edit\nAsset type: paired two-stage exercise instruction illustration, one 1536x1024 mother sheet with two unchanged 768x1024 portrait cells.\nInput image 1: EDIT TARGET, the existing male Pallof press original mother sheet. It is the only visual source. Keep the same 3:2 canvas, camera, scale, lighting and side-by-side composition.\nPrimary request: change ONLY the exposed LOWER weight-stack and small top return fitting inside the cable tower to one coherent FIXED OPAQUE dark-gray protective metal shroud in BOTH cells. The machine stands at the LEFT of the man in each cell. Completely enclose all exposed plates, the small top return fitting and their immediate load hardware. The closed cover is a fixed guard bolted to the existing tower, not a moving load. Use the SAME fixed cover shape, size, height, camera coordinates and mounting in both stages.\nPrecise repair space: in EACH 768x1024 cell, the permitted tower-only repair rectangle is x=90 through145 and y=472 through761 (half-open box 90,472,146,762). In the right sheet cell add768 to x. Make the cover fit inside that existing narrow space between the tower uprights. Its top must stand ABOVE the entire old small fitting that starts around y496; its bottom must seat credibly on the unchanged existing crossmember near y760. Use a solid straight charcoal sheet-metal front, modest side thickness, a single coherent top cap and credible fixed mounting. No exposed old cap, moving fitting, plates or return pulley may protrude above or beside the shroud. Existing vertical runs above y472 enter the closed top naturally. Do not add any new external cable or connector. These coordinates are spatial instructions, never text to draw.\nPreserve: all pixels outside those two small repair rectangles, including the separate unchanged chest-height outlet/pulley near local x170:225 y325:400, the entire taut external horizontal cable, connectors/carabiner/handle, both hands and all fingers, every part of both men, clothing, muted green abdominal tint, planted shoes, all tower uprights/top/base outside the repair space, neutral background and floor. Preserve the chest-front stage on the left and forward-press stage on the right without pose or identity change.\nStyle: match the source realistic clean fitness illustration and existing dark metal material, edge softness and illumination. The cover must have no pasted rectangular background or seams at its boundaries. Hidden internals are concealed and do not need depiction.\nAvoid: any change to body, hands, grip, free cable or outlet; enlarged or shifted tower; different cover design between stages; floating cover; traveling cover; extra connector; residual exposed small fitting above the cover; duplicate edges; text, arrows, labels, logos or watermark. Output one paired edited mother at the original composition.\n",
+    "prompt_source": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/prompt.txt",
+      "sha256": "23b78195f390a6a15d3cd966820b60315ef93dc76f0b925753be22931de6b53d",
+      "bytes": 2864
+    },
+    "submitted_inputs": [
+      {
+        "role": "single whole-mother edit target: frozen original male two-phase mother",
+        "artifact": {
+          "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/original-male-sheet.png",
+          "sha256": "9e08d2075cb9e020d224c91c9b8046f57cb494f127a052eeae4b0aecf01af740",
+          "bytes": 1701374,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB"
+        }
+      }
+    ],
+    "raw_output": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/raw-built-in.png",
+      "sha256": "16a71695481983dbd4dae7f2e3df8bf0fbda48fa0159464932c425ec17a34093",
+      "bytes": 1622341,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "raw_lineage": "One ImageGen call only. Retained raw output is copied to the project-relative path above; no ImageGen retry or post-generation normalization/resizing."
+  },
+  "original_source": {
+    "mother": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/original-male-sheet.png",
+      "sha256": "9e08d2075cb9e020d224c91c9b8046f57cb494f127a052eeae4b0aecf01af740",
+      "bytes": 1701374,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "actualFrames": [
+      {
+        "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/original-ex_core_pallof_male_01.webp",
+        "sha256": "bb552b4bc9aa8f2e3733d7d0c05d5494b1a5d402242ee9979045d32ba5f11400",
+        "bytes": 25800,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "RGB"
+      },
+      {
+        "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/original-ex_core_pallof_male_02.webp",
+        "sha256": "095cc1bb9c5ec23817ce475a5c6b30cd9dcf295ea0a2d48bca8cb8fbfb2bcb76",
+        "bytes": 25196,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "RGB"
+      }
+    ],
+    "production_paths_at_snapshot": [
+      "entry/src/main/resources/base/media/ex_core_pallof_male_01.webp",
+      "entry/src/main/resources/base/media/ex_core_pallof_male_02.webp"
+    ]
+  },
+  "preparation": {
+    "rawMother": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/raw-built-in.png",
+      "sha256": "16a71695481983dbd4dae7f2e3df8bf0fbda48fa0159464932c425ec17a34093",
+      "bytes": 1622341,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "normalization": "none; raw already 1536x1024 RGB; normalized-pair is saved inspection copy, no resize/crop",
+    "frozenROI": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/frozen-roi.json",
+      "sha256": "44d1625f25edaec871126d8cbf0c717285a81453601574ebedd164ed079aa139",
+      "bytes": 936
+    },
+    "generationManifest": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/manifest.json",
+      "sha256": "a2707306003d07014d41b583761df32557ba212e7a20259e266150b480da9868",
+      "bytes": 10885
+    },
+    "firstMechanicalScript": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/stage.py",
+      "sha256": "2bab5f5043c6db1b8f56b7773c6e748c7fd8a684cb36704b038089baa5a4bb6c",
+      "bytes": 3814
+    },
+    "componentScript": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/component.py",
+      "sha256": "d24869474f38809af2d694e72b8dffb70ce448571653ae64f327937637440442",
+      "bytes": 4317
+    },
+    "componentManifest": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/component/manifest.json",
+      "sha256": "755bd8677a37896df6b5bcf745216e9fdc0fbc64672f4cf856c69ce79729ba60",
+      "bytes": 20064
+    },
+    "componentMask": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/component/component-mask.png",
+      "sha256": "6dfa9501c8bde13b25013a67d907ffa10311831425c1f62d7f7ce6e9495ce80a",
+      "bytes": 1356,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    "componentMother": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/component/candidate-source-mother.png",
+      "sha256": "028a33764fe98b81f0317c2b276ff5b5d43959ca36cf68a08ad2ccd029b68fb0",
+      "bytes": 508929,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    }
+  },
+  "panelRaised": {
+    "status": "INTEGRATED_AND_INDEPENDENTLY_ACCEPTED",
+    "generationCallsThisStage": 0,
+    "sameRawGenerationLineage": true,
+    "manifest": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/panel-raised/manifest.json",
+      "sha256": "5bc6ee5958ebae16f104d4e4525f69a0cc4cd73f10f85f7821664e6acc011784",
+      "bytes": 27320
+    },
+    "candidateMother": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/panel-raised/candidate-source-mother.png",
+      "sha256": "d37028ca916b94ff0ae9a32f36b069131984923658607754fe11200dc204b673",
+      "bytes": 509943,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "overallMask": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/panel-raised/overall-component-mask.png",
+      "sha256": "0cbaea597b6d600dd0c2fc1a3686367741e52858a450d19dfb49834fb3791848",
+      "bytes": 1386,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    "runtime": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "pillow": "12.3.0",
+      "webp": "1.6.0"
+    },
+    "frozenSafeROI": [
+      90,
+      472,
+      146,
+      762
+    ],
+    "componentMaskXYXY": [
+      90,
+      480,
+      146,
+      760
+    ],
+    "donorXYXY": [
+      90,
+      496,
+      146,
+      670
+    ],
+    "destinationXYXY": [
+      90,
+      480,
+      146,
+      654
+    ],
+    "translationXY": [
+      0,
+      -16
+    ],
+    "blendXYXY": [
+      90,
+      630,
+      146,
+      654
+    ],
+    "blendEquation": "t=(y-630)/23; s=3*t*t-2*t*t*t; out=uint8(np.rint((1-s)*translatedRGB+s*retainedComponentBaseRGB))",
+    "rounding": "float64; np.rint round-nearest ties-even",
+    "blendWeights": [
+      {
+        "y": 630,
+        "t": 0,
+        "baseWeight": 0,
+        "translatedWeight": 1
+      },
+      {
+        "y": 631,
+        "t": 0.043478260869565216,
+        "baseWeight": 0.005506698446617901,
+        "translatedWeight": 0.9944933015533821
+      },
+      {
+        "y": 632,
+        "t": 0.08695652173913043,
+        "baseWeight": 0.021369277554039612,
+        "translatedWeight": 0.9786307224459604
+      },
+      {
+        "y": 633,
+        "t": 0.13043478260869565,
+        "baseWeight": 0.046601462973617155,
+        "translatedWeight": 0.9533985370263829
+      },
+      {
+        "y": 634,
+        "t": 0.17391304347826086,
+        "baseWeight": 0.08021698035670255,
+        "translatedWeight": 0.9197830196432975
+      },
+      {
+        "y": 635,
+        "t": 0.21739130434782608,
+        "baseWeight": 0.12122955535464781,
+        "translatedWeight": 0.8787704446453521
+      },
+      {
+        "y": 636,
+        "t": 0.2608695652173913,
+        "baseWeight": 0.16865291361880494,
+        "translatedWeight": 0.831347086381195
+      },
+      {
+        "y": 637,
+        "t": 0.30434782608695654,
+        "baseWeight": 0.22150078080052604,
+        "translatedWeight": 0.778499219199474
+      },
+      {
+        "y": 638,
+        "t": 0.34782608695652173,
+        "baseWeight": 0.27878688255116296,
+        "translatedWeight": 0.721213117448837
+      },
+      {
+        "y": 639,
+        "t": 0.391304347826087,
+        "baseWeight": 0.33952494452206794,
+        "translatedWeight": 0.6604750554779321
+      },
+      {
+        "y": 640,
+        "t": 0.43478260869565216,
+        "baseWeight": 0.40272869236459274,
+        "translatedWeight": 0.5972713076354073
+      },
+      {
+        "y": 641,
+        "t": 0.4782608695652174,
+        "baseWeight": 0.4674118517300897,
+        "translatedWeight": 0.5325881482699103
+      },
+      {
+        "y": 642,
+        "t": 0.5217391304347826,
+        "baseWeight": 0.5325881482699104,
+        "translatedWeight": 0.4674118517300896
+      },
+      {
+        "y": 643,
+        "t": 0.5652173913043478,
+        "baseWeight": 0.5972713076354073,
+        "translatedWeight": 0.40272869236459274
+      },
+      {
+        "y": 644,
+        "t": 0.6086956521739131,
+        "baseWeight": 0.6604750554779322,
+        "translatedWeight": 0.33952494452206783
+      },
+      {
+        "y": 645,
+        "t": 0.6521739130434783,
+        "baseWeight": 0.721213117448837,
+        "translatedWeight": 0.278786882551163
+      },
+      {
+        "y": 646,
+        "t": 0.6956521739130435,
+        "baseWeight": 0.778499219199474,
+        "translatedWeight": 0.22150078080052604
+      },
+      {
+        "y": 647,
+        "t": 0.7391304347826086,
+        "baseWeight": 0.8313470863811951,
+        "translatedWeight": 0.16865291361880486
+      },
+      {
+        "y": 648,
+        "t": 0.782608695652174,
+        "baseWeight": 0.8787704446453523,
+        "translatedWeight": 0.12122955535464774
+      },
+      {
+        "y": 649,
+        "t": 0.8260869565217391,
+        "baseWeight": 0.9197830196432972,
+        "translatedWeight": 0.08021698035670277
+      },
+      {
+        "y": 650,
+        "t": 0.8695652173913043,
+        "baseWeight": 0.9533985370263827,
+        "translatedWeight": 0.046601462973617336
+      },
+      {
+        "y": 651,
+        "t": 0.9130434782608695,
+        "baseWeight": 0.9786307224459605,
+        "translatedWeight": 0.0213692775540395
+      },
+      {
+        "y": 652,
+        "t": 0.9565217391304348,
+        "baseWeight": 0.9944933015533823,
+        "translatedWeight": 0.005506698446617664
+      },
+      {
+        "y": 653,
+        "t": 1,
+        "baseWeight": 1,
+        "translatedWeight": 0
+      }
+    ],
+    "lowerCoverAndMount": "retained component-base RGB from y654 onward, exact",
+    "upperPanel": "translated donor at full weight above blend rows; no top blending",
+    "prior_stage_status": "READY_FOR_ROOT_AND_FRESH_INDEPENDENT_REVIEW_ONLY"
+  },
+  "frames": [
+    {
+      "frameIndex": 1,
+      "originalActualBackup": {
+        "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/original-ex_core_pallof_male_01.webp",
+        "sha256": "bb552b4bc9aa8f2e3733d7d0c05d5494b1a5d402242ee9979045d32ba5f11400",
+        "bytes": 25800,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "RGB"
+      },
+      "componentStageBase": {
+        "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/component/ex_core_pallof_male_01.webp",
+        "sha256": "7ec8a0e1075a5c7cb1da044977b54631a07281143d1d33c30fbf0bfa3d4f2009",
+        "bytes": 162040,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "RGB"
+      },
+      "panelRaisedCandidate": {
+        "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/panel-raised/ex_core_pallof_male_01.webp",
+        "sha256": "28b5ab2420210e8fbc1fdb471543ca3b09c2998bed8baf201b996bf26d8eaa9c",
+        "bytes": 162394,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "RGB"
+      },
+      "actualDerivedPreview": {
+        "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/panel-raised/01-actual-derived-320w.png",
+        "sha256": "c3503ab355738c5ce239cbf57832b252d407eb5db6f750fac9a668069d0b1432",
+        "bytes": 83964,
+        "dimensions": [
+          320,
+          427
+        ],
+        "mode": "RGB"
+      },
+      "translatedPanelDonor": {
+        "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/panel-raised/01-donor.png",
+        "sha256": "5a3a689ef0c2e4fca89882dfc6368cb6ed8b134f7810095bc6026c98df50ac49",
+        "bytes": 9342,
+        "dimensions": [
+          56,
+          174
+        ],
+        "mode": "RGB"
+      },
+      "proof": {
+        "outsideFrozenSafeROIChangedPixels": 0,
+        "outsideFinalMaskChangedPixels": 0,
+        "decodedActualEqualsStagedRGB": true,
+        "candidateSourceToActualByteExact": true,
+        "upperNonblendEqualsTranslatedDonor": true,
+        "lowerCoverMountBaseFromY654Exact": true,
+        "changedPixelsFromOriginal": 15679,
+        "changedPixelsFromComponentBase": 8812,
+        "encoding": {
+          "format": "WEBP",
+          "lossless": true,
+          "quality": 100,
+          "method": 6,
+          "exif": "empty"
+        },
+        "actualDimensions": [
+          768,
+          1024
+        ],
+        "previewDimensions": [
+          320,
+          427
+        ]
+      },
+      "production_path_at_snapshot": "entry/src/main/resources/base/media/ex_core_pallof_male_01.webp"
+    },
+    {
+      "frameIndex": 2,
+      "originalActualBackup": {
+        "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/original-ex_core_pallof_male_02.webp",
+        "sha256": "095cc1bb9c5ec23817ce475a5c6b30cd9dcf295ea0a2d48bca8cb8fbfb2bcb76",
+        "bytes": 25196,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "RGB"
+      },
+      "componentStageBase": {
+        "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/component/ex_core_pallof_male_02.webp",
+        "sha256": "0c935684f7df0809f7c3b7a549cace80783c6f8cb1825f753e95a713902fe4e2",
+        "bytes": 156946,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "RGB"
+      },
+      "panelRaisedCandidate": {
+        "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/panel-raised/ex_core_pallof_male_02.webp",
+        "sha256": "f1e23f9d78f038d6d7ac7b1aed906fb03e1eef6f903095fc91ca41368a1a556f",
+        "bytes": 157174,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "RGB"
+      },
+      "actualDerivedPreview": {
+        "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/panel-raised/02-actual-derived-320w.png",
+        "sha256": "694940d646a3e4b02b75546888bfdd114f281cc114fc1fac258ec14fe4737d5f",
+        "bytes": 82840,
+        "dimensions": [
+          320,
+          427
+        ],
+        "mode": "RGB"
+      },
+      "translatedPanelDonor": {
+        "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/panel-raised/02-donor.png",
+        "sha256": "aba34fdc6c703f2ea9989a4cb2b28f50c2bfa37884b8cf7e907efb18c4057e03",
+        "bytes": 9346,
+        "dimensions": [
+          56,
+          174
+        ],
+        "mode": "RGB"
+      },
+      "proof": {
+        "outsideFrozenSafeROIChangedPixels": 0,
+        "outsideFinalMaskChangedPixels": 0,
+        "decodedActualEqualsStagedRGB": true,
+        "candidateSourceToActualByteExact": true,
+        "upperNonblendEqualsTranslatedDonor": true,
+        "lowerCoverMountBaseFromY654Exact": true,
+        "changedPixelsFromOriginal": 15680,
+        "changedPixelsFromComponentBase": 8833,
+        "encoding": {
+          "format": "WEBP",
+          "lossless": true,
+          "quality": 100,
+          "method": 6,
+          "exif": "empty"
+        },
+        "actualDimensions": [
+          768,
+          1024
+        ],
+        "previewDimensions": [
+          320,
+          427
+        ]
+      },
+      "production_path_at_snapshot": "entry/src/main/resources/base/media/ex_core_pallof_male_02.webp"
+    }
+  ],
+  "evidence": {
+    "before": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/before.json",
+      "sha256": "b92c6afac07adfa1c6632ae192bf463b0e0ea264eed9bbaf70d65637f2efee50",
+      "bytes": 1214
+    },
+    "generationManifest": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/manifest.json",
+      "sha256": "a2707306003d07014d41b583761df32557ba212e7a20259e266150b480da9868",
+      "bytes": 10885
+    },
+    "frozenROI": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/frozen-roi.json",
+      "sha256": "44d1625f25edaec871126d8cbf0c717285a81453601574ebedd164ed079aa139",
+      "bytes": 936
+    },
+    "componentManifest": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/component/manifest.json",
+      "sha256": "755bd8677a37896df6b5bcf745216e9fdc0fbc64672f4cf856c69ce79729ba60",
+      "bytes": 20064
+    },
+    "panelRaisedManifest": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/panel-raised/manifest.json",
+      "sha256": "5bc6ee5958ebae16f104d4e4525f69a0cc4cd73f10f85f7821664e6acc011784",
+      "bytes": 27320
+    },
+    "candidateSourceMotherSHA256": "d37028ca916b94ff0ae9a32f36b069131984923658607754fe11200dc204b673",
+    "candidateWebPSHA256": [
+      "28b5ab2420210e8fbc1fdb471543ca3b09c2998bed8baf201b996bf26d8eaa9c",
+      "f1e23f9d78f038d6d7ac7b1aed906fb03e1eef6f903095fc91ca41368a1a556f"
+    ]
+  },
+  "integration": {
+    "status": "INTEGRATED",
+    "baseCommit": "a68488131a1b78ca6aed7127fce36de9657ba440",
+    "commit": "09ffd047ff40741b5998147e3f784ce9daf2d84a",
+    "productionPaths": [
+      "entry/src/main/resources/base/media/ex_core_pallof_male_01.webp",
+      "entry/src/main/resources/base/media/ex_core_pallof_male_02.webp"
+    ],
+    "provenance": {
+      "path": ".work/exercise-guidance/core_pallof/male-fixed-cover-20261015/integration-provenance.json",
+      "sha256": "09951f9f2a26e4c4972ce6eaf2075a0d5a06ea87aecc1044740e49cac80234c4",
+      "bytes": 338663
+    }
+  },
+  "independent_review": {
+    "status": "INDEPENDENTLY_ACCEPTED",
+    "report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-male-pallof-review.md",
+    "reviewerAcceptanceCommit": "09ffd047ff40741b5998147e3f784ce9daf2d84a"
+  },
+  "acceptedCommit": "09ffd047ff40741b5998147e3f784ce9daf2d84a",
+  "claims": {
+    "productionIntegrated": true,
+    "accepted": true,
+    "hiddenLoadCountTravelAndInternalRouteVerified": false
+  },
+  "missing_evidence": [
+    "ImageGen call-event ID is not recorded; retained output identifier is not an event ID.",
+    "Hidden load count, travel, and internal routing are unverified."
+  ],
+  "canonical_source": {
+    "path": ".work/exercise-guidance/core_pallof/male-sheet.png",
+    "sha256": "d37028ca916b94ff0ae9a32f36b069131984923658607754fe11200dc204b673",
+    "bytes": 509943,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGB"
+  },
+  "accepted_production_frames": [
+    {
+      "path": "entry/src/main/resources/base/media/ex_core_pallof_male_01.webp",
+      "sha256": "28b5ab2420210e8fbc1fdb471543ca3b09c2998bed8baf201b996bf26d8eaa9c",
+      "bytes": 162394,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "RGB",
+      "index": 1,
+      "encoder": {
+        "format": "WEBP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6,
+        "exif": ""
+      }
+    },
+    {
+      "path": "entry/src/main/resources/base/media/ex_core_pallof_male_02.webp",
+      "sha256": "f1e23f9d78f038d6d7ac7b1aed906fb03e1eef6f903095fc91ca41368a1a556f",
+      "bytes": 157174,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "RGB",
+      "index": 2,
+      "encoder": {
+        "format": "WEBP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6,
+        "exif": ""
+      }
+    }
+  ],
+  "source_identity_limit": "Final actuals start from ORIGINAL production WebP decoded RGB; this is not the female unshipped whole-pair base. Preserve original body, grip, external cable, chest-height outlet and all pixels outside x90:146/y480:760. Source PNG is hybrid decoded-actual foundation and does not claim old uncompressedPNG outside-mask equality. No female pixels used.",
+  "historical_failures": "Full-ROI y472 rectangular composition failed on background seam; component y496 composition failed insufficient clearance over original fitting. Both remain retained failures. Only panel-raised existing-donor translation/24-row interpolation is accepted; no new mechanical ImageGen call/prompt.",
+  "encoding_reproduction": "Both current768x1024 canonical RGB cells reproduce current WebP bytes with cleared metadata, lossless=True, quality=100, method=6, exif=b\"\", no resize. Bundled Python3.12.14/Pillow12.3.0/libwebp1.6.0. This is an explicit exception, not generic q82 processing. Byte/pixel proof is authenticated integration plus independent actual-review evidence; bookkeeping does not rerun codecs."
+}

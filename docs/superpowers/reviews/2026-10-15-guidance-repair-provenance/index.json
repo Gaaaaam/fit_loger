@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "date": "2026-10-15",
   "baselineCommit": "61e39bc775e5233362155229d568eff59c1659ec",
-  "acceptedThroughCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4",
-  "scope": "Fifteen independently accepted image-repair groups only; not the complete original120-action generation history. Two metadata-only rear-fly repairs remain in the coverage record, not new image generations.",
+  "acceptedThroughCommit": "09ffd047ff40741b5998147e3f784ce9daf2d84a",
+  "scope": "Sixteen independently accepted image-repair groups only; not the complete original120-action generation history. Two metadata-only rear-fly repairs remain in the coverage record, not new image generations.",
   "coverageRecord": "../2026-10-15-exercise-guidance-detail-coverage.json",
   "wholeGoalStatus": "IN_PROGRESS; this index is not final whole-change acceptance",
   "disclosedLimits": [
@@ -102,6 +102,12 @@
       "gender": "male",
       "file": "back_seated_row-male.json",
       "acceptedCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4"
+    },
+    {
+      "id": "core_pallof",
+      "gender": "male",
+      "file": "core_pallof-male.json",
+      "acceptedCommit": "09ffd047ff40741b5998147e3f784ce9daf2d84a"
     }
   ]
 }
