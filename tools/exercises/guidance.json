@@ -1845,7 +1845,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing one real rope in both hands, visible under feet",
       "equipmentNotes": "Show one complete jump rope held securely in both hands, with the rope visibly passing beneath both feet at the airborne stage. Catalog setup: 双手握绳于髋侧，绳在身后，微屈膝。",
       "muscleNotes": "Highlight calves and lower-leg stabilizers in project green #1F8A70; show 全身 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "cardio_jumping_jack",
@@ -1860,7 +1860,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, front three-quarter view clearly showing both arms overhead and both feet apart",
       "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 站立，双脚并拢，双手置于体侧。",
       "muscleNotes": "Highlight shoulders, hip abductors and leg muscles in project green #1F8A70; show 肩、髋外展 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     },
     {
       "id": "cardio_mountain_climber",
@@ -1876,7 +1876,7 @@
       "view": "premium anatomy-aware 3D scientific training illustration/render, three-quarter side view clearly showing both palms grounded and alternating knees",
       "equipmentNotes": "Use only the floor and support apparatus specified by the catalog; show every hand and foot contact. Catalog setup: 高位支撑，身体成直线。",
       "muscleNotes": "Highlight core and hip flexors in project green #1F8A70; show 髋屈肌 only subtly when anatomically relevant. Premium anatomical 3D scientific teaching illustration, realistic proportions, cool gray body and clothing, neutral light studio background and soft clinical lighting. Supporting muscle overlays only faint green; non-target anatomical overlays cool gray, never red or orange.",
-      "status": "planned"
+      "status": "approved"
     }
   ]
 }
