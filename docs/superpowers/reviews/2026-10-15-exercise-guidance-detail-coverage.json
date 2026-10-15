@@ -15,17 +15,17 @@
     "baselineConfirmedDefectGroups": 30,
     "additionalConfirmedDefectGroups": 2,
     "currentConfirmedDefectGroups": 32,
-    "independentlyClosedGroups": 12,
-    "openConfirmedDefectGroups": 20,
+    "independentlyClosedGroups": 13,
+    "openConfirmedDefectGroups": 19,
     "baselineUncertainGroups": 6,
     "uncertainGroups": 8,
     "currentAssessmentCounts": {
-      "PASS": 212,
-      "DEFECT": 20,
+      "PASS": 213,
+      "DEFECT": 19,
       "UNCERTAIN": 8
     },
-    "changedProductionFrames": 16,
-    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus12closed leaves20open. UNCERTAIN is never PASS."
+    "changedProductionFrames": 18,
+    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings separately records two newly confirmed original PASS groups; repairs records accepted image or metadata corrections. Closed groups count confirmed-defect closures, not unconditional PASS: two D009 remain UNCERTAIN for bench angle. Current disjoint counts total240;32ever-confirmed groups minus13closed leaves19open. UNCERTAIN is never PASS."
   },
   "repairs": [
     {
@@ -371,6 +371,52 @@
           "productionSha256": "404fecdcd357c0b1eaaaaeae95a1f7d19df4710aebe2fa39417197e4b8e10c47",
           "width": 768,
           "height": 512
+        }
+      ]
+    },
+    {
+      "id": "core_pallof",
+      "gender": "female",
+      "checklistIds": [
+        "D013"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "7bd1e8b0549c902aaab58b52daf3a57de13e995a",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-pallof-review.md",
+      "sourceSha256": "fa3d78bda473631305efc8681ca38157b183a3947d962b46b8e5be16204a38a0",
+      "unchangedFrameIndices": [],
+      "notes": "Approved opaque closed-load variant independently accepted for visible instruction/mechanics only; male D013 remains open. Original whole-mother ImageGen candidate followed by existing-panel reuse translated48px and approved24-row same-source RGB seam matching; no new mechanical-stage ImageGen prompt/call. Pixel-lock base is unshipped enclosed-v1, not original production; both complete original production frames differ. Hidden load count/travel/internal routing remain unverified. Explicit lossless=True/quality100/method6/emptyEXIF exception, not generic q82 reproduction.",
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_core_pallof_female_01.webp",
+          "baselineSha256": "ca7d3fcc15e7ce650b092fe6d0c3281678ca99deebc4fc84423c4b80405f2399",
+          "productionSha256": "19dca8d431340881273ae64fe8627f6188daae2cbd3bd9ce3bfe711e12c9177c",
+          "width": 768,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_core_pallof_female_02.webp",
+          "baselineSha256": "8b133e6850e1db16a18b4f83e56aede1f9adb545a1fe465d01c62657962285b8",
+          "productionSha256": "d3eb15d8a6c40757a5a3431e23bd3719e6703848538fffa90981f0165d8c3f1f",
+          "width": 768,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
         }
       ]
     }

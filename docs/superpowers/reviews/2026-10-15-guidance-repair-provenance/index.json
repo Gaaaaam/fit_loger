@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "date": "2026-10-15",
   "baselineCommit": "61e39bc775e5233362155229d568eff59c1659ec",
-  "acceptedThroughCommit": "bfe2495bc160679d4d787ca612db923fa5619be7",
-  "scope": "Ten independently accepted image-repair groups only; not the complete original120-action generation history. Two metadata-only rear-fly repairs remain in the coverage record, not new image generations.",
+  "acceptedThroughCommit": "7bd1e8b0549c902aaab58b52daf3a57de13e995a",
+  "scope": "Eleven independently accepted image-repair groups only; not the complete original120-action generation history. Two metadata-only rear-fly repairs remain in the coverage record, not new image generations.",
   "coverageRecord": "../2026-10-15-exercise-guidance-detail-coverage.json",
   "wholeGoalStatus": "IN_PROGRESS; this index is not final whole-change acceptance",
   "disclosedLimits": [
@@ -72,6 +72,12 @@
       "gender": "male",
       "file": "cardio_burpee-male.json",
       "acceptedCommit": "bfe2495bc160679d4d787ca612db923fa5619be7"
+    },
+    {
+      "id": "core_pallof",
+      "gender": "female",
+      "file": "core_pallof-female.json",
+      "acceptedCommit": "7bd1e8b0549c902aaab58b52daf3a57de13e995a"
     }
   ]
 }
