@@ -1,0 +1,604 @@
+{
+  "schema": "repair-provenance/v1",
+  "id": "back_one_arm_cable_row",
+  "exercise": "back_one_arm_cable_row",
+  "gender": "female",
+  "status": "INDEPENDENTLY_ACCEPTED",
+  "kind": "BUILTIN_IMAGEGEN_NEW_CLOSED_HOUSING_TWO_ENDPOINTS_THREE_STAGES",
+  "postRepairAssessment": "PASS",
+  "groupCurrentResult": "PASS",
+  "closesConfirmedGroup": true,
+  "phaseIndices": [
+    1,
+    2,
+    3
+  ],
+  "unchangedFrameIndices": [],
+  "audit_baseline_commit": "61e39bc775e5233362155229d568eff59c1659ec",
+  "repair_base_commit": "6c70c628e9bc5ed67faf055919f3703bc0de60bd",
+  "acceptedCommit": "fee24522a734a330bee54ce8beb1e3316db11c8d",
+  "metadataBaseCommit": "fee24522a734a330bee54ce8beb1e3316db11c8d",
+  "checklistIds": [
+    "D012"
+  ],
+  "generation": {
+    "mode": "BUILTIN_IMAGEGEN",
+    "event": "back_one_arm_cable_row/female-approved-closed-onecall-20261016",
+    "callsForThisDistinctEvent": 1,
+    "distinctD012EventsAcrossFemaleAndMale": 2,
+    "newCallsAtMetadataStage": 0,
+    "requestId": null,
+    "requestIdNote": "Tool supplied image_url/output_hint only; artifact filename/session is not a request ID.",
+    "prompt": {
+      "kind": "exact-UTF8-prompt-including-one-terminal-LF",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-input-20261016/prompt.txt",
+      "sha256": "59c448b13771f8d86241b46c7cd326f5d56abec166df11a5bd70c7648eab89cd",
+      "bytes": 2275
+    },
+    "arguments": {
+      "kind": "exact-flat-tool-arguments",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-input-20261016/call-arguments.json",
+      "sha256": "d39bc45428304635e14f9a3554b9f54f3814662a777152e3e8d96fdfcb02baa2",
+      "bytes": 2914
+    },
+    "promptUTF8Bytes": 2275,
+    "promptFileEqualsActualSubmittedUTF8Bytes": true,
+    "terminalLFCount": 1,
+    "transparentBackground": false,
+    "references": [
+      {
+        "kind": "ordered-generation-reference-only",
+        "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-input-20261016/01-apparatus-only.png",
+        "sha256": "3124070f35b2205b2ee9a50a66cbb64415973f7b2190c77374c7e72d6efd16b5",
+        "bytes": 76778,
+        "dimensions": [
+          250,
+          815
+        ],
+        "mode": "RGB",
+        "order": 1,
+        "role": "Complete accepted closed-load column/support/base/style ONLY. MID source outlet becomes NEW generated HIGH geometry; no hidden-load/force proof.",
+        "sourcePath": "F:/personal_projects/fit_loger/.worktrees/exercise-guidance/.work/exercise-guidance/back_one_arm_cable_row/approved-closed-reference-20261016/accepted-pallof-male01-complete-apparatus.png"
+      },
+      {
+        "kind": "ordered-generation-reference-only",
+        "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-input-20261016/02-female-reach-body-only.webp",
+        "sha256": "5eed032402b3f83896d4dfdd2bcbeef9e6ef7741eca0e7f1273c21488a1ba511",
+        "bytes": 22078,
+        "dimensions": [
+          512,
+          1024
+        ],
+        "mode": "RGB",
+        "order": 2,
+        "role": "Original female01 reach/body/identity/style ONLY; its old exposed machine is not geometry authority.",
+        "sourcePath": "F:/personal_projects/fit_loger/.worktrees/exercise-guidance/entry/src/main/resources/base/media/ex_back_one_arm_cable_row_female_01.webp"
+      },
+      {
+        "kind": "ordered-generation-reference-only",
+        "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-input-20261016/03-female-pull-arm-handle-only.webp",
+        "sha256": "e577f7af3b7e19d9b0c1251365da1ead7aa3e6be7fe8bf44ea923ec728d69a87",
+        "bytes": 154172,
+        "dimensions": [
+          512,
+          1024
+        ],
+        "mode": "RGB",
+        "order": 3,
+        "role": "Retained local v3 pull-body/arm/handle ONLY; no whole-group acceptance or old exposed-machine authority.",
+        "sourcePath": "F:/personal_projects/fit_loger/.worktrees/exercise-guidance/.work/exercise-guidance/back_one_arm_cable_row/female-component-candidate-20261016/female02-arm-v3-only-candidate.webp"
+      }
+    ],
+    "rawOutput": {
+      "kind": "untouched-builtin-RAW",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-onecall-20261016/raw-original.png",
+      "sha256": "bef4eaea7dd00285e6b872db9d3ed4f9a8559b75ff8eea2d2dd813d00a2e96fb",
+      "bytes": 1782290,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    "desiredCanvas": [
+      1024,
+      1024
+    ],
+    "actualCanvas": [
+      1254,
+      1254
+    ],
+    "identityLimits": "New natural gender-specific body; female graybra/GRAYLEGGINGS, male grayT/darkSHORTS. No cross-gender body bytes or inherited male acceptance. No new external occupied-source photography claimed."
+  },
+  "source": {
+    "canonical": {
+      "kind": "accepted-local-native-three-cell-mother",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/female-sheet.png",
+      "sha256": "697a6098346fa05cad3eafc03ca4028b340bb7e3206ae68032d5fe2a3e11cff4",
+      "bytes": 1174339,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "originalCanonicalBackup": {
+      "kind": "original-gender-canonical-backup",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/originals/back_one_arm_cable_row-female-sheet.png",
+      "sha256": "6369eaa9b52a0c82c67fb1865b0673885b46e9e29158a3f85fa713e9f7195163",
+      "bytes": 1777001,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "normalizedTwoEndpoints": {
+      "kind": "whole-uniform-normalized-two-endpoint-sheet",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-candidate-20261016/normalized-two-endpoints.png",
+      "sha256": "4a5b6b30b2e32dc6ece4980cce4df96f7b9563d2cc2d933753e8ef178f7179da",
+      "bytes": 1129446,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "candidateMother": {
+      "kind": "exact-accepted-candidate-mother",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-candidate-20261016/candidate-sheet.png",
+      "sha256": "697a6098346fa05cad3eafc03ca4028b340bb7e3206ae68032d5fe2a3e11cff4",
+      "bytes": 1174339,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "edits": [],
+    "normalization": {
+      "operation": "ONE whole uniform LANCZOS resize1254square to1024square",
+      "bothAxisScale": "512/627",
+      "fullResizedRGBRecomputationPASS": true,
+      "originalRawRGBIdentityAfterResampling": false,
+      "cropStretchWarpPaintMasksToneMatching": false
+    },
+    "assembly": {
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "normalizedHalfOpenCells": [
+        [
+          0,
+          0,
+          512,
+          1024
+        ],
+        [
+          512,
+          0,
+          1024,
+          1024
+        ],
+        [
+          0,
+          0,
+          512,
+          1024
+        ]
+      ],
+      "mapping": [
+        "LEFT-reach",
+        "RIGHT-pull",
+        "EXACT-LEFT-return-endpoint"
+      ],
+      "allMotherPixelsExactNormalizedCopies": true,
+      "sameGender01Equals03EncodedAndDecodedRGB": true,
+      "runtimeAlias": false,
+      "frameCountChanged": false
+    },
+    "femaleCandidateAtMaleGenerationNotAcceptedActual": false
+  },
+  "encoding": {
+    "processor": {
+      "kind": "unchanged-process_sheet",
+      "path": "tools/exercises/process_guidance_sheet.py",
+      "sha256": "344889ede82dca244343331748704a31966fbda75452ed0813312d44a2592c27",
+      "bytes": 4034
+    },
+    "layout": "horizontal-3",
+    "motherDimensions": [
+      1536,
+      1024
+    ],
+    "frameDimensions": [
+      512,
+      1024
+    ],
+    "quality": 82,
+    "method": 6,
+    "lossless": false,
+    "emptyEXIF": true,
+    "sourceCellRGBNotDecodedLossyActualRGB": true,
+    "declaredCodecByteReproductionVerified": true
+  },
+  "productionFrames": [
+    {
+      "kind": "accepted-committed-WebP",
+      "path": "entry/src/main/resources/base/media/ex_back_one_arm_cable_row_female_01.webp",
+      "sha256": "3d18673b14805a1e216ff9c65c546304b990de9db5e3dda08fcf0ca005092512",
+      "bytes": 23184,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "mode": "RGB",
+      "index": 1,
+      "baselineSha256": "5eed032402b3f83896d4dfdd2bcbeef9e6ef7741eca0e7f1273c21488a1ba511",
+      "originalBackup": {
+        "kind": "original-gender-actual-backup",
+        "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/originals/ex_back_one_arm_cable_row_female_01.webp",
+        "sha256": "5eed032402b3f83896d4dfdd2bcbeef9e6ef7741eca0e7f1273c21488a1ba511",
+        "bytes": 22078,
+        "dimensions": [
+          512,
+          1024
+        ],
+        "mode": "RGB"
+      },
+      "sourceCellRGBSha256": "8ff19256f1b07cc274bb5692326475da475a0000300a6fa7335165a1abc1ae37",
+      "decodedLossyRGBSha256": "8bccdbd9965b90db791e990c5e85f2aae18312b266c03879d86dbc34158f1244",
+      "codecByteReproductionPASS": true
+    },
+    {
+      "kind": "accepted-committed-WebP",
+      "path": "entry/src/main/resources/base/media/ex_back_one_arm_cable_row_female_02.webp",
+      "sha256": "f3c4ef968c9df324efd3956e38dc6016d52e93306f5168d345cb116feab69b38",
+      "bytes": 23312,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "mode": "RGB",
+      "index": 2,
+      "baselineSha256": "c9810ff795fa546a73aa95d580d64cd24a8dbaa17ad0d814c63b63c0c40d6e4c",
+      "originalBackup": {
+        "kind": "original-gender-actual-backup",
+        "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/originals/ex_back_one_arm_cable_row_female_02.webp",
+        "sha256": "c9810ff795fa546a73aa95d580d64cd24a8dbaa17ad0d814c63b63c0c40d6e4c",
+        "bytes": 22754,
+        "dimensions": [
+          512,
+          1024
+        ],
+        "mode": "RGB"
+      },
+      "sourceCellRGBSha256": "501356487c8ecb1c1bf0c9fdf6aff1260be4023e67e688fcdc0be24f9f8dec7a",
+      "decodedLossyRGBSha256": "38d06ab51220e52b766c271cf2e870930f5f839610cf0d890912e475b8631db7",
+      "codecByteReproductionPASS": true
+    },
+    {
+      "kind": "accepted-committed-WebP",
+      "path": "entry/src/main/resources/base/media/ex_back_one_arm_cable_row_female_03.webp",
+      "sha256": "3d18673b14805a1e216ff9c65c546304b990de9db5e3dda08fcf0ca005092512",
+      "bytes": 23184,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "mode": "RGB",
+      "index": 3,
+      "baselineSha256": "7334ae82b75f809c6fcc6710cd23fdf6b26941887f1ba52d7710ace7929b585b",
+      "originalBackup": {
+        "kind": "original-gender-actual-backup",
+        "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/originals/ex_back_one_arm_cable_row_female_03.webp",
+        "sha256": "7334ae82b75f809c6fcc6710cd23fdf6b26941887f1ba52d7710ace7929b585b",
+        "bytes": 22080,
+        "dimensions": [
+          512,
+          1024
+        ],
+        "mode": "RGB"
+      },
+      "sourceCellRGBSha256": "8ff19256f1b07cc274bb5692326475da475a0000300a6fa7335165a1abc1ae37",
+      "decodedLossyRGBSha256": "8bccdbd9965b90db791e990c5e85f2aae18312b266c03879d86dbc34158f1244",
+      "codecByteReproductionPASS": true
+    }
+  ],
+  "equipmentNotesSemanticCorrection": {
+    "atAssetCommit": "fee24522a734a330bee54ce8beb1e3316db11c8d",
+    "field": "back_one_arm_cable_row.equipmentNotes",
+    "old": "Use one high cable handle in the right hand while half-kneeling toward the pulley: left knee on the floor, right foot planted. Show the taut cable and full weight-stack connection.",
+    "new": "Use one high cable handle in the right hand while half-kneeling toward the pulley: left knee on the floor, right foot planted. Show the taut external handle-clasp-cable connection clearly entering the supported high pulley groove/outlet, with a closed load housing. Keep the cable clear of the body. Hidden load count, travel and internal transmission are not displayed or certified.",
+    "allOtherGuidanceBytesAndValuesUnchanged": true,
+    "originalNoteBackup": {
+      "kind": "original-guidance-before-exact-string-correction",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/guidance.before.json",
+      "sha256": "fe48da4c4142d83231e03838016c8e6fa945e90344dab1c5b8479f78a2535899",
+      "bytes": 131645
+    },
+    "semanticPASS": true
+  },
+  "productionMapping": {
+    "executedCaseCountForThisD012Batch": 3,
+    "id": "back_one_arm_cable_row",
+    "preferences": [
+      "auto",
+      "female",
+      "male"
+    ],
+    "executedMapping": [
+      {
+        "id": "back_one_arm_cable_row",
+        "preference": "auto",
+        "resolvedGender": "female",
+        "frames": [
+          "app.media.ex_back_one_arm_cable_row_female_01",
+          "app.media.ex_back_one_arm_cable_row_female_02",
+          "app.media.ex_back_one_arm_cable_row_female_03"
+        ],
+        "captions": [
+          "单臂前伸",
+          "肘向髋拉",
+          "控制回伸"
+        ],
+        "zeroBasedCardFrameIndex": 1,
+        "card": "app.media.ex_back_one_arm_cable_row_female_02"
+      },
+      {
+        "id": "back_one_arm_cable_row",
+        "preference": "female",
+        "resolvedGender": "female",
+        "frames": [
+          "app.media.ex_back_one_arm_cable_row_female_01",
+          "app.media.ex_back_one_arm_cable_row_female_02",
+          "app.media.ex_back_one_arm_cable_row_female_03"
+        ],
+        "captions": [
+          "单臂前伸",
+          "肘向髋拉",
+          "控制回伸"
+        ],
+        "zeroBasedCardFrameIndex": 1,
+        "card": "app.media.ex_back_one_arm_cable_row_female_02"
+      },
+      {
+        "id": "back_one_arm_cable_row",
+        "preference": "male",
+        "resolvedGender": "male",
+        "frames": [
+          "app.media.ex_back_one_arm_cable_row_male_01",
+          "app.media.ex_back_one_arm_cable_row_male_02",
+          "app.media.ex_back_one_arm_cable_row_male_03"
+        ],
+        "captions": [
+          "单臂前伸",
+          "肘向髋拉",
+          "控制回伸"
+        ],
+        "zeroBasedCardFrameIndex": 1,
+        "card": "app.media.ex_back_one_arm_cable_row_male_02"
+      }
+    ],
+    "executedProductionModules": [
+      {
+        "kind": "executed-production-module",
+        "path": "entry/src/main/ets/common/ExerciseArtworkLogic.ets",
+        "sha256": "6d702782b1076fe5daa47cb97fe39c9416f4a7c2a1e81662f700b9dab8c06356",
+        "bytes": 934
+      },
+      {
+        "kind": "executed-production-module",
+        "path": "entry/src/main/ets/model/exerciseGuidanceArtwork.generated.ets",
+        "sha256": "eb6e5f39ee81f3b525eda2a7c2de1b436bca55bfe2827a3910017318c8a49a21",
+        "bytes": 43931
+      },
+      {
+        "kind": "executed-production-module",
+        "path": "entry/src/main/ets/model/exerciseArtwork.ets",
+        "sha256": "301ece5a1773aa69f69548e190737ef143887bed47dca4a685f41ae172709c83",
+        "bytes": 25537
+      }
+    ],
+    "frameCount": 3,
+    "cardFrameIndex": 1,
+    "cardFrame": 2,
+    "captions": [
+      "单臂前伸",
+      "肘向髋拉",
+      "控制回伸"
+    ],
+    "resourceNamesAndCaptionsUnchanged": true,
+    "deviceUIClaim": false
+  },
+  "independentActualAcceptance": {
+    "SPEC": "PASS",
+    "TASKQUALITY": "PASS",
+    "gender": "female",
+    "D012": "ADDRESSED",
+    "semanticNote": "PASS",
+    "newUncertainty": false,
+    "actionableFindings": [],
+    "allSixNative320DetailsIndividuallyViewed": true,
+    "authority": {
+      "kind": "independent-committed-ACTUAL-acceptance",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-one-arm-closed-both-actual-review.md",
+      "sha256": "75da4d234ac98845b2352241a35ec1bd28f1a13d7a724f1f465d8f79026b50c9",
+      "bytes": 9659
+    }
+  },
+  "directEvidence": [
+    {
+      "kind": "committed-ACTUAL-proof",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-actual-review-20261016/review-proof.json",
+      "sha256": "5402b6b793229ae098ad945501e7c6df00cb00f9f70ae795469ecdf2d269d7ba",
+      "bytes": 5735
+    },
+    {
+      "kind": "independent-actual-QA-lineage",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-actual-review-20261016/qa-lineage.json",
+      "sha256": "f7e7b7f8d9baf82cffbb8f3dd018eb59ebccb2d16e9133a61aefd0c4b9da6522",
+      "bytes": 9353
+    },
+    {
+      "kind": "integration-report",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-one-arm-closed-both-integration-report.md",
+      "sha256": "7ef85b85371271619de07667f08519eb41d245810e2c9970d3d29a2283001a3b",
+      "bytes": 11285
+    },
+    {
+      "kind": "integration-proof",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/integration-proof.json",
+      "sha256": "fffa616cc00db8be3576973526a6bbb513784e0c8197e742ae85b64799b18d1c",
+      "bytes": 6276
+    },
+    {
+      "kind": "integration-preservation",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/mechanical-proof.json",
+      "sha256": "a4ef0362980c5a316b0e7895e4adf67403c8e4f48d57225d2d6c6d4b851f4160",
+      "bytes": 3059
+    },
+    {
+      "kind": "normalization-mapping-codec-proof",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/source-codec-proof.json",
+      "sha256": "f3fb78d220a91f1d4fc27950b58b4d48fdc3824f5df3fd74523c6dbd0d7d6787",
+      "bytes": 4337
+    },
+    {
+      "kind": "semantic-note-only-proof",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/semantic-note-proof.json",
+      "sha256": "d4d71614bd78b786d87cc1d11dedd5f07183fd89b8a9003ba07fbc4eac7c3e66",
+      "bytes": 833
+    },
+    {
+      "kind": "typed-original-backups",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/originals-proof.json",
+      "sha256": "b654e5c07fda5e457510c8c2e3faec7d5af1bbfa4e3d98937747a5afabcb7abb",
+      "bytes": 3489
+    },
+    {
+      "kind": "seven-check-aggregate",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/seven-check-results.json",
+      "sha256": "abf7839afea77a77ae3c66b39eab85a20eeed5531ef9ed5895f1d30581db3461",
+      "bytes": 15695
+    },
+    {
+      "kind": "executed-production-mapping",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-records-20261016/card-mapping.json",
+      "sha256": "eac376cac6e3297b25434164e8a0befeb082bd9a7e4eda07d92f6d200a193a1b",
+      "bytes": 1868
+    },
+    {
+      "kind": "mapping-execution-log",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-records-20261016/mapping-log.json",
+      "sha256": "dbb4082aeb8f6b960243e31b7d67ead4673874585ec17146e9f92a57537bfc02",
+      "bytes": 3846
+    },
+    {
+      "kind": "root-records-release",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-one-arm-closed-both-records-brief.md",
+      "sha256": "2802a425d0f2aeaa95a8d32c140f8f65f3833f2946111a6525f6e9ddaf28e3f1",
+      "bytes": 5518
+    },
+    {
+      "kind": "integration-check-1-argv-stdout-stderr-base64-exit",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/check-1.json",
+      "sha256": "d4a053a76c048ea8d548f93df01baef6636b5f1434f82c57bb8c72365fad21b7",
+      "bytes": 605
+    },
+    {
+      "kind": "integration-check-2-argv-stdout-stderr-base64-exit",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/check-2.json",
+      "sha256": "0709e1fb5313570a301a2cb20b1625910906652bd6fcec8da0660967c88f2d7c",
+      "bytes": 691
+    },
+    {
+      "kind": "integration-check-3-argv-stdout-stderr-base64-exit",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/check-3.json",
+      "sha256": "bec7efc9fb74878bc271b7d6085240d01f93744ee5b6cd0ac8651c6a908dcc5e",
+      "bytes": 10230
+    },
+    {
+      "kind": "integration-check-4-argv-stdout-stderr-base64-exit",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/check-4.json",
+      "sha256": "55fecaffdc8ecc32632555718adbfc0f92be015578fceae40bc4c2f182aded36",
+      "bytes": 1063
+    },
+    {
+      "kind": "integration-check-5-argv-stdout-stderr-base64-exit",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/check-5.json",
+      "sha256": "3cccc2a53e171bfb2c922046988368b0e34e630570dd3b91e39a1dcadd7f563f",
+      "bytes": 1030
+    },
+    {
+      "kind": "integration-check-6-argv-stdout-stderr-base64-exit",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/check-6.json",
+      "sha256": "d8f809cf55e45243432fa11cf2f81703e8a409d9fde7a40799c89d25dbcccd0c",
+      "bytes": 1174
+    },
+    {
+      "kind": "integration-check-7-argv-stdout-stderr-base64-exit",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/both-approved-closed-integration-20261016/check-7.json",
+      "sha256": "6e1499de9d9b343f1b69c6e41b5ddcbeda7616768a138ef6a2dedf51bf4839e8",
+      "bytes": 670
+    },
+    {
+      "kind": "input-byte-role-schema-proof",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-input-20261016/input-proof.json",
+      "sha256": "9d60c96cee7f6a596a1bb0579959f63b47755084f4f3553a8949f5b3b4ec5cb3",
+      "bytes": 10840
+    },
+    {
+      "kind": "onecall-exact-arguments-journal",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-onecall-20261016/call-journal-before.json",
+      "sha256": "df4247c10d0d5f0d83948f934259c5186a3c543cfa52a82e8f4b5c596e16bb69",
+      "bytes": 3445
+    },
+    {
+      "kind": "onecall-tool-return-metadata",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-onecall-20261016/tool-return-metadata.json",
+      "sha256": "38cb92065a03cc6c1e7a6cb7ebaca7454521a22f14af8a1da38f5e327057741b",
+      "bytes": 796
+    },
+    {
+      "kind": "untouched-RAW-proof",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-onecall-20261016/raw-proof.json",
+      "sha256": "d529a52855a22fff03fa42ec2ef429eea5acda4472884a3e6dfeb2477d626458",
+      "bytes": 1404
+    },
+    {
+      "kind": "candidate-full-resize-cell-codec-QA-proof",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-candidate-20261016/candidate-proof.json",
+      "sha256": "8e2d06b127c2b0318ac22f83557800b728d7492c5fe21b569a2d574a5ebdef99",
+      "bytes": 6569
+    },
+    {
+      "kind": "candidate-decoded-actual-QA-lineage",
+      "path": ".work/exercise-guidance/back_one_arm_cable_row/female-approved-closed-candidate-20261016/qa-lineage.json",
+      "sha256": "1f79e136a3092b1e2077682cec62653c97ceed1ef9908fb922058f8f6e68a7a8",
+      "bytes": 6013
+    },
+    {
+      "kind": "local-approved-apparatus-and-pose-evidence-limits",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-one-arm-approved-closed-reference-report.md",
+      "sha256": "7ad186f7f59541500a15d5cb7e8cb2d8d1f465d7bc3812b9039f37f5c345f448",
+      "bytes": 6750
+    }
+  ],
+  "acceptedIntegrationChecks": {
+    "count": 7,
+    "allExitCodes": 0,
+    "processorUnitTests": 22,
+    "metadataStageSuiteReruns": 0,
+    "warnings": "Inherited Node stripTypeScriptTypes warnings and Git LF/CRLF warning disclosed in exact logs."
+  },
+  "limits": [
+    "Human approved same-type CLOSED housing for BOTH genders/all3 stages; same floor left-knee/right-sole/right-hand and low-rib/hip pull, green LATS and natural anatomy.",
+    "Apparatus reference MID-to-HIGH is newly generated geometry; ordinary far-flange/hidden continuation/load count/travel/internal transmission/force/ratio remain unverified. No calibratedCAD/exact-tangency/fixture guarantee.",
+    "Faint background tone variation is not a prominent drawn stripe under independent actual gate; all six actuals independently reviewed. Static images do not certify temporal control.",
+    "Original exposed-load diagnosis and ALL failed old D012 RAW/component trials remain historical FAIL/not retroactively accepted; local v3 arm-only evidence was not whole-group approval.",
+    "Original6actual2mother backups localignored; no original-actual outsideROI identity, new call, device/HAP/deploy/schedule or whole-goal completion in records."
+  ],
+  "wholeGoalStatus": "IN_PROGRESS;Task2_IN_PROGRESS/Task3_NOT_STARTED"
+}

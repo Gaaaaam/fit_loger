@@ -15,17 +15,17 @@
     "baselineConfirmedDefectGroups": 30,
     "additionalConfirmedDefectGroups": 2,
     "currentConfirmedDefectGroups": 32,
-    "independentlyClosedGroups": 26,
-    "openConfirmedDefectGroups": 6,
+    "independentlyClosedGroups": 28,
+    "openConfirmedDefectGroups": 4,
     "baselineUncertainGroups": 6,
     "uncertainGroups": 8,
     "currentAssessmentCounts": {
-      "PASS": 226,
-      "DEFECT": 6,
+      "PASS": 228,
+      "DEFECT": 4,
       "UNCERTAIN": 8
     },
-    "changedProductionFrames": 44,
-    "interpretation": "Immutable groups/results/postAuditFindings retain baseline observations.32everconfirmed minus26closures leaves6open;8uncertain;226PASS/6DEFECT/8UNCERTAIN totals240.27records=26closures(including2metadata-only)+1HISTORICAL femalePARTIAL falseclosure;24unique imagegroups/all24closed,currentPARTIAL0. D004F/M independently committed-ACTUAL SPEC/TASKQUALITY PASS/noNEWU at assetab87331 after TWOdistinct builtin events, female newraw+exact10pxstudio translations/male newrawNOedits;not inheritedgenderPASS.44frames differ/546same;14413138bytes. Remaining6confirmed:back_one_arm_cable_row,leg_seated_curl,leg_curl eachF/M;D001/D002,D005,D012OPEN;D009benchangle and all8U retained. Task2IN_PROGRESS/Task3NOT_STARTED.",
+    "changedProductionFrames": 50,
+    "interpretation": "Immutable groups/results/postAuditFindings retain baseline observations.32everconfirmed minus28closures leaves4open;8uncertain;228PASS/4DEFECT/8UNCERTAIN totals240.29records=28closures(including2metadata-only)+1HISTORICAL femalePARTIAL falseclosure;26unique imagegroups/all26closed,currentPARTIAL0. D012female/male independently committed-ACTUAL SPEC/TASKQUALITY PASS/ADDRESSED, note semanticPASS/noNEWU at ASSETfee24522. TWO distinct builtin events: F2275bytes/3role refs, M2254bytes/THEN-femaleCANDIDATE+limitedmalehead;not inheritedgenderPASS. Each1254square wholeuniformLANCZOS1024 then LEFT/RIGHT/EXACTLEFT three stages,no masks/paint/tonepatch.50frames differ/540same;14420632bytes. Remaining4confirmed:leg_seated_curl and leg_curl eachF/M;D001/D002,D005OPEN;D009benchangle and all8U retained. Task2_IN_PROGRESS/Task3_NOT_STARTED.",
     "independentlyAcceptedPartialGroups": 0
   },
   "repairs": [
@@ -1128,6 +1128,152 @@
       ],
       "generationEvent": "leg_extension/male-counterpart-onecall-20261016",
       "notes": "Distinct new builtin event for this gender; two total D004 events. New approved apparatus/profile and native two-phase pair independently accepted after committedACTUAL review; no inherited genderPASS. Ordinary hidden-contact/bearing/load limits retained."
+    },
+    {
+      "id": "back_one_arm_cable_row",
+      "gender": "female",
+      "checklistIds": [
+        "D012"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "closesConfirmedGroup": true,
+      "kind": "BUILTIN_IMAGEGEN_NEW_CLOSED_HOUSING_TWO_ENDPOINTS_THREE_STAGES",
+      "acceptedCommit": "fee24522a734a330bee54ce8beb1e3316db11c8d",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-one-arm-closed-both-actual-review.md",
+      "reviewReportSha256": "75da4d234ac98845b2352241a35ec1bd28f1a13d7a724f1f465d8f79026b50c9",
+      "sourceSha256": "697a6098346fa05cad3eafc03ca4028b340bb7e3206ae68032d5fe2a3e11cff4",
+      "phaseIndices": [
+        1,
+        2,
+        3
+      ],
+      "unchangedFrameIndices": [],
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_back_one_arm_cable_row_female_01.webp",
+          "baselineSha256": "5eed032402b3f83896d4dfdd2bcbeef9e6ef7741eca0e7f1273c21488a1ba511",
+          "productionSha256": "3d18673b14805a1e216ff9c65c546304b990de9db5e3dda08fcf0ca005092512",
+          "width": 512,
+          "height": 1024,
+          "bytes": 23184,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_back_one_arm_cable_row_female_02.webp",
+          "baselineSha256": "c9810ff795fa546a73aa95d580d64cd24a8dbaa17ad0d814c63b63c0c40d6e4c",
+          "productionSha256": "f3c4ef968c9df324efd3956e38dc6016d52e93306f5168d345cb116feab69b38",
+          "width": 512,
+          "height": 1024,
+          "bytes": 23312,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        },
+        {
+          "index": 3,
+          "path": "entry/src/main/resources/base/media/ex_back_one_arm_cable_row_female_03.webp",
+          "baselineSha256": "7334ae82b75f809c6fcc6710cd23fdf6b26941887f1ba52d7710ace7929b585b",
+          "productionSha256": "3d18673b14805a1e216ff9c65c546304b990de9db5e3dda08fcf0ca005092512",
+          "width": 512,
+          "height": 1024,
+          "bytes": 23184,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        }
+      ],
+      "generationEvent": "back_one_arm_cable_row/female-approved-closed-onecall-20261016",
+      "notes": "Distinct one-call event for this gender; TWO total D012 model events. Whole1254square uniformLANCZOS1024 then exactLEFT/RIGHT/LEFT native3cell mother, no masks/paint/tonepatch;01=03 controlled-return endpoint reuse. BOTHgender independently ACTUAL PASS and note semantics PASS at fee24522, no inherited PASS/newU; hidden mechanics unverified."
+    },
+    {
+      "id": "back_one_arm_cable_row",
+      "gender": "male",
+      "checklistIds": [
+        "D012"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "closesConfirmedGroup": true,
+      "kind": "BUILTIN_IMAGEGEN_NEW_CLOSED_HOUSING_TWO_ENDPOINTS_THREE_STAGES",
+      "acceptedCommit": "fee24522a734a330bee54ce8beb1e3316db11c8d",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-one-arm-closed-both-actual-review.md",
+      "reviewReportSha256": "75da4d234ac98845b2352241a35ec1bd28f1a13d7a724f1f465d8f79026b50c9",
+      "sourceSha256": "ea2a58b1876af2e92992cfa67232e2aa233a2fc43ac2dabe3eb2682dc1c0c154",
+      "phaseIndices": [
+        1,
+        2,
+        3
+      ],
+      "unchangedFrameIndices": [],
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_back_one_arm_cable_row_male_01.webp",
+          "baselineSha256": "b72911b89852c23ec1c4ca47bfc6989bfe6a3168f4f1f4a6fae14032df1d697e",
+          "productionSha256": "8572d93c63bd76f8c9c5e8156f4614768689302ae0f9818c8026c046359a9e0b",
+          "width": 512,
+          "height": 1024,
+          "bytes": 26872,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_back_one_arm_cable_row_male_02.webp",
+          "baselineSha256": "10da4ed63242f34430888e9f989ce27e6415195c4d902d08942a5795ad0b644c",
+          "productionSha256": "aa1a752c427a7dc69d636a02826948d484c135a61d1d3172880194d7efc314ab",
+          "width": 512,
+          "height": 1024,
+          "bytes": 27080,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        },
+        {
+          "index": 3,
+          "path": "entry/src/main/resources/base/media/ex_back_one_arm_cable_row_male_03.webp",
+          "baselineSha256": "02f098d08afc0ecbf9f308475454b0aa8660093f195452fd8fddea04926d9420",
+          "productionSha256": "8572d93c63bd76f8c9c5e8156f4614768689302ae0f9818c8026c046359a9e0b",
+          "width": 512,
+          "height": 1024,
+          "bytes": 26872,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        }
+      ],
+      "generationEvent": "back_one_arm_cable_row/male-approved-closed-onecall-20261016",
+      "notes": "Distinct one-call event for this gender; TWO total D012 model events. Whole1254square uniformLANCZOS1024 then exactLEFT/RIGHT/LEFT native3cell mother, no masks/paint/tonepatch;01=03 controlled-return endpoint reuse. BOTHgender independently ACTUAL PASS and note semantics PASS at fee24522, no inherited PASS/newU; hidden mechanics unverified."
     }
   ],
   "postAuditFindings": [
