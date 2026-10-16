@@ -1,0 +1,250 @@
+{
+  "id": "chest_incline_bench",
+  "gender": "male",
+  "frameIndex": 2,
+  "checklistIds": [
+    "D008"
+  ],
+  "status": "INDEPENDENTLY_ACCEPTED",
+  "kind": "BUILTIN_IMAGEGEN_WHOLE_FRAME_REPLACEMENT",
+  "closesConfirmedGroup": true,
+  "postRepairAssessment": "PASS",
+  "acceptedCommit": "c56221aadfeef8adf312dbc8891fc3a12969d08c",
+  "tool": "built-in ImageGen",
+  "toolName": "image_gen.imagegen",
+  "prompt": "Complete this unfinished training illustration as ONE coherent FULL vertical 1:2 frame, keeping the entire original composition and all equipment and shoes inside the picture. Image1 is the PRIMARY unfinished target, not a secondary pose reference. Its pure-black/transparent holes are deliberately missing old-bar/arm regions, NOT clothing, shadows or extra objects. The single existing barbell and TWO closed overhand hands already LOWER across the UPPER PECTORAL SHIRT are the correct placement: preserve that visible span, perspective and grip positions, with an uninterrupted neck, identifiable neckline and a clear band of shirt ABOVE the shaft. Do not raise the bar back to the chin, throat or collar. Complete exactly TWO natural continuous bent shoulder-elbow-wrist chains from the existing gray sleeves to those hands, with realistic proportions and neutral wrists; fill missing studio, neck and rack surfaces coherently. This is the controlled lower phase of incline barbell bench press, not a shrug or overhead press. Keep the same adult man's recognizable face/hair, gray fitted training clothes, subtle flat green upper-chest tint, inclined bench, rack, camera, body scale and soft neutral studio lighting. Head/back remain supported by the incline pad, hips on the seat and both feet planted. Keep one complete continuous bar, two plate discs on EACH end, complete sleeves/endcaps and both closed grips; do not crop hands, plates, shoes or rack base. Re-render the full frame coherently so there are no black holes, old high-bar ghosts, detached cloth wedges, duplicate limbs/weights, extra brackets, broken supports, patch edges or pasted seams. No text, arrows, logos or watermarks. Output one opaque vertical image at exactly the same 1:2 aspect ratio; do not make a collage or a cropped square.",
+  "prompt_file": {
+    "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/approved/prompt.txt",
+    "sha256": "3c246545718a48a7927125b558b496c3b79f3f6780dcc84dad11bc5a4dd5fc0a"
+  },
+  "tool_parameters": {
+    "prompt": "Complete this unfinished training illustration as ONE coherent FULL vertical 1:2 frame, keeping the entire original composition and all equipment and shoes inside the picture. Image1 is the PRIMARY unfinished target, not a secondary pose reference. Its pure-black/transparent holes are deliberately missing old-bar/arm regions, NOT clothing, shadows or extra objects. The single existing barbell and TWO closed overhand hands already LOWER across the UPPER PECTORAL SHIRT are the correct placement: preserve that visible span, perspective and grip positions, with an uninterrupted neck, identifiable neckline and a clear band of shirt ABOVE the shaft. Do not raise the bar back to the chin, throat or collar. Complete exactly TWO natural continuous bent shoulder-elbow-wrist chains from the existing gray sleeves to those hands, with realistic proportions and neutral wrists; fill missing studio, neck and rack surfaces coherently. This is the controlled lower phase of incline barbell bench press, not a shrug or overhead press. Keep the same adult man's recognizable face/hair, gray fitted training clothes, subtle flat green upper-chest tint, inclined bench, rack, camera, body scale and soft neutral studio lighting. Head/back remain supported by the incline pad, hips on the seat and both feet planted. Keep one complete continuous bar, two plate discs on EACH end, complete sleeves/endcaps and both closed grips; do not crop hands, plates, shoes or rack base. Re-render the full frame coherently so there are no black holes, old high-bar ghosts, detached cloth wedges, duplicate limbs/weights, extra brackets, broken supports, patch edges or pasted seams. No text, arrows, logos or watermarks. Output one opaque vertical image at exactly the same 1:2 aspect ratio; do not make a collage or a cropped square.",
+    "referenced_image_paths": [
+      "F:/personal_projects/fit_loger/.worktrees/exercise-guidance/.work/exercise-guidance/chest_incline_bench/male-unified-frame-preflight-20261016/UNFINISHED-PRIMARY-full512x1024-RGBA.png"
+    ],
+    "transparent_background": false
+  },
+  "tool_parameters_file": {
+    "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/approved/call-arguments.json",
+    "sha256": "43073146b24d7e934f1fc3b46ea7fc2488ede811f42f8e7b68f1c821cbb0243f"
+  },
+  "submitted_inputs": [
+    {
+      "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/approved/released-fullPRIMARY.png",
+      "sha256": "49e7fab61ff393d74713a7455be66a5854f4ed0b487f8be3caeaa065baf5e9ba",
+      "role": "Sole PRIMARY unfinished fullframe target; transparent oldbar/arm holes. INPUT anchors only, not accepted mother or final pixel identities.",
+      "dimensions": [
+        512,
+        1024
+      ],
+      "mode": "RGBA",
+      "original_submitted_absolute_path": "F:/personal_projects/fit_loger/.worktrees/exercise-guidance/.work/exercise-guidance/chest_incline_bench/male-unified-frame-preflight-20261016/UNFINISHED-PRIMARY-full512x1024-RGBA.png"
+    }
+  ],
+  "generation_event": {
+    "callsForAcceptedAsset": 1,
+    "retryCount": 0,
+    "rateLimit429": false,
+    "toolRequestId": null,
+    "requestIdNote": "Unavailable in built-in return; artifact filename/session UUID is not a request ID. Saved journals assert one built-in call/no retries; historical telemetry cannot be recovered independently from pixels.",
+    "precall_journal": {
+      "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/approved/precall-journal.json",
+      "sha256": "4b4c5a604d3211eaa8936da22d16f2c540278112f3207925d3e39435ed5a63fc"
+    },
+    "postcall_journal": {
+      "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/approved/postcall-journal.json",
+      "sha256": "3f7141daf7e562ffd88359c664630a7d03ed2ef43601d77da5628966e1e507a4"
+    }
+  },
+  "original_mother": {
+    "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/originals/male-sheet.png",
+    "sha256": "953bbd57ca7687a9805959814432fcbf57512a2aa0f2610c128d93d067eff7e1",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "meaning": "Immutable original canonical RAW-RGB source; not mutable accepted current mother."
+  },
+  "original_production": {
+    "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/originals/ex_chest_incline_bench_male_02.webp",
+    "sha256": "a004a22d8168623b0cf82741f00d435b24f6bb334b171cbb010afbdd5fbb4070",
+    "dimensions": [
+      512,
+      1024
+    ],
+    "bytes": 24908,
+    "meaning": "Immutable originalactual02 backup; not current production filename with stale hash."
+  },
+  "generation_output": {
+    "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/approved/raw-generated-full-frame.png",
+    "sha256": "454ac6e2a2d11661d3ac9b9ca871555551573b1a796e3a019a086747e4698a0f",
+    "dimensions": [
+      887,
+      1774
+    ],
+    "mode": "RGB",
+    "meaning": "Untouched whole generated PNG; exact1:2"
+  },
+  "tool_original_output": {
+    "path": "C:/Users/26017/.codex/generated_images/01a142ec-f067-7f33-9d00-8d5f451b3734/exec-4661cc1e-3252-420f-b056-6f2ef01d6ce3.png",
+    "sha256": "454ac6e2a2d11661d3ac9b9ca871555551573b1a796e3a019a086747e4698a0f",
+    "meaning": "Original built-in tool artifact retained unchanged; this is not a requestID."
+  },
+  "assembly": {
+    "accepted_mother_path": ".work/exercise-guidance/chest_incline_bench/male-sheet.png",
+    "accepted_mother_sha256": "6774bb1c0219ae76937ac2812cbedd9d26addca7b3b5082251b32ea69de93acf",
+    "accepted_mother_dimensions": [
+      1536,
+      1024
+    ],
+    "immutable_accepted_mother": {
+      "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/approved/hybrid-male-sheet.png",
+      "sha256": "6774bb1c0219ae76937ac2812cbedd9d26addca7b3b5082251b32ea69de93acf"
+    },
+    "operations": "Normalize the ENTIRE887x1774 generated RGB image uniformly with LANCZOS to512x1024. No crop/padding/anisotropic fit/mask/local part replacement/splice. Put that complete sourcecell02 into the1536x1024 hybrid at(512,0). OriginalcanonicalRAW-RGBcells01/03 stay exact; they are distinct from lossy decodedactualRGB. Exact reviewed02WebP/hybrid bytecopies integrated without re-encoding.",
+    "normalization": {
+      "raw": [
+        887,
+        1774
+      ],
+      "exact1to2": true,
+      "whole_uniform_LANCZOS_target": [
+        512,
+        1024
+      ],
+      "crop_pad_localpartreplacement": false
+    },
+    "source_cells": [
+      {
+        "phase": 1,
+        "source_rawRGB_sha256": "c59b97a27489a879fea78e7c4f1af0366cca9888a153069abb11b9bd1c8742b8",
+        "production_sha256": "d7544506aedabe210407b97e02087b3b8db2e1fd162c482632561e3ca7fd14f5",
+        "exact_staged_bytes": true,
+        "in_memory_q82_m6_emptyEXIF_byte_reproduced": true,
+        "origin": "exact ORIGINALcanonical RAW-RGB"
+      },
+      {
+        "phase": 2,
+        "source_rawRGB_sha256": "1b83007f43e6b3cf89365f71cbb0f68169a0bd72cabe0ca2670e96bd8d529235",
+        "production_sha256": "c8f0c87efe1d30c0cdf61ea9e1db4ee883fa377826bb45bf16d337a61d761013",
+        "exact_staged_bytes": true,
+        "in_memory_q82_m6_emptyEXIF_byte_reproduced": true,
+        "origin": "whole normalized generated raw"
+      },
+      {
+        "phase": 3,
+        "source_rawRGB_sha256": "00697d354eedd48e7539653fb705c200d2abe0f9af6adaac3f6c235415a68ed3",
+        "production_sha256": "c724f1852ac6e746f8ed275d5ae236f8df6f9c57a97a2c47db135bc3a19d3891",
+        "exact_staged_bytes": true,
+        "in_memory_q82_m6_emptyEXIF_byte_reproduced": true,
+        "origin": "exact ORIGINALcanonical RAW-RGB"
+      }
+    ],
+    "codec_all_three": {
+      "format": "WEBP",
+      "lossless": false,
+      "quality": 82,
+      "method": 6,
+      "emptyEXIF": true,
+      "allThreeByteReproducedFromSourceCells": true
+    },
+    "runtime": {
+      "executable": "C:\\Users\\26017\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "Python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "Pillow": "12.3.0",
+      "libwebp": "1.6.0"
+    },
+    "input_anchor_note": "19,156 source-exact loweredbar/hands pixels anchor the unfinished input only. ENTIRE02 regenerated; no final outsideROI/sourcepixel preservation claim."
+  },
+  "accepted_production": {
+    "path": "entry/src/main/resources/base/media/ex_chest_incline_bench_male_02.webp",
+    "sha256": "c8f0c87efe1d30c0cdf61ea9e1db4ee883fa377826bb45bf16d337a61d761013",
+    "dimensions": [
+      512,
+      1024
+    ],
+    "bytes": 24678
+  },
+  "immutable_accepted_production": {
+    "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/approved/ex_chest_incline_bench_male_02.webp",
+    "sha256": "c8f0c87efe1d30c0cdf61ea9e1db4ee883fa377826bb45bf16d337a61d761013",
+    "dimensions": [
+      512,
+      1024
+    ]
+  },
+  "unchanged_indices": [
+    1,
+    3
+  ],
+  "unchanged_frames": [
+    {
+      "path": "entry/src/main/resources/base/media/ex_chest_incline_bench_male_01.webp",
+      "sha256": "d7544506aedabe210407b97e02087b3b8db2e1fd162c482632561e3ca7fd14f5",
+      "index": 1,
+      "dimensions": [
+        512,
+        1024
+      ]
+    },
+    {
+      "path": "entry/src/main/resources/base/media/ex_chest_incline_bench_male_03.webp",
+      "sha256": "c724f1852ac6e746f8ed275d5ae236f8df6f9c57a97a2c47db135bc3a19d3891",
+      "index": 3,
+      "dimensions": [
+        512,
+        1024
+      ]
+    }
+  ],
+  "evidence": {
+    "candidate_proof": {
+      "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/approved/candidate-proof.json",
+      "sha256": "bba1517096162c45dfae50024f0ab34ba4089b4fc09af2e9379ef443a45cf4bc"
+    },
+    "integration_proof": {
+      "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/integration-proof.json",
+      "sha256": "aaa372b91d784ff055f22b381ea74b594501166faa7eee92483c46890161eeac"
+    },
+    "preflight_proof": {
+      "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/approved/preflight-proof.json",
+      "sha256": "b0a33aff104a5d41535b1f15f50e11692597e07bd98c22292a1d72876b5730be"
+    },
+    "authenticated_after_inventory": {
+      "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-integration-20261016/after-inventory.json",
+      "sha256": "9c4b1a3b813d14332939076c7b26279f13cc3d6203e2639ba369615e8e3c9eed"
+    },
+    "independent_actual_review": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-incline-unified-frame-integration-review.md",
+      "sha256": "43e41da7064195e68fc0251d50b2f05c337dc8924979a3803540dea0783fed6f"
+    },
+    "independent_actual_review_proof": {
+      "path": ".work/exercise-guidance/chest_incline_bench/male-unified-frame-independent-review-20261016/direct-review-proof.json",
+      "sha256": "c433ee600de41bc8f063bb1298ed9e0c0bbb3e5d2f8fb1917ff843e9eb54d5c7"
+    }
+  },
+  "independent_review_report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-incline-unified-frame-integration-review.md",
+  "independent_review_report_sha256": "43e41da7064195e68fc0251d50b2f05c337dc8924979a3803540dea0783fed6f",
+  "independent_actual_verdict": {
+    "SPEC": "PASS",
+    "TASK_QUALITY": "PASS",
+    "actionableFindings": 0,
+    "additionalUncertainty": false
+  },
+  "knownDefectAcceptance": "ACCEPTED: D008male controlled upperpectoral lowered endpoint and coherent complete three-phase actual presentation; only02 changed.",
+  "disclosedLimits": [
+    "A continuous modest shirt band separates identifiable neckline from shaft; accepted explicitly at native/320, not a calibrated hidden-contact/force claim.",
+    "Inherited rack-top height difference between02 and01/03 plus small face/shoe/cloth/plate/detail and placement drift remain accepted disclosed limits, not new UNCERTAIN findings.",
+    "01/03 original bytes/rawcanonical cells unchanged; whole02 is regenerated, without unrelatedpixel identity guarantee.",
+    "Three prior local assemblies remain FAIL/unaccepted. No CLI fallback, new splice or retrospective acceptance.",
+    "FemaleD008 retains independently accepted01/03 PARTIAL with closesConfirmedGroup=false; original02 remains DEFECT/OPEN. Bothmale calf IDs and allother open/uncertain findings unchanged.",
+    "Original/generated images and evidence retained locally ignored, not bundled in app/Git. Whole Task2 in progress/Task3 notstarted; no HAP/device/install/merge/publish or whole-goal completion."
+  ],
+  "missing_evidence": [
+    {
+      "item": "tool requestID and independently recoverable historical telemetry",
+      "status": "UNAVAILABLE",
+      "impact": "Null requestID retained; saved prompt/fullargs/journals/toolartifact/image/evidence hashes are preserved without invented call identifiers."
+    }
+  ]
+}
