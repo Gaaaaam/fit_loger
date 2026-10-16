@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "date": "2026-10-15",
   "baselineCommit": "61e39bc775e5233362155229d568eff59c1659ec",
-  "acceptedThroughCommit": "c56221aadfeef8adf312dbc8891fc3a12969d08c",
-  "scope": "20accepted imageprovenance groups=19closedimage+1femaleBBpartial.22repair records=21confirmedclosures(2metadata-only)+1partial.32ever-confirmed/21closed/11open/8uncertain;35changed/555same. D008male wholeframe02 accepted atc56221a;femaleD00802 remainsOPEN/partialfalseclosure;bothmale calf IDs OPEN. Not complete120-action generation history;whole taskIN_PROGRESS.",
+  "acceptedThroughCommit": "c19e9aa256ce75f6e60aea6695a18461f2ebfac6",
+  "scope": "20 unique accepted image provenance groups, all20 closed image; no current PARTIAL.23 repair records=22 closure records(2 metadata-only)+1 HISTORICAL female PARTIAL falseclosure.32 ever-confirmed/22 closed/10 open/8 uncertain;36 changed/554 same;14371900 bytes. Existing female D008 entry cumulatively accepted through c19e9aa (earlier46c6675 outer01/03, new02 only); not a21st image group. Both male calf IDs and D001/D002 OPEN; whole task IN_PROGRESS.",
   "coverageRecord": "../2026-10-15-exercise-guidance-detail-coverage.json",
   "wholeGoalStatus": "IN_PROGRESS; this index is not final whole-change acceptance",
   "disclosedLimits": [
@@ -11,9 +11,10 @@
     "Exact historical style-edit prompt and output identifier for retained burpee improved sources could not be recovered; this is explicitly NOT_FOUND, not replaced by unrelated prompts. New female02/04 prompts and all accepted byte/source evidence are preserved.",
     "Incline dumbbell toe/elbow defects are repaired, but both groups remain UNCERTAIN for physical bench angle. Accepted repair does not mean every group is unconditional PASS.",
     "Inherited thin light pullover/rear-fly perimeters and original Node experimental warnings remain disclosed; final style/regression gates are pending.",
-    "Female incline-barbell01/03 containment accepted only;02 remains original DEFECT/OPEN and mild framing drift remains. FBB1 complete repair is still rejected;this partial adds no confirmed-group closure.",
+    "Historical46c6675 accepted only female incline-barbell01/03 containment; then02 remained original DEFECT/OPEN. That PARTIAL falseclosure remains immutable history, now superseded by independently accepted c19e9aa whole02. FBB1 generated middle/complete repair remain rejected; current01/03 remain its accepted outercells.",
     "D018female fixed-cap/post/interface/background accepted only;male D018 remains OPEN;female D006 reuse separately accepted under explicit samegender source gate;male D006 remains OPEN. Far hand occluded; plausible2D support is not calibrated3D or hidden-surface proof. Prior failed fullraw/masks remain failed.",
-    "D008male entire02 regenerated from a single built-in fullPRIMARY target;original01/03bytes/rawsourcecells retained. Modestshirtband,inheritedrackheight and phase/renderdetail drift accepted by independentactualPASS,without addedUNCERTAIN. No outsideROIidentity/calibrated3Dcontact/hiddenforce guarantee. Prior3localassemblies remainFAIL;femaleD00802 staysDEFECT/OPEN."
+    "D008male entire02 regenerated from a single built-in fullPRIMARY target;original01/03bytes/rawsourcecells retained. Modestshirtband,inheritedrackheight and phase/renderdetail drift accepted by independentactualPASS,without addedUNCERTAIN. No outsideROIidentity/calibrated3Dcontact/hiddenforce guarantee. Prior3localassemblies remainFAIL;femaleD00802 was THEN DEFECT/OPEN; subsequent c19e9aa independent ACTUAL acceptance supersedes this current-status statement without altering male provenance.",
+    "Female D008 whole02 literal inputplacement/all-width fabric band NOT retained; clarified V-bra criterion uses visible clavicle/neck-root above shaft and upper-pectoral contour/contactshadow. Independent committed ACTUAL PASS/no findings/no newU, not raw-screen-only acceptance. Exact nipple/depth/force/calibrated3D unverified; minor rendering/framing drift accepted. Old public PARTIAL byte snapshot and frozen actual/mother mapping retained in current female JSON."
   ],
   "groups": [
     {
@@ -116,13 +117,18 @@
       "id": "chest_incline_bench",
       "gender": "female",
       "file": "chest_incline_bench-female.json",
-      "acceptedCommit": "46c6675da31980a050d25cbbb55908758f8a68be",
-      "status": "INDEPENDENTLY_ACCEPTED_PARTIAL",
+      "acceptedCommit": "c19e9aa256ce75f6e60aea6695a18461f2ebfac6",
+      "status": "INDEPENDENTLY_ACCEPTED",
       "phaseIndices": [
         1,
+        2,
         3
       ],
-      "closesConfirmedGroup": false
+      "closesConfirmedGroup": true,
+      "latestStepPhaseIndices": [
+        2
+      ],
+      "kind": "CUMULATIVE_PARTIAL_PLUS_WHOLE_FRAME02_REPLACEMENT"
     },
     {
       "id": "leg_calf_raise",

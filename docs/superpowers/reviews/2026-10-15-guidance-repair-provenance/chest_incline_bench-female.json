@@ -1,23 +1,291 @@
 {
   "schema": "repair-provenance/v1",
-  "status": "INDEPENDENTLY_ACCEPTED_PARTIAL",
+  "status": "INDEPENDENTLY_ACCEPTED",
   "audit_baseline_commit": "61e39bc775e5233362155229d568eff59c1659ec",
   "repair_base_commit": "07ee83dbd4bc472f4a1ebac1081c17fb04a9d054",
-  "acceptedCommit": "46c6675da31980a050d25cbbb55908758f8a68be",
+  "acceptedCommit": "c19e9aa256ce75f6e60aea6695a18461f2ebfac6",
   "id": "chest_incline_bench",
   "exercise": "chest_incline_bench",
   "gender": "female",
   "phaseIndices": [
     1,
+    2,
     3
   ],
-  "unchangedFrameIndices": [
-    2
-  ],
-  "groupCurrentResult": "DEFECT",
-  "closesConfirmedGroup": false,
-  "scope": "D008 female01/03 partial containment correction only; original02 remains DEFECT/OPEN; not a19th closure. No generation or encoding in this records stage.",
-  "original_generation": {
+  "groupCurrentResult": "PASS",
+  "postRepairAssessment": "PASS",
+  "closesConfirmedGroup": true,
+  "scope": "Cumulative three-phase D008 acceptance:01/03 accepted at46c6675; only02 replaced atc19e9aa. Current full group closure follows independent committed ACTUAL review, not the earlier raw suitability screen.",
+  "latestStep": {
+    "acceptedCommit": "c19e9aa256ce75f6e60aea6695a18461f2ebfac6",
+    "phaseIndices": [
+      2
+    ],
+    "unchangedFrameIndices": [
+      1,
+      3
+    ],
+    "changedActualCount": 1,
+    "kind": "BUILTIN_IMAGEGEN_WHOLE_FRAME_REPLACEMENT",
+    "note": "Unchanged indices refer to THIS step only; all three current frames differ from original audit baseline."
+  },
+  "historical_partial": {
+    "acceptedCommit": "46c6675da31980a050d25cbbb55908758f8a68be",
+    "status": "INDEPENDENTLY_ACCEPTED_PARTIAL",
+    "phaseIndices": [
+      1,
+      3
+    ],
+    "closesConfirmedGroup": false,
+    "thenGroupResult": "DEFECT",
+    "snapshot": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-records-20261016/originals/chest_incline_bench-female.json",
+      "sha256": "e6306e69da0dc65ed8da71cd0f72739a160bac9ea86c8577f72c80b02a492d3e",
+      "meaning": "HISTORICAL byte snapshot of46c6675 PARTIAL; internal then-live paths/hashes are NOT current resolving references. Use frozen mapping below."
+    },
+    "integration_snapshot": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/originals/chest_incline_bench-female.json",
+      "sha256": "e6306e69da0dc65ed8da71cd0f72739a160bac9ea86c8577f72c80b02a492d3e"
+    },
+    "coverageRecord": {
+      "id": "chest_incline_bench",
+      "gender": "female",
+      "checklistIds": [
+        "D008"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED_PARTIAL",
+      "closesConfirmedGroup": false,
+      "phaseIndices": [
+        1,
+        3
+      ],
+      "groupCurrentResult": "DEFECT",
+      "acceptedCommit": "46c6675da31980a050d25cbbb55908758f8a68be",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-female-incline-boundary-integration-review.md",
+      "candidateReviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-female-incline-boundary-candidate-review.md",
+      "sourceSha256": "0de05396d6cdfd42e62e16a6cfc578566da996f9729314ffb50a2af2db6225ca",
+      "unchangedFrameIndices": [
+        2
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_chest_incline_bench_female_01.webp",
+          "baselineSha256": "82cf62cf9a53170d6fd67d9d9c1a06112e801fe98d8b859bc57c1532c4d79015",
+          "productionSha256": "07c9fe8fc9e981ff30e6917eb796f1506e0c8f0b6b437c64f9f8298200087f7d",
+          "width": 512,
+          "height": 1024
+        },
+        {
+          "index": 3,
+          "path": "entry/src/main/resources/base/media/ex_chest_incline_bench_female_03.webp",
+          "baselineSha256": "688c7120e84913cae498aff75cc5dba63f21c627ff06ee0dc77519ac4f356b1b",
+          "productionSha256": "f6a0ed0d09e8a4fa3474cb205c2ffab62dea8e1ca92d002fb0b4dc6730a3af97",
+          "width": 512,
+          "height": 1024
+        }
+      ],
+      "unresolved": [
+        "Original02 remains DEFECT/OPEN: neck/chin endpoint, clipped left sleeve, right neighbor sleeve fragment/divider.",
+        "Mild framing/scale drift through retained02 remains a disclosed nonblocking concern.",
+        "FBB1 remains rejected as a COMPLETE repair; rejected generated02 is not accepted.",
+        "No numerical3D bench-angle, maleBB, D009, phone/HAP/install, fullTask3 or whole-goal acceptance."
+      ],
+      "notes": "Only01 neighbor/divider containment and03 clipped sleeve accepted; original02 remains DEFECT/OPEN. One partial record, not a new confirmed-group closure."
+    },
+    "independent_reviews": [
+      {
+        "phase": "candidate only",
+        "verdict": "SPEC+SCOPED TASKQUALITY PASS WITH CONCERNS",
+        "artifact": {
+          "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-female-incline-boundary-candidate-review.md",
+          "sha256": "e1bef8325eeddefea681ae2adcb60763b59efa7428f98e797fcf97daa343771e",
+          "bytes": 7202
+        }
+      },
+      {
+        "phase": "actual-diff integration",
+        "verdict": "SPEC+TASKQUALITY PASS WITH CONCERNS",
+        "artifact": {
+          "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-female-incline-boundary-integration-review.md",
+          "sha256": "a6afa87d9fa6d9c4de98e77f4988de18f6db6e6125ae121e08435282e840c748",
+          "bytes": 7799
+        }
+      }
+    ],
+    "integration": {
+      "immutableProof": {
+        "path": ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/integration-provenance.json",
+        "sha256": "81d7808a14d98ba375b1041b6aa4e42e4dd8ab50a5f87a32bb4b0bd3e8779df8",
+        "bytes": 25754
+      },
+      "report": {
+        "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-female-incline-boundary-integration-report.md",
+        "sha256": "01bfc854a05a658796b924a8d98785d74bd3beef99ba1fd085463398be77cf24",
+        "bytes": 9779
+      },
+      "before": {
+        "path": ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/before-inventory.json",
+        "sha256": "d820ff16b434f02c30b5eda33bad2738d917ee985a418d37b91b0c3ca4364585",
+        "bytes": 714828
+      },
+      "after": {
+        "path": ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/after-inventory.json",
+        "sha256": "00c09b6ff7891c21295de3fd13d9a2ed203cc0527de0d163a23d0e2b31bacb72",
+        "bytes": 714983
+      },
+      "qaViews": {
+        ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_01-320.png": {
+          "sha256": "b5fbbcab38aedabcbd8b4a9080fb5037754a7fdd788b75934a7fb45193fd5e87",
+          "bytes": 125373,
+          "dimensions": [
+            320,
+            640
+          ],
+          "format": "PNG",
+          "rgbSha256": "5c0f30388d30112e467b27d5730888234b1fe77ff9f28c47b9510c33b9ffded6"
+        },
+        ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_01-native.png": {
+          "sha256": "63bca1c68499da477589598286779ae902b2d4038c370f90a2865df27ef1e65b",
+          "bytes": 228503,
+          "dimensions": [
+            512,
+            1024
+          ],
+          "format": "PNG",
+          "rgbSha256": "0b6a81a823e39b9ab21b8a0aaabd11d32231c81812da1839b87619ecafbe8b33"
+        },
+        ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_01-support-detail.png": {
+          "sha256": "fcf22489d9b9d4123ee145928832d9148288c64eeb1e3ffb102654d1709ca8c2",
+          "bytes": 105525,
+          "dimensions": [
+            512,
+            434
+          ],
+          "format": "PNG",
+          "rgbSha256": "fbd9d821c32016e56b74fa4421b001f7a8ce9075e2d37d60167875dcbb83fc6e"
+        },
+        ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_01-upper-detail.png": {
+          "sha256": "76ee3f6ba021785ec3a776024b8bb854fba88f8796b2d0d528418e87ad4d1f82",
+          "bytes": 120147,
+          "dimensions": [
+            512,
+            430
+          ],
+          "format": "PNG",
+          "rgbSha256": "8a6180f21eb50c212685c9bc5cdf41da64da0ea1da373d470d749df54b365806"
+        },
+        ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_02-320.png": {
+          "sha256": "1c3353c63fa27a2dee91f261466d61d620c7a78bab746f21ce87b8ff817a5da8",
+          "bytes": 123425,
+          "dimensions": [
+            320,
+            640
+          ],
+          "format": "PNG",
+          "rgbSha256": "9f525de383f276a4cc84938052e61d33f1ec9048b0c4c979d4fb8d87196d8ef8"
+        },
+        ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_02-native.png": {
+          "sha256": "039fbda98287259c5fe636bc26153817209cbbbdc8f20e9b3727374e1acdac35",
+          "bytes": 216595,
+          "dimensions": [
+            512,
+            1024
+          ],
+          "format": "PNG",
+          "rgbSha256": "1a49ddb2fe2a074912c7672224b505378287d36a36db3f2979f188b68f10fa64"
+        },
+        ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_02-support-detail.png": {
+          "sha256": "04a192ecced3b2e0162c52d22f710a68d1d47b7d03b9fa3717b47938b841692e",
+          "bytes": 111849,
+          "dimensions": [
+            512,
+            434
+          ],
+          "format": "PNG",
+          "rgbSha256": "2bdd7c018f68d7cd54feec5580dbcfdf339481d0c90f24369f0bd6d289b7d45e"
+        },
+        ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_02-upper-detail.png": {
+          "sha256": "71ffcdcc854e4a678594246b46e7d7e89197bdafcb6ffd09c7e6fe03a83ea5a3",
+          "bytes": 100809,
+          "dimensions": [
+            512,
+            430
+          ],
+          "format": "PNG",
+          "rgbSha256": "8050a24ceaefc3c428137cda738d4f3cded05b4e0051f23aedd189d6bb43c90f"
+        },
+        ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_03-320.png": {
+          "sha256": "410a3c8e5c9d1f4302165fe09dd6537e8e0d8a1b4bae2378b614a152b76022b8",
+          "bytes": 127118,
+          "dimensions": [
+            320,
+            640
+          ],
+          "format": "PNG",
+          "rgbSha256": "59f6b166a4f3a6b04f88150042626606a2ed728606abe8fc6d743202abdd68dd"
+        },
+        ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_03-native.png": {
+          "sha256": "e4646e9c8f04ebf16ee13abfb66a0a1b432b9ff2fc63d900634e5a4b6cb1bbbb",
+          "bytes": 231558,
+          "dimensions": [
+            512,
+            1024
+          ],
+          "format": "PNG",
+          "rgbSha256": "01e6cb9c30202b052f486091d3fbaa164b5e0c39285a0b214363a69611d9a9ef"
+        },
+        ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_03-support-detail.png": {
+          "sha256": "4544f517637a8693048e4b915d2febe1e4c30dbce56d48b84be212615fcc4080",
+          "bytes": 106570,
+          "dimensions": [
+            512,
+            434
+          ],
+          "format": "PNG",
+          "rgbSha256": "7870af6b8b0081d5b5e40f64a9561695236d7ef1c85bf74f6bb3b8f6d8903944"
+        },
+        ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_03-upper-detail.png": {
+          "sha256": "2b6ac059a5da17645c408ce5279aefafa06750cf99aff5576032dddd0139feab",
+          "bytes": 122674,
+          "dimensions": [
+            512,
+            430
+          ],
+          "format": "PNG",
+          "rgbSha256": "4c7f0f0c618978aa5aa6a136a52f6f4389e6f3a07c45d550cce281ff7b00d6cb"
+        }
+      },
+      "testLog": {
+        "path": ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/test-results.json",
+        "sha256": "e4aed8b4b8cb2987b68c677d2eb7a7ef6b984c39ec6071b1b15c595dbd4e6453",
+        "bytes": 6868
+      },
+      "verification": "Seven named checks passed at accepted asset integration, including22processor tests; original Node stripTypeScriptTypes warnings retained. Not rerun for documentation-only stage."
+    },
+    "interpretation": "THEN-only unchanged02/unresolved defect notes remain historical. Superseded by new02 closure; FBB1 middle is never retroactively accepted."
+  },
+  "historical_snapshot_mapping": {
+    "then_live_mother": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/originals/female-sheet.png",
+      "sha256": "0de05396d6cdfd42e62e16a6cfc578566da996f9729314ffb50a2af2db6225ca",
+      "meaning": "Frozen0de pre-new02 accepted PARTIAL mother; replacement for historical snapshot live female-sheet path."
+    },
+    "then_live_actual02": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/originals/ex_chest_incline_bench_female_02.webp",
+      "sha256": "057b6cd28a126cae1f6346d1cb4a7fae26988ebc742022cada59faf9cc433ffc",
+      "meaning": "Frozen057 original actual02; replacement for historical then-live current02 reference."
+    },
+    "then_live_actual01": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/originals/ex_chest_incline_bench_female_01.webp",
+      "sha256": "07c9fe8fc9e981ff30e6917eb796f1506e0c8f0b6b437c64f9f8298200087f7d"
+    },
+    "then_live_actual03": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/originals/ex_chest_incline_bench_female_03.webp",
+      "sha256": "f6a0ed0d09e8a4fa3474cb205c2ffab62dea8e1ca92d002fb0b4dc6730a3af97"
+    }
+  },
+  "historical_FBB1_generation": {
     "tool": "built-in ImageGen",
     "tool_event_call_id": null,
     "call_id_evidence": "Unavailable in retained evidence; do not infer from output filename/session directory.",
@@ -71,28 +339,99 @@
     },
     "note": "Original canonicalCellRGB hashes below are freshly read from c501 original backup, NEVER from0de repaired canonical."
   },
+  "generation": {
+    "tool": "built-in ImageGen",
+    "toolName": "image_gen.imagegen",
+    "prompt": "Use case: precise-object-edit. Complete Image1, the ONLY PRIMARY unfinished female incline barbell bench-press frame, as ONE coherent opaque full portrait at EXACTLY the same 1:2 aspect ratio. This input derives from an existing failed generated draft, not the original production image or an accepted repaired frame. Its transparent/black regions deliberately withhold old high-bar footprints and both old arm chains; they are missing surfaces, NOT black clothing, shadows or extra objects.\nThe single complete LOWER barbell and TWO closed overhand hands are literal placement anchors. Preserve their complete span, grip positions and female tri-grip plate assemblies, both full sleeves and endcaps. The intended controlled lowered endpoint is the UPPER PECTORAL surface between clavicle and nipple line, visibly below the anatomical neck and identifiable V bra neckline, with a positive band of bra fabric ABOVE the shaft. Judge anatomical placement, not just gray/green color or a pixel height: do not put the bar at the throat, lower bra, underbust or abdomen. Do not move the head or neckline to excuse a high bar. Preserve the intended upper-pectoral placement while resolving the final contact coherently; unseen contact force is not illustrated.\nRebuild exactly TWO natural continuous shoulder-elbow-wrist chains from the shoulders to the existing closed hands, with realistic proportions and stable near-neutral wrists. Complete uncovered neck, hair, bra, skin, bench and studio surfaces; remove old high-bar ghosts, skin fringes and patch edges. Keep this same recognizable adult woman, gray sports bra and leggings, subtle flat green upper-chest tint, camera, body/bench scale and neutral studio lighting. Keep head/back supported by the incline pad, hips on the seat, both complete feet planted and all bench supports inside the picture. Re-render the whole frame coherently, not a pasted local repair. Retain one bar and the visible matching female plate assemblies; do not add weights or a rack. No clipped body/equipment, extra limbs, detached fabric, fake finished wrists, white borders, neighboring fragments, text, arrows, logos or watermarks. Return only the complete unified full frame, never a cropped square or collage.",
+    "prompt_utf8_bytes": 2241,
+    "prompt_utf8_sha256": "da251ec325e402a895f7d842ed0a999be1d4f63b882021259290c8390f144bd1",
+    "prompt_file": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/approved/prompt.txt",
+      "sha256": "5be60981eda81b0fe6c81a8ce2fd5f906cc1b065b304010e2ffa6caa5b07eb9b"
+    },
+    "prompt_file_utf8_bytes": 2242,
+    "prompt_file_utf8_sha256": "5be60981eda81b0fe6c81a8ce2fd5f906cc1b065b304010e2ffa6caa5b07eb9b",
+    "newline_convention": "args.prompt has NO terminal LF; prompt.txt is exactly args.prompt UTF8 plus ONE terminal LF. Same wording, not byte-identical strings. Saved FLAT args invoked unchanged.",
+    "tool_parameters": {
+      "prompt": "Use case: precise-object-edit. Complete Image1, the ONLY PRIMARY unfinished female incline barbell bench-press frame, as ONE coherent opaque full portrait at EXACTLY the same 1:2 aspect ratio. This input derives from an existing failed generated draft, not the original production image or an accepted repaired frame. Its transparent/black regions deliberately withhold old high-bar footprints and both old arm chains; they are missing surfaces, NOT black clothing, shadows or extra objects.\nThe single complete LOWER barbell and TWO closed overhand hands are literal placement anchors. Preserve their complete span, grip positions and female tri-grip plate assemblies, both full sleeves and endcaps. The intended controlled lowered endpoint is the UPPER PECTORAL surface between clavicle and nipple line, visibly below the anatomical neck and identifiable V bra neckline, with a positive band of bra fabric ABOVE the shaft. Judge anatomical placement, not just gray/green color or a pixel height: do not put the bar at the throat, lower bra, underbust or abdomen. Do not move the head or neckline to excuse a high bar. Preserve the intended upper-pectoral placement while resolving the final contact coherently; unseen contact force is not illustrated.\nRebuild exactly TWO natural continuous shoulder-elbow-wrist chains from the shoulders to the existing closed hands, with realistic proportions and stable near-neutral wrists. Complete uncovered neck, hair, bra, skin, bench and studio surfaces; remove old high-bar ghosts, skin fringes and patch edges. Keep this same recognizable adult woman, gray sports bra and leggings, subtle flat green upper-chest tint, camera, body/bench scale and neutral studio lighting. Keep head/back supported by the incline pad, hips on the seat, both complete feet planted and all bench supports inside the picture. Re-render the whole frame coherently, not a pasted local repair. Retain one bar and the visible matching female plate assemblies; do not add weights or a rack. No clipped body/equipment, extra limbs, detached fabric, fake finished wrists, white borders, neighboring fragments, text, arrows, logos or watermarks. Return only the complete unified full frame, never a cropped square or collage.",
+      "referenced_image_paths": [
+        "F:/personal_projects/fit_loger/.worktrees/exercise-guidance/.work/exercise-guidance/chest_incline_bench/female-fullframe-input-20261016/UNFINISHED-PRIMARY-female-full512x1024-RGBA.png"
+      ],
+      "transparent_background": false
+    },
+    "tool_parameters_file": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/approved/call-arguments.json",
+      "sha256": "c2fad56600268b08e2bc25333775a86f1a0f29b26f97fdfe019f65ca92af5249"
+    },
+    "submitted_inputs": [
+      {
+        "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/approved/released-fullPRIMARY.png",
+        "sha256": "fbde7ccda3f90dac944895e2d2d794c3611a7d67fc47391b5d7919386575f803",
+        "role": "Sole unfinished512x1024RGBA PRIMARY, failed-FBB1-middle-derived; not accepted actual/mother or final alpha matte.",
+        "original_submitted_absolute_path": "F:/personal_projects/fit_loger/.worktrees/exercise-guidance/.work/exercise-guidance/chest_incline_bench/female-fullframe-input-20261016/UNFINISHED-PRIMARY-female-full512x1024-RGBA.png"
+      }
+    ],
+    "input_donor": {
+      "path": ".work/exercise-guidance/chest_incline_bench/incline-prep-20261015/candidates/female-bb-02-input-v2.png",
+      "sha256": "1842944232ebcb12b38ed3f69c0214c649002332141c1b6693e21bbcbc377b54",
+      "role": "FAILED FBB1 middle INPUT only; complete apparatus/hands shifted together dx0/dy60 with honest holes. Not accepted output."
+    },
+    "input_anchors": {
+      "dx": 0,
+      "dy": 60,
+      "source_exact_pixels": 19379,
+      "meaning": "INPUT anchors only; ENTIRE02 regenerated; no within02/outsideROI pixel identity."
+    },
+    "callsForAcceptedLatestAsset": 1,
+    "retryCount": 0,
+    "rateLimit429": false,
+    "toolRequestId": null,
+    "requestIdNote": "Unavailable; journals assert one built-in/no retry/no429. Artifact filename/session UUID is not a requestID; independently recoverable historical telemetry unavailable.",
+    "precall_journal": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/approved/precall-journal.json",
+      "sha256": "9b669212f505a0452aa7b4c2d296c0740e2df1f797d371538e10733b26835a21"
+    },
+    "postcall_journal": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/approved/postcall-journal.json",
+      "sha256": "33676243c7c6c664901b048cdcc274b890a0c4c61590e868c13f65f331d25289"
+    },
+    "raw_output": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/approved/raw-generated-full-frame.png",
+      "sha256": "a3b6b3aef155286c655c97adaa5f1f9273dd69e00dd37515e58982b12cc87676",
+      "dimensions": [
+        887,
+        1774
+      ],
+      "mode": "RGB",
+      "meaning": "Untouched exact1:2 whole raw"
+    },
+    "tool_original_output": {
+      "path": "C:/Users/26017/.codex/generated_images/01a142ec-f067-7f33-9d00-8d5f451b3734/exec-4b5791a9-d196-4f9f-818c-5d60a253b5ea.png",
+      "sha256": "a3b6b3aef155286c655c97adaa5f1f9273dd69e00dd37515e58982b12cc87676"
+    }
+  },
   "assembly": {
     "acceptedMother": {
       "path": ".work/exercise-guidance/chest_incline_bench/female-sheet.png",
-      "sha256": "0de05396d6cdfd42e62e16a6cfc578566da996f9729314ffb50a2af2db6225ca",
-      "bytes": 1583358,
+      "sha256": "a11a8c6cbc86b29b47c9f87437174c90bcd8953632f97213c8b0e60048dfdec2",
       "dimensions": [
         1536,
         1024
-      ],
-      "mode": "RGB"
+      ]
     },
-    "stagedMother": {
-      "path": ".work/exercise-guidance/chest_incline_bench/incline-prep-20261015/staged/female-staged-sheet.png",
-      "sha256": "0de05396d6cdfd42e62e16a6cfc578566da996f9729314ffb50a2af2db6225ca",
-      "bytes": 1583358,
-      "dimensions": [
-        1536,
-        1024
-      ],
-      "mode": "RGB"
+    "immutableAcceptedMother": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/approved/hybrid-female-sheet.png",
+      "sha256": "a11a8c6cbc86b29b47c9f87437174c90bcd8953632f97213c8b0e60048dfdec2"
     },
-    "operations": "Exact whole-cell assembly1536x1024: raw FBB1 x0:512 and x1024:1536 retained unchanged; original canonical raw RGB middle x512:1024 retained unchanged. No shifting, resizing, neighbor slicing, part transforms, masks or anatomy/device painting. Copy exact staged source and two staged WebP bytes during integration; no new generation.",
+    "preLatestMother": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/originals/female-sheet.png",
+      "sha256": "0de05396d6cdfd42e62e16a6cfc578566da996f9729314ffb50a2af2db6225ca"
+    },
+    "originalActual02": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/originals/ex_chest_incline_bench_female_02.webp",
+      "sha256": "057b6cd28a126cae1f6346d1cb4a7fae26988ebc742022cada59faf9cc433ffc"
+    },
+    "operations": "Entire untouched887x1774 raw uniformly LANCZOS to512x1024; no crop/pad/anisotropicfit/mask/part reinsertion/local retouch. Whole new02 plus CURRENT accepted pre-newmother RAW01/03; those are FBB1 outercells, not baselinec501 or lossy decoded actualRGB. Exact reviewed hybrid/02 copied without production encoding.",
     "cells": [
       {
         "index": 1,
@@ -102,19 +441,18 @@
           512,
           1024
         ],
-        "donor": "FBB1 raw52f4 exact whole cell",
+        "origin": "exact CURRENTacceptedcanonical RAW-RGB (notbaselinec501/lossyactualRGB)",
         "originalCanonicalCellRgbSha256": "6dfe2a964abfe5c9ab7b660ea5373833c6aaf55751cc7af4bb3b113f21058ccd",
         "currentSourceCellRgbSha256": "0831b4cc10b4e0bee50d7fd359b4f0ebc15fdac2d5230871e1b36a5401f50ded",
         "currentActualDecodedRgbSha256": "0b6a81a823e39b9ab21b8a0aaabd11d32231c81812da1839b87619ecafbe8b33",
         "currentActual": {
           "path": "entry/src/main/resources/base/media/ex_chest_incline_bench_female_01.webp",
           "sha256": "07c9fe8fc9e981ff30e6917eb796f1506e0c8f0b6b437c64f9f8298200087f7d",
-          "bytes": 22904,
           "dimensions": [
             512,
             1024
           ],
-          "mode": "RGB"
+          "bytes": 22904
         },
         "originalActualBackup": {
           "path": ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/originals/ex_chest_incline_bench_female_01.webp",
@@ -125,7 +463,8 @@
             1024
           ],
           "mode": "RGB"
-        }
+        },
+        "inMemoryQ82Method6EmptyEXIFByteReproduced": true
       },
       {
         "index": 2,
@@ -135,19 +474,18 @@
           1024,
           1024
         ],
-        "donor": "original canonical c501 raw RGB",
+        "origin": "whole normalized generated raw",
         "originalCanonicalCellRgbSha256": "e87c6e7bef2cc920a13c245b70a90f86c7ea15c49a056f444b46d38c0d5fdd6a",
-        "currentSourceCellRgbSha256": "e87c6e7bef2cc920a13c245b70a90f86c7ea15c49a056f444b46d38c0d5fdd6a",
-        "currentActualDecodedRgbSha256": "1a49ddb2fe2a074912c7672224b505378287d36a36db3f2979f188b68f10fa64",
+        "currentSourceCellRgbSha256": "b62bac6bc07548a4da0ffa6690522f5f5d31563cb79df54a3a0ffb930f6778b5",
+        "currentActualDecodedRgbSha256": "d92dd3d83f8f777f867712aa62195cede06755e0d1805bfa5250e54e567b61a5",
         "currentActual": {
           "path": "entry/src/main/resources/base/media/ex_chest_incline_bench_female_02.webp",
-          "sha256": "057b6cd28a126cae1f6346d1cb4a7fae26988ebc742022cada59faf9cc433ffc",
-          "bytes": 22032,
+          "sha256": "2e6c25251c95e43799e733a9c799a1ba55541051bb4db4763ab6534c94cd0c1c",
           "dimensions": [
             512,
             1024
           ],
-          "mode": "RGB"
+          "bytes": 21232
         },
         "originalActualBackup": {
           "path": ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/originals/ex_chest_incline_bench_female_02.webp",
@@ -158,7 +496,8 @@
             1024
           ],
           "mode": "RGB"
-        }
+        },
+        "inMemoryQ82Method6EmptyEXIFByteReproduced": true
       },
       {
         "index": 3,
@@ -168,19 +507,18 @@
           1536,
           1024
         ],
-        "donor": "FBB1 raw52f4 exact whole cell",
+        "origin": "exact CURRENTacceptedcanonical RAW-RGB (notbaselinec501/lossyactualRGB)",
         "originalCanonicalCellRgbSha256": "2d954d158b79730790349647a3eb16a69125d610491026250da38296c24bdbfc",
         "currentSourceCellRgbSha256": "2797239cdfe830abc474849ca9133ec9208951054393ba0245872c971f3a717a",
         "currentActualDecodedRgbSha256": "01e6cb9c30202b052f486091d3fbaa164b5e0c39285a0b214363a69611d9a9ef",
         "currentActual": {
           "path": "entry/src/main/resources/base/media/ex_chest_incline_bench_female_03.webp",
           "sha256": "f6a0ed0d09e8a4fa3474cb205c2ffab62dea8e1ca92d002fb0b4dc6730a3af97",
-          "bytes": 23424,
           "dimensions": [
             512,
             1024
           ],
-          "mode": "RGB"
+          "bytes": 23424
         },
         "originalActualBackup": {
           "path": ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/originals/ex_chest_incline_bench_female_03.webp",
@@ -191,7 +529,8 @@
             1024
           ],
           "mode": "RGB"
-        }
+        },
+        "inMemoryQ82Method6EmptyEXIFByteReproduced": true
       }
     ]
   },
@@ -199,22 +538,16 @@
     "format": "WEBP",
     "quality": 82,
     "method": 6,
-    "exif": "empty bytes",
     "lossless": false,
-    "byteReproduction": "All3 cells reproduced exactly in accepted integration proof; not re-encoded during records stage.",
-    "processor": {
-      "path": "tools/exercises/process_guidance_sheet.py",
-      "sha256": "344889ede82dca244343331748704a31966fbda75452ed0813312d44a2592c27",
-      "bytes": 4034
-    },
+    "emptyEXIF": true,
+    "allThreeByteReproducedFromSourceCells": true,
     "runtime": {
-      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
-      "pythonExecutable": "C:\\Users\\26017\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
-      "pillow": "12.3.0",
-      "webp": "1.6.0",
-      "platform": "Windows-10-10.0.19045-SP0",
-      "codec": "WEBP quality82 method6 empty EXIF"
-    }
+      "executable": "C:\\Users\\26017\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "Python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "Pillow": "12.3.0",
+      "libwebp": "1.6.0"
+    },
+    "note": "Sourcecell RGB differs from decoded lossy actual RGB. Byte reproduction authenticated by integration and independent ACTUAL proof; not rerun for metadata stage."
   },
   "accepted_production": [
     {
@@ -222,6 +555,14 @@
       "path": "entry/src/main/resources/base/media/ex_chest_incline_bench_female_01.webp",
       "baselineSha256": "82cf62cf9a53170d6fd67d9d9c1a06112e801fe98d8b859bc57c1532c4d79015",
       "productionSha256": "07c9fe8fc9e981ff30e6917eb796f1506e0c8f0b6b437c64f9f8298200087f7d",
+      "width": 512,
+      "height": 1024
+    },
+    {
+      "index": 2,
+      "path": "entry/src/main/resources/base/media/ex_chest_incline_bench_female_02.webp",
+      "baselineSha256": "057b6cd28a126cae1f6346d1cb4a7fae26988ebc742022cada59faf9cc433ffc",
+      "productionSha256": "2e6c25251c95e43799e733a9c799a1ba55541051bb4db4763ab6534c94cd0c1c",
       "width": 512,
       "height": 1024
     },
@@ -234,198 +575,64 @@
       "height": 1024
     }
   ],
-  "unchanged_frames": [
-    {
-      "path": "entry/src/main/resources/base/media/ex_chest_incline_bench_female_02.webp",
-      "sha256": "057b6cd28a126cae1f6346d1cb4a7fae26988ebc742022cada59faf9cc433ffc",
-      "bytes": 22032,
-      "dimensions": [
-        512,
-        1024
-      ],
-      "mode": "RGB"
+  "evidence": {
+    "candidate_proof": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/approved/candidate-proof.json",
+      "sha256": "2fd20e1a3fa86b1553d18ede8452b0879f8e1112945f3d9db9e3be869af72db4"
+    },
+    "preflight_proof": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/approved/preflight-proof.json",
+      "sha256": "44afbb39a49ad4749f0662d09f08265d263716cf32fd13dfc6ad1dde0a85038b"
+    },
+    "onecall_report": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/approved/onecall-report.md",
+      "sha256": "88feaf1232c675d26517daf7540fc1e7b7670a10fca1d4dd560eb761f9bdfbcc"
+    },
+    "integration_proof": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/integration-proof.json",
+      "sha256": "0cfc607e23bd438e16582f4ec427988358e1f7a3040519b4445bf23a096a6711"
+    },
+    "integration_report": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/task-2-female-incline-fullframe-integration-report.md",
+      "sha256": "3660b39e9ccdf79b7bd39552844ab6b0fa2b5379255d7a8e49ba707e114b3d7e"
+    },
+    "authenticated_after_inventory": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-integration-20261016/after-inventory.json",
+      "sha256": "fb89d688c76d079b0d34bfe8c61775022c27b77079f7cd406bb140f1457787df"
+    },
+    "independent_actual_review": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-female-incline-fullframe-actual-review.md",
+      "sha256": "8cdd44fda329fd5b46e2e1b191086cf119dea2b8edd849f1755be164aba0fabe"
+    },
+    "independent_actual_review_proof": {
+      "path": ".work/exercise-guidance/chest_incline_bench/female-fullframe-actual-review-20261016/actual-review-proof.json",
+      "sha256": "a4e8f80c387e340d8870674cc0aae90b7fdbec1575ef8b6496bb38db5b3678eb"
     }
-  ],
-  "independent_reviews": [
-    {
-      "phase": "candidate only",
-      "verdict": "SPEC+SCOPED TASKQUALITY PASS WITH CONCERNS",
-      "artifact": {
-        "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-female-incline-boundary-candidate-review.md",
-        "sha256": "e1bef8325eeddefea681ae2adcb60763b59efa7428f98e797fcf97daa343771e",
-        "bytes": 7202
-      }
-    },
-    {
-      "phase": "actual-diff integration",
-      "verdict": "SPEC+TASKQUALITY PASS WITH CONCERNS",
-      "artifact": {
-        "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-female-incline-boundary-integration-review.md",
-        "sha256": "a6afa87d9fa6d9c4de98e77f4988de18f6db6e6125ae121e08435282e840c748",
-        "bytes": 7799
-      }
-    }
-  ],
-  "integration": {
-    "immutableProof": {
-      "path": ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/integration-provenance.json",
-      "sha256": "81d7808a14d98ba375b1041b6aa4e42e4dd8ab50a5f87a32bb4b0bd3e8779df8",
-      "bytes": 25754
-    },
-    "report": {
-      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-female-incline-boundary-integration-report.md",
-      "sha256": "01bfc854a05a658796b924a8d98785d74bd3beef99ba1fd085463398be77cf24",
-      "bytes": 9779
-    },
-    "before": {
-      "path": ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/before-inventory.json",
-      "sha256": "d820ff16b434f02c30b5eda33bad2738d917ee985a418d37b91b0c3ca4364585",
-      "bytes": 714828
-    },
-    "after": {
-      "path": ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/after-inventory.json",
-      "sha256": "00c09b6ff7891c21295de3fd13d9a2ed203cc0527de0d163a23d0e2b31bacb72",
-      "bytes": 714983
-    },
-    "qaViews": {
-      ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_01-320.png": {
-        "sha256": "b5fbbcab38aedabcbd8b4a9080fb5037754a7fdd788b75934a7fb45193fd5e87",
-        "bytes": 125373,
-        "dimensions": [
-          320,
-          640
-        ],
-        "format": "PNG",
-        "rgbSha256": "5c0f30388d30112e467b27d5730888234b1fe77ff9f28c47b9510c33b9ffded6"
-      },
-      ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_01-native.png": {
-        "sha256": "63bca1c68499da477589598286779ae902b2d4038c370f90a2865df27ef1e65b",
-        "bytes": 228503,
-        "dimensions": [
-          512,
-          1024
-        ],
-        "format": "PNG",
-        "rgbSha256": "0b6a81a823e39b9ab21b8a0aaabd11d32231c81812da1839b87619ecafbe8b33"
-      },
-      ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_01-support-detail.png": {
-        "sha256": "fcf22489d9b9d4123ee145928832d9148288c64eeb1e3ffb102654d1709ca8c2",
-        "bytes": 105525,
-        "dimensions": [
-          512,
-          434
-        ],
-        "format": "PNG",
-        "rgbSha256": "fbd9d821c32016e56b74fa4421b001f7a8ce9075e2d37d60167875dcbb83fc6e"
-      },
-      ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_01-upper-detail.png": {
-        "sha256": "76ee3f6ba021785ec3a776024b8bb854fba88f8796b2d0d528418e87ad4d1f82",
-        "bytes": 120147,
-        "dimensions": [
-          512,
-          430
-        ],
-        "format": "PNG",
-        "rgbSha256": "8a6180f21eb50c212685c9bc5cdf41da64da0ea1da373d470d749df54b365806"
-      },
-      ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_02-320.png": {
-        "sha256": "1c3353c63fa27a2dee91f261466d61d620c7a78bab746f21ce87b8ff817a5da8",
-        "bytes": 123425,
-        "dimensions": [
-          320,
-          640
-        ],
-        "format": "PNG",
-        "rgbSha256": "9f525de383f276a4cc84938052e61d33f1ec9048b0c4c979d4fb8d87196d8ef8"
-      },
-      ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_02-native.png": {
-        "sha256": "039fbda98287259c5fe636bc26153817209cbbbdc8f20e9b3727374e1acdac35",
-        "bytes": 216595,
-        "dimensions": [
-          512,
-          1024
-        ],
-        "format": "PNG",
-        "rgbSha256": "1a49ddb2fe2a074912c7672224b505378287d36a36db3f2979f188b68f10fa64"
-      },
-      ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_02-support-detail.png": {
-        "sha256": "04a192ecced3b2e0162c52d22f710a68d1d47b7d03b9fa3717b47938b841692e",
-        "bytes": 111849,
-        "dimensions": [
-          512,
-          434
-        ],
-        "format": "PNG",
-        "rgbSha256": "2bdd7c018f68d7cd54feec5580dbcfdf339481d0c90f24369f0bd6d289b7d45e"
-      },
-      ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_02-upper-detail.png": {
-        "sha256": "71ffcdcc854e4a678594246b46e7d7e89197bdafcb6ffd09c7e6fe03a83ea5a3",
-        "bytes": 100809,
-        "dimensions": [
-          512,
-          430
-        ],
-        "format": "PNG",
-        "rgbSha256": "8050a24ceaefc3c428137cda738d4f3cded05b4e0051f23aedd189d6bb43c90f"
-      },
-      ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_03-320.png": {
-        "sha256": "410a3c8e5c9d1f4302165fe09dd6537e8e0d8a1b4bae2378b614a152b76022b8",
-        "bytes": 127118,
-        "dimensions": [
-          320,
-          640
-        ],
-        "format": "PNG",
-        "rgbSha256": "59f6b166a4f3a6b04f88150042626606a2ed728606abe8fc6d743202abdd68dd"
-      },
-      ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_03-native.png": {
-        "sha256": "e4646e9c8f04ebf16ee13abfb66a0a1b432b9ff2fc63d900634e5a4b6cb1bbbb",
-        "bytes": 231558,
-        "dimensions": [
-          512,
-          1024
-        ],
-        "format": "PNG",
-        "rgbSha256": "01e6cb9c30202b052f486091d3fbaa164b5e0c39285a0b214363a69611d9a9ef"
-      },
-      ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_03-support-detail.png": {
-        "sha256": "4544f517637a8693048e4b915d2febe1e4c30dbce56d48b84be212615fcc4080",
-        "bytes": 106570,
-        "dimensions": [
-          512,
-          434
-        ],
-        "format": "PNG",
-        "rgbSha256": "7870af6b8b0081d5b5e40f64a9561695236d7ef1c85bf74f6bb3b8f6d8903944"
-      },
-      ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/actual-production-qa/ex_chest_incline_bench_female_03-upper-detail.png": {
-        "sha256": "2b6ac059a5da17645c408ce5279aefafa06750cf99aff5576032dddd0139feab",
-        "bytes": 122674,
-        "dimensions": [
-          512,
-          430
-        ],
-        "format": "PNG",
-        "rgbSha256": "4c7f0f0c618978aa5aa6a136a52f6f4389e6f3a07c45d550cce281ff7b00d6cb"
-      }
-    },
-    "testLog": {
-      "path": ".work/exercise-guidance/chest_incline_bench/female-boundary-integration-20261016/test-results.json",
-      "sha256": "e4aed8b4b8cb2987b68c677d2eb7a7ef6b984c39ec6071b1b15c595dbd4e6453",
-      "bytes": 6868
-    },
-    "verification": "Seven named checks passed at accepted asset integration, including22processor tests; original Node stripTypeScriptTypes warnings retained. Not rerun for documentation-only stage."
   },
-  "unresolved": [
-    "Original02 remains DEFECT/OPEN: neck/chin endpoint, clipped left sleeve, right neighbor sleeve fragment/divider.",
-    "Mild framing/scale drift through retained02 remains a disclosed nonblocking concern.",
-    "FBB1 remains rejected as a COMPLETE repair; rejected generated02 is not accepted.",
-    "No numerical3D bench-angle, maleBB, D009, phone/HAP/install, fullTask3 or whole-goal acceptance.",
-    "Original/generated artifacts remain locally ignored and are not bundled into the app or Git.",
-    "Historical tool request ID unavailable; artifact filename/session is not a request ID."
+  "independent_review_report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-female-incline-fullframe-actual-review.md",
+  "independent_review_report_sha256": "8cdd44fda329fd5b46e2e1b191086cf119dea2b8edd849f1755be164aba0fabe",
+  "independent_actual_verdict": {
+    "SPEC": "PASS",
+    "TASK_QUALITY": "PASS",
+    "actionableFindings": 0,
+    "additionalUncertainty": false
+  },
+  "literal_prompt_compliance": {
+    "exact_input_anchor_placement_retained": false,
+    "continuous_allwidth_fabricband_retained": false,
+    "disclosure": "Raw raised bar/hands relativetoliteralunfinishedinput; Vskin-tip meets shaft. Not relabeled exactcompliance; accepted for staging only by anatomicalrawscreen/rootruling.",
+    "nipple_height_depth_force_3D": "Notcalibrated/hidden/unverified"
+  },
+  "controller_postcall_ruling": "Rootadopts stronger visibleclavicle/neckroot-aboveshaft and upperpectoralcontour/contactshadow gate. Continuousall-widthFABRICproxy explicitlySUPERSEDED forVbra; trueupperpectoral/no-neck/no-underbust/naturalchains/contact requirements remain.",
+  "disclosedLimits": [
+    "Literal input bar/hand placement and all-width continuous cloth band NOT retained. Central V-skin tip meets shaft. Root and independent ACTUAL review supersede only the V-bra all-width fabric proxy; visible clavicles/neck-root above shaft, upper-pectoral contour/contact shadow and no neck/underbust/abdomen endpoint remain operative anatomy requirements.",
+    "Exact nipple-relative height, hidden contact depth/force and calibrated3D are unverified. Minor phase framing/face/cloth/light/shoe/plate-detail drift accepted, without new UNCERTAIN.",
+    "01/03 remain earlier accepted FBB1 outercells. FBB1 complete sheet/middle remain rejected history, not retroactively accepted. Whole02 is newly regenerated, not a local pixel-preserving repair.",
+    "Current group acceptance does not close D001/D002, either male calf ID or other open/uncertain groups; Task2 incomplete/Task3 not started. No HAP/device/install/merge/publish or whole-goal completion.",
+    "Original/generated files retained locally ignored, not bundled into app or Git."
   ],
   "wholeGoalStatus": "IN_PROGRESS; Task2 incomplete, Task3 not started",
   "missing_evidence": [
-    "Historical ImageGen tool-event request ID unavailable."
+    "Tool requestID/historical telemetry unavailable; no invented ID."
   ]
 }
