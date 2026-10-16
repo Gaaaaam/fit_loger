@@ -15,17 +15,17 @@
     "baselineConfirmedDefectGroups": 30,
     "additionalConfirmedDefectGroups": 2,
     "currentConfirmedDefectGroups": 32,
-    "independentlyClosedGroups": 24,
-    "openConfirmedDefectGroups": 8,
+    "independentlyClosedGroups": 26,
+    "openConfirmedDefectGroups": 6,
     "baselineUncertainGroups": 6,
     "uncertainGroups": 8,
     "currentAssessmentCounts": {
-      "PASS": 224,
-      "DEFECT": 8,
+      "PASS": 226,
+      "DEFECT": 6,
       "UNCERTAIN": 8
     },
-    "changedProductionFrames": 40,
-    "interpretation": "Immutable groups/results/postAuditFindings retain baseline observations.32everconfirmed minus24closures leaves8open;8uncertain;224PASS/8DEFECT/8UNCERTAIN totals240.25records=24closures(including2metadata-only)+1HISTORICAL femalePARTIAL falseclosure;22unique imagegroups/all22closed,currentPARTIAL0. MaleD018/D006 jointly accepted at assetf70fc5c by independent committed-ACTUAL SPEC/TASKQUALITY PASS/bothIDsPASS/noNEWU;ONEshared newmale builtinpair,not femaleacceptanceinheritance.40frames differ/550same;14367556bytes. Remaining8confirmed:back_one_arm_cable_row,leg_seated_curl,leg_extension,leg_curl eachF/M;D001/D002OPEN;D009benchangle and other8U retained. Task2IN_PROGRESS/Task3NOT_STARTED.",
+    "changedProductionFrames": 44,
+    "interpretation": "Immutable groups/results/postAuditFindings retain baseline observations.32everconfirmed minus26closures leaves6open;8uncertain;226PASS/6DEFECT/8UNCERTAIN totals240.27records=26closures(including2metadata-only)+1HISTORICAL femalePARTIAL falseclosure;24unique imagegroups/all24closed,currentPARTIAL0. D004F/M independently committed-ACTUAL SPEC/TASKQUALITY PASS/noNEWU at assetab87331 after TWOdistinct builtin events, female newraw+exact10pxstudio translations/male newrawNOedits;not inheritedgenderPASS.44frames differ/546same;14413138bytes. Remaining6confirmed:back_one_arm_cable_row,leg_seated_curl,leg_curl eachF/M;D001/D002,D005,D012OPEN;D009benchangle and all8U retained. Task2IN_PROGRESS/Task3NOT_STARTED.",
     "independentlyAcceptedPartialGroups": 0
   },
   "repairs": [
@@ -1016,6 +1016,118 @@
       "sharedAcceptanceBatch": "male-calf-shared-pair-f70fc5c",
       "sharedGenerationEvent": "male-accepted-female-layout-onecall-20261016",
       "notes": "BothmaleIDs independently co-reviewed/co-accepted in same committed-ACTUAL gate;not female/RAW acceptance inheritance or earlier reuse authorization. New11regularloadrows distinct from top/bottom hardware supersede old8 appearance. Ordinary occlusion/modest projection drift;no newU;no calibrated3D guarantee."
+    },
+    {
+      "id": "leg_extension",
+      "gender": "female",
+      "checklistIds": [
+        "D004"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "closesConfirmedGroup": true,
+      "kind": "BUILTIN_IMAGEGEN_NEW_APPROVED_PROFILE_PAIR",
+      "acceptedCommit": "ab87331efa42227e5494fe18888d400bd78da95c",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-extension-both-actual-review.md",
+      "reviewReportSha256": "c603b74d59d9c8e5f72d86a15cb95bfa12ee9a94bdb6df44f85a789f14951909",
+      "sourceSha256": "52b05f3fdfa63530b3d2547a7e61c0829b0efa8428291d898e679df2b472a20a",
+      "phaseIndices": [
+        1,
+        2
+      ],
+      "unchangedFrameIndices": [],
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_leg_extension_female_01.webp",
+          "baselineSha256": "87734d960cf2727bd810745b545ea474d5c520cf3958f99a149d70178661c2b3",
+          "productionSha256": "770d2df077143b74349e642c0470b588bfc28eb82786b9215249770130324520",
+          "width": 768,
+          "height": 1024,
+          "bytes": 44016,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_leg_extension_female_02.webp",
+          "baselineSha256": "e70a5ff1ab88a4e8050c0878fbf3adeb4454eda9afb8805cbe0e92ae5b874e7d",
+          "productionSha256": "99a27daede2e8cac47efaadfe501db64db8c11e31f0c92864cf1b2a9f4d30c25",
+          "width": 768,
+          "height": 1024,
+          "bytes": 41912,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        }
+      ],
+      "generationEvent": "leg_extension/female-approved-profile-onecall-20261016",
+      "notes": "Distinct new builtin event for this gender; two total D004 events. New approved apparatus/profile and native two-phase pair independently accepted after committedACTUAL review; no inherited genderPASS. Ordinary hidden-contact/bearing/load limits retained."
+    },
+    {
+      "id": "leg_extension",
+      "gender": "male",
+      "checklistIds": [
+        "D004"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "closesConfirmedGroup": true,
+      "kind": "BUILTIN_IMAGEGEN_NEW_APPROVED_PROFILE_PAIR",
+      "acceptedCommit": "ab87331efa42227e5494fe18888d400bd78da95c",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-extension-both-actual-review.md",
+      "reviewReportSha256": "c603b74d59d9c8e5f72d86a15cb95bfa12ee9a94bdb6df44f85a789f14951909",
+      "sourceSha256": "02cf857bc40a7a3c0ac0b374f82f7c61d2191407cb77a9b56a8ee022cf6d480a",
+      "phaseIndices": [
+        1,
+        2
+      ],
+      "unchangedFrameIndices": [],
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_leg_extension_male_01.webp",
+          "baselineSha256": "4711b9cb573c9261b34ad6929082105f682615c6127e4a21b68330ba634b95cc",
+          "productionSha256": "91fd8fd52a1229680539af75094eef7053d0c3798b1b95c10d79a20f7dd4c574",
+          "width": 768,
+          "height": 1024,
+          "bytes": 43642,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_leg_extension_male_02.webp",
+          "baselineSha256": "f130f8d33ff2654c5c9e81bb6c139b11131687a2b2a2985a9d60ee5a916c2209",
+          "productionSha256": "a622dfa52bd2303a88345c1429cbc4b43fd36a45c4015c8ea7c1cdda95e49f22",
+          "width": 768,
+          "height": 1024,
+          "bytes": 41734,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        }
+      ],
+      "generationEvent": "leg_extension/male-counterpart-onecall-20261016",
+      "notes": "Distinct new builtin event for this gender; two total D004 events. New approved apparatus/profile and native two-phase pair independently accepted after committedACTUAL review; no inherited genderPASS. Ordinary hidden-contact/bearing/load limits retained."
     }
   ],
   "postAuditFindings": [

@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "date": "2026-10-15",
   "baselineCommit": "61e39bc775e5233362155229d568eff59c1659ec",
-  "acceptedThroughCommit": "f70fc5c313dc990947df5f147dc7341a43f1a415",
-  "scope": "22unique acceptedimagegroups/all22closed;25repairrecords=24closure records(2metadata-only)+1HISTORICAL femalePARTIAL falseclosure.32everconfirmed/24closed/8open/8uncertain;40changed/550same;14367556bytes. TWO newmale calf groups coaccepted at assetf70fc5c using ONEshared builtinpair and freshboth-ID committed-ACTUAL gate;not a newfemaleincline group. D001/D002 and remaining8confirmedOPEN;Task2IN_PROGRESS/Task3NOT_STARTED.",
+  "acceptedThroughCommit": "ab87331efa42227e5494fe18888d400bd78da95c",
+  "scope": "24unique acceptedimagegroups/all24closed;27repairrecords=26closures(2metadata-only)+1HISTORICAL femalePARTIAL falseclosure.32everconfirmed/26closed/6open/8uncertain;44changed546same;14413138bytes. D004female+male independently accepted at assetab87331 through BOTHgender committed-ACTUAL gate, from TWOdistinct builtin events;female narrowstudio patch/maleNOedits, no inheritedgenderPASS. RemainingD001/D002,D005,D012OPEN;D009/all8U retained;Task2IN_PROGRESS/Task3NOT_STARTED.",
   "coverageRecord": "../2026-10-15-exercise-guidance-detail-coverage.json",
   "wholeGoalStatus": "IN_PROGRESS; this index is not final whole-change acceptance",
   "disclosedLimits": [
@@ -15,7 +15,8 @@
     "Historical female-source gate accepted D018female then D006female reuse only. Later f70fc5c NEWmale sharedpair independently co-reviewed/co-accepted for BOTH D018male/D006male;old maleOPEN/source-dependency notes remain historical in oldJSONs,not currentstatus. Far hand occluded; plausible2D support is not calibrated3D or hidden-surface proof. Prior failed fullraw/masks remain failed.",
     "D008male entire02 regenerated from a single built-in fullPRIMARY target;original01/03bytes/rawsourcecells retained. Modestshirtband,inheritedrackheight and phase/renderdetail drift accepted by independentactualPASS,without addedUNCERTAIN. No outsideROIidentity/calibrated3Dcontact/hiddenforce guarantee. Prior3localassemblies remainFAIL;femaleD00802 was THEN DEFECT/OPEN; subsequent c19e9aa independent ACTUAL acceptance supersedes this current-status statement without altering male provenance.",
     "Female D008 whole02 literal inputplacement/all-width fabric band NOT retained; clarified V-bra criterion uses visible clavicle/neck-root above shaft and upper-pectoral contour/contactshadow. Independent committed ACTUAL PASS/no findings/no newU, not raw-screen-only acceptance. Exact nipple/depth/force/calibrated3D unverified; minor rendering/framing drift accepted. Old public PARTIAL byte snapshot and frozen actual/mother mapping retained in current female JSON.",
-    "Newmale calf pair preserves ordinary farhand/farcontact occlusion and modest projection/render drift;11regularloadrows distinct from head/bottomhardware supersede old8 appearance. No newU,calibrated3D or female-inherited acceptance claim. One shared generation event serves two independently accepted groups."
+    "Newmale calf pair preserves ordinary farhand/farcontact occlusion and modest projection/render drift;11regularloadrows distinct from head/bottomhardware supersede old8 appearance. No newU,calibrated3D or female-inherited acceptance claim. One shared generation event serves two independently accepted groups.",
+    "D004F/M new approved same-type apparatus/left-facing profile at ab87331 independently ACTUAL SPEC/TASKQUALITY PASS/noNEWU. Two distinct builtin events, female10pxstudio-only originalpixel translations and male unchangedRAW. Ordinary far-contact/grip/bearing/selectedload/3D limits and subtle background/projection drift retained; original diagnostics/failed drafts historical, no inferred numericradius or kneecappixel-axis guarantee."
   ],
   "groups": [
     {
@@ -177,6 +178,32 @@
       "status": "INDEPENDENTLY_ACCEPTED",
       "closesConfirmedGroup": true,
       "kind": "BUILTIN_IMAGEGEN_SHARED_MALE_PAIR"
+    },
+    {
+      "id": "leg_extension",
+      "gender": "female",
+      "file": "leg_extension-female.json",
+      "acceptedCommit": "ab87331efa42227e5494fe18888d400bd78da95c",
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "phaseIndices": [
+        1,
+        2
+      ],
+      "kind": "BUILTIN_IMAGEGEN_NEW_APPROVED_PROFILE_PAIR"
+    },
+    {
+      "id": "leg_extension",
+      "gender": "male",
+      "file": "leg_extension-male.json",
+      "acceptedCommit": "ab87331efa42227e5494fe18888d400bd78da95c",
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "phaseIndices": [
+        1,
+        2
+      ],
+      "kind": "BUILTIN_IMAGEGEN_NEW_APPROVED_PROFILE_PAIR"
     }
   ]
 }
