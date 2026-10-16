@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "date": "2026-10-15",
   "baselineCommit": "61e39bc775e5233362155229d568eff59c1659ec",
-  "acceptedThroughCommit": "6aa03f3928524032ee7f80d9161728708e6eef55",
-  "scope": "Eighteen independently accepted image-provenance groups:17closed image groups plus1female incline-barbell PARTIAL that does not close its DEFECT group.20repair records include19confirmed closures (2metadata-only elsewhere in coverage) and1partial.32ever-confirmed/19closed/13open/8uncertain;32changed frames/558baseline-identical. Not complete original120-action generation history; whole taskIN_PROGRESS.",
+  "acceptedThroughCommit": "2f074ff457c9c45a3f54bf8095f5948bd7eed3a3",
+  "scope": "19accepted imageprovenance groups=18closedimage+1femaleBBpartial.21repair records=20confirmedclosures(2metadata-only)+1partial.32ever-confirmed/20closed/12open/8uncertain;34changed/556same. D006female samegenderacceptedWHOLEPAIRreuse,0newgeneration/0assetencoding;not complete120-action generation history;whole taskIN_PROGRESS.",
   "coverageRecord": "../2026-10-15-exercise-guidance-detail-coverage.json",
   "wholeGoalStatus": "IN_PROGRESS; this index is not final whole-change acceptance",
   "disclosedLimits": [
@@ -12,7 +12,7 @@
     "Incline dumbbell toe/elbow defects are repaired, but both groups remain UNCERTAIN for physical bench angle. Accepted repair does not mean every group is unconditional PASS.",
     "Inherited thin light pullover/rear-fly perimeters and original Node experimental warnings remain disclosed; final style/regression gates are pending.",
     "Female incline-barbell01/03 containment accepted only;02 remains original DEFECT/OPEN and mild framing drift remains. FBB1 complete repair is still rejected;this partial adds no confirmed-group closure.",
-    "D018female fixed-cap/post/interface/background accepted only;male D018 and both D006 remain OPEN with no reuse authorized. Far hand occluded; plausible2D support is not calibrated3D or hidden-surface proof. Prior failed fullraw/masks remain failed."
+    "D018female fixed-cap/post/interface/background accepted only;male D018 remains OPEN;female D006 reuse separately accepted under explicit samegender source gate;male D006 remains OPEN. Far hand occluded; plausible2D support is not calibrated3D or hidden-surface proof. Prior failed fullraw/masks remain failed."
   ],
   "groups": [
     {
@@ -130,6 +130,15 @@
       "acceptedCommit": "6aa03f3928524032ee7f80d9161728708e6eef55",
       "status": "INDEPENDENTLY_ACCEPTED",
       "closesConfirmedGroup": true
+    },
+    {
+      "id": "leg_standing_calf",
+      "gender": "female",
+      "file": "leg_standing_calf-female.json",
+      "acceptedCommit": "2f074ff457c9c45a3f54bf8095f5948bd7eed3a3",
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "kind": "EXISTING_ACCEPTED_WHOLE_PAIR_SOURCE_REUSE"
     }
   ]
 }

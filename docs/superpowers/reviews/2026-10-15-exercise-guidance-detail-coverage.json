@@ -15,17 +15,17 @@
     "baselineConfirmedDefectGroups": 30,
     "additionalConfirmedDefectGroups": 2,
     "currentConfirmedDefectGroups": 32,
-    "independentlyClosedGroups": 19,
-    "openConfirmedDefectGroups": 13,
+    "independentlyClosedGroups": 20,
+    "openConfirmedDefectGroups": 12,
     "baselineUncertainGroups": 6,
     "uncertainGroups": 8,
     "currentAssessmentCounts": {
-      "PASS": 219,
-      "DEFECT": 13,
+      "PASS": 220,
+      "DEFECT": 12,
       "UNCERTAIN": 8
     },
-    "changedProductionFrames": 32,
-    "interpretation": "groups/results remain immutable audit-baseline observations. postAuditFindings retains two newly confirmed original PASS groups;32ever-confirmed minus19confirmed-group closures leaves13open. Current disjoint219PASS/13DEFECT/8UNCERTAIN totals240;UNCERTAIN is never PASS.20accepted repair records comprise19closure records (including2metadata-only) plus1female incline-barbell PARTIAL record with closesConfirmedGroup:false.18image-provenance groups comprise17closedimage groups plus1partial. D018female now independently accepted; male and D006 remain OPEN. FemaleBB02 remains DEFECT/OPEN.32production frames differ from baseline;558remain identical. Two D009 groups remain UNCERTAIN for bench angle, so known-defect closure does not mean unconditional PASS.",
+    "changedProductionFrames": 34,
+    "interpretation": "Immutablegroups/results/postAuditFindings retain original baseline observations.32ever-confirmed minus20closures leaves12open;8uncertain;220PASS/12DEFECT/8UNCERTAIN totals240.21records=20closure records(including2metadata-only)+1femaleBBPARTIAL falseclosure.19imagegroups=18closedimage+1partial. D006female exactaccepted wholepairreuse accepted;bothmale calf IDs OPEN;femaleBB02 DEFECT/OPEN.34frames differ/556identical. Known-defect closure does not make twoD009benchangle UNCERTAIN groups unconditionalPASS.",
     "independentlyAcceptedPartialGroups": 1
   },
   "repairs": [
@@ -763,6 +763,61 @@
         }
       ],
       "notes": "Accepted original fixed-cap/post plus existing generated foreground mount, complete-AA background reconstruction;2424pixels within2532union;01 originalq82 unchanged/02losslessTrueq100m6emptyEXIF. Source rawRGB and actualRGB identities differ as documented. D018male/D006 remain OPEN; femaleBB partial does not close its group."
+    },
+    {
+      "id": "leg_standing_calf",
+      "gender": "female",
+      "checklistIds": [
+        "D006"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "closesConfirmedGroup": true,
+      "kind": "EXISTING_ACCEPTED_WHOLE_PAIR_SOURCE_REUSE",
+      "acceptedCommit": "2f074ff457c9c45a3f54bf8095f5948bd7eed3a3",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-female-reuse-review.md",
+      "sourceSha256": "849dcc09cf41739a1ac310aef0b0dabfcfb414e06bdac78a5dc77097404c0f93",
+      "unchangedFrameIndices": [],
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_01.webp",
+          "baselineSha256": "30abfedd07f56122a8e0471e59ad25d47c6e249442c5b0f2fc8446270877e1fe",
+          "productionSha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+          "width": 768,
+          "height": 1024,
+          "bytes": 22014,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_02.webp",
+          "baselineSha256": "310b6568a63cc1086e33aa7023db8f9d792be4d08e4f822fcdf9a1913d2bdd56",
+          "productionSha256": "e21ec864bc1decbb5459eff41b8f2842b8367c2ff5b00ee774f03bc2490ffd3d",
+          "width": 768,
+          "height": 1024,
+          "bytes": 165464,
+          "codec": {
+            "format": "WEBP",
+            "quality": 100,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": true
+          }
+        }
+      ],
+      "sourceExerciseId": "leg_calf_raise",
+      "sourceAcceptedAssetCommit": "6aa03f3928524032ee7f80d9161728708e6eef55",
+      "sourceAcceptedRecordsCommit": "83aa1825d933b8a65f8b8028951a731eeb60fcce",
+      "newImageGenCalls": 0,
+      "newAssetEncodes": 0,
+      "notes": "Exact complete same-gender source WebP pair/hybrid copies;whole model/apparatus/framing replacement intentional,no oldtarget pixel preservation. Target captions/card unchanged;female/auto duplicate source images expected;male OPEN. FemaleBBpartial adds no closure."
     }
   ],
   "postAuditFindings": [
