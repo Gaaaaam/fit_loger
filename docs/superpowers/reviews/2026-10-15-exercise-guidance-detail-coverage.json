@@ -15,17 +15,17 @@
     "baselineConfirmedDefectGroups": 30,
     "additionalConfirmedDefectGroups": 2,
     "currentConfirmedDefectGroups": 32,
-    "independentlyClosedGroups": 22,
-    "openConfirmedDefectGroups": 10,
+    "independentlyClosedGroups": 24,
+    "openConfirmedDefectGroups": 8,
     "baselineUncertainGroups": 6,
     "uncertainGroups": 8,
     "currentAssessmentCounts": {
-      "PASS": 222,
-      "DEFECT": 10,
+      "PASS": 224,
+      "DEFECT": 8,
       "UNCERTAIN": 8
     },
-    "changedProductionFrames": 36,
-    "interpretation": "Immutable groups/results/postAuditFindings retain original baseline observations.32 ever-confirmed minus22 closures leaves10 open;8 uncertain;222 PASS/10 DEFECT/8 UNCERTAIN totals240.23 records=22 closure records(including2 metadata-only)+1 HISTORICAL female PARTIAL falseclosure. Its then-groupCurrentResult DEFECT/unchanged02/unresolved notes remain unchanged history, superseded by c19e9aa female02 closure. CURRENT partial groups0;20 unique image groups now20 closed image groups, not21. Female D008 independent committed ACTUAL SPEC/TASKQUALITY PASS/no findings/no added U under clarified V-bra anatomical gate; literal anchor/fabric noncompliance disclosed.36 frames differ/554 identical;14371900 bytes. D001 layout APPROVED only, images still OPEN; both male calf IDs OPEN. D009 angle UNCERTAIN and other8U preserved. Whole Task2 in progress, Task3 not started.",
+    "changedProductionFrames": 40,
+    "interpretation": "Immutable groups/results/postAuditFindings retain baseline observations.32everconfirmed minus24closures leaves8open;8uncertain;224PASS/8DEFECT/8UNCERTAIN totals240.25records=24closures(including2metadata-only)+1HISTORICAL femalePARTIAL falseclosure;22unique imagegroups/all22closed,currentPARTIAL0. MaleD018/D006 jointly accepted at assetf70fc5c by independent committed-ACTUAL SPEC/TASKQUALITY PASS/bothIDsPASS/noNEWU;ONEshared newmale builtinpair,not femaleacceptanceinheritance.40frames differ/550same;14367556bytes. Remaining8confirmed:back_one_arm_cable_row,leg_seated_curl,leg_extension,leg_curl eachF/M;D001/D002OPEN;D009benchangle and other8U retained. Task2IN_PROGRESS/Task3NOT_STARTED.",
     "independentlyAcceptedPartialGroups": 0
   },
   "repairs": [
@@ -902,6 +902,120 @@
         }
       ],
       "notes": "Independent committed ACTUAL SPEC/TASKQUALITY PASS/no findings/no added U. Only02 changed in this step; accepted FBB1 outer01/03 unchanged. Old46c6675 PARTIAL falseclosure/groupCurrentResult DEFECT/unchanged02/unresolved notes describe THEN and remain immutable history, superseded by this closure. FBB1 middle remains rejected. Literal input anchors/all-width fabric band NOT retained; V-bra cloth proxy superseded, true upper-pectoral criterion passed. Exact nipple/depth/force/3D unverified; minor render/phase drift accepted. Both male calf IDs and D001/D002 remain OPEN."
+    },
+    {
+      "id": "leg_calf_raise",
+      "gender": "male",
+      "checklistIds": [
+        "D018"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "closesConfirmedGroup": true,
+      "kind": "BUILTIN_IMAGEGEN_SHARED_MALE_PAIR",
+      "acceptedCommit": "f70fc5c313dc990947df5f147dc7341a43f1a415",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-male-calf-shared-pair-actual-review.md",
+      "reviewReportSha256": "41ac790593318a8ae6bda7d3530ce03b6323c7a145052ee5e09b52c7bd4f1e14",
+      "sourceSha256": "dc36ab8ef7644554a6c4e8c90c0c9c1088d8169c7caad9ce34e4004d0fbfa2df",
+      "phaseIndices": [
+        1,
+        2
+      ],
+      "unchangedFrameIndices": [],
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_male_01.webp",
+          "baselineSha256": "b2860c2692f8f60a311b6d932dd7ba8bd9b4a6e28bfc7ea01e104fe3de360e47",
+          "productionSha256": "5bb848cd181f7aec2e218b20dfa591b13b5e75f9b9622704145edbd9cfd35a3c",
+          "width": 768,
+          "height": 1024,
+          "bytes": 24846,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_male_02.webp",
+          "baselineSha256": "18487a2569073b6585352da4c6c7375a79a40e87964f1d919e0b8cfdf12975e5",
+          "productionSha256": "de3d3647e8ec312d8409745a761bdfcfade5dc8a9b26cfbe5678704cd65a52e6",
+          "width": 768,
+          "height": 1024,
+          "bytes": 24916,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        }
+      ],
+      "sharedAcceptanceBatch": "male-calf-shared-pair-f70fc5c",
+      "sharedGenerationEvent": "male-accepted-female-layout-onecall-20261016",
+      "notes": "BothmaleIDs independently co-reviewed/co-accepted in same committed-ACTUAL gate;not female/RAW acceptance inheritance or earlier reuse authorization. New11regularloadrows distinct from top/bottom hardware supersede old8 appearance. Ordinary occlusion/modest projection drift;no newU;no calibrated3D guarantee."
+    },
+    {
+      "id": "leg_standing_calf",
+      "gender": "male",
+      "checklistIds": [
+        "D006"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "closesConfirmedGroup": true,
+      "kind": "BUILTIN_IMAGEGEN_SHARED_MALE_PAIR",
+      "acceptedCommit": "f70fc5c313dc990947df5f147dc7341a43f1a415",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-male-calf-shared-pair-actual-review.md",
+      "reviewReportSha256": "41ac790593318a8ae6bda7d3530ce03b6323c7a145052ee5e09b52c7bd4f1e14",
+      "sourceSha256": "dc36ab8ef7644554a6c4e8c90c0c9c1088d8169c7caad9ce34e4004d0fbfa2df",
+      "phaseIndices": [
+        1,
+        2
+      ],
+      "unchangedFrameIndices": [],
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_male_01.webp",
+          "baselineSha256": "c146f8e4afcbbbc62524c7ccae440e60229ed29b6ccaba5b4477f19d375e449f",
+          "productionSha256": "5bb848cd181f7aec2e218b20dfa591b13b5e75f9b9622704145edbd9cfd35a3c",
+          "width": 768,
+          "height": 1024,
+          "bytes": 24846,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_male_02.webp",
+          "baselineSha256": "1a9511a5a127ba0cd1aaad843572119c35cc94e21f0ddfd4c943f0a070195062",
+          "productionSha256": "de3d3647e8ec312d8409745a761bdfcfade5dc8a9b26cfbe5678704cd65a52e6",
+          "width": 768,
+          "height": 1024,
+          "bytes": 24916,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        }
+      ],
+      "sharedAcceptanceBatch": "male-calf-shared-pair-f70fc5c",
+      "sharedGenerationEvent": "male-accepted-female-layout-onecall-20261016",
+      "notes": "BothmaleIDs independently co-reviewed/co-accepted in same committed-ACTUAL gate;not female/RAW acceptance inheritance or earlier reuse authorization. New11regularloadrows distinct from top/bottom hardware supersede old8 appearance. Ordinary occlusion/modest projection drift;no newU;no calibrated3D guarantee."
     }
   ],
   "postAuditFindings": [
