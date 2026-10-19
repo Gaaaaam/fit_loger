@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "date": "2026-10-15",
   "baselineCommit": "61e39bc775e5233362155229d568eff59c1659ec",
-  "acceptedThroughCommit": "37af20719cd519acfb98fb403d8359a757d835b7",
-  "scope": "32everconfirmed/30closed/2open/8uncertain;230PASS/2DEFECT/8UNCERTAIN=240.31repairrecords=30closures(including2metadata-only)+1HISTORICAL femalePARTIAL falseclosure;28unique acceptedimagegroups/all28closed,currentPARTIAL0. D005female+male independently committed-ACTUAL SPEC/TASKQUALITY PASS/noNEWU at asset37af207;SIXdistinct accepted-source ancestry events(5female+1male), intermediate failed RAWs not accepted.54frames differ/536same;14442276bytes. Remainingconfirmed ONLY leg_seated_curlF/M D001/D002;D009/all8U retained. Immutable baseline groups/results/observations/postAudit preserved. Task2IN_PROGRESS/Task3NOT_STARTED.",
+  "acceptedThroughCommit": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+  "scope": "32 ever-confirmed existing keys; 32 currently closed/0 open; 232PASS/0DEFECT/8UNCERTAIN.37 ordered repair records/36 historical accepted closure events, including2 historical metadata-only events;32 current image-history groups. Four separate PartA WORKING_PRODUCTION_ACTUAL SPEC/QUALITY PASS/ADDRESSED acceptances, acceptedCommit:null.60 baseline-changed/530 identical frames;14,855,632bytes<125,829,120. Task3 IN_PROGRESS; same-seat PartB accepted-metadata consistency and Git/archive pending, not prewritten PASS.",
   "coverageRecord": "../2026-10-15-exercise-guidance-detail-coverage.json",
-  "wholeGoalStatus": "IN_PROGRESS; this index is not final whole-change acceptance",
+  "wholeGoalStatus": "IN_PROGRESS; PartA actual content accepted; same-seat PartB accepted-metadata consistency and Git archive pending",
   "disclosedLimits": [
     "Original and generated mother images are retained locally, not bundled into the app or Git. Relative artifact paths resolve from the project worktree.",
     "Exact historical style-edit prompt and output identifier for retained burpee improved sources could not be recovered; this is explicitly NOT_FOUND, not replaced by unrelated prompts. New female02/04 prompts and all accepted byte/source evidence are preserved.",
@@ -18,7 +18,9 @@
     "Newmale calf pair preserves ordinary farhand/farcontact occlusion and modest projection/render drift;11regularloadrows distinct from head/bottomhardware supersede old8 appearance. No newU,calibrated3D or female-inherited acceptance claim. One shared generation event serves two independently accepted groups.",
     "D004F/M new approved same-type apparatus/left-facing profile at ab87331 independently ACTUAL SPEC/TASKQUALITY PASS/noNEWU. Two distinct builtin events, female10pxstudio-only originalpixel translations and male unchangedRAW. Ordinary far-contact/grip/bearing/selectedload/3D limits and subtle background/projection drift retained; original diagnostics/failed drafts historical, no inferred numericradius or kneecappixel-axis guarantee.",
     "D012F/M approved closed housing/exterior path at fee24522 independently ACTUAL SPEC/TASKQUALITY PASS/ADDRESSED and note semanticPASS/noNEWU. TWO distinct model events each1254square uniformly normalized1024 then LEFT/RIGHT/EXACTLEFT;exact01=03 return endpoint reuse, no runtimealias/framecountchange. Male used THEN-femaleCANDIDATE+limitedhead, not bodybytecopy/inheritedPASS. MID→HIGH newgeometry;farflange/hidden load/travel/internalroute/force/ratio unverified;faintbackgroundtone not drawnstripe. All failed old D012 trials remain historicalFAIL.",
-    "D005female+male accepted at ASSET37af207 by independent committed-ACTUAL SPEC/TASKQUALITY PASS/noNEWU. Five female serial builtin ancestry events plus one male event = SIX; not one/two total. Female local26423-alpha calf composite/25882changed/outside0 and uniform normalization; male untouchedRAW=mother. First male ref was THEN female candidate, not acceptedACTUAL/no inheritedPASS. Intermediate failures retained; hidden support/shaft/dynamics/force not certified; old source NEEDS_CONTEXT is historical, not retroactive engineering acceptance."
+    "D005female+male accepted at ASSET37af207 by independent committed-ACTUAL SPEC/TASKQUALITY PASS/noNEWU. Five female serial builtin ancestry events plus one male event = SIX; not one/two total. Female local26423-alpha calf composite/25882changed/outside0 and uniform normalization; male untouchedRAW=mother. First male ref was THEN female candidate, not acceptedACTUAL/no inheritedPASS. Intermediate failures retained; hidden support/shaft/dynamics/force not certified; old source NEEDS_CONTEXT is historical, not retroactive engineering acceptance.",
+    "D001female/D002male at ASSET39bfe1c independently ACTUAL SPEC/TASKQUALITY PASS/ADDRESSED/no newU. FOUR female accepted-source events+ONE male=FIVE; unused3cdd and all earlier failures remain rejected. Entire2be base, whole1254to600 donors,95600mask/83604changed/0outside2be and exact original pad/human; no outside86db identity. Generic Insignia-inspired carrier/bracket, lowerSTART shoe/body occlusion and hidden bearings/transmission/3D/load/force unverified. Male untouchedRAW=mother, THEN female candidate input/no inheritedPASS. Task2COMPLETE;Task3 final whole-change gate pending;8U notPASS.",
+    "Final followup: D019/D020 reopen four existing groups after repair33. Two new builtin events total, both female hardware donors; male model event count0, no inherited gender PASS. Current hybrid mothers differ from historical accepted source snapshots. Current actual hashes independently accepted separately by PartA; same-seat PartB metadata consistency and commit pending. Older zero-open and Task3-not-started text is historical only."
   ],
   "groups": [
     {
@@ -103,13 +105,127 @@
       "id": "back_seated_row",
       "gender": "female",
       "file": "back_seated_row-female.json",
-      "acceptedCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4"
+      "acceptedCommit": null,
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "phaseIndices": [
+        2
+      ],
+      "kind": "CUMULATIVE_LOAD_CONTINUITY_FOLLOWUP",
+      "currentActualState": "WORKING_PRODUCTION_ACTUAL",
+      "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+      "historicalAcceptanceCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4",
+      "independentActualAcceptance": {
+        "status": "INDEPENDENTLY_ACCEPTED",
+        "actualState": "WORKING_PRODUCTION_ACTUAL",
+        "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+        "acceptedCommit": null,
+        "SPEC": "PASS",
+        "QUALITY": "PASS",
+        "finding": "ADDRESSED",
+        "group": "back_seated_row/female",
+        "reviewReport": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+          "sha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+          "bytes": 12086
+        },
+        "reviewProof": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-proof.json",
+          "sha256": "5cd46a1c697a74740bb42fa343b0f53423d249262510866f0957b9e731791fdb",
+          "bytes": 9362
+        },
+        "actualFrames": [
+          {
+            "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_01.webp",
+            "sha256": "b737dd2041cb8f50d432264de862987a53f90fcaadd968e7d7a7c213a7101149"
+          },
+          {
+            "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_02.webp",
+            "sha256": "07a851f75a4f47299f393e8b88b768f1f4b0a87c57714edef59d8afc3fdf653b"
+          },
+          {
+            "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_03.webp",
+            "sha256": "479f82a96b7c0a0707ff6f1d605e0abdf842512d7f015ecda658e0ccf8f22087"
+          }
+        ],
+        "nativeHardwareView": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/back_seated_row-female-hardware-native.png",
+          "sha256": "1fe31f35ac928ba9341e09386d43317d24aa78ca92a6b61a7411061d56c8620a",
+          "bytes": 68494
+        },
+        "stage320View": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/back_seated_row-female-320.png",
+          "sha256": "e68c92b2e8e44d7d5af084b7bfa5154c66b7efaafbf4427ba11cfae97f887ff1",
+          "bytes": 393397
+        },
+        "acceptanceScope": "This own full actual-sex group, native and320; hardware donor sharing does not confer gender acceptance.",
+        "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT",
+        "gitArchiveStatus": "PENDING"
+      },
+      "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT"
     },
     {
       "id": "back_seated_row",
       "gender": "male",
       "file": "back_seated_row-male.json",
-      "acceptedCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4"
+      "acceptedCommit": null,
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "phaseIndices": [
+        2
+      ],
+      "kind": "CUMULATIVE_LOAD_CONTINUITY_FOLLOWUP",
+      "currentActualState": "WORKING_PRODUCTION_ACTUAL",
+      "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+      "historicalAcceptanceCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4",
+      "independentActualAcceptance": {
+        "status": "INDEPENDENTLY_ACCEPTED",
+        "actualState": "WORKING_PRODUCTION_ACTUAL",
+        "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+        "acceptedCommit": null,
+        "SPEC": "PASS",
+        "QUALITY": "PASS",
+        "finding": "ADDRESSED",
+        "group": "back_seated_row/male",
+        "reviewReport": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+          "sha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+          "bytes": 12086
+        },
+        "reviewProof": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-proof.json",
+          "sha256": "5cd46a1c697a74740bb42fa343b0f53423d249262510866f0957b9e731791fdb",
+          "bytes": 9362
+        },
+        "actualFrames": [
+          {
+            "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_01.webp",
+            "sha256": "aa0f792a350ab59e11355f431a41b7fcce26da045511f6ec3d706e7e16c3ba1d"
+          },
+          {
+            "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_02.webp",
+            "sha256": "c263952490e0de46775c2c27d3ebf58d5ffb4b66e49e9baea42624080fd5553a"
+          },
+          {
+            "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_03.webp",
+            "sha256": "fc3b37abeb63838f48612c634a377e6de8b3d56e3501f691c4f16b99d455d080"
+          }
+        ],
+        "nativeHardwareView": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/back_seated_row-male-hardware-native.png",
+          "sha256": "7ea4f80db784e781cb66ae5b1e2c9828a219ff3267aaae843cfe2f1ee7c14656",
+          "bytes": 69980
+        },
+        "stage320View": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/back_seated_row-male-320.png",
+          "sha256": "84bb43a8a7b659e90c44c59a05d1d8023a81ba41e0d4362189f820284e5bb9ff",
+          "bytes": 436145
+        },
+        "acceptanceScope": "This own full actual-sex group, native and320; hardware donor sharing does not confer gender acceptance.",
+        "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT",
+        "gitArchiveStatus": "PENDING"
+      },
+      "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT"
     },
     {
       "id": "core_pallof",
@@ -260,6 +376,202 @@
         2
       ],
       "kind": "BUILTIN_IMAGEGEN_EXIGO_PRONE_PAIR"
+    },
+    {
+      "id": "leg_seated_curl",
+      "gender": "female",
+      "file": "leg_seated_curl-female.json",
+      "acceptedCommit": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "phaseIndices": [
+        1,
+        2
+      ],
+      "kind": "BUILTIN_IMAGEGEN_INSIGNIA_INSPIRED_HOMOLOGOUS_PAIR"
+    },
+    {
+      "id": "leg_seated_curl",
+      "gender": "male",
+      "file": "leg_seated_curl-male.json",
+      "acceptedCommit": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "phaseIndices": [
+        1,
+        2
+      ],
+      "kind": "BUILTIN_IMAGEGEN_INSIGNIA_INSPIRED_HOMOLOGOUS_PAIR"
+    },
+    {
+      "id": "shoulder_cable_rear_fly",
+      "gender": "female",
+      "file": "shoulder_cable_rear_fly-female.json",
+      "acceptedCommit": null,
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "phaseIndices": [
+        2
+      ],
+      "kind": "CUMULATIVE_LOAD_CONTINUITY_FOLLOWUP",
+      "currentActualState": "WORKING_PRODUCTION_ACTUAL",
+      "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+      "historicalAcceptanceCommit": "f31c90d1b6733f528d800b352e09442ce821b09f",
+      "independentActualAcceptance": {
+        "status": "INDEPENDENTLY_ACCEPTED",
+        "actualState": "WORKING_PRODUCTION_ACTUAL",
+        "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+        "acceptedCommit": null,
+        "SPEC": "PASS",
+        "QUALITY": "PASS",
+        "finding": "ADDRESSED",
+        "group": "shoulder_cable_rear_fly/female",
+        "reviewReport": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+          "sha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+          "bytes": 12086
+        },
+        "reviewProof": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-proof.json",
+          "sha256": "5cd46a1c697a74740bb42fa343b0f53423d249262510866f0957b9e731791fdb",
+          "bytes": 9362
+        },
+        "actualFrames": [
+          {
+            "path": "entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_female_01.webp",
+            "sha256": "e94742cf8bd46179854881c0b4f5ba5601a60651b3e9c95802ab495a74073fb1"
+          },
+          {
+            "path": "entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_female_02.webp",
+            "sha256": "2eca337ecc53f45c73f7b9a44ca199c49364482b4323d9fe07672d99ef1c4819"
+          }
+        ],
+        "nativeHardwareView": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/shoulder_cable_rear_fly-female-hardware-native.png",
+          "sha256": "cf1150a895923fa81e6fb08bf867ec60636a42a6a2c332cb302616cee51b1fd1",
+          "bytes": 66640
+        },
+        "stage320View": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/shoulder_cable_rear_fly-female-320.png",
+          "sha256": "b1a01d49df2241b8889083911e25a055b85e94b3d71ddfd0cc325ce40490159d",
+          "bytes": 189137
+        },
+        "acceptanceScope": "This own full actual-sex group, native and320; hardware donor sharing does not confer gender acceptance.",
+        "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT",
+        "gitArchiveStatus": "PENDING"
+      },
+      "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT"
+    },
+    {
+      "id": "shoulder_cable_rear_fly",
+      "gender": "male",
+      "file": "shoulder_cable_rear_fly-male.json",
+      "acceptedCommit": null,
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "phaseIndices": [
+        2
+      ],
+      "kind": "CUMULATIVE_LOAD_CONTINUITY_FOLLOWUP",
+      "currentActualState": "WORKING_PRODUCTION_ACTUAL",
+      "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+      "historicalAcceptanceCommit": "f31c90d1b6733f528d800b352e09442ce821b09f",
+      "independentActualAcceptance": {
+        "status": "INDEPENDENTLY_ACCEPTED",
+        "actualState": "WORKING_PRODUCTION_ACTUAL",
+        "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+        "acceptedCommit": null,
+        "SPEC": "PASS",
+        "QUALITY": "PASS",
+        "finding": "ADDRESSED",
+        "group": "shoulder_cable_rear_fly/male",
+        "reviewReport": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+          "sha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+          "bytes": 12086
+        },
+        "reviewProof": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-proof.json",
+          "sha256": "5cd46a1c697a74740bb42fa343b0f53423d249262510866f0957b9e731791fdb",
+          "bytes": 9362
+        },
+        "actualFrames": [
+          {
+            "path": "entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_male_01.webp",
+            "sha256": "1f43b59e0bbef3b47d6cf4a922a0ce092f09a1b118d7b6e9285446298a940691"
+          },
+          {
+            "path": "entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_male_02.webp",
+            "sha256": "b59ad4e0b821536469b344f9c072bd3e6dcecab49bfec19026c3314296323fa2"
+          }
+        ],
+        "nativeHardwareView": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/shoulder_cable_rear_fly-male-hardware-native.png",
+          "sha256": "efb392ef42a49e115dd2931dd88995439695fb94f67004d6f98aa2a61c5bbf7a",
+          "bytes": 74780
+        },
+        "stage320View": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/shoulder_cable_rear_fly-male-320.png",
+          "sha256": "d845cb03f37597952be297f21f9cd51aa86c6a1fcd95789e1563a8250f9d937f",
+          "bytes": 214993
+        },
+        "acceptanceScope": "This own full actual-sex group, native and320; hardware donor sharing does not confer gender acceptance.",
+        "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT",
+        "gitArchiveStatus": "PENDING"
+      },
+      "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT"
     }
-  ]
+  ],
+  "historicalIndexSnapshot": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/phase8-integration/historical-public/index.json",
+    "sha256": "0a944b2276ec60e31fbab7852d0b2a0489ca88578699e600423e767176e64541",
+    "bytes": 13974
+  },
+  "currentAssetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+  "currentFollowupAcceptedCommit": null,
+  "currentStats": {
+    "everConfirmedGroups": 32,
+    "currentClosedGroups": 32,
+    "currentOpenGroups": 0,
+    "currentAssessmentCounts": {
+      "PASS": 232,
+      "DEFECT": 0,
+      "UNCERTAIN": 8
+    },
+    "repairRecords": 37,
+    "historicalAcceptedClosureEvents": 36,
+    "historicalMetadataOnlyClosureEvents": 2,
+    "uniqueImageHistoryGroups": 32,
+    "currentClosedImageGroups": 32,
+    "pendingImageGroups": 0,
+    "changedProductionFrames": 60,
+    "identicalProductionFrames": 530,
+    "productionBytes": 14855632,
+    "limitBytes": 125829120,
+    "uncertain": [
+      "abs_hanging_knee/female",
+      "chest_bb_bench/female",
+      "chest_bb_bench/male",
+      "chest_decline_bench/female",
+      "chest_decline_bench/male",
+      "chest_incline_db_press/female",
+      "chest_incline_db_press/male",
+      "shoulder_machine_reverse_fly/male"
+    ],
+    "independentlyAcceptedWorkingFollowupGroups": 4,
+    "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT",
+    "gitArchiveStatus": "PENDING"
+  },
+  "currentFollowupStatus": "INDEPENDENTLY_ACCEPTED_WORKING_PRODUCTION_ACTUAL",
+  "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT",
+  "partAReview": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+    "sha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+    "bytes": 12086
+  },
+  "partAProof": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-proof.json",
+    "sha256": "5cd46a1c697a74740bb42fa343b0f53423d249262510866f0957b9e731791fdb",
+    "bytes": 9362
+  }
 }

@@ -1,0 +1,363 @@
+{
+  "schema": "repair-provenance/v2-cumulative-followup",
+  "id": "shoulder_cable_rear_fly",
+  "exercise": "shoulder_cable_rear_fly",
+  "gender": "female",
+  "status": "INDEPENDENTLY_ACCEPTED",
+  "acceptedCommit": null,
+  "actualState": "WORKING_PRODUCTION_ACTUAL",
+  "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+  "gitArchiveStatus": "PENDING_NO_NEW_COMMIT",
+  "scope": "Stage02 load-continuity followup independently accepted as own full actual-sex group in PartA at exact WORKING_PRODUCTION_ACTUAL hashes. Earlier records remain separate history; PartB final accepted-metadata consistency and Git/archive pending.",
+  "historicalSourceHistory": {
+    "priorTargetedRepairRecord": {
+      "id": "shoulder_cable_rear_fly",
+      "gender": "female",
+      "checklistIds": [
+        "D015"
+      ],
+      "kind": "METADATA_ONLY",
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "f31c90d1b6733f528d800b352e09442ce821b09f",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-arnold-review.md",
+      "sourceSha256": "797d4de51916b5babba81497aea93cadf07951d9c50d863462aab2ee19ce4163",
+      "unchangedFrameIndices": [
+        1,
+        2
+      ],
+      "notes": "Manifest selects permitted HIGH pulleys matching unchanged actual images, opposite crossed cables preserved.01 central attribution remains occluded; no hidden-contact proof or new redraw claimed. Inherited thin light outer strips unchanged, disclosed for final style triage.",
+      "frames": []
+    },
+    "originalActualAtFollowup": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/originals-v1/entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_female_02.webp",
+      "sha256": "1754d20cf57a2dcb14ec2408851cf509d03d50015f24ee42cd5ef18e1f1347c1",
+      "bytes": 28128
+    },
+    "originalCanonicalAtFollowup": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/originals-v1/.work/exercise-guidance/shoulder_cable_rear_fly/female-sheet.png",
+      "sha256": "797d4de51916b5babba81497aea93cadf07951d9c50d863462aab2ee19ce4163",
+      "bytes": 1719383
+    },
+    "historicalAcceptanceOnly": true,
+    "firstImageProvenanceRecordForThisGroup": true
+  },
+  "newFollowups": [
+    {
+      "id": "shoulder_cable_rear_fly",
+      "gender": "female",
+      "checklistIds": [
+        "D020"
+      ],
+      "kind": "FINAL_LOAD_CONTINUITY_FOLLOWUP",
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": null,
+      "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+      "actualState": "WORKING_PRODUCTION_ACTUAL",
+      "reviewReport": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+      "independentReviewStatus": "ACTUAL_SPEC_PASS_QUALITY_PASS_ADDRESSED",
+      "rootCandidateGate": "PRELIMINARILY_SUITABLE_NOT_INDEPENDENT_ACCEPTANCE",
+      "sourceProvenance": "docs/superpowers/reviews/2026-10-15-guidance-repair-provenance/shoulder_cable_rear_fly-female.json",
+      "sourceSha256": "6ea2dc5569fe834726bed13f22201a098e24b5f1ae5903d95bba32f020324ca2",
+      "frames": [
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_female_02.webp",
+          "baselineSha256": "1754d20cf57a2dcb14ec2408851cf509d03d50015f24ee42cd5ef18e1f1347c1",
+          "productionSha256": "2eca337ecc53f45c73f7b9a44ca199c49364482b4323d9fe07672d99ef1c4819",
+          "width": 768,
+          "height": 1024,
+          "bytes": 181148,
+          "codec": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "emptyEXIF": true
+          }
+        }
+      ],
+      "phaseIndices": [
+        2
+      ],
+      "unchangedFrameIndices": [
+        1
+      ],
+      "candidateProof": {
+        "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/shoulder_cable_rear_fly-female/mechanical-candidate-02/candidate-proof.json",
+        "sha256": "57a22af4dd562306978431ac6b8d352a35a4ed1d66506ffab7a0fee43d11a999",
+        "bytes": 6723
+      },
+      "candidateVerification": {
+        "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/shoulder_cable_rear_fly-female/mechanical-candidate-02/candidate-verification.json",
+        "sha256": "2f821a88a9c8d82893b434d83bd1af80002d1f3bcfe4b7a8ec1641e0c29d03d4",
+        "bytes": 2211
+      },
+      "integrationProof": {
+        "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/phase8-integration/integration-proof.json",
+        "sha256": "ea899c420de7165e3a4c7c37684685d1b72402c38a20aaa1b3ab38dc5ae0e2f3",
+        "bytes": 12317
+      },
+      "generation": {
+        "distinctNewModelCallsForThisGender": 1,
+        "sharedHardwareDonorFromFemale": false,
+        "batchDistinctBuiltinEvents": 2,
+        "callBefore": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/shoulder_cable_rear_fly-female/builtin-call-01/journal-before.json",
+          "sha256": "3e9a66f1edd36c655a83043096053d858d4ca7aaa22b6baa1d22c8cd4768dc71",
+          "bytes": 5576
+        },
+        "callAfter": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/shoulder_cable_rear_fly-female/builtin-call-01/journal-after.json",
+          "sha256": "204ce4da1eaea48280360388f4ff8560da71a1e508e94dfc03e404dda8ceba25",
+          "bytes": 2109
+        },
+        "untouchedRaw": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/shoulder_cable_rear_fly-female/builtin-call-01/raw-untouched.png",
+          "sha256": "39d73f15fa1c5c14d4c1105e61a94a7762b416c0d4ad9049e4a46ab3e42dea77",
+          "bytes": 1666217
+        },
+        "exactSavedArgs": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/shoulder_cable_rear_fly-female/builtin-inputs-v3/builtin-args.json",
+          "sha256": "79f802378583771ffde8525556f2b839b588fef98bf24994ea83931d9e6e6e3a",
+          "bytes": 3632
+        },
+        "originalGenerationHistory": "NOT_RECOVERED_BY_THIS_FOLLOWUP; no original-generation event invented",
+        "genderAcceptance": "SEPARATE_OWN_GROUP_WORKING_ACTUAL_SPEC_PASS_QUALITY_PASS; not inherited from shared donor"
+      },
+      "notes": "Existing reopened group independently accepted at exact live WORKING_PRODUCTION_ACTUAL hashes in PartA; no committed acceptance. PartB accepted-metadata consistency and Git archive pending; hidden selector/ratio/3D remain unverified.",
+      "reviewReportSha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+      "independentActualAcceptance": {
+        "status": "INDEPENDENTLY_ACCEPTED",
+        "actualState": "WORKING_PRODUCTION_ACTUAL",
+        "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+        "acceptedCommit": null,
+        "SPEC": "PASS",
+        "QUALITY": "PASS",
+        "finding": "ADDRESSED",
+        "group": "shoulder_cable_rear_fly/female",
+        "reviewReport": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+          "sha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+          "bytes": 12086
+        },
+        "reviewProof": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-proof.json",
+          "sha256": "5cd46a1c697a74740bb42fa343b0f53423d249262510866f0957b9e731791fdb",
+          "bytes": 9362
+        },
+        "actualFrames": [
+          {
+            "path": "entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_female_01.webp",
+            "sha256": "e94742cf8bd46179854881c0b4f5ba5601a60651b3e9c95802ab495a74073fb1"
+          },
+          {
+            "path": "entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_female_02.webp",
+            "sha256": "2eca337ecc53f45c73f7b9a44ca199c49364482b4323d9fe07672d99ef1c4819"
+          }
+        ],
+        "nativeHardwareView": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/shoulder_cable_rear_fly-female-hardware-native.png",
+          "sha256": "cf1150a895923fa81e6fb08bf867ec60636a42a6a2c332cb302616cee51b1fd1",
+          "bytes": 66640
+        },
+        "stage320View": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/shoulder_cable_rear_fly-female-320.png",
+          "sha256": "b1a01d49df2241b8889083911e25a055b85e94b3d71ddfd0cc325ce40490159d",
+          "bytes": 189137
+        },
+        "acceptanceScope": "This own full actual-sex group, native and320; hardware donor sharing does not confer gender acceptance.",
+        "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT",
+        "gitArchiveStatus": "PENDING"
+      },
+      "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT"
+    }
+  ],
+  "currentProductionFrames": [
+    {
+      "path": "entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_female_01.webp",
+      "sha256": "e94742cf8bd46179854881c0b4f5ba5601a60651b3e9c95802ab495a74073fb1",
+      "bytes": 25244,
+      "index": 1,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "changedInThisFollowup": false
+    },
+    {
+      "path": "entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_female_02.webp",
+      "sha256": "2eca337ecc53f45c73f7b9a44ca199c49364482b4323d9fe07672d99ef1c4819",
+      "bytes": 181148,
+      "index": 2,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "changedInThisFollowup": true
+    }
+  ],
+  "currentCanonicalMother": {
+    "path": ".work/exercise-guidance/shoulder_cable_rear_fly/female-sheet.png",
+    "sha256": "6ea2dc5569fe834726bed13f22201a098e24b5f1ae5903d95bba32f020324ca2",
+    "bytes": 1073486,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "kind": "HYBRID_CURRENT_MOTHER",
+    "policy": "Only stage02 replaced with exact decoded new actual RGB; every other cell exact prior canonical RGB, not re-decoded actual. No scale or reencode of other actuals.",
+    "historicalSourceAcceptance": false
+  },
+  "generation": {
+    "distinctNewModelCallsForThisGender": 1,
+    "sharedHardwareDonorFromFemale": false,
+    "batchDistinctBuiltinEvents": 2,
+    "callBefore": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/shoulder_cable_rear_fly-female/builtin-call-01/journal-before.json",
+      "sha256": "3e9a66f1edd36c655a83043096053d858d4ca7aaa22b6baa1d22c8cd4768dc71",
+      "bytes": 5576
+    },
+    "callAfter": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/shoulder_cable_rear_fly-female/builtin-call-01/journal-after.json",
+      "sha256": "204ce4da1eaea48280360388f4ff8560da71a1e508e94dfc03e404dda8ceba25",
+      "bytes": 2109
+    },
+    "untouchedRaw": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/shoulder_cable_rear_fly-female/builtin-call-01/raw-untouched.png",
+      "sha256": "39d73f15fa1c5c14d4c1105e61a94a7762b416c0d4ad9049e4a46ab3e42dea77",
+      "bytes": 1666217
+    },
+    "exactSavedArgs": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/shoulder_cable_rear_fly-female/builtin-inputs-v3/builtin-args.json",
+      "sha256": "79f802378583771ffde8525556f2b839b588fef98bf24994ea83931d9e6e6e3a",
+      "bytes": 3632
+    },
+    "originalGenerationHistory": "NOT_RECOVERED_BY_THIS_FOLLOWUP; no original-generation event invented",
+    "genderAcceptance": "SEPARATE_OWN_GROUP_WORKING_ACTUAL_SPEC_PASS_QUALITY_PASS; not inherited from shared donor"
+  },
+  "sourceAndTransformProof": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/shoulder_cable_rear_fly-female/mechanical-candidate-02/candidate-proof.json",
+    "sha256": "57a22af4dd562306978431ac6b8d352a35a4ed1d66506ffab7a0fee43d11a999",
+    "bytes": 6723
+  },
+  "sourceAndCodecVerification": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/shoulder_cable_rear_fly-female/mechanical-candidate-02/candidate-verification.json",
+    "sha256": "2f821a88a9c8d82893b434d83bd1af80002d1f3bcfe4b7a8ec1641e0c29d03d4",
+    "bytes": 2211
+  },
+  "integrationProof": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/phase8-integration/integration-proof.json",
+    "sha256": "ea899c420de7165e3a4c7c37684685d1b72402c38a20aaa1b3ab38dc5ae0e2f3",
+    "bytes": 12317
+  },
+  "phase7ImplementerReport": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/phase7-report-frozen.md",
+    "sha256": "45c0e2daafa8fbcc391a3aff26971ba6058bc1aa6f1c420e17e301f0d48efab2",
+    "bytes": 50130
+  },
+  "reopening": {
+    "id": "shoulder_cable_rear_fly",
+    "gender": "female",
+    "checklistIds": [
+      "D020"
+    ],
+    "findingKind": "REOPENING_AFTER_TARGETED_REPAIR",
+    "effectiveAfterRepairRecordCount": 33,
+    "currentResult": "DEFECT",
+    "priorTargetedChecklistIds": [
+      "D015"
+    ],
+    "priorTargetedAcceptedCommit": "f31c90d1b6733f528d800b352e09442ce821b09f",
+    "priorTargetedReviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-arnold-review.md",
+    "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-3-whole-change-review.md",
+    "fullReview": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-3-whole-change-review.md",
+      "sha256": "50579784f19af8510c4d76a64311e29ffc76249530be52b8468ea611442a9446",
+      "bytes": 16646
+    },
+    "fullReviewProof": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-whole-change-review-20261019/direct-proof.json",
+      "sha256": "3c9d4d5e28ecd287a0c583e5efd05b34cc8b723359428ecfe6b9acf3ab74b816",
+      "bytes": 17297
+    },
+    "observations": "Both exposed loads remain static while opposite-pulley free spans lengthen; prior D015 HIGH metadata reconciliation is not load-travel acceptance.",
+    "affectedActualAtReopening": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/originals-v1/entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_female_02.webp",
+      "sha256": "1754d20cf57a2dcb14ec2408851cf509d03d50015f24ee42cd5ef18e1f1347c1",
+      "bytes": 28128
+    },
+    "actualPathAtReopening": "entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_female_02.webp",
+    "inspectedFrames": [
+      2
+    ]
+  },
+  "retainedUnacceptedDonorFamilyHistory": {
+    "sourceGender": "female",
+    "relation": "Own earlier failed candidate; not retroactively accepted",
+    "status": "UNACCEPTED_HISTORICAL",
+    "proof": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/shoulder_cable_rear_fly-female/mechanical-candidate-01/candidate-proof.json",
+      "sha256": "c63a0aa60fb879729cf52e4bab9e8d3c36ec24423ab25db08ee79fa96598dee5"
+    }
+  },
+  "limits": [
+    "Original head/face RGB or actual hardware-only cap used; no invented or repeated plate rows.",
+    "Separate gender full-actual SPEC/QUALITY PASS recorded from PartA; no inherited PASS. PartB metadata review remains pending.",
+    "Unknown hidden selector ordinal, mechanical ratio, force, calibration and occluded geometry not certified.",
+    "Failed prior candidates, original model inputs and historical source snapshots remain retained."
+  ],
+  "codec": {
+    "format": "WEBP",
+    "lossless": true,
+    "quality": 100,
+    "method": 6,
+    "exif": ""
+  },
+  "independentActualAcceptance": {
+    "status": "INDEPENDENTLY_ACCEPTED",
+    "actualState": "WORKING_PRODUCTION_ACTUAL",
+    "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+    "acceptedCommit": null,
+    "SPEC": "PASS",
+    "QUALITY": "PASS",
+    "finding": "ADDRESSED",
+    "group": "shoulder_cable_rear_fly/female",
+    "reviewReport": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+      "sha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+      "bytes": 12086
+    },
+    "reviewProof": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-proof.json",
+      "sha256": "5cd46a1c697a74740bb42fa343b0f53423d249262510866f0957b9e731791fdb",
+      "bytes": 9362
+    },
+    "actualFrames": [
+      {
+        "path": "entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_female_01.webp",
+        "sha256": "e94742cf8bd46179854881c0b4f5ba5601a60651b3e9c95802ab495a74073fb1"
+      },
+      {
+        "path": "entry/src/main/resources/base/media/ex_shoulder_cable_rear_fly_female_02.webp",
+        "sha256": "2eca337ecc53f45c73f7b9a44ca199c49364482b4323d9fe07672d99ef1c4819"
+      }
+    ],
+    "nativeHardwareView": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/shoulder_cable_rear_fly-female-hardware-native.png",
+      "sha256": "cf1150a895923fa81e6fb08bf867ec60636a42a6a2c332cb302616cee51b1fd1",
+      "bytes": 66640
+    },
+    "stage320View": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/shoulder_cable_rear_fly-female-320.png",
+      "sha256": "b1a01d49df2241b8889083911e25a055b85e94b3d71ddfd0cc325ce40490159d",
+      "bytes": 189137
+    },
+    "acceptanceScope": "This own full actual-sex group, native and320; hardware donor sharing does not confer gender acceptance.",
+    "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT",
+    "gitArchiveStatus": "PENDING"
+  },
+  "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT"
+}
