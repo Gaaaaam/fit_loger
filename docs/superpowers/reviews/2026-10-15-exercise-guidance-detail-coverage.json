@@ -15,17 +15,17 @@
     "baselineConfirmedDefectGroups": 30,
     "additionalConfirmedDefectGroups": 2,
     "currentConfirmedDefectGroups": 32,
-    "independentlyClosedGroups": 28,
-    "openConfirmedDefectGroups": 4,
+    "independentlyClosedGroups": 30,
+    "openConfirmedDefectGroups": 2,
     "baselineUncertainGroups": 6,
     "uncertainGroups": 8,
     "currentAssessmentCounts": {
-      "PASS": 228,
-      "DEFECT": 4,
+      "PASS": 230,
+      "DEFECT": 2,
       "UNCERTAIN": 8
     },
-    "changedProductionFrames": 50,
-    "interpretation": "Immutable groups/results/postAuditFindings retain baseline observations.32everconfirmed minus28closures leaves4open;8uncertain;228PASS/4DEFECT/8UNCERTAIN totals240.29records=28closures(including2metadata-only)+1HISTORICAL femalePARTIAL falseclosure;26unique imagegroups/all26closed,currentPARTIAL0. D012female/male independently committed-ACTUAL SPEC/TASKQUALITY PASS/ADDRESSED, note semanticPASS/noNEWU at ASSETfee24522. TWO distinct builtin events: F2275bytes/3role refs, M2254bytes/THEN-femaleCANDIDATE+limitedmalehead;not inheritedgenderPASS. Each1254square wholeuniformLANCZOS1024 then LEFT/RIGHT/EXACTLEFT three stages,no masks/paint/tonepatch.50frames differ/540same;14420632bytes. Remaining4confirmed:leg_seated_curl and leg_curl eachF/M;D001/D002,D005OPEN;D009benchangle and all8U retained. Task2_IN_PROGRESS/Task3_NOT_STARTED.",
+    "changedProductionFrames": 54,
+    "interpretation": "32everconfirmed/30closed/2open/8uncertain;230PASS/2DEFECT/8UNCERTAIN=240.31repairrecords=30closures(including2metadata-only)+1HISTORICAL femalePARTIAL falseclosure;28unique acceptedimagegroups/all28closed,currentPARTIAL0. D005female+male independently committed-ACTUAL SPEC/TASKQUALITY PASS/noNEWU at asset37af207;SIXdistinct accepted-source ancestry events(5female+1male), intermediate failed RAWs not accepted.54frames differ/536same;14442276bytes. Remainingconfirmed ONLY leg_seated_curlF/M D001/D002;D009/all8U retained. Immutable baseline groups/results/observations/postAudit preserved. Task2IN_PROGRESS/Task3NOT_STARTED.",
     "independentlyAcceptedPartialGroups": 0
   },
   "repairs": [
@@ -1274,6 +1274,126 @@
       ],
       "generationEvent": "back_one_arm_cable_row/male-approved-closed-onecall-20261016",
       "notes": "Distinct one-call event for this gender; TWO total D012 model events. Whole1254square uniformLANCZOS1024 then exactLEFT/RIGHT/LEFT native3cell mother, no masks/paint/tonepatch;01=03 controlled-return endpoint reuse. BOTHgender independently ACTUAL PASS and note semantics PASS at fee24522, no inherited PASS/newU; hidden mechanics unverified."
+    },
+    {
+      "id": "leg_curl",
+      "gender": "female",
+      "checklistIds": [
+        "D005"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "closesConfirmedGroup": true,
+      "kind": "BUILTIN_IMAGEGEN_EXIGO_PRONE_PAIR",
+      "acceptedCommit": "37af20719cd519acfb98fb403d8359a757d835b7",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-prone-exigo-both-actual-review.md",
+      "reviewReportSha256": "88d2b330f48b6f8c7d5a99cdf48925018d0ab362fae7676639e70575ea93b609",
+      "sourceSha256": "813bf4085e6d4b7c590958224e8abe17aa93d29f961f0194e6d98adc544ad5fe",
+      "phaseIndices": [
+        1,
+        2
+      ],
+      "unchangedFrameIndices": [],
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_leg_curl_female_01.webp",
+          "baselineSha256": "c06bae43a46f68b160394cc7ec193c5bef94b054e496d192c6b8b5749cb00c5b",
+          "productionSha256": "37ebec20c7b6b8bf0763c008174785949b24adf8c6684de0b7c0cf8a67536519",
+          "width": 768,
+          "height": 1024,
+          "bytes": 30286,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_leg_curl_female_02.webp",
+          "baselineSha256": "d05afbb9fbc0beec5305c55ccf71674ddd6c30b0d9daada4b5a9cf5b55e74305",
+          "productionSha256": "db2ee6ca3eea6f8e9ca8c3e2fa5a9de0ffaec4037f4a8628cd793fb4a95f33ff",
+          "width": 768,
+          "height": 1024,
+          "bytes": 32460,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        }
+      ],
+      "generationEvents": [
+        "leg_curl/female-exigo-start-onecall-20261017",
+        "leg_curl/female-exigo-support-onecall-20261017",
+        "leg_curl/female-exigo-chest-onecall-20261017",
+        "leg_curl/female-exigo-finish-onecall-20261017",
+        "leg_curl/female-exigo-calf-onecall-20261017"
+      ],
+      "notes": "Five serial female builtin ancestry events: START/support/chest/FINISH/calf donor; accepted START chest RAW + narrowly masked calf-corrected FINISH, then uniform normalized mother. SIX distinct events across this Exigo accepted-source lineage, not one/two total. Both frames independently committed-ACTUAL SPEC/TASKQUALITY PASS/no newU; original intermediate RAWs not retroactively accepted; hidden-contact/mechanism limits retained."
+    },
+    {
+      "id": "leg_curl",
+      "gender": "male",
+      "checklistIds": [
+        "D005"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "closesConfirmedGroup": true,
+      "kind": "BUILTIN_IMAGEGEN_EXIGO_PRONE_PAIR",
+      "acceptedCommit": "37af20719cd519acfb98fb403d8359a757d835b7",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-prone-exigo-both-actual-review.md",
+      "reviewReportSha256": "88d2b330f48b6f8c7d5a99cdf48925018d0ab362fae7676639e70575ea93b609",
+      "sourceSha256": "eaf29adae30624c4e09d59c17536876115501921845426a34dc12d8dc52fdc65",
+      "phaseIndices": [
+        1,
+        2
+      ],
+      "unchangedFrameIndices": [],
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_leg_curl_male_01.webp",
+          "baselineSha256": "47d5488f34e49f1da3af057947420eacdc6aca9c162a1327270617725a43a90d",
+          "productionSha256": "4ab87cad3273b9ff534390cb70286343d8a851169dc78859c656d90890accfb1",
+          "width": 768,
+          "height": 1024,
+          "bytes": 31858,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_leg_curl_male_02.webp",
+          "baselineSha256": "c13f6c4d803e7eadbec5c2354f0cb7d63d91785402e2052ec59945c7ea623d41",
+          "productionSha256": "83ee8fee836e381b2c954ccbbc16c26ddbfff92eafe15aa1844f85f577d0f875",
+          "width": 768,
+          "height": 1024,
+          "bytes": 33292,
+          "codec": {
+            "format": "WEBP",
+            "quality": 82,
+            "method": 6,
+            "emptyEXIF": true,
+            "lossless": false
+          }
+        }
+      ],
+      "generationEvents": [
+        "leg_curl/male-exigo-onecall-20261017"
+      ],
+      "notes": "One distinct male builtin event from THEN female candidate + partial male head; untouchedRAW=mother, independently accepted male actuals. SIX distinct events across this Exigo accepted-source lineage, not one/two total. Both frames independently committed-ACTUAL SPEC/TASKQUALITY PASS/no newU; original intermediate RAWs not retroactively accepted; hidden-contact/mechanism limits retained."
     }
   ],
   "postAuditFindings": [

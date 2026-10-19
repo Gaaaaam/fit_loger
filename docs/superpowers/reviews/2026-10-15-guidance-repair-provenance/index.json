@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "date": "2026-10-15",
   "baselineCommit": "61e39bc775e5233362155229d568eff59c1659ec",
-  "acceptedThroughCommit": "fee24522a734a330bee54ce8beb1e3316db11c8d",
-  "scope": "26unique acceptedimagegroups/all26closed;29repairrecords=28closures(2metadata-only)+1HISTORICAL femalePARTIAL falseclosure.32everconfirmed/28closed/4open/8uncertain;50changed540same;14420632bytes. D012female+male separately committed-ACTUAL accepted and note semanticPASS at ASSETfee24522 after TWO distinct builtin events;each1254→1024 wholeuniformLANCZOS thenLEFT/RIGHT/EXACTLEFT three-stage mother,no edits or inheritedgenderPASS. RemainingD001/D002,D005OPEN;D009/all8U retained;Task2_IN_PROGRESS/Task3_NOT_STARTED.",
+  "acceptedThroughCommit": "37af20719cd519acfb98fb403d8359a757d835b7",
+  "scope": "32everconfirmed/30closed/2open/8uncertain;230PASS/2DEFECT/8UNCERTAIN=240.31repairrecords=30closures(including2metadata-only)+1HISTORICAL femalePARTIAL falseclosure;28unique acceptedimagegroups/all28closed,currentPARTIAL0. D005female+male independently committed-ACTUAL SPEC/TASKQUALITY PASS/noNEWU at asset37af207;SIXdistinct accepted-source ancestry events(5female+1male), intermediate failed RAWs not accepted.54frames differ/536same;14442276bytes. Remainingconfirmed ONLY leg_seated_curlF/M D001/D002;D009/all8U retained. Immutable baseline groups/results/observations/postAudit preserved. Task2IN_PROGRESS/Task3NOT_STARTED.",
   "coverageRecord": "../2026-10-15-exercise-guidance-detail-coverage.json",
   "wholeGoalStatus": "IN_PROGRESS; this index is not final whole-change acceptance",
   "disclosedLimits": [
@@ -17,7 +17,8 @@
     "Female D008 whole02 literal inputplacement/all-width fabric band NOT retained; clarified V-bra criterion uses visible clavicle/neck-root above shaft and upper-pectoral contour/contactshadow. Independent committed ACTUAL PASS/no findings/no newU, not raw-screen-only acceptance. Exact nipple/depth/force/calibrated3D unverified; minor rendering/framing drift accepted. Old public PARTIAL byte snapshot and frozen actual/mother mapping retained in current female JSON.",
     "Newmale calf pair preserves ordinary farhand/farcontact occlusion and modest projection/render drift;11regularloadrows distinct from head/bottomhardware supersede old8 appearance. No newU,calibrated3D or female-inherited acceptance claim. One shared generation event serves two independently accepted groups.",
     "D004F/M new approved same-type apparatus/left-facing profile at ab87331 independently ACTUAL SPEC/TASKQUALITY PASS/noNEWU. Two distinct builtin events, female10pxstudio-only originalpixel translations and male unchangedRAW. Ordinary far-contact/grip/bearing/selectedload/3D limits and subtle background/projection drift retained; original diagnostics/failed drafts historical, no inferred numericradius or kneecappixel-axis guarantee.",
-    "D012F/M approved closed housing/exterior path at fee24522 independently ACTUAL SPEC/TASKQUALITY PASS/ADDRESSED and note semanticPASS/noNEWU. TWO distinct model events each1254square uniformly normalized1024 then LEFT/RIGHT/EXACTLEFT;exact01=03 return endpoint reuse, no runtimealias/framecountchange. Male used THEN-femaleCANDIDATE+limitedhead, not bodybytecopy/inheritedPASS. MID→HIGH newgeometry;farflange/hidden load/travel/internalroute/force/ratio unverified;faintbackgroundtone not drawnstripe. All failed old D012 trials remain historicalFAIL."
+    "D012F/M approved closed housing/exterior path at fee24522 independently ACTUAL SPEC/TASKQUALITY PASS/ADDRESSED and note semanticPASS/noNEWU. TWO distinct model events each1254square uniformly normalized1024 then LEFT/RIGHT/EXACTLEFT;exact01=03 return endpoint reuse, no runtimealias/framecountchange. Male used THEN-femaleCANDIDATE+limitedhead, not bodybytecopy/inheritedPASS. MID→HIGH newgeometry;farflange/hidden load/travel/internalroute/force/ratio unverified;faintbackgroundtone not drawnstripe. All failed old D012 trials remain historicalFAIL.",
+    "D005female+male accepted at ASSET37af207 by independent committed-ACTUAL SPEC/TASKQUALITY PASS/noNEWU. Five female serial builtin ancestry events plus one male event = SIX; not one/two total. Female local26423-alpha calf composite/25882changed/outside0 and uniform normalization; male untouchedRAW=mother. First male ref was THEN female candidate, not acceptedACTUAL/no inheritedPASS. Intermediate failures retained; hidden support/shaft/dynamics/force not certified; old source NEEDS_CONTEXT is historical, not retroactive engineering acceptance."
   ],
   "groups": [
     {
@@ -233,6 +234,32 @@
         3
       ],
       "kind": "BUILTIN_IMAGEGEN_NEW_CLOSED_HOUSING_TWO_ENDPOINTS_THREE_STAGES"
+    },
+    {
+      "id": "leg_curl",
+      "gender": "female",
+      "file": "leg_curl-female.json",
+      "acceptedCommit": "37af20719cd519acfb98fb403d8359a757d835b7",
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "phaseIndices": [
+        1,
+        2
+      ],
+      "kind": "BUILTIN_IMAGEGEN_EXIGO_PRONE_PAIR"
+    },
+    {
+      "id": "leg_curl",
+      "gender": "male",
+      "file": "leg_curl-male.json",
+      "acceptedCommit": "37af20719cd519acfb98fb403d8359a757d835b7",
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "phaseIndices": [
+        1,
+        2
+      ],
+      "kind": "BUILTIN_IMAGEGEN_EXIGO_PRONE_PAIR"
     }
   ]
 }
