@@ -207,7 +207,7 @@ export struct ExerciseSheet {
         .width('100%')
 
       if (this.partKey === 'cardio') {
-        Text('当前按组和次数记录；跑步、骑行的时长与距离记录暂未支持。')
+        Text('有氧器械按时长记录，距离等指标可选填；跳绳等原有动作仍按次数记录。')
           .fontSize(13)
           .fontColor($r('app.color.text_secondary'))
           .width('100%')
