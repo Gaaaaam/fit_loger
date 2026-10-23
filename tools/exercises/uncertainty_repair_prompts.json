@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-23",
+  "mode": "built-in image_gen.imagegen image editing",
+  "export": "Split equal horizontal cells with frame_boxes; inset each cell by 3 pixels per edge to remove separator pixels; RGB WebP quality=82 method=6 exif empty. No rescaling or painted correction of individual frames.",
+  "note": "Prompts and source/reference SHA-256 document provenance; generation is nondeterministic. Mother sheets and rejected candidates are local ignored working artifacts.",
+  "jobs": [
+    {
+      "group": "chest_bb_bench/female",
+      "acceptedCandidateKey": "chest_bb_bench-female-v5",
+      "prompt": "Precise exercise illustration repair. Three-panel female FLAT barbell bench press. Keep the entire athlete, body, face, hands, bar path, barbell, plates, camera and horizontal padded bench exactly as reference. Repair the bench FLOOR FRAME ONLY around the far-side white shoe. The reference wrongly makes that far shoe appear to stand on the black transverse floor beam. Reroute/shorten that bench floor beam so it ends UNDER THE BENCH, well away from the far shoe. Remove the black metal beam from immediately under and behind the far shoe; replace that area with continuous pale studio FLOOR. Lower that far ankle and shoe only as much as necessary so the entire outsole rests flat directly on the SAME FLOOR plane as the near shoe. There must be an unmistakable visible pale-gray floor gap between far white shoe and every black equipment part; continuous natural shin visible above the shoe. No foot on any equipment. Both soles touch the gray floor, no floating shoes. Keep safe plausible central bench support and full equipment. Apply this identical correction in all three panels. Do not alter correct lower-chest bar contact or introduce any text, arrows, borders or extra feet. Three equal square panels.",
+      "sourceMotherSha256": "953b03f4757e6240c230d9031b290756f28c5f5e99a23778773ae74ed92781d2",
+      "referenceImageSha256": [
+        "6dae93a51af24d44985a6ccc66b53f65a620332a8de66bcd86d2eefc3a66c1ce"
+      ]
+    },
+    {
+      "group": "chest_bb_bench/male",
+      "acceptedCandidateKey": "chest_bb_bench-male-v6",
+      "prompt": "Edit this exact three-panel FLAT barbell bench press sheet to create its MALE ATHLETE version. Change ONLY the athlete identity and clothing: adult athletic man with short dark hair, masculine face and realistic male build, fitted gray crew-neck T-shirt and gray shorts, white socks and black training shoes. Green pectoral muscle overlay on his shirt. Preserve the reference's exact body/limb positions, continuous far bare calf and the TWO separate fully visible feet flat on light gray FLOOR, compact pedestal with NO beam under the far shoe, horizontal bench, camera, gray background, full bar and both plates, closed hand grips and exact lower-chest contact in center panel. The far leg and far shoe must remain in exactly the same visible position as in reference, with flesh-colored calf down to white sock above black shoe, pale floor clearly underneath. Do not remove either leg or shoe, merge far calf with metal or add a bench brace over it. First and third arms extended above chest; center lowered against chest. Preserve all equipment and silhouettes within the three equal square cells, no text or dividers. This is only an athlete identity/clothing conversion; retain the correct reference composition.",
+      "sourceMotherSha256": "8eaa05b9357a1dc5b8652ef3ee48b7d09d84f3d9adcdead29fe4b653298bb0b9",
+      "referenceImageSha256": [
+        "953b03f4757e6240c230d9031b290756f28c5f5e99a23778773ae74ed92781d2"
+      ]
+    },
+    {
+      "group": "chest_decline_bench/female",
+      "acceptedCandidateKey": "chest_decline_bench-female",
+      "prompt": "Use case: scientific-educational. Create a corrected NEW COMPOSITION of this existing instruction sequence; reference image supplies the adult athlete identity, clothing and premium realistic anatomical 3D STYLE, not geometry to copy. Keep cool gray modest training clothes, natural anatomy, flat translucent green #1F8A70 target-muscle accent, neutral light-gray studio and soft light. Wide 3072x1024 panorama, THREE exactly equal square panels, each independently containing the FULL person and ALL equipment with generous margins. Same camera, person, kit, scale in each panel. NO text, labels, arrows, white dividers, logos, watermarks or neighboring scene fragments. No body or equipment crosses any panel boundary.\nExercise: decline barbell bench press. Maintain a genuine head-low, feet-high DECLINE bench, approximately 15–20 degrees down from hips to head. Keep the full bar and both weight plates in every cell and closed overhand grips. PRIMARY REPAIR: the raised foot end must have a mechanically intelligible TWO-ROLLER LEG CATCH: upper padded rollers support BEHIND the bent knees, and a separate LOWER padded roller in FRONT of the LOWER SHINS just ABOVE the ankles. Both lower shins are hooked firmly UNDER the ankle/shin roller; both shoes and the opposing pads are visibly separated and readable. Do not merely hang the lower legs freely off a knee pad. Render both complete legs and both captured lower shins in every phase. Use an elevated three-quarter SIDE camera that reveals this leg-catch mechanism and the continuous head-low torso pad. Left: unracked bar above LOWER chest, arms extended; center: lower the bar to touch LOWER pectoral chest, far from neck; right: extend the arms again. Same body support and leg capture throughout. Include a complete simple bar rack behind the head without hiding the ankle catch.\nModel: FEMALE athlete.",
+      "sourceMotherSha256": "2532084126017ef246a2d5e2c9ed7db92d1c4b14d94f10f59dbba9de6264baa0",
+      "referenceImageSha256": [
+        "76b0b3ce5cc9f047ef0429473384f3acf1d2fb221f3ba93e28c3595dd61e868c"
+      ]
+    },
+    {
+      "group": "chest_decline_bench/male",
+      "acceptedCandidateKey": "chest_decline_bench-male-v3",
+      "prompt": "Create a male edition of the FIRST reference's three-panel decline bench press. Use FIRST reference for exact CAMERA, bench orientation, all poses, hand grips, complete bar/plates, leg restraint design and especially BOTH SEPARATELY VISIBLE FEET. Use the SECOND reference solely for the male athlete identity, short dark hair, gray shirt/shorts/black shoes, masculine proportions. Do NOT use second reference camera, foot overlap or bench orientation. Replace the female athlete of first reference by this adult male while preserving that first reference's readable two shoes and two lower shins under padded catch rollers. Two shoes must be separate silhouettes, both ankles connected to their own continuous calves, neither hidden by the other. First reference head-low decline slope, supported upper back and pelvis, upper knee support rollers and opposing lower-shin/ankle catch rollers remain clear. Preserve exact extended / controlled lower to lower chest / press extended sequence, target pectoral green overlay, gray premium anatomical 3D style. Three equal square panels, full equipment contained, no text, arrows or dividers.",
+      "sourceMotherSha256": "e139d84dd3f1704986b940fea14edbc1068e65daedec625b1119f0521cc5121a",
+      "referenceImageSha256": [
+        "2532084126017ef246a2d5e2c9ed7db92d1c4b14d94f10f59dbba9de6264baa0",
+        "7fe27dea792a66a36c21966b69953026fd5bbd0508aba4477671b20c34f9fd9c"
+      ]
+    },
+    {
+      "group": "chest_incline_db_press/female",
+      "acceptedCandidateKey": "chest_incline_db_press-female",
+      "prompt": "Use case: scientific-educational. Create a corrected NEW COMPOSITION of this existing instruction sequence; reference image supplies the adult athlete identity, clothing and premium realistic anatomical 3D STYLE, not geometry to copy. Keep cool gray modest training clothes, natural anatomy, flat translucent green #1F8A70 target-muscle accent, neutral light-gray studio and soft light. Wide 3072x1024 panorama, THREE exactly equal square panels, each independently containing the FULL person and ALL equipment with generous margins. Same camera, person, kit, scale in each panel. NO text, labels, arrows, white dividers, logos, watermarks or neighboring scene fragments. No body or equipment crosses any panel boundary.\nExercise: incline dumbbell press. PRIMARY REPAIR: use a genuinely shallow adjustable backrest at THIRTY-FIVE degrees above the FLOOR, plainly between 30 and 45 degrees. Camera almost orthographic from the long SIDE of the bench, only a small 10-degree front offset to separate both hands/feet. The floor is horizontal in the image. The LONG SIDE EDGE of the BACKREST must be fully visible, making a clear shallow 35-degree rise, NOT a steep 60-degree seated shoulder-press chair. Keep head, upper back and glutes fully supported, feet flat, one separate whole dumbbell in each closed hand. Left: after setup, both arms extended with two separate bells above UPPER chest. Middle: lower bells toward upper chest sides with both elbows bent and upper arms approximately level with floor; wrists above elbows. Right: press back to the same extended-arm end position, no elbow hyperextension. Keep bells separated and avoid collisions. All bench feet, both shoes, full head and all weights contained. No excessive lumbar arch. Green accents on upper pectorals.\nModel: FEMALE athlete.",
+      "sourceMotherSha256": "5b4be6ed86f38f91296c6d542c7a4c46294694cefb6a555d5016887d405c936d",
+      "referenceImageSha256": [
+        "88ce3962b8511c4e8ebe62f802d167b8c52163d84ce4274f35c3eae519f1169e"
+      ]
+    },
+    {
+      "group": "chest_incline_db_press/male",
+      "acceptedCandidateKey": "chest_incline_db_press-male",
+      "prompt": "Use case: scientific-educational. Create a corrected NEW COMPOSITION of this existing instruction sequence; reference image supplies the adult athlete identity, clothing and premium realistic anatomical 3D STYLE, not geometry to copy. Keep cool gray modest training clothes, natural anatomy, flat translucent green #1F8A70 target-muscle accent, neutral light-gray studio and soft light. Wide 3072x1024 panorama, THREE exactly equal square panels, each independently containing the FULL person and ALL equipment with generous margins. Same camera, person, kit, scale in each panel. NO text, labels, arrows, white dividers, logos, watermarks or neighboring scene fragments. No body or equipment crosses any panel boundary.\nExercise: incline dumbbell press. PRIMARY REPAIR: use a genuinely shallow adjustable backrest at THIRTY-FIVE degrees above the FLOOR, plainly between 30 and 45 degrees. Camera almost orthographic from the long SIDE of the bench, only a small 10-degree front offset to separate both hands/feet. The floor is horizontal in the image. The LONG SIDE EDGE of the BACKREST must be fully visible, making a clear shallow 35-degree rise, NOT a steep 60-degree seated shoulder-press chair. Keep head, upper back and glutes fully supported, feet flat, one separate whole dumbbell in each closed hand. Left: after setup, both arms extended with two separate bells above UPPER chest. Middle: lower bells toward upper chest sides with both elbows bent and upper arms approximately level with floor; wrists above elbows. Right: press back to the same extended-arm end position, no elbow hyperextension. Keep bells separated and avoid collisions. All bench feet, both shoes, full head and all weights contained. No excessive lumbar arch. Green accents on upper pectorals.\nModel: MALE athlete.",
+      "sourceMotherSha256": "4841df7b2185e1c83782c5452babcebbeff249ea73d962b0e8202323f2a1aa71",
+      "referenceImageSha256": [
+        "b3a4d100481994e12a6ef75464b909ae1c4c7b3ce8b7a4e95cc52020d703640a"
+      ]
+    },
+    {
+      "group": "shoulder_machine_reverse_fly/male",
+      "acceptedCandidateKey": "shoulder_machine_reverse_fly-male-v2",
+      "prompt": "Use case: scientific-educational. Re-render this two-stage male reverse pec-deck sequence from a NEW elevated STRICT REAR camera centered behind the athlete, about 25 degrees down toward his shoulders. Preserve the man, gray clothes, green rear deltoids, gray studio, SAME full machine and correct chest-to-pad seated posture. TWO equal side-by-side square panels. CRITICAL left/start pose: the left and right HANDS must be separated by approximately SHOULDER WIDTH in front of the chest pad, at its left and right sides. BOTH ARMS extend forward almost straight with only 15 degrees of elbow bend, and each separate forearm must be visibly traceable all the way from its elbow to its own closed grip. At this higher rear viewpoint, both hands/forearms are visible around the two sides of the torso, never stacked one behind the other. Do NOT leave elbows tucked and bent 90 degrees with both grips merged together. Right/end: both arms open laterally at shoulder height, same soft elbow bend, same machine-arm topology, chest stays on pad. Two independent machine arms each connect continuously from a different upper pivot to a different handle in BOTH stages. Complete rack, feet, head, machine and hands inside each panel with margins. Uniform gray background, NO text, lines, arrows or borders. Do not merely mirror the old occluded start. Each arm and handle should be separately countable from the pixels.",
+      "sourceMotherSha256": "bf30690d274988c2324bcefe5b27c28867a0f58e82625953d9609b312eee57b5",
+      "referenceImageSha256": [
+        "b4d55815149e3e4c9b4d2df664706a31f484d7021543a1e66d37b263faacc306"
+      ]
+    },
+    {
+      "group": "abs_hanging_knee/female",
+      "acceptedCandidateKey": "abs_hanging_knee-female-v3",
+      "prompt": "Use case: precise-object-edit, scientific-educational. Image 1 is the female sequence edit target. Image 2 is an approved MALE pelvic-tuck pose reference ONLY: do not change the woman's identity, clothing or body sex. Keep female panels 1 and 2, full rack, two fixed closed hand grips and all camera/lighting exactly consistent. Replace the FEMALE THIRD PANEL pose with a visibly abdominally CURLED hanging knee raise: use the male reference's tucked-under pelvis and shortened ribcage-to-pelvis distance. In her near-side profile, the lower-back outline must form a smooth OUTWARD rounded arc (convex toward the LEFT of the frame), eliminating the inward lumbar hollow in panel 2. Roll the pelvis backward/under, lifting the front waistband/pubic region up toward the ribs and drawing the tailbone FORWARD toward the bent knees. Her buttocks should tuck forward underneath her torso rather than stick back. Knees approach lower chest, but higher knees alone do NOT satisfy this edit. Keep upper shoulder/hand anchor points fixed without whole-body swing or a rigid backward lean. Slightly round the lower torso like a hanging reverse crunch, no exaggerated contortion. Both knees remain bent and both shoes visible. Preserve all rack, original style and modest gray clothing. Three equal square panels, no labels/arrows/borders.",
+      "sourceMotherSha256": "01ff4dc5d989fe655ee83bf90086a3e5b0a37ef119702a7b86778b4a13ebd7c4",
+      "referenceImageSha256": [
+        "93cfb72bc140b196989eb6e10c12cbefb73b58225ed685228a9147d64f3418c0",
+        "0b6421487c01622ee9568bf76786a4c43db25a6b9d0c2c6408c4b1f2b3013ada"
+      ]
+    }
+  ]
+}

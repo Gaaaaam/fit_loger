@@ -1,0 +1,290 @@
+{
+  "date": "2026-10-23",
+  "baseCommit": "bd571c4a20a999be16ded4efcd79c41cdc5cad38",
+  "historicalAudit": "docs/superpowers/reviews/2026-10-15-exercise-guidance-detail-coverage.json",
+  "scope": "Only the eight remaining historical UNCERTAIN gender groups; not a new full audit of all 250 current groups.",
+  "currentFollowup": {
+    "groupsReviewed": 8,
+    "framesReplaced": 23,
+    "PASS": 8,
+    "UNCERTAIN": 0,
+    "DEFECT": 0
+  },
+  "preservation": {
+    "guidanceFramesTotal": 614,
+    "framesChanged": 23,
+    "otherFramesByteIdentical": 591,
+    "historicalAuditObservationsUnchanged": true,
+    "guidanceManifestSha256": "7e4c36301ab2a56922d3c681acf86a7cc1d0f4c82fa7966baaa5b1a893ce2861",
+    "catalogSha256": "db46251ad511818378f65c35608fbb341adeb47409fd2252d96c219aa30103e1",
+    "idsCaptionsFrameCountsAndCardIndicesUnchanged": true
+  },
+  "reviewMethod": "Root inspected generated sequences and key native frames; independent reviewer inspected every actual exported WebP at native size and 320-pixel sequence size. Rejected intermediate candidates were not integrated. Final copy SHA-256 verified.",
+  "verification": {
+    "nodeProjectChecksPassed": 19,
+    "pythonPipelineTestsPassed": 22,
+    "assetCoverage": "125 entries / 614 frames",
+    "promptCoverage": "125 entries / 250 prompts",
+    "harmonyBuild": "assembleHap PASS",
+    "all614PackagedFramesMatchProductionBytes": true,
+    "hapSha256": "7c7a6ad66c0b73d345f12cc5ad4c92beb02cda64fd0492ff48eb7cba89dafb1d",
+    "hapBytes": 29546245,
+    "device": "ALN-AL00 / OpenHarmony-6.1.1.120",
+    "installAndLaunch": "PASS",
+    "deviceVisualSmoke": ["chest_bb_bench/male 1/3 -> 2/3", "abs_hanging_knee/female 3/3"],
+    "originalModelPreferenceRestored": "auto",
+    "trainingRecordsEdited": false
+  },
+  "groups": [
+    {
+      "group": "chest_bb_bench/female",
+      "previousDisposition": "UNCERTAIN",
+      "currentDisposition": "PASS",
+      "originalVisibilityProblem": "原正面透视使凳面水平、胸部下放点及远侧脚支撑难以判断。",
+      "repairAndVerifiedObservation": "改用可见长凳侧面的视角，显示水平支撑、胸部落点与双脚着地；移除遮挡远脚的凳底横梁。",
+      "review": {
+        "nativeFramesInspected": 3,
+        "thumbnailPanelWidth": 320,
+        "independentVisualReview": "PASS"
+      },
+      "frames": [
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_bb_bench_female_01.webp",
+          "beforeSha256": "7e581c485933c76743f50cf05f3e37f47da27f5a7e9e0983ea1ba55e7ca7d547",
+          "afterSha256": "84f4f87493b846e0d420fa2324b1f057d7067a1f830286b86bc3d0257bfafa28",
+          "bytes": 23952
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_bb_bench_female_02.webp",
+          "beforeSha256": "ae027ab057545b460a1c9611ccc1bac80d8770be95235316b9f5d5b254a437ce",
+          "afterSha256": "1493b547957fddaf34a7e8a5c5a66d36177b4447e81fb5a206dfe4b86c7da2db",
+          "bytes": 22990
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_bb_bench_female_03.webp",
+          "beforeSha256": "29a08afb706daf057f113a65cddbe5cd3f123d8efffba4a72bea1fcc5637171c",
+          "afterSha256": "6a330b0e38556e2a21903f3551d968e1931e1911b858a10c71a0867149905912",
+          "bytes": 23352
+        }
+      ]
+    },
+    {
+      "group": "chest_bb_bench/male",
+      "previousDisposition": "UNCERTAIN",
+      "currentDisposition": "PASS",
+      "originalVisibilityProblem": "原正面透视使凳面水平、胸部下放点及远侧脚支撑难以判断。",
+      "repairAndVerifiedObservation": "改用可见长凳侧面的视角，显示水平支撑、胸部落点与双脚着地；移除遮挡远脚的凳底横梁。",
+      "review": {
+        "nativeFramesInspected": 3,
+        "thumbnailPanelWidth": 320,
+        "independentVisualReview": "PASS"
+      },
+      "frames": [
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_bb_bench_male_01.webp",
+          "beforeSha256": "d04a53d849c9d13c731154045406d73f96dbc4e161baacb4bb3aad11af12fb4c",
+          "afterSha256": "2eeb1a507522285bfa5cf1a14f74202a31f252d3a243673bac460a3e97a7ec32",
+          "bytes": 24140
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_bb_bench_male_02.webp",
+          "beforeSha256": "d930fca7816661bcdf30676cc0c059627fa7ee421531758f17df94e3797c989f",
+          "afterSha256": "020f10cf417a9282de531168fd0af7155ae256d935d0886e4fe750e8c2378cd7",
+          "bytes": 23684
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_bb_bench_male_03.webp",
+          "beforeSha256": "21b186da67abb660a1050ecb1c7f52891be41855362dddf9069eb523d4f72e99",
+          "afterSha256": "9aafc064d1535be52adf53cf33d7d070a4f328016f101c7e5379ba571d45708f",
+          "bytes": 24044
+        }
+      ]
+    },
+    {
+      "group": "chest_decline_bench/female",
+      "previousDisposition": "UNCERTAIN",
+      "currentDisposition": "PASS",
+      "originalVisibilityProblem": "原图有膝部滚垫，但小腿/踝部的对向固定及远脚关系不清楚。",
+      "repairAndVerifiedObservation": "明确头低脚高的凳面与对向滚垫，展示两侧小腿、踝部接触和两只鞋。",
+      "review": {
+        "nativeFramesInspected": 3,
+        "thumbnailPanelWidth": 320,
+        "independentVisualReview": "PASS"
+      },
+      "frames": [
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_decline_bench_female_01.webp",
+          "beforeSha256": "7fa6fe696c06d57ec1f3cb4e7e0b4a6918e58a39f9fab9c8345166f659ad5e8a",
+          "afterSha256": "164b3fd20bb0d4272f18d599d6551ecc0430bcdf56a1e309dc8335026e76fe32",
+          "bytes": 25796
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_decline_bench_female_02.webp",
+          "beforeSha256": "db02815430b789902b45749f6dc3a0789203513fbb7a67f42e9abf90741a9690",
+          "afterSha256": "6ded5ef67c4fb9b11a0f303ab066785535a9f9cc284ac5f6f50cfac3202df0a9",
+          "bytes": 24968
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_decline_bench_female_03.webp",
+          "beforeSha256": "738ef917e7f17cf1da98fd794d7ed54b2b49d665f1398cf6c3857a73f1ca2aa1",
+          "afterSha256": "36ee11e93dff1b59ff9a46bd74086a597549e05ed10953772f4408672e7e4215",
+          "bytes": 26080
+        }
+      ]
+    },
+    {
+      "group": "chest_decline_bench/male",
+      "previousDisposition": "UNCERTAIN",
+      "currentDisposition": "PASS",
+      "originalVisibilityProblem": "原图有膝部滚垫，但小腿/踝部的对向固定及远脚关系不清楚。",
+      "repairAndVerifiedObservation": "明确头低脚高的凳面与对向滚垫，展示两侧小腿、踝部接触和两只鞋。",
+      "review": {
+        "nativeFramesInspected": 3,
+        "thumbnailPanelWidth": 320,
+        "independentVisualReview": "PASS"
+      },
+      "frames": [
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_decline_bench_male_01.webp",
+          "beforeSha256": "17eeec435bf5fe0d669af3632e6bf871de40837c364d70069ed21e6f90afdd76",
+          "afterSha256": "d33a7ff238513e27ccba5e712a84bd161f0126751818105115cd6e82d978c8aa",
+          "bytes": 26276
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_decline_bench_male_02.webp",
+          "beforeSha256": "eaec026e356e39ee393aa6651b5aafa4aeaa321f948c25b57b2034dba43c5aff",
+          "afterSha256": "d1f3e93cde40b7710c575abc4ca516f75b95975cb9c7691d53d1be73e9b24495",
+          "bytes": 24742
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_decline_bench_male_03.webp",
+          "beforeSha256": "36e2cd3e987ba00efc52e5a251d3f0c676e2512fbf50dad678351efcc19a6a97",
+          "afterSha256": "bf9a8d707b375d85283aa925f4c7ecd4fd083365d77ecada8f8120cbce9b2824",
+          "bytes": 26192
+        }
+      ]
+    },
+    {
+      "group": "chest_incline_db_press/female",
+      "previousDisposition": "UNCERTAIN",
+      "currentDisposition": "PASS",
+      "originalVisibilityProblem": "原图靠背显得较陡，透视下不能可靠判断是否为动作指定的30–45度上斜。",
+      "repairAndVerifiedObservation": "采用可读的较低上斜靠背及侧面构图，明确头、背、臀支撑与双脚着地；未声称从透视图测得精确角度。",
+      "review": {
+        "nativeFramesInspected": 3,
+        "thumbnailPanelWidth": 320,
+        "independentVisualReview": "PASS"
+      },
+      "frames": [
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_female_01.webp",
+          "beforeSha256": "cb0be1cda34fb934642d8f1ad058e2c5f95f3b262a56c94191eede27e71171fd",
+          "afterSha256": "881c0741ff0d8b6e236daf4a09d804dbe151f1c51d519abc6cbc541a5e1a3aaa",
+          "bytes": 19908
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_female_02.webp",
+          "beforeSha256": "2b3e215324cf6628e0ce9c5b0056e434153dfc1b7346d3df28fc4db2713d8628",
+          "afterSha256": "7d66dc733f0bf4f3baf251fe52df7b7409d00a9f6280aeaa8d803817ff21cb80",
+          "bytes": 19726
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_female_03.webp",
+          "beforeSha256": "11ce479f8f281fdc8743faaff524c057c93af29a72eed792fa60528138bfde67",
+          "afterSha256": "065b2e8c3e87272c04dc5b3bf5af6d93a3efe0ce67431060c34edd7328b91cd8",
+          "bytes": 19788
+        }
+      ]
+    },
+    {
+      "group": "chest_incline_db_press/male",
+      "previousDisposition": "UNCERTAIN",
+      "currentDisposition": "PASS",
+      "originalVisibilityProblem": "原图靠背显得较陡，透视下不能可靠判断是否为动作指定的30–45度上斜。",
+      "repairAndVerifiedObservation": "采用可读的较低上斜靠背及侧面构图，明确头、背、臀支撑与双脚着地；未声称从透视图测得精确角度。",
+      "review": {
+        "nativeFramesInspected": 3,
+        "thumbnailPanelWidth": 320,
+        "independentVisualReview": "PASS"
+      },
+      "frames": [
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_male_01.webp",
+          "beforeSha256": "dccbeb31c64831b1a0a976c209571ce235ab96df7b5b268e434081c68b724d36",
+          "afterSha256": "f01f6b5b73c9474b0ce109081533940170eb2e03b72b7d4c52c32da83f3897b2",
+          "bytes": 24708
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_male_02.webp",
+          "beforeSha256": "5d4b99d307deb5de5f246c0e0c0e763b84ce583f5b0e4297bc5db04ad82ffd50",
+          "afterSha256": "a9cb1b0f6b259e6988de66ea2890064f5b1f7df07c926355191b7c5d0533817f",
+          "bytes": 23524
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_male_03.webp",
+          "beforeSha256": "dccbeb31c64831b1a0a976c209571ce235ab96df7b5b268e434081c68b724d36",
+          "afterSha256": "f17ce6dbe99570b420cb078adf11e19e766cf36c1176c574f2aa3030f6271488",
+          "bytes": 25100
+        }
+      ]
+    },
+    {
+      "group": "shoulder_machine_reverse_fly/male",
+      "previousDisposition": "UNCERTAIN",
+      "currentDisposition": "PASS",
+      "originalVisibilityProblem": "原起始帧远侧前臂和握把互相遮挡，无法追踪独立握持路径。",
+      "repairAndVerifiedObservation": "改用略高的后方视角，起始与结束均能辨认双前臂、双手和独立把手。",
+      "review": {
+        "nativeFramesInspected": 2,
+        "thumbnailPanelWidth": 320,
+        "independentVisualReview": "PASS"
+      },
+      "frames": [
+        {
+          "path": "entry/src/main/resources/base/media/ex_shoulder_machine_reverse_fly_male_01.webp",
+          "beforeSha256": "6adbeccb3167916a0ffc34ec959fedf23a958df9e855fb6ad06a3c696341c598",
+          "afterSha256": "302b62c8894aa03debdea199c79d4c84a4b5c9bd9ecb3c6d5313dd2fd09591d1",
+          "bytes": 31960
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_shoulder_machine_reverse_fly_male_02.webp",
+          "beforeSha256": "240b8e4ec8ace6718a4f2295927f2b809e0c0b9d7b25f0ee03c93ac034aa86f2",
+          "afterSha256": "74c94d41b8a221f4018652b4807c5aff687c0937bfbc286601a491164d8caebc",
+          "bytes": 39154
+        }
+      ]
+    },
+    {
+      "group": "abs_hanging_knee/female",
+      "previousDisposition": "UNCERTAIN",
+      "currentDisposition": "PASS",
+      "originalVisibilityProblem": "原末帧仅明显提高膝盖，骨盆后卷与单纯髋屈曲不易区分。",
+      "repairAndVerifiedObservation": "改用侧视并调整末帧：腰部凹陷消退、骨盆向前上卷、肋骨至骨盆距离缩短，区别中间抬腿阶段。",
+      "review": {
+        "nativeFramesInspected": 3,
+        "thumbnailPanelWidth": 320,
+        "independentVisualReview": "PASS"
+      },
+      "frames": [
+        {
+          "path": "entry/src/main/resources/base/media/ex_abs_hanging_knee_female_01.webp",
+          "beforeSha256": "ebefd69e0abc4b7d385b340d59e6d9973ea699991272773e0772c4e920b92e44",
+          "afterSha256": "2324f9287a83c608045f9c2c393dce9728fd9d66ab5046d499c1bacc853590b5",
+          "bytes": 15378
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_abs_hanging_knee_female_02.webp",
+          "beforeSha256": "e4d5f566294831a38e2f5024c30707370fd85f981433700ef16b959afa980ac8",
+          "afterSha256": "65703ab96c4289ec3a7efc43f20ff5ae83e9c1d0bda8f60739021efa05bdef24",
+          "bytes": 15740
+        },
+        {
+          "path": "entry/src/main/resources/base/media/ex_abs_hanging_knee_female_03.webp",
+          "beforeSha256": "a3c0d0e642bec4f76c7179a9f9b3a3f9606a8f761f89f24da79d1f82cb4175f1",
+          "afterSha256": "51b31c20372c443ae6b2f540bb9a62e9136f519885587404daf6320aea9f57e2",
+          "bytes": 14888
+        }
+      ]
+    }
+  ]
+}
