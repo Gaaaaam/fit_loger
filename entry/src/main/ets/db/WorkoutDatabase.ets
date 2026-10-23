@@ -72,6 +72,7 @@ export class WorkoutDatabase {
       // 幂等：即便版本号已是最新，也确保趋势配置表和 rir_legacy 列存在。
       await WorkoutDatabase.createTrendSchema(store);
       await WorkoutDatabase.ensureRirLegacy(store);
+      await WorkoutDatabase.ensureCardioSchema(store);
       await seedBuiltinExercises(store);
       return;
     }
@@ -95,6 +96,7 @@ export class WorkoutDatabase {
     if (alreadyV1) {
       // v1 -> v2：只新增趋势配置表，训练历史表结构不变，无需搬数据。
       await WorkoutDatabase.createTrendSchema(store);
+      await WorkoutDatabase.ensureCardioSchema(store);
       await seedBuiltinExercises(store);
       await WorkoutDatabase.ensureRirLegacy(store);
       store.version = CURRENT_VERSION;
@@ -105,15 +107,31 @@ export class WorkoutDatabase {
       await WorkoutDatabase.migrateLegacy(store);
       await WorkoutDatabase.createTrendSchema(store);
       await WorkoutDatabase.ensureRirLegacy(store);
+      await WorkoutDatabase.ensureCardioSchema(store);
       store.version = CURRENT_VERSION;
       return;
     }
 
     await WorkoutDatabase.createV1Schema(store);
     await WorkoutDatabase.createTrendSchema(store);
+    await WorkoutDatabase.ensureCardioSchema(store);
     await seedBuiltinExercises(store);
     await WorkoutDatabase.ensureRirLegacy(store);
     store.version = CURRENT_VERSION;
+  }
+
+  private static async ensureCardioSchema(store: relationalStore.RdbStore): Promise<void> {
+    if (!await WorkoutDatabase.columnExists(store, 'exercises', 'record_type')) {
+      await store.executeSql("ALTER TABLE exercises ADD COLUMN record_type TEXT NOT NULL DEFAULT 'reps'");
+    }
+    const columns: string[] = ['duration_sec', 'distance_m', 'speed_kmh', 'incline_pct', 'level',
+      'steps', 'floors', 'cadence_per_min', 'avg_power_w', 'avg_heart_rate_bpm', 'energy_kcal'];
+    for (let i = 0; i < columns.length; i++) {
+      if (!await WorkoutDatabase.columnExists(store, 'workout_sets', columns[i])) {
+        const kind: string = columns[i] === 'duration_sec' || columns[i] === 'steps' ? 'INTEGER' : 'REAL';
+        await store.executeSql(`ALTER TABLE workout_sets ADD COLUMN ${columns[i]} ${kind}`);
+      }
+    }
   }
 
   private static async ensureRirLegacy(store: relationalStore.RdbStore): Promise<void> {
@@ -155,6 +173,7 @@ export class WorkoutDatabase {
 
     await WorkoutDatabase.createV1Schema(store);
     await WorkoutDatabase.addDayColumns(store);
+    await WorkoutDatabase.ensureCardioSchema(store);
     await seedBuiltinExercises(store);
 
     const newExCount: number = await WorkoutDatabase.countRows(store, 'day_exercises');

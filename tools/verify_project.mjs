@@ -145,7 +145,7 @@ for (const table of [
 }
 assert(schema.includes('is_warmup'), 'workout_sets must include is_warmup');
 assert(schema.includes("status TEXT NOT NULL DEFAULT 'done'") || schema.includes('status TEXT NOT NULL DEFAULT \\\'done\\\''), 'status default done');
-assert(schema.includes('CURRENT_VERSION: number = 3'), 'schema must be bumped to v3 for legacy RIR');
+assert(schema.includes('CURRENT_VERSION: number = 4'), 'schema must be v4 for cardio metrics');
 assert(schema.includes('rir_legacy'), 'workout_sets must keep legacy RIR separate from exact RIR');
 
 const pages = readFileSync(join(root, 'entry/src/main/resources/base/profile/main_pages.json'), 'utf8');
@@ -219,7 +219,7 @@ assert(mine.includes('pages/BodyMetricsPage'), 'mine must open daily weight page
 assert(mine.includes('导入失败，请选择本应用导出的 JSON 文件'), 'import failure copy must match PRD');
 
 const trends = readFileSync(join(root, 'entry/src/main/ets/pages/TrendsPage.ets'), 'utf8');
-assert(trends.includes('完成几组正式训练后，这里会显示趋势'), 'trends empty copy must match PRD');
+assert(trends.includes('完成训练记录后，这里会显示趋势'), 'trends empty copy must match PRD');
 assert(!trends.includes('趋势图表稍后提供'), 'trends placeholder should be gone');
 assert(trends.includes('本周目标'), 'trends must show goal-based weekly progress');
 assert(trends.includes('关注动作'), 'trends must show watched exercises');
@@ -254,7 +254,7 @@ const exportService = readFileSync(join(root, 'entry/src/main/ets/db/ExportServi
 assert(exportService.includes('watched_exercises'), 'JSON export must include watched exercises');
 assert(exportService.includes('trend_settings'), 'JSON export must include trend settings');
 assert(exportService.includes('trend_part_goals'), 'JSON export must include part goals');
-assert(exportService.includes('version: number = 3'), 'JSON dump version must be 3');
+assert(exportService.includes('version: number = 4'), 'JSON dump version must be 4');
 assert(exportService.includes('rir_legacy'), 'JSON export must include rir_legacy');
 
 const trendLogic = readFileSync(join(root, 'entry/src/main/ets/common/TrendLogic.ets'), 'utf8');

@@ -244,7 +244,9 @@ export function setCsvHeader() {
     'status',
     'completed_at',
     'note',
-    'sort_order'
+    'sort_order',
+    'record_type', 'duration_sec', 'distance_m', 'speed_kmh', 'incline_pct', 'level', 'steps', 'floors',
+    'cadence_per_min', 'avg_power_w', 'avg_heart_rate_bpm', 'energy_kcal'
   ].join(',');
 }
 
@@ -274,7 +276,10 @@ export function setToCsvRow(row) {
     csvCell(row.status),
     csvCell(row.completedAt),
     csvCell(row.note),
-    csvCell(row.sortOrder)
+    csvCell(row.sortOrder),
+    csvCell(row.recordType ?? 'reps'),
+    ...['durationSec', 'distanceM', 'speedKmh', 'inclinePct', 'level', 'steps', 'floors', 'cadencePerMin',
+      'avgPowerW', 'avgHeartRateBpm', 'energyKcal'].map(key => csvCell(row[key]))
   ].join(',');
 }
 

@@ -1,4 +1,4 @@
-export const CURRENT_VERSION: number = 3;
+export const CURRENT_VERSION: number = 4;
 
 export const SQL_CREATE_EXERCISES: string =
   'CREATE TABLE IF NOT EXISTS exercises (' +
@@ -13,6 +13,7 @@ export const SQL_CREATE_EXERCISES: string =
     'is_unilateral INTEGER NOT NULL DEFAULT 0,' +
     'is_bodyweight INTEGER NOT NULL DEFAULT 0,' +
     'weight_step REAL NOT NULL DEFAULT 2.5,' +
+    'record_type TEXT NOT NULL DEFAULT \'reps\',' +
     'is_builtin INTEGER NOT NULL DEFAULT 1,' +
     'is_archived INTEGER NOT NULL DEFAULT 0,' +
     'created_at INTEGER' +
@@ -50,6 +51,17 @@ export const SQL_CREATE_WORKOUT_SETS: string =
     'day_exercise_id INTEGER NOT NULL,' +
     'weight REAL,' +
     'reps INTEGER,' +
+    'duration_sec INTEGER,' +
+    'distance_m REAL,' +
+    'speed_kmh REAL,' +
+    'incline_pct REAL,' +
+    'level REAL,' +
+    'steps INTEGER,' +
+    'floors REAL,' +
+    'cadence_per_min REAL,' +
+    'avg_power_w REAL,' +
+    'avg_heart_rate_bpm REAL,' +
+    'energy_kcal REAL,' +
     'is_warmup INTEGER NOT NULL DEFAULT 0,' +
     'technique TEXT,' +
     'rir INTEGER,' +

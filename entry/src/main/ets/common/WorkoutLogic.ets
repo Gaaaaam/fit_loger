@@ -80,6 +80,18 @@ export class CsvSetRow {
   completedAt: number | null = null;
   note: string = '';
   sortOrder: number = 0;
+  recordType: string = 'reps';
+  durationSec: number | null = null;
+  distanceM: number | null = null;
+  speedKmh: number | null = null;
+  inclinePct: number | null = null;
+  level: number | null = null;
+  steps: number | null = null;
+  floors: number | null = null;
+  cadencePerMin: number | null = null;
+  avgPowerW: number | null = null;
+  avgHeartRateBpm: number | null = null;
+  energyKcal: number | null = null;
 }
 
 export class DateStatusRow {
@@ -375,7 +387,8 @@ export function trimNote(text: string): string {
 }
 
 export function setCsvHeader(): string {
-  return 'date,exercise_name,exercise_id,part_key,weight,reps,is_warmup,technique,rir,rir_legacy,status,completed_at,note,sort_order';
+  return 'date,exercise_name,exercise_id,part_key,weight,reps,is_warmup,technique,rir,rir_legacy,status,completed_at,note,sort_order,' +
+    'record_type,duration_sec,distance_m,speed_kmh,incline_pct,level,steps,floors,cadence_per_min,avg_power_w,avg_heart_rate_bpm,energy_kcal';
 }
 
 function csvCell(value: string): string {
@@ -407,7 +420,19 @@ export function setToCsvRow(row: CsvSetRow): string {
     csvCell(row.status),
     csvNullable(row.completedAt),
     csvCell(row.note),
-    `${row.sortOrder}`
+    `${row.sortOrder}`,
+    csvCell(row.recordType),
+    csvNullable(row.durationSec),
+    csvNullable(row.distanceM),
+    csvNullable(row.speedKmh),
+    csvNullable(row.inclinePct),
+    csvNullable(row.level),
+    csvNullable(row.steps),
+    csvNullable(row.floors),
+    csvNullable(row.cadencePerMin),
+    csvNullable(row.avgPowerW),
+    csvNullable(row.avgHeartRateBpm),
+    csvNullable(row.energyKcal)
   ];
   return cells.join(',');
 }

@@ -39,11 +39,20 @@ const details = load('model/exerciseDetails.ets', [
 ]);
 const { EXERCISE_CATALOG, findExercise } = catalog;
 const { EXERCISE_DETAILS, findExerciseDetail, extraSearchText } = details;
+const cardioIds = ['cardio_treadmill', 'cardio_stair_climber', 'cardio_elliptical', 'cardio_stationary_bike', 'cardio_rower'];
+const { GENERATED_GUIDANCE_ARTWORK } = load('model/exerciseGuidanceArtwork.generated.ets', ['GENERATED_GUIDANCE_ARTWORK'], { $r: x => x });
 
 assert(EXERCISE_CATALOG.length >= 100 && EXERCISE_CATALOG.length <= 150, `size ${EXERCISE_CATALOG.length}`);
 assert.equal(new Set(EXERCISE_CATALOG.map((item) => item.id)).size, EXERCISE_CATALOG.length);
 assert.equal(EXERCISE_DETAILS.length, EXERCISE_CATALOG.length);
 assert.equal(findExercise('chest_bb_bench').name, '杠铃卧推');
+assert.equal(EXERCISE_CATALOG.filter(item => item.recordType === 'reps').length, 120);
+assert.equal(EXERCISE_CATALOG.filter(item => item.recordType === 'cardio').length, 5);
+for (const id of cardioIds) {
+  const item = findExercise(id);
+  assert.equal(item.recordType, 'cardio'); assert.equal(item.partKey, 'cardio');
+  assert.equal(item.equipment, 'machine'); assert.equal(item.weightStep, 0); assert.equal(item.isBodyweight, 0);
+}
 
 for (const id of OLD_IDS) {
   assert(findExercise(id), `missing old id ${id}`);
@@ -59,9 +68,22 @@ for (const item of EXERCISE_CATALOG) {
   assert(detail.englishName.length > 0, `english ${item.id}`);
   assert(detail.steps.length >= 2, `steps ${item.id}`);
   assert(detail.counting.length > 0, `counting ${item.id}`);
-  for (const phase of ['card', 'start', 'end']) {
-    const svg = new URL(`../entry/src/main/resources/base/media/ex_${item.id}_${phase}.svg`, import.meta.url);
-    assert(existsSync(svg), `missing svg ${item.id} ${phase}`);
+  if (cardioIds.includes(item.id)) {
+    if (!process.argv.includes('--skip-cardio-assets')) {
+      const art = GENERATED_GUIDANCE_ARTWORK.find(art => art.id === item.id);
+      assert(art, `missing guidance mapping ${item.id}`);
+      assert(art.femaleFrames.length >= 2 && art.maleFrames.length === art.femaleFrames.length, `incomplete gender frames ${item.id}`);
+      assert.equal(art.frameCaptions.length, art.femaleFrames.length);
+      for (const frame of [...art.femaleFrames, ...art.maleFrames]) {
+        assert(existsSync(new URL(`../entry/src/main/resources/base/media/${frame.replace('app.media.', '')}.webp`, import.meta.url)), `missing guidance WebP ${frame}`);
+      }
+    }
+  } else {
+    assert.equal(item.recordType, 'reps');
+    for (const phase of ['card', 'start', 'end']) {
+      const svg = new URL(`../entry/src/main/resources/base/media/ex_${item.id}_${phase}.svg`, import.meta.url);
+      assert(existsSync(svg), `missing svg ${item.id} ${phase}`);
+    }
   }
 }
 for (const part of types.BODY_PARTS) {

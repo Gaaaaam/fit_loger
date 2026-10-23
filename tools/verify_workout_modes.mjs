@@ -13,13 +13,17 @@ function load(path, names, dependencies = {}) {
   runInNewContext(stripTypeScriptTypes(source) + `\nglobalThis.result = { ${names.join(',')} };`, context);
   return context.result;
 }
-const types = load('model/types.ets', ['toPartKey', 'partName', 'toEquipment', 'toSetStatus'], { $r: x => x });
+const types = load('model/types.ets', ['toPartKey', 'partName', 'toEquipment', 'toSetStatus', 'toRecordType'], { $r: x => x });
 const muscles = load('model/muscleTypes.ets', ['toMuscleKey', 'MUSCLE_REGIONS']);
 const catalog = load('model/exerciseCatalog.ets', ['EXERCISE_CATALOG', 'findExercise']);
 const logic = load('common/WorkoutLogic.ets', ['formatWeight', 'formatLastHint', 'groupExercisesByPart', 'GroupEx', 'HintSet', 'LastHint', 'parseWeight', 'parseReps', 'trimNote', 'partGapLine']);
 const muscleLogic = load('common/MuscleLogic.ets', ['planBatchAdd', 'BatchPlan', 'recommendForMuscle'], { ...muscles, ...catalog });
-const models = load('model/DayModels.ets', ['DayModel', 'PartItem', 'ExerciseItem', 'SetItem']);
-const schema = load('db/schemaSql.ets', ['SQL_CREATE_EXERCISES', 'SQL_CREATE_WORKOUT_DAYS', 'SQL_CREATE_DAY_EXERCISES', 'SQL_CREATE_WORKOUT_SETS']);
+const cardioModel = load('model/CardioModels.ets', ['CardioMetrics']);
+const cardioStorage = load('db/CardioStorage.ets', ['CARDIO_SELECT', 'readCardioMetrics', 'putCardioValues'], cardioModel);
+const cardioLogic = load('common/CardioLogic.ets', ['copyCardioMetrics', 'inheritCardioSettings', 'validateCardioMetrics', 'formatCardioSummary'], cardioModel);
+const cardioInput = load('common/CardioInputLogic.ets', ['CardioDraft', 'cardioDraftOf', 'changeCardioField', 'parseCardioDraft'], { ...cardioModel, ...cardioLogic });
+const models = load('model/DayModels.ets', ['DayModel', 'PartItem', 'ExerciseItem', 'SetItem'], cardioModel);
+const schema = load('db/schemaSql.ets', ['SQL_CREATE_EXERCISES', 'SQL_CREATE_WORKOUT_DAYS', 'SQL_CREATE_DAY_EXERCISES', 'SQL_CREATE_WORKOUT_SETS', 'SQL_CREATE_BODY_METRICS']);
 const { seedBuiltinExercises } = load('db/ExerciseSeed.ets', ['seedBuiltinExercises'], catalog);
 const db = new DatabaseSync(':memory:');
 for (const sql of Object.values(schema)) db.exec(sql);
@@ -27,6 +31,7 @@ let atBegin = null;
 let insertCount = 0;
 let failInsertAt = -1;
 let afterUpdate = null;
+let failUpdate = false;
 class Predicates {
   constructor(table) { this.table = table; this.conditions = []; }
   equalTo(key, value) { this.conditions.push([key, value]); return this; }
@@ -49,6 +54,7 @@ const store = {
   commit: () => db.exec('COMMIT'),
   rollBack: () => db.exec('ROLLBACK'),
   update: async (values, predicate) => {
+    if (failUpdate) throw new Error('injected storage failure');
     const keys = Object.keys(values);
     db.prepare(`UPDATE ${predicate.table} SET ${keys.map(key => `${key} = ?`).join(',')} WHERE ${predicate.conditions.map(([key]) => `${key} = ?`).join(' AND ')}`)
       .run(...keys.map(key => values[key]), ...predicate.conditions.map(([, value]) => value));
@@ -62,7 +68,7 @@ const store = {
   }
 };
 const { WorkoutRepository: repository } = load('db/WorkoutRepository.ets', ['WorkoutRepository'], {
-  ...types, ...logic, ...models, ...muscleLogic,
+  ...types, ...logic, ...models, ...muscleLogic, ...cardioModel, ...cardioStorage, ...cardioLogic,
   relationalStore: { RdbPredicates: Predicates },
   WorkoutDatabase: { getStore: () => store, logError: () => {} }
 });
@@ -119,7 +125,6 @@ afterUpdate = async () => {
 await repository.writeSet(edited);
 assert.equal(db.prepare('SELECT weight FROM workout_sets WHERE id = ?').get(setId).weight, 42.5,
   'older save must not clear a newer weight during a mode transition');
-db.close();
 console.log('Actual repository SQLite checks passed: ordering, shared models, duplicate handling, archived validation, atomic rollback.');
 
 // Execute page handlers without ArkUI rendering; focus/navigation/persistence are platform boundaries.
@@ -185,3 +190,67 @@ const retainedDay = page.day;
 await page.reload();
 assert.equal(page.day, retainedDay, 'a reload failure must not erase the visible record and user input');
 console.log('Actual day-page checks passed: save-before-transition, failure retention, mode preference, navigation deduplication.');
+
+// Run the actual add handler and actual input edits through the real SQLite repository.
+await repository.addExercisesBatch('2026-09-03', ['cardio_treadmill']);
+const cardioExerciseId = db.prepare('SELECT id FROM day_exercises WHERE exercise_id = ?').get('cardio_treadmill').id;
+const previous = await repository.addSet(cardioExerciseId);
+previous.cardio.speedKmh = 5;
+await repository.writeSet(previous);
+pageContext.WorkoutRepository = repository;
+const cardioPage = new pageContext.Page();
+cardioPage.getUIContext = page.getUIContext;
+cardioPage.dateStr = '2026-09-03';
+cardioPage.day = await repository.loadDay(cardioPage.dateStr);
+const cardioExercise = cardioPage.day.exercises[0];
+const current = cardioExercise.sets[0];
+const rowSource = readFileSync(new URL('../entry/src/main/ets/components/CardioSetRow.ets', import.meta.url), 'utf8');
+const rowHandlers = rowSource.slice(rowSource.indexOf('export struct CardioSetRow'), rowSource.indexOf('  @Builder'))
+  .replace('export struct CardioSetRow', 'class CardioSetRow').replace(/@(ObjectLink|Prop|State)\s+/g, '') + '\n}\nglobalThis.Row = CardioSetRow;';
+const rowContext = { ...cardioInput, WorkoutRepository: repository, hilog: pageContext.hilog,
+  setTimeout: () => 1, clearTimeout: () => {} };
+runInNewContext(stripTypeScriptTypes(rowHandlers), rowContext);
+const cardioRow = new rowContext.Row();
+cardioRow.setItem = current;
+cardioRow.exerciseId = 'cardio_treadmill';
+cardioRow.aboutToAppear();
+cardioRow.changeField('speedKmh', '7');
+assert.equal(db.prepare('SELECT speed_kmh FROM workout_sets WHERE id = ?').get(current.id).speed_kmh, 5,
+  'the debounce has not yet persisted the current speed');
+await cardioPage.handleAddSet(cardioExerciseId);
+assert.equal(cardioExercise.sets.length, 2);
+assert.equal(cardioExercise.sets[1].cardio.speedKmh, 7, 'new segment must inherit the valid current draft, before debounce');
+assert.equal(db.prepare('SELECT speed_kmh FROM workout_sets WHERE id = ?').get(cardioExercise.sets[1].id).speed_kmh, 7);
+assert.equal(db.prepare('SELECT speed_kmh FROM workout_sets WHERE id = ?').get(current.id).speed_kmh, 7);
+const beforeBlockedAdd = count('workout_sets');
+const beforeBlockedTick = cardioPage.plannedTick;
+cardioRow.changeField('seconds', '60');
+await cardioPage.handleAddSet(cardioExerciseId);
+assert.equal(count('workout_sets'), beforeBlockedAdd, 'invalid current cardio draft prevents insertion');
+assert.equal(cardioExercise.sets.length, 2);
+assert.equal(cardioPage.plannedTick, beforeBlockedTick);
+cardioRow.changeField('seconds', '0');
+failUpdate = true;
+await cardioPage.handleAddSet(cardioExerciseId);
+failUpdate = false;
+assert.equal(count('workout_sets'), beforeBlockedAdd, 'failed current-input persistence prevents insertion');
+assert.equal(cardioExercise.sets.length, 2);
+assert(current.inputError.length > 0);
+assert.equal(cardioPage.plannedTick, beforeBlockedTick);
+
+// Addition must await the flush rather than merely starting it.
+cardioRow.changeField('speedKmh', '8');
+let enterFlush;
+let releaseFlush;
+const enteredFlush = new Promise(resolve => { enterFlush = resolve; });
+const flushGate = new Promise(resolve => { releaseFlush = resolve; });
+afterUpdate = async () => { enterFlush(); await flushGate; };
+const adding = cardioPage.handleAddSet(cardioExerciseId);
+await enteredFlush;
+assert.equal(count('workout_sets'), beforeBlockedAdd, 'no insertion while the current flush is pending');
+releaseFlush();
+await adding;
+assert.equal(count('workout_sets'), beforeBlockedAdd + 1);
+assert.equal(cardioExercise.sets.length, 3);
+db.close();
+console.log('Actual day add-set/input handlers with SQLite passed: current settings inheritance, invalid/error guards, awaited flush.');

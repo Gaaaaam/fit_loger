@@ -1,0 +1,30 @@
+{
+  "exercises": [
+    {
+      "id": "arm_overhead_extension",
+      "partKey": "arm",
+      "frameCount": 2,
+      "layout": "horizontal-2",
+      "captions": ["右臂头顶伸直", "单臂屈肘至头后"],
+      "cardFrameIndex": 1,
+      "view": "three-quarter side view showing the right elbow and dumbbell behind the head",
+      "equipmentNotes": "One complete dumbbell in the right hand; standing stance, left arm relaxed at the side.",
+      "movementReference": "Stand upright; the right hand holds one dumbbell overhead with the right arm extended and left arm relaxed at the side. Bend the right elbow to lower the dumbbell behind the head, then extend the elbow back overhead without swinging the trunk.",
+      "muscleNotes": "Highlight triceps in green with natural proportions.",
+      "status": "planned"
+    },
+    {
+      "id": "abs_flutter_kick",
+      "partKey": "abs",
+      "frameCount": 3,
+      "layout": "horizontal-3",
+      "captions": ["双腿离地", "左腿上踢", "右腿上踢"],
+      "cardFrameIndex": 1,
+      "view": "three-quarter side view showing floor support and alternating straight legs",
+      "equipmentNotes": "Plain mat, hands beside hips and lower back grounded.",
+      "movementReference": "With the lower back grounded, kick the left straight leg slightly higher as the right lowers, then kick the right straight leg slightly higher as the left lowers in small controlled ranges.",
+      "muscleNotes": "Highlight the abdominal muscles in green.",
+      "status": "planned"
+    }
+  ]
+}

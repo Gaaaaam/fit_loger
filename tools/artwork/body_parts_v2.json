@@ -1,0 +1,101 @@
+{
+  "version": 2,
+  "date": "2026-10-23",
+  "generator": "built-in imagegen",
+  "output": {
+    "format": "webp",
+    "width": 640,
+    "height": 480,
+    "alpha": true,
+    "quality": 86,
+    "contentBox": {
+      "width": 608,
+      "height": 448
+    },
+    "padding": 16
+  },
+  "assets": [
+    {
+      "key": "chest",
+      "output": "entry/src/main/resources/base/media/part_chest_v2.webp",
+      "source": "C:/Users/26017/.codex/generated_images/01a167c4-04e2-7240-985e-60d2592a56e6/exec-d5901b2b-24f4-4678-b8c1-6338fee4611d.png",
+      "references": [
+        "entry/src/main/resources/base/media/ex_chest_bb_bench_female_02.webp",
+        "entry/src/main/resources/base/media/ex_back_lat_pulldown_male_02.webp"
+      ],
+      "prompt": "Use case: scientific-educational\nAsset type: premium mobile fitness app body-part picker illustration, one standalone chest image.\nInput images: the two supplied exercise-guidance WebP images are STYLE REFERENCES ONLY for realistic 3D anatomical volume, subtle green muscle emphasis and soft studio illumination. Do not reproduce their people, equipment or poses.\nPrimary request: Create a refined, gender-neutral, faceless anatomical torso study with only the left and right pectoralis major highlighted in the app's jade green #1F8A70. This is the visual anchor for a matching collection of nine body-part images.\nSubject: Front-facing athletic but naturally proportioned torso from the base of the neck to just below the waist, shoulders and upper arms included. No head. Arms relaxed slightly away from the ribcage. Body is smooth cool light-gray matte anatomical resin, with convincing soft biological volume and tasteful subtle muscle contours under an intact surface. No exposed flesh or muscle fibers. No nipples. The pectorals have believable rounded volume and softly segmented clavicular/lower regions; green follows their anatomical shape precisely. All shoulders, arms and abdominal muscles remain neutral gray.\nStyle/medium: photorealistic high-end 3D educational illustration, realistic anatomy, restrained material, broad gentle highlights and natural occlusion, fine form rather than drawn outlines. Not a vector, not low-poly, not metallic.\nComposition: isolated centered subject, landscape 4:3 canvas, tight purposeful crop, torso occupies 88% of canvas height, approximately 65% of canvas width; leave safe transparent margin around silhouette. Flat lower crop cleanly finishes the study. Designed to stay readable at 100 pixels tall.\nLighting: large soft studio key upper left, subtle fill right; green shading feels part of the surface with preserved contours.\nBackground: genuinely transparent alpha, no ground plane, no vignette, no backdrop, no cast shadow outside silhouette.\nConstraints: exactly one torso; only chest green; no text, labels, arrows, watermark, logos, decorative rings, glowing lines, anatomy errors, extreme bodybuilding, photographic skin, sexualized details."
+    },
+    {
+      "key": "shoulder",
+      "output": "entry/src/main/resources/base/media/part_shoulder_v2.webp",
+      "source": "C:/Users/26017/.codex/generated_images/01a167c4-04e2-7240-985e-60d2592a56e6/exec-ebf52c80-b7ba-4e51-8272-0952ddd65db6.png",
+      "references": [
+        "generated:chest"
+      ],
+      "prompt": "Use case: scientific-educational\nAsset type: a standalone body-region illustration for a premium mobile fitness picker, matching an existing collection.\nInput image: reference image 1 is the approved chest illustration, STYLE REFERENCE ONLY. Match its cool-gray matte anatomical resin, jade green #1F8A70 muscle coloring, soft studio light from upper left, subtle muscle surface detail and realistic 3D volume. Do not change the reference.\nStyle: gender-neutral faceless anatomical mannequin, natural athletic proportions, no drawn outlines or metallic shine.\nComposition: centered isolated subject on a landscape 4:3 canvas, subject 88% of canvas height, safe transparent margins, clean purposeful neck/waist crops, strong silhouette readable at 100 pixels tall.\nBackground: genuine transparent alpha, no ground, backdrop, shadows outside silhouette, halos or decoration.\nConstraints: exactly one torso, no head, face, nipples, text, labels, arrows, logos, watermark, exposed red tissue, extra limbs or extreme bodybuilder proportions.\nPrimary request: Upper torso from neck base to lower ribcage in a 30-degree three-quarter turn, relaxed arms separated slightly from the body and cropped at elbows. Highlight ONLY both deltoid caps in jade green, with convincing rounded anterior, lateral, and posterior sections; the nearer shoulder must be large and clear. Pectorals, trapezius, abdomen and biceps are neutral gray. Deltoids connect naturally from shoulder to humerus. Emphasize the shoulder region, with a deliberate closer crop than a chest study."
+    },
+    {
+      "key": "back",
+      "output": "entry/src/main/resources/base/media/part_back_v2.webp",
+      "source": "C:/Users/26017/.codex/generated_images/01a167c4-04e2-7240-985e-60d2592a56e6/exec-27f2efc9-fb0d-4ea3-bf74-d665d0381919.png",
+      "references": [
+        "generated:chest"
+      ],
+      "prompt": "Use case: scientific-educational\nAsset type: a standalone body-region illustration for a premium mobile fitness picker, matching an existing collection.\nInput image: reference image 1 is the approved chest illustration, STYLE REFERENCE ONLY. Match its cool-gray matte anatomical resin, jade green #1F8A70 muscle coloring, soft studio light from upper left, subtle muscle surface detail and realistic 3D volume. Do not change the reference.\nStyle: gender-neutral faceless anatomical mannequin, natural athletic proportions, no drawn outlines or metallic shine.\nComposition: centered isolated subject on a landscape 4:3 canvas, subject 88% of canvas height, safe transparent margins, clean purposeful neck/waist crops, strong silhouette readable at 100 pixels tall.\nBackground: genuine transparent alpha, no ground, backdrop, shadows outside silhouette, halos or decoration.\nConstraints: exactly one torso, no head, face, nipples, text, labels, arrows, logos, watermark, exposed red tissue, extra limbs or extreme bodybuilder proportions.\nPrimary request: A straight rear view of an athletic torso from the neck base to the waist. Both relaxed upper arms frame the body, elbows near the bottom crop. Jade-green latissimus dorsi form two broad wings on either side of the spine; green trapezius and rhomboid regions fill the upper back with believable scapular contours. Keep deltoid caps, arms and the central spine/tendinous strip neutral gray. Show correct muscle attachments and a broad but natural V-shaped back. No front chest visible."
+    },
+    {
+      "key": "arm",
+      "output": "entry/src/main/resources/base/media/part_arm_v2.webp",
+      "source": "C:/Users/26017/.codex/generated_images/01a167c4-04e2-7240-985e-60d2592a56e6/exec-ad4be4b1-4456-4078-880e-a3d8581c4b07.png",
+      "references": [
+        "generated:chest"
+      ],
+      "prompt": "Use case: scientific-educational\nAsset type: a standalone body-region illustration for a premium mobile fitness picker, matching an existing collection.\nInput image: reference image 1 is the approved chest illustration, STYLE REFERENCE ONLY. Match its cool-gray matte anatomical resin, jade green #1F8A70 muscle coloring, soft studio light from upper left, subtle muscle surface detail and realistic 3D volume. Do not change the reference.\nStyle: gender-neutral faceless anatomical mannequin, natural athletic proportions, no drawn outlines or metallic shine.\nComposition: centered isolated subject on a landscape 4:3 canvas, subject 88% of canvas height, safe transparent margins, clean purposeful neck/waist crops, strong silhouette readable at 100 pixels tall.\nBackground: genuine transparent alpha, no ground, backdrop, shadows outside silhouette, halos or decoration.\nConstraints: exactly one torso, no head, face, nipples, text, labels, arrows, logos, watermark, exposed red tissue, extra limbs or extreme bodybuilder proportions.\nPrimary request: An isolated single anatomically correct flexed arm, viewed from a slight front-side angle, showing biceps, triceps, and forearm. Classic biceps-flex silhouette: a rounded neutral-gray shoulder at lower left connects to a muscular upper arm angled to the right; one elbow at the lower right bends 90 degrees and connects to a forearm rising upward to one naturally clenched hand at upper right. Include the complete hand and all arm contours within generous safe margins. No other torso or head. Highlight upper-arm biceps and visible triceps plus the main forearm flexor muscle bellies jade green. Keep the hand, elbow joint/tendons, and shoulder cap cool gray. Emphasize believable joints, restrained anatomical contours, a natural fist and clean silhouette. Do not duplicate any limb or add detached muscle shapes."
+    },
+    {
+      "key": "glute",
+      "output": "entry/src/main/resources/base/media/part_glute_v2.webp",
+      "source": "C:/Users/26017/.codex/generated_images/01a167c4-04e2-7240-985e-60d2592a56e6/exec-b12521c5-d71e-40c6-87bb-a1f527e0030e.png",
+      "references": [
+        "generated:chest"
+      ],
+      "prompt": "Use case: scientific-educational\nAsset type: a standalone body-region illustration for a premium mobile fitness picker, matching an existing collection.\nInput image: reference image 1 is the approved chest illustration, STYLE REFERENCE ONLY. Match its cool-gray matte anatomical resin, jade green #1F8A70 muscle coloring, soft studio light from upper left, subtle muscle surface detail and realistic 3D volume. Do not change the reference.\nStyle: gender-neutral faceless anatomical mannequin, natural athletic proportions, no drawn outlines or metallic shine.\nComposition: centered isolated subject on a landscape 4:3 canvas, subject 88% of canvas height, safe transparent margins, clean purposeful neck/waist crops, strong silhouette readable at 100 pixels tall.\nBackground: genuine transparent alpha, no ground, backdrop, shadows outside silhouette, halos or decoration.\nConstraints: exactly one torso, no head, face, nipples, text, labels, arrows, logos, watermark, exposed red tissue, extra limbs or extreme bodybuilder proportions.\nPrimary request: A neutral medical-fitness anatomical mannequin study viewed from the rear with a very slight 10-degree turn, cropped from just above the iliac crest/lower waist to mid-thigh. No arms or upper torso. Show the lower back, rear hips and upper thighs as one continuous anatomically believable form. Highlight both gluteus maximus muscle volumes and the small upper-lateral gluteus medius region jade green; lower back and thighs remain cool gray. Natural moderate proportions, subtle separation, no exaggerated curves, no skin color, no sexualized detail. The opaque anatomical-resin surface is educational, with restrained fibers matching the reference. Clean purposeful horizontal upper and lower crop. The compact green gluteal region is the unmistakable center of attention."
+    },
+    {
+      "key": "leg",
+      "output": "entry/src/main/resources/base/media/part_leg_v2.webp",
+      "source": "C:/Users/26017/.codex/generated_images/01a167c4-04e2-7240-985e-60d2592a56e6/exec-ba5201ae-29a6-4f9a-aa38-bf88b535647c.png",
+      "references": [
+        "generated:chest"
+      ],
+      "prompt": "Use case: scientific-educational\nAsset type: a standalone body-region illustration for a premium mobile fitness picker, matching an existing collection.\nInput image: reference image 1 is the approved chest illustration, STYLE REFERENCE ONLY. Match its cool-gray matte anatomical resin, jade green #1F8A70 muscle coloring, soft studio light from upper left, subtle muscle surface detail and realistic 3D volume. Do not change the reference.\nStyle: gender-neutral faceless anatomical mannequin, natural athletic proportions, no drawn outlines or metallic shine.\nComposition: centered isolated subject on a landscape 4:3 canvas, subject 88% of canvas height, safe transparent margins, clean purposeful neck/waist crops, strong silhouette readable at 100 pixels tall.\nBackground: genuine transparent alpha, no ground, backdrop, shadows outside silhouette, halos or decoration.\nConstraints: exactly one torso, no head, face, nipples, text, labels, arrows, logos, watermark, exposed red tissue, extra limbs or extreme bodybuilder proportions.\nPrimary request: A neutral anatomical mannequin study of BOTH LEGS, front view with a subtle 15-degree turn so calf volume is also visible. Frame from a plain charcoal-gray mid-thigh training-short hem at the upper edge down to both complete feet; shorts cover the pelvis entirely and leave the lower/mid quadriceps visible. Athletic natural relaxed stance with a narrow gap between the legs and one foot slightly forward. Highlight the quadriceps muscle bellies of both thighs and the visible calf muscle bellies jade green, preserving gray knees, tendons, ankles and feet for clear joints. Feet are neutral gray simple anatomical mannequin feet, no toes cut off. No upper torso, hands or arms. Give thighs and calves realistic moderate proportions. To maximize category clarity at tiny size, both long green quadriceps and green calves must remain legible; fit the whole study inside safe transparent margins, no body part touching the image edges."
+    },
+    {
+      "key": "abs",
+      "output": "entry/src/main/resources/base/media/part_abs_v2.webp",
+      "source": "C:/Users/26017/.codex/generated_images/01a167c4-04e2-7240-985e-60d2592a56e6/exec-0896ab2e-7413-411c-aea3-1a9980954a57.png",
+      "references": [
+        "generated:chest"
+      ],
+      "prompt": "Use case: scientific-educational\nAsset type: one standalone body-region illustration for a premium mobile fitness picker.\nInput image: STYLE REFERENCE ONLY, the approved chest image from this same collection. Match its cool-gray matte anatomical resin, jade green #1F8A70 target muscles, realistic 3D volume, fine surface detail and broad soft studio lighting. It is a style reference, not an edit target.\nStyle: gender-neutral faceless anatomical mannequin, natural athletic proportions, convincing form, no metallic shine or drawn outlines, subtle rather than exaggerated anatomy.\nComposition: isolated centered close-up, landscape 4:3 canvas, subject occupies 88% of canvas height, safe transparent margins. Deliberate clean crop at upper and lower limits. Readable at 100 pixels tall.\nBackground: genuine transparent alpha, no ground, cast shadow, backdrop, halo, decorative shapes, or vignette.\nConstraints: no head, face, nipples, genitals, text, labels, arrows, logos, watermark, extra body parts, red tissue or exposed flesh. Exactly one subject.\nPrimary request: A straight-on front view of the abdominal region, tightly cropped from the bottom edge of the pectorals to the top of the hips. The narrow bottom of both neutral gray pectorals and the waist outline provide orientation. No arms in the frame. Only the rectus abdominis, the central vertical segmented six/eight-pack muscles on both sides of the linea alba, is jade green. Precisely define each central abdominal segment with tasteful 3D volume. All obliques and side waist muscles remain clearly light gray. Lower crop ends at a plain charcoal-gray training waistband, with no branding and no lower pelvis visible. Main visual message: central front abs. This must be clearly different from a side-core image."
+    },
+    {
+      "key": "core",
+      "output": "entry/src/main/resources/base/media/part_core_v2.webp",
+      "source": "C:/Users/26017/.codex/generated_images/01a167c4-04e2-7240-985e-60d2592a56e6/exec-1702efb2-e80a-4954-85d1-e873cc679dd1.png",
+      "references": [
+        "generated:chest"
+      ],
+      "prompt": "Use case: scientific-educational\nAsset type: one standalone body-region illustration for a premium mobile fitness picker.\nInput image: STYLE REFERENCE ONLY, the approved chest image from this same collection. Match its cool-gray matte anatomical resin, jade green #1F8A70 target muscles, realistic 3D volume, fine surface detail and broad soft studio lighting. It is a style reference, not an edit target.\nStyle: gender-neutral faceless anatomical mannequin, natural athletic proportions, convincing form, no metallic shine or drawn outlines, subtle rather than exaggerated anatomy.\nComposition: isolated centered close-up, landscape 4:3 canvas, subject occupies 88% of canvas height, safe transparent margins. Deliberate clean crop at upper and lower limits. Readable at 100 pixels tall.\nBackground: genuine transparent alpha, no ground, cast shadow, backdrop, halo, decorative shapes, or vignette.\nConstraints: no head, face, nipples, genitals, text, labels, arrows, logos, watermark, extra body parts, red tissue or exposed flesh. Exactly one subject.\nPrimary request: A three-quarter view of a trunk angled 40 degrees, emphasizing the near side waist and the oblique abdominal muscles. Crop from lower chest to top of hips; no arms. The visible lateral abdominal wall has jade-green external oblique muscles with subtle diagonal fiber direction, wrapping naturally toward the lower side waist and flank. Keep the front central rectus-abdominis six-pack neutral cool gray, NOT green; green is concentrated on the lateral trunk, with a small readable continuation around the flank to imply stabilization. Upper ribcage and lower hip contours remain gray, and lower crop ends at a plain charcoal-gray training waistband. Anatomical contours must make this a believable connected torso, not separate floating muscle pieces. Main visual message: lateral core support, visibly different from front-facing central abs."
+    },
+    {
+      "key": "cardio",
+      "output": "entry/src/main/resources/base/media/part_cardio_v2.webp",
+      "source": "C:/Users/26017/.codex/generated_images/01a167c4-04e2-7240-985e-60d2592a56e6/exec-13ed18ba-fc0b-4c4f-b22b-fcc9ba93edf9.png",
+      "references": [
+        "generated:chest"
+      ],
+      "prompt": "Use case: scientific-educational\nAsset type: standalone cardio category illustration for a mobile fitness picker, part of a matching anatomical 3D collection.\nInput image: approved chest image, STYLE REFERENCE ONLY for gray matte anatomical mannequin material, jade-green palette, soft studio lighting and realistic 3D volume.\nPrimary request: A complete gender-neutral athletic mannequin jogging at a comfortable training pace, three-quarter side view facing right. A natural compact running stride: one knee moving forward, opposite leg extending back, elbows bent around 90 degrees with opposite arm swing. All two arms, two hands, two legs and two shoes present, correctly attached and completely in frame. Include a simple smooth featureless gray head, no eyes or facial features. Gray neck, arms, and legs use the same material as the reference, with less muscle definition at full-body scale. Wear an unbranded fitted jade-green #1F8A70 short-sleeved running shirt, charcoal-gray shorts and simple light-gray running shoes. The green shirt conveys active whole-body cardio, without an anatomical target overlay.\nStyle: refined realistic 3D fitness educational illustration, soft shadows within form, natural proportions, no cartoon or glossy toy look.\nComposition: landscape 4:3 canvas, one isolated centered figure, body fills 88% of canvas height with generous clear margins, strong diagonals and unmistakable jogging silhouette readable at 100 pixels tall.\nBackground: genuinely transparent alpha, no ground, no external cast shadows, backdrop, speed lines, arrows, halos, decorations or equipment.\nConstraints: no text, watermark, logos, sexual characteristics, duplicated limbs, missing hands or cropped shoes."
+    }
+  ]
+}

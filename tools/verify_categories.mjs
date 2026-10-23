@@ -21,7 +21,16 @@ for (const part of types.BODY_PARTS) {
   assert.equal(types.partName(part.key), part.name);
   assert(EXERCISE_CATALOG.some((item) => item.partKey === part.key));
   const resource = part.image.replace('app.media.', '');
-  assert(existsSync(new URL(`../entry/src/main/resources/base/media/${resource}.svg`, import.meta.url)));
+  assert.equal(resource, `part_${part.key}_v2`, 'picker must use the new category artwork');
+  const image = readFileSync(new URL(`../entry/src/main/resources/base/media/${resource}.webp`, import.meta.url));
+  assert.equal(image.toString('ascii', 0, 4), 'RIFF');
+  assert.equal(image.toString('ascii', 8, 12), 'WEBP');
+  assert.equal(image.toString('ascii', 12, 16), 'VP8X', 'transparent WebP must use the extended header');
+  assert(image[20] & 0x10, 'category WebP must preserve its alpha channel');
+  assert.equal(image.readUIntLE(24, 3) + 1, 640);
+  assert.equal(image.readUIntLE(27, 3) + 1, 480);
+  assert(existsSync(new URL(`../entry/src/main/resources/base/media/part_${part.key}.svg`, import.meta.url)),
+    'original custom-exercise fallback must remain available');
 }
 const { SQL_CREATE_EXERCISES } = load('db/schemaSql.ets', ['SQL_CREATE_EXERCISES']);
 const { seedBuiltinExercises } = load('db/ExerciseSeed.ets', ['seedBuiltinExercises'], { EXERCISE_CATALOG });

@@ -67,3 +67,7 @@ signing-config.local.json5
 /.work/
 .worktrees/
 /.superpowers/
+
+# Python cache
+__pycache__/
+*.py[cod]

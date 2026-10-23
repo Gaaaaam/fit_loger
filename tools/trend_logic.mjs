@@ -1,3 +1,4 @@
+// Portable mirror of TrendLogic.ets; cardio model defaults match CardioModels.ets.
 function pad2(value) {
   if (value < 10) {
     return `0${value}`;
@@ -50,14 +51,235 @@ export function daysSinceEpoch(dateStr) {
   return Math.floor(date.getTime() / 86400000);
 }
 
-export const PART_ORDER = [
-  'chest', 'shoulder', 'back', 'arm', 'glute', 'leg', 'abs', 'core', 'cardio'
-];
-
-export function isWorkSet(row) {
-  return row.status === 'done' && row.isWarmup === 0;
+export class CardioMetrics {
+  durationSec = null;
+  distanceM = null;
+  speedKmh = null;
+  inclinePct = null;
+  level = null;
+  steps = null;
+  floors = null;
+  cadencePerMin = null;
+  avgPowerW = null;
+  avgHeartRateBpm = null;
+  energyKcal = null;
 }
-
+export const PART_ORDER = [
+  'chest',
+  'shoulder',
+  'back',
+  'arm',
+  'glute',
+  'leg',
+  'abs',
+  'core',
+  'cardio'
+];
+export class TrendSetRow {
+  recordType = 'reps';
+  cardio = new CardioMetrics();
+  date = '';
+  exerciseId = '';
+  exerciseName = '';
+  partKey = '';
+  movementPattern = '';
+  isBodyweight = 0;
+  weight = null;
+  reps = null;
+  rir = null;
+  rirLegacy = 0;
+  isUnilateral = 0;
+  bodyWeightKg = null;
+  isWarmup = 0;
+  technique = '';
+  status = 'done';
+}
+export class TrendWeightRow {
+  date = '';
+  weightKg = 0;
+}
+export class TrendPoint {
+  date = '';
+  value = 0;
+  bodyWeightKg = null;
+}
+export class ChartPoint {
+  date = '';
+  value = 0;
+  xRatio = 0;
+}
+export class KeyLiftPick {
+  recordType = 'reps';
+  exerciseId = '';
+  name = '';
+  partKey = '';
+  movementPattern = '';
+  isBodyweight = 0;
+  isCompound = false;
+  sessions = 0;
+  workSets = 0;
+}
+export class KeyLiftSeries {
+  recordType = 'reps';
+  exerciseId = '';
+  name = '';
+  metric = 'top_weight';
+  points = [];
+  firstValue = 0;
+  lastValue = 0;
+  insufficientData = false;
+  estimated = false;
+  relativeText = '';
+  relativeNote = '';
+  cause = '';
+}
+export class PartGoalRow {
+  partKey = '';
+  workSetsTarget = null;
+}
+export class TrendPreferences {
+  watchedExerciseIds = [];
+  sessionsTarget = null;
+  partGoals = [];
+}
+export class PartGoalProgress {
+  partKey = '';
+  done = 0;
+  target = 0;
+  suggested = false;
+}
+export class WeekGoalProgress {
+  sessionsDone = 0;
+  sessionsTarget = null;
+  parts = [];
+  balanceHints = [];
+}
+export class WeightTrendSummary {
+  hasWeight = false;
+  latestKg = 0;
+  latestDate = '';
+  sparse = true;
+  hasDelta = false;
+  deltaKg = 0;
+  referenceDate = '';
+}
+export class ExerciseMeta {
+  recordType = 'reps';
+  exerciseId = '';
+  name = '';
+  partKey = '';
+  movementPattern = '';
+  isBodyweight = 0;
+}
+export class ExerciseSessionRow {
+  date = '';
+  value = null;
+  workSets = 0;
+  minRir = null;
+  rirLegacy = 0;
+}
+export class ExerciseTrendDetail {
+  recordType = 'reps';
+  exerciseId = '';
+  name = '';
+  partKey = '';
+  metric = 'top_weight';
+  metricLabel = '';
+  points = [];
+  insufficientData = false;
+  estimated = false;
+  secondaryLabel = '';
+  secondaryUnit = '次';
+  secondaryPoints = [];
+  sessions = 0;
+  workSets = 0;
+  recentSessions = [];
+  relativeText = '';
+  relativeNote = '';
+}
+export class WatchableExercise {
+  recordType = 'reps';
+  exerciseId = '';
+  name = '';
+  partKey = '';
+  sessions = 0;
+  workSets = 0;
+}
+export class TrendInsight {
+  kind = 'none';
+  message = '';
+  exerciseId = '';
+  partKey = '';
+  remaining = 0;
+}
+export class PrBoardRow {
+  exerciseId = '';
+  name = '';
+  maxWeight = 0;
+  repsAtWeight = 0;
+  weightDate = '';
+  repsDate = '';
+}
+export class TrendDigest {
+  sessions = 0;
+  workSets = 0;
+  lifts = [];
+  weekGoal = new WeekGoalProgress();
+  weightTrend = new WeightTrendSummary();
+  weightPoints = [];
+  volumePoints = [];
+  prBoard = [];
+  insight = new TrendInsight();
+}
+class ExerciseStat {
+  recordType = 'reps';
+  exerciseId = '';
+  name = '';
+  partKey = '';
+  movementPattern = '';
+  isBodyweight = 0;
+  sessions = 0;
+  workSets = 0;
+  dateSeen = new Map();
+}
+class DayAgg {
+  durationSec = null;
+  distanceM = null;
+  steps = null;
+  date = '';
+  bestE1rm = null;
+  e1rmStrict = false;
+  e1rmEstimated = false;
+  e1rmBodyKg = null;
+  topWeight = null;
+  bestReps = null;
+}
+class PrAcc {
+  exerciseId = '';
+  name = '';
+  maxWeight = 0;
+  hasWeight = false;
+  weightDate = '';
+  repsAtWeight = 0;
+  hasReps = false;
+  repsDate = '';
+}
+class WindowAverage {
+  count = 0;
+  avg = 0;
+}
+export function isWorkSet(row) {
+  return row.recordType !== 'cardio' && row.status === 'done' && row.isWarmup === 0;
+}
+export function isCompletedCardioSegment(row) {
+  return row.recordType === 'cardio' && row.status === 'done' && row.isWarmup === 0 && row.cardio.durationSec !== null && Number.isFinite(row.cardio.durationSec) && row.cardio.durationSec > 0;
+}
+function isTrainingRow(row) {
+  return isWorkSet(row) || isCompletedCardioSegment(row);
+}
+function knownCardioValue(value) {
+  return value !== null && Number.isFinite(value) && value >= 0;
+}
 export function isLiftPerformancePoint(row) {
   if (!isWorkSet(row)) {
     return false;
@@ -67,16 +289,14 @@ export function isLiftPerformancePoint(row) {
   }
   return true;
 }
-
 export function isCompoundLift(pattern, partKey) {
   if (partKey === 'abs' || partKey === 'core' || partKey === 'cardio') {
     return false;
   }
   return pattern === 'push' || pattern === 'pull' || pattern === 'hinge' || pattern === 'squat';
 }
-
 export function epleyE1rm(weight, reps) {
-  if (weight === null || weight === undefined || reps === null || reps === undefined) {
+  if (weight === null || reps === null) {
     return null;
   }
   if (reps < 1) {
@@ -84,80 +304,69 @@ export function epleyE1rm(weight, reps) {
   }
   return weight * (1 + reps / 30);
 }
-
 export function e1rmEffectiveReps(row) {
-  if (row.reps === null || row.reps === undefined) {
+  if (row.reps === null) {
     return null;
   }
-  if (row.rirLegacy === 1 || row.rir === null || row.rir === undefined) {
+  if (row.rirLegacy === 1 || row.rir === null) {
     return row.reps;
   }
   return row.reps + row.rir;
 }
-
 function isLegacyBucketOne(row) {
   return row.rirLegacy === 1 && row.rir === 1;
 }
-
 export function isE1rmEligible(row) {
   if (!isLiftPerformancePoint(row)) {
     return false;
   }
-  if (row.rirLegacy === 1 || row.rir === null || row.rir === undefined || row.rir > 1) {
+  if (row.rirLegacy === 1 || row.rir === null || row.rir > 1) {
     return false;
   }
-  if (row.reps === null || row.reps === undefined || row.reps < 1 || row.reps > 8) {
+  if (row.reps === null || row.reps < 1 || row.reps > 8) {
     return false;
   }
-  if (row.weight === null || row.weight === undefined) {
+  if (row.weight === null) {
     return false;
   }
   return true;
 }
-
 export function isE1rmEstimated(row) {
   if (!isLiftPerformancePoint(row)) {
     return false;
   }
-  const missingRir = row.rir === null || row.rir === undefined;
-  if (!missingRir && !isLegacyBucketOne(row)) {
+  if (row.rir !== null && !isLegacyBucketOne(row)) {
     return false;
   }
-  if (row.reps === null || row.reps === undefined || row.reps < 1 || row.reps > 8) {
+  if (row.reps === null || row.reps < 1 || row.reps > 8) {
     return false;
   }
-  if (row.weight === null || row.weight === undefined) {
+  if (row.weight === null) {
     return false;
   }
   return true;
 }
-
 export function isE1rmCountable(row) {
   return isE1rmEligible(row) || isE1rmEstimated(row);
 }
-
 export function workingLoadKg(row) {
-  if (row.isBodyweight === 1 && isCompoundLift(row.movementPattern, row.partKey)) {
-    if (row.bodyWeightKg === null || row.bodyWeightKg === undefined || row.bodyWeightKg <= 0) {
-      return null;
-    }
-    const added = row.weight === null || row.weight === undefined ? 0 : row.weight;
-    return row.bodyWeightKg + added;
-  }
-  if (row.isBodyweight === 1 && (row.weight === null || row.weight === undefined || row.weight <= 0)) {
+  if (row.recordType === 'cardio') {
     return null;
   }
-  if (row.weight === null || row.weight === undefined) {
+  if (row.isBodyweight === 1 && isCompoundLift(row.movementPattern, row.partKey)) {
+    if (row.bodyWeightKg === null || row.bodyWeightKg <= 0) {
+      return null;
+    }
+    const added = row.weight === null ? 0 : row.weight;
+    return row.bodyWeightKg + added;
+  }
+  if (row.isBodyweight === 1 && (row.weight === null || row.weight <= 0)) {
     return null;
   }
   return row.weight;
 }
-
 export function setVolume(row) {
-  if (!isWorkSet(row)) {
-    return null;
-  }
-  if (row.reps === null || row.reps === undefined) {
+  if (!isWorkSet(row) || row.reps === null) {
     return null;
   }
   const load = workingLoadKg(row);
@@ -167,23 +376,19 @@ export function setVolume(row) {
   const sides = row.isUnilateral === 1 ? 2 : 1;
   return load * row.reps * sides;
 }
-
 export function formatExerciseVolume(rows) {
   let total = 0;
   let counted = 0;
   let needsBody = false;
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
     const vol = setVolume(row);
-    if (vol !== null && vol !== undefined) {
+    if (vol !== null) {
       total += vol;
       counted += 1;
       continue;
     }
-    const noAdded = row.weight === null || row.weight === undefined || row.weight <= 0;
-    const noBody = row.bodyWeightKg === null || row.bodyWeightKg === undefined || row.bodyWeightKg <= 0;
-    if (row.isBodyweight === 1 && isCompoundLift(row.movementPattern, row.partKey) &&
-      isWorkSet(row) && row.reps !== null && row.reps !== undefined && noAdded && noBody) {
+    if (row.isBodyweight === 1 && isCompoundLift(row.movementPattern, row.partKey) && isWorkSet(row) && row.reps !== null && (row.weight === null || row.weight <= 0) && (row.bodyWeightKg === null || row.bodyWeightKg <= 0)) {
       needsBody = true;
     }
   }
@@ -195,9 +400,8 @@ export function formatExerciseVolume(rows) {
   }
   return '';
 }
-
 export function sessionRirText(minRir, rirLegacy) {
-  if (minRir !== null && minRir !== undefined) {
+  if (minRir !== null) {
     return `RIR ${minRir}`;
   }
   if (rirLegacy === 1) {
@@ -205,66 +409,88 @@ export function sessionRirText(minRir, rirLegacy) {
   }
   return 'RIR 未记录';
 }
-
 export function buildVolumeSeries(rows) {
   const totals = new Map();
-  for (let i = 0; i < rows.length; i++) {
+  const dates = [];
+  for(let i = 0; i < rows.length; i++){
     const vol = setVolume(rows[i]);
     if (vol === null) {
       continue;
     }
     const date = rows[i].date;
     const prev = totals.get(date);
-    totals.set(date, prev === undefined ? vol : prev + vol);
+    if (prev === undefined) {
+      dates.push(date);
+      totals.set(date, vol);
+    } else {
+      totals.set(date, prev + vol);
+    }
   }
-  const dates = [];
-  totals.forEach((_value, date) => {
-    dates.push(date);
-  });
   dates.sort();
   const points = [];
-  for (let i = 0; i < dates.length; i++) {
-    points.push({ date: dates[i], value: totals.get(dates[i]) });
+  for(let i = 0; i < dates.length; i++){
+    const point = new TrendPoint();
+    point.date = dates[i];
+    point.value = totals.get(dates[i]);
+    points.push(point);
   }
   return points;
 }
-
 export function buildPrBoard(rows) {
-  const byId = new Map();
-  for (let i = 0; i < rows.length; i++) {
+  const accs = [];
+  const indexOf = new Map();
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
-    if (!isWorkSet(row) || row.weight === null || row.reps === null) {
+    if (!isWorkSet(row) || row.weight === null) {
       continue;
     }
-    let rec = byId.get(row.exerciseId);
-    if (rec === undefined) {
-      rec = {
-        exerciseId: row.exerciseId,
-        name: row.exerciseName,
-        partKey: row.partKey,
-        maxWeight: row.weight,
-        repsAtWeight: row.reps,
-        weightDate: row.date,
-        repsDate: row.date
-      };
-      byId.set(row.exerciseId, rec);
-      continue;
+    let idx = indexOf.get(row.exerciseId);
+    if (idx === undefined) {
+      const acc = new PrAcc();
+      acc.exerciseId = row.exerciseId;
+      acc.name = row.exerciseName;
+      indexOf.set(row.exerciseId, accs.length);
+      accs.push(acc);
+      idx = accs.length - 1;
     }
-    if (row.weight > rec.maxWeight) {
-      rec.maxWeight = row.weight;
-      rec.repsAtWeight = row.reps;
-      rec.weightDate = row.date;
-      rec.repsDate = row.date;
-    } else if (row.weight === rec.maxWeight && row.reps > rec.repsAtWeight) {
-      rec.repsAtWeight = row.reps;
-      rec.repsDate = row.date;
+    const acc = accs[idx];
+    const weight = row.weight;
+    if (!acc.hasWeight || weight > acc.maxWeight) {
+      acc.maxWeight = weight;
+      acc.hasWeight = true;
+      acc.weightDate = row.date;
+      acc.repsAtWeight = 0;
+      acc.hasReps = false;
+      acc.repsDate = '';
+      if (row.reps !== null) {
+        acc.repsAtWeight = row.reps;
+        acc.hasReps = true;
+        acc.repsDate = row.date;
+      }
+    } else if (weight === acc.maxWeight) {
+      if (row.reps !== null && (!acc.hasReps || row.reps > acc.repsAtWeight)) {
+        acc.repsAtWeight = row.reps;
+        acc.hasReps = true;
+        acc.repsDate = row.date;
+      }
     }
   }
   const board = [];
-  byId.forEach((rec) => {
-    board.push(rec);
-  });
-  board.sort((a, b) => {
+  for(let i = 0; i < accs.length; i++){
+    const acc = accs[i];
+    if (!acc.hasWeight) {
+      continue;
+    }
+    const item = new PrBoardRow();
+    item.exerciseId = acc.exerciseId;
+    item.name = acc.name;
+    item.maxWeight = acc.maxWeight;
+    item.repsAtWeight = acc.repsAtWeight;
+    item.weightDate = acc.weightDate;
+    item.repsDate = acc.repsDate.length > 0 ? acc.repsDate : acc.weightDate;
+    board.push(item);
+  }
+  board.sort((a, b)=>{
     const aLast = a.repsDate > a.weightDate ? a.repsDate : a.weightDate;
     const bLast = b.repsDate > b.weightDate ? b.repsDate : b.weightDate;
     if (aLast > bLast) {
@@ -280,7 +506,6 @@ export function buildPrBoard(rows) {
   });
   return board;
 }
-
 export function chartFromDate(today, rangeKind) {
   if (rangeKind === 'all') {
     return '';
@@ -291,7 +516,6 @@ export function chartFromDate(today, rangeKind) {
   }
   return rangeStart(today, weeks);
 }
-
 export function formatTrendNumber(value) {
   const rounded = Math.round(value * 10) / 10;
   if (rounded === Math.floor(rounded)) {
@@ -299,8 +523,10 @@ export function formatTrendNumber(value) {
   }
   return rounded.toFixed(1);
 }
-
 export function liftMetricLabel(metric) {
+  if (metric === 'duration') {
+    return '时长 分钟';
+  }
   if (metric === 'e1rm') {
     return 'e1RM';
   }
@@ -309,7 +535,6 @@ export function liftMetricLabel(metric) {
   }
   return '重量';
 }
-
 export function liftChangeText(series) {
   if (series.points.length === 0) {
     return '';
@@ -324,7 +549,6 @@ export function liftChangeText(series) {
   }
   return text;
 }
-
 export function volumeChangeText(points) {
   if (points.length === 0) {
     return '';
@@ -335,14 +559,12 @@ export function volumeChangeText(points) {
   }
   return `${formatTrendNumber(points[0].value)} → ${last}`;
 }
-
 export function prBoardLine(row) {
   if (row.repsAtWeight > 0) {
     return `${formatTrendNumber(row.maxWeight)} kg × ${row.repsAtWeight}`;
   }
   return `${formatTrendNumber(row.maxWeight)} kg`;
 }
-
 export function weightDeltaText(trend) {
   if (!trend.hasWeight) {
     return '未记录';
@@ -363,23 +585,22 @@ export function weightDeltaText(trend) {
   }
   return `${latest} · 近7天 ${sign}${formatTrendNumber(trend.deltaKg)}`;
 }
-
 function toKeyLiftPick(stat) {
-  return {
-    exerciseId: stat.exerciseId,
-    name: stat.name,
-    partKey: stat.partKey,
-    movementPattern: stat.movementPattern,
-    isBodyweight: stat.isBodyweight,
-    isCompound: isCompoundLift(stat.movementPattern, stat.partKey),
-    sessions: stat.sessions,
-    workSets: stat.workSets
-  };
+  const pick = new KeyLiftPick();
+  pick.recordType = stat.recordType;
+  pick.exerciseId = stat.exerciseId;
+  pick.name = stat.name;
+  pick.partKey = stat.partKey;
+  pick.movementPattern = stat.movementPattern;
+  pick.isBodyweight = stat.isBodyweight;
+  pick.isCompound = isCompoundLift(stat.movementPattern, stat.partKey);
+  pick.sessions = stat.sessions;
+  pick.workSets = stat.workSets;
+  return pick;
 }
-
 export function pickKeyLifts(rows, limit) {
   const stats = collectStats(rows);
-  stats.sort((a, b) => {
+  stats.sort((a, b)=>{
     if (a.sessions !== b.sessions) {
       return b.sessions - a.sessions;
     }
@@ -403,19 +624,18 @@ export function pickKeyLifts(rows, limit) {
   }
   return picked;
 }
-
 export function resolveWatchedLifts(rows, watchedIds, autoRecommendLimit) {
   const stats = collectStats(rows);
   if (watchedIds.length === 0) {
     return pickKeyLifts(rows, autoRecommendLimit);
   }
   const statById = new Map();
-  for (let i = 0; i < stats.length; i++) {
+  for(let i = 0; i < stats.length; i++){
     statById.set(stats[i].exerciseId, stats[i]);
   }
   const picked = [];
   const usedIds = new Map();
-  for (let i = 0; i < watchedIds.length; i++) {
+  for(let i = 0; i < watchedIds.length; i++){
     const id = watchedIds[i];
     if (usedIds.get(id) === true) {
       continue;
@@ -429,7 +649,56 @@ export function resolveWatchedLifts(rows, watchedIds, autoRecommendLimit) {
   }
   return picked;
 }
-
+export function buildLiftSeries(rows, pick) {
+  const series = new KeyLiftSeries();
+  series.exerciseId = pick.exerciseId;
+  series.name = pick.name;
+  series.recordType = pick.recordType;
+  const days = aggregateDays(rows, pick.exerciseId);
+  const metric = pick.recordType === 'cardio' ? 'duration' : liftMetricFor(pick.isBodyweight, pick.isCompound);
+  series.metric = metric;
+  for(let i = 0; i < days.length; i++){
+    const day = days[i];
+    const value = metricValueOf(day, metric);
+    if (value === null) {
+      continue;
+    }
+    const point = new TrendPoint();
+    point.date = day.date;
+    point.value = value;
+    if (metric === 'e1rm') {
+      point.bodyWeightKg = day.e1rmBodyKg;
+    }
+    series.points.push(point);
+  }
+  const relative = relativeStrengthText(series.exerciseId, metric, series.points);
+  series.relativeText = relative.text;
+  series.relativeNote = relative.note;
+  if (series.points.length > 0) {
+    series.firstValue = series.points[0].value;
+    series.lastValue = series.points[series.points.length - 1].value;
+  }
+  if (metric === 'e1rm' && series.points.length < 2) {
+    series.insufficientData = true;
+  }
+  if (metric === 'e1rm') {
+    let anyEstimated = false;
+    let anyStrict = false;
+    for(let i = 0; i < days.length; i++){
+      if (days[i].bestE1rm === null) {
+        continue;
+      }
+      if (days[i].e1rmStrict) {
+        anyStrict = true;
+      }
+      if (days[i].e1rmEstimated) {
+        anyEstimated = true;
+      }
+    }
+    series.estimated = anyEstimated && !anyStrict;
+  }
+  return series;
+}
 function liftMetricFor(isBodyweight, isCompound) {
   if (isBodyweight === 1) {
     return 'reps';
@@ -439,8 +708,10 @@ function liftMetricFor(isBodyweight, isCompound) {
   }
   return 'top_weight';
 }
-
 function metricValueOf(day, metric) {
+  if (metric === 'duration') {
+    return day.durationSec === null ? null : day.durationSec / 60;
+  }
   if (metric === 'e1rm') {
     return day.bestE1rm;
   }
@@ -449,77 +720,37 @@ function metricValueOf(day, metric) {
   }
   return day.topWeight;
 }
-
-export function buildLiftSeries(rows, pick) {
-  const series = {
-    exerciseId: pick.exerciseId,
-    name: pick.name,
-    metric: 'top_weight',
-    points: [],
-    firstValue: 0,
-    lastValue: 0,
-    insufficientData: false,
-    estimated: false
-  };
-  const days = aggregateDays(rows, pick.exerciseId);
-  const metric = liftMetricFor(pick.isBodyweight, pick.isCompound);
-  series.metric = metric;
-  for (let i = 0; i < days.length; i++) {
-    const day = days[i];
-    const value = metricValueOf(day, metric);
-    if (value === null) {
-      continue;
-    }
-    const point = { date: day.date, value, bodyWeightKg: null };
-    if (metric === 'e1rm') {
-      point.bodyWeightKg = day.e1rmBodyKg === undefined ? null : day.e1rmBodyKg;
-    }
-    series.points.push(point);
-    if (metric === 'e1rm' && day.e1rmFromEstimate) {
-      series.estimated = true;
-    }
-  }
-  const relative = relativeStrengthText(series.exerciseId, series.metric, series.points);
-  series.relativeText = relative.text;
-  series.relativeNote = relative.note;
-  series.cause = '';
-  if (series.points.length > 0) {
-    series.firstValue = series.points[0].value;
-    series.lastValue = series.points[series.points.length - 1].value;
-  }
-  if (metric === 'e1rm' && series.points.length < 2) {
-    series.insufficientData = true;
-  }
-  return series;
-}
-
 export function weekSummary(rows, today) {
   const weekStart = isoWeekStart(today);
   const weekEnd = addDays(weekStart, 6);
   const dates = new Map();
   let workSets = 0;
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
-    if (!isWorkSet(row)) {
+    if (!isTrainingRow(row)) {
       continue;
     }
     if (row.date < weekStart || row.date > weekEnd) {
       continue;
     }
-    workSets += 1;
+    if (isWorkSet(row)) {
+      workSets += 1;
+    }
     dates.set(row.date, true);
   }
-  return [dates.size, workSets];
+  return [
+    dates.size,
+    workSets
+  ];
 }
-
 function weekWorkSetsByPart(rows, today) {
   const weekStart = isoWeekStart(today);
   const weekEnd = addDays(weekStart, 6);
   const counts = new Map();
-  for (let i = 0; i < PART_ORDER.length; i++) {
+  for(let i = 0; i < PART_ORDER.length; i++){
     counts.set(PART_ORDER[i], 0);
   }
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
     if (!isWorkSet(row)) {
       continue;
@@ -527,26 +758,40 @@ function weekWorkSetsByPart(rows, today) {
     if (row.date < weekStart || row.date > weekEnd) {
       continue;
     }
-    if (!counts.has(row.partKey)) {
+    if (counts.get(row.partKey) === undefined) {
       continue;
     }
     counts.set(row.partKey, counts.get(row.partKey) + 1);
   }
   return counts;
 }
-
 export function suggestedPartGoal(partKey) {
-  if (partKey === 'chest') return 12;
-  if (partKey === 'back') return 14;
-  if (partKey === 'shoulder') return 10;
-  if (partKey === 'leg') return 12;
-  if (partKey === 'glute') return 10;
-  if (partKey === 'arm') return 8;
-  if (partKey === 'abs') return 8;
-  if (partKey === 'core') return 6;
+  if (partKey === 'chest') {
+    return 12;
+  }
+  if (partKey === 'back') {
+    return 14;
+  }
+  if (partKey === 'shoulder') {
+    return 10;
+  }
+  if (partKey === 'leg') {
+    return 12;
+  }
+  if (partKey === 'glute') {
+    return 10;
+  }
+  if (partKey === 'arm') {
+    return 8;
+  }
+  if (partKey === 'abs') {
+    return 8;
+  }
+  if (partKey === 'core') {
+    return 6;
+  }
   return null;
 }
-
 export function patternBalanceHints(rows, today) {
   const weekStart = isoWeekStart(today);
   const weekEnd = addDays(weekStart, 6);
@@ -554,15 +799,20 @@ export function patternBalanceHints(rows, today) {
   let pull = 0;
   let hinge = 0;
   let squat = 0;
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
     if (!isWorkSet(row) || row.date < weekStart || row.date > weekEnd) {
       continue;
     }
-    if (row.movementPattern === 'push') push += 1;
-    else if (row.movementPattern === 'pull') pull += 1;
-    else if (row.movementPattern === 'hinge') hinge += 1;
-    else if (row.movementPattern === 'squat' || row.movementPattern === 'lunge') squat += 1;
+    if (row.movementPattern === 'push') {
+      push += 1;
+    } else if (row.movementPattern === 'pull') {
+      pull += 1;
+    } else if (row.movementPattern === 'hinge') {
+      hinge += 1;
+    } else if (row.movementPattern === 'squat' || row.movementPattern === 'lunge') {
+      squat += 1;
+    }
   }
   const hints = [];
   if (push >= 6 && pull < push * 0.8) {
@@ -573,21 +823,22 @@ export function patternBalanceHints(rows, today) {
   }
   return hints;
 }
-
 function positiveBodyKg(value) {
-  if (value === null || value === undefined || value <= 0) {
+  if (value === null || value <= 0) {
     return null;
   }
   return value;
 }
-
 function formatRatio(e1rm, bodyKg) {
-  const rounded = Math.round((e1rm / bodyKg) * 10) / 10;
+  const rounded = Math.round(e1rm / bodyKg * 10) / 10;
   return rounded.toFixed(1);
 }
-
+export class RelativeStrength {
+  text = '';
+  note = '';
+}
 export function relativeStrengthText(exerciseId, metric, points) {
-  const result = { text: '', note: '' };
+  const result = new RelativeStrength();
   if (metric !== 'e1rm' || points.length === 0) {
     return result;
   }
@@ -609,20 +860,26 @@ export function relativeStrengthText(exerciseId, metric, points) {
   if (firstBw === null) {
     return result;
   }
-  if (latest.value > first.value && (latest.value / latestBw) < (first.value / firstBw)) {
+  if (latest.value > first.value && latest.value / latestBw < first.value / firstBw) {
     result.note = '绝对重量升了，相对体重轻了。';
   }
   return result;
 }
-
+class TopSetSnap {
+  topWeight = 0;
+  repsAtTop = 0;
+  minRir = null;
+  ok = false;
+}
 function snapshotTopSets(rows, exerciseId, date) {
+  const snap = new TopSetSnap();
   let top = null;
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
     if (row.exerciseId !== exerciseId || row.date !== date || !isLiftPerformancePoint(row)) {
       continue;
     }
-    if (row.weight === null || row.weight === undefined || row.reps === null || row.reps === undefined) {
+    if (row.weight === null || row.reps === null) {
       continue;
     }
     if (top === null || row.weight > top) {
@@ -630,40 +887,45 @@ function snapshotTopSets(rows, exerciseId, date) {
     }
   }
   if (top === null) {
-    return { ok: false, topWeight: 0, repsAtTop: 0, minRir: null };
+    return snap;
   }
+  snap.topWeight = top;
+  snap.ok = true;
   let bestReps = 0;
+  let haveReps = false;
   let missingRir = false;
   let minRir = null;
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
     if (row.exerciseId !== exerciseId || row.date !== date || !isLiftPerformancePoint(row)) {
       continue;
     }
-    if (row.weight !== top || row.reps === null || row.reps === undefined) {
+    if (row.weight === null || row.reps === null || row.weight !== top) {
       continue;
     }
-    if (row.reps > bestReps) {
+    if (!haveReps || row.reps > bestReps) {
       bestReps = row.reps;
+      haveReps = true;
     }
-    if (row.rirLegacy === 1 || row.rir === null || row.rir === undefined) {
+    if (row.rirLegacy === 1 || row.rir === null) {
       missingRir = true;
     } else if (minRir === null || row.rir < minRir) {
       minRir = row.rir;
     }
   }
-  return { ok: true, topWeight: top, repsAtTop: bestReps, minRir: missingRir ? null : minRir };
+  snap.repsAtTop = bestReps;
+  snap.minRir = missingRir ? null : minRir;
+  return snap;
 }
-
 export function recentSessionCause(rows, exerciseId) {
   const dates = [];
   const seen = new Map();
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
     if (row.exerciseId !== exerciseId || !isLiftPerformancePoint(row)) {
       continue;
     }
-    if (row.weight === null || row.weight === undefined || row.reps === null || row.reps === undefined) {
+    if (row.weight === null || row.reps === null) {
       continue;
     }
     if (seen.get(row.date) === true) {
@@ -672,7 +934,15 @@ export function recentSessionCause(rows, exerciseId) {
     seen.set(row.date, true);
     dates.push(row.date);
   }
-  dates.sort();
+  dates.sort((a, b)=>{
+    if (a < b) {
+      return -1;
+    }
+    if (a > b) {
+      return 1;
+    }
+    return 0;
+  });
   if (dates.length < 2) {
     return 'none';
   }
@@ -681,8 +951,7 @@ export function recentSessionCause(rows, exerciseId) {
   if (!prev.ok || !last.ok || last.repsAtTop >= prev.repsAtTop) {
     return 'none';
   }
-  if (last.topWeight === prev.topWeight && prev.minRir !== null && last.minRir !== null &&
-    last.minRir < prev.minRir && last.minRir <= 1) {
+  if (last.topWeight === prev.topWeight && prev.minRir !== null && last.minRir !== null && last.minRir < prev.minRir && last.minRir <= 1) {
     return 'fatigue';
   }
   if (last.topWeight < prev.topWeight && last.minRir !== null && last.minRir >= 2) {
@@ -690,77 +959,71 @@ export function recentSessionCause(rows, exerciseId) {
   }
   return 'none';
 }
-
+function e1rmBodyOf(row) {
+  return positiveBodyKg(row.bodyWeightKg);
+}
 export function buildWeekGoalProgress(rows, today, prefs) {
-  const progress = { sessionsDone: 0, sessionsTarget: null, parts: [], balanceHints: [] };
+  const progress = new WeekGoalProgress();
   const summary = weekSummary(rows, today);
   progress.sessionsDone = summary[0];
   progress.sessionsTarget = prefs.sessionsTarget;
   const doneByPart = weekWorkSetsByPart(rows, today);
   const goalByPart = new Map();
-  for (let i = 0; i < prefs.partGoals.length; i++) {
+  for(let i = 0; i < prefs.partGoals.length; i++){
     if (prefs.partGoals[i].workSetsTarget !== null) {
       goalByPart.set(prefs.partGoals[i].partKey, prefs.partGoals[i].workSetsTarget);
     }
   }
-  for (let i = 0; i < PART_ORDER.length; i++) {
+  for(let i = 0; i < PART_ORDER.length; i++){
     const key = PART_ORDER[i];
-    const saved = goalByPart.has(key) ? goalByPart.get(key) : undefined;
+    const saved = goalByPart.get(key);
     if (saved === 0) {
       continue;
     }
-    const part = {
-      partKey: key,
-      done: doneByPart.get(key) === undefined ? 0 : doneByPart.get(key),
-      target: 0,
-      suggested: false
-    };
+    const row = new PartGoalProgress();
+    row.partKey = key;
+    row.done = doneByPart.get(key) === undefined ? 0 : doneByPart.get(key);
     if (saved === undefined) {
       const suggestion = suggestedPartGoal(key);
       if (suggestion === null) {
         continue;
       }
-      part.target = suggestion;
-      part.suggested = true;
+      row.target = suggestion;
+      row.suggested = true;
     } else {
-      part.target = saved;
+      row.target = saved;
     }
-    progress.parts.push(part);
+    progress.parts.push(row);
   }
   progress.balanceHints = patternBalanceHints(rows, today);
   return progress;
 }
-
 function averageInRange(weights, start, end) {
   let sum = 0;
   let count = 0;
-  for (let i = 0; i < weights.length; i++) {
+  for(let i = 0; i < weights.length; i++){
     if (weights[i].date < start || weights[i].date > end) {
       continue;
     }
     sum += weights[i].weightKg;
     count += 1;
   }
-  return { count, avg: count > 0 ? sum / count : 0 };
+  const result = new WindowAverage();
+  result.count = count;
+  if (count > 0) {
+    result.avg = sum / count;
+  }
+  return result;
 }
-
 export function buildWeightTrend(weights, today) {
-  const summary = {
-    hasWeight: false,
-    latestKg: 0,
-    latestDate: '',
-    sparse: true,
-    hasDelta: false,
-    deltaKg: 0,
-    referenceDate: ''
-  };
+  const summary = new WeightTrendSummary();
   const past = [];
-  for (let i = 0; i < weights.length; i++) {
+  for(let i = 0; i < weights.length; i++){
     if (weights[i].date <= today) {
       past.push(weights[i]);
     }
   }
-  past.sort((a, b) => {
+  past.sort((a, b)=>{
     if (a.date < b.date) {
       return -1;
     }
@@ -776,7 +1039,6 @@ export function buildWeightTrend(weights, today) {
   const latest = past[past.length - 1];
   summary.latestKg = latest.weightKg;
   summary.latestDate = latest.date;
-
   const recentStart = addDays(today, -6);
   const priorEnd = addDays(recentStart, -1);
   const priorStart = addDays(priorEnd, -6);
@@ -789,7 +1051,6 @@ export function buildWeightTrend(weights, today) {
     summary.deltaKg = recentWin.avg - priorWin.avg;
     return summary;
   }
-
   summary.sparse = true;
   if (past.length < 2) {
     return summary;
@@ -800,7 +1061,6 @@ export function buildWeightTrend(weights, today) {
   summary.referenceDate = previous.date;
   return summary;
 }
-
 export function datedChartPositions(points) {
   const result = [];
   const n = points.length;
@@ -808,34 +1068,37 @@ export function datedChartPositions(points) {
     return result;
   }
   if (n === 1) {
-    result.push({ date: points[0].date, value: points[0].value, xRatio: 0.5 });
+    const single = new ChartPoint();
+    single.date = points[0].date;
+    single.value = points[0].value;
+    single.xRatio = 0.5;
+    result.push(single);
     return result;
   }
   const firstDay = daysSinceEpoch(points[0].date);
   const lastDay = daysSinceEpoch(points[n - 1].date);
   const span = lastDay - firstDay;
-  for (let i = 0; i < n; i++) {
-    let xRatio;
+  for(let i = 0; i < n; i++){
+    const item = new ChartPoint();
+    item.date = points[i].date;
+    item.value = points[i].value;
     if (span <= 0) {
-      xRatio = i / (n - 1);
+      item.xRatio = n === 1 ? 0.5 : i / (n - 1);
     } else {
-      xRatio = (daysSinceEpoch(points[i].date) - firstDay) / span;
+      item.xRatio = (daysSinceEpoch(points[i].date) - firstDay) / span;
     }
-    result.push({ date: points[i].date, value: points[i].value, xRatio });
+    result.push(item);
   }
   return result;
 }
-
 export function buildTrendInsight(prefs, weekGoal, lifts) {
-  const insight = { kind: 'none', message: '', exerciseId: '', partKey: '', remaining: 0 };
-  const hasAnyConfig = prefs.watchedExerciseIds.length > 0 || prefs.sessionsTarget !== null ||
-    prefs.partGoals.length > 0;
+  const insight = new TrendInsight();
+  const hasAnyConfig = prefs.watchedExerciseIds.length > 0 || prefs.sessionsTarget !== null || prefs.partGoals.length > 0;
   if (!hasAnyConfig) {
     insight.kind = 'setup';
     insight.message = '还没有设置关注动作或每周目标，先去设置一下';
     return insight;
   }
-
   if (weekGoal.sessionsTarget !== null) {
     const remaining = weekGoal.sessionsTarget - weekGoal.sessionsDone;
     if (remaining > 0) {
@@ -845,7 +1108,7 @@ export function buildTrendInsight(prefs, weekGoal, lifts) {
       return insight;
     }
   }
-  for (let i = 0; i < weekGoal.parts.length; i++) {
+  for(let i = 0; i < weekGoal.parts.length; i++){
     const row = weekGoal.parts[i];
     if (row.suggested === true) {
       continue;
@@ -858,9 +1121,11 @@ export function buildTrendInsight(prefs, weekGoal, lifts) {
       return insight;
     }
   }
-
-  for (let i = 0; i < lifts.length; i++) {
+  for(let i = 0; i < lifts.length; i++){
     const series = lifts[i];
+    if (series.recordType === 'cardio' || series.metric === 'duration') {
+      continue;
+    }
     if (series.cause === 'fatigue') {
       insight.kind = 'stall';
       insight.exerciseId = series.exerciseId;
@@ -874,9 +1139,11 @@ export function buildTrendInsight(prefs, weekGoal, lifts) {
       return insight;
     }
   }
-
-  for (let i = 0; i < lifts.length; i++) {
+  for(let i = 0; i < lifts.length; i++){
     const series = lifts[i];
+    if (series.recordType === 'cardio' || series.metric === 'duration') {
+      continue;
+    }
     if (series.points.length < 3) {
       continue;
     }
@@ -887,8 +1154,11 @@ export function buildTrendInsight(prefs, weekGoal, lifts) {
       return insight;
     }
   }
-  for (let i = 0; i < lifts.length; i++) {
+  for(let i = 0; i < lifts.length; i++){
     const series = lifts[i];
+    if (series.recordType === 'cardio' || series.metric === 'duration') {
+      continue;
+    }
     if (series.points.length < 3) {
       continue;
     }
@@ -901,21 +1171,8 @@ export function buildTrendInsight(prefs, weekGoal, lifts) {
   }
   return insight;
 }
-
 export function buildTrendDigest(rows, weights, today, rangeKind, prefs) {
-  const digest = {
-    sessions: 0,
-    workSets: 0,
-    lifts: [],
-    weekGoal: { sessionsDone: 0, sessionsTarget: null, parts: [] },
-    weightTrend: {
-      hasWeight: false, latestKg: 0, latestDate: '', sparse: true, hasDelta: false, deltaKg: 0, referenceDate: ''
-    },
-    weightPoints: [],
-    prBoard: [],
-    volumePoints: [],
-    insight: { kind: 'none', message: '', exerciseId: '', partKey: '', remaining: 0 }
-  };
+  const digest = new TrendDigest();
   const summary = weekSummary(rows, today);
   digest.sessions = summary[0];
   digest.workSets = summary[1];
@@ -925,7 +1182,7 @@ export function buildTrendDigest(rows, weights, today, rangeKind, prefs) {
   const chartRows = filterSetsFrom(rows, chartFrom, today);
   const picks = resolveWatchedLifts(chartRows, prefs.watchedExerciseIds, 3);
   const pinned = prefs.watchedExerciseIds.length > 0;
-  for (let i = 0; i < picks.length; i++) {
+  for(let i = 0; i < picks.length; i++){
     const series = buildLiftSeries(chartRows, picks[i]);
     if (series.points.length === 0 && !pinned) {
       continue;
@@ -939,34 +1196,22 @@ export function buildTrendDigest(rows, weights, today, rangeKind, prefs) {
   digest.insight = buildTrendInsight(prefs, digest.weekGoal, digest.lifts);
   return digest;
 }
-
 export function buildExerciseTrendDetail(rows, meta) {
-  const detail = {
-    exerciseId: meta.exerciseId,
-    name: meta.name,
-    partKey: meta.partKey,
-    metric: 'top_weight',
-    metricLabel: '',
-    points: [],
-    insufficientData: false,
-    secondaryLabel: '',
-    secondaryPoints: [],
-    sessions: 0,
-    workSets: 0,
-    recentSessions: [],
-    estimated: false
-  };
+  const detail = new ExerciseTrendDetail();
+  detail.exerciseId = meta.exerciseId;
+  detail.name = meta.name;
+  detail.partKey = meta.partKey;
+  detail.recordType = meta.recordType;
   const isCompound = isCompoundLift(meta.movementPattern, meta.partKey);
-  const metric = liftMetricFor(meta.isBodyweight, isCompound);
+  const metric = meta.recordType === 'cardio' ? 'duration' : liftMetricFor(meta.isBodyweight, isCompound);
   detail.metric = metric;
   detail.metricLabel = liftMetricLabel(metric);
-
   let sessions = 0;
   let workSets = 0;
   const seenDates = new Map();
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
-    if (row.exerciseId !== meta.exerciseId || !isWorkSet(row)) {
+    if (row.exerciseId !== meta.exerciseId || !isTrainingRow(row)) {
       continue;
     }
     workSets += 1;
@@ -977,27 +1222,57 @@ export function buildExerciseTrendDetail(rows, meta) {
   }
   detail.sessions = sessions;
   detail.workSets = workSets;
-
   const days = aggregateDays(rows, meta.exerciseId);
-  for (let i = 0; i < days.length; i++) {
+  for(let i = 0; i < days.length; i++){
     const value = metricValueOf(days[i], metric);
     if (value === null) {
       continue;
     }
-    const point = { date: days[i].date, value, bodyWeightKg: null };
+    const point = new TrendPoint();
+    point.date = days[i].date;
+    point.value = value;
     if (metric === 'e1rm') {
-      point.bodyWeightKg = days[i].e1rmBodyKg === undefined ? null : days[i].e1rmBodyKg;
+      point.bodyWeightKg = days[i].e1rmBodyKg;
     }
     detail.points.push(point);
-    if (metric === 'e1rm' && days[i].e1rmFromEstimate) {
-      detail.estimated = true;
-    }
   }
   const detailRelative = relativeStrengthText(detail.exerciseId, metric, detail.points);
   detail.relativeText = detailRelative.text;
   detail.relativeNote = detailRelative.note;
   if (metric === 'e1rm' && detail.points.length < 2) {
     detail.insufficientData = true;
+  }
+  if (metric === 'e1rm') {
+    let anyEstimated = false;
+    let anyStrict = false;
+    for(let i = 0; i < days.length; i++){
+      if (days[i].bestE1rm === null) {
+        continue;
+      }
+      if (days[i].e1rmStrict) {
+        anyStrict = true;
+      }
+      if (days[i].e1rmEstimated) {
+        anyEstimated = true;
+      }
+    }
+    detail.estimated = anyEstimated && !anyStrict;
+  }
+  if (metric === 'duration') {
+    const stairs = meta.exerciseId === 'cardio_stair_climber';
+    const rower = meta.exerciseId === 'cardio_rower';
+    detail.secondaryLabel = stairs ? '每日总步数' : '每日总距离';
+    detail.secondaryUnit = stairs ? '步' : rower ? 'm' : 'km';
+    for(let i = 0; i < days.length; i++){
+      const value = stairs ? days[i].steps : days[i].distanceM;
+      if (value === null) {
+        continue;
+      }
+      const point = new TrendPoint();
+      point.date = days[i].date;
+      point.value = stairs || rower ? value : value / 1000;
+      detail.secondaryPoints.push(point);
+    }
   }
   if (metric === 'top_weight') {
     detail.secondaryLabel = '同重量下的次数';
@@ -1006,10 +1281,9 @@ export function buildExerciseTrendDetail(rows, meta) {
   detail.recentSessions = exerciseSessionRows(rows, meta.exerciseId, metric);
   return detail;
 }
-
 function sameWeightRepsSeries(rows, exerciseId) {
   let topWeight = null;
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
     if (row.exerciseId !== exerciseId || !isLiftPerformancePoint(row) || row.weight === null) {
       continue;
@@ -1024,7 +1298,7 @@ function sameWeightRepsSeries(rows, exerciseId) {
   }
   const dates = [];
   const bestReps = [];
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
     if (row.exerciseId !== exerciseId || !isLiftPerformancePoint(row)) {
       continue;
@@ -1035,7 +1309,13 @@ function sameWeightRepsSeries(rows, exerciseId) {
     if (Math.abs(row.weight - topWeight) > 0.001) {
       continue;
     }
-    const idx = dates.indexOf(row.date);
+    let idx = -1;
+    for(let j = 0; j < dates.length; j++){
+      if (dates[j] === row.date) {
+        idx = j;
+        break;
+      }
+    }
     if (idx === -1) {
       dates.push(row.date);
       bestReps.push(row.reps);
@@ -1043,8 +1323,11 @@ function sameWeightRepsSeries(rows, exerciseId) {
       bestReps[idx] = row.reps;
     }
   }
-  const order = dates.map((_, i) => i);
-  order.sort((a, b) => {
+  const order = [];
+  for(let i = 0; i < dates.length; i++){
+    order.push(i);
+  }
+  order.sort((a, b)=>{
     if (dates[a] < dates[b]) {
       return -1;
     }
@@ -1053,25 +1336,27 @@ function sameWeightRepsSeries(rows, exerciseId) {
     }
     return 0;
   });
-  for (let i = 0; i < order.length; i++) {
-    points.push({ date: dates[order[i]], value: bestReps[order[i]] });
+  for(let i = 0; i < order.length; i++){
+    const point = new TrendPoint();
+    point.date = dates[order[i]];
+    point.value = bestReps[order[i]];
+    points.push(point);
   }
   return points;
 }
-
 function exerciseSessionRows(rows, exerciseId, metric) {
   const days = aggregateDays(rows, exerciseId);
   const valueByDate = new Map();
-  for (let i = 0; i < days.length; i++) {
+  for(let i = 0; i < days.length; i++){
     valueByDate.set(days[i].date, metricValueOf(days[i], metric));
   }
   const dateOrder = [];
   const workSetsByDate = new Map();
   const minRirByDate = new Map();
   const legacyRirByDate = new Map();
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
-    if (row.exerciseId !== exerciseId || !isWorkSet(row)) {
+    if (row.exerciseId !== exerciseId || !isTrainingRow(row)) {
       continue;
     }
     if (workSetsByDate.get(row.date) === undefined) {
@@ -1079,16 +1364,19 @@ function exerciseSessionRows(rows, exerciseId, metric) {
       workSetsByDate.set(row.date, 0);
     }
     workSetsByDate.set(row.date, workSetsByDate.get(row.date) + 1);
+    if (row.recordType === 'cardio') {
+      continue;
+    }
     if (row.rirLegacy === 1) {
       legacyRirByDate.set(row.date, 1);
-    } else if (row.rir !== null && row.rir !== undefined) {
+    } else if (row.rir !== null) {
       const cur = minRirByDate.get(row.date);
       if (cur === undefined || row.rir < cur) {
         minRirByDate.set(row.date, row.rir);
       }
     }
   }
-  dateOrder.sort((a, b) => {
+  dateOrder.sort((a, b)=>{
     if (a < b) {
       return 1;
     }
@@ -1098,23 +1386,23 @@ function exerciseSessionRows(rows, exerciseId, metric) {
     return 0;
   });
   const result = [];
-  for (let i = 0; i < dateOrder.length; i++) {
+  for(let i = 0; i < dateOrder.length; i++){
     const date = dateOrder[i];
+    const item = new ExerciseSessionRow();
+    item.date = date;
     const v = valueByDate.get(date);
-    result.push({
-      date,
-      value: v === undefined ? null : v,
-      workSets: workSetsByDate.get(date),
-      minRir: minRirByDate.get(date) === undefined ? null : minRirByDate.get(date),
-      rirLegacy: minRirByDate.get(date) === undefined && legacyRirByDate.get(date) === 1 ? 1 : 0
-    });
+    item.value = v === undefined ? null : v;
+    item.workSets = workSetsByDate.get(date);
+    const rirVal = minRirByDate.get(date);
+    item.minRir = rirVal === undefined ? null : rirVal;
+    item.rirLegacy = rirVal === undefined && legacyRirByDate.get(date) === 1 ? 1 : 0;
+    result.push(item);
   }
   return result;
 }
-
 function filterSetsFrom(rows, fromDate, today) {
   const result = [];
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     if (rows[i].date > today) {
       continue;
     }
@@ -1125,19 +1413,21 @@ function filterSetsFrom(rows, fromDate, today) {
   }
   return result;
 }
-
 function filterWeights(rows, fromDate, today) {
   const points = [];
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     if (rows[i].date > today) {
       continue;
     }
     if (fromDate.length > 0 && rows[i].date < fromDate) {
       continue;
     }
-    points.push({ date: rows[i].date, value: rows[i].weightKg });
+    const point = new TrendPoint();
+    point.date = rows[i].date;
+    point.value = rows[i].weightKg;
+    points.push(point);
   }
-  points.sort((a, b) => {
+  points.sort((a, b)=>{
     if (a.date < b.date) {
       return -1;
     }
@@ -1148,28 +1438,25 @@ function filterWeights(rows, fromDate, today) {
   });
   return points;
 }
-
 function collectStats(rows) {
   const list = [];
   const indexOf = new Map();
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
-    if (!isWorkSet(row)) {
+    if (!isTrainingRow(row)) {
       continue;
     }
     let idx = indexOf.get(row.exerciseId);
     if (idx === undefined) {
+      const stat = new ExerciseStat();
+      stat.exerciseId = row.exerciseId;
+      stat.name = row.exerciseName;
+      stat.recordType = row.recordType;
+      stat.partKey = row.partKey;
+      stat.movementPattern = row.movementPattern;
+      stat.isBodyweight = row.isBodyweight;
       indexOf.set(row.exerciseId, list.length);
-      list.push({
-        exerciseId: row.exerciseId,
-        name: row.exerciseName,
-        partKey: row.partKey,
-        movementPattern: row.movementPattern,
-        isBodyweight: row.isBodyweight,
-        sessions: 0,
-        workSets: 0,
-        dateSeen: new Map()
-      });
+      list.push(stat);
       idx = list.length - 1;
     }
     const stat = list[idx];
@@ -1181,9 +1468,8 @@ function collectStats(rows) {
   }
   return list;
 }
-
 function appendPicks(stats, picked, usedParts, usedIds, limit, compoundsOnly) {
-  for (let i = 0; i < stats.length; i++) {
+  for(let i = 0; i < stats.length; i++){
     if (picked.length >= limit) {
       return;
     }
@@ -1199,7 +1485,7 @@ function appendPicks(stats, picked, usedParts, usedIds, limit, compoundsOnly) {
       if (!compound) {
         continue;
       }
-    } else if (stat.partKey === 'cardio') {
+    } else if (stat.partKey === 'cardio' && stat.recordType !== 'cardio') {
       continue;
     }
     usedIds.set(stat.exerciseId, true);
@@ -1207,50 +1493,60 @@ function appendPicks(stats, picked, usedParts, usedIds, limit, compoundsOnly) {
     picked.push(toKeyLiftPick(stat));
   }
 }
-
 function aggregateDays(rows, exerciseId) {
   const list = [];
   const indexOf = new Map();
-  for (let i = 0; i < rows.length; i++) {
+  for(let i = 0; i < rows.length; i++){
     const row = rows[i];
-    if (row.exerciseId !== exerciseId || !isWorkSet(row)) {
+    if (row.exerciseId !== exerciseId || !isTrainingRow(row)) {
       continue;
     }
     let idx = indexOf.get(row.date);
     if (idx === undefined) {
+      const day = new DayAgg();
+      day.date = row.date;
       indexOf.set(row.date, list.length);
-      list.push({
-        date: row.date,
-        bestE1rm: null,
-        topWeight: null,
-        bestReps: null,
-        e1rmFromEstimate: false,
-        e1rmBodyKg: null
-      });
+      list.push(day);
       idx = list.length - 1;
     }
     const day = list[idx];
+    if (row.recordType === 'cardio') {
+      day.durationSec = (day.durationSec === null ? 0 : day.durationSec) + row.cardio.durationSec;
+      if (knownCardioValue(row.cardio.distanceM)) {
+        day.distanceM = (day.distanceM === null ? 0 : day.distanceM) + row.cardio.distanceM;
+      }
+      if (knownCardioValue(row.cardio.steps)) {
+        day.steps = (day.steps === null ? 0 : day.steps) + row.cardio.steps;
+      }
+      continue;
+    }
     if (!isLiftPerformancePoint(row)) {
       continue;
     }
-    if (isE1rmCountable(row)) {
+    if (isE1rmEligible(row)) {
+      const e1rm = epleyE1rm(row.weight, e1rmEffectiveReps(row));
+      if (e1rm !== null && (day.bestE1rm === null || !day.e1rmStrict || e1rm > day.bestE1rm)) {
+        day.bestE1rm = e1rm;
+        day.e1rmStrict = true;
+        day.e1rmEstimated = false;
+        day.e1rmBodyKg = e1rmBodyOf(row);
+      }
+    } else if (!day.e1rmStrict && isE1rmEstimated(row)) {
       const e1rm = epleyE1rm(row.weight, e1rmEffectiveReps(row));
       if (e1rm !== null && (day.bestE1rm === null || e1rm > day.bestE1rm)) {
         day.bestE1rm = e1rm;
-        day.e1rmFromEstimate = isE1rmEstimated(row);
-        day.e1rmBodyKg = positiveBodyKg(row.bodyWeightKg);
+        day.e1rmEstimated = true;
+        day.e1rmBodyKg = e1rmBodyOf(row);
       }
     }
-    if (row.weight !== null && row.weight !== undefined &&
-      (day.topWeight === null || row.weight > day.topWeight)) {
+    if (row.weight !== null && (day.topWeight === null || row.weight > day.topWeight)) {
       day.topWeight = row.weight;
     }
-    if (row.reps !== null && row.reps !== undefined &&
-      (day.bestReps === null || row.reps > day.bestReps)) {
+    if (row.reps !== null && (day.bestReps === null || row.reps > day.bestReps)) {
       day.bestReps = row.reps;
     }
   }
-  list.sort((a, b) => {
+  list.sort((a, b)=>{
     if (a.date < b.date) {
       return -1;
     }

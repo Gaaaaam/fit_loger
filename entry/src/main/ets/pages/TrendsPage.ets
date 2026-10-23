@@ -352,19 +352,28 @@ export struct TrendsPage {
         }
       if (lift.insufficientData || lift.points.length === 0) {
         Row() {
-          Text('数据不足：还没有足够的可比较正式组')
+          Text(lift.recordType === 'cardio' ? '还没有完成的有氧段' : '数据不足：还没有足够的可比较正式组')
             .fontSize(12)
             .fontColor($r('app.color.text_secondary'))
             .layoutWeight(1)
-          TermHint({
-            termId: 'insufficient',
-            onOpen: (id: string) => {
-              this.openTerm(id);
-            }
-          })
+          if (lift.recordType !== 'cardio') {
+            TermHint({
+              termId: 'insufficient',
+              onOpen: (id: string) => {
+                this.openTerm(id);
+              }
+            })
+          }
         }
         .width('100%')
         .margin({ bottom: 6 })
+      }
+      if (lift.recordType === 'cardio') {
+        Text('每日合计时长')
+          .fontSize(12)
+          .fontColor($r('app.color.text_secondary'))
+          .width('100%')
+          .margin({ bottom: 6 })
       }
       if (lift.points.length > 0) {
         TrendSparkline({ points: lift.points })
@@ -482,7 +491,7 @@ export struct TrendsPage {
 
           Column() {
             if (this.digest.lifts.length === 0) {
-              Text(this.prefs.watchedExerciseIds.length === 0 ? '完成几组正式训练后，这里会显示趋势' :
+              Text(this.prefs.watchedExerciseIds.length === 0 ? '完成训练记录后，这里会显示趋势' :
                 '关注的动作在当前范围内还没有记录')
                 .fontSize(14)
                 .fontColor($r('app.color.text_secondary'))

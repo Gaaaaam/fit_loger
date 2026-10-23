@@ -13,7 +13,8 @@ HarmonyOS NEXT 上的离线训练记录应用。把当天训练记得又快又�
 - **日历入口**：月视图打点（已训练 / 已计划 / 已计划未训练），休息和未安排的日子不打点；一键「记录今天」。
 - **日详情录入**：按部位或按动作两种视图；添加动作、加组、填重量次数；手动勾选完成。
 - **预填与提示**：新组继承上一组（或上次训练的正式组）；卡片显示上次表现；完成时检测重量 / 次数 PR。
-- **动作库**：120 条内置动作，覆盖胸、肩、背、手臂、臀、腿、腹、核心、有氧；支持搜索、器械筛选、自建动作。
+- **动作库**：125 条内置动作，覆盖胸、肩、背、手臂、臀、腿、腹、核心、有氧；支持搜索、器械筛选、自建动作。
+- **有氧器械**：跑步机、爬楼机、椭圆机、固定单车和划船机，按段记录时长，选填距离、坡度、档位、频率、功率、心率和面板热量。
 - **三维选动作**：在人体模型上点选 18 个训练肌群，批量加入当日计划。
 - **动作说明**：起始姿势、步骤、计数方式和配图，可在动作卡片或选择器里打开。
 - **身体数据**：身高、体重（自重动作会用到体重）。
@@ -89,14 +90,14 @@ fit_loger/
 
 ## 数据模型
 
-Schema 版本：`CURRENT_VERSION = 3`（见 `entry/src/main/ets/db/schemaSql.ets`）。JSON 导出同样是 version `3`。v3 给每组增加 `rir_legacy`：升级前写成「还能做 1–2 下 / 3 下以上」的记录保持早期合并档，新记录用精确 RIR 0–3。
+Schema 版本：`CURRENT_VERSION = 4`（见 `entry/src/main/ets/db/schemaSql.ets`）。JSON 导出同样是 version `4`，兼容旧版导入。v4 增加动作记录类型及独立有氧指标；旧动作和历史重量／次数保持原含义。v3 的 `rir_legacy` 继续区分早期合并档与精确 RIR 0–3。
 
 | 表 | 作用 |
 | --- | --- |
 | `exercises` | 动作库（内置 + 自建），含部位、肌群、器械、`weight_step`、是否自重 |
 | `workout_days` | 训练日，`date` 为 `YYYY-MM-DD` |
 | `day_exercises` | 当天动作，直接挂 `day_id`（部位是动作属性，不是中间表） |
-| `workout_sets` | 组：重量、次数、热身、技法、RIR、`planned`/`done`、完成时间 |
+| `workout_sets` | 力量组或有氧训练段；独立保存时长秒、距离米及器械指标，含热身、状态和完成时间 |
 | `body_metrics` | 按日体重 |
 | `watched_exercises` | 趋势页关注的动作（偏好，v2） |
 | `trend_settings` | 每周训练天数目标（偏好，v2） |
@@ -137,7 +138,9 @@ Schema 版本：`CURRENT_VERSION = 3`（见 `entry/src/main/ets/db/schemaSql.ets
 node tools/exercises/generate.mjs
 ```
 
-源数据在 `tools/exercises/curated.json`。上游参考 [yuhonas/free-exercise-db](https://github.com/yuhonas/free-exercise-db)（Unlicense）；本应用不使用上游照片，配图为原创矢量图。
+源数据在 `tools/exercises/data.mjs`，`curated.json` 和 ArkTS 目录为生成产物。只更新目录可运行 `node tools/exercises/generate.mjs --catalog-only`；普通生成也会保留已有 SVG 和升级后的图片解析逻辑。上游参考 [yuhonas/free-exercise-db](https://github.com/yuhonas/free-exercise-db)（Unlicense）；本应用不使用上游照片，配图为原创 SVG 或生成的 3D 指导图。
+
+新增五类器械使用男女双版本 WebP，共 24 帧；素材清单为 `tools/exercises/guidance.json`，实际生成提示词为 `tools/exercises/cardio_prompts.json`。母图只保存在本机及忽略目录 `.work/exercise-guidance/`，不打包进应用。
 
 人体选肌模型由 `tools/anatomy/build_muscle_glb.py` 从 BodyExplorer 的 `anatomy.glb` / `skeleton.glb` 重建。把源文件和 `mesh_mapping.json` 放到 `.work/anatomy` 后运行：
 
@@ -170,9 +173,16 @@ python tools/anatomy/verify_asset.py
 node tools/verify_batch_add.mjs
 node tools/verify_trend_logic.mjs
 node tools/verify_trend_guide.mjs
+node tools/verify_cardio_logic.mjs
+node tools/verify_cardio_input.mjs
+node tools/verify_cardio_persistence.mjs
+node tools/verify_cardio_generator.mjs
+node tools/verify_cardio_trends.mjs
 ```
 
 它们会核对必需文件、schema、动作数量、日历打点、录入状态机、肌群点选、相机约束、批量添加和趋势聚合等。`verify_project.mjs` 还会拒绝把签名密码写进 `build-profile.json5`。真机步骤见 [docs/qa-device.md](docs/qa-device.md)，需在至少两款真机上填写结果表。
+
+有氧专项验收见 [docs/qa-cardio.md](docs/qa-cardio.md)。新增有氧趋势使用时长和距离／台阶数，并排除力量容量、重量纪录与正式组目标。
 
 ## 许可与署名
 

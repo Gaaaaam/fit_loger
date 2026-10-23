@@ -2,6 +2,12 @@ export type PartKey = 'chest' | 'shoulder' | 'back' | 'arm' | 'glute' | 'leg' | 
 
 export type SetStatus = 'planned' | 'done';
 
+export type RecordType = 'reps' | 'cardio';
+
+export function toRecordType(value: string): RecordType {
+  return value === 'cardio' ? 'cardio' : 'reps';
+}
+
 export type DayDotKind = 'trained' | 'planned' | 'missed' | 'rest' | 'empty';
 
 export type Technique = 'drop' | 'ramp' | 'rest_pause' | 'amrap';
@@ -24,15 +30,15 @@ export interface EquipmentInfo {
 }
 
 export const BODY_PARTS: BodyPartInfo[] = [
-  { key: 'chest', name: '胸', description: '胸部推举与夹胸', image: $r('app.media.part_chest') },
-  { key: 'shoulder', name: '肩', description: '肩部推举与侧平举', image: $r('app.media.part_shoulder') },
-  { key: 'back', name: '背', description: '背部拉力与划船', image: $r('app.media.part_back') },
-  { key: 'arm', name: '手臂', description: '肱二头肌与肱三头肌', image: $r('app.media.part_arm') },
-  { key: 'glute', name: '臀部', description: '髋伸展与臀部训练', image: $r('app.media.part_glute') },
-  { key: 'leg', name: '腿', description: '大腿与小腿训练', image: $r('app.media.part_leg') },
-  { key: 'abs', name: '腹部', description: '卷腹、举腿等腹肌训练', image: $r('app.media.part_abs') },
-  { key: 'core', name: '核心', description: '躯干稳定与抗旋转', image: $r('app.media.part_core') },
-  { key: 'cardio', name: '有氧', description: '心肺耐力训练', image: $r('app.media.part_cardio') }
+  { key: 'chest', name: '胸', description: '胸部推举与夹胸', image: $r('app.media.part_chest_v2') },
+  { key: 'shoulder', name: '肩', description: '肩部推举与侧平举', image: $r('app.media.part_shoulder_v2') },
+  { key: 'back', name: '背', description: '背部拉力与划船', image: $r('app.media.part_back_v2') },
+  { key: 'arm', name: '手臂', description: '肱二头肌与肱三头肌', image: $r('app.media.part_arm_v2') },
+  { key: 'glute', name: '臀部', description: '髋伸展与臀部训练', image: $r('app.media.part_glute_v2') },
+  { key: 'leg', name: '腿', description: '大腿与小腿训练', image: $r('app.media.part_leg_v2') },
+  { key: 'abs', name: '腹部', description: '卷腹、举腿等腹肌训练', image: $r('app.media.part_abs_v2') },
+  { key: 'core', name: '核心', description: '躯干稳定与抗旋转', image: $r('app.media.part_core_v2') },
+  { key: 'cardio', name: '有氧', description: '心肺耐力训练', image: $r('app.media.part_cardio_v2') }
 ];
 
 export const EQUIPMENT_OPTIONS: EquipmentInfo[] = [

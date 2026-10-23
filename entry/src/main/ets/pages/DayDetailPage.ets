@@ -1,6 +1,7 @@
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { promptAction, router } from '@kit.ArkUI';
 import { AppSettings } from '../common/AppSettings';
+import { ExerciseModelPreference } from '../common/ExerciseArtworkLogic';
 import { BodyPartSheet } from '../components/BodyPartSheet';
 import { CreateExerciseSheet } from '../components/CreateExerciseSheet';
 import { ExerciseCard } from '../components/ExerciseCard';
@@ -26,7 +27,9 @@ struct DayDetailPage {
   @State dayNoteText: string = '';
   @State day: DayModel = new DayModel();
   @State viewMode: WorkoutViewMode = 'part';
+  @State exerciseModelPreference: ExerciseModelPreference = 'auto';
   @State showSheet: boolean = false;
+  @State showDayMenu: boolean = false;
   @State sheetMode: string = 'part';
   @State pickerPartKey: PartKey = 'chest';
   @State infoId: string = '';
@@ -46,6 +49,7 @@ struct DayDetailPage {
   private dayNoteDirty: boolean = false;
   private listScroller: Scroller = new Scroller();
   private pickerOpened: boolean = false;
+  private exerciseModelPreferenceLoaded: boolean = false;
 
   aboutToAppear(): void {
     const raw: Object | undefined = router.getParams();
@@ -60,6 +64,7 @@ struct DayDetailPage {
     }
     this.titleText = displayChineseDate(this.dateStr);
     this.loadViewMode();
+    this.loadExerciseModelPreference();
     this.reload();
   }
 
@@ -82,6 +87,18 @@ struct DayDetailPage {
     this.viewMode = await AppSettings.loadWorkoutViewMode();
   }
 
+  private async loadExerciseModelPreference(): Promise<void> {
+    if (this.exerciseModelPreferenceLoaded) {
+      return;
+    }
+    this.exerciseModelPreferenceLoaded = true;
+    try {
+      this.exerciseModelPreference = await AppSettings.loadExerciseModelPreference();
+    } catch (err) {
+      hilog.warn(0xF170, 'DayDetailPage', 'exercise model preference load failed');
+    }
+  }
+
   private hasPlanned(): boolean {
     const tick: number = this.plannedTick;
     if (tick < 0) {
@@ -97,6 +114,29 @@ struct DayDetailPage {
       }
     }
     return false;
+  }
+
+  private setProgressText(): string {
+    const tick: number = this.plannedTick;
+    if (tick < 0) {
+      return '';
+    }
+    const list: ExerciseItem[] = this.orderedExercises();
+    let done: number = 0;
+    let total: number = 0;
+    for (let i = 0; i < list.length; i++) {
+      const sets: SetItem[] = list[i].sets;
+      for (let k = 0; k < sets.length; k++) {
+        total++;
+        if (sets[k].status === 'done') {
+          done++;
+        }
+      }
+    }
+    if (total === 0) {
+      return '';
+    }
+    return `${done}/${total} 组`;
   }
 
   private orderedExercises(): ExerciseItem[] {
@@ -306,7 +346,10 @@ struct DayDetailPage {
   }
 
   private async handleAddSet(exerciseRowId: number): Promise<void> {
-    this.getUIContext().getFocusController().clearFocus();
+    const ok: boolean = await this.flushAllInputs();
+    if (!ok) {
+      return;
+    }
     const setItem: SetItem = await WorkoutRepository.addSet(exerciseRowId);
     const ex: ExerciseItem | null = this.findExercise(exerciseRowId);
     if (ex !== null) {
@@ -329,7 +372,7 @@ struct DayDetailPage {
           WorkoutRepository.deleteSet(setId).catch(() => {
             hilog.error(0xF170, 'DayDetailPage', 'deleteSet failed');
           });
-          this.showUndoBar('已删除一组');
+          this.showUndoBar(ex.recordType === 'cardio' ? '已删除一段' : '已删除一组');
           this.plannedTick++;
           return;
         }
@@ -445,6 +488,10 @@ struct DayDetailPage {
       const sets: SetItem[] = list[i].sets;
       for (let k = 0; k < sets.length; k++) {
         const item: SetItem = sets[k];
+        if (item.recordType === 'cardio' && item.inputError.length > 0) {
+          promptAction.showToast({ message: '请先修正有氧输入', duration: 2000 });
+          return false;
+        }
         const w: ParseResult = parseWeight(item.weightText);
         const r: ParseResult = parseReps(item.repsText);
         if (!w.ok) {
@@ -549,6 +596,9 @@ struct DayDetailPage {
   }
 
   private async handleBecameDone(exerciseId: string, item: SetItem): Promise<void> {
+    if (item.recordType === 'cardio') {
+      return;
+    }
     const w = parseWeight(item.weightText);
     const r = parseReps(item.repsText);
     if (!w.ok) {
@@ -583,6 +633,27 @@ struct DayDetailPage {
     });
   }
 
+  private confirmClearPlanned(): void {
+    AlertDialog.show({
+      title: '清理未完成组',
+      message: '去掉还没勾选的组？已完成的组会保留。',
+      autoCancel: true,
+      alignment: DialogAlignment.Center,
+      primaryButton: {
+        value: '清理',
+        fontColor: Color.Red,
+        action: () => {
+          this.handleClearPlanned();
+        }
+      },
+      secondaryButton: {
+        value: '取消',
+        action: () => {
+        }
+      }
+    });
+  }
+
   private async handleDeleteDay(): Promise<void> {
     await WorkoutRepository.deleteDay(this.dateStr);
     router.back();
@@ -594,6 +665,7 @@ struct DayDetailPage {
       if (this.sheetMode === 'exercise') {
         ExerciseSheet({
           partKey: this.pickerPartKey,
+          modelPreference: this.exerciseModelPreference,
           onPick: (exerciseId: string) => {
             this.handlePickExercise(exerciseId);
           },
@@ -620,6 +692,7 @@ struct DayDetailPage {
             exerciseId: this.infoId,
             displayName: this.infoName,
             partKey: this.infoPart,
+            modelPreference: this.exerciseModelPreference,
             showAdd: false
           })
         }
@@ -666,6 +739,52 @@ struct DayDetailPage {
     .height('100%')
   }
 
+  @Builder
+  DayMenu() {
+    Column() {
+      Text(this.titleText)
+        .fontSize(20)
+        .fontWeight(FontWeight.Medium)
+        .fontColor($r('app.color.text_primary'))
+        .width('100%')
+      if (this.hasPlanned()) {
+        Column() {
+          Text('清理未完成组')
+            .fontSize(16)
+            .fontColor($r('app.color.text_primary'))
+        }
+        .width('100%')
+        .height(52)
+        .justifyContent(FlexAlign.Center)
+        .margin({ top: 20 })
+        .backgroundColor($r('app.color.chip_bg'))
+        .borderRadius(12)
+        .onClick(() => {
+          this.showDayMenu = false;
+          this.confirmClearPlanned();
+        })
+      }
+      Column() {
+        Text('删除当天')
+          .fontSize(16)
+          .fontColor($r('app.color.danger'))
+      }
+      .width('100%')
+      .height(52)
+      .justifyContent(FlexAlign.Center)
+      .margin({ top: this.hasPlanned() ? 10 : 20 })
+      .borderRadius(12)
+      .backgroundColor($r('app.color.chip_bg'))
+      .onClick(() => {
+        this.showDayMenu = false;
+        this.confirmDeleteDay();
+      })
+    }
+    .width('100%')
+    .padding({ left: 20, right: 20, top: 36, bottom: 24 })
+    .alignItems(HorizontalAlign.Start)
+  }
+
   build() {
     Column() {
       Row() {
@@ -677,23 +796,43 @@ struct DayDetailPage {
           })
         Blank()
         if (this.hasRecords()) {
-          Text('删除当天')
-            .fontSize(16)
-            .fontColor($r('app.color.danger'))
+          Text('···')
+            .fontSize(20)
+            .fontColor($r('app.color.text_secondary'))
+            .width(44)
+            .height(32)
+            .textAlign(TextAlign.Center)
+            .accessibilityText('更多')
             .onClick(() => {
-              this.confirmDeleteDay();
+              this.showDayMenu = true;
+            })
+            .bindSheet($$this.showDayMenu, this.DayMenu, {
+              height: 300,
+              dragBar: true,
+              showClose: true,
+              backgroundColor: $r('app.color.card_bg')
             })
         }
       }
       .width('100%')
       .padding({ bottom: 8 })
 
-      Text(this.titleText)
-        .fontSize(22)
-        .fontWeight(FontWeight.Bold)
-        .fontColor($r('app.color.text_primary'))
-        .width('100%')
-        .margin({ bottom: 10 })
+      Row() {
+        Text(this.titleText)
+          .fontSize(22)
+          .fontWeight(FontWeight.Bold)
+          .fontColor($r('app.color.text_primary'))
+          .layoutWeight(1)
+        if (this.setProgressText().length > 0) {
+          Text(this.setProgressText())
+            .fontSize(14)
+            .fontColor($r('app.color.text_secondary'))
+            .margin({ left: 8 })
+        }
+      }
+      .width('100%')
+      .alignItems(VerticalAlign.Center)
+      .margin({ bottom: 10 })
 
       if (this.gapLines.length > 0) {
         ForEach(this.gapLines, (line: string) => {
@@ -767,22 +906,6 @@ struct DayDetailPage {
         .layoutWeight(1)
         .justifyContent(FlexAlign.Center)
       } else {
-        Row() {
-          Text(this.hasPlanned() ? '还有未完成的组' : '所有组已完成')
-            .fontSize(13)
-            .fontColor($r('app.color.text_secondary'))
-            .layoutWeight(1)
-          Text('清理未完成组')
-            .fontSize(13)
-            .fontColor($r('app.color.accent'))
-            .visibility(this.hasPlanned() ? Visibility.Visible : Visibility.Hidden)
-            .onClick(() => {
-              this.handleClearPlanned();
-            })
-        }
-        .width('100%')
-        .height(36)
-
         Scroll(this.listScroller) {
           Column() {
             if (this.viewMode === 'exercise') {
@@ -900,7 +1023,8 @@ struct DayDetailPage {
     .bindSheet($$this.showSheet, this.SheetBuilder, {
       height: SheetSize.LARGE,
       dragBar: true,
-      showClose: true
+      showClose: true,
+      backgroundColor: $r('app.color.card_bg')
     })
   }
 }

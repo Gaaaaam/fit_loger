@@ -194,7 +194,9 @@ struct TrendSettingsPage {
           .fontSize(15)
           .fontColor($r('app.color.text_primary'))
           .width('100%')
-        Text(`${partName(item.partKey)} · ${item.sessions} 次训练`)
+        Text(item.recordType === 'cardio' ?
+          `${partName(item.partKey)} · ${item.sessions} 个训练日 · ${item.workSets} 段` :
+          `${partName(item.partKey)} · ${item.sessions} 次训练`)
           .fontSize(12)
           .fontColor($r('app.color.text_secondary'))
           .width('100%')
@@ -305,7 +307,7 @@ struct TrendSettingsPage {
 
           Column() {
             if (this.watchable.length === 0) {
-              Text('完成几组正式训练后，这里会显示趋势')
+              Text('完成训练记录后，这里会显示趋势')
                 .fontSize(14)
                 .fontColor($r('app.color.text_secondary'))
                 .width('100%')

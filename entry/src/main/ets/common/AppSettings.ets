@@ -1,12 +1,14 @@
 import { common, ConfigurationConstant } from '@kit.AbilityKit';
 import { preferences } from '@kit.ArkData';
 import { toWorkoutViewMode, WorkoutViewMode } from '../model/muscleTypes';
+import { ExerciseModelPreference, toExerciseModelPreference } from './ExerciseArtworkLogic';
 
 const STORE_NAME: string = 'fit_loger_settings';
 const KEY_THEME: string = 'theme';
 const KEY_HEIGHT: string = 'height_cm';
 const KEY_VIEW_MODE: string = 'workout_view_mode';
 const KEY_TRENDS_GUIDE_SEEN: string = 'trends_guide_seen';
+const KEY_EXERCISE_MODEL_GENDER: string = 'exercise_model_gender';
 
 export class AppSettings {
   private static store: preferences.Preferences | null = null;
@@ -99,6 +101,25 @@ export class AppSettings {
       return;
     }
     await AppSettings.prefs().put(KEY_VIEW_MODE, mode);
+    await AppSettings.prefs().flush();
+  }
+
+  static async loadExerciseModelPreference(): Promise<ExerciseModelPreference> {
+    if (AppSettings.store === null) {
+      return 'auto';
+    }
+    const value: preferences.ValueType = await AppSettings.prefs().get(
+      KEY_EXERCISE_MODEL_GENDER,
+      'auto'
+    );
+    return typeof value === 'string' ? toExerciseModelPreference(value) : 'auto';
+  }
+
+  static async saveExerciseModelPreference(preference: ExerciseModelPreference): Promise<void> {
+    if (AppSettings.store === null) {
+      return;
+    }
+    await AppSettings.prefs().put(KEY_EXERCISE_MODEL_GENDER, preference);
     await AppSettings.prefs().flush();
   }
 

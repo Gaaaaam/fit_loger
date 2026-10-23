@@ -1,10 +1,14 @@
 import { addDays, daysSinceEpoch, isoWeekStart, rangeStart } from './DateUtil';
+import { CardioMetrics } from '../model/CardioModels';
+import { RecordType } from '../model/types';
 
 export const PART_ORDER: string[] = [
   'chest', 'shoulder', 'back', 'arm', 'glute', 'leg', 'abs', 'core', 'cardio'
 ];
 
 export class TrendSetRow {
+  recordType: RecordType = 'reps';
+  cardio: CardioMetrics = new CardioMetrics();
   date: string = '';
   exerciseId: string = '';
   exerciseName: string = '';
@@ -40,6 +44,7 @@ export class ChartPoint {
 }
 
 export class KeyLiftPick {
+  recordType: RecordType = 'reps';
   exerciseId: string = '';
   name: string = '';
   partKey: string = '';
@@ -51,6 +56,7 @@ export class KeyLiftPick {
 }
 
 export class KeyLiftSeries {
+  recordType: RecordType = 'reps';
   exerciseId: string = '';
   name: string = '';
   metric: string = 'top_weight';
@@ -100,6 +106,7 @@ export class WeightTrendSummary {
 }
 
 export class ExerciseMeta {
+  recordType: RecordType = 'reps';
   exerciseId: string = '';
   name: string = '';
   partKey: string = '';
@@ -116,6 +123,7 @@ export class ExerciseSessionRow {
 }
 
 export class ExerciseTrendDetail {
+  recordType: RecordType = 'reps';
   exerciseId: string = '';
   name: string = '';
   partKey: string = '';
@@ -125,6 +133,7 @@ export class ExerciseTrendDetail {
   insufficientData: boolean = false;
   estimated: boolean = false;
   secondaryLabel: string = '';
+  secondaryUnit: string = '次';
   secondaryPoints: TrendPoint[] = [];
   sessions: number = 0;
   workSets: number = 0;
@@ -134,6 +143,7 @@ export class ExerciseTrendDetail {
 }
 
 export class WatchableExercise {
+  recordType: RecordType = 'reps';
   exerciseId: string = '';
   name: string = '';
   partKey: string = '';
@@ -171,6 +181,7 @@ export class TrendDigest {
 }
 
 class ExerciseStat {
+  recordType: RecordType = 'reps';
   exerciseId: string = '';
   name: string = '';
   partKey: string = '';
@@ -182,6 +193,9 @@ class ExerciseStat {
 }
 
 class DayAgg {
+  durationSec: number | null = null;
+  distanceM: number | null = null;
+  steps: number | null = null;
   date: string = '';
   bestE1rm: number | null = null;
   e1rmStrict: boolean = false;
@@ -208,7 +222,21 @@ class WindowAverage {
 }
 
 export function isWorkSet(row: TrendSetRow): boolean {
-  return row.status === 'done' && row.isWarmup === 0;
+  return row.recordType !== 'cardio' && row.status === 'done' && row.isWarmup === 0;
+}
+
+// 有氧完成段参与训练天数和时长，但不计入力量正式组。
+export function isCompletedCardioSegment(row: TrendSetRow): boolean {
+  return row.recordType === 'cardio' && row.status === 'done' && row.isWarmup === 0 &&
+    row.cardio.durationSec !== null && Number.isFinite(row.cardio.durationSec) && row.cardio.durationSec > 0;
+}
+
+function isTrainingRow(row: TrendSetRow): boolean {
+  return isWorkSet(row) || isCompletedCardioSegment(row);
+}
+
+function knownCardioValue(value: number | null): boolean {
+  return value !== null && Number.isFinite(value) && value >= 0;
 }
 
 // 递减组/递增组/休息暂停组的重量或次数不代表该动作当天的真实上限，
@@ -292,6 +320,9 @@ export function isE1rmCountable(row: TrendSetRow): boolean {
 }
 
 export function workingLoadKg(row: TrendSetRow): number | null {
+  if (row.recordType === 'cardio') {
+    return null;
+  }
   if (row.isBodyweight === 1 && isCompoundLift(row.movementPattern, row.partKey)) {
     if (row.bodyWeightKg === null || row.bodyWeightKg <= 0) {
       return null;
@@ -473,6 +504,9 @@ export function formatTrendNumber(value: number): string {
 }
 
 export function liftMetricLabel(metric: string): string {
+  if (metric === 'duration') {
+    return '时长 分钟';
+  }
   if (metric === 'e1rm') {
     return 'e1RM';
   }
@@ -538,6 +572,7 @@ export function weightDeltaText(trend: WeightTrendSummary): string {
 
 function toKeyLiftPick(stat: ExerciseStat): KeyLiftPick {
   const pick: KeyLiftPick = new KeyLiftPick();
+  pick.recordType = stat.recordType;
   pick.exerciseId = stat.exerciseId;
   pick.name = stat.name;
   pick.partKey = stat.partKey;
@@ -609,8 +644,9 @@ export function buildLiftSeries(rows: TrendSetRow[], pick: KeyLiftPick): KeyLift
   const series: KeyLiftSeries = new KeyLiftSeries();
   series.exerciseId = pick.exerciseId;
   series.name = pick.name;
+  series.recordType = pick.recordType;
   const days: DayAgg[] = aggregateDays(rows, pick.exerciseId);
-  const metric: string = liftMetricFor(pick.isBodyweight, pick.isCompound);
+  const metric: string = pick.recordType === 'cardio' ? 'duration' : liftMetricFor(pick.isBodyweight, pick.isCompound);
   series.metric = metric;
   for (let i = 0; i < days.length; i++) {
     const day: DayAgg = days[i];
@@ -670,6 +706,9 @@ function liftMetricFor(isBodyweight: number, isCompound: boolean): string {
 }
 
 function metricValueOf(day: DayAgg, metric: string): number | null {
+  if (metric === 'duration') {
+    return day.durationSec === null ? null : day.durationSec / 60;
+  }
   if (metric === 'e1rm') {
     return day.bestE1rm;
   }
@@ -686,13 +725,15 @@ export function weekSummary(rows: TrendSetRow[], today: string): number[] {
   let workSets: number = 0;
   for (let i = 0; i < rows.length; i++) {
     const row: TrendSetRow = rows[i];
-    if (!isWorkSet(row)) {
+    if (!isTrainingRow(row)) {
       continue;
     }
     if (row.date < weekStart || row.date > weekEnd) {
       continue;
     }
-    workSets += 1;
+    if (isWorkSet(row)) {
+      workSets += 1;
+    }
     dates.set(row.date, true);
   }
   return [dates.size, workSets];
@@ -1112,6 +1153,9 @@ export function buildTrendInsight(prefs: TrendPreferences, weekGoal: WeekGoalPro
 
   for (let i = 0; i < lifts.length; i++) {
     const series: KeyLiftSeries = lifts[i];
+    if (series.recordType === 'cardio' || series.metric === 'duration') {
+      continue;
+    }
     if (series.cause === 'fatigue') {
       insight.kind = 'stall';
       insight.exerciseId = series.exerciseId;
@@ -1128,6 +1172,9 @@ export function buildTrendInsight(prefs: TrendPreferences, weekGoal: WeekGoalPro
 
   for (let i = 0; i < lifts.length; i++) {
     const series: KeyLiftSeries = lifts[i];
+    if (series.recordType === 'cardio' || series.metric === 'duration') {
+      continue;
+    }
     if (series.points.length < 3) {
       continue;
     }
@@ -1140,6 +1187,9 @@ export function buildTrendInsight(prefs: TrendPreferences, weekGoal: WeekGoalPro
   }
   for (let i = 0; i < lifts.length; i++) {
     const series: KeyLiftSeries = lifts[i];
+    if (series.recordType === 'cardio' || series.metric === 'duration') {
+      continue;
+    }
     if (series.points.length < 3) {
       continue;
     }
@@ -1191,8 +1241,9 @@ export function buildExerciseTrendDetail(rows: TrendSetRow[], meta: ExerciseMeta
   detail.exerciseId = meta.exerciseId;
   detail.name = meta.name;
   detail.partKey = meta.partKey;
+  detail.recordType = meta.recordType;
   const isCompound: boolean = isCompoundLift(meta.movementPattern, meta.partKey);
-  const metric: string = liftMetricFor(meta.isBodyweight, isCompound);
+  const metric: string = meta.recordType === 'cardio' ? 'duration' : liftMetricFor(meta.isBodyweight, isCompound);
   detail.metric = metric;
   detail.metricLabel = liftMetricLabel(metric);
 
@@ -1201,7 +1252,7 @@ export function buildExerciseTrendDetail(rows: TrendSetRow[], meta: ExerciseMeta
   const seenDates: Map<string, boolean> = new Map();
   for (let i = 0; i < rows.length; i++) {
     const row: TrendSetRow = rows[i];
-    if (row.exerciseId !== meta.exerciseId || !isWorkSet(row)) {
+    if (row.exerciseId !== meta.exerciseId || !isTrainingRow(row)) {
       continue;
     }
     workSets += 1;
@@ -1248,6 +1299,22 @@ export function buildExerciseTrendDetail(rows: TrendSetRow[], meta: ExerciseMeta
       }
     }
     detail.estimated = anyEstimated && !anyStrict;
+  }
+  if (metric === 'duration') {
+    const stairs: boolean = meta.exerciseId === 'cardio_stair_climber';
+    const rower: boolean = meta.exerciseId === 'cardio_rower';
+    detail.secondaryLabel = stairs ? '每日总步数' : '每日总距离';
+    detail.secondaryUnit = stairs ? '步' : (rower ? 'm' : 'km');
+    for (let i = 0; i < days.length; i++) {
+      const value: number | null = stairs ? days[i].steps : days[i].distanceM;
+      if (value === null) {
+        continue;
+      }
+      const point: TrendPoint = new TrendPoint();
+      point.date = days[i].date;
+      point.value = stairs || rower ? value : value / 1000;
+      detail.secondaryPoints.push(point);
+    }
   }
   if (metric === 'top_weight') {
     detail.secondaryLabel = '同重量下的次数';
@@ -1333,7 +1400,7 @@ function exerciseSessionRows(rows: TrendSetRow[], exerciseId: string, metric: st
   const legacyRirByDate: Map<string, number> = new Map();
   for (let i = 0; i < rows.length; i++) {
     const row: TrendSetRow = rows[i];
-    if (row.exerciseId !== exerciseId || !isWorkSet(row)) {
+    if (row.exerciseId !== exerciseId || !isTrainingRow(row)) {
       continue;
     }
     if (workSetsByDate.get(row.date) === undefined) {
@@ -1341,6 +1408,9 @@ function exerciseSessionRows(rows: TrendSetRow[], exerciseId: string, metric: st
       workSetsByDate.set(row.date, 0);
     }
     workSetsByDate.set(row.date, (workSetsByDate.get(row.date) as number) + 1);
+    if (row.recordType === 'cardio') {
+      continue;
+    }
     if (row.rirLegacy === 1) {
       legacyRirByDate.set(row.date, 1);
     } else if (row.rir !== null) {
@@ -1420,7 +1490,7 @@ function collectStats(rows: TrendSetRow[]): ExerciseStat[] {
   const indexOf: Map<string, number> = new Map();
   for (let i = 0; i < rows.length; i++) {
     const row: TrendSetRow = rows[i];
-    if (!isWorkSet(row)) {
+    if (!isTrainingRow(row)) {
       continue;
     }
     let idx: number | undefined = indexOf.get(row.exerciseId);
@@ -1428,6 +1498,7 @@ function collectStats(rows: TrendSetRow[]): ExerciseStat[] {
       const stat: ExerciseStat = new ExerciseStat();
       stat.exerciseId = row.exerciseId;
       stat.name = row.exerciseName;
+      stat.recordType = row.recordType;
       stat.partKey = row.partKey;
       stat.movementPattern = row.movementPattern;
       stat.isBodyweight = row.isBodyweight;
@@ -1463,7 +1534,7 @@ function appendPicks(stats: ExerciseStat[], picked: KeyLiftPick[], usedParts: Ma
       if (!compound) {
         continue;
       }
-    } else if (stat.partKey === 'cardio') {
+    } else if (stat.partKey === 'cardio' && stat.recordType !== 'cardio') {
       continue;
     }
     usedIds.set(stat.exerciseId, true);
@@ -1477,7 +1548,7 @@ function aggregateDays(rows: TrendSetRow[], exerciseId: string): DayAgg[] {
   const indexOf: Map<string, number> = new Map();
   for (let i = 0; i < rows.length; i++) {
     const row: TrendSetRow = rows[i];
-    if (row.exerciseId !== exerciseId || !isWorkSet(row)) {
+    if (row.exerciseId !== exerciseId || !isTrainingRow(row)) {
       continue;
     }
     let idx: number | undefined = indexOf.get(row.date);
@@ -1489,6 +1560,16 @@ function aggregateDays(rows: TrendSetRow[], exerciseId: string): DayAgg[] {
       idx = list.length - 1;
     }
     const day: DayAgg = list[idx];
+    if (row.recordType === 'cardio') {
+      day.durationSec = (day.durationSec === null ? 0 : day.durationSec) + (row.cardio.durationSec as number);
+      if (knownCardioValue(row.cardio.distanceM)) {
+        day.distanceM = (day.distanceM === null ? 0 : day.distanceM) + (row.cardio.distanceM as number);
+      }
+      if (knownCardioValue(row.cardio.steps)) {
+        day.steps = (day.steps === null ? 0 : day.steps) + (row.cardio.steps as number);
+      }
+      continue;
+    }
     if (!isLiftPerformancePoint(row)) {
       continue;
     }

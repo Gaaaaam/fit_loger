@@ -27,6 +27,7 @@ export struct PartSection {
   };
   onOpenDetail: (exercise: ExerciseItem) => void = (_exercise: ExerciseItem) => {
   };
+  @State showActions: boolean = false;
 
   private partExpanded(): boolean {
     return this.collapsedPartKeys.indexOf(this.part.partKey) < 0;
@@ -65,6 +66,35 @@ export struct PartSection {
     });
   }
 
+  @Builder
+  ActionSheet() {
+    Column() {
+      Text(this.part.name)
+        .fontSize(20)
+        .fontWeight(FontWeight.Medium)
+        .fontColor($r('app.color.text_primary'))
+        .width('100%')
+      Column() {
+        Text('删除部位')
+          .fontSize(16)
+          .fontColor($r('app.color.danger'))
+      }
+      .width('100%')
+      .height(52)
+      .justifyContent(FlexAlign.Center)
+      .margin({ top: 20 })
+      .borderRadius(12)
+      .backgroundColor($r('app.color.chip_bg'))
+      .onClick(() => {
+        this.showActions = false;
+        this.confirmDeletePart();
+      })
+    }
+    .width('100%')
+    .padding({ left: 20, right: 20, top: 36, bottom: 24 })
+    .alignItems(HorizontalAlign.Start)
+  }
+
   build() {
     Column() {
       Row() {
@@ -101,11 +131,15 @@ export struct PartSection {
         .onClick(() => {
           this.onTogglePart(this.part.partKey);
         })
-        Text('删除部位')
-          .fontSize(13)
-          .fontColor($r('app.color.danger'))
+        Text('···')
+          .fontSize(18)
+          .fontColor($r('app.color.text_secondary'))
+          .width(36)
+          .height(28)
+          .textAlign(TextAlign.Center)
+          .accessibilityText('更多')
           .onClick(() => {
-            this.confirmDeletePart();
+            this.showActions = true;
           })
       }
       .width('100%')
@@ -154,5 +188,11 @@ export struct PartSection {
     }
     .width('100%')
     .margin({ bottom: 18 })
+    .bindSheet($$this.showActions, this.ActionSheet, {
+      height: 240,
+      dragBar: true,
+      showClose: true,
+      backgroundColor: $r('app.color.card_bg')
+    })
   }
 }

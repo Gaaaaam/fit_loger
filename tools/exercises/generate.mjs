@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync, readdirSync, unlinkSync } from 'fs';
+import { mkdirSync, writeFileSync, existsSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { EXERCISES, SOURCE } from './data.mjs';
@@ -74,10 +74,10 @@ function catalogEts() {
     const aliases = item.aliases.join(',');
     return `  { id: ${q(item.id)}, partKey: ${q(item.partKey)}, name: ${q(item.name)}, equipment: ${q(item.equipment)}, ` +
       `movementPattern: ${q(item.movementPattern)}, weightStep: ${item.weightStep}, isBodyweight: ${item.isBodyweight}, ` +
-      `isUnilateral: ${item.isUnilateral}, aliases: ${q(aliases)}, primaryMuscles: ${q(item.primaryMuscles)}, ` +
+      `isUnilateral: ${item.isUnilateral}, recordType: ${q(item.recordType)}, aliases: ${q(aliases)}, primaryMuscles: ${q(item.primaryMuscles)}, ` +
       `secondaryMuscles: ${q(item.secondaryMuscles)} }`;
   });
-  return `import { Equipment, MovementPattern, PartKey } from './types';
+  return `import { Equipment, MovementPattern, PartKey, RecordType } from './types';
 
 export interface ExerciseDef {
   id: string;
@@ -88,6 +88,7 @@ export interface ExerciseDef {
   weightStep: number;
   isBodyweight: number;
   isUnilateral: number;
+  recordType: RecordType;
   aliases: string;
   primaryMuscles: string;
   secondaryMuscles: string;
@@ -188,7 +189,7 @@ export function difficultyLabel(value: string): string {
 }
 
 function artworkEts() {
-  const rows = EXERCISES.map((item) => {
+  const rows = EXERCISES.filter((item) => !item.pose.guidance).map((item) => {
     const base = `ex_${item.id}`;
     return `  { id: ${q(item.id)}, card: $r('app.media.${base}_card'), start: $r('app.media.${base}_start'), end: $r('app.media.${base}_end') }`;
   });
@@ -268,6 +269,7 @@ function curatedJson() {
       weightStep: item.weightStep,
       isBodyweight: item.isBodyweight,
       isUnilateral: item.isUnilateral,
+      recordType: item.recordType,
       primaryMuscles: item.primaryMuscles,
       secondaryMuscles: item.secondaryMuscles,
       primaryMusclesZh: item.primaryMusclesZh,
@@ -313,31 +315,30 @@ Photos from the upstream library are NOT included.
 }
 
 validate();
-mkdirSync(raw, { recursive: true });
-mkdirSync(media, { recursive: true });
-
-for (const name of readdirSync(media)) {
-  if (name.startsWith('ex_') && name.endsWith('.svg')) {
-    unlinkSync(join(media, name));
+const catalogOnly = process.argv.includes('--catalog-only');
+if (!catalogOnly) {
+  mkdirSync(raw, { recursive: true });
+  mkdirSync(media, { recursive: true });
+  for (const item of EXERCISES) {
+    if (item.pose.guidance) continue;
+    for (const phase of ['card', 'start', 'end']) {
+      const target = join(media, `ex_${item.id}_${phase}.svg`);
+      if (!existsSync(target)) writeFileSync(target, renderExerciseSvg(item, phase), 'utf8');
+    }
   }
-}
-
-for (const item of EXERCISES) {
-  for (const phase of ['card', 'start', 'end']) {
-    writeFileSync(join(media, `ex_${item.id}_${phase}.svg`), renderExerciseSvg(item, phase), 'utf8');
-  }
+  // The app's resolver is maintained separately; never replace its gender/guidance routing.
+  if (!existsSync(join(model, 'exerciseArtwork.ets'))) writeFileSync(join(model, 'exerciseArtwork.ets'), artworkEts(), 'utf8');
+  if (!existsSync(join(raw, 'ATTRIBUTION.md'))) writeFileSync(join(raw, 'ATTRIBUTION.md'), attribution(), 'utf8');
+  if (!existsSync(join(raw, 'LICENSE.txt'))) writeFileSync(join(raw, 'LICENSE.txt'), licenseText(), 'utf8');
 }
 
 writeFileSync(join(model, 'exerciseCatalog.ets'), catalogEts(), 'utf8');
 writeFileSync(join(model, 'exerciseDetails.ets'), detailsEts(), 'utf8');
-writeFileSync(join(model, 'exerciseArtwork.ets'), artworkEts(), 'utf8');
 writeFileSync(join(toolsOut, 'curated.json'), curatedJson(), 'utf8');
-writeFileSync(join(raw, 'ATTRIBUTION.md'), attribution(), 'utf8');
-writeFileSync(join(raw, 'LICENSE.txt'), licenseText(), 'utf8');
 
 const byPart = {};
 for (const part of PARTS) {
   byPart[part] = EXERCISES.filter((item) => item.partKey === part).length;
 }
 console.log(`Generated ${EXERCISES.length} exercises`, byPart);
-console.log(`SVG files: ${EXERCISES.length * 3}`);
+console.log(catalogOnly ? 'Catalog-only: artwork and media preserved.' : 'Existing artwork and media preserved; missing legacy SVGs created.');

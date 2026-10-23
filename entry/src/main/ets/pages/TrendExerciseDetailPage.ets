@@ -118,23 +118,26 @@ struct TrendExerciseDetailPage {
         .fontSize(14)
         .fontColor($r('app.color.text_primary'))
         .layoutWeight(1)
-      Text(item.value === null ? '无可比较组' : formatTrendNumber(item.value))
+      Text(item.value === null ? '无可比较组' : (this.detail.recordType === 'cardio' ?
+        `${formatTrendNumber(item.value)} 分钟` : formatTrendNumber(item.value)))
         .fontSize(14)
         .fontColor($r('app.color.text_primary'))
         .margin({ right: 12 })
-      Text(`${item.workSets} 组`)
+      Text(this.detail.recordType === 'cardio' ? `${item.workSets} 段` : `${item.workSets} 组`)
         .fontSize(13)
         .fontColor($r('app.color.text_secondary'))
         .margin({ right: 12 })
-      Text(sessionRirText(item.minRir, item.rirLegacy))
-        .fontSize(13)
-        .fontColor($r('app.color.text_secondary'))
-      TermHint({
-        termId: 'rir',
-        onOpen: (id: string) => {
-          this.openTerm(id);
-        }
-      })
+      if (this.detail.recordType !== 'cardio') {
+        Text(sessionRirText(item.minRir, item.rirLegacy))
+          .fontSize(13)
+          .fontColor($r('app.color.text_secondary'))
+        TermHint({
+          termId: 'rir',
+          onOpen: (id: string) => {
+            this.openTerm(id);
+          }
+        })
+      }
     }
     .width('100%')
     .padding({ top: 10, bottom: 10 })
@@ -245,19 +248,21 @@ struct TrendExerciseDetailPage {
               }
               TrendSparkline({ points: this.detail.points, chartHeight: 160, showLabels: true, unit: this.detail.metricLabel })
               Row() {
-                Text(`${this.detail.sessions} 次训练`)
+                Text(this.detail.recordType === 'cardio' ? `${this.detail.sessions} 个训练日` : `${this.detail.sessions} 次训练`)
                   .fontSize(12)
                   .fontColor($r('app.color.text_secondary'))
-                Text(`${this.detail.workSets} 个正式组`)
+                Text(this.detail.recordType === 'cardio' ? `${this.detail.workSets} 段` : `${this.detail.workSets} 个正式组`)
                   .fontSize(12)
                   .fontColor($r('app.color.text_secondary'))
                   .margin({ left: 12 })
-                TermHint({
-                  termId: 'work_set',
-                  onOpen: (id: string) => {
-                    this.openTerm(id);
-                  }
-                })
+                if (this.detail.recordType !== 'cardio') {
+                  TermHint({
+                    termId: 'work_set',
+                    onOpen: (id: string) => {
+                      this.openTerm(id);
+                    }
+                  })
+                }
               }
               .width('100%')
               .margin({ top: 8 })
@@ -278,7 +283,7 @@ struct TrendExerciseDetailPage {
                   points: this.detail.secondaryPoints,
                   chartHeight: 100,
                   showLabels: true,
-                  unit: '次'
+                  unit: this.detail.secondaryUnit
                 })
               }
               .width('100%')

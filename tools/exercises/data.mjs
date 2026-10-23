@@ -40,6 +40,7 @@ function e(id, part, name, en, eq, pattern, spec) {
     weightStep: spec.weightStep != null ? spec.weightStep : stepOf(eq, part),
     isBodyweight: spec.isBodyweight != null ? spec.isBodyweight : (eq === 'bodyweight' ? 1 : 0),
     isUnilateral: spec.isUnilateral || 0,
+    recordType: spec.recordType || 'reps',
     primaryMuscles: spec.pm,
     secondaryMuscles: spec.sm || '',
     primaryMusclesZh: spec.pmZh,
@@ -1133,6 +1134,51 @@ export const EXERCISES = [
     cues: ['本应用按次记录。', '保持肩在手腕上方。'],
     count: '一侧膝盖向前收再换边，每收一次计 1 次。左右做完算一组，次数填每侧，不要把左右各一次记成两次。',
     pose: { family: 'cardio', kind: 'mountain', cardPhase: 0.6 }
+  }),
+  e('cardio_treadmill', 'cardio', '跑步机', 'Treadmill', 'machine', 'isolation', {
+    aliases: ['快走', '爬坡', '跑步'], pm: 'cardio', sm: 'quads,calves', pmZh: '心肺', smZh: '腿部',
+    src: 'Running_Treadmill', weightStep: 0, recordType: 'cardio',
+    start: '站在停止的跑带两侧，扣好安全夹，低速启动后踏上跑带。',
+    steps: ['从舒适的步行速度开始，逐步调整速度和坡度。', '目视前方，保持自然步幅与摆臂，在跑带中部行进。', '结束前逐步减速，待跑带停止后离开。'],
+    cues: ['避免持续握住扶手承重。', '速度和坡度按实际器械设置记录，距离按面板读数填写。'],
+    count: '连续训练计为一个训练段；记录时长，可填写距离、速度与坡度。变速或变坡时可另建一段。',
+    pose: { family: 'cardio_machine', kind: 'treadmill', guidance: true }
+  }),
+  e('cardio_stair_climber', 'cardio', '爬楼机', 'Stair Climber', 'machine', 'isolation', {
+    aliases: ['楼梯机', '旋转楼梯机'], pm: 'cardio', sm: 'quads,glutes,calves', pmZh: '心肺', smZh: '臀腿、小腿',
+    src: 'Stairmaster', weightStep: 0, recordType: 'cardio',
+    start: '面对旋转楼梯式爬楼机站稳，轻扶扶手，以低档启动台阶。',
+    steps: ['脚掌稳定踏上不断向下旋转的台阶，交替迈步向上。', '躯干自然直立，让双腿承担体重，保持均匀节奏。', '结束时逐步降低档位，台阶停止后再下机。'],
+    cues: ['适用于旋转楼梯式设备，保持脚落在可见台阶上。', '轻扶保持平衡，避免用手臂悬挂身体。'],
+    count: '连续爬楼计为一个训练段；记录时长，可填写档位、面板步数及楼层，步数与楼层分别按实测填写。',
+    pose: { family: 'cardio_machine', kind: 'rotating_stairs', guidance: true }
+  }),
+  e('cardio_elliptical', 'cardio', '椭圆机', 'Elliptical Trainer', 'machine', 'isolation', {
+    aliases: ['椭圆训练机'], pm: 'cardio', sm: 'quads,glutes', pmZh: '心肺', smZh: '臀腿、上肢',
+    src: 'Elliptical_Trainer', weightStep: 0, recordType: 'cardio',
+    start: '双脚稳放踏板，双手握住把手，以低档开始。',
+    steps: ['双脚沿椭圆轨迹连续踩动，膝盖朝向脚尖。', '保持身体直立，配合把手自然推拉。', '逐渐放慢节奏，踏板停止后下机。'],
+    cues: ['脚掌保持接触踏板。', '阻力档位、距离和踏频按本机读数记录。'],
+    count: '连续运动计为一个训练段；记录时长，可填写距离、档位、踏频和实际测得的心率或能量。',
+    pose: { family: 'cardio_machine', kind: 'elliptical', guidance: true }
+  }),
+  e('cardio_stationary_bike', 'cardio', '固定单车', 'Stationary Bike', 'machine', 'isolation', {
+    aliases: ['健身车', '动感单车'], pm: 'cardio', sm: 'quads,glutes', pmZh: '心肺', smZh: '臀腿',
+    src: 'Bicycling_Stationary', weightStep: 0, recordType: 'cardio',
+    start: '调节座椅，使踏板最远处膝盖仍微屈，双脚固定在踏板上。',
+    steps: ['以低阻力开始踩踏，保持髋部稳定。', '膝盖朝前，维持平稳连续的踩踏节奏。', '逐渐减小阻力与踏频，踏板停止后离开。'],
+    cues: ['避免左右摇摆身体。', '档位、踏频和平均功率按器械的实际测量填写。'],
+    count: '连续骑行计为一个训练段；记录时长，可填写距离、档位、踏频、平均功率和心率。',
+    pose: { family: 'cardio_machine', kind: 'bike', guidance: true }
+  }),
+  e('cardio_rower', 'cardio', '划船机', 'Rowing Machine', 'machine', 'isolation', {
+    aliases: ['室内划船'], pm: 'cardio', sm: 'back,quads,glutes', pmZh: '心肺', smZh: '背部、臀腿',
+    src: 'Rowing_Stationary', weightStep: 0, recordType: 'cardio',
+    start: '坐稳并固定双脚，双手握把，手臂伸直、膝盖弯曲，背部自然伸展。',
+    steps: ['先用腿蹬伸，再轻微后倾躯干，最后把手拉向下胸。', '回程先伸直手臂，再前倾躯干，最后屈膝滑回。', '保持蹬腿与回程节奏稳定，结束时逐渐降低划频。'],
+    cues: ['避免弓背及过度后仰。', '先蹬腿再拉手，回程顺序相反。'],
+    count: '连续划行计为一个训练段；记录时长与米数，可填写档位、划频、平均功率及心率；500 米分段配速由时长和距离计算。',
+    pose: { family: 'cardio_machine', kind: 'rower', guidance: true }
   }),
   e('cardio_burpee', 'cardio', '波比跳（按次数）', 'Burpee', 'bodyweight', 'isolation', {
     aliases: ['立卧撑跳', 'Burpee'], pm: 'cardio', sm: '', pmZh: '心肺、全身', smZh: '胸、腿、核心',

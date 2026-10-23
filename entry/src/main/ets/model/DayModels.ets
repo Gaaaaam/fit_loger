@@ -1,9 +1,13 @@
-import { DayDotKind, PartKey, SetStatus } from './types';
+import { DayDotKind, PartKey, RecordType, SetStatus } from './types';
 import { HintSet } from '../common/WorkoutLogic';
+import { CardioMetrics } from './CardioModels';
 
 @Observed
 export class SetItem {
   id: number = 0;
+  exerciseId: string = '';
+  recordType: RecordType = 'reps';
+  cardio: CardioMetrics = new CardioMetrics();
   weightText: string = '';
   repsText: string = '';
   isWarmup: number = 0;
@@ -21,6 +25,7 @@ export class SetItem {
 export class ExerciseItem {
   id: number = 0;
   exerciseId: string = '';
+  recordType: RecordType = 'reps';
   name: string = '';
   partKey: PartKey = 'chest';
   weightStep: number = 2.5;

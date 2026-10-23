@@ -13,7 +13,7 @@ function load(path, names, dependencies = {}) {
   return context.result;
 }
 
-const types = load('model/types.ets', ['toPartKey', 'partName', 'toEquipment', 'toSetStatus', 'equipmentName'], { $r: x => x });
+const types = load('model/types.ets', ['toPartKey', 'partName', 'toEquipment', 'toSetStatus', 'equipmentName', 'toRecordType'], { $r: x => x });
 const muscles = load('model/muscleTypes.ets', ['toMuscleKey', 'MUSCLE_REGIONS']);
 const catalog = load('model/exerciseCatalog.ets', ['EXERCISE_CATALOG', 'findExercise']);
 const details = load('model/exerciseDetails.ets', ['findExerciseDetail', 'extraSearchText']);
@@ -21,7 +21,9 @@ const logic = load('common/WorkoutLogic.ets', ['formatWeight', 'formatLastHint',
 const muscleLogic = load('common/MuscleLogic.ets', [
   'planBatchAdd', 'BatchPlan', 'recommendForMuscle', 'filterExercises', 'toggleSelected', 'isSelected', 'RecommendItem'
 ], { ...muscles, ...catalog, ...details });
-const models = load('model/DayModels.ets', ['DayModel', 'PartItem', 'ExerciseItem', 'SetItem']);
+const cardioModel = load('model/CardioModels.ets', ['CardioMetrics']);
+const cardioStorage = load('db/CardioStorage.ets', ['CARDIO_SELECT', 'readCardioMetrics'], cardioModel);
+const models = load('model/DayModels.ets', ['DayModel', 'PartItem', 'ExerciseItem', 'SetItem'], cardioModel);
 const schema = load('db/schemaSql.ets', ['SQL_CREATE_EXERCISES', 'SQL_CREATE_WORKOUT_DAYS', 'SQL_CREATE_DAY_EXERCISES', 'SQL_CREATE_WORKOUT_SETS']);
 const { seedBuiltinExercises } = load('db/ExerciseSeed.ets', ['seedBuiltinExercises'], catalog);
 
@@ -66,7 +68,7 @@ const store = {
   }
 };
 const { WorkoutRepository: repository } = load('db/WorkoutRepository.ets', ['WorkoutRepository'], {
-  ...types, ...logic, ...models, ...muscleLogic,
+  ...types, ...logic, ...models, ...muscleLogic, ...cardioModel, ...cardioStorage,
   relationalStore: { RdbPredicates: Predicates },
   WorkoutDatabase: { getStore: () => store, logError: () => {} }
 });

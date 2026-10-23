@@ -1,6 +1,9 @@
 import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { monthRange } from '../common/DateUtil';
+import { cardioPlanMetrics, copyCardioMetrics, formatCardioSummary, inheritCardioSettings, validateCardioMetrics } from '../common/CardioLogic';
+import { CardioMetrics } from '../model/CardioModels';
+import { CARDIO_SELECT, putCardioValues, readCardioMetrics } from './CardioStorage';
 import { BatchPlan, planBatchAdd } from '../common/MuscleLogic';
 import {
   customExerciseId,
@@ -30,6 +33,7 @@ import {
   partName,
   toEquipment,
   toPartKey,
+  toRecordType,
   toSetStatus
 } from '../model/types';
 import { WorkoutDatabase } from './WorkoutDatabase';
@@ -72,9 +76,9 @@ export class WorkoutRepository {
     const sql: string =
       'SELECT d.id AS day_id, d.note AS day_note, e.id AS ex_row_id, e.exercise_id AS exercise_id, e.sort_order AS ex_sort, e.note AS ex_note, ' +
       'x.name AS ex_name, x.part_key AS part_key, x.weight_step AS weight_step, x.is_bodyweight AS is_bodyweight, ' +
-      'x.is_unilateral AS is_unilateral, x.movement_pattern AS movement_pattern, ' +
+      'x.is_unilateral AS is_unilateral, x.movement_pattern AS movement_pattern, x.record_type AS record_type, ' +
       's.id AS set_id, s.weight AS weight, s.reps AS reps, s.is_warmup AS is_warmup, s.technique AS technique, ' +
-      's.rir AS rir, s.rir_legacy AS rir_legacy, s.status AS status, s.completed_at AS completed_at, s.note AS set_note, s.sort_order AS set_sort ' +
+      's.rir AS rir, s.rir_legacy AS rir_legacy, s.status AS status, s.completed_at AS completed_at, s.note AS set_note, s.sort_order AS set_sort, ' + CARDIO_SELECT + ' ' +
       'FROM workout_days d ' +
       'LEFT JOIN day_exercises e ON e.day_id = d.id ' +
       'LEFT JOIN exercises x ON x.id = e.exercise_id ' +
@@ -114,6 +118,7 @@ export class WorkoutRepository {
       const createdEx: ExerciseItem = new ExerciseItem();
       createdEx.id = exId;
       createdEx.exerciseId = rs.getString(rs.getColumnIndex('exercise_id'));
+      createdEx.recordType = toRecordType(WorkoutRepository.strOr(rs, 'record_type', 'reps'));
       if (!rs.isColumnNull(rs.getColumnIndex('ex_name'))) {
         createdEx.name = rs.getString(rs.getColumnIndex('ex_name'));
       } else {
@@ -146,12 +151,16 @@ export class WorkoutRepository {
     if (rs.isColumnNull(rs.getColumnIndex('set_id'))) {
       return;
     }
-    currentEx.sets.push(WorkoutRepository.readSet(rs));
+    const item: SetItem = WorkoutRepository.readSet(rs);
+    item.exerciseId = currentEx.exerciseId;
+    item.recordType = currentEx.recordType;
+    currentEx.sets.push(item);
   }
 
   private static readSet(rs: relationalStore.ResultSet): SetItem {
     const setItem: SetItem = new SetItem();
     setItem.id = rs.getLong(rs.getColumnIndex('set_id'));
+    setItem.cardio = readCardioMetrics(rs);
     if (!rs.isColumnNull(rs.getColumnIndex('weight'))) {
       setItem.weightText = formatWeight(rs.getDouble(rs.getColumnIndex('weight')));
     }
@@ -277,15 +286,20 @@ export class WorkoutRepository {
     dateRs.close();
     const setSql: string =
       'SELECT s.weight AS weight, s.reps AS reps, s.is_warmup AS is_warmup, s.technique AS technique, ' +
-      's.rir AS rir, s.rir_legacy AS rir_legacy FROM workout_sets s ' +
+      's.rir AS rir, s.rir_legacy AS rir_legacy, x.record_type AS record_type, ' + CARDIO_SELECT + ' FROM workout_sets s ' +
       'INNER JOIN day_exercises e ON e.id = s.day_exercise_id ' +
+      'LEFT JOIN exercises x ON x.id = e.exercise_id ' +
       'INNER JOIN workout_days d ON d.id = e.day_id ' +
       'WHERE e.exercise_id = ? AND d.date = ? AND s.status = \'done\' AND s.is_warmup = 0 ' +
       'ORDER BY s.sort_order, s.id';
     const setRs: relationalStore.ResultSet = await store.querySql(setSql, [exerciseId, lastDate]);
     const sets: HintSet[] = [];
+    const cardioSummaries: string[] = [];
     let hasRow: boolean = setRs.goToFirstRow();
     while (hasRow) {
+      if (WorkoutRepository.strOr(setRs, 'record_type', 'reps') === 'cardio') {
+        cardioSummaries.push(formatCardioSummary(readCardioMetrics(setRs), exerciseId));
+      }
       const hint: HintSet = new HintSet();
       if (!setRs.isColumnNull(setRs.getColumnIndex('weight'))) {
         hint.weight = setRs.getDouble(setRs.getColumnIndex('weight'));
@@ -308,8 +322,8 @@ export class WorkoutRepository {
       hasRow = setRs.goToNextRow();
     }
     setRs.close();
-    empty.text = formatLastHint(lastDate, sets);
-    empty.sets = sets;
+    empty.text = cardioSummaries.length > 0 ? `上次 ${lastDate} · ${cardioSummaries.join(' / ')}` : formatLastHint(lastDate, sets);
+    empty.sets = cardioSummaries.length > 0 ? [] : sets;
     return empty;
   }
 
@@ -376,7 +390,7 @@ export class WorkoutRepository {
     const sql: string =
       'SELECT e.id AS ex_row_id, e.exercise_id AS exercise_id, e.note AS ex_note, e.sort_order AS ex_sort, ' +
       'x.name AS ex_name, x.part_key AS part_key, x.weight_step AS weight_step, x.is_bodyweight AS is_bodyweight, ' +
-      'x.is_unilateral AS is_unilateral, x.movement_pattern AS movement_pattern ' +
+      'x.is_unilateral AS is_unilateral, x.movement_pattern AS movement_pattern, x.record_type AS record_type ' +
       'FROM day_exercises e LEFT JOIN exercises x ON x.id = e.exercise_id WHERE e.id = ?';
     const rs: relationalStore.ResultSet = await store.querySql(sql, [exerciseRowId]);
     if (!rs.goToFirstRow()) {
@@ -386,6 +400,7 @@ export class WorkoutRepository {
     const createdEx: ExerciseItem = new ExerciseItem();
     createdEx.id = rs.getLong(rs.getColumnIndex('ex_row_id'));
     createdEx.exerciseId = rs.getString(rs.getColumnIndex('exercise_id'));
+    createdEx.recordType = toRecordType(WorkoutRepository.strOr(rs, 'record_type', 'reps'));
     createdEx.sortOrder = rs.getLong(rs.getColumnIndex('ex_sort'));
     createdEx.note = WorkoutRepository.strOr(rs, 'ex_note', '');
     if (!rs.isColumnNull(rs.getColumnIndex('ex_name'))) {
@@ -420,6 +435,19 @@ export class WorkoutRepository {
 
   static async addSet(exerciseRowId: number): Promise<SetItem> {
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const profile: relationalStore.ResultSet = await store.querySql(
+      'SELECT e.exercise_id, x.record_type FROM day_exercises e LEFT JOIN exercises x ON x.id = e.exercise_id WHERE e.id = ?',
+      [exerciseRowId]);
+    let exerciseId: string = '';
+    let isCardio: boolean = false;
+    if (profile.goToFirstRow()) {
+      exerciseId = WorkoutRepository.strOr(profile, 'exercise_id', '');
+      isCardio = WorkoutRepository.strOr(profile, 'record_type', 'reps') === 'cardio';
+    }
+    profile.close();
+    if (isCardio) {
+      return await WorkoutRepository.addCardioSet(exerciseRowId, exerciseId);
+    }
     const order: number = await WorkoutRepository.nextOrder(
       'SELECT IFNULL(MAX(sort_order), -1) + 1 AS next_order FROM workout_sets WHERE day_exercise_id = ?',
       [exerciseRowId]
@@ -440,6 +468,7 @@ export class WorkoutRepository {
     const id: number = await store.insert('workout_sets', bucket);
     const setItem: SetItem = new SetItem();
     setItem.id = id;
+    setItem.exerciseId = exerciseId;
     setItem.status = 'planned';
     setItem.sortOrder = order;
     if (inherited.weight !== null) {
@@ -449,6 +478,45 @@ export class WorkoutRepository {
       setItem.repsText = `${inherited.reps}`;
     }
     return setItem;
+  }
+
+  private static async addCardioSet(exerciseRowId: number, exerciseId: string): Promise<SetItem> {
+    const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const previous: relationalStore.ResultSet = await store.querySql(
+      'SELECT ' + CARDIO_SELECT + ' FROM workout_sets s ' +
+      'JOIN day_exercises e ON e.id = s.day_exercise_id JOIN day_exercises cur ON cur.id = ? ' +
+      'WHERE e.exercise_id = cur.exercise_id AND e.day_id = cur.day_id ' +
+      'ORDER BY e.sort_order DESC, s.sort_order DESC, s.id DESC LIMIT 1', [exerciseRowId]);
+    let metrics: CardioMetrics = new CardioMetrics();
+    const hasPrevious: boolean = previous.goToFirstRow();
+    if (hasPrevious) {
+      metrics = readCardioMetrics(previous);
+    }
+    previous.close();
+    if (!hasPrevious) {
+      const history: relationalStore.ResultSet = await store.querySql(
+        'SELECT ' + CARDIO_SELECT + ' FROM workout_sets s ' +
+        'JOIN day_exercises e ON e.id = s.day_exercise_id JOIN workout_days d ON d.id = e.day_id ' +
+        'JOIN day_exercises cur ON cur.id = ? JOIN workout_days curd ON curd.id = cur.day_id ' +
+        "WHERE e.exercise_id = cur.exercise_id AND s.status = 'done' AND d.date < curd.date " +
+        'ORDER BY d.date DESC, s.completed_at DESC, s.sort_order DESC, s.id DESC LIMIT 1', [exerciseRowId]);
+      if (history.goToFirstRow()) {
+        metrics = readCardioMetrics(history);
+      }
+      history.close();
+    }
+    const item: SetItem = new SetItem();
+    item.recordType = 'cardio';
+    item.exerciseId = exerciseId;
+    item.cardio = inheritCardioSettings(metrics);
+    item.sortOrder = await WorkoutRepository.nextOrder(
+      'SELECT IFNULL(MAX(sort_order), -1) + 1 AS next_order FROM workout_sets WHERE day_exercise_id = ?', [exerciseRowId]);
+    const bucket: relationalStore.ValuesBucket = {
+      'day_exercise_id': exerciseRowId, 'is_warmup': 0, 'status': 'planned', 'sort_order': item.sortOrder
+    };
+    putCardioValues(bucket, item.cardio);
+    item.id = await store.insert('workout_sets', bucket);
+    return item;
   }
 
   private static async inheritDefaults(exerciseRowId: number): Promise<WeightReps> {
@@ -495,11 +563,19 @@ export class WorkoutRepository {
   }
 
   static async writeSet(item: SetItem): Promise<string> {
-    const weightParsed: ParseResult = parseWeight(item.weightText);
+    const isCardio: boolean = item.recordType === 'cardio';
+    const metrics: CardioMetrics = copyCardioMetrics(item.cardio);
+    if (isCardio) {
+      const error: string = validateCardioMetrics(metrics, item.status === 'done');
+      if (error.length > 0) {
+        return error;
+      }
+    }
+    const weightParsed: ParseResult = parseWeight(isCardio ? '' : item.weightText);
     if (!weightParsed.ok) {
       return weightParsed.error;
     }
-    const repsParsed: ParseResult = parseReps(item.repsText);
+    const repsParsed: ParseResult = parseReps(isCardio ? '' : item.repsText);
     if (!repsParsed.ok) {
       return repsParsed.error;
     }
@@ -519,6 +595,7 @@ export class WorkoutRepository {
       'completed_at': item.completedAt > 0 ? item.completedAt : null,
       'note': note.length > 0 ? note : null
     };
+    putCardioValues(bucket, isCardio ? metrics : new CardioMetrics());
     // Snapshot every field before awaiting: one update prevents an older autosave's
     // null-clearing pass from overwriting a newer edit during a mode switch.
     await store.update(bucket, predicates);
@@ -561,10 +638,11 @@ export class WorkoutRepository {
       'status': item.status,
       'sort_order': item.sortOrder
     };
-    if (weightParsed.ok && weightParsed.value !== null) {
+    putCardioValues(bucket, item.recordType === 'cardio' ? copyCardioMetrics(item.cardio) : new CardioMetrics());
+    if (item.recordType !== 'cardio' && weightParsed.ok && weightParsed.value !== null) {
       bucket['weight'] = weightParsed.value;
     }
-    if (repsParsed.ok && repsParsed.value !== null) {
+    if (item.recordType !== 'cardio' && repsParsed.ok && repsParsed.value !== null) {
       bucket['reps'] = repsParsed.value;
     }
     if (item.technique.length > 0) {
@@ -699,6 +777,9 @@ export class WorkoutRepository {
       const newExId: number = await WorkoutRepository.addExercise(toDate, ordered[i].exerciseId);
       for (let s = 0; s < ordered[i].sets.length; s++) {
         const copy: SetItem = new SetItem();
+        copy.exerciseId = ordered[i].exerciseId;
+        copy.recordType = ordered[i].recordType;
+        copy.cardio = cardioPlanMetrics(ordered[i].sets[s].cardio);
         copy.weightText = ordered[i].sets[s].weightText;
         copy.repsText = ordered[i].sets[s].repsText;
         copy.isWarmup = ordered[i].sets[s].isWarmup;
@@ -728,7 +809,7 @@ export class WorkoutRepository {
   static async listExercises(partKey: PartKey): Promise<ExerciseDef[]> {
     return await WorkoutRepository.queryExercises(
       'SELECT id, name, part_key, equipment, movement_pattern, weight_step, is_bodyweight, is_unilateral, ' +
-        'aliases, primary_muscles, secondary_muscles ' +
+        'aliases, primary_muscles, secondary_muscles, record_type ' +
         'FROM exercises WHERE part_key = ? AND is_archived = 0 ORDER BY is_builtin DESC, name',
       [partKey]
     );
@@ -737,7 +818,7 @@ export class WorkoutRepository {
   static async listExercisesAll(): Promise<ExerciseDef[]> {
     return await WorkoutRepository.queryExercises(
       'SELECT id, name, part_key, equipment, movement_pattern, weight_step, is_bodyweight, is_unilateral, ' +
-        'aliases, primary_muscles, secondary_muscles ' +
+        'aliases, primary_muscles, secondary_muscles, record_type ' +
         'FROM exercises WHERE is_archived = 0 ORDER BY is_builtin DESC, name',
       WorkoutRepository.EMPTY_ARGS
     );
@@ -841,10 +922,17 @@ export class WorkoutRepository {
       return result;
     }
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
+    const profile: relationalStore.ResultSet = await store.querySql('SELECT record_type FROM exercises WHERE id = ?', [exerciseId]);
+    const cardio: boolean = profile.goToFirstRow() && WorkoutRepository.strOr(profile, 'record_type', 'reps') === 'cardio';
+    profile.close();
+    if (cardio) {
+      return result;
+    }
     const sql: string =
       'SELECT s.weight AS weight, s.reps AS reps FROM workout_sets s ' +
       'INNER JOIN day_exercises e ON e.id = s.day_exercise_id ' +
-      'WHERE e.exercise_id = ? AND s.status = \'done\' AND s.is_warmup = 0 AND s.id != ? AND s.weight IS NOT NULL';
+      'WHERE e.exercise_id = ? AND s.status = \'done\' AND s.is_warmup = 0 AND s.id != ? AND s.weight IS NOT NULL ' +
+      "AND NOT EXISTS (SELECT 1 FROM exercises x WHERE x.id = e.exercise_id AND x.record_type = 'cardio')";
     const rs: relationalStore.ResultSet = await store.querySql(sql, [exerciseId, excludeSetId]);
     const weights: number[] = [];
     const hist: HistSet[] = [];
@@ -937,7 +1025,7 @@ export class WorkoutRepository {
       'SELECT d.date AS date, e.exercise_id AS exercise_id, x.name AS name, x.part_key AS part_key, ' +
       'x.movement_pattern AS movement_pattern, x.is_bodyweight AS is_bodyweight, x.is_unilateral AS is_unilateral, ' +
       's.weight AS weight, s.reps AS reps, s.rir AS rir, s.rir_legacy AS rir_legacy, s.is_warmup AS is_warmup, ' +
-      's.technique AS technique, s.status AS status, ' +
+      's.technique AS technique, s.status AS status, x.record_type AS record_type, ' + CARDIO_SELECT + ', ' +
       '(SELECT bm.weight_kg FROM body_metrics bm WHERE bm.weight_kg IS NOT NULL AND bm.date <= d.date ' +
       'ORDER BY bm.date DESC LIMIT 1) AS body_weight_kg ' +
       'FROM workout_sets s ' +
@@ -968,7 +1056,7 @@ export class WorkoutRepository {
       'SELECT d.date AS date, e.exercise_id AS exercise_id, x.name AS name, x.part_key AS part_key, ' +
       'x.movement_pattern AS movement_pattern, x.is_bodyweight AS is_bodyweight, x.is_unilateral AS is_unilateral, ' +
       's.weight AS weight, s.reps AS reps, s.rir AS rir, s.rir_legacy AS rir_legacy, s.is_warmup AS is_warmup, ' +
-      's.technique AS technique, s.status AS status, ' +
+      's.technique AS technique, s.status AS status, x.record_type AS record_type, ' + CARDIO_SELECT + ', ' +
       '(SELECT bm.weight_kg FROM body_metrics bm WHERE bm.weight_kg IS NOT NULL AND bm.date <= d.date ' +
       'ORDER BY bm.date DESC LIMIT 1) AS body_weight_kg ' +
       'FROM workout_sets s ' +
@@ -996,7 +1084,7 @@ export class WorkoutRepository {
   static async loadExerciseMeta(exerciseId: string): Promise<ExerciseMeta | null> {
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     const rs: relationalStore.ResultSet = await store.querySql(
-      'SELECT id, name, part_key, movement_pattern, is_bodyweight FROM exercises WHERE id = ?',
+      'SELECT id, name, part_key, movement_pattern, is_bodyweight, record_type FROM exercises WHERE id = ?',
       [exerciseId]
     );
     if (!rs.goToFirstRow()) {
@@ -1005,6 +1093,7 @@ export class WorkoutRepository {
     }
     const meta: ExerciseMeta = new ExerciseMeta();
     meta.exerciseId = exerciseId;
+    meta.recordType = toRecordType(WorkoutRepository.strOr(rs, 'record_type', 'reps'));
     meta.name = WorkoutRepository.strOr(rs, 'name', exerciseId);
     meta.partKey = WorkoutRepository.strOr(rs, 'part_key', 'chest');
     meta.movementPattern = WorkoutRepository.strOr(rs, 'movement_pattern', 'isolation');
@@ -1029,13 +1118,14 @@ export class WorkoutRepository {
   static async listExercisesWithHistory(): Promise<WatchableExercise[]> {
     const store: relationalStore.RdbStore = WorkoutDatabase.getStore();
     const sql: string =
-      'SELECT e.exercise_id AS exercise_id, x.name AS name, x.part_key AS part_key, ' +
+      'SELECT e.exercise_id AS exercise_id, x.name AS name, x.part_key AS part_key, x.record_type AS record_type, ' +
       'COUNT(DISTINCT d.date) AS sessions, COUNT(s.id) AS work_sets ' +
       'FROM workout_sets s ' +
       'JOIN day_exercises e ON e.id = s.day_exercise_id ' +
       'JOIN workout_days d ON d.id = e.day_id ' +
       'LEFT JOIN exercises x ON x.id = e.exercise_id ' +
       'WHERE s.status = \'done\' AND s.is_warmup = 0 ' +
+      "AND (COALESCE(x.record_type, 'reps') <> 'cardio' OR (s.duration_sec > 0 AND s.duration_sec <= 1.7976931348623157e308)) " +
       'GROUP BY e.exercise_id ORDER BY sessions DESC, work_sets DESC, name ASC';
     const rs: relationalStore.ResultSet = await store.querySql(sql, []);
     const list: WatchableExercise[] = [];
@@ -1045,6 +1135,7 @@ export class WorkoutRepository {
       item.exerciseId = WorkoutRepository.strOr(rs, 'exercise_id', '');
       item.name = WorkoutRepository.strOr(rs, 'name', item.exerciseId);
       item.partKey = WorkoutRepository.strOr(rs, 'part_key', 'chest');
+      item.recordType = toRecordType(WorkoutRepository.strOr(rs, 'record_type', 'reps'));
       item.sessions = rs.getLong(rs.getColumnIndex('sessions'));
       item.workSets = rs.getLong(rs.getColumnIndex('work_sets'));
       list.push(item);
@@ -1331,6 +1422,7 @@ export class WorkoutRepository {
     while (hasRow) {
       const def: ExerciseDef = {
         id: rs.getString(rs.getColumnIndex('id')),
+        recordType: toRecordType(WorkoutRepository.strOr(rs, 'record_type', 'reps')),
         partKey: toPartKey(rs.getString(rs.getColumnIndex('part_key'))),
         name: rs.getString(rs.getColumnIndex('name')),
         equipment: toEquipment(WorkoutRepository.strOr(rs, 'equipment', 'other')),
@@ -1359,6 +1451,8 @@ export class WorkoutRepository {
 
   private static readTrendSet(rs: relationalStore.ResultSet): TrendSetRow {
     const row: TrendSetRow = new TrendSetRow();
+    row.recordType = toRecordType(WorkoutRepository.strOr(rs, 'record_type', 'reps'));
+    row.cardio = readCardioMetrics(rs);
     row.date = WorkoutRepository.strOr(rs, 'date', '');
     row.exerciseId = WorkoutRepository.strOr(rs, 'exercise_id', '');
     row.exerciseName = WorkoutRepository.strOr(rs, 'name', row.exerciseId);
