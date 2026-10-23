@@ -1,0 +1,432 @@
+{
+  "schema": "repair-provenance/v2-cumulative-followup",
+  "id": "back_seated_row",
+  "exercise": "back_seated_row",
+  "gender": "male",
+  "status": "INDEPENDENTLY_ACCEPTED",
+  "acceptedCommit": null,
+  "actualState": "WORKING_PRODUCTION_ACTUAL",
+  "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+  "gitArchiveStatus": "PENDING_NO_NEW_COMMIT",
+  "scope": "Stage02 load-continuity followup independently accepted as own full actual-sex group in PartA at exact WORKING_PRODUCTION_ACTUAL hashes. Earlier records remain separate history; PartB final accepted-metadata consistency and Git/archive pending.",
+  "historicalSourceHistory": {
+    "priorTargetedRepairRecord": {
+      "id": "back_seated_row",
+      "gender": "male",
+      "checklistIds": [
+        "D017"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-divider-review.md",
+      "sourceSha256": "90fee67315b679ce7509dc44fd970cb974971bd5fe7bf269e9c174dacd2dfb00",
+      "unchangedFrameIndices": [],
+      "notes": "Background-only same-y adjacent donor-strip translation with measured per-row int16 RGB offsets, clipping and binary overwrite masks; no ImageGen/new prompt, invented geometry or repeated tiling. Original-actual RGB outside declared edge ROIs is exact, including body/support/equipment. Changed canonical cells base on original decoded actual, not old uncompressed PNG outside-ROI identity. Changed frames use bundled Python3.12.14/Pillow12.3.0/libwebp1.6.0 lossless=True/quality100/method6/emptyEXIF; old system-lossless bytes are not current accepted bytes.",
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_01.webp",
+          "baselineSha256": "6f4e373795280a588158f2d295c0ce201ddc95118e0de6b0ec024da9c45ed379",
+          "productionSha256": "aa0f792a350ab59e11355f431a41b7fcce26da045511f6ec3d706e7e16c3ba1d",
+          "bytes": 162590,
+          "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_02.webp",
+          "baselineSha256": "478b0f14576182517ddbe938370a62542e218c6bca24b7bef1b20c46d184acee",
+          "productionSha256": "5d914da1cc2755ebce34743e96f92640e3f0e27787bae5d888590f895c02d63e",
+          "bytes": 160806,
+          "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        },
+        {
+          "index": 3,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_03.webp",
+          "baselineSha256": "0e156d2a032fe22c87296eaf8d89f0e133a93ccba0ae1e02970f9c878aded323",
+          "productionSha256": "fc3b37abeb63838f48612c634a377e6de8b3d56e3501f691c4f16b99d455d080",
+          "bytes": 163304,
+          "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        }
+      ]
+    },
+    "originalActualAtFollowup": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/originals-v1/entry/src/main/resources/base/media/ex_back_seated_row_male_02.webp",
+      "sha256": "5d914da1cc2755ebce34743e96f92640e3f0e27787bae5d888590f895c02d63e",
+      "bytes": 160806
+    },
+    "originalCanonicalAtFollowup": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/originals-v1/.work/exercise-guidance/back_seated_row/male-sheet.png",
+      "sha256": "90fee67315b679ce7509dc44fd970cb974971bd5fe7bf269e9c174dacd2dfb00",
+      "bytes": 774245
+    },
+    "historicalAcceptanceOnly": true,
+    "immutableOriginalPublicSourceRecord": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/phase8-integration/historical-public/back_seated_row-male.json",
+      "sha256": "4b113d3fb423ae6f2fd4869bb3e4759d059721dba9678b29b584c2ab7e3c97b1",
+      "bytes": 24759
+    }
+  },
+  "newFollowups": [
+    {
+      "id": "back_seated_row",
+      "gender": "male",
+      "checklistIds": [
+        "D019"
+      ],
+      "kind": "FINAL_LOAD_CONTINUITY_FOLLOWUP",
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": null,
+      "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+      "actualState": "WORKING_PRODUCTION_ACTUAL",
+      "reviewReport": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+      "independentReviewStatus": "ACTUAL_SPEC_PASS_QUALITY_PASS_ADDRESSED",
+      "rootCandidateGate": "PRELIMINARILY_SUITABLE_NOT_INDEPENDENT_ACCEPTANCE",
+      "sourceProvenance": "docs/superpowers/reviews/2026-10-15-guidance-repair-provenance/back_seated_row-male.json",
+      "sourceSha256": "f04970d6edea2e567e5bd4d79880c4836c8767f4e3334d7b40531e8a16fb0b2e",
+      "frames": [
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_02.webp",
+          "baselineSha256": "478b0f14576182517ddbe938370a62542e218c6bca24b7bef1b20c46d184acee",
+          "productionSha256": "c263952490e0de46775c2c27d3ebf58d5ffb4b66e49e9baea42624080fd5553a",
+          "width": 512,
+          "height": 1024,
+          "bytes": 161180,
+          "codec": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "emptyEXIF": true
+          }
+        }
+      ],
+      "phaseIndices": [
+        2
+      ],
+      "unchangedFrameIndices": [
+        1,
+        3
+      ],
+      "candidateProof": {
+        "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-male/mechanical-candidate-01/candidate-proof.json",
+        "sha256": "9d1e2834dfb9e63ddfbe33d1e2dd44b27f187717f25409dcf1d310867a6b64b8",
+        "bytes": 7488
+      },
+      "candidateVerification": {
+        "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-male/mechanical-candidate-01/candidate-verification.json",
+        "sha256": "6d1d3e7670601766dccf82a62c8b384b88f51bc2a6b096e22e1a289555e38e32",
+        "bytes": 1167
+      },
+      "integrationProof": {
+        "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/phase8-integration/integration-proof.json",
+        "sha256": "ea899c420de7165e3a4c7c37684685d1b72402c38a20aaa1b3ab38dc5ae0e2f3",
+        "bytes": 12317
+      },
+      "generation": {
+        "distinctNewModelCallsForThisGender": 0,
+        "sharedHardwareDonorFromFemale": true,
+        "batchDistinctBuiltinEvents": 2,
+        "callBefore": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-call-01/journal-before.json",
+          "sha256": "bb1f1a5e54988ce0c2196bafd4fd53de1396265f15976248aebae198177d51dd",
+          "bytes": 1474
+        },
+        "callAfter": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-call-01/journal-after.json",
+          "sha256": "c605e7c5d38d4f89656684c2e1a9e01f1a1aac2dec3969cd1b2c8d86f0ae8e10",
+          "bytes": 1824
+        },
+        "untouchedRaw": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-call-01/raw-untouched.png",
+          "sha256": "ffd4bf4aa2b953893810235de5700aae07dd3edf9bed8e6ca24e3b2bed6ec284",
+          "bytes": 1636862
+        },
+        "exactSavedArgs": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-inputs-v3/builtin-args.json",
+          "sha256": "a7e23d4f434d51fd988ccafd35bc2515500afb5752d46c73a08add928a5d08bf",
+          "bytes": 3299
+        },
+        "originalGenerationHistory": "NOT_RECOVERED_BY_THIS_FOLLOWUP; no original-generation event invented",
+        "genderAcceptance": "SEPARATE_OWN_GROUP_WORKING_ACTUAL_SPEC_PASS_QUALITY_PASS; not inherited from shared donor"
+      },
+      "notes": "Existing reopened group independently accepted at exact live WORKING_PRODUCTION_ACTUAL hashes in PartA; no committed acceptance. PartB accepted-metadata consistency and Git archive pending; hidden selector/ratio/3D remain unverified.",
+      "reviewReportSha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+      "independentActualAcceptance": {
+        "status": "INDEPENDENTLY_ACCEPTED",
+        "actualState": "WORKING_PRODUCTION_ACTUAL",
+        "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+        "acceptedCommit": null,
+        "SPEC": "PASS",
+        "QUALITY": "PASS",
+        "finding": "ADDRESSED",
+        "group": "back_seated_row/male",
+        "reviewReport": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+          "sha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+          "bytes": 12086
+        },
+        "reviewProof": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-proof.json",
+          "sha256": "5cd46a1c697a74740bb42fa343b0f53423d249262510866f0957b9e731791fdb",
+          "bytes": 9362
+        },
+        "actualFrames": [
+          {
+            "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_01.webp",
+            "sha256": "aa0f792a350ab59e11355f431a41b7fcce26da045511f6ec3d706e7e16c3ba1d"
+          },
+          {
+            "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_02.webp",
+            "sha256": "c263952490e0de46775c2c27d3ebf58d5ffb4b66e49e9baea42624080fd5553a"
+          },
+          {
+            "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_03.webp",
+            "sha256": "fc3b37abeb63838f48612c634a377e6de8b3d56e3501f691c4f16b99d455d080"
+          }
+        ],
+        "nativeHardwareView": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/back_seated_row-male-hardware-native.png",
+          "sha256": "7ea4f80db784e781cb66ae5b1e2c9828a219ff3267aaae843cfe2f1ee7c14656",
+          "bytes": 69980
+        },
+        "stage320View": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/back_seated_row-male-320.png",
+          "sha256": "84bb43a8a7b659e90c44c59a05d1d8023a81ba41e0d4362189f820284e5bb9ff",
+          "bytes": 436145
+        },
+        "acceptanceScope": "This own full actual-sex group, native and320; hardware donor sharing does not confer gender acceptance.",
+        "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT",
+        "gitArchiveStatus": "PENDING"
+      },
+      "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT"
+    }
+  ],
+  "currentProductionFrames": [
+    {
+      "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_01.webp",
+      "sha256": "aa0f792a350ab59e11355f431a41b7fcce26da045511f6ec3d706e7e16c3ba1d",
+      "bytes": 162590,
+      "index": 1,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "changedInThisFollowup": false
+    },
+    {
+      "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_02.webp",
+      "sha256": "c263952490e0de46775c2c27d3ebf58d5ffb4b66e49e9baea42624080fd5553a",
+      "bytes": 161180,
+      "index": 2,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "changedInThisFollowup": true
+    },
+    {
+      "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_03.webp",
+      "sha256": "fc3b37abeb63838f48612c634a377e6de8b3d56e3501f691c4f16b99d455d080",
+      "bytes": 163304,
+      "index": 3,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "changedInThisFollowup": false
+    }
+  ],
+  "currentCanonicalMother": {
+    "path": ".work/exercise-guidance/back_seated_row/male-sheet.png",
+    "sha256": "f04970d6edea2e567e5bd4d79880c4836c8767f4e3334d7b40531e8a16fb0b2e",
+    "bytes": 767121,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "kind": "HYBRID_CURRENT_MOTHER",
+    "policy": "Only stage02 replaced with exact decoded new actual RGB; every other cell exact prior canonical RGB, not re-decoded actual. No scale or reencode of other actuals.",
+    "historicalSourceAcceptance": false
+  },
+  "generation": {
+    "distinctNewModelCallsForThisGender": 0,
+    "sharedHardwareDonorFromFemale": true,
+    "batchDistinctBuiltinEvents": 2,
+    "callBefore": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-call-01/journal-before.json",
+      "sha256": "bb1f1a5e54988ce0c2196bafd4fd53de1396265f15976248aebae198177d51dd",
+      "bytes": 1474
+    },
+    "callAfter": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-call-01/journal-after.json",
+      "sha256": "c605e7c5d38d4f89656684c2e1a9e01f1a1aac2dec3969cd1b2c8d86f0ae8e10",
+      "bytes": 1824
+    },
+    "untouchedRaw": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-call-01/raw-untouched.png",
+      "sha256": "ffd4bf4aa2b953893810235de5700aae07dd3edf9bed8e6ca24e3b2bed6ec284",
+      "bytes": 1636862
+    },
+    "exactSavedArgs": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-inputs-v3/builtin-args.json",
+      "sha256": "a7e23d4f434d51fd988ccafd35bc2515500afb5752d46c73a08add928a5d08bf",
+      "bytes": 3299
+    },
+    "originalGenerationHistory": "NOT_RECOVERED_BY_THIS_FOLLOWUP; no original-generation event invented",
+    "genderAcceptance": "SEPARATE_OWN_GROUP_WORKING_ACTUAL_SPEC_PASS_QUALITY_PASS; not inherited from shared donor"
+  },
+  "sourceAndTransformProof": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-male/mechanical-candidate-01/candidate-proof.json",
+    "sha256": "9d1e2834dfb9e63ddfbe33d1e2dd44b27f187717f25409dcf1d310867a6b64b8",
+    "bytes": 7488
+  },
+  "sourceAndCodecVerification": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-male/mechanical-candidate-01/candidate-verification.json",
+    "sha256": "6d1d3e7670601766dccf82a62c8b384b88f51bc2a6b096e22e1a289555e38e32",
+    "bytes": 1167
+  },
+  "integrationProof": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/phase8-integration/integration-proof.json",
+    "sha256": "ea899c420de7165e3a4c7c37684685d1b72402c38a20aaa1b3ab38dc5ae0e2f3",
+    "bytes": 12317
+  },
+  "phase7ImplementerReport": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/phase7-report-frozen.md",
+    "sha256": "45c0e2daafa8fbcc391a3aff26971ba6058bc1aa6f1c420e17e301f0d48efab2",
+    "bytes": 50130
+  },
+  "reopening": {
+    "id": "back_seated_row",
+    "gender": "male",
+    "checklistIds": [
+      "D019"
+    ],
+    "findingKind": "REOPENING_AFTER_TARGETED_REPAIR",
+    "effectiveAfterRepairRecordCount": 33,
+    "currentResult": "DEFECT",
+    "priorTargetedChecklistIds": [
+      "D017"
+    ],
+    "priorTargetedAcceptedCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4",
+    "priorTargetedReviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-divider-review.md",
+    "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-3-whole-change-review.md",
+    "fullReview": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-3-whole-change-review.md",
+      "sha256": "50579784f19af8510c4d76a64311e29ffc76249530be52b8468ea611442a9446",
+      "bytes": 16646
+    },
+    "fullReviewProof": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-whole-change-review-20261019/direct-proof.json",
+      "sha256": "3c9d4d5e28ecd287a0c583e5efd05b34cc8b723359428ecfe6b9acf3ab74b816",
+      "bytes": 17297
+    },
+    "observations": "Stage02 lower unselected plates disappear relative to original inventory; prior D017 edge repair is not whole-machine load acceptance.",
+    "affectedActualAtReopening": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/originals-v1/entry/src/main/resources/base/media/ex_back_seated_row_male_02.webp",
+      "sha256": "5d914da1cc2755ebce34743e96f92640e3f0e27787bae5d888590f895c02d63e",
+      "bytes": 160806
+    },
+    "actualPathAtReopening": "entry/src/main/resources/base/media/ex_back_seated_row_male_02.webp",
+    "inspectedFrames": [
+      2
+    ]
+  },
+  "retainedUnacceptedDonorFamilyHistory": {
+    "sourceGender": "female",
+    "relation": "Shared hardware donor family only; not a male candidate or inherited acceptance",
+    "status": "UNACCEPTED_HISTORICAL",
+    "proof": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/mechanical-candidate-01/candidate-proof.json",
+      "sha256": "681d75b71a6819864ee0fa60960093b681ba6757407de307d13550f1cf784aec"
+    }
+  },
+  "limits": [
+    "Original head/face RGB or actual hardware-only cap used; no invented or repeated plate rows.",
+    "Separate gender full-actual SPEC/QUALITY PASS recorded from PartA; no inherited PASS. PartB metadata review remains pending.",
+    "Unknown hidden selector ordinal, mechanical ratio, force, calibration and occluded geometry not certified.",
+    "Failed prior candidates, original model inputs and historical source snapshots remain retained."
+  ],
+  "codec": {
+    "format": "WEBP",
+    "lossless": true,
+    "quality": 100,
+    "method": 6,
+    "exif": ""
+  },
+  "independentActualAcceptance": {
+    "status": "INDEPENDENTLY_ACCEPTED",
+    "actualState": "WORKING_PRODUCTION_ACTUAL",
+    "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+    "acceptedCommit": null,
+    "SPEC": "PASS",
+    "QUALITY": "PASS",
+    "finding": "ADDRESSED",
+    "group": "back_seated_row/male",
+    "reviewReport": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+      "sha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+      "bytes": 12086
+    },
+    "reviewProof": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-proof.json",
+      "sha256": "5cd46a1c697a74740bb42fa343b0f53423d249262510866f0957b9e731791fdb",
+      "bytes": 9362
+    },
+    "actualFrames": [
+      {
+        "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_01.webp",
+        "sha256": "aa0f792a350ab59e11355f431a41b7fcce26da045511f6ec3d706e7e16c3ba1d"
+      },
+      {
+        "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_02.webp",
+        "sha256": "c263952490e0de46775c2c27d3ebf58d5ffb4b66e49e9baea42624080fd5553a"
+      },
+      {
+        "path": "entry/src/main/resources/base/media/ex_back_seated_row_male_03.webp",
+        "sha256": "fc3b37abeb63838f48612c634a377e6de8b3d56e3501f691c4f16b99d455d080"
+      }
+    ],
+    "nativeHardwareView": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/back_seated_row-male-hardware-native.png",
+      "sha256": "7ea4f80db784e781cb66ae5b1e2c9828a219ff3267aaae843cfe2f1ee7c14656",
+      "bytes": 69980
+    },
+    "stage320View": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/back_seated_row-male-320.png",
+      "sha256": "84bb43a8a7b659e90c44c59a05d1d8023a81ba41e0d4362189f820284e5bb9ff",
+      "bytes": 436145
+    },
+    "acceptanceScope": "This own full actual-sex group, native and320; hardware donor sharing does not confer gender acceptance.",
+    "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT",
+    "gitArchiveStatus": "PENDING"
+  },
+  "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT"
+}

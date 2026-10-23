@@ -1,0 +1,6015 @@
+{
+  "schema": "repair-provenance/v1",
+  "status": "INDEPENDENTLY_ACCEPTED",
+  "audit_baseline_commit": "61e39bc775e5233362155229d568eff59c1659ec",
+  "repair_base_commit": "7955d7ad04beb8f5731c0571dcb16266001e50e9",
+  "acceptedCommit": "6aa03f3928524032ee7f80d9161728708e6eef55",
+  "id": "leg_calf_raise",
+  "exercise": "leg_calf_raise",
+  "gender": "female",
+  "phaseIndices": [
+    2
+  ],
+  "unchangedFrameIndices": [
+    1
+  ],
+  "groupCurrentResult": "PASS",
+  "postRepairAssessment": "PASS",
+  "closesConfirmedGroup": true,
+  "scope": "D018 female fixed-cap/post/interface/background only; one confirmed group closure. Only actual02 changes;01 unchanged. D018male/D006 remain OPEN; no source reuse authorized.",
+  "original_generation": {
+    "tool": "built-in ImageGen",
+    "tool_event_call_id": null,
+    "call_id_evidence": "Unavailable; artifact filename/session is not API request ID.",
+    "artifactIdentifier": "C:/Users/26017/.codex/generated_images/01a1408e-3c1f-7ef0-a60c-cadee2330bd0/exec-50f9b565-c773-49c6-9d2f-46d41bdc97f6.png",
+    "prompt": "Use case: precise-object-edit.\nAsset: one tightly cropped three-quarter 3D scientific exercise-machine detail, neutral gray studio background, same camera, scale, metal finish and soft lighting.\nImage 1 is the EDIT TARGET: an unaltered original raised-phase context crop, 155x150 pixels, corresponding to full-cell rectangle (400,190)-(555,340). Image 2 is REFERENCE ONLY: the original lowered-phase mast cap and near front face, from full-cell rectangle (500,230)-(560,340). Image 3 is CONTEXT ONLY: the entire original raised-phase instruction cell. Return only the complete Image 1 crop at exactly the same composition and aspect ratio, proportionally enlarged if necessary. Do not return Image 2, Image 3, a montage or a full body.\nPrimary request: reconstruct only the tiny coupled fixed-cap side/depth face and moving-yoke end-mount interface. The original fixed outer mast projects too high. In Image 1 the old fixed mast top is at local y29; the corrected fixed cap/near-face top must be at local y52, matching Image 2's ORIGINAL fixed near face after horizontal recentering. The corrected near front face spans local x107 through128, beginning at y52, with the original reference fastener appearance below it. This original near face is the fixed shape anchor, not permission to lower the raised yoke. Remove the excess old fixed cap above local y52 into the matching studio background, and create only the side/depth/mount surfaces needed for a coherent attachment beside and behind that known near face.\nThe original raised horizontal bar must stay exactly at local x14 through89, local y37 through64. Keep its exact pose, angle, silhouette and visible end boundary. Its end mount occupies the small adjacent neighborhood around local x90 through103, y40 through75. Resolve that mount's depth/occlusion so the existing raised bar is supported by the corrected fixed mast even though the raised bar top projects above the mast cap. Preserve a plausible original sliding carriage relationship; do not add a new hinge, telescoping post, stalk, duplicate cap, detached bolt or ghost metal. Do not copy the LOWERED bar or LOWERED mount from Image 2.\nThe ONLY allowed new-content neighborhood in Image 1 is local x88 through131 and y27 through87, corresponding to full-cell x488:532/y217:278. Follow the actual old/new silhouettes and cap/mount surfaces within it, not a rectangular patch. Preserve every other part of Image 1, especially the bar left of x90, original valid bare mast below the local join, guides and the neutral background outside the removed cap silhouette. All body, shoulder pads, hands, grips, load plates, floor and base in Image 3 are immutable context and must never enter the returned edit.\nKeep the same neutral gray material, shading, perspective and lighting. No new anatomy, no arrows, labels, text, logos, red/orange, decorative covers, new apparatus outside the cap-side/mount interface or hidden-plate concealment. The output is only a local new-interface reference; the known original near face and original raised bar will be retained as exact original pixels during controlled compositing.\n",
+    "prompt_utf8_sha256": "5c5e1a515b6e237343a5d7c2cc55b4d6853c25f6f4a3ea628cf114262751f1d1",
+    "prompt_source": {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-coupled-interface-20261016/prompt.txt",
+      "sha256": "5c5e1a515b6e237343a5d7c2cc55b4d6853c25f6f4a3ea628cf114262751f1d1",
+      "bytes": 3131
+    },
+    "historicalInvocationParameters": {
+      "prompt": "Use case: precise-object-edit.\nAsset: one tightly cropped three-quarter 3D scientific exercise-machine detail, neutral gray studio background, same camera, scale, metal finish and soft lighting.\nImage 1 is the EDIT TARGET: an unaltered original raised-phase context crop, 155x150 pixels, corresponding to full-cell rectangle (400,190)-(555,340). Image 2 is REFERENCE ONLY: the original lowered-phase mast cap and near front face, from full-cell rectangle (500,230)-(560,340). Image 3 is CONTEXT ONLY: the entire original raised-phase instruction cell. Return only the complete Image 1 crop at exactly the same composition and aspect ratio, proportionally enlarged if necessary. Do not return Image 2, Image 3, a montage or a full body.\nPrimary request: reconstruct only the tiny coupled fixed-cap side/depth face and moving-yoke end-mount interface. The original fixed outer mast projects too high. In Image 1 the old fixed mast top is at local y29; the corrected fixed cap/near-face top must be at local y52, matching Image 2's ORIGINAL fixed near face after horizontal recentering. The corrected near front face spans local x107 through128, beginning at y52, with the original reference fastener appearance below it. This original near face is the fixed shape anchor, not permission to lower the raised yoke. Remove the excess old fixed cap above local y52 into the matching studio background, and create only the side/depth/mount surfaces needed for a coherent attachment beside and behind that known near face.\nThe original raised horizontal bar must stay exactly at local x14 through89, local y37 through64. Keep its exact pose, angle, silhouette and visible end boundary. Its end mount occupies the small adjacent neighborhood around local x90 through103, y40 through75. Resolve that mount's depth/occlusion so the existing raised bar is supported by the corrected fixed mast even though the raised bar top projects above the mast cap. Preserve a plausible original sliding carriage relationship; do not add a new hinge, telescoping post, stalk, duplicate cap, detached bolt or ghost metal. Do not copy the LOWERED bar or LOWERED mount from Image 2.\nThe ONLY allowed new-content neighborhood in Image 1 is local x88 through131 and y27 through87, corresponding to full-cell x488:532/y217:278. Follow the actual old/new silhouettes and cap/mount surfaces within it, not a rectangular patch. Preserve every other part of Image 1, especially the bar left of x90, original valid bare mast below the local join, guides and the neutral background outside the removed cap silhouette. All body, shoulder pads, hands, grips, load plates, floor and base in Image 3 are immutable context and must never enter the returned edit.\nKeep the same neutral gray material, shading, perspective and lighting. No new anatomy, no arrows, labels, text, logos, red/orange, decorative covers, new apparatus outside the cap-side/mount interface or hidden-plate concealment. The output is only a local new-interface reference; the known original near face and original raised bar will be retained as exact original pixels during controlled compositing.\n",
+      "referenced_image_paths": [
+        "F:\\personal_projects\\fit_loger\\.worktrees\\exercise-guidance\\.work\\exercise-guidance\\leg_calf_raise\\female-coupled-interface-20261016\\input1-original02-context.png",
+        "F:\\personal_projects\\fit_loger\\.worktrees\\exercise-guidance\\.work\\exercise-guidance\\leg_calf_raise\\female-coupled-interface-20261016\\input2-original01-cap-reference.png",
+        "F:\\personal_projects\\fit_loger\\.worktrees\\exercise-guidance\\.work\\exercise-guidance\\leg_calf_raise\\female-coupled-interface-20261016\\input3-original02-full-context.png"
+      ],
+      "transparent_background": false
+    },
+    "submitted_inputs": [
+      {
+        "role": "Historical ImageGen reference input",
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_calf_raise/female-coupled-interface-20261016/input1-original02-context.png",
+          "sha256": "0aef94d2db26c8bf9f7df1f50e53b0fc7a0a967246cdee1336717823be5ff4d5",
+          "bytes": 18108,
+          "dimensions": [
+            155,
+            150
+          ],
+          "mode": "RGB"
+        }
+      },
+      {
+        "role": "Historical ImageGen reference input",
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_calf_raise/female-coupled-interface-20261016/input2-original01-cap-reference.png",
+          "sha256": "fb7503ccaf748d24e9b5c92edada8f4df70b30e17d23d470a7fc0b3cf17aea5c",
+          "bytes": 5538,
+          "dimensions": [
+            60,
+            110
+          ],
+          "mode": "RGB"
+        }
+      },
+      {
+        "role": "Historical ImageGen reference input",
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_calf_raise/female-coupled-interface-20261016/input3-original02-full-context.png",
+          "sha256": "c4d1745503236be5110611d58c4c1d302e8ef32177608372d70d4abe7aedf952",
+          "bytes": 256991,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "mode": "RGB"
+        }
+      }
+    ],
+    "original_inputs_frozen": [
+      {
+        "role": "actual01",
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_calf_raise/female-coupled-interface-20261016/frozen/ex_leg_calf_raise_female_01.webp",
+          "sha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+          "bytes": 22014,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "mode": "RGB"
+        },
+        "rgbSha256": "f8f56200849920b4558f828b4b87d1d04ad39e98f6cd575dbc6a69e2af69bec8"
+      },
+      {
+        "role": "actual02",
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_calf_raise/female-coupled-interface-20261016/frozen/ex_leg_calf_raise_female_02.webp",
+          "sha256": "31ad301eeaf5faee1dfeca6ae56f098fb08bd4145ddd220bef720f77c8a32eba",
+          "bytes": 22186,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "mode": "RGB"
+        },
+        "rgbSha256": "fa25340cfc1aa91f76df0764dfb9a595c7b438f10938cef54de31da30edab192"
+      },
+      {
+        "role": "canonical_mother",
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_calf_raise/female-coupled-interface-20261016/frozen/female-sheet.png",
+          "sha256": "b6d209c27567685941828330c8e82a04e53d829ea95bf82c77ae493203be4c5c",
+          "bytes": 1621736,
+          "dimensions": [
+            1536,
+            1024
+          ],
+          "mode": "RGB"
+        },
+        "rgbSha256": "c1308c1b75a23779855b866d5932152ba6bc626045939ecf7ca3caeaa128a60f"
+      }
+    ],
+    "raw_output": {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-coupled-interface-20261016/imagegen-raw.png",
+      "sha256": "358dd4fa006b0ae938f144ea20370d2529fb2c71e2ad5faf95f8f1a0f2bcd6af",
+      "bytes": 1542100,
+      "dimensions": [
+        1275,
+        1234
+      ],
+      "mode": "RGB"
+    },
+    "whole_raw_disposition": "FAIL; generated fixed cap/interface in complete raw remains rejected. Only foreground dark mount/pin and bright flange polygon reused; no generated cap/background used.",
+    "newCallsInMechanicalAndIntegrationStages": 0
+  },
+  "original_source": {
+    "mother": {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/originals/female-sheet.png",
+      "sha256": "b6d209c27567685941828330c8e82a04e53d829ea95bf82c77ae493203be4c5c",
+      "bytes": 1621736,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "identity": "Original b6d209 canonical raw RGB; per-cell originals freshly authenticated from this backup, never repaired849dcc source."
+  },
+  "assembly": {
+    "acceptedMother": {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-sheet.png",
+      "sha256": "849dcc09cf41739a1ac310aef0b0dabfcfb414e06bdac78a5dc77097404c0f93",
+      "bytes": 976061,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "acceptedHybrid": {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/female-hybrid-sheet.png",
+      "sha256": "849dcc09cf41739a1ac310aef0b0dabfcfb414e06bdac78a5dc77097404c0f93",
+      "bytes": 976061,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "base": "Original02 WebP decoded RGB; current01 source retains originalcanonical raw PNG RGB",
+    "cells": [
+      {
+        "index": 1,
+        "wholeCellBox": [
+          0,
+          0,
+          768,
+          1024
+        ],
+        "originalCanonicalCellRgbSha256": "97e0034bcebae67a3be65c1a1f5e382bb33d0fa6797caeb8f0f0ca4d3c9edcd5",
+        "currentSourceCellRgbSha256": "97e0034bcebae67a3be65c1a1f5e382bb33d0fa6797caeb8f0f0ca4d3c9edcd5",
+        "originalActualDecodedRgbSha256": "f8f56200849920b4558f828b4b87d1d04ad39e98f6cd575dbc6a69e2af69bec8",
+        "currentActualDecodedRgbSha256": "f8f56200849920b4558f828b4b87d1d04ad39e98f6cd575dbc6a69e2af69bec8",
+        "originalActualBackup": {
+          "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/originals/ex_leg_calf_raise_female_01.webp",
+          "sha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+          "bytes": 22014,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "mode": "RGB"
+        },
+        "currentActual": {
+          "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_01.webp",
+          "sha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+          "bytes": 22014,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "mode": "RGB"
+        },
+        "codec": {
+          "quality": 82,
+          "method": 6,
+          "emptyEXIF": true,
+          "lossless": false
+        },
+        "acceptedIntegrationByteReproduced": true,
+        "note": "Original canonical raw PNG cell, distinct from lossy decoded actual"
+      },
+      {
+        "index": 2,
+        "wholeCellBox": [
+          768,
+          0,
+          1536,
+          1024
+        ],
+        "originalCanonicalCellRgbSha256": "16572c6f8982aa4e729835ae1c2f4fa4cb7a60941b56321d4d061bc91ce0248d",
+        "currentSourceCellRgbSha256": "56b2f052e3072d581572e61fea372c272f8a2612579416e2c869b94422607ed4",
+        "originalActualDecodedRgbSha256": "fa25340cfc1aa91f76df0764dfb9a595c7b438f10938cef54de31da30edab192",
+        "currentActualDecodedRgbSha256": "56b2f052e3072d581572e61fea372c272f8a2612579416e2c869b94422607ed4",
+        "originalActualBackup": {
+          "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/originals/ex_leg_calf_raise_female_02.webp",
+          "sha256": "31ad301eeaf5faee1dfeca6ae56f098fb08bd4145ddd220bef720f77c8a32eba",
+          "bytes": 22186,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "mode": "RGB"
+        },
+        "currentActual": {
+          "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_02.webp",
+          "sha256": "e21ec864bc1decbb5459eff41b8f2842b8367c2ff5b00ee774f03bc2490ffd3d",
+          "bytes": 165464,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "mode": "RGB"
+        },
+        "codec": {
+          "quality": 100,
+          "method": 6,
+          "emptyEXIF": true,
+          "lossless": true
+        },
+        "acceptedIntegrationByteReproduced": true,
+        "note": "Edited original02 actual-derived RGB; lossless actual equals source"
+      }
+    ],
+    "layerOrder": [
+      "ORIGINAL02 actual RGB",
+      "real O02[y,x+60] background with declared color fit and smooth alpha",
+      "unchanged original01 cap dx=-23 and RGB offset -1,-2,-2",
+      "unchanged normalized raw mount RGB",
+      "restore exact source-connected valid-bar contour"
+    ],
+    "predeclaredOperation": {
+      "status": "PREFLIGHT_ONLY_NO_CANDIDATE",
+      "operation_order": [
+        "ORIGINAL02 actual RGB",
+        "real O02[y,x+60] background with declared color fit and smooth alpha",
+        "unchanged original01 cap dx=-23 and RGB offset -1,-2,-2",
+        "unchanged normalized raw mount RGB",
+        "restore exact source-connected valid-bar contour"
+      ],
+      "core_row_spans_exclusive": {
+        "216": [
+          502,
+          524
+        ],
+        "217": [
+          498,
+          527
+        ],
+        "218": [
+          493,
+          531
+        ],
+        "219": [
+          488,
+          532
+        ],
+        "220": [
+          487,
+          532
+        ],
+        "221": [
+          487,
+          532
+        ],
+        "222": [
+          487,
+          532
+        ],
+        "223": [
+          487,
+          532
+        ],
+        "224": [
+          487,
+          532
+        ],
+        "225": [
+          487,
+          532
+        ],
+        "226": [
+          487,
+          532
+        ],
+        "227": [
+          487,
+          532
+        ],
+        "228": [
+          488,
+          532
+        ],
+        "229": [
+          488,
+          532
+        ],
+        "230": [
+          491,
+          532
+        ],
+        "231": [
+          491,
+          532
+        ],
+        "232": [
+          491,
+          532
+        ],
+        "233": [
+          491,
+          532
+        ],
+        "234": [
+          491,
+          532
+        ],
+        "235": [
+          491,
+          532
+        ],
+        "236": [
+          491,
+          532
+        ],
+        "237": [
+          491,
+          532
+        ],
+        "238": [
+          491,
+          532
+        ],
+        "239": [
+          491,
+          532
+        ],
+        "240": [
+          491,
+          532
+        ],
+        "241": [
+          491,
+          532
+        ],
+        "242": [
+          491,
+          532
+        ],
+        "243": [
+          491,
+          532
+        ]
+      },
+      "background_extent": [
+        485,
+        213,
+        536,
+        247
+      ],
+      "alpha": "distance d from core; t=clip(d/3,0,1); alpha=(1-3t^2+2t^3)*clip((x-485)/2,0,1); zero on bar/cap/mount and outside search extent",
+      "rounding": "corrected donor=clip(O02[y,x+60]+[1,x-510,y-228,(x-510)*(y-228)]@coef,0,255); final=floor((1-alpha)*O02+alpha*corrected_donor+0.5), uint8",
+      "coef_rows_terms_columns_RGB": [
+        [
+          7.291631668776909,
+          7.1628581406755165,
+          2.7968647154248227
+        ],
+        [
+          -0.2246172080372154,
+          -0.19882576158987172,
+          -0.05120593389612872
+        ],
+        [
+          0.19962440528177272,
+          0.11518867199638802,
+          -0.059958256586694236
+        ],
+        [
+          -0.00853530953151882,
+          -0.006101827579423985,
+          0.004076907030041606
+        ]
+      ],
+      "fit_metrics": {
+        "n": 224,
+        "mae_by_channel": [
+          0.6211487978206293,
+          0.7271225390841075,
+          0.9155523018401329
+        ],
+        "rms_by_channel": [
+          0.8673504115226853,
+          0.9273538194982083,
+          1.1574895509414052
+        ],
+        "maximum_absolute_residual": 4.177693469222098,
+        "source_ring_minmax_rgb": [
+          [
+            210,
+            213,
+            221
+          ],
+          [
+            221,
+            222,
+            229
+          ]
+        ],
+        "clean_support_feather_max_rgb_change": 1,
+        "outer_boundary_alpha_zero": true
+      },
+      "fit_support_points": [
+        {
+          "target": [
+            485,
+            213
+          ],
+          "donor": [
+            545,
+            213
+          ],
+          "target_rgb": [
+            216,
+            219,
+            229
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            486,
+            213
+          ],
+          "donor": [
+            546,
+            213
+          ],
+          "target_rgb": [
+            216,
+            219,
+            229
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            487,
+            213
+          ],
+          "donor": [
+            547,
+            213
+          ],
+          "target_rgb": [
+            216,
+            219,
+            229
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            488,
+            213
+          ],
+          "donor": [
+            548,
+            213
+          ],
+          "target_rgb": [
+            216,
+            219,
+            229
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            489,
+            213
+          ],
+          "donor": [
+            549,
+            213
+          ],
+          "target_rgb": [
+            216,
+            219,
+            229
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            490,
+            213
+          ],
+          "donor": [
+            550,
+            213
+          ],
+          "target_rgb": [
+            216,
+            219,
+            229
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            491,
+            213
+          ],
+          "donor": [
+            551,
+            213
+          ],
+          "target_rgb": [
+            216,
+            219,
+            229
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            492,
+            213
+          ],
+          "donor": [
+            552,
+            213
+          ],
+          "target_rgb": [
+            215,
+            217,
+            228
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            493,
+            213
+          ],
+          "donor": [
+            553,
+            213
+          ],
+          "target_rgb": [
+            215,
+            217,
+            228
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            494,
+            213
+          ],
+          "donor": [
+            554,
+            213
+          ],
+          "target_rgb": [
+            213,
+            216,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            495,
+            213
+          ],
+          "donor": [
+            555,
+            213
+          ],
+          "target_rgb": [
+            213,
+            216,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            496,
+            213
+          ],
+          "donor": [
+            556,
+            213
+          ],
+          "target_rgb": [
+            212,
+            215,
+            225
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            497,
+            213
+          ],
+          "donor": [
+            557,
+            213
+          ],
+          "target_rgb": [
+            213,
+            216,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            498,
+            213
+          ],
+          "donor": [
+            558,
+            213
+          ],
+          "target_rgb": [
+            213,
+            216,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            499,
+            213
+          ],
+          "donor": [
+            559,
+            213
+          ],
+          "target_rgb": [
+            213,
+            216,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            500,
+            213
+          ],
+          "donor": [
+            560,
+            213
+          ],
+          "target_rgb": [
+            213,
+            216,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            501,
+            213
+          ],
+          "donor": [
+            561,
+            213
+          ],
+          "target_rgb": [
+            213,
+            216,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            502,
+            213
+          ],
+          "donor": [
+            562,
+            213
+          ],
+          "target_rgb": [
+            213,
+            216,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            503,
+            213
+          ],
+          "donor": [
+            563,
+            213
+          ],
+          "target_rgb": [
+            212,
+            215,
+            225
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            504,
+            213
+          ],
+          "donor": [
+            564,
+            213
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            505,
+            213
+          ],
+          "donor": [
+            565,
+            213
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            506,
+            213
+          ],
+          "donor": [
+            566,
+            213
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            507,
+            213
+          ],
+          "donor": [
+            567,
+            213
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            508,
+            213
+          ],
+          "donor": [
+            568,
+            213
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            509,
+            213
+          ],
+          "donor": [
+            569,
+            213
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            510,
+            213
+          ],
+          "donor": [
+            570,
+            213
+          ],
+          "target_rgb": [
+            212,
+            215,
+            225
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            511,
+            213
+          ],
+          "donor": [
+            571,
+            213
+          ],
+          "target_rgb": [
+            212,
+            215,
+            225
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            512,
+            213
+          ],
+          "donor": [
+            572,
+            213
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            513,
+            213
+          ],
+          "donor": [
+            573,
+            213
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            514,
+            213
+          ],
+          "donor": [
+            574,
+            213
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            515,
+            213
+          ],
+          "donor": [
+            575,
+            213
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            516,
+            213
+          ],
+          "donor": [
+            576,
+            213
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            517,
+            213
+          ],
+          "donor": [
+            577,
+            213
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            518,
+            213
+          ],
+          "donor": [
+            578,
+            213
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            519,
+            213
+          ],
+          "donor": [
+            579,
+            213
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            520,
+            213
+          ],
+          "donor": [
+            580,
+            213
+          ],
+          "target_rgb": [
+            211,
+            214,
+            222
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            521,
+            213
+          ],
+          "donor": [
+            581,
+            213
+          ],
+          "target_rgb": [
+            211,
+            214,
+            222
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            522,
+            213
+          ],
+          "donor": [
+            582,
+            213
+          ],
+          "target_rgb": [
+            211,
+            214,
+            222
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            523,
+            213
+          ],
+          "donor": [
+            583,
+            213
+          ],
+          "target_rgb": [
+            211,
+            214,
+            222
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            524,
+            213
+          ],
+          "donor": [
+            584,
+            213
+          ],
+          "target_rgb": [
+            210,
+            213,
+            221
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            525,
+            213
+          ],
+          "donor": [
+            585,
+            213
+          ],
+          "target_rgb": [
+            210,
+            213,
+            221
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            526,
+            213
+          ],
+          "donor": [
+            586,
+            213
+          ],
+          "target_rgb": [
+            210,
+            213,
+            221
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            527,
+            213
+          ],
+          "donor": [
+            587,
+            213
+          ],
+          "target_rgb": [
+            210,
+            213,
+            221
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            528,
+            213
+          ],
+          "donor": [
+            588,
+            213
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            529,
+            213
+          ],
+          "donor": [
+            589,
+            213
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            530,
+            213
+          ],
+          "donor": [
+            590,
+            213
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            531,
+            213
+          ],
+          "donor": [
+            591,
+            213
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            532,
+            213
+          ],
+          "donor": [
+            592,
+            213
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            206,
+            209,
+            220
+          ]
+        },
+        {
+          "target": [
+            533,
+            213
+          ],
+          "donor": [
+            593,
+            213
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            206,
+            209,
+            220
+          ]
+        },
+        {
+          "target": [
+            534,
+            213
+          ],
+          "donor": [
+            594,
+            213
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            206,
+            209,
+            220
+          ]
+        },
+        {
+          "target": [
+            535,
+            213
+          ],
+          "donor": [
+            595,
+            213
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            206,
+            209,
+            220
+          ]
+        },
+        {
+          "target": [
+            485,
+            214
+          ],
+          "donor": [
+            545,
+            214
+          ],
+          "target_rgb": [
+            216,
+            219,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            486,
+            214
+          ],
+          "donor": [
+            546,
+            214
+          ],
+          "target_rgb": [
+            216,
+            219,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            487,
+            214
+          ],
+          "donor": [
+            547,
+            214
+          ],
+          "target_rgb": [
+            216,
+            219,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            488,
+            214
+          ],
+          "donor": [
+            548,
+            214
+          ],
+          "target_rgb": [
+            216,
+            219,
+            229
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            489,
+            214
+          ],
+          "donor": [
+            549,
+            214
+          ],
+          "target_rgb": [
+            216,
+            219,
+            229
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            490,
+            214
+          ],
+          "donor": [
+            550,
+            214
+          ],
+          "target_rgb": [
+            216,
+            219,
+            229
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            491,
+            214
+          ],
+          "donor": [
+            551,
+            214
+          ],
+          "target_rgb": [
+            216,
+            219,
+            229
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            492,
+            214
+          ],
+          "donor": [
+            552,
+            214
+          ],
+          "target_rgb": [
+            215,
+            217,
+            228
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            493,
+            214
+          ],
+          "donor": [
+            553,
+            214
+          ],
+          "target_rgb": [
+            215,
+            217,
+            228
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            494,
+            214
+          ],
+          "donor": [
+            554,
+            214
+          ],
+          "target_rgb": [
+            213,
+            216,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            495,
+            214
+          ],
+          "donor": [
+            555,
+            214
+          ],
+          "target_rgb": [
+            213,
+            216,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            496,
+            214
+          ],
+          "donor": [
+            556,
+            214
+          ],
+          "target_rgb": [
+            213,
+            217,
+            225
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            497,
+            214
+          ],
+          "donor": [
+            557,
+            214
+          ],
+          "target_rgb": [
+            213,
+            217,
+            225
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            498,
+            214
+          ],
+          "donor": [
+            558,
+            214
+          ],
+          "target_rgb": [
+            213,
+            217,
+            225
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            499,
+            214
+          ],
+          "donor": [
+            559,
+            214
+          ],
+          "target_rgb": [
+            213,
+            217,
+            225
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            500,
+            214
+          ],
+          "donor": [
+            560,
+            214
+          ],
+          "target_rgb": [
+            213,
+            217,
+            225
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            501,
+            214
+          ],
+          "donor": [
+            561,
+            214
+          ],
+          "target_rgb": [
+            213,
+            217,
+            225
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            502,
+            214
+          ],
+          "donor": [
+            562,
+            214
+          ],
+          "target_rgb": [
+            213,
+            217,
+            225
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            503,
+            214
+          ],
+          "donor": [
+            563,
+            214
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            504,
+            214
+          ],
+          "donor": [
+            564,
+            214
+          ],
+          "target_rgb": [
+            211,
+            214,
+            222
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            505,
+            214
+          ],
+          "donor": [
+            565,
+            214
+          ],
+          "target_rgb": [
+            210,
+            213,
+            221
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            506,
+            214
+          ],
+          "donor": [
+            566,
+            214
+          ],
+          "target_rgb": [
+            211,
+            214,
+            222
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            507,
+            214
+          ],
+          "donor": [
+            567,
+            214
+          ],
+          "target_rgb": [
+            211,
+            214,
+            222
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            508,
+            214
+          ],
+          "donor": [
+            568,
+            214
+          ],
+          "target_rgb": [
+            211,
+            214,
+            222
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            509,
+            214
+          ],
+          "donor": [
+            569,
+            214
+          ],
+          "target_rgb": [
+            211,
+            214,
+            222
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            510,
+            214
+          ],
+          "donor": [
+            570,
+            214
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            511,
+            214
+          ],
+          "donor": [
+            571,
+            214
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            512,
+            214
+          ],
+          "donor": [
+            572,
+            214
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            513,
+            214
+          ],
+          "donor": [
+            573,
+            214
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            514,
+            214
+          ],
+          "donor": [
+            574,
+            214
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            515,
+            214
+          ],
+          "donor": [
+            575,
+            214
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            516,
+            214
+          ],
+          "donor": [
+            576,
+            214
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            517,
+            214
+          ],
+          "donor": [
+            577,
+            214
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            518,
+            214
+          ],
+          "donor": [
+            578,
+            214
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            519,
+            214
+          ],
+          "donor": [
+            579,
+            214
+          ],
+          "target_rgb": [
+            212,
+            215,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            520,
+            214
+          ],
+          "donor": [
+            580,
+            214
+          ],
+          "target_rgb": [
+            211,
+            214,
+            222
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            521,
+            214
+          ],
+          "donor": [
+            581,
+            214
+          ],
+          "target_rgb": [
+            211,
+            214,
+            222
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            522,
+            214
+          ],
+          "donor": [
+            582,
+            214
+          ],
+          "target_rgb": [
+            211,
+            214,
+            222
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            523,
+            214
+          ],
+          "donor": [
+            583,
+            214
+          ],
+          "target_rgb": [
+            211,
+            214,
+            222
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            524,
+            214
+          ],
+          "donor": [
+            584,
+            214
+          ],
+          "target_rgb": [
+            210,
+            213,
+            221
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            525,
+            214
+          ],
+          "donor": [
+            585,
+            214
+          ],
+          "target_rgb": [
+            210,
+            213,
+            221
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            526,
+            214
+          ],
+          "donor": [
+            586,
+            214
+          ],
+          "target_rgb": [
+            210,
+            213,
+            221
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            527,
+            214
+          ],
+          "donor": [
+            587,
+            214
+          ],
+          "target_rgb": [
+            210,
+            213,
+            221
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            528,
+            214
+          ],
+          "donor": [
+            588,
+            214
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            529,
+            214
+          ],
+          "donor": [
+            589,
+            214
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            530,
+            214
+          ],
+          "donor": [
+            590,
+            214
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            531,
+            214
+          ],
+          "donor": [
+            591,
+            214
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            532,
+            214
+          ],
+          "donor": [
+            592,
+            214
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            206,
+            209,
+            220
+          ]
+        },
+        {
+          "target": [
+            533,
+            214
+          ],
+          "donor": [
+            593,
+            214
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            206,
+            209,
+            220
+          ]
+        },
+        {
+          "target": [
+            534,
+            214
+          ],
+          "donor": [
+            594,
+            214
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            206,
+            209,
+            220
+          ]
+        },
+        {
+          "target": [
+            535,
+            214
+          ],
+          "donor": [
+            595,
+            214
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            206,
+            209,
+            220
+          ]
+        },
+        {
+          "target": [
+            485,
+            215
+          ],
+          "donor": [
+            545,
+            215
+          ],
+          "target_rgb": [
+            216,
+            219,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            486,
+            215
+          ],
+          "donor": [
+            546,
+            215
+          ],
+          "target_rgb": [
+            216,
+            219,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            215
+          ],
+          "donor": [
+            593,
+            215
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            206,
+            209,
+            220
+          ]
+        },
+        {
+          "target": [
+            534,
+            215
+          ],
+          "donor": [
+            594,
+            215
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            206,
+            209,
+            220
+          ]
+        },
+        {
+          "target": [
+            535,
+            215
+          ],
+          "donor": [
+            595,
+            215
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            206,
+            209,
+            220
+          ]
+        },
+        {
+          "target": [
+            485,
+            216
+          ],
+          "donor": [
+            545,
+            216
+          ],
+          "target_rgb": [
+            217,
+            220,
+            228
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            486,
+            216
+          ],
+          "donor": [
+            546,
+            216
+          ],
+          "target_rgb": [
+            217,
+            220,
+            228
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            216
+          ],
+          "donor": [
+            593,
+            216
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            216
+          ],
+          "donor": [
+            594,
+            216
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            216
+          ],
+          "donor": [
+            595,
+            216
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            485,
+            217
+          ],
+          "donor": [
+            545,
+            217
+          ],
+          "target_rgb": [
+            217,
+            220,
+            228
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            486,
+            217
+          ],
+          "donor": [
+            546,
+            217
+          ],
+          "target_rgb": [
+            217,
+            220,
+            228
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            217
+          ],
+          "donor": [
+            593,
+            217
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            217
+          ],
+          "donor": [
+            594,
+            217
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            217
+          ],
+          "donor": [
+            595,
+            217
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            485,
+            218
+          ],
+          "donor": [
+            545,
+            218
+          ],
+          "target_rgb": [
+            217,
+            221,
+            226
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            486,
+            218
+          ],
+          "donor": [
+            546,
+            218
+          ],
+          "target_rgb": [
+            217,
+            221,
+            226
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            218
+          ],
+          "donor": [
+            593,
+            218
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            218
+          ],
+          "donor": [
+            594,
+            218
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            218
+          ],
+          "donor": [
+            595,
+            218
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            485,
+            219
+          ],
+          "donor": [
+            545,
+            219
+          ],
+          "target_rgb": [
+            217,
+            221,
+            226
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            486,
+            219
+          ],
+          "donor": [
+            546,
+            219
+          ],
+          "target_rgb": [
+            217,
+            221,
+            226
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            219
+          ],
+          "donor": [
+            593,
+            219
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            219
+          ],
+          "donor": [
+            594,
+            219
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            219
+          ],
+          "donor": [
+            595,
+            219
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            485,
+            220
+          ],
+          "donor": [
+            545,
+            220
+          ],
+          "target_rgb": [
+            218,
+            222,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            486,
+            220
+          ],
+          "donor": [
+            546,
+            220
+          ],
+          "target_rgb": [
+            218,
+            222,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            220
+          ],
+          "donor": [
+            593,
+            220
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            220
+          ],
+          "donor": [
+            594,
+            220
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            220
+          ],
+          "donor": [
+            595,
+            220
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            485,
+            221
+          ],
+          "donor": [
+            545,
+            221
+          ],
+          "target_rgb": [
+            218,
+            222,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            486,
+            221
+          ],
+          "donor": [
+            546,
+            221
+          ],
+          "target_rgb": [
+            218,
+            222,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            221
+          ],
+          "donor": [
+            593,
+            221
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            221
+          ],
+          "donor": [
+            594,
+            221
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            221
+          ],
+          "donor": [
+            595,
+            221
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            485,
+            222
+          ],
+          "donor": [
+            545,
+            222
+          ],
+          "target_rgb": [
+            218,
+            222,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            486,
+            222
+          ],
+          "donor": [
+            546,
+            222
+          ],
+          "target_rgb": [
+            217,
+            221,
+            226
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            222
+          ],
+          "donor": [
+            593,
+            222
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            222
+          ],
+          "donor": [
+            594,
+            222
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            222
+          ],
+          "donor": [
+            595,
+            222
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            485,
+            223
+          ],
+          "donor": [
+            545,
+            223
+          ],
+          "target_rgb": [
+            218,
+            222,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            486,
+            223
+          ],
+          "donor": [
+            546,
+            223
+          ],
+          "target_rgb": [
+            218,
+            222,
+            227
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            223
+          ],
+          "donor": [
+            593,
+            223
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            223
+          ],
+          "donor": [
+            594,
+            223
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            223
+          ],
+          "donor": [
+            595,
+            223
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            485,
+            224
+          ],
+          "donor": [
+            545,
+            224
+          ],
+          "target_rgb": [
+            221,
+            222,
+            226
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            486,
+            224
+          ],
+          "donor": [
+            546,
+            224
+          ],
+          "target_rgb": [
+            221,
+            222,
+            226
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            224
+          ],
+          "donor": [
+            593,
+            224
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            224
+          ],
+          "donor": [
+            594,
+            224
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            224
+          ],
+          "donor": [
+            595,
+            224
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            485,
+            225
+          ],
+          "donor": [
+            545,
+            225
+          ],
+          "target_rgb": [
+            221,
+            222,
+            226
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            486,
+            225
+          ],
+          "donor": [
+            546,
+            225
+          ],
+          "target_rgb": [
+            221,
+            222,
+            226
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            225
+          ],
+          "donor": [
+            593,
+            225
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            225
+          ],
+          "donor": [
+            594,
+            225
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            225
+          ],
+          "donor": [
+            595,
+            225
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            485,
+            226
+          ],
+          "donor": [
+            545,
+            226
+          ],
+          "target_rgb": [
+            221,
+            222,
+            226
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            486,
+            226
+          ],
+          "donor": [
+            546,
+            226
+          ],
+          "target_rgb": [
+            221,
+            222,
+            226
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            226
+          ],
+          "donor": [
+            593,
+            226
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            226
+          ],
+          "donor": [
+            594,
+            226
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            226
+          ],
+          "donor": [
+            595,
+            226
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            485,
+            227
+          ],
+          "donor": [
+            545,
+            227
+          ],
+          "target_rgb": [
+            221,
+            222,
+            226
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            486,
+            227
+          ],
+          "donor": [
+            546,
+            227
+          ],
+          "target_rgb": [
+            221,
+            222,
+            226
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            227
+          ],
+          "donor": [
+            593,
+            227
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            227
+          ],
+          "donor": [
+            594,
+            227
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            227
+          ],
+          "donor": [
+            595,
+            227
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            228
+          ],
+          "donor": [
+            593,
+            228
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            228
+          ],
+          "donor": [
+            594,
+            228
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            228
+          ],
+          "donor": [
+            595,
+            228
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            229
+          ],
+          "donor": [
+            593,
+            229
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            229
+          ],
+          "donor": [
+            594,
+            229
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            229
+          ],
+          "donor": [
+            595,
+            229
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            230
+          ],
+          "donor": [
+            593,
+            230
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            230
+          ],
+          "donor": [
+            594,
+            230
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            230
+          ],
+          "donor": [
+            595,
+            230
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            231
+          ],
+          "donor": [
+            593,
+            231
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            534,
+            231
+          ],
+          "donor": [
+            594,
+            231
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            535,
+            231
+          ],
+          "donor": [
+            595,
+            231
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            208,
+            210,
+            221
+          ]
+        },
+        {
+          "target": [
+            533,
+            232
+          ],
+          "donor": [
+            593,
+            232
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            232
+          ],
+          "donor": [
+            594,
+            232
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            232
+          ],
+          "donor": [
+            595,
+            232
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            233
+          ],
+          "donor": [
+            593,
+            233
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            233
+          ],
+          "donor": [
+            594,
+            233
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            233
+          ],
+          "donor": [
+            595,
+            233
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            234
+          ],
+          "donor": [
+            593,
+            234
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            234
+          ],
+          "donor": [
+            594,
+            234
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            234
+          ],
+          "donor": [
+            595,
+            234
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            235
+          ],
+          "donor": [
+            593,
+            235
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            235
+          ],
+          "donor": [
+            594,
+            235
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            235
+          ],
+          "donor": [
+            595,
+            235
+          ],
+          "target_rgb": [
+            210,
+            213,
+            223
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            236
+          ],
+          "donor": [
+            593,
+            236
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            236
+          ],
+          "donor": [
+            594,
+            236
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            236
+          ],
+          "donor": [
+            595,
+            236
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            237
+          ],
+          "donor": [
+            593,
+            237
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            237
+          ],
+          "donor": [
+            594,
+            237
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            237
+          ],
+          "donor": [
+            595,
+            237
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            238
+          ],
+          "donor": [
+            593,
+            238
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            238
+          ],
+          "donor": [
+            594,
+            238
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            238
+          ],
+          "donor": [
+            595,
+            238
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            239
+          ],
+          "donor": [
+            593,
+            239
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            239
+          ],
+          "donor": [
+            594,
+            239
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            239
+          ],
+          "donor": [
+            595,
+            239
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            240
+          ],
+          "donor": [
+            593,
+            240
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            240
+          ],
+          "donor": [
+            594,
+            240
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            240
+          ],
+          "donor": [
+            595,
+            240
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            241
+          ],
+          "donor": [
+            593,
+            241
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            241
+          ],
+          "donor": [
+            594,
+            241
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            241
+          ],
+          "donor": [
+            595,
+            241
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            242
+          ],
+          "donor": [
+            593,
+            242
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            242
+          ],
+          "donor": [
+            594,
+            242
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            242
+          ],
+          "donor": [
+            595,
+            242
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            243
+          ],
+          "donor": [
+            593,
+            243
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            243
+          ],
+          "donor": [
+            594,
+            243
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            243
+          ],
+          "donor": [
+            595,
+            243
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            244
+          ],
+          "donor": [
+            593,
+            244
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            244
+          ],
+          "donor": [
+            594,
+            244
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            244
+          ],
+          "donor": [
+            595,
+            244
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            245
+          ],
+          "donor": [
+            593,
+            245
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            245
+          ],
+          "donor": [
+            594,
+            245
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            245
+          ],
+          "donor": [
+            595,
+            245
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            533,
+            246
+          ],
+          "donor": [
+            593,
+            246
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            534,
+            246
+          ],
+          "donor": [
+            594,
+            246
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        },
+        {
+          "target": [
+            535,
+            246
+          ],
+          "donor": [
+            595,
+            246
+          ],
+          "target_rgb": [
+            211,
+            214,
+            224
+          ],
+          "donor_rgb": [
+            209,
+            212,
+            222
+          ]
+        }
+      ],
+      "foreground_rows_exclusive": [
+        [
+          228,
+          230,
+          485,
+          488
+        ],
+        [
+          230,
+          237,
+          485,
+          492
+        ],
+        [
+          237,
+          255,
+          485,
+          491
+        ]
+      ],
+      "reclassified_old_protection": [
+        [
+          488,
+          227
+        ],
+        [
+          489,
+          227
+        ],
+        [
+          488,
+          228
+        ],
+        [
+          489,
+          228
+        ],
+        [
+          488,
+          229
+        ],
+        [
+          489,
+          229
+        ]
+      ],
+      "additional_valid_bar": [
+        [
+          491,
+          230
+        ],
+        [
+          491,
+          231
+        ],
+        [
+          491,
+          232
+        ],
+        [
+          491,
+          233
+        ],
+        [
+          491,
+          234
+        ],
+        [
+          491,
+          235
+        ],
+        [
+          491,
+          236
+        ],
+        [
+          490,
+          230
+        ]
+      ],
+      "mask_pixels": {
+        "background": 1186,
+        "bar_in_edit_neighborhood": 163,
+        "cap": 1248,
+        "mount": 224,
+        "union": 2532
+      },
+      "immutable_cap_mount_masks": {
+        "cap": "53de049e5637ebf565d9dc007cb41e950c97365cf763dba1177c6a9cc5308e6d",
+        "mount": "93193d7ffbc18eeb81d0a1b27b41ea57b0e901fd361394ffc401ec4d6c06ac22"
+      },
+      "additional_reclassified_clean_background": [
+        [
+          486,
+          227
+        ],
+        [
+          487,
+          227
+        ]
+      ],
+      "statusNote": "Historical pre-render declaration; accepted candidate/reviews follow. Original status is preserved, not interpreted as current acceptance."
+    },
+    "sourceCap": {
+      "originalActual": {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/originals/ex_leg_calf_raise_female_01.webp",
+        "sha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+        "bytes": 22014,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "RGB"
+      },
+      "polygon": [
+        [
+          530,
+          241
+        ],
+        [
+          541,
+          241
+        ],
+        [
+          549,
+          243
+        ],
+        [
+          551,
+          244
+        ],
+        [
+          551,
+          289
+        ],
+        [
+          530,
+          289
+        ],
+        [
+          530,
+          255
+        ],
+        [
+          514,
+          255
+        ],
+        [
+          514,
+          253
+        ],
+        [
+          515,
+          248
+        ],
+        [
+          517,
+          245
+        ],
+        [
+          522,
+          243
+        ]
+      ],
+      "translation": [
+        -23,
+        0
+      ],
+      "rgbOffset": [
+        -1,
+        -2,
+        -2
+      ],
+      "offsetSupportOriginal02": [
+        509,
+        290,
+        527,
+        294
+      ],
+      "offsetSupportOriginal01": [
+        532,
+        290,
+        550,
+        294
+      ],
+      "offsetMean": [
+        -1.1388888888888888,
+        -1.9027777777777777,
+        -2.3055555555555554
+      ],
+      "rounding": "floor(mean+0.5) then int16 add/clip to0..255; no alpha/geometry invention",
+      "mask": {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mechanical-20261016/original01-fixed-cap-target-mask.png",
+        "sha256": "53de049e5637ebf565d9dc007cb41e950c97365cf763dba1177c6a9cc5308e6d",
+        "bytes": 998,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "L"
+      }
+    },
+    "generatedMount": {
+      "raw": {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-coupled-interface-20261016/imagegen-raw.png",
+        "sha256": "358dd4fa006b0ae938f144ea20370d2529fb2c71e2ad5faf95f8f1a0f2bcd6af",
+        "bytes": 1542100,
+        "dimensions": [
+          1275,
+          1234
+        ],
+        "mode": "RGB"
+      },
+      "rawPolygon": [
+        [
+          750,
+          389
+        ],
+        [
+          817,
+          389
+        ],
+        [
+          817,
+          388
+        ],
+        [
+          848,
+          389
+        ],
+        [
+          850,
+          546
+        ],
+        [
+          817,
+          548
+        ],
+        [
+          751,
+          527
+        ]
+      ],
+      "uniformScaleNumerator": 155,
+      "uniformScaleDenominator": 1275,
+      "fullCellOffset": [
+        400,
+        190
+      ],
+      "rgbRegistration": "Pillow AFFINE inverse1275/155 to155x150 BICUBIC; no warp",
+      "maskRegistration": "same uniform affine to155x150 NEAREST",
+      "scope": [
+        488,
+        217,
+        532,
+        278
+      ],
+      "barExclusion": "Original mechanical bar rectangle x414:490/y227:255 plus x490/y231:255; same frozen224pixel mount retained in accepted stage.",
+      "mask": {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mechanical-20261016/generated-fixed-position-mount-mask.png",
+        "sha256": "93193d7ffbc18eeb81d0a1b27b41ea57b0e901fd361394ffc401ec4d6c06ac22",
+        "bytes": 912,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "L"
+      },
+      "registeredReference": {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-coupled-interface-20261016/registered-reference-only.png",
+        "sha256": "e2301db9c51124a70eb458cf8e58f6da0413f0a151b480802c86769d5dc90798",
+        "bytes": 33375,
+        "dimensions": [
+          155,
+          150
+        ],
+        "mode": "RGB"
+      },
+      "colorRule": "Exact registered raw mount RGB; no material equalization; generated cap never used."
+    },
+    "background": {
+      "donor": "Original02 actual same-row x+60 real studio background",
+      "fitSupportExclusiveRectangles": [
+        [
+          485,
+          213,
+          536,
+          215
+        ],
+        [
+          485,
+          215,
+          487,
+          228
+        ],
+        [
+          533,
+          215,
+          536,
+          247
+        ]
+      ],
+      "coefficients": [
+        [
+          7.291631668776909,
+          7.1628581406755165,
+          2.7968647154248227
+        ],
+        [
+          -0.2246172080372154,
+          -0.19882576158987172,
+          -0.05120593389612872
+        ],
+        [
+          0.19962440528177272,
+          0.11518867199638802,
+          -0.059958256586694236
+        ],
+        [
+          -0.00853530953151882,
+          -0.006101827579423985,
+          0.004076907030041606
+        ]
+      ],
+      "fitMetrics": {
+        "n": 224,
+        "mae_by_channel": [
+          0.6211487978206293,
+          0.7271225390841075,
+          0.9155523018401329
+        ],
+        "rms_by_channel": [
+          0.8673504115226853,
+          0.9273538194982083,
+          1.1574895509414052
+        ],
+        "maximum_absolute_residual": 4.177693469222098,
+        "source_ring_minmax_rgb": [
+          [
+            210,
+            213,
+            221
+          ],
+          [
+            221,
+            222,
+            229
+          ]
+        ],
+        "clean_support_feather_max_rgb_change": 1,
+        "outer_boundary_alpha_zero": true
+      },
+      "alphaFormula": "distance d from core; t=clip(d/3,0,1); alpha=(1-3t^2+2t^3)*clip((x-485)/2,0,1); zero on bar/cap/mount and outside search extent",
+      "blendRounding": "corrected donor=clip(O02[y,x+60]+[1,x-510,y-228,(x-510)*(y-228)]@coef,0,255); final=floor((1-alpha)*O02+alpha*corrected_donor+0.5), uint8",
+      "exactAlpha": {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/background-alpha-exact.npy",
+        "sha256": "a01b7f77b60db965d3446ce65ea6967e1615e736297bec74b22696f5827e8b4b",
+        "bytes": 6291584
+      },
+      "exactFitArray": {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/rgb-offset-fit.npy",
+        "sha256": "f0b52aedcebc6f7c2f05739554272ae841b8996411994c09a3c3fee11b44cbf2",
+        "bytes": 224
+      },
+      "mask": {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/background-mask.png",
+        "sha256": "102eff46a5355bb7781de1404cd124b091fa99f3cbb45555730d454ab6e394dc",
+        "bytes": 983,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "L"
+      },
+      "union": {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/union-mask.png",
+        "sha256": "f0cecb448c56f8b77c478b5189f09d3631a900013d29e065a8bbe3b4588790fa",
+        "bytes": 1064,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "L"
+      },
+      "validBarContour": {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/valid-source-bar-contour.png",
+        "sha256": "1c0fa8310f6e69452f54241f9ba0c2ca56a3ccf22ecd3e9104363879cec9dec8",
+        "bytes": 923,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "L"
+      },
+      "validBarPixels": 163,
+      "reclassifiedOldBroadRectangle": [
+        {
+          "xy": [
+            486,
+            227
+          ],
+          "source_rgb": [
+            221,
+            222,
+            226
+          ],
+          "new_rgb": [
+            221,
+            223,
+            226
+          ],
+          "class": "clean background formerly inside broad bar rectangle"
+        },
+        {
+          "xy": [
+            487,
+            227
+          ],
+          "source_rgb": [
+            221,
+            222,
+            226
+          ],
+          "new_rgb": [
+            221,
+            223,
+            226
+          ],
+          "class": "clean background formerly inside broad bar rectangle"
+        },
+        {
+          "xy": [
+            488,
+            227
+          ],
+          "source_rgb": [
+            246,
+            248,
+            254
+          ],
+          "new_rgb": [
+            221,
+            223,
+            226
+          ],
+          "class": "old-cap dark/bright AA"
+        },
+        {
+          "xy": [
+            489,
+            227
+          ],
+          "source_rgb": [
+            142,
+            143,
+            149
+          ],
+          "new_rgb": [
+            221,
+            223,
+            226
+          ],
+          "class": "old-cap dark/bright AA"
+        },
+        {
+          "xy": [
+            488,
+            228
+          ],
+          "source_rgb": [
+            236,
+            238,
+            242
+          ],
+          "new_rgb": [
+            221,
+            224,
+            226
+          ],
+          "class": "old-cap dark/bright AA"
+        },
+        {
+          "xy": [
+            489,
+            228
+          ],
+          "source_rgb": [
+            109,
+            111,
+            115
+          ],
+          "new_rgb": [
+            221,
+            223,
+            226
+          ],
+          "class": "old-cap dark/bright AA"
+        },
+        {
+          "xy": [
+            488,
+            229
+          ],
+          "source_rgb": [
+            184,
+            185,
+            189
+          ],
+          "new_rgb": [
+            222,
+            224,
+            226
+          ],
+          "class": "old-cap dark/bright AA"
+        },
+        {
+          "xy": [
+            489,
+            229
+          ],
+          "source_rgb": [
+            85,
+            86,
+            90
+          ],
+          "new_rgb": [
+            221,
+            224,
+            226
+          ],
+          "class": "old-cap dark/bright AA"
+        }
+      ],
+      "note": "Six oldcap AA samples plus two clean-background+1green points are separately classified; zero valid-bar changes. No procedural steel/background texture."
+    },
+    "changedPixels": 2424,
+    "unionPixels": 2532,
+    "outsideUnionChanged": 0,
+    "validBarChanged": 0,
+    "bodyContactsLoadGuidesBaseChanged": 0,
+    "capMountVisibleRgbIdentical": true
+  },
+  "codec": {
+    "cells": [
+      {
+        "index": 1,
+        "quality": 82,
+        "method": 6,
+        "emptyEXIF": true,
+        "lossless": false
+      },
+      {
+        "index": 2,
+        "quality": 100,
+        "method": 6,
+        "emptyEXIF": true,
+        "lossless": true
+      }
+    ],
+    "runtime": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "pythonExecutable": "C:\\Users\\26017\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "nodeExecutable": "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "pillow": "12.3.0",
+      "libwebp": "1.6.0",
+      "platform": "Windows-10-10.0.19045-SP0"
+    },
+    "evidence": "Both encoders byte-reproduced in accepted integration/independent actual review; not rerun in documentation stage.",
+    "processor": {
+      "path": "tools/exercises/process_guidance_sheet.py",
+      "sha256": "344889ede82dca244343331748704a31966fbda75452ed0813312d44a2592c27",
+      "bytes": 4034
+    }
+  },
+  "accepted_production": [
+    {
+      "index": 2,
+      "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_02.webp",
+      "baselineSha256": "31ad301eeaf5faee1dfeca6ae56f098fb08bd4145ddd220bef720f77c8a32eba",
+      "productionSha256": "e21ec864bc1decbb5459eff41b8f2842b8367c2ff5b00ee774f03bc2490ffd3d",
+      "width": 768,
+      "height": 1024,
+      "bytes": 165464,
+      "codec": {
+        "format": "WEBP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6,
+        "emptyEXIF": true
+      }
+    }
+  ],
+  "unchanged_frames": [
+    {
+      "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_01.webp",
+      "sha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+      "bytes": 22014,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "RGB"
+    }
+  ],
+  "preservedFailureAndComponentInputs": [
+    {
+      "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_01.webp",
+      "sha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+      "bytes": 22014,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-coupled-interface-20261016/imagegen-raw.png",
+      "sha256": "358dd4fa006b0ae938f144ea20370d2529fb2c71e2ad5faf95f8f1a0f2bcd6af",
+      "bytes": 1542100,
+      "dimensions": [
+        1275,
+        1234
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-coupled-interface-20261016/registered-reference-only.png",
+      "sha256": "e2301db9c51124a70eb458cf8e58f6da0413f0a151b480802c86769d5dc90798",
+      "bytes": 33375,
+      "dimensions": [
+        155,
+        150
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-coupled-interface-20261016/component-anchor-trace.json",
+      "sha256": "806a8758001c9bbbbfcb4ce2406adf9606cd1652ede1ebbb7d13374e414d5f65",
+      "bytes": 2351
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mechanical-20261016/ex_leg_calf_raise_female_02.webp",
+      "sha256": "e91c205aa8e54919731a49ff4abc961e84f9882507e5f4d3c8736c2863289605",
+      "bytes": 165090,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mechanical-20261016/candidate-proof.json",
+      "sha256": "35137a0d6401ee088df6e9e4927410fe7bba6007191290be9f7a8022a86a8be2",
+      "bytes": 6488
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mechanical-20261016/render.py",
+      "sha256": "be9d9df98e454e151e0872b316841594854a7dc697cdc595220bb7d73863c6c1",
+      "bytes": 7597
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mechanical-20261016/original01-fixed-cap-target-mask.png",
+      "sha256": "53de049e5637ebf565d9dc007cb41e950c97365cf763dba1177c6a9cc5308e6d",
+      "bytes": 998,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mechanical-20261016/generated-fixed-position-mount-mask.png",
+      "sha256": "93193d7ffbc18eeb81d0a1b27b41ea57b0e901fd361394ffc401ec4d6c06ac22",
+      "bytes": 912,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mechanical-20261016/protected-original02-bar-mask.png",
+      "sha256": "dd0decb4ba35e2252bfd294b7732fe8699d4a1954ba01d1404a1e950c843a3c3",
+      "bytes": 921,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mechanical-20261016/old-fixed-cap-background-mask.png",
+      "sha256": "0bcff5f53cc6aa8dd6b8bfc4b0f42241331a2a6170be8777a6d5e508988438c1",
+      "bytes": 972,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mechanical-20261016/union-mask.png",
+      "sha256": "7253af21eb1a4ef4a88a1497340b1b01068e71a4f38dbab938959b322019a912",
+      "bytes": 1092,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mask-fix-20261016/ex_leg_calf_raise_female_02.webp",
+      "sha256": "335dc65df07a2d2efc67c79d0931dee46c18a86d3a939073207483f9e9d73c69",
+      "bytes": 165150,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mask-fix-20261016/candidate-proof.json",
+      "sha256": "93855025277d39d13ca539a2bf68e7fa983fc5691d74ef74b9129735b00336dd",
+      "bytes": 8250
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mask-fix-20261016/render.py",
+      "sha256": "741bf45fb823bcb9e6609a043050adfa45ebabe549855ab658c63f893eadeef6",
+      "bytes": 6427
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mask-fix-20261016/before-render.json",
+      "sha256": "f82897b2fbd5752270f8b97465b1721f8fc56024ecd19d3a5070cc9084c966a0",
+      "bytes": 4918
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mask-fix-20261016/background-cleanup-mask.png",
+      "sha256": "81c1842cd43df33acc1f26c9303ca5520b16b247756d6031b89222c21ba8de95",
+      "bytes": 948,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mask-fix-20261016/valid-original02-bar-mask.png",
+      "sha256": "4b9a5ec0544f4d36e2a87fe7778f4912cc69e536b0351cb5551b5d2b2826615d",
+      "bytes": 924,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mask-fix-20261016/declared-new-union-mask.png",
+      "sha256": "4fc5e8e860d8285872673b5af3e40ece084c39a5e8f1ac7adb72b5764e32e109",
+      "bytes": 1065,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mask-fix-20261016/old-union-mask.png",
+      "sha256": "7253af21eb1a4ef4a88a1497340b1b01068e71a4f38dbab938959b322019a912",
+      "bytes": 1092,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mask-fix-20261016/prepare_masks.py",
+      "sha256": "758a9cb0cbb52cfb6cc373eac48272840edbec4a926f3a892b9d9c45b2965ee9",
+      "bytes": 4338
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-interface-mask-fix-20261016/final-disposition.json",
+      "sha256": "0147fb5a04650e0739e5d5af726006e5ebfce8400a358da7a1a535be118e3313",
+      "bytes": 1406
+    }
+  ],
+  "reconstructionArtifacts": [
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/ex_leg_calf_raise_female_01.webp",
+      "sha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+      "bytes": 22014,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/ex_leg_calf_raise_female_02.webp",
+      "sha256": "e21ec864bc1decbb5459eff41b8f2842b8367c2ff5b00ee774f03bc2490ffd3d",
+      "bytes": 165464,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/candidate02-source-rgb.png",
+      "sha256": "42e85fafab3a0a67db1b1df25e27728e7f476bb06a084713a71f193c2e4373a3",
+      "bytes": 257255,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/female-hybrid-sheet.png",
+      "sha256": "849dcc09cf41739a1ac310aef0b0dabfcfb414e06bdac78a5dc77097404c0f93",
+      "bytes": 976061,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/background-mask.png",
+      "sha256": "102eff46a5355bb7781de1404cd124b091fa99f3cbb45555730d454ab6e394dc",
+      "bytes": 983,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/union-mask.png",
+      "sha256": "f0cecb448c56f8b77c478b5189f09d3631a900013d29e065a8bbe3b4588790fa",
+      "bytes": 1064,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/valid-source-bar-contour.png",
+      "sha256": "1c0fa8310f6e69452f54241f9ba0c2ca56a3ccf22ecd3e9104363879cec9dec8",
+      "bytes": 923,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/before-render.json",
+      "sha256": "8d237863dd2c9c2527c6a5e20a29bff24788553f8775054809deba5e44af477f",
+      "bytes": 65287
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/background-alpha-exact.npy",
+      "sha256": "a01b7f77b60db965d3446ce65ea6967e1615e736297bec74b22696f5827e8b4b",
+      "bytes": 6291584
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/rgb-offset-fit.npy",
+      "sha256": "f0b52aedcebc6f7c2f05739554272ae841b8996411994c09a3c3fee11b44cbf2",
+      "bytes": 224
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/candidate-proof.json",
+      "sha256": "676207a36b83b099c4ad9aa56286c0f4163e85301e918c126f56d07cd1c648ee",
+      "bytes": 13865
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/final-verification.json",
+      "sha256": "a7545bc9c5bb4682e5a00cddfdd02da5e063c1e8dcfa9261cae1eae8284c5a5b",
+      "bytes": 1622
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/clean-fit-support-mask.png",
+      "sha256": "8a22f2d4c0af3d6a44a477649b760651a596ee29daa36517856ba4e06a33a901",
+      "bytes": 941,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/complete-old-cap-core.png",
+      "sha256": "6ef068f8158fb91bff962d36be040ad91528fa872f41655dce37c543089caaad",
+      "bytes": 948,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "L"
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/declare.py",
+      "sha256": "f22ed1fbaaaa33cd2adca3eee976f52b4a19a189cee09d72bfad5c2a2d7408e4",
+      "bytes": 5700
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/verify.py",
+      "sha256": "11a19f4b7b2da7ccb0d45b016301b5fa3f4cb800e4cffd805df44e0774c5a627",
+      "bytes": 3868
+    },
+    {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/inputs-before.json",
+      "sha256": "a9c975d174debc24a71408c8d05ffec8067a0327f3252c86f48189d584ad259b",
+      "bytes": 12624
+    }
+  ],
+  "proofs": {
+    "candidate": {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/candidate-proof.json",
+      "sha256": "676207a36b83b099c4ad9aa56286c0f4163e85301e918c126f56d07cd1c648ee",
+      "bytes": 13865
+    },
+    "candidateFinalVerification": {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-reconstruction-20261016/final-verification.json",
+      "sha256": "a7545bc9c5bb4682e5a00cddfdd02da5e063c1e8dcfa9261cae1eae8284c5a5b",
+      "bytes": 1622
+    },
+    "integration": {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/integration-provenance.json",
+      "sha256": "97a13cd251b914984ac40a26aa1c6b9b3ae71c04c7b9d8b781f3b4f130746045",
+      "bytes": 150091
+    },
+    "integrationInventories": [
+      {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/before-inventory.json",
+        "sha256": "d7d23082dd51448db965920155c1632f608fcc51cea85d301fb2e3dc768a1a46"
+      },
+      {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/after-inventory.json",
+        "sha256": "141b3346f252dd7c1888581117660ec2f26fbedcc9c6f6dc83743168750b2dcf"
+      },
+      {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/evidence-before.json",
+        "sha256": "dcc96cfd1e998adaa8e3ad536f2a45824b43dcca594981c0a628180456052ec8"
+      },
+      {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/bound-inputs.json",
+        "sha256": "53fd5d7526e26527dac88c1a1bdf8f908a8661cf63d2e412253bface0969bb60"
+      },
+      {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/mechanical-proof.json",
+        "sha256": "3c32ba2fc916c841ed350d6586faca620adc9623c9a332313601e892c36363f5"
+      },
+      {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/qa-view-derivation.json",
+        "sha256": "2fae876f10407dd2310d3fd7f2231044594f570c029f11e2837f5d024bc0bf6d"
+      },
+      {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/visual-qa.json",
+        "sha256": "d8bb9ba6b7e955ea57362195fa67100b458447721838693aa640e9bed2af32f4"
+      },
+      {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/test-results.json",
+        "sha256": "0d2b5184baf72dff86ce427e2e439976b26e4640456081ee538562bb94cafcd7"
+      }
+    ],
+    "integrationReport": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-background-integration-report.md",
+      "sha256": "00146145360ff580c7ae30aa6bacb7a0bfbbd564e3c990fd02b2606d1a4cf8be",
+      "bytes": 10209
+    },
+    "componentDiagnostic": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-component-diagnostic-report.md",
+      "sha256": "45575ce2879f8e74b67fd0c7126184231224042b3aac25733ea93034d209b4ad",
+      "bytes": 18856
+    },
+    "reconstructionReport": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-background-reconstruction-report.md",
+      "sha256": "b01e1721ecb96a0c9630bac8b603b56f57896993a273da1274501077914ab3ae",
+      "bytes": 11294
+    }
+  },
+  "independent_reviews": [
+    {
+      "phase": "candidate",
+      "verdict": "SPEC PASS / TASKQUALITY PASS;71 focused checks",
+      "artifact": {
+        "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-background-candidate-review.md",
+        "sha256": "a0bd892a6f78aa3277acbfce9378e27df86f8e7e677a4983615a2d036758d2e8",
+        "bytes": 8659
+      }
+    },
+    {
+      "phase": "actual-diff integration",
+      "verdict": "SPEC PASS / TASKQUALITY PASS;no findings",
+      "artifact": {
+        "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-background-integration-review.md",
+        "sha256": "8efe64ca4ced20f9900706cccf8b6c58e0d9d4349fcdfb322f04700e81be0eb9",
+        "bytes": 8440
+      }
+    }
+  ],
+  "acceptedIntegrationTests": [
+    {
+      "command": [
+        "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+        "tools/exercises/guidance_prompt.mjs",
+        "--check",
+        "--require-all"
+      ],
+      "exitCode": 0,
+      "output": "PASS: entries=120, prompts=240, approved=120, planned=0\n"
+    },
+    {
+      "command": [
+        "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-B",
+        "tools/exercises/verify_guidance_assets.py",
+        "--manifest",
+        "tools/exercises/guidance.json",
+        "--media",
+        "entry/src/main/resources/base/media",
+        "--require-all"
+      ],
+      "exitCode": 0,
+      "output": "PASS: approved=120, planned=0, frames=590\r\n"
+    },
+    {
+      "command": [
+        "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "tools.exercises.test_process_guidance_sheet",
+        "-v"
+      ],
+      "exitCode": 0,
+      "output": "test_arnold_prompt_teaches_palms_self_start_and_rotated_overhead_finish (tools.exercises.test_process_guidance_sheet.PipelineTests.test_arnold_prompt_teaches_palms_self_start_and_rotated_overhead_finish) ... ok\r\ntest_arnold_without_movement_reference_falls_back_to_full_catalog_start (tools.exercises.test_process_guidance_sheet.PipelineTests.test_arnold_without_movement_reference_falls_back_to_full_catalog_start) ... ok\r\ntest_every_generated_panel_requires_visible_boundary_margin (tools.exercises.test_process_guidance_sheet.PipelineTests.test_every_generated_panel_requires_visible_boundary_margin) ... ok\r\ntest_flutter_kick_movement_reference_matches_caption_order (tools.exercises.test_process_guidance_sheet.PipelineTests.test_flutter_kick_movement_reference_matches_caption_order) ... ok\r\ntest_incline_dumbbell_press_starts_over_chest_and_straight_arm_anatomy_is_valid (tools.exercises.test_process_guidance_sheet.PipelineTests.test_incline_dumbbell_press_starts_over_chest_and_straight_arm_anatomy_is_valid) ... ok\r\ntest_mapping_executes_empty_then_only_approved_with_ordered_resources (tools.exercises.test_process_guidance_sheet.PipelineTests.test_mapping_executes_empty_then_only_approved_with_ordered_resources) ... ok\r\ntest_muscle_highlight_preserves_natural_anatomy_for_both_models (tools.exercises.test_process_guidance_sheet.PipelineTests.test_muscle_highlight_preserves_natural_anatomy_for_both_models) ... ok\r\ntest_processor_cli_filters_literal_part_and_builds_previews (tools.exercises.test_process_guidance_sheet.PipelineTests.test_processor_cli_filters_literal_part_and_builds_previews) ... ok\r\ntest_prompt_prefers_manifest_movement_reference_over_catalog_variants (tools.exercises.test_process_guidance_sheet.PipelineTests.test_prompt_prefers_manifest_movement_reference_over_catalog_variants) ... ok\r\ntest_prompt_rejects_non_string_layouts (tools.exercises.test_process_guidance_sheet.PipelineTests.test_prompt_rejects_non_string_layouts) ... ok\r\ntest_prompts_join_catalog_and_filter_planned_jobs (tools.exercises.test_process_guidance_sheet.PipelineTests.test_prompts_join_catalog_and_filter_planned_jobs) ... ok\r\ntest_rear_fly_prompt_selects_high_pulleys_and_opposite_crossed_connections (tools.exercises.test_process_guidance_sheet.PipelineTests.test_rear_fly_prompt_selects_high_pulleys_and_opposite_crossed_connections) ... ok\r\ntest_selected_catalog_variants_are_unambiguous_in_generated_prompts (tools.exercises.test_process_guidance_sheet.PipelineTests.test_selected_catalog_variants_are_unambiguous_in_generated_prompts) ... ok\r\ntest_verifier_rejects_invalid_manifests (tools.exercises.test_process_guidance_sheet.PipelineTests.test_verifier_rejects_invalid_manifests) ... ok\r\ntest_verifier_rejects_small_wrong_format_and_undecodable_files (tools.exercises.test_process_guidance_sheet.PipelineTests.test_verifier_rejects_small_wrong_format_and_undecodable_files) ... ok\r\ntest_verifier_requires_both_genders_for_approved_or_require_all (tools.exercises.test_process_guidance_sheet.PipelineTests.test_verifier_requires_both_genders_for_approved_or_require_all) ... ok\r\ntest_contact_sheet_keeps_frame_order_at_320_px (tools.exercises.test_process_guidance_sheet.SheetTests.test_contact_sheet_keeps_frame_order_at_320_px) ... ok\r\ntest_grid_4_splits_quadrants_in_reading_order (tools.exercises.test_process_guidance_sheet.SheetTests.test_grid_4_splits_quadrants_in_reading_order) ... ok\r\ntest_horizontal_2_splits_equal_columns (tools.exercises.test_process_guidance_sheet.SheetTests.test_horizontal_2_splits_equal_columns) ... ok\r\ntest_horizontal_3_splits_equal_columns (tools.exercises.test_process_guidance_sheet.SheetTests.test_horizontal_3_splits_equal_columns) ... ok\r\ntest_rejects_unsplittable_dimensions_and_unknown_layout (tools.exercises.test_process_guidance_sheet.SheetTests.test_rejects_unsplittable_dimensions_and_unknown_layout) ... ok\r\ntest_webp_is_repeatable_rgb_and_strips_source_exif (tools.exercises.test_process_guidance_sheet.SheetTests.test_webp_is_repeatable_rgb_and_strips_source_exif) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 22 tests in 8.222s\r\n\r\nOK\r\n"
+    },
+    {
+      "command": [
+        "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+        "tools/verify_catalog.mjs"
+      ],
+      "exitCode": 0,
+      "output": "Catalog 120 exercises, details, SVGs, search, equipment, and seed compatibility passed.\n(node:87296) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "command": [
+        "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+        "tools/verify_exercise_artwork_logic.mjs"
+      ],
+      "exitCode": 0,
+      "output": "Auto distribution female=52, male=68. Exercise artwork logic passed.\n(node:85460) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "command": [
+        "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+        "tools/verify_exercise_guidance_ui.mjs"
+      ],
+      "exitCode": 0,
+      "output": "Exercise guidance UI passed: single-frame Swiper, 4→2/equal-length/empty resets, stale index guard, one shared preference load.\n(node:83352) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "output": ""
+    }
+  ],
+  "testSemantics": "Seven checks exited0 at asset stage;22processor tests; existing Node stripTypeScriptTypes warnings. No new suite/imageaudit/codec run for records.",
+  "visualAcceptance": "Independent actual native768x1024/320x427/8xjoin: supported rim/pin/flange/cap/post, clean AA background, full contacts/11load/boundaries; referenced reviews are authority, not new records-writer image inspection.",
+  "limits": [
+    "D018 male remains OPEN for load and fixed support; D006 both genders remain OPEN, with no reuse authorized.",
+    "Far hand remains occluded, not certified as a visible grip.",
+    "Plausible2D support continuity is independently accepted; calibrated3D geometry and hidden surfaces are not certified.",
+    "Historical whole generated raw and earlier mechanical/mask-fix trials remain FAIL; only existing foreground mount fragment is reused.",
+    "Original/generated artifacts remain locally ignored, accessible from worktree and not bundled into app/Git.",
+    "No phone/HAP/device/install/publish/fullTask3 or whole-goal completion claim; Task2IN_PROGRESS/Task3NOT_STARTED.",
+    "Original ImageGen request ID unavailable; filename/session directory is an artifact identifier, not a request ID."
+  ],
+  "wholeGoalStatus": "IN_PROGRESS;Task2IN_PROGRESS/Task3NOT_STARTED"
+}

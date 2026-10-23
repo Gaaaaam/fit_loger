@@ -6,7 +6,7 @@
 
 运行 `node tools/verify_cardio_logic.mjs`、`verify_cardio_input.mjs`、`verify_cardio_persistence.mjs`、`verify_cardio_generator.mjs`、`verify_cardio_trends.mjs`，并运行原有目录、编辑、日历、模式、肌群、批量添加和趋势回归脚本。
 
-图片检查：`python tools/exercises/verify_guidance_assets.py --manifest tools/exercises/guidance.json --media entry/src/main/resources/base/media --require-all`。本轮新增 24 帧；清单还包含当前工作区已存在的指导图，不代表整套旧动作素材升级已经完成。
+图片检查：`python tools/exercises/verify_guidance_assets.py --manifest tools/exercises/guidance.json --media entry/src/main/resources/base/media --require-all`。整合后清单覆盖 125 个动作、男女 250 组、614 帧：原有 120 个动作的 590 帧与已审核提交 89c55ca 逐文件哈希一致，新增五类器械提供 24 帧。原图片复核保留的 8 项不确定细节仍按原记录跟踪。
 
 ## 设备人工检查（待真机执行）
 

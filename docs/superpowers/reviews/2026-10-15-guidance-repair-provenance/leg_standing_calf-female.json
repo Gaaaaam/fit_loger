@@ -1,0 +1,922 @@
+{
+  "schema": "repair-provenance/v1",
+  "status": "INDEPENDENTLY_ACCEPTED",
+  "kind": "EXISTING_ACCEPTED_WHOLE_PAIR_SOURCE_REUSE",
+  "audit_baseline_commit": "61e39bc775e5233362155229d568eff59c1659ec",
+  "repair_base_commit": "83aa1825d933b8a65f8b8028951a731eeb60fcce",
+  "acceptedCommit": "2f074ff457c9c45a3f54bf8095f5948bd7eed3a3",
+  "id": "leg_standing_calf",
+  "exercise": "leg_standing_calf",
+  "gender": "female",
+  "phaseIndices": [
+    1,
+    2
+  ],
+  "unchangedFrameIndices": [],
+  "postRepairAssessment": "PASS",
+  "groupCurrentResult": "PASS",
+  "closesConfirmedGroup": true,
+  "scope": "D006female complete accepted samegender WHOLEPAIRreuse;both target actuals change;model/apparatus/framing replacement intentional.",
+  "generation": {
+    "mode": "EXISTING_ACCEPTED_ASSET_REUSE",
+    "newImageGenCalls": 0,
+    "newAssetEncodes": 0,
+    "newPrompt": null,
+    "newToolEventCallId": null,
+    "newRequestId": null,
+    "note": "Upstream historical builtin prompt/raw/mount/masks/224fit declaration linked through accepted source JSON/proof,not regenerated or treated as new D006call."
+  },
+  "sourceLineage": {
+    "sourceExerciseId": "leg_calf_raise",
+    "sourceAcceptedAssetCommit": "6aa03f3928524032ee7f80d9161728708e6eef55",
+    "sourceAcceptedRecordsCommit": "83aa1825d933b8a65f8b8028951a731eeb60fcce",
+    "publicSource": {
+      "path": "docs/superpowers/reviews/2026-10-15-guidance-repair-provenance/leg_calf_raise-female.json",
+      "sha256": "88acc117669d0611fcea0f75172195bf7f44e6fa10a7f158274cd68bd5104f59",
+      "bytes": 138046
+    },
+    "immutableSourceIntegration": {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/integration-provenance.json",
+      "sha256": "97a13cd251b914984ac40a26aa1c6b9b3ae71c04c7b9d8b781f3b4f130746045",
+      "bytes": 150091
+    },
+    "sourceCandidateReview": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-background-candidate-review.md",
+      "sha256": "a0bd892a6f78aa3277acbfce9378e27df86f8e7e677a4983615a2d036758d2e8",
+      "bytes": 8659
+    },
+    "sourceActualReview": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-background-integration-review.md",
+      "sha256": "8efe64ca4ced20f9900706cccf8b6c58e0d9d4349fcdfb322f04700e81be0eb9",
+      "bytes": 8440
+    },
+    "sourceMetadataReview": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-background-records-review.md",
+      "sha256": "56157f4350c3379c2681410cf9422af61dd753927c4405ebc512e113f3cc49c5",
+      "bytes": 7644
+    },
+    "femaleSemanticDiagnostic": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-gender-reuse-diagnostic-report.md",
+      "sha256": "86a166132f20f1fb3fd2bdb2c723cf04e7f212bce16851100be5a1cb6abe6c3f",
+      "bytes": 11310
+    },
+    "rootDependencyRuling": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-female-reuse-integration-brief.md",
+      "sha256": "a5ed94fd7a22e6ddf0771ecda04b335505f417eb8e33a1de8b6b6d7e79222115",
+      "bytes": 6122
+    },
+    "sourceStageLimitsHistorical": "Upstream source JSON retains historical D006OPEN/no-reuse limits unchanged. Later explicit root samegender ruling supersedes female target dependency after source actual+records acceptance;male remains unauthorized."
+  },
+  "originalTarget": {
+    "mother": {
+      "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/originals/female-sheet.png",
+      "sha256": "6579274b7a9aeea42e517084932b957477248a7d03ff2365ec24ad2910229371",
+      "bytes": 1660889,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "actuals": [
+      {
+        "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/originals/ex_leg_standing_calf_female_01.webp",
+        "sha256": "30abfedd07f56122a8e0471e59ad25d47c6e249442c5b0f2fc8446270877e1fe",
+        "bytes": 26598,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "RGB"
+      },
+      {
+        "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/originals/ex_leg_standing_calf_female_02.webp",
+        "sha256": "310b6568a63cc1086e33aa7023db8f9d792be4d08e4f822fcdf9a1913d2bdd56",
+        "bytes": 26980,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "RGB"
+      }
+    ],
+    "identity": "Original6579target canonical/RGB kept separately;not849dcc currenttarget."
+  },
+  "originalSource": {
+    "mother": {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/originals/female-sheet.png",
+      "sha256": "b6d209c27567685941828330c8e82a04e53d829ea95bf82c77ae493203be4c5c",
+      "bytes": 1621736,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "identity": "Originalb6d209 source canonical cellRGB authenticated from retainedSOURCEbackup,not target6579/current849dcc."
+  },
+  "acceptedSource": {
+    "actuals": [
+      {
+        "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_01.webp",
+        "sha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+        "bytes": 22014,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "format": "WEBP",
+        "rgbSha256": "f8f56200849920b4558f828b4b87d1d04ad39e98f6cd575dbc6a69e2af69bec8"
+      },
+      {
+        "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_02.webp",
+        "sha256": "e21ec864bc1decbb5459eff41b8f2842b8367c2ff5b00ee774f03bc2490ffd3d",
+        "bytes": 165464,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "format": "WEBP",
+        "rgbSha256": "56b2f052e3072d581572e61fea372c272f8a2612579416e2c869b94422607ed4"
+      }
+    ],
+    "mother": {
+      "path": ".work/exercise-guidance/leg_calf_raise/female-sheet.png",
+      "sha256": "849dcc09cf41739a1ac310aef0b0dabfcfb414e06bdac78a5dc77097404c0f93",
+      "bytes": 976061,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "format": "PNG",
+      "rgbSha256": "8e1250bd03d48f59eabf3be060595fc4d8258ac00044b592bd9d5e70d034085b"
+    }
+  },
+  "copiedTarget": {
+    "actuals": [
+      {
+        "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_01.webp",
+        "sha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+        "bytes": 22014,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "format": "WEBP",
+        "rgbSha256": "f8f56200849920b4558f828b4b87d1d04ad39e98f6cd575dbc6a69e2af69bec8"
+      },
+      {
+        "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_02.webp",
+        "sha256": "e21ec864bc1decbb5459eff41b8f2842b8367c2ff5b00ee774f03bc2490ffd3d",
+        "bytes": 165464,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "format": "WEBP",
+        "rgbSha256": "56b2f052e3072d581572e61fea372c272f8a2612579416e2c869b94422607ed4"
+      }
+    ],
+    "mother": {
+      "path": ".work/exercise-guidance/leg_standing_calf/female-sheet.png",
+      "sha256": "849dcc09cf41739a1ac310aef0b0dabfcfb414e06bdac78a5dc77097404c0f93",
+      "bytes": 976061,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "format": "PNG",
+      "rgbSha256": "8e1250bd03d48f59eabf3be060595fc4d8258ac00044b592bd9d5e70d034085b"
+    }
+  },
+  "copyOperations": [
+    {
+      "source": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_01.webp",
+      "target": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_01.webp",
+      "kind": "exact whole file bytecopy"
+    },
+    {
+      "source": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_02.webp",
+      "target": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_02.webp",
+      "kind": "exact whole file bytecopy"
+    },
+    {
+      "source": ".work/exercise-guidance/leg_calf_raise/female-sheet.png",
+      "target": ".work/exercise-guidance/leg_standing_calf/female-sheet.png",
+      "kind": "exact whole file bytecopy"
+    }
+  ],
+  "assembly": {
+    "operation": "Exactwholefilebytecopies;no target encoding/recut/crop/masks/seams/paint/generation.",
+    "cells": [
+      {
+        "index": 1,
+        "wholeCellBox": [
+          0,
+          0,
+          768,
+          1024
+        ],
+        "originalTargetCanonicalCellRgbSha256": "985ed94b55cca3a1fc0d4e4816bcd0f86f67f3f8edcae7744df4525c9343268c",
+        "sourceCurrentCanonicalCellRgbSha256": "97e0034bcebae67a3be65c1a1f5e382bb33d0fa6797caeb8f0f0ca4d3c9edcd5",
+        "targetCurrentCanonicalCellRgbSha256": "97e0034bcebae67a3be65c1a1f5e382bb33d0fa6797caeb8f0f0ca4d3c9edcd5",
+        "sourceActual": {
+          "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_01.webp",
+          "sha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+          "bytes": 22014,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "format": "WEBP",
+          "rgbSha256": "f8f56200849920b4558f828b4b87d1d04ad39e98f6cd575dbc6a69e2af69bec8"
+        },
+        "targetActual": {
+          "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_01.webp",
+          "sha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+          "bytes": 22014,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "format": "WEBP",
+          "rgbSha256": "f8f56200849920b4558f828b4b87d1d04ad39e98f6cd575dbc6a69e2af69bec8"
+        },
+        "originalTargetActual": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/originals/ex_leg_standing_calf_female_01.webp",
+          "sha256": "30abfedd07f56122a8e0471e59ad25d47c6e249442c5b0f2fc8446270877e1fe",
+          "bytes": 26598,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "format": "WEBP",
+          "rgbSha256": "557c0015c28275843baaf7c0f42ec34c97599c1d99552f2f2804bf2a80f42756"
+        },
+        "codec": {
+          "quality": 82,
+          "method": 6,
+          "emptyEXIF": true,
+          "lossless": false
+        },
+        "codecEvidence": "Authenticated accepted source byte reproduction plus fresh source==target exact file/RGB copy identity; no encoding in reuse stage.",
+        "sourceOriginalCanonicalCellRgbSha256": "97e0034bcebae67a3be65c1a1f5e382bb33d0fa6797caeb8f0f0ca4d3c9edcd5"
+      },
+      {
+        "index": 2,
+        "wholeCellBox": [
+          768,
+          0,
+          1536,
+          1024
+        ],
+        "originalTargetCanonicalCellRgbSha256": "3bed81270265ff5f8b0131e83e228d233881961e61929e9f989d72bce477a11e",
+        "sourceCurrentCanonicalCellRgbSha256": "56b2f052e3072d581572e61fea372c272f8a2612579416e2c869b94422607ed4",
+        "targetCurrentCanonicalCellRgbSha256": "56b2f052e3072d581572e61fea372c272f8a2612579416e2c869b94422607ed4",
+        "sourceActual": {
+          "path": "entry/src/main/resources/base/media/ex_leg_calf_raise_female_02.webp",
+          "sha256": "e21ec864bc1decbb5459eff41b8f2842b8367c2ff5b00ee774f03bc2490ffd3d",
+          "bytes": 165464,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "format": "WEBP",
+          "rgbSha256": "56b2f052e3072d581572e61fea372c272f8a2612579416e2c869b94422607ed4"
+        },
+        "targetActual": {
+          "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_02.webp",
+          "sha256": "e21ec864bc1decbb5459eff41b8f2842b8367c2ff5b00ee774f03bc2490ffd3d",
+          "bytes": 165464,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "format": "WEBP",
+          "rgbSha256": "56b2f052e3072d581572e61fea372c272f8a2612579416e2c869b94422607ed4"
+        },
+        "originalTargetActual": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/originals/ex_leg_standing_calf_female_02.webp",
+          "sha256": "310b6568a63cc1086e33aa7023db8f9d792be4d08e4f822fcdf9a1913d2bdd56",
+          "bytes": 26980,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "format": "WEBP",
+          "rgbSha256": "886b527850aa7f6762e659c4613663bb2a10a58d5708de9b627932b9655b3ec9"
+        },
+        "codec": {
+          "quality": 100,
+          "method": 6,
+          "emptyEXIF": true,
+          "lossless": true
+        },
+        "codecEvidence": "Authenticated accepted source byte reproduction plus fresh source==target exact file/RGB copy identity; no encoding in reuse stage.",
+        "sourceOriginalCanonicalCellRgbSha256": "16572c6f8982aa4e729835ae1c2f4fa4cb7a60941b56321d4d061bc91ce0248d"
+      }
+    ],
+    "hybridSemantics": "01SOURCEoriginalcanonicalrawPNG97e0034b differs actualf8f562;02editedactualRGB56b2 source/targetequal;source+target849dcc mothers byteequal.",
+    "codecs": "01originalsourceq82/m6/emptyEXIF;02explicitlosslessTrue/q100/m6/emptyEXIF. Acceptedsourcebyte-reproduction+exacttargetcopy authenticates;no targetintegrationencoding."
+  },
+  "accepted_production": [
+    {
+      "index": 1,
+      "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_01.webp",
+      "baselineSha256": "30abfedd07f56122a8e0471e59ad25d47c6e249442c5b0f2fc8446270877e1fe",
+      "productionSha256": "3a06c4de382ae1356f8747e88c803b36b9f16e7a99e1d75a07c38a406e48c2c2",
+      "width": 768,
+      "height": 1024,
+      "bytes": 22014,
+      "codec": {
+        "format": "WEBP",
+        "quality": 82,
+        "method": 6,
+        "emptyEXIF": true,
+        "lossless": false
+      }
+    },
+    {
+      "index": 2,
+      "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_02.webp",
+      "baselineSha256": "310b6568a63cc1086e33aa7023db8f9d792be4d08e4f822fcdf9a1913d2bdd56",
+      "productionSha256": "e21ec864bc1decbb5459eff41b8f2842b8367c2ff5b00ee774f03bc2490ffd3d",
+      "width": 768,
+      "height": 1024,
+      "bytes": 165464,
+      "codec": {
+        "format": "WEBP",
+        "quality": 100,
+        "method": 6,
+        "emptyEXIF": true,
+        "lossless": true
+      }
+    }
+  ],
+  "cardAndDetail": {
+    "executedMapping": {
+      "modules": [
+        "common/ExerciseArtworkLogic.ets",
+        "model/exerciseGuidanceArtwork.generated.ets",
+        "model/exerciseArtwork.ets"
+      ],
+      "results": [
+        {
+          "id": "leg_standing_calf",
+          "preference": "auto",
+          "resolvedGender": "female",
+          "frames": [
+            "app.media.ex_leg_standing_calf_female_01",
+            "app.media.ex_leg_standing_calf_female_02"
+          ],
+          "captions": [
+            "脚跟下沉",
+            "伸踝踮起"
+          ],
+          "zeroBasedCardFrameIndex": 1,
+          "card": "app.media.ex_leg_standing_calf_female_02"
+        },
+        {
+          "id": "leg_standing_calf",
+          "preference": "female",
+          "resolvedGender": "female",
+          "frames": [
+            "app.media.ex_leg_standing_calf_female_01",
+            "app.media.ex_leg_standing_calf_female_02"
+          ],
+          "captions": [
+            "脚跟下沉",
+            "伸踝踮起"
+          ],
+          "zeroBasedCardFrameIndex": 1,
+          "card": "app.media.ex_leg_standing_calf_female_02"
+        },
+        {
+          "id": "leg_standing_calf",
+          "preference": "male",
+          "resolvedGender": "male",
+          "frames": [
+            "app.media.ex_leg_standing_calf_male_01",
+            "app.media.ex_leg_standing_calf_male_02"
+          ],
+          "captions": [
+            "脚跟下沉",
+            "伸踝踮起"
+          ],
+          "zeroBasedCardFrameIndex": 1,
+          "card": "app.media.ex_leg_standing_calf_male_02"
+        },
+        {
+          "id": "leg_calf_raise",
+          "preference": "auto",
+          "resolvedGender": "female",
+          "frames": [
+            "app.media.ex_leg_calf_raise_female_01",
+            "app.media.ex_leg_calf_raise_female_02"
+          ],
+          "captions": [
+            "脚跟下沉",
+            "踮起脚跟"
+          ],
+          "zeroBasedCardFrameIndex": 1,
+          "card": "app.media.ex_leg_calf_raise_female_02"
+        },
+        {
+          "id": "leg_calf_raise",
+          "preference": "female",
+          "resolvedGender": "female",
+          "frames": [
+            "app.media.ex_leg_calf_raise_female_01",
+            "app.media.ex_leg_calf_raise_female_02"
+          ],
+          "captions": [
+            "脚跟下沉",
+            "踮起脚跟"
+          ],
+          "zeroBasedCardFrameIndex": 1,
+          "card": "app.media.ex_leg_calf_raise_female_02"
+        },
+        {
+          "id": "leg_calf_raise",
+          "preference": "male",
+          "resolvedGender": "male",
+          "frames": [
+            "app.media.ex_leg_calf_raise_male_01",
+            "app.media.ex_leg_calf_raise_male_02"
+          ],
+          "captions": [
+            "脚跟下沉",
+            "踮起脚跟"
+          ],
+          "zeroBasedCardFrameIndex": 1,
+          "card": "app.media.ex_leg_calf_raise_male_02"
+        }
+      ],
+      "finding": "Production mapping/card/detail functions retain target filenames, two phases, captions and card02; both auto IDs female; male IDs stay male. Duplicate female/auto images expected; no device/UI smoke claim."
+    },
+    "mappingArtifact": {
+      "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/card-mapping.json",
+      "sha256": "abe8706e9a8e7d0d5b09b69f052b76bbd2361e9ae874e8348f79a54eaba07484",
+      "bytes": 2780
+    },
+    "mappingLog": {
+      "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/mapping-check-log.json",
+      "sha256": "5649bf7ebe351dce15739cd00f1c524a999cb6013830b4c4986e4e56be5cd2c8",
+      "bytes": 668
+    },
+    "productionModules": [
+      {
+        "path": "entry/src/main/ets/common/ExerciseArtworkLogic.ets",
+        "sha256": "6d702782b1076fe5daa47cb97fe39c9416f4a7c2a1e81662f700b9dab8c06356",
+        "bytes": 934
+      },
+      {
+        "path": "entry/src/main/ets/model/exerciseGuidanceArtwork.generated.ets",
+        "sha256": "eb6e5f39ee81f3b525eda2a7c2de1b436bca55bfe2827a3910017318c8a49a21",
+        "bytes": 43931
+      },
+      {
+        "path": "entry/src/main/ets/model/exerciseArtwork.ets",
+        "sha256": "301ece5a1773aa69f69548e190737ef143887bed47dca4a685f41ae172709c83",
+        "bytes": 25537
+      }
+    ],
+    "consequence": "Bothauto female;female/auto art/cards duplicate;targetcaps脚跟下沉/伸踝踮起,index1/card02 and targetnames unchanged;source secondcaption踮起脚跟;male originalmale paths,no alias/UIfeature/deviceclaim."
+  },
+  "targetIntegration": {
+    "proof": {
+      "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/reuse-integration-provenance.json",
+      "sha256": "9dae2891b569d8afc96430fcec8107236ff6731102dd087880e2e9a4963f50f0",
+      "bytes": 49803
+    },
+    "report": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-female-reuse-integration-report.md",
+      "sha256": "8dbb093de0856d8ba4e59746c62d3790bba2210caf998257fa74349988de30b7",
+      "bytes": 11412
+    },
+    "evidence": [
+      {
+        "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/before-inventory.json",
+        "sha256": "9d223e7ebad55e4907df516d554cc2b8b27593b0b89707b4e592eec462fe32b5",
+        "bytes": 653252
+      },
+      {
+        "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/after-inventory.json",
+        "sha256": "cc4fb4bda57326336a12c0cdaac4889aaa3ad929004e50a35b1868f905abb087",
+        "bytes": 653403
+      },
+      {
+        "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/mechanical-proof.json",
+        "sha256": "c4cf1f420549638cee8079c8ca8219bd34caeb592f0dc7d7eea90f08e48af89b",
+        "bytes": 15663
+      },
+      {
+        "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/source-lineage-before.json",
+        "sha256": "36c557f779e828bcf6e54e211d9a1829395221ed50443cb10bb3dafe81557e01",
+        "bytes": 6014
+      },
+      {
+        "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/test-results.json",
+        "sha256": "ae5af3050dd1c6ecd61f0baea26abc1bd3ede7912866bb376bb579015eee98cb",
+        "bytes": 6868
+      },
+      {
+        "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/qa-view-derivation.json",
+        "sha256": "e6376a43beea8bbbd014e95f43214640a6bd9a86720859315d7cf9a744249da0",
+        "bytes": 9255
+      }
+    ],
+    "qaViews": [
+      {
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/actual-target-qa/01-native.png",
+          "sha256": "b4e1c884428eebc4bd5b457e5d1b3fd0663316a345fe565fb4e94221689693c3",
+          "bytes": 251383,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "mode": "RGB"
+        },
+        "source": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_01.webp",
+        "operation": "full RGB decode",
+        "box": null,
+        "scale": 1
+      },
+      {
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/actual-target-qa/01-320.png",
+          "sha256": "7853fb4d403b7699355ff3b1ab91fe6f19e57ea577526edc41b68bbfcf0b6354",
+          "bytes": 91729,
+          "dimensions": [
+            320,
+            427
+          ],
+          "mode": "RGB"
+        },
+        "source": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_01.webp",
+        "operation": "full LANCZOS320x427",
+        "box": null,
+        "scale": 0
+      },
+      {
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/actual-target-qa/01-join.png",
+          "sha256": "39c667d4bbfffea3dc79be41220e35f4bb217266bf1e26dabb5acccbba183f5b",
+          "bytes": 13372,
+          "dimensions": [
+            520,
+            976
+          ],
+          "mode": "RGB"
+        },
+        "source": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_01.webp",
+        "operation": "crop then NEAREST scale",
+        "box": [
+          475,
+          208,
+          540,
+          330
+        ],
+        "scale": 8
+      },
+      {
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/actual-target-qa/01-contacts.png",
+          "sha256": "6c1be15d68be5aedc77b4eebbf3aab31f6c95d9113e8561036dab85f5aa74e31",
+          "bytes": 80540,
+          "dimensions": [
+            510,
+            490
+          ],
+          "mode": "RGB"
+        },
+        "source": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_01.webp",
+        "operation": "crop then NEAREST scale",
+        "box": [
+          230,
+          180,
+          485,
+          425
+        ],
+        "scale": 2
+      },
+      {
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/actual-target-qa/01-forefeet.png",
+          "sha256": "20a9001cde02a007c1135ee1e3bdef48613b43dc0f6967268c13ca10cc5e2b0b",
+          "bytes": 35772,
+          "dimensions": [
+            555,
+            405
+          ],
+          "mode": "RGB"
+        },
+        "source": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_01.webp",
+        "operation": "crop then NEAREST scale",
+        "box": [
+          240,
+          710,
+          425,
+          845
+        ],
+        "scale": 3
+      },
+      {
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/actual-target-qa/01-eleven-load.png",
+          "sha256": "cf6c4d3102f87c3c788e4a844b9e32cb084d3bc40127c04101d562f62346fde9",
+          "bytes": 91459,
+          "dimensions": [
+            320,
+            1300
+          ],
+          "mode": "RGB"
+        },
+        "source": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_01.webp",
+        "operation": "crop then NEAREST scale",
+        "box": [
+          400,
+          200,
+          560,
+          850
+        ],
+        "scale": 2
+      },
+      {
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/actual-target-qa/02-native.png",
+          "sha256": "42e85fafab3a0a67db1b1df25e27728e7f476bb06a084713a71f193c2e4373a3",
+          "bytes": 257255,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "mode": "RGB"
+        },
+        "source": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_02.webp",
+        "operation": "full RGB decode",
+        "box": null,
+        "scale": 1
+      },
+      {
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/actual-target-qa/02-320.png",
+          "sha256": "3cf12aaa7c4a1ab6bb219e44318bde9d0cb9d257d76ae74d866505402e1ead2b",
+          "bytes": 90389,
+          "dimensions": [
+            320,
+            427
+          ],
+          "mode": "RGB"
+        },
+        "source": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_02.webp",
+        "operation": "full LANCZOS320x427",
+        "box": null,
+        "scale": 0
+      },
+      {
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/actual-target-qa/02-join.png",
+          "sha256": "e07829319103c399280534ab581afdf417c3fb9c7ff9763bc9616985d21e4e58",
+          "bytes": 13371,
+          "dimensions": [
+            520,
+            976
+          ],
+          "mode": "RGB"
+        },
+        "source": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_02.webp",
+        "operation": "crop then NEAREST scale",
+        "box": [
+          475,
+          208,
+          540,
+          330
+        ],
+        "scale": 8
+      },
+      {
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/actual-target-qa/02-contacts.png",
+          "sha256": "19a80d14e8021a81d4dead0f4c671d5b15432accb9d21a3ed377b790f38987c1",
+          "bytes": 85694,
+          "dimensions": [
+            510,
+            490
+          ],
+          "mode": "RGB"
+        },
+        "source": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_02.webp",
+        "operation": "crop then NEAREST scale",
+        "box": [
+          230,
+          180,
+          485,
+          425
+        ],
+        "scale": 2
+      },
+      {
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/actual-target-qa/02-forefeet.png",
+          "sha256": "f5142f5b97d84ec110c0546969806d3f0b028bcec85c16b3e237ac24fa31c7ad",
+          "bytes": 35682,
+          "dimensions": [
+            555,
+            405
+          ],
+          "mode": "RGB"
+        },
+        "source": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_02.webp",
+        "operation": "crop then NEAREST scale",
+        "box": [
+          240,
+          710,
+          425,
+          845
+        ],
+        "scale": 3
+      },
+      {
+        "artifact": {
+          "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/actual-target-qa/02-eleven-load.png",
+          "sha256": "08725e9ee0f1949a09be005b2095b7f704bd61f0e96c8e2315f87242252f568e",
+          "bytes": 82422,
+          "dimensions": [
+            320,
+            1300
+          ],
+          "mode": "RGB"
+        },
+        "source": "entry/src/main/resources/base/media/ex_leg_standing_calf_female_02.webp",
+        "operation": "crop then NEAREST scale",
+        "box": [
+          400,
+          200,
+          560,
+          850
+        ],
+        "scale": 2
+      }
+    ],
+    "sourceReferences": [
+      {
+        "path": ".work/exercise-guidance/leg_calf_raise/female-background-integration-20261016/integration-provenance.json",
+        "sha256": "97a13cd251b914984ac40a26aa1c6b9b3ae71c04c7b9d8b781f3b4f130746045",
+        "bytes": 150091
+      },
+      {
+        "path": "docs/superpowers/reviews/2026-10-15-guidance-repair-provenance/leg_calf_raise-female.json",
+        "sha256": "88acc117669d0611fcea0f75172195bf7f44e6fa10a7f158274cd68bd5104f59",
+        "bytes": 138046
+      },
+      {
+        "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-background-candidate-review.md",
+        "sha256": "a0bd892a6f78aa3277acbfce9378e27df86f8e7e677a4983615a2d036758d2e8",
+        "bytes": 8659
+      },
+      {
+        "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-background-integration-review.md",
+        "sha256": "8efe64ca4ced20f9900706cccf8b6c58e0d9d4349fcdfb322f04700e81be0eb9",
+        "bytes": 8440
+      },
+      {
+        "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-background-records-review.md",
+        "sha256": "56157f4350c3379c2681410cf9422af61dd753927c4405ebc512e113f3cc49c5",
+        "bytes": 7644
+      },
+      {
+        "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-gender-reuse-diagnostic-report.md",
+        "sha256": "86a166132f20f1fb3fd2bdb2c723cf04e7f212bce16851100be5a1cb6abe6c3f",
+        "bytes": 11310
+      },
+      {
+        "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-female-reuse-integration-brief.md",
+        "sha256": "a5ed94fd7a22e6ddf0771ecda04b335505f417eb8e33a1de8b6b6d7e79222115",
+        "bytes": 6122
+      }
+    ],
+    "preservation": {
+      "otherActuals": 588,
+      "otherCanonical": 239,
+      "sourceD018Unchanged": true,
+      "bothMaleIdsUnchanged": true,
+      "old32AcceptedDeltasPreserved": true,
+      "old20RepairRecordsPreserved": true,
+      "old18ImageJsonPreserved": true,
+      "femaleBBPartialFalseClosurePreserved": true,
+      "cachePreserved": true,
+      "indexUnchanged": true,
+      "oldRejectedReuseHistoryPreserved": true
+    }
+  },
+  "independentTargetReview": {
+    "verdict": "SPEC PASS/TASKQUALITY PASS;no blockers;71focusedassertions",
+    "artifact": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-female-reuse-review.md",
+      "sha256": "6051201e6bf01ba0c4602283207217c0e4a14b9a1dcaef0ead5a9e9b4e9c29d5",
+      "bytes": 10195
+    }
+  },
+  "acceptedIntegrationTests": [
+    {
+      "command": [
+        "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+        "tools/exercises/guidance_prompt.mjs",
+        "--check",
+        "--require-all"
+      ],
+      "exitCode": 0,
+      "output": "PASS: entries=120, prompts=240, approved=120, planned=0\n"
+    },
+    {
+      "command": [
+        "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-B",
+        "tools/exercises/verify_guidance_assets.py",
+        "--manifest",
+        "tools/exercises/guidance.json",
+        "--media",
+        "entry/src/main/resources/base/media",
+        "--require-all"
+      ],
+      "exitCode": 0,
+      "output": "PASS: approved=120, planned=0, frames=590\r\n"
+    },
+    {
+      "command": [
+        "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "tools.exercises.test_process_guidance_sheet",
+        "-v"
+      ],
+      "exitCode": 0,
+      "output": "test_arnold_prompt_teaches_palms_self_start_and_rotated_overhead_finish (tools.exercises.test_process_guidance_sheet.PipelineTests.test_arnold_prompt_teaches_palms_self_start_and_rotated_overhead_finish) ... ok\r\ntest_arnold_without_movement_reference_falls_back_to_full_catalog_start (tools.exercises.test_process_guidance_sheet.PipelineTests.test_arnold_without_movement_reference_falls_back_to_full_catalog_start) ... ok\r\ntest_every_generated_panel_requires_visible_boundary_margin (tools.exercises.test_process_guidance_sheet.PipelineTests.test_every_generated_panel_requires_visible_boundary_margin) ... ok\r\ntest_flutter_kick_movement_reference_matches_caption_order (tools.exercises.test_process_guidance_sheet.PipelineTests.test_flutter_kick_movement_reference_matches_caption_order) ... ok\r\ntest_incline_dumbbell_press_starts_over_chest_and_straight_arm_anatomy_is_valid (tools.exercises.test_process_guidance_sheet.PipelineTests.test_incline_dumbbell_press_starts_over_chest_and_straight_arm_anatomy_is_valid) ... ok\r\ntest_mapping_executes_empty_then_only_approved_with_ordered_resources (tools.exercises.test_process_guidance_sheet.PipelineTests.test_mapping_executes_empty_then_only_approved_with_ordered_resources) ... ok\r\ntest_muscle_highlight_preserves_natural_anatomy_for_both_models (tools.exercises.test_process_guidance_sheet.PipelineTests.test_muscle_highlight_preserves_natural_anatomy_for_both_models) ... ok\r\ntest_processor_cli_filters_literal_part_and_builds_previews (tools.exercises.test_process_guidance_sheet.PipelineTests.test_processor_cli_filters_literal_part_and_builds_previews) ... ok\r\ntest_prompt_prefers_manifest_movement_reference_over_catalog_variants (tools.exercises.test_process_guidance_sheet.PipelineTests.test_prompt_prefers_manifest_movement_reference_over_catalog_variants) ... ok\r\ntest_prompt_rejects_non_string_layouts (tools.exercises.test_process_guidance_sheet.PipelineTests.test_prompt_rejects_non_string_layouts) ... ok\r\ntest_prompts_join_catalog_and_filter_planned_jobs (tools.exercises.test_process_guidance_sheet.PipelineTests.test_prompts_join_catalog_and_filter_planned_jobs) ... ok\r\ntest_rear_fly_prompt_selects_high_pulleys_and_opposite_crossed_connections (tools.exercises.test_process_guidance_sheet.PipelineTests.test_rear_fly_prompt_selects_high_pulleys_and_opposite_crossed_connections) ... ok\r\ntest_selected_catalog_variants_are_unambiguous_in_generated_prompts (tools.exercises.test_process_guidance_sheet.PipelineTests.test_selected_catalog_variants_are_unambiguous_in_generated_prompts) ... ok\r\ntest_verifier_rejects_invalid_manifests (tools.exercises.test_process_guidance_sheet.PipelineTests.test_verifier_rejects_invalid_manifests) ... ok\r\ntest_verifier_rejects_small_wrong_format_and_undecodable_files (tools.exercises.test_process_guidance_sheet.PipelineTests.test_verifier_rejects_small_wrong_format_and_undecodable_files) ... ok\r\ntest_verifier_requires_both_genders_for_approved_or_require_all (tools.exercises.test_process_guidance_sheet.PipelineTests.test_verifier_requires_both_genders_for_approved_or_require_all) ... ok\r\ntest_contact_sheet_keeps_frame_order_at_320_px (tools.exercises.test_process_guidance_sheet.SheetTests.test_contact_sheet_keeps_frame_order_at_320_px) ... ok\r\ntest_grid_4_splits_quadrants_in_reading_order (tools.exercises.test_process_guidance_sheet.SheetTests.test_grid_4_splits_quadrants_in_reading_order) ... ok\r\ntest_horizontal_2_splits_equal_columns (tools.exercises.test_process_guidance_sheet.SheetTests.test_horizontal_2_splits_equal_columns) ... ok\r\ntest_horizontal_3_splits_equal_columns (tools.exercises.test_process_guidance_sheet.SheetTests.test_horizontal_3_splits_equal_columns) ... ok\r\ntest_rejects_unsplittable_dimensions_and_unknown_layout (tools.exercises.test_process_guidance_sheet.SheetTests.test_rejects_unsplittable_dimensions_and_unknown_layout) ... ok\r\ntest_webp_is_repeatable_rgb_and_strips_source_exif (tools.exercises.test_process_guidance_sheet.SheetTests.test_webp_is_repeatable_rgb_and_strips_source_exif) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 22 tests in 8.114s\r\n\r\nOK\r\n"
+    },
+    {
+      "command": [
+        "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+        "tools/verify_catalog.mjs"
+      ],
+      "exitCode": 0,
+      "output": "Catalog 120 exercises, details, SVGs, search, equipment, and seed compatibility passed.\n(node:83584) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "command": [
+        "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+        "tools/verify_exercise_artwork_logic.mjs"
+      ],
+      "exitCode": 0,
+      "output": "Auto distribution female=52, male=68. Exercise artwork logic passed.\n(node:83068) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "command": [
+        "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+        "tools/verify_exercise_guidance_ui.mjs"
+      ],
+      "exitCode": 0,
+      "output": "Exercise guidance UI passed: single-frame Swiper, 4→2/equal-length/empty resets, stale index guard, one shared preference load.\n(node:83888) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "output": ""
+    }
+  ],
+  "testSemantics": "Seven assetintegrationchecks0/22testsOK,existingNodeexperimentalwarnings;no metadata-stage suites/codec/nativeaudit rerun.",
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "pythonExecutable": "C:\\Users\\26017\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "nodeExecutable": "C:/Users/26017/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+    "pillow": "12.3.0",
+    "libwebp": "1.6.0",
+    "platform": "Windows-10-10.0.19045-SP0"
+  },
+  "preservedRejectedReuseHistory": {
+    "artifact": {
+      "path": ".work/exercise-guidance/leg_standing_calf/female-accepted-reuse-integration-20261016/before-inventory.json",
+      "sha256": "9d223e7ebad55e4907df516d554cc2b8b27593b0b89707b4e592eec462fe32b5",
+      "bytes": 653252
+    },
+    "jsonField": "oldRejectedReuse",
+    "count": 36,
+    "note": "Historical failedbothgenderreuse remains failed;all36oldartifacts unchanged."
+  },
+  "limits": [
+    "Female D006 accepted only;male D006/male D018 remain OPEN and unchanged.",
+    "Complete target model/apparatus/framing intentionally replaced;no old-target pixel preservation.",
+    "Female/auto images/cards duplicate across IDs;target captions/resource names/cardindex1 unchanged.",
+    "Far hand occluded;plausible2D support is not calibrated3D/hidden grip/temporal speed/equalforce proof.",
+    "Zero new D006 ImageGen prompt/call/event/requestID or asset encoding;upstream accepted chain linked.",
+    "Local ignored artifacts accessible but not bundled app/Git.",
+    "Task2IN_PROGRESS/Task3NOT_STARTED;no phone/HAP/install/publish/merge/SVGcleanup/whole-goal claim."
+  ],
+  "wholeGoalStatus": "IN_PROGRESS;Task2IN_PROGRESS/Task3NOT_STARTED"
+}

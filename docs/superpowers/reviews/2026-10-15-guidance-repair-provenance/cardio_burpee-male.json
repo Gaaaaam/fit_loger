@@ -1,0 +1,87 @@
+{
+  "id": "cardio_burpee",
+  "gender": "male",
+  "frameIndices": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "tool": "reuse existing improved-style source; no new ImageGen",
+  "prompt": null,
+  "generations": [],
+  "original_mother": {
+    "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/prior-production-sources/male-sheet-before-task9-style.png",
+    "sha256": "123301dd59592ef8c859f6ebbdba2f38646cb6e3fd77fc1bd778acf85da923ad",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "role": "pre-Task-9-style mother; reproduces baseline production"
+  },
+  "retained_improved_style_mother": {
+    "path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/retained-canonical/male-sheet.png",
+    "sha256": "2cacbc98b340f399d8188edb0471b1ab1098e9a299fbc1b7be210fa8978fa321",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "role": "accepted existing improved-style mother, reused unchanged"
+  },
+  "assembly": {
+    "accepted_mother_path": ".work/exercise-guidance/cardio_burpee/burpee-detail-prep-20261015/retained-canonical/male-sheet.png",
+    "accepted_mother_sha256": "2cacbc98b340f399d8188edb0471b1ab1098e9a299fbc1b7be210fa8978fa321",
+    "accepted_mother_dimensions": [
+      1536,
+      1024
+    ],
+    "canonical_source_path": ".work/exercise-guidance/cardio_burpee/male-sheet.png",
+    "canonical_source_sha256": "2cacbc98b340f399d8188edb0471b1ab1098e9a299fbc1b7be210fa8978fa321",
+    "operations": "Reuse existing improved-style mother unchanged; no new prompt or generation. RGB WebP q82/method6/empty EXIF recuts."
+  },
+  "accepted_production_frames": [
+    {
+      "index": 1,
+      "path": "entry/src/main/resources/base/media/ex_cardio_burpee_male_01.webp",
+      "sha256": "c0993972865b821e5b2b85e4d26601d421cc9db150d4353f86ae95d7c7696855",
+      "dimensions": [
+        768,
+        512
+      ]
+    },
+    {
+      "index": 2,
+      "path": "entry/src/main/resources/base/media/ex_cardio_burpee_male_02.webp",
+      "sha256": "a5c37c592855e7779a823ef2e007c03362896600ab8ca627e0cc4f6d1f60493f",
+      "dimensions": [
+        768,
+        512
+      ]
+    },
+    {
+      "index": 3,
+      "path": "entry/src/main/resources/base/media/ex_cardio_burpee_male_03.webp",
+      "sha256": "688258cfb143f4205f2cad150b94d65181b0249f86921d040df78751195b6015",
+      "dimensions": [
+        768,
+        512
+      ]
+    },
+    {
+      "index": 4,
+      "path": "entry/src/main/resources/base/media/ex_cardio_burpee_male_04.webp",
+      "sha256": "404fecdcd357c0b1eaaaaeae95a1f7d19df4710aebe2fa39417197e4b8e10c47",
+      "dimensions": [
+        768,
+        512
+      ]
+    }
+  ],
+  "acceptedCommit": "bfe2495bc160679d4d787ca612db923fa5619be7",
+  "independent_review_report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-burpee-review.md",
+  "independentReviewStatus": "APPROVED",
+  "unchanged_indices": [],
+  "missing_evidence": [
+    "Historical Task 9 flat-tint style prompt/output identifier for retained improved-style mother is NOT_FOUND; see burpee-historical-prompt-lookup.json."
+  ]
+}

@@ -1,0 +1,432 @@
+{
+  "schema": "repair-provenance/v2-cumulative-followup",
+  "id": "back_seated_row",
+  "exercise": "back_seated_row",
+  "gender": "female",
+  "status": "INDEPENDENTLY_ACCEPTED",
+  "acceptedCommit": null,
+  "actualState": "WORKING_PRODUCTION_ACTUAL",
+  "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+  "gitArchiveStatus": "PENDING_NO_NEW_COMMIT",
+  "scope": "Stage02 load-continuity followup independently accepted as own full actual-sex group in PartA at exact WORKING_PRODUCTION_ACTUAL hashes. Earlier records remain separate history; PartB final accepted-metadata consistency and Git/archive pending.",
+  "historicalSourceHistory": {
+    "priorTargetedRepairRecord": {
+      "id": "back_seated_row",
+      "gender": "female",
+      "checklistIds": [
+        "D017"
+      ],
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4",
+      "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-divider-review.md",
+      "sourceSha256": "d1f341c7b7a8b9ed0084c89ff90c0d735000339118cdd8259d4468a7dd18724c",
+      "unchangedFrameIndices": [],
+      "notes": "Background-only same-y adjacent donor-strip translation with measured per-row int16 RGB offsets, clipping and binary overwrite masks; no ImageGen/new prompt, invented geometry or repeated tiling. Original-actual RGB outside declared edge ROIs is exact, including body/support/equipment. Changed canonical cells base on original decoded actual, not old uncompressed PNG outside-ROI identity. Changed frames use bundled Python3.12.14/Pillow12.3.0/libwebp1.6.0 lossless=True/quality100/method6/emptyEXIF; old system-lossless bytes are not current accepted bytes.",
+      "frames": [
+        {
+          "index": 1,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_01.webp",
+          "baselineSha256": "709ad514b56e6b29182a3f6aed6657a0b3aff3a50071c86437838ee867f4a60e",
+          "productionSha256": "b737dd2041cb8f50d432264de862987a53f90fcaadd968e7d7a7c213a7101149",
+          "bytes": 145896,
+          "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        },
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_02.webp",
+          "baselineSha256": "8c5e029f0715bd683aaade8cd8e0866d1e084b621538e3ae390ca7c875ea85dc",
+          "productionSha256": "04ea3c303a821a1d59325145c7f08addb06859aa14518a1baee3030232ba8eab",
+          "bytes": 147558,
+          "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        },
+        {
+          "index": 3,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_03.webp",
+          "baselineSha256": "42e08efc42ae1cea5f5be876bc18790c007f93f3f2deb3e91dd69a4ed0de00ea",
+          "productionSha256": "479f82a96b7c0a0707ff6f1d605e0abdf842512d7f015ecda658e0ccf8f22087",
+          "bytes": 146206,
+          "width": 512,
+          "height": 1024,
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        }
+      ]
+    },
+    "originalActualAtFollowup": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/originals-v1/entry/src/main/resources/base/media/ex_back_seated_row_female_02.webp",
+      "sha256": "04ea3c303a821a1d59325145c7f08addb06859aa14518a1baee3030232ba8eab",
+      "bytes": 147558
+    },
+    "originalCanonicalAtFollowup": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/originals-v1/.work/exercise-guidance/back_seated_row/female-sheet.png",
+      "sha256": "d1f341c7b7a8b9ed0084c89ff90c0d735000339118cdd8259d4468a7dd18724c",
+      "bytes": 703862
+    },
+    "historicalAcceptanceOnly": true,
+    "immutableOriginalPublicSourceRecord": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/phase8-integration/historical-public/back_seated_row-female.json",
+      "sha256": "d151cb635b3df72cfec8ec9715467c1c74ea2d6793d4a8c4f77fe879177296f3",
+      "bytes": 24866
+    }
+  },
+  "newFollowups": [
+    {
+      "id": "back_seated_row",
+      "gender": "female",
+      "checklistIds": [
+        "D019"
+      ],
+      "kind": "FINAL_LOAD_CONTINUITY_FOLLOWUP",
+      "status": "INDEPENDENTLY_ACCEPTED",
+      "closesConfirmedGroup": true,
+      "postRepairAssessment": "PASS",
+      "acceptedCommit": null,
+      "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+      "actualState": "WORKING_PRODUCTION_ACTUAL",
+      "reviewReport": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+      "independentReviewStatus": "ACTUAL_SPEC_PASS_QUALITY_PASS_ADDRESSED",
+      "rootCandidateGate": "PRELIMINARILY_SUITABLE_NOT_INDEPENDENT_ACCEPTANCE",
+      "sourceProvenance": "docs/superpowers/reviews/2026-10-15-guidance-repair-provenance/back_seated_row-female.json",
+      "sourceSha256": "931ce38a77a08030eba1d9c7d901e51d7fb1e8fe2294530305dce422c118cf24",
+      "frames": [
+        {
+          "index": 2,
+          "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_02.webp",
+          "baselineSha256": "8c5e029f0715bd683aaade8cd8e0866d1e084b621538e3ae390ca7c875ea85dc",
+          "productionSha256": "07a851f75a4f47299f393e8b88b768f1f4b0a87c57714edef59d8afc3fdf653b",
+          "width": 512,
+          "height": 1024,
+          "bytes": 147900,
+          "codec": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "emptyEXIF": true
+          }
+        }
+      ],
+      "phaseIndices": [
+        2
+      ],
+      "unchangedFrameIndices": [
+        1,
+        3
+      ],
+      "candidateProof": {
+        "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/mechanical-candidate-02/candidate02-proof.json",
+        "sha256": "5de542dbc4636b168231dd043bea874a6bacc89ff1ba9362cc3a15fe295f7f6f",
+        "bytes": 12850
+      },
+      "candidateVerification": {
+        "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/mechanical-candidate-02/candidate02-verification.json",
+        "sha256": "3fdae1c387954e1f3d3d879c35dc47abfe8bf9b267db1a10027f347c0e40fd59",
+        "bytes": 2622
+      },
+      "integrationProof": {
+        "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/phase8-integration/integration-proof.json",
+        "sha256": "ea899c420de7165e3a4c7c37684685d1b72402c38a20aaa1b3ab38dc5ae0e2f3",
+        "bytes": 12317
+      },
+      "generation": {
+        "distinctNewModelCallsForThisGender": 1,
+        "sharedHardwareDonorFromFemale": false,
+        "batchDistinctBuiltinEvents": 2,
+        "callBefore": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-call-01/journal-before.json",
+          "sha256": "bb1f1a5e54988ce0c2196bafd4fd53de1396265f15976248aebae198177d51dd",
+          "bytes": 1474
+        },
+        "callAfter": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-call-01/journal-after.json",
+          "sha256": "c605e7c5d38d4f89656684c2e1a9e01f1a1aac2dec3969cd1b2c8d86f0ae8e10",
+          "bytes": 1824
+        },
+        "untouchedRaw": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-call-01/raw-untouched.png",
+          "sha256": "ffd4bf4aa2b953893810235de5700aae07dd3edf9bed8e6ca24e3b2bed6ec284",
+          "bytes": 1636862
+        },
+        "exactSavedArgs": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-inputs-v3/builtin-args.json",
+          "sha256": "a7e23d4f434d51fd988ccafd35bc2515500afb5752d46c73a08add928a5d08bf",
+          "bytes": 3299
+        },
+        "originalGenerationHistory": "NOT_RECOVERED_BY_THIS_FOLLOWUP; no original-generation event invented",
+        "genderAcceptance": "SEPARATE_OWN_GROUP_WORKING_ACTUAL_SPEC_PASS_QUALITY_PASS; not inherited from shared donor"
+      },
+      "notes": "Existing reopened group independently accepted at exact live WORKING_PRODUCTION_ACTUAL hashes in PartA; no committed acceptance. PartB accepted-metadata consistency and Git archive pending; hidden selector/ratio/3D remain unverified.",
+      "reviewReportSha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+      "independentActualAcceptance": {
+        "status": "INDEPENDENTLY_ACCEPTED",
+        "actualState": "WORKING_PRODUCTION_ACTUAL",
+        "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+        "acceptedCommit": null,
+        "SPEC": "PASS",
+        "QUALITY": "PASS",
+        "finding": "ADDRESSED",
+        "group": "back_seated_row/female",
+        "reviewReport": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+          "sha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+          "bytes": 12086
+        },
+        "reviewProof": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-proof.json",
+          "sha256": "5cd46a1c697a74740bb42fa343b0f53423d249262510866f0957b9e731791fdb",
+          "bytes": 9362
+        },
+        "actualFrames": [
+          {
+            "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_01.webp",
+            "sha256": "b737dd2041cb8f50d432264de862987a53f90fcaadd968e7d7a7c213a7101149"
+          },
+          {
+            "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_02.webp",
+            "sha256": "07a851f75a4f47299f393e8b88b768f1f4b0a87c57714edef59d8afc3fdf653b"
+          },
+          {
+            "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_03.webp",
+            "sha256": "479f82a96b7c0a0707ff6f1d605e0abdf842512d7f015ecda658e0ccf8f22087"
+          }
+        ],
+        "nativeHardwareView": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/back_seated_row-female-hardware-native.png",
+          "sha256": "1fe31f35ac928ba9341e09386d43317d24aa78ca92a6b61a7411061d56c8620a",
+          "bytes": 68494
+        },
+        "stage320View": {
+          "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/back_seated_row-female-320.png",
+          "sha256": "e68c92b2e8e44d7d5af084b7bfa5154c66b7efaafbf4427ba11cfae97f887ff1",
+          "bytes": 393397
+        },
+        "acceptanceScope": "This own full actual-sex group, native and320; hardware donor sharing does not confer gender acceptance.",
+        "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT",
+        "gitArchiveStatus": "PENDING"
+      },
+      "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT"
+    }
+  ],
+  "currentProductionFrames": [
+    {
+      "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_01.webp",
+      "sha256": "b737dd2041cb8f50d432264de862987a53f90fcaadd968e7d7a7c213a7101149",
+      "bytes": 145896,
+      "index": 1,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "changedInThisFollowup": false
+    },
+    {
+      "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_02.webp",
+      "sha256": "07a851f75a4f47299f393e8b88b768f1f4b0a87c57714edef59d8afc3fdf653b",
+      "bytes": 147900,
+      "index": 2,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "changedInThisFollowup": true
+    },
+    {
+      "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_03.webp",
+      "sha256": "479f82a96b7c0a0707ff6f1d605e0abdf842512d7f015ecda658e0ccf8f22087",
+      "bytes": 146206,
+      "index": 3,
+      "dimensions": [
+        512,
+        1024
+      ],
+      "changedInThisFollowup": false
+    }
+  ],
+  "currentCanonicalMother": {
+    "path": ".work/exercise-guidance/back_seated_row/female-sheet.png",
+    "sha256": "931ce38a77a08030eba1d9c7d901e51d7fb1e8fe2294530305dce422c118cf24",
+    "bytes": 697151,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "kind": "HYBRID_CURRENT_MOTHER",
+    "policy": "Only stage02 replaced with exact decoded new actual RGB; every other cell exact prior canonical RGB, not re-decoded actual. No scale or reencode of other actuals.",
+    "historicalSourceAcceptance": false
+  },
+  "generation": {
+    "distinctNewModelCallsForThisGender": 1,
+    "sharedHardwareDonorFromFemale": false,
+    "batchDistinctBuiltinEvents": 2,
+    "callBefore": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-call-01/journal-before.json",
+      "sha256": "bb1f1a5e54988ce0c2196bafd4fd53de1396265f15976248aebae198177d51dd",
+      "bytes": 1474
+    },
+    "callAfter": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-call-01/journal-after.json",
+      "sha256": "c605e7c5d38d4f89656684c2e1a9e01f1a1aac2dec3969cd1b2c8d86f0ae8e10",
+      "bytes": 1824
+    },
+    "untouchedRaw": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-call-01/raw-untouched.png",
+      "sha256": "ffd4bf4aa2b953893810235de5700aae07dd3edf9bed8e6ca24e3b2bed6ec284",
+      "bytes": 1636862
+    },
+    "exactSavedArgs": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/builtin-inputs-v3/builtin-args.json",
+      "sha256": "a7e23d4f434d51fd988ccafd35bc2515500afb5752d46c73a08add928a5d08bf",
+      "bytes": 3299
+    },
+    "originalGenerationHistory": "NOT_RECOVERED_BY_THIS_FOLLOWUP; no original-generation event invented",
+    "genderAcceptance": "SEPARATE_OWN_GROUP_WORKING_ACTUAL_SPEC_PASS_QUALITY_PASS; not inherited from shared donor"
+  },
+  "sourceAndTransformProof": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/mechanical-candidate-02/candidate02-proof.json",
+    "sha256": "5de542dbc4636b168231dd043bea874a6bacc89ff1ba9362cc3a15fe295f7f6f",
+    "bytes": 12850
+  },
+  "sourceAndCodecVerification": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/mechanical-candidate-02/candidate02-verification.json",
+    "sha256": "3fdae1c387954e1f3d3d879c35dc47abfe8bf9b267db1a10027f347c0e40fd59",
+    "bytes": 2622
+  },
+  "integrationProof": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/phase8-integration/integration-proof.json",
+    "sha256": "ea899c420de7165e3a4c7c37684685d1b72402c38a20aaa1b3ab38dc5ae0e2f3",
+    "bytes": 12317
+  },
+  "phase7ImplementerReport": {
+    "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/phase7-report-frozen.md",
+    "sha256": "45c0e2daafa8fbcc391a3aff26971ba6058bc1aa6f1c420e17e301f0d48efab2",
+    "bytes": 50130
+  },
+  "reopening": {
+    "id": "back_seated_row",
+    "gender": "female",
+    "checklistIds": [
+      "D019"
+    ],
+    "findingKind": "REOPENING_AFTER_TARGETED_REPAIR",
+    "effectiveAfterRepairRecordCount": 33,
+    "currentResult": "DEFECT",
+    "priorTargetedChecklistIds": [
+      "D017"
+    ],
+    "priorTargetedAcceptedCommit": "3ece98584b4f4dd6101d63b85b2d0b4c40287ef4",
+    "priorTargetedReviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-divider-review.md",
+    "reviewReport": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-3-whole-change-review.md",
+    "fullReview": {
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-3-whole-change-review.md",
+      "sha256": "50579784f19af8510c4d76a64311e29ffc76249530be52b8468ea611442a9446",
+      "bytes": 16646
+    },
+    "fullReviewProof": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-whole-change-review-20261019/direct-proof.json",
+      "sha256": "3c9d4d5e28ecd287a0c583e5efd05b34cc8b723359428ecfe6b9acf3ab74b816",
+      "bytes": 17297
+    },
+    "observations": "Stage02 lower unselected plates disappear relative to original inventory; prior D017 edge repair is not whole-machine load acceptance.",
+    "affectedActualAtReopening": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/originals-v1/entry/src/main/resources/base/media/ex_back_seated_row_female_02.webp",
+      "sha256": "04ea3c303a821a1d59325145c7f08addb06859aa14518a1baee3030232ba8eab",
+      "bytes": 147558
+    },
+    "actualPathAtReopening": "entry/src/main/resources/base/media/ex_back_seated_row_female_02.webp",
+    "inspectedFrames": [
+      2
+    ]
+  },
+  "retainedUnacceptedDonorFamilyHistory": {
+    "sourceGender": "female",
+    "relation": "Own earlier failed candidate; not retroactively accepted",
+    "status": "UNACCEPTED_HISTORICAL",
+    "proof": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-fix-wave-20261019/back_seated_row-female/mechanical-candidate-01/candidate-proof.json",
+      "sha256": "681d75b71a6819864ee0fa60960093b681ba6757407de307d13550f1cf784aec"
+    }
+  },
+  "limits": [
+    "Original head/face RGB or actual hardware-only cap used; no invented or repeated plate rows.",
+    "Separate gender full-actual SPEC/QUALITY PASS recorded from PartA; no inherited PASS. PartB metadata review remains pending.",
+    "Unknown hidden selector ordinal, mechanical ratio, force, calibration and occluded geometry not certified.",
+    "Failed prior candidates, original model inputs and historical source snapshots remain retained."
+  ],
+  "codec": {
+    "format": "WEBP",
+    "lossless": true,
+    "quality": 100,
+    "method": 6,
+    "exif": ""
+  },
+  "independentActualAcceptance": {
+    "status": "INDEPENDENTLY_ACCEPTED",
+    "actualState": "WORKING_PRODUCTION_ACTUAL",
+    "assetHEAD": "39bfe1c9ae901bd6f8f5020a6908561486019380",
+    "acceptedCommit": null,
+    "SPEC": "PASS",
+    "QUALITY": "PASS",
+    "finding": "ADDRESSED",
+    "group": "back_seated_row/female",
+    "reviewReport": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-review-frozen.md",
+      "sha256": "f47a7a0fc362c1680a97441f4400bb19d385eb7fc0de7c4ae0293293a743a004",
+      "bytes": 12086
+    },
+    "reviewProof": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/part-a-proof.json",
+      "sha256": "5cd46a1c697a74740bb42fa343b0f53423d249262510866f0957b9e731791fdb",
+      "bytes": 9362
+    },
+    "actualFrames": [
+      {
+        "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_01.webp",
+        "sha256": "b737dd2041cb8f50d432264de862987a53f90fcaadd968e7d7a7c213a7101149"
+      },
+      {
+        "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_02.webp",
+        "sha256": "07a851f75a4f47299f393e8b88b768f1f4b0a87c57714edef59d8afc3fdf653b"
+      },
+      {
+        "path": "entry/src/main/resources/base/media/ex_back_seated_row_female_03.webp",
+        "sha256": "479f82a96b7c0a0707ff6f1d605e0abdf842512d7f015ecda658e0ccf8f22087"
+      }
+    ],
+    "nativeHardwareView": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/back_seated_row-female-hardware-native.png",
+      "sha256": "1fe31f35ac928ba9341e09386d43317d24aa78ca92a6b61a7411061d56c8620a",
+      "bytes": 68494
+    },
+    "stage320View": {
+      "path": ".work/exercise-guidance/detail-audit-2026-10-15/final-scoped-review-20261019/back_seated_row-female-320.png",
+      "sha256": "e68c92b2e8e44d7d5af084b7bfa5154c66b7efaafbf4427ba11cfae97f887ff1",
+      "bytes": 393397
+    },
+    "acceptanceScope": "This own full actual-sex group, native and320; hardware donor sharing does not confer gender acceptance.",
+    "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT",
+    "gitArchiveStatus": "PENDING"
+  },
+  "acceptedMetadataConsistencyReview": "PENDING_PART_B_SAME_REVIEW_SEAT"
+}

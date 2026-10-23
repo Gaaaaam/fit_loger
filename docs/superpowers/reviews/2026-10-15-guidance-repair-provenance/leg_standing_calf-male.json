@@ -1,0 +1,560 @@
+{
+  "schema": "repair-provenance/v1",
+  "id": "leg_standing_calf",
+  "exercise": "leg_standing_calf",
+  "gender": "male",
+  "status": "INDEPENDENTLY_ACCEPTED",
+  "kind": "BUILTIN_IMAGEGEN_SHARED_MALE_PAIR",
+  "postRepairAssessment": "PASS",
+  "groupCurrentResult": "PASS",
+  "closesConfirmedGroup": true,
+  "phaseIndices": [
+    1,
+    2
+  ],
+  "unchangedFrameIndices": [],
+  "audit_baseline_commit": "61e39bc775e5233362155229d568eff59c1659ec",
+  "repair_base_commit": "e656c69bddb84511d4faa6937fe43250d350fa54",
+  "acceptedCommit": "f70fc5c313dc990947df5f147dc7341a43f1a415",
+  "metadataBaseCommit": "f70fc5c313dc990947df5f147dc7341a43f1a415",
+  "checklistIds": [
+    "D006"
+  ],
+  "scope": "Newmale pair shared across two equivalent catalog IDs;both groups independently accepted together, not an alias or new gender feature.",
+  "generation": {
+    "mode": "BUILTIN_IMAGEGEN_NEW_MALE_SHARED_PAIR",
+    "sharedEvent": "male-accepted-female-layout-onecall-20261016",
+    "sharedAcrossGroups": [
+      {
+        "id": "leg_calf_raise",
+        "gender": "male"
+      },
+      {
+        "id": "leg_standing_calf",
+        "gender": "male"
+      }
+    ],
+    "totalCallsForSharedEvent": 1,
+    "perRecordCountsAreNotAdditive": true,
+    "newCallsAtMetadataStage": 0,
+    "requestId": null,
+    "requestIdNote": "Unavailable; output filename/session is artifact identity, not request ID.",
+    "prompt": {
+      "kind": "exact-2505-byte-UTF8-prompt",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-accepted-female-layout-input-20261016/prompt.txt",
+      "sha256": "5c5ab0832547726c6b94d2cf19e6e5dd28727823c6769c880d855178d0c673ac",
+      "bytes": 2505
+    },
+    "arguments": {
+      "kind": "exact-flat-tool-arguments",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-accepted-female-layout-input-20261016/call-arguments.json",
+      "sha256": "fbebcefe77493dede0d846d53a75f77b91f57b9ada4dcd716ac83f5ccc442eac",
+      "bytes": 2976
+    },
+    "precallJournal": {
+      "kind": "onecall-precall-journal",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-accepted-female-layout-onecall-20261016/precall-journal.json",
+      "sha256": "8c25a06235cb91b8f8403ae8f1e52ce09c3880b1debf2e5036dd57a8e44dd8ad",
+      "bytes": 15267
+    },
+    "postcallJournal": {
+      "kind": "onecall-postcall-journal",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-accepted-female-layout-onecall-20261016/postcall-journal.json",
+      "sha256": "cd189b566ad68df841fe316a5c3021e37e60abb23513e1f85602dc42fe10f3d0",
+      "bytes": 4979
+    },
+    "rawOutput": {
+      "kind": "untouched-generated-RGB-pair",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-accepted-female-layout-onecall-20261016/raw.png",
+      "sha256": "dc36ab8ef7644554a6c4e8c90c0c9c1088d8169c7caad9ce34e4004d0fbfa2df",
+      "bytes": 1647825,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "decodedRGBSha256": "3790c861fffee756ba24716b84fe4bcb98b786232b753b8e26c1db048b631964"
+    },
+    "terminalLFCount": 1,
+    "transparentBackground": false,
+    "references": [
+      {
+        "role": "Apparatus/phases/style only; accepted female ACTUAL decoded pair; no female identity or inherited male PASS",
+        "kind": "generation-reference-only",
+        "path": ".work/exercise-guidance/leg_calf_raise/male-accepted-female-layout-input-20261016/reference1-accepted-female-actual-pair.png",
+        "sha256": "c1bc751eb05b880c55160ac408ac1d9118b76ec7dea288eb613fd398beed4237",
+        "bytes": 506218,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGB",
+        "decodedRGBSha256": "95743dd50abcab77a295a83c621f198dbae5240cd5bc0289feb5328de7f7f1fd"
+      },
+      {
+        "role": "Limited male back/partial-side head character only; no complete-face-identity claim",
+        "kind": "generation-reference-only",
+        "path": ".work/exercise-guidance/leg_calf_raise/male-accepted-female-layout-input-20261016/reference2-male-head.png",
+        "sha256": "88e08a6cc1cb5ce4936ac5196abc48ac24bc7d23491888f4238d8520e1a06d42",
+        "bytes": 12259,
+        "dimensions": [
+          86,
+          85
+        ],
+        "mode": "RGB",
+        "decodedRGBSha256": "befe8cec27886c96324b7990fc743568f955b71e65ae72b940a2ac40538316fd"
+      }
+    ]
+  },
+  "originals": {
+    "canonical": {
+      "kind": "immutable-original-male-canonical",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-integration-20261016/originals/leg_standing_calf-male-sheet.png",
+      "sha256": "aa6f939e064470bc1bad62c19544c621d71ae8381e1adde58a4b26ae121e7fb2",
+      "bytes": 1678958,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "decodedRGBSha256": "d9595f070f6e1c287241031f8f346678248f881c28193c5769e2ad60085d97ab"
+    },
+    "actuals": [
+      {
+        "kind": "immutable-original-male-actual",
+        "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-integration-20261016/originals/ex_leg_standing_calf_male_01.webp",
+        "sha256": "c146f8e4afcbbbc62524c7ccae440e60229ed29b6ccaba5b4477f19d375e449f",
+        "bytes": 25188,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "RGB",
+        "decodedRGBSha256": "861346b442960d5fd49c434cf9f5687e22cebef07004783d75222ad37e9f9e16"
+      },
+      {
+        "kind": "immutable-original-male-actual",
+        "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-integration-20261016/originals/ex_leg_standing_calf_male_02.webp",
+        "sha256": "1a9511a5a127ba0cd1aaad843572119c35cc94e21f0ddfd4c943f0a070195062",
+        "bytes": 26206,
+        "dimensions": [
+          768,
+          1024
+        ],
+        "mode": "RGB",
+        "decodedRGBSha256": "22f23c09047d6ae5ecadd09ee1d50067105046328b5889e98f7a7616a190c43c"
+      }
+    ]
+  },
+  "currentCanonical": {
+    "kind": "accepted-untouched-raw-canonical-copy",
+    "path": ".work/exercise-guidance/leg_standing_calf/male-sheet.png",
+    "sha256": "dc36ab8ef7644554a6c4e8c90c0c9c1088d8169c7caad9ce34e4004d0fbfa2df",
+    "bytes": 1647825,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGB",
+    "decodedRGBSha256": "3790c861fffee756ba24716b84fe4bcb98b786232b753b8e26c1db048b631964"
+  },
+  "currentActuals": [
+    {
+      "kind": "accepted-lossy-production-WebP",
+      "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_male_01.webp",
+      "sha256": "5bb848cd181f7aec2e218b20dfa591b13b5e75f9b9622704145edbd9cfd35a3c",
+      "bytes": 24846,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "RGB",
+      "decodedRGBSha256": "f67982ad7e05a675618d180b3b2c522f124bfe5dabd4d525773a21a491dfea45",
+      "rawCellBox": [
+        0,
+        0,
+        768,
+        1024
+      ],
+      "rawCellRGBSha256": "ae1f43cd3b5e168af6ee3841729a90ac8e6f5a711f37f2b7b5155809d751358b",
+      "rawCellRGBEqualsDecodedActualRGB": false,
+      "declaredCodecBytesReproduced": true
+    },
+    {
+      "kind": "accepted-lossy-production-WebP",
+      "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_male_02.webp",
+      "sha256": "de3d3647e8ec312d8409745a761bdfcfade5dc8a9b26cfbe5678704cd65a52e6",
+      "bytes": 24916,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "RGB",
+      "decodedRGBSha256": "b2c161b5303fcbe2590c2222a64203523fa8b0d190539d0d974bb1f0fe29158c",
+      "rawCellBox": [
+        768,
+        0,
+        1536,
+        1024
+      ],
+      "rawCellRGBSha256": "ca3dc2bb8185888b6c745bcf9503ad52c966f47351451690e05f137635f97e81",
+      "rawCellRGBEqualsDecodedActualRGB": false,
+      "declaredCodecBytesReproduced": true
+    }
+  ],
+  "accepted_production": [
+    {
+      "index": 1,
+      "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_male_01.webp",
+      "baselineSha256": "c146f8e4afcbbbc62524c7ccae440e60229ed29b6ccaba5b4477f19d375e449f",
+      "productionSha256": "5bb848cd181f7aec2e218b20dfa591b13b5e75f9b9622704145edbd9cfd35a3c",
+      "width": 768,
+      "height": 1024,
+      "bytes": 24846,
+      "codec": {
+        "format": "WEBP",
+        "quality": 82,
+        "method": 6,
+        "emptyEXIF": true,
+        "lossless": false
+      }
+    },
+    {
+      "index": 2,
+      "path": "entry/src/main/resources/base/media/ex_leg_standing_calf_male_02.webp",
+      "baselineSha256": "1a9511a5a127ba0cd1aaad843572119c35cc94e21f0ddfd4c943f0a070195062",
+      "productionSha256": "de3d3647e8ec312d8409745a761bdfcfade5dc8a9b26cfbe5678704cd65a52e6",
+      "width": 768,
+      "height": 1024,
+      "bytes": 24916,
+      "codec": {
+        "format": "WEBP",
+        "quality": 82,
+        "method": 6,
+        "emptyEXIF": true,
+        "lossless": false
+      }
+    }
+  ],
+  "derivation": {
+    "processor": {
+      "kind": "existing-processor",
+      "path": "tools/exercises/process_guidance_sheet.py",
+      "sha256": "344889ede82dca244343331748704a31966fbda75452ed0813312d44a2592c27",
+      "bytes": 4034
+    },
+    "entryPoint": "process_sheet",
+    "arguments": {
+      "exercise_id": "leg_standing_calf",
+      "gender": "male",
+      "layout": "horizontal-2"
+    },
+    "sourceDimensions": [
+      1536,
+      1024
+    ],
+    "nativeHalfCells": [
+      [
+        0,
+        0,
+        768,
+        1024
+      ],
+      [
+        768,
+        0,
+        1536,
+        1024
+      ]
+    ],
+    "codec": {
+      "format": "WEBP",
+      "quality": 82,
+      "method": 6,
+      "emptyEXIF": true,
+      "lossless": false
+    },
+    "sourceNormalization": "NONE; no resize/pad/alpha/compositing/retouch",
+    "integration": "Exact staged whole-file copies into distinct resource names;raw bytecopy to each canonical.",
+    "RGBSemantics": "Raw-cellRGB independently authenticated;lossy actual decodedRGB is distinct;declaredcodec reproduces bytes. No sourceRGB=lossyactualRGB claim."
+  },
+  "sharedPairRuling": {
+    "sourceId": "Standing_Calf_Raises",
+    "equipment": "machine",
+    "coAcceptedIds": [
+      "leg_calf_raise",
+      "leg_standing_calf"
+    ],
+    "acceptanceBatch": "male-calf-shared-pair-f70fc5c",
+    "meaning": "Equivalent bilateral nearlystraightknee shoulderpad/forefootplatform heel-down/heel-up stages. Same NEWmale pair ONEevent;both semantics/fourresources judged by fresh independent committed-ACTUAL gate. No prior sourcePASS inheritance.",
+    "femaleUnchanged": true,
+    "oldEightRowAppearanceSuperseded": "Approved new11regularloadrows with distinct head/bottomhardware;continuity within NEWpair independently judged."
+  },
+  "cardAndDetail": {
+    "executedPreferences": [
+      "auto",
+      "female",
+      "male"
+    ],
+    "executedMapping": [
+      {
+        "id": "leg_standing_calf",
+        "preference": "auto",
+        "resolvedGender": "female",
+        "frames": [
+          "app.media.ex_leg_standing_calf_female_01",
+          "app.media.ex_leg_standing_calf_female_02"
+        ],
+        "captions": [
+          "脚跟下沉",
+          "伸踝踮起"
+        ],
+        "zeroBasedCardFrameIndex": 1,
+        "card": "app.media.ex_leg_standing_calf_female_02"
+      },
+      {
+        "id": "leg_standing_calf",
+        "preference": "female",
+        "resolvedGender": "female",
+        "frames": [
+          "app.media.ex_leg_standing_calf_female_01",
+          "app.media.ex_leg_standing_calf_female_02"
+        ],
+        "captions": [
+          "脚跟下沉",
+          "伸踝踮起"
+        ],
+        "zeroBasedCardFrameIndex": 1,
+        "card": "app.media.ex_leg_standing_calf_female_02"
+      },
+      {
+        "id": "leg_standing_calf",
+        "preference": "male",
+        "resolvedGender": "male",
+        "frames": [
+          "app.media.ex_leg_standing_calf_male_01",
+          "app.media.ex_leg_standing_calf_male_02"
+        ],
+        "captions": [
+          "脚跟下沉",
+          "伸踝踮起"
+        ],
+        "zeroBasedCardFrameIndex": 1,
+        "card": "app.media.ex_leg_standing_calf_male_02"
+      }
+    ],
+    "executedProductionModules": [
+      {
+        "kind": "executed-production-module",
+        "path": "entry/src/main/ets/common/ExerciseArtworkLogic.ets",
+        "sha256": "6d702782b1076fe5daa47cb97fe39c9416f4a7c2a1e81662f700b9dab8c06356",
+        "bytes": 934
+      },
+      {
+        "kind": "executed-production-module",
+        "path": "entry/src/main/ets/model/exerciseGuidanceArtwork.generated.ets",
+        "sha256": "eb6e5f39ee81f3b525eda2a7c2de1b436bca55bfe2827a3910017318c8a49a21",
+        "bytes": 43931
+      },
+      {
+        "kind": "executed-production-module",
+        "path": "entry/src/main/ets/model/exerciseArtwork.ets",
+        "sha256": "301ece5a1773aa69f69548e190737ef143887bed47dca4a685f41ae172709c83",
+        "bytes": 25537
+      }
+    ],
+    "frameCount": 2,
+    "cardFrameIndex": 1,
+    "cardFrame": 2,
+    "captionsAndResourceNamesUnchanged": true,
+    "autoAndFemaleUnchanged": true,
+    "deviceUIClaim": false
+  },
+  "independentActualAcceptance": {
+    "SPEC": "PASS",
+    "TASKQUALITY": "PASS",
+    "bothIDs": "PASS",
+    "actionableFindings": [],
+    "newUncertainty": false,
+    "authority": {
+      "kind": "committed-ACTUAL-acceptance",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-male-calf-shared-pair-actual-review.md",
+      "sha256": "41ac790593318a8ae6bda7d3530ce03b6323c7a145052ee5e09b52c7bd4f1e14",
+      "bytes": 7761
+    },
+    "proof": {
+      "kind": "committed-ACTUAL-proof",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-actual-review-20261016/proof.json",
+      "sha256": "1382663c35fbb30ef2f315ddb70dcda7cf828c611054ec0bb0e01dd16cf30840",
+      "bytes": 39513
+    }
+  },
+  "directEvidence": [
+    {
+      "kind": "input-report",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-male-accepted-female-layout-input-report.md",
+      "sha256": "7a09946d373d6b448d8479b7663cc46bfc5ab880705b4643cd39aee01782aaa2",
+      "bytes": 4697
+    },
+    {
+      "kind": "input-proof",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-accepted-female-layout-input-20261016/verification.json",
+      "sha256": "6b5744d88bebc256a69792e8f86bb1506e584076afef327e53ee3628bc47dd58",
+      "bytes": 6293
+    },
+    {
+      "kind": "onecall-report",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-male-accepted-female-layout-onecall-report.md",
+      "sha256": "3575e0c79566b6152dee97c5976ad0ddaf2fbf6ea671a671e9c208a31f430490",
+      "bytes": 6182
+    },
+    {
+      "kind": "onecall-preservation-proof",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-accepted-female-layout-onecall-20261016/verification.json",
+      "sha256": "1bf7f689bd40c702c7ce6e2449c19458904288606c95300670f69b8878d049e9",
+      "bytes": 5659
+    },
+    {
+      "kind": "raw-review-not-actual-acceptance",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-calf-male-accepted-layout-raw-independent-review.md",
+      "sha256": "687b2bfb8b39d3a5514df4aee1fbe095e1bea3e6fb2f23750f6162f42db94972",
+      "bytes": 6046
+    },
+    {
+      "kind": "raw-review-proof",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-accepted-layout-independent-raw-20261016/proof.json",
+      "sha256": "1a5a48777cb623a8e8560412da4d550f4a8e0e74986b28e225bc166df1b4d27e",
+      "bytes": 16341
+    },
+    {
+      "kind": "candidate-report",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-male-calf-shared-pair-candidate-report.md",
+      "sha256": "98a48985cbb272c5f50451e36106100e1d24c5ee7253f50e7f636db92f65f334",
+      "bytes": 6665
+    },
+    {
+      "kind": "raw-cell-and-codec-proof",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-candidate-20261016/proof.json",
+      "sha256": "3e94f57c3d44f43b2b19eb0e8bf734cd6f7a452e8a46eb9e1b96c20e56222b87",
+      "bytes": 57831
+    },
+    {
+      "kind": "candidate-verification",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-candidate-20261016/verification.json",
+      "sha256": "399bf4d5b75743b2474716ebc97bab6819cf222c0ba2aa201a6dc4d271828867",
+      "bytes": 25416
+    },
+    {
+      "kind": "integration-report",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-male-calf-shared-pair-integration-report.md",
+      "sha256": "88f842a82083e3440f5c7f33304680d52784f3568532aaa703d65624eedf09ea",
+      "bytes": 8981
+    },
+    {
+      "kind": "committed-asset-integration-proof",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-integration-20261016/integration-proof.json",
+      "sha256": "3e1be89e8163ee47c430d87efdda9cb4253cac5c71c2b65a7be44e3474b36226",
+      "bytes": 10099
+    },
+    {
+      "kind": "integration-preservation-proof",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-integration-20261016/mechanical-proof.json",
+      "sha256": "9f28122b34cfeb95bc8393e15f7157511431853d253f4fc44b5cf2bea55b6c6c",
+      "bytes": 2762
+    },
+    {
+      "kind": "original-file-map",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-integration-20261016/before-inventory.json",
+      "sha256": "0290c92b1081feeecd6cdb21ac87d8133e5972abc6ee4ae833a969c18dd53d81",
+      "bytes": 885859
+    },
+    {
+      "kind": "accepted-file-map",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-integration-20261016/after-inventory.json",
+      "sha256": "d9a5e5f2c32a1cec37bc715624d3b81a1e672d8261dbd0235f76ffd6a8509e9c",
+      "bytes": 886148
+    },
+    {
+      "kind": "single-seven-check-batch",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-integration-20261016/seven-check-results.json",
+      "sha256": "18b786182c37de5582efa1217732ffd53e6aeba9a6dd64ca5ba23fcbbbb55478",
+      "bytes": 15472
+    },
+    {
+      "kind": "faithful-live-QA-recipe",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-integration-20261016/live-qa.json",
+      "sha256": "e99c807cc13f44fe09f78b49e964778198cd8213d5e8eab86b7d42a0438fea88",
+      "bytes": 4429
+    },
+    {
+      "kind": "committed-ACTUAL-both-ID-acceptance",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-male-calf-shared-pair-actual-review.md",
+      "sha256": "41ac790593318a8ae6bda7d3530ce03b6323c7a145052ee5e09b52c7bd4f1e14",
+      "bytes": 7761
+    },
+    {
+      "kind": "committed-ACTUAL-review-proof",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-actual-review-20261016/proof.json",
+      "sha256": "1382663c35fbb30ef2f315ddb70dcda7cf828c611054ec0bb0e01dd16cf30840",
+      "bytes": 39513
+    },
+    {
+      "kind": "root-shared-source-ruling",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-male-calf-shared-pair-candidate-brief.md",
+      "sha256": "08db9a84e9bb087b6fc8aeb075cd4537d24e3ea3d39940b17234c7ea6c4083c1",
+      "bytes": 5081
+    },
+    {
+      "kind": "root-integration-release",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-male-calf-shared-pair-integration-brief.md",
+      "sha256": "cf78c7303a29550ed670ca871bd6c4351da49fae3d7aec381a4eb79b6bfb00ad",
+      "bytes": 4803
+    },
+    {
+      "kind": "root-records-release",
+      "path": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-male-calf-shared-pair-records-brief.md",
+      "sha256": "34c7780d1814c2eb0b2ddaa73934494dd35f5ef0e9aba67502c7914b20ff3d96",
+      "bytes": 6667
+    },
+    {
+      "kind": "executed-production-mapping",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-records-20261016/card-mapping.json",
+      "sha256": "b710fd7582a37d7f36603eade6d3c17e210d0bb4af87c626d8bb784e83a1ba19",
+      "bytes": 2736
+    },
+    {
+      "kind": "mapping-execution-log",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-records-20261016/mapping-log.json",
+      "sha256": "98ff66dc756b4563a944cd1054979d5baffcbbb03141883484c1fc528ae759b8",
+      "bytes": 1143
+    },
+    {
+      "kind": "focused-production-evaluator",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-records-20261016/check-mapping.mjs",
+      "sha256": "c07dc14b75a0027ffc3cbd44cc1404a320fd404ac99dc3e44f19b47b97c68577",
+      "bytes": 2092
+    }
+  ],
+  "acceptedIntegrationChecks": {
+    "artifact": {
+      "kind": "single-seven-check-batch",
+      "path": ".work/exercise-guidance/leg_calf_raise/male-shared-pair-integration-20261016/seven-check-results.json",
+      "sha256": "18b786182c37de5582efa1217732ffd53e6aeba9a6dd64ca5ba23fcbbbb55478",
+      "bytes": 15472
+    },
+    "count": 7,
+    "allExitCodes": 0,
+    "processorUnitTests": 22,
+    "warnings": "Existing Node stripTypeScriptTypes warnings/trace hints in checks4/5/6 only.",
+    "metadataStageSuiteReruns": 0
+  },
+  "limits": [
+    "Farhand and part of farforefoot contact remain ordinarily occluded;hidden force paths/calibrated3D unverified.",
+    "Modest framing/render/projection drift accepted;no camera/fixture/sourcepixel identity claim.",
+    "Acceptedfemale pair is reference only and doesnot confermalePASS;newmale committedACTUAL independently judged.",
+    "Old failed raw/local/component/mask/external-photo explorations remain failed or unused,not acceptedhistory;direct frozen-input/proof links preserve them without recursive copies.",
+    "Original/generated sources localignored only;not bundled app/Git. No new generation/asset changes or device/HAP/install/publish/merge claim in records step.",
+    "Task2IN_PROGRESS;Task3NOT_STARTED;not whole-goal completion."
+  ],
+  "wholeGoalStatus": "IN_PROGRESS;Task2IN_PROGRESS/Task3NOT_STARTED"
+}

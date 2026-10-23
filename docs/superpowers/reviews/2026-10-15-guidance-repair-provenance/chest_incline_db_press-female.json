@@ -1,0 +1,86 @@
+{
+  "id": "chest_incline_db_press",
+  "gender": "female",
+  "frameIndex": 2,
+  "tool": "built-in ImageGen",
+  "prompt": "Use case: precise-object-edit.\nAsset: one complete portrait exercise instruction cell, aspect ratio1:2. Image1 is the edit target, female incline dumbbell press lowered frame02.\nRepair ONLY the clipped leftmost shoe toe and its framing. Restore that complete anatomically natural shoe and foot INSIDE the canvas with visible blank margin, keeping its normal size relative to the other shoe and legs. Keep its sole planted on the same floor. A very small consistent zoom-out/recentering of the entire complete scene is allowed to contain both shoes and every bench support; do not shrink only a foot or stretch the image.\nKeep this same woman, face/body/proportions, gray bra/leggings, flat green upper-chest tint, same camera, neutral gray studio and light, same bench orientation, continuous head/back/hip support, both grounded feet and full bench. Preserve the lowered dumbbell phase, both bent arms, exactly one complete dumbbell in each closed hand, steady wrists and chest open. All body/equipment must fit entirely inside this single cell. No new objects, extra limbs, neighboring fragments, borders, dividers, text, arrows or logos. Return only the corrected single portrait1:2 cell.",
+  "submitted_inputs": [
+    {
+      "role": "Image 1 edit target, original female DB frame 02 complete cell",
+      "path": ".work/exercise-guidance/chest_incline_db_press/incline-prep-20261015/originals/female-source-02.png",
+      "sha256": "ee94ed7d3c13d4d661eb56436abf5c22077f114d380dace503b306ec49cc363b",
+      "dimensions": [
+        512,
+        1024
+      ]
+    }
+  ],
+  "original_mother": {
+    "path": ".work/exercise-guidance/chest_incline_db_press/incline-prep-20261015/originals/female-sheet.png",
+    "sha256": "3d051d61d4a6e5e3500efa47bab15cbe699d940b6a7cbb7796a0b0c9e966dec6",
+    "dimensions": [
+      1536,
+      1024
+    ]
+  },
+  "generation_output": {
+    "path": ".work/exercise-guidance/chest_incline_db_press/incline-prep-20261015/candidates/female-db-02-v1.png",
+    "sha256": "7c2045e428b58acb49fe222c74a6105b61e340fb210f95ea599bd10e5f0ba828",
+    "dimensions": [
+      887,
+      1774
+    ],
+    "dimensions_evidence": "Read-only PNG IHDR header"
+  },
+  "assembly": {
+    "accepted_mother_path": ".work/exercise-guidance/chest_incline_db_press/female-sheet.png",
+    "accepted_mother_sha256": "4db2a9f9b05d528de4b3b00792bbba0cc4b3785078b59cdc8fcb35f90d639f5c",
+    "accepted_mother_dimensions": [
+      1536,
+      1024
+    ],
+    "operations": "Resize the entire generated portrait cell proportionally with LANCZOS to 512x1024, without crop or stretch, and replace complete stage-02 cell in the three-cell 1536x1024 mother at paste position (512,0). No painted pixels. Encode production cell with WebP quality 82/method 6.",
+    "evidence": [
+      ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-incline-report.md:63,127-128,203",
+      ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-incline-db-review.md:43,49-53",
+      ".work/exercise-guidance/chest_incline_db_press/incline-prep-20261015/integrate_db_pair.py (staged DB source and production provenance)"
+    ]
+  },
+  "accepted_production": {
+    "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_female_02.webp",
+    "sha256": "2b3e215324cf6628e0ce9c5b0056e434153dfc1b7346d3df28fc4db2713d8628",
+    "dimensions": [
+      512,
+      1024
+    ]
+  },
+  "original_production": {
+    "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_female_02.webp",
+    "sha256": "c3c22f876d9a4652fb32a113399db94f93d02d0c1b9d02d155a366cc5ce53158",
+    "dimensions": [
+      512,
+      1024
+    ]
+  },
+  "unchanged_indices": [
+    1,
+    3
+  ],
+  "unchanged_frames": [
+    {
+      "index": 1,
+      "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_female_01.webp",
+      "sha256": "cb0be1cda34fb934642d8f1ad058e2c5f95f3b262a56c94191eede27e71171fd"
+    },
+    {
+      "index": 3,
+      "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_female_03.webp",
+      "sha256": "11ce479f8f281fdc8743faaff524c057c93af29a72eed792fa60528138bfde67"
+    }
+  ],
+  "acceptedCommit": "48870b3e81d275114e018fa143c4231f8584487d",
+  "independent_review_report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-incline-db-review.md",
+  "knownDefectAcceptance": "ACCEPTED: clipped female frame-02 toe repair",
+  "postRepairAssessment": "UNCERTAIN_BENCH_ANGLE",
+  "missing_evidence": []
+}

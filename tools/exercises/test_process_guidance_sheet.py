@@ -292,10 +292,6 @@ console.log(JSON.stringify(context.result));"""
         self.assertIn("selected variation is authoritative", job["prompt"])
 
     def test_selected_catalog_variants_are_unambiguous_in_generated_prompts(self):
-        # The running app includes only already-generated guidance entries. Keep
-        # planned rollout variants in a test fixture, never mark absent assets approved.
-        production_manifest = self.repo / "tools/exercises/guidance.json"
-        production_ids = {entry["id"] for entry in json.loads(production_manifest.read_text(encoding="utf-8"))["exercises"]}
         cases = [
             ("arm_overhead_extension", "right hand holds one dumbbell overhead", "坐姿或站姿"),
             ("shoulder_db_press", "standing bilateral dumbbell press", "站立或坐姿"),
@@ -304,8 +300,7 @@ console.log(JSON.stringify(context.result));"""
         ]
         for exercise_id, chosen, rejected in cases:
             with self.subTest(exercise_id=exercise_id):
-                manifest = production_manifest if exercise_id in production_ids else self.repo / "tools/exercises/guidance_test_fixtures.json"
-                prompt = json.loads(self.run_tool("guidance_prompt.mjs", "--manifest", manifest, exercise_id, "female").stdout)["prompt"]
+                prompt = json.loads(self.run_tool("guidance_prompt.mjs", exercise_id, "female").stdout)["prompt"]
                 self.assertIn(chosen, prompt)
                 self.assertNotIn(rejected, prompt)
 
@@ -319,8 +314,7 @@ console.log(JSON.stringify(context.result));"""
         self.assertIn("肱三头肌长头", straight_arm)
 
     def test_flutter_kick_movement_reference_matches_caption_order(self):
-        fixture = self.repo / "tools/exercises/guidance_test_fixtures.json"
-        prompt = json.loads(self.run_tool("guidance_prompt.mjs", "--manifest", fixture, "abs_flutter_kick", "female").stdout)["prompt"]
+        prompt = json.loads(self.run_tool("guidance_prompt.mjs", "abs_flutter_kick", "female").stdout)["prompt"]
         reference = prompt.split("Movement reference: ", 1)[1].split("\n", 1)[0]
         self.assertIn("left straight leg slightly higher", reference)
         self.assertIn("right straight leg slightly higher", reference)

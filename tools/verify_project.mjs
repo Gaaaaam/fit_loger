@@ -37,6 +37,7 @@ const requiredFiles = [
   'entry/src/main/ets/components/BodyPartSheet.ets',
   'entry/src/main/ets/components/ExerciseSheet.ets',
   'entry/src/main/ets/components/ExerciseInfoView.ets',
+  'entry/src/main/ets/components/ExerciseGuidanceCarousel.ets',
   'entry/src/main/ets/components/CreateExerciseSheet.ets',
   'entry/src/main/ets/components/MuscleSceneView.ets',
   'entry/src/main/ets/components/TrendSparkline.ets',

@@ -1,0 +1,63 @@
+{
+  "id": "back_db_row",
+  "gender": "male",
+  "frameIndex": 2,
+  "tool": "built-in ImageGen",
+  "prompt": "Edit this existing 512x1024 instructional render to correct its THREE ARMS. Preserve scene/camera/man/body supports/bench/studio/clothing/green back tint and exact portrait dimensions. He needs only TWO arms.\nDELETE the bent arm at IMAGE-LEFT, from the upper-back sleeve at x200,y220 through elbow x180,y270 to the hand and dumbbell at x265,y395. Restore the ordinary gray shirt/shorts/background underneath; no extra loaded arm remains there.\nKEEP the far support forearm visible near x285,y430 and its planted hand near x322,y485 on the bench.\nCHANGE the near working arm which currently runs straight down the IMAGE-RIGHT edge from sleeve x375,y355 to the bench-edge hand x405,y550. Bend this SAME near arm for a row: its elbow travels backward/up beside the NEAR hip, near forearm descends to a hand holding ONE dumbbell at the near waist/rib area on image-right. Delete the former straight forearm and bench-edge hand entirely. The near working hand must hold the dumbbell, not the bench.\nFinal anatomy: exactly two shoulder-elbow-wrist-hand chains: far straight support arm to flat bench hand, near bent working arm to single dumbbell. No third limb, no spare hand. Preserve supported knee, both shoes, planted standing foot, head and neutral hinged spine. Complete man/weight/bench inside frame. No text/arrows/logo/border.",
+  "submitted_inputs": [
+    {
+      "role": "Image 1 edit target, lossless original panel 02 crop",
+      "path": ".work/exercise-guidance/back_db_row/male-priority-panel02-original.png",
+      "sha256": "5dbe0b00f2a203cd1156203b5f07a196a08bdf9b2473c9d7cbe5553307c961c5"
+    }
+  ],
+  "original_mother": {
+    "path": ".work/exercise-guidance/back_db_row/male-sheet-priority-original.png",
+    "sha256": "7c535dbc5bf2b71d2110d52e18524e47b6551f00061a876d3e91f2b121b6db26"
+  },
+  "generation_output": {
+    "path": ".work/exercise-guidance/back_db_row/male-priority-panel02-v2.png",
+    "sha256": "ac0a5861b2138ee1d3641d331fb5c591986dc261fda1045d72c3589c0bfadcb4",
+    "dimensions": [
+      887,
+      1774
+    ]
+  },
+  "assembly": {
+    "accepted_mother_path": ".work/exercise-guidance/back_db_row/male-sheet-priority-v2.png",
+    "accepted_mother_sha256": "0181174d744e1dcab90ad21c84189c9042c315d2c5b99648fd7dc1a0bc9101bd",
+    "accepted_mother_dimensions": [
+      1536,
+      1024
+    ],
+    "operations": "Crop original mother panel 02 at (512,0)-(1024,1024); resample generation output 887x1774 to 512x1024 with Pillow LANCZOS (exact 1:2 aspect ratio); paste at (512,0). No painted pixels. Original cells 01/03 unchanged; staged WebP01 SHA-256 10b72eed898dbd2be5b38f9ee6e94eb77517a3d6ef0518779674284f2f74693b and WebP03 SHA-256 19bb51dc0dce05557774f87e1db162918961c3708fe9b60098c9a9811b0ad78e were reported byte-identical to baseline production.",
+    "evidence": [
+      ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-priority-report.md (accepted mother SHA)",
+      ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-row-review.md (mother dimensions and generated output reduced to accepted middle cell)",
+      ".work/exercise-guidance/back_db_row/priority_image_helpers.py:13-22 (crop bounds, LANCZOS resize and paste coordinates)"
+    ]
+  },
+  "accepted_production": {
+    "path": "entry/src/main/resources/base/media/ex_back_db_row_male_02.webp",
+    "sha256": "08358ca9865d9fca22f78649195d46fb30ffb2682dbb9f9a4efbcc688c61833d"
+  },
+  "unchanged_indices": [
+    1,
+    3
+  ],
+  "unchanged_frames": [
+    {
+      "index": 1,
+      "path": "entry/src/main/resources/base/media/ex_back_db_row_male_01.webp",
+      "sha256": "10b72eed898dbd2be5b38f9ee6e94eb77517a3d6ef0518779674284f2f74693b"
+    },
+    {
+      "index": 3,
+      "path": "entry/src/main/resources/base/media/ex_back_db_row_male_03.webp",
+      "sha256": "19bb51dc0dce05557774f87e1db162918961c3708fe9b60098c9a9811b0ad78e"
+    }
+  ],
+  "acceptedCommit": "0ce998dc130324340bd3905026b2e2a5e81652c3",
+  "independent_review_report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-row-review.md",
+  "missing_evidence": []
+}

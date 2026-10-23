@@ -1,0 +1,448 @@
+{
+  "schema": "repair-provenance/v1",
+  "status": "INDEPENDENTLY_ACCEPTED",
+  "baseline_commit": "23041d9a2ba987fbb0d43be20345fb22c3956aad",
+  "audit_baseline_commit": "61e39bc775e5233362155229d568eff59c1659ec",
+  "repair_base_commit": "23041d9a2ba987fbb0d43be20345fb22c3956aad",
+  "id": "core_pallof",
+  "gender": "female",
+  "phaseIndices": [
+    1,
+    2
+  ],
+  "scope": "Female D013 accepted Stage2 closed-load repair only, integrated at7bd1e8b and independently reviewed in task-2-pallof-review.md. Visible instruction/mechanics PASS; male D013 remains open. Task2 remains in progress; Task3 has not started and the whole objective is not complete.",
+  "new_generation": false,
+  "original_generation": {
+    "tool": "built-in ImageGen",
+    "tool_event_call_id": null,
+    "call_id_evidence": "Not recorded in retained journal; do not infer a tool event ID from the generated output basename.",
+    "output_identifier": "exec-0f608a98-f4e5-4717-87df-895bbc181f59.png",
+    "prompt": "Use case: precise-object-edit\nAsset type: two-phase whole-mother fitness instructional image, two equal portrait cells side by side, overall 1536x1024 landscape 3:2.\nInput image: this complete original female two-phase mother is the edit target. Edit BOTH cells together; return the complete two-cell mother with the same composition and exact midpoint cell boundary.\nPrimary request: Redesign only the lower selectorized-load area of each cable tower as a legitimate CLOSED-LOAD MACHINE: build the SAME fixed, fully opaque matte charcoal metal safety enclosure around the entire lower weight mechanism in BOTH phases. This is a manufactured solid protective housing mechanically mounted to the stationary tower, with realistic continuous front/side/top surfaces, thickness, edge highlights and fixed mounting. It is not a floating panel or pasted rectangle. All plates and lower moving load fittings must be entirely inside the closed housing and invisible. No window, port, vent, slit, transparency or seam opening revealing plates. The identical housing has precisely the same size, shape, height, mounting and perspective in both cells, stays fixed through the press, and ends on/at the existing fixed base. Keep it narrow and within the lower tower footprint. Its top stays BELOW the existing chest-height outlet pulley so the entire outlet pulley, free cable and handle remain visibly unobstructed. Existing upper cable runs may enter the housing from above in a structurally continuous way.\nPreserve: complete outer tower, upright holes, top bar, fixed main outlet pulley at the same height, fixed chassis and base, camera, gray backdrop and floor. Preserve this exact woman in each existing phase: phase01 two hands securely sharing the same handle against the sternum, elbows bent; phase02 the same two hands securely sharing the same handle pressed forward at chest height, elbows almost straight. Continuous shoulder-elbow-wrist-hand chains, square shoulders/ribs/pelvis, natural body proportions and face/hair, same gray clothes and flat muted green abdominal tint, same planted stance and both complete shoes. In each cell the taut continuous cable exits the unchanged visible side pulley and connects through the existing connector to the shared handle. Preserve the original distinct phase poses and all visible grip contacts.\nFraming: exactly two equal 768x1024 cells, complete body and ENTIRE tower/top/base independently contained in each cell with original margins. Nothing crosses the midpoint. No crop or zoom. Retain the same apparatus and enclosure geometry across both phases; only the original arms/handle/cable-free-length phase difference remains.\nAvoid: exposed or faintly visible plates anywhere, inconsistent housing, added covers in only one phase, floating enclosure, shroud blocking outlet pulley/free cable/person, detached or slack cable, moved fixed frame, cut base/feet/top bar, altered body/stance, changed tint, extra fingers/limbs, text, arrows, logos, labels or extra panels. Hidden load travel is internal and is not depicted or asserted by the artwork.",
+    "prompt_source": {
+      "path": ".work/exercise-guidance/core_pallof/pallof-detail-prep-20261015/female-enclosed-v1-prompt.txt",
+      "sha256": "03f0bcd97596d16eee687eeefabc8299a4ae42ba93f1fb7d45b3b7758fdc81a6",
+      "bytes": 3096,
+      "verbatim_note": "Tool prompt equals saved UTF-8 prompt content with terminal newline omitted; no other normalization."
+    },
+    "submitted_inputs": [
+      {
+        "role": "whole-mother edit target; both phases",
+        "path": ".work/exercise-guidance/core_pallof/pallof-detail-prep-20261015/originals/female-sheet.png",
+        "sha256": "34931aa8c64d6364116fa009c5d8c7c6e97cffa211d2bd593d23134eae4ce6c0",
+        "bytes": 1741515,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGB"
+      }
+    ],
+    "generation_output": {
+      "path": ".work/exercise-guidance/core_pallof/pallof-detail-prep-20261015/female-enclosed-v1-raw.png",
+      "sha256": "67d5c87f53b8dfde782e945e336721db65cbbdd87608b156a58d235a50141960",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "candidate_mother": {
+      "path": ".work/exercise-guidance/core_pallof/pallof-detail-prep-20261015/female-enclosed-v1/candidate-mother.png",
+      "sha256": "ef9a9adbb0d88c3a8718722634c4d7e18c14332e05796c61d5f23ff1f9b7bd53",
+      "bytes": 1396888,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "journal": {
+      "path": ".work/exercise-guidance/core_pallof/pallof-detail-prep-20261015/female-enclosed-v1-journal.json",
+      "sha256": "e5cc68462b71abc96589dd50612cf400c07e078266c6e1f8e41b729934fc912c",
+      "bytes": 5074
+    },
+    "disposition": "Original whole-mother generation retained as source lineage; its historical journal calls it a candidate and does not establish hidden load count/travel."
+  },
+  "mechanics": {
+    "stage1": {
+      "method": "For each phase, crop the full opaque rectangle from decoded retained q82/method6 actual and paste whole rectangle with no resampling at same x, 48 px upward; no mask/alpha/local painting.",
+      "coordinates": [
+        {
+          "phase": 1,
+          "source_half_open_xyxy": [
+            578,
+            514,
+            648,
+            754
+          ],
+          "destination_half_open_xyxy": [
+            578,
+            466,
+            648,
+            706
+          ],
+          "translation_xy": [
+            0,
+            -48
+          ],
+          "dimensions": [
+            70,
+            240
+          ]
+        },
+        {
+          "phase": 2,
+          "source_half_open_xyxy": [
+            583,
+            514,
+            652,
+            754
+          ],
+          "destination_half_open_xyxy": [
+            583,
+            466,
+            652,
+            706
+          ],
+          "translation_xy": [
+            0,
+            -48
+          ],
+          "dimensions": [
+            69,
+            240
+          ]
+        }
+      ],
+      "stage1_encoder": {
+        "format": "WEBP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6
+      }
+    },
+    "stage2": {
+      "method": "Preserve Stage1 outside the bottom24-row overlap. Blend same-coordinate RGB between Stage1 donor A and retained-base B only within each listed half-open region.",
+      "equation": "For y=682..705: t=(y-682)/23; s=3*t*t-2*t*t*t; out_RGB=np.uint8(np.rint((1-s)*A_RGB+s*B_RGB)). Float64; np.rint nearest rounding ties-to-even. A=Stage1, B=retained enclosed-v1 actual. Row682 exact A; row705 exact B.",
+      "coordinates": [
+        {
+          "phase": 1,
+          "blend_half_open_xyxy": [
+            578,
+            682,
+            648,
+            706
+          ]
+        },
+        {
+          "phase": 2,
+          "blend_half_open_xyxy": [
+            583,
+            682,
+            652,
+            706
+          ]
+        }
+      ],
+      "no_other_pixels": "All pixels outside overlap remain Stage1; no additional mask, paint, fill, rescale, geometry or new generation.",
+      "encoder": {
+        "format": "WEBP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6,
+        "exif": ""
+      },
+      "weights_evidence": {
+        "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/stage2/inputs-and-weights.json",
+        "sha256": "e47debf3ecbeb7b2040fd35886fdfc88eb56c33be8fcc766102d9543c1f02eef",
+        "bytes": 18079
+      },
+      "implementation": {
+        "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/stage2/stage2.py",
+        "sha256": "802873df56d5936d74fe2de0b179bffc2b13821346e5730d63c83418e529086f",
+        "bytes": 7034
+      },
+      "stage1_implementation": {
+        "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/stage.py",
+        "sha256": "2b42f2433d136e0ec758ee8c6fb4ea4a620416a4f0ce13c53104be19bb1d3bb6",
+        "bytes": 4606
+      }
+    },
+    "stage2_outputs": [
+      {
+        "phase": 1,
+        "retained_base": {
+          "path": ".work/exercise-guidance/core_pallof/pallof-detail-prep-20261015/female-enclosed-v1/ex_core_pallof_female_01.webp",
+          "sha256": "679f42c9ef6e2056cc028e5ebaa92236d06467595dcaea5d2b1493e92ff2f531",
+          "bytes": 20548,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "role": "unshipped q82/method6 retained enclosed-v1 actual, decoded RGB base; not original production"
+        },
+        "stage1_donor": {
+          "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/ex_core_pallof_female_01.webp",
+          "sha256": "32a4108760d6d10f04ab15d38a3d9a5b603e955c8e89772d67651955c014e2f7",
+          "bytes": 142138,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "role": "Stage1 opaque rectangle-reuse actual"
+        },
+        "stage1_source_rect": [
+          578,
+          514,
+          648,
+          754
+        ],
+        "stage1_dest_rect": [
+          578,
+          466,
+          648,
+          706
+        ],
+        "stage1_translation": [
+          0,
+          -48
+        ],
+        "stage2_blend_rect": [
+          578,
+          682,
+          648,
+          706
+        ],
+        "stage2_actual": {
+          "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/stage2/ex_core_pallof_female_01.webp",
+          "sha256": "19dca8d431340881273ae64fe8627f6188daae2cbd3bd9ce3bfe711e12c9177c",
+          "bytes": 142332,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "mode": "RGB",
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        },
+        "derived320": {
+          "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/stage2/01-derived-320w.png",
+          "sha256": "4a850f44f5112a625820af3e1b4e7bbb200a3486388af8cd8ffa3931ed782669",
+          "bytes": 80528,
+          "dimensions": [
+            320,
+            427
+          ],
+          "mode": "RGB",
+          "resampling": "LANCZOS from decoded output actual"
+        }
+      },
+      {
+        "phase": 2,
+        "retained_base": {
+          "path": ".work/exercise-guidance/core_pallof/pallof-detail-prep-20261015/female-enclosed-v1/ex_core_pallof_female_02.webp",
+          "sha256": "534d302cf003a5649a755dde1f92a73408e6917f270fa7159464bbb7a1585909",
+          "bytes": 19526,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "role": "unshipped q82/method6 retained enclosed-v1 actual, decoded RGB base; not original production"
+        },
+        "stage1_donor": {
+          "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/ex_core_pallof_female_02.webp",
+          "sha256": "6f358a36594ab8fe133382fb6dd9ecf740cf7af9cb77457d969cf42dcc761bd1",
+          "bytes": 134416,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "role": "Stage1 opaque rectangle-reuse actual"
+        },
+        "stage1_source_rect": [
+          583,
+          514,
+          652,
+          754
+        ],
+        "stage1_dest_rect": [
+          583,
+          466,
+          652,
+          706
+        ],
+        "stage1_translation": [
+          0,
+          -48
+        ],
+        "stage2_blend_rect": [
+          583,
+          682,
+          652,
+          706
+        ],
+        "stage2_actual": {
+          "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/stage2/ex_core_pallof_female_02.webp",
+          "sha256": "d3eb15d8a6c40757a5a3431e23bd3719e6703848538fffa90981f0165d8c3f1f",
+          "bytes": 134490,
+          "dimensions": [
+            768,
+            1024
+          ],
+          "mode": "RGB",
+          "encoder": {
+            "format": "WEBP",
+            "lossless": true,
+            "quality": 100,
+            "method": 6,
+            "exif": ""
+          }
+        },
+        "derived320": {
+          "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/stage2/02-derived-320w.png",
+          "sha256": "a5d1ccc4ed2471bb88eebd3e56b2c14d1b26b56c63804d24ce765d0aa38f7834",
+          "bytes": 77041,
+          "dimensions": [
+            320,
+            427
+          ],
+          "mode": "RGB",
+          "resampling": "LANCZOS from decoded output actual"
+        }
+      }
+    ],
+    "output_mother": {
+      "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/stage2/candidate-source-mother.png",
+      "sha256": "fa3d78bda473631305efc8681ca38157b183a3947d962b46b8e5be16204a38a0",
+      "bytes": 449294,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "assembly": "Two exact decoded Stage2 actual RGB cells pasted at x offsets 0 and 768; manifest asserts both mother crops equal corresponding actual RGB."
+    },
+    "stage2_manifest": {
+      "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/stage2/manifest.json",
+      "sha256": "889d368eb0c03beba107de04c47653d552b2490ddcfc56d1de11aa72e7d31e16",
+      "bytes": 15097
+    }
+  },
+  "original_production_snapshot": {
+    "status": "Immutable pre-integration frozen values; historical production paths identify the snapshot only. Frozen backups preserve those bytes; current accepted production is listed separately.",
+    "phase1": {
+      "production_path_at_snapshot": "entry/src/main/resources/base/media/ex_core_pallof_female_01.webp",
+      "sha256": "ca7d3fcc15e7ce650b092fe6d0c3281678ca99deebc4fc84423c4b80405f2399",
+      "bytes": 22666,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "frozen_backup": {
+        "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/integration/original-ex_core_pallof_female_01.webp",
+        "sha256": "ca7d3fcc15e7ce650b092fe6d0c3281678ca99deebc4fc84423c4b80405f2399",
+        "bytes": 22666,
+        "dimensions": [
+          768,
+          1024
+        ]
+      }
+    },
+    "phase2": {
+      "production_path_at_snapshot": "entry/src/main/resources/base/media/ex_core_pallof_female_02.webp",
+      "sha256": "8b133e6850e1db16a18b4f83e56aede1f9adb545a1fe465d01c62657962285b8",
+      "bytes": 22348,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "frozen_backup": {
+        "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/integration/original-ex_core_pallof_female_02.webp",
+        "sha256": "8b133e6850e1db16a18b4f83e56aede1f9adb545a1fe465d01c62657962285b8",
+        "bytes": 22348,
+        "dimensions": [
+          768,
+          1024
+        ]
+      }
+    },
+    "comparison_caveat": "Retained enclosed-v1 bases are unshipped and already differ from these pre-integration production cells. Stage2 outside-patch identity is relative to retained enclosed-v1/Stage1 sources, not to original production."
+  },
+  "acceptance": {
+    "acceptedCommit": "7bd1e8b0549c902aaab58b52daf3a57de13e995a",
+    "independent_review_report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-pallof-review.md",
+    "review_status": "INDEPENDENTLY_ACCEPTED",
+    "integration_status": "INTEGRATED"
+  },
+  "visible_claim_limits": [
+    "Hidden load count, load travel, and internal cable route are unverified and not claimed.",
+    "Stage2 source is retained unshipped female-enclosed-v1, not original production.",
+    "No new ImageGen prompt/output exists for the mechanical Stage1/Stage2 operations."
+  ],
+  "missing_evidence": [
+    "Original opaque ImageGen tool event call ID is not present in the retained journal; generated output filename ID is recorded but not treated as a call ID."
+  ],
+  "evidence_reports": [
+    ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-pallof-panel-reuse-report.md (Stage2 section)",
+    ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-pallof-integration-brief.md",
+    ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-pallof-review.md"
+  ],
+  "canonical_source": {
+    "path": ".work/exercise-guidance/core_pallof/female-sheet.png",
+    "sha256": "fa3d78bda473631305efc8681ca38157b183a3947d962b46b8e5be16204a38a0",
+    "bytes": 449294,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGB"
+  },
+  "accepted_production_frames": [
+    {
+      "phase": 1,
+      "path": "entry/src/main/resources/base/media/ex_core_pallof_female_01.webp",
+      "sha256": "19dca8d431340881273ae64fe8627f6188daae2cbd3bd9ce3bfe711e12c9177c",
+      "bytes": 142332,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "RGB",
+      "encoder": {
+        "format": "WEBP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6,
+        "exif": ""
+      }
+    },
+    {
+      "phase": 2,
+      "path": "entry/src/main/resources/base/media/ex_core_pallof_female_02.webp",
+      "sha256": "d3eb15d8a6c40757a5a3431e23bd3719e6703848538fffa90981f0165d8c3f1f",
+      "bytes": 134490,
+      "dimensions": [
+        768,
+        1024
+      ],
+      "mode": "RGB",
+      "encoder": {
+        "format": "WEBP",
+        "lossless": true,
+        "quality": 100,
+        "method": 6,
+        "exif": ""
+      }
+    }
+  ],
+  "integration_provenance": {
+    "path": ".work/exercise-guidance/core_pallof/panel-reuse-20261015/integration-provenance.json",
+    "sha256": "a0283d5381bad46a018d2937727a96cddf8b820427b1e088a837fe51943b72ca"
+  },
+  "encoding_reproduction": "Each canonical whole-cell RGB crop reproduces current production bytes with lossless=True, quality=100, method=6, exif=b\"\", cleared crop info and no resize. This explicit exception is not q82/process_sheet reproduction. The original candidate journal remains historical, not a new mechanical-stage generation."
+}

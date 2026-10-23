@@ -1,0 +1,78 @@
+{
+  "id": "chest_incline_db_press",
+  "gender": "male",
+  "frameIndex": 3,
+  "tool": "deterministic reuse of existing original cell; no ImageGen call",
+  "prompt": null,
+  "submitted_inputs": [
+    {
+      "role": "Existing correct original male DB frame 01 reused whole for frame 03; no generation input",
+      "path": ".work/exercise-guidance/chest_incline_db_press/incline-prep-20261015/originals/male-source-01.png",
+      "sha256": "0c8efad4381ba1b70b706a35c2d20c4c701a5a3ae29768aea0194b484b63c8f3",
+      "dimensions": [
+        512,
+        1024
+      ]
+    }
+  ],
+  "original_mother": {
+    "path": ".work/exercise-guidance/chest_incline_db_press/incline-prep-20261015/originals/male-sheet.png",
+    "sha256": "1c6383c727ed2101f034cb95ec042d856b7824fdd150c692023165b400a7176e",
+    "dimensions": [
+      1536,
+      1024
+    ]
+  },
+  "generation_output": null,
+  "assembly": {
+    "accepted_mother_path": ".work/exercise-guidance/chest_incline_db_press/male-sheet.png",
+    "accepted_mother_sha256": "fea8e58921e48c61bc896640be64eeb36cbc68bc233cf9096a767c877feba121",
+    "accepted_mother_dimensions": [
+      1536,
+      1024
+    ],
+    "operations": "Reuse the entire existing original male stage-01 512x1024 cell unchanged as stage 03 at paste position (1024,0) in the 1536x1024 mother; no ImageGen, resampling, crop, painting or pixel edits. Production WebP is exact original male01 bytes.",
+    "evidence": [
+      ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-incline-report.md:100,127,164,199,203",
+      ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-incline-db-review.md:17,43-44,49-53"
+    ]
+  },
+  "accepted_production": {
+    "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_male_03.webp",
+    "sha256": "dccbeb31c64831b1a0a976c209571ce235ab96df7b5b268e434081c68b724d36",
+    "dimensions": [
+      512,
+      1024
+    ],
+    "identity": "byte-identical to original male01 production WebP"
+  },
+  "original_production": {
+    "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_male_03.webp",
+    "sha256": "df0097aa970939bdd1edfdcb01464b6eac916898fc1614b86e83a182a031b3bf",
+    "dimensions": [
+      512,
+      1024
+    ]
+  },
+  "unchanged_indices": [
+    1,
+    2
+  ],
+  "unchanged_frames": [
+    {
+      "index": 1,
+      "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_male_01.webp",
+      "sha256": "dccbeb31c64831b1a0a976c209571ce235ab96df7b5b268e434081c68b724d36"
+    },
+    {
+      "index": 2,
+      "path": "entry/src/main/resources/base/media/ex_chest_incline_db_press_male_02.webp",
+      "sha256": "5d4b99d307deb5de5f246c0e0c0e763b84ce583f5b0e4297bc5db04ad82ffd50"
+    }
+  ],
+  "acceptedCommit": "48870b3e81d275114e018fa143c4231f8584487d",
+  "independent_review_report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-incline-db-review.md",
+  "knownDefectAcceptance": "ACCEPTED: incomplete male frame-03 return endpoint repaired by exact whole-cell reuse from original frame 01",
+  "postRepairAssessment": "UNCERTAIN_BENCH_ANGLE",
+  "missing_evidence": []
+}

@@ -1,0 +1,105 @@
+{
+  "id": "shoulder_arnold",
+  "gender": "female",
+  "frameIndex": 1,
+  "tool": "built-in ImageGen",
+  "prompt": "Use case: precise-object-edit.\nAsset type: single exercise-guidance start-frame edit, tall 1:2 canvas, output exactly one 512x1024 full-body panel.\nInput images: Image 1 is the ONLY edit target (female Arnold press frame01). Image 2 is the unmodified frame02 continuity reference. Image 3 is the unmodified frame03 continuity reference. Do not reproduce or alter reference frames.\nPrimary request: correct ONLY the hands, wrists, forearms and dumbbell orientation of Image 1 into the true SUPINATED chest-front Arnold-press START. Both elbows remain bent and IN FRONT of the ribs, forearms upright; BOTH PALMS face inward toward HER OWN FACE and chest (the backs of her hands/knuckles face the camera). This is the top of a two-arm supinated biceps curl before she opens outward into Image2. Each hand securely wraps one separate short HORIZONTAL dumbbell handle, with two black hex heads on either end. Exactly TWO complete dumbbells total; dumbbell axes across her chest are horizontal, no vertical hammer-grip bells. Show two normal hands, natural thumbs, continuous neutral wrists, a complete grip on each visible handle. Bells remain separate without collision in front of the upper chest, below chin.\nInvariants: preserve the same adult woman's face, ponytail, natural body proportions, gray sports bra/leggings/shoes, flat green shoulder tint, camera angle, distance, full-body placement, neutral background, soft light, black bench, seated back/hip support, both grounded shoes, and all other parts of target frame01. Keep her complete head, hands, two bells, shoes and entire bench inside the frame with visible margins. The corrected inward-facing start must flow naturally into reference02 outward rotation and reference03 palms-forward overhead.\nAvoid: neutral palms-facing-each-other start, vertical dumbbells, palms facing viewer, elbows flared sideways at start, bent wrists, extra or missing limbs/fingers, fused hands/bells, cropped equipment or shoes, text, arrows, numbers, borders, logos, watermark. Return only the corrected single first panel.",
+  "prompt_source": {
+    "path": ".work/exercise-guidance/shoulder_arnold/arnold-repair-20261015/female-attempt-1-prompt.txt",
+    "sha256": "7c023cfea2210301877cf560d02eb201899413e1f3116539fbbb05ad2044fdf3"
+  },
+  "submitted_inputs": [
+    {
+      "role": "Image 1 edit target, original female Arnold frame 01",
+      "path": ".work/exercise-guidance/shoulder_arnold/arnold-repair-20261015/female-original-01.png",
+      "sha256": "83ef8a414d4f532f4b6f0c0d3d2693e9b1a7579f77df8a3043b393692bab7a60",
+      "dimensions": [
+        512,
+        1024
+      ]
+    },
+    {
+      "role": "Image 2 continuity reference, original female Arnold frame 02",
+      "path": ".work/exercise-guidance/shoulder_arnold/arnold-repair-20261015/female-original-02.png",
+      "sha256": "d8632c1c134ff3d7d023179956aa1c13754744b2e93a6d6afda421d5a39b401e",
+      "dimensions": [
+        512,
+        1024
+      ]
+    },
+    {
+      "role": "Image 3 continuity reference, original female Arnold frame 03",
+      "path": ".work/exercise-guidance/shoulder_arnold/arnold-repair-20261015/female-original-03.png",
+      "sha256": "43e666e970cd8123dc70b8a7e1f8b48aee69de0498504281b12170b316221b80",
+      "dimensions": [
+        512,
+        1024
+      ]
+    }
+  ],
+  "original_mother": {
+    "path": ".work/exercise-guidance/shoulder_arnold/arnold-repair-20261015/female-mother-original.png",
+    "sha256": "7a3779a607a297d1c1181fd96e979fa7dadbb7bdd19d877b3f706bb331126e23",
+    "dimensions": [
+      1536,
+      1024
+    ]
+  },
+  "generation_output": {
+    "path": ".work/exercise-guidance/shoulder_arnold/arnold-repair-20261015/female-attempt-1.png",
+    "sha256": "629b58a50846202263718154137108de4b2aef7b3f4e29b3519486a997578c0d",
+    "dimensions": [
+      887,
+      1774
+    ]
+  },
+  "assembly": {
+    "accepted_mother_path": ".work/exercise-guidance/shoulder_arnold/female-sheet.png",
+    "accepted_mother_sha256": "3bf93bafc1d47f422d6392620f369927a69b21a9a00b88de47dc1b4df90e7b7b",
+    "accepted_mother_dimensions": [
+      1536,
+      1024
+    ],
+    "operations": "Resize the entire 887x1774 generated cell proportionally with LANCZOS to 512x1024 and paste at (0,0) into the retained original 1536x1024 mother. No painted pixels. Original mother cells 02/03 remained pixel-exact. Encode new frame01 as RGB WebP quality82/method6 without EXIF.",
+    "evidence": [
+      ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-arnold-report.md:51,151-155",
+      ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-arnold-review.md (source assembly and output verification)"
+    ]
+  },
+  "accepted_production": {
+    "path": "entry/src/main/resources/base/media/ex_shoulder_arnold_female_01.webp",
+    "sha256": "d9afa03fe55117e8f0888f68dea915059b865d38856366fc148532a6fc931588",
+    "dimensions": [
+      512,
+      1024
+    ]
+  },
+  "original_production": {
+    "path": "entry/src/main/resources/base/media/ex_shoulder_arnold_female_01.webp",
+    "sha256": "fb96a80dd61079a079f6838783d0daf06a3f4b276a2e9e324f1700675d9ae0bf",
+    "dimensions": [
+      512,
+      1024
+    ]
+  },
+  "unchanged_indices": [
+    2,
+    3
+  ],
+  "unchanged_frames": [
+    {
+      "index": 2,
+      "path": "entry/src/main/resources/base/media/ex_shoulder_arnold_female_02.webp",
+      "sha256": "60037aea2b614543aafa32f7f0ec0c5522e5b0d1091566b11e784f87006b6734"
+    },
+    {
+      "index": 3,
+      "path": "entry/src/main/resources/base/media/ex_shoulder_arnold_female_03.webp",
+      "sha256": "9dd4e0d3980c879e38f7278620160b4467075073256aef9c907e4dfeaa2e44e1"
+    }
+  ],
+  "acceptedCommit": "f31c90d1b6733f528d800b352e09442ce821b09f",
+  "independent_review_report": ".superpowers/sdd/2026-10-15-exercise-guidance-detail-audit/task-2-arnold-review.md",
+  "independentReviewStatus": "APPROVED",
+  "missing_evidence": []
+}
